@@ -44,7 +44,7 @@ body{
   animation: gradientMove 10s ease-in-out infinite;
 }
 
-@keyframes gradientMove {
+@keyframes gradientMove{
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
@@ -163,6 +163,8 @@ body{
   margin-top:22px;
   display:flex;
   justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
 }
 
 .btn{
@@ -186,13 +188,24 @@ body{
   box-shadow:0 14px 30px rgba(25,35,90,0.08);
 }
 
+.btnWhatsApp{
+  color:#fff;
+  background:#25D366;
+  border:1px solid rgba(0,0,0,0.05);
+}
+
+.btnWhatsApp:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(0,0,0,0.15);
+}
+
 footer{
   margin-top:30px;
   font-size:0.85rem;
   color:#8a93c8;
 }
 
-/* Floating WhatsApp button */
+/* Floating WhatsApp */
 .floatingWhatsApp{
   position:fixed;
   right:20px;
@@ -267,6 +280,11 @@ footer{
     font-size:1.08rem;
   }
 
+  .btn{
+    width:100%;
+    min-width:unset;
+  }
+
   .floatingWhatsApp{
     right:16px;
     bottom:16px;
@@ -307,13 +325,21 @@ Selamat datang ke Hani Properties!!! Tengah mencari rumah impian?
 </div>
 
 <div class="ctaRow">
-<a class="btn btnListing"
-href="https://haniproperties.notion.site/Hani-Properties-312ff4d844bb80d79e85c721c0537d59?source=copy_link"
-target="_blank"
-rel="noopener"
-onclick="gtag('event','listing_click',{event_category:'engagement',event_label:'notion_listing'});">
-Click sini untuk carian unit
-</a>
+  <a class="btn btnListing"
+     href="https://haniproperties.notion.site/Hani-Properties-312ff4d844bb80d79e85c721c0537d59?source=copy_link"
+     target="_blank"
+     rel="noopener"
+     onclick="gtag('event','listing_click',{event_category:'engagement',event_label:'notion_listing'});">
+    Click sini untuk carian unit
+  </a>
+
+  <a class="btn btnWhatsApp"
+     href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20cari%20rumah."
+     target="_blank"
+     rel="noopener"
+     onclick="gtag('event','whatsapp_click',{event_category:'engagement',event_label:'header_whatsapp'});">
+    WhatsApp Hani
+  </a>
 </div>
 
 <div class="divider"></div>
@@ -339,11 +365,11 @@ Nak cari rumah sendiri atau untuk pelaburan pun boleh 😊
 </main>
 
 <a class="floatingWhatsApp"
-href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20cari%20rumah.%20Bajet%20saya%20RM____%20di%20area%20______."
-target="_blank"
-rel="noopener"
-aria-label="WhatsApp Hani"
-onclick="gtag('event','whatsapp_click',{event_category:'engagement',event_label:'floating_whatsapp'});">
+   href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20cari%20rumah.%20Bajet%20saya%20RM____%20di%20area%20______."
+   target="_blank"
+   rel="noopener"
+   aria-label="WhatsApp Hani"
+   onclick="gtag('event','whatsapp_click',{event_category:'engagement',event_label:'floating_whatsapp'});">
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.15 1.6 5.96L0 24l6.3-1.65a11.9 11.9 0 0 0 5.77 1.47h.01c6.57 0 11.92-5.35 11.92-11.92 0-3.18-1.24-6.17-3.48-8.42zm-8.45 18.3h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.74.98 1-3.65-.23-.37a9.86 9.86 0 0 1-1.51-5.23c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.01 2.91a9.84 9.84 0 0 1 2.9 7c0 5.47-4.45 9.92-9.91 9.92zm5.44-7.41c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.66-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.12 3.24 5.13 4.54.72.31 1.28.49 1.72.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
   </svg>
