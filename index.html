@@ -14,231 +14,163 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
 <style>
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
 html{
-  scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  background:linear-gradient(-45deg,#f7f9ff,#eef2ff,#f2f6ff,#e8efff);
-  background-size:400% 400%;
-  animation:bgMove 12s ease infinite;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:24px;
+background:linear-gradient(-45deg,#f7f9ff,#eef2ff,#f2f6ff,#e8efff);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
 }
 
 @keyframes bgMove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
 .card{
-  max-width:860px;
-  width:100%;
-  background:#ffffff;
-  border-radius:24px;
-  padding:48px 34px;
-  box-shadow:0 25px 70px rgba(25,35,90,0.10);
-  text-align:center;
+max-width:860px;
+width:100%;
+background:#ffffff;
+border-radius:24px;
+padding:48px 34px;
+box-shadow:0 25px 70px rgba(25,35,90,0.10);
+text-align:center;
 }
 
 .brand{
-  font-size:2.7rem;
-  font-weight:900;
-  background:linear-gradient(90deg,#4f7cff,#6f42ff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+font-size:2.7rem;
+font-weight:900;
+background:linear-gradient(90deg,#4f7cff,#6f42ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .headline{
-  margin-top:12px;
-  font-weight:700;
-  color:#2b2f55;
+margin-top:12px;
+font-weight:700;
+color:#2b2f55;
 }
 
 .intro{
-  margin-top:16px;
-  font-size:1rem;
-  line-height:1.7;
-  color:#5a63a3;
+margin-top:16px;
+font-size:1rem;
+line-height:1.7;
+color:#5a63a3;
 }
 
 .services{
-  margin-top:14px;
-  font-size:0.92rem;
-  color:#6a72a8;
-  line-height:1.6;
-}
-
-.trustRow{
-  margin-top:18px;
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.trustBadge{
-  padding:7px 12px;
-  border-radius:999px;
-  background:#f6f8ff;
-  border:1px solid rgba(79,124,255,.16);
-  color:#51609a;
-  font-size:0.8rem;
-  font-weight:700;
-}
-
-.statsRow{
-  margin-top:18px;
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:10px;
-}
-
-.statCard{
-  background:#fbfcff;
-  border:1px solid rgba(79,124,255,.14);
-  border-radius:16px;
-  padding:14px 12px;
-  text-align:center;
-}
-
-.statCard strong{
-  display:block;
-  font-size:0.95rem;
-  color:#2b2f55;
-  margin-bottom:4px;
-}
-
-.statCard span{
-  font-size:0.82rem;
-  color:#6a72a8;
-  line-height:1.5;
+margin-top:14px;
+font-size:0.92rem;
+color:#6a72a8;
+line-height:1.6;
 }
 
 .section{
-  margin-top:34px;
-  scroll-margin-top:24px;
+margin-top:34px;
+scroll-margin-top:24px;
 }
 
 .sectionTitle{
-  font-weight:800;
-  margin-bottom:12px;
-  color:#2b2f55;
+font-weight:800;
+margin-bottom:12px;
+color:#2b2f55;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:10px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:10px;
 }
 
 .btn{
-  padding:9px 14px;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:700;
-  font-size:0.88rem;
-  min-height:38px;
-  transition:all .2s ease;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+padding:9px 14px;
+border-radius:999px;
+text-decoration:none;
+font-weight:700;
+font-size:0.88rem;
+min-height:38px;
+transition:all .2s ease;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .btnSoft{
-  background:#f3f6ff;
-  border:1px solid rgba(79,124,255,.3);
-  color:#2b2f55;
+background:#f3f6ff;
+border:1px solid rgba(79,124,255,.3);
+color:#2b2f55;
 }
 
 .btnWhats{
-  background:#25D366;
-  color:#fff;
+background:#25D366;
+color:#fff;
 }
 
 .btnPrimary{
-  background:linear-gradient(90deg,#4f7cff,#6f42ff);
-  color:#fff;
+background:linear-gradient(90deg,#4f7cff,#6f42ff);
+color:#fff;
 }
 
 .btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.1);
-}
-
-.highlightBox{
-  margin-top:18px;
-  background:#fbfcff;
-  border:1px solid rgba(79,124,255,.14);
-  border-radius:18px;
-  padding:20px;
-  text-align:left;
-}
-
-.highlightTitle{
-  font-size:1rem;
-  font-weight:800;
-  color:#2b2f55;
-  margin-bottom:8px;
-}
-
-.highlightText{
-  font-size:0.92rem;
-  line-height:1.7;
-  color:#6670a8;
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
 footer{
-  margin-top:28px;
-  font-size:.85rem;
-  color:#8a93c8;
+margin-top:28px;
+font-size:.85rem;
+color:#8a93c8;
 }
 
 .floatingWhats{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:62px;
-  height:62px;
-  border-radius:50%;
-  background:#25D366;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:28px;
-  text-decoration:none;
-  box-shadow:0 12px 30px rgba(37,211,102,.4);
+position:fixed;
+bottom:20px;
+right:20px;
+width:62px;
+height:62px;
+border-radius:50%;
+background:#25D366;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-size:28px;
+text-decoration:none;
+box-shadow:0 12px 30px rgba(37,211,102,.4);
 }
 
 @media (max-width:640px){
-  .card{
-    padding:36px 20px;
-  }
 
-  .brand{
-    font-size:2.2rem;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .statsRow{
-    grid-template-columns:1fr;
-  }
+.card{
+padding:36px 20px;
 }
+
+.brand{
+font-size:2.2rem;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
 </style>
 
 </head>
@@ -247,156 +179,126 @@ footer{
 
 <main class="card">
 
-  <h1 class="brand">Hani Properties</h1>
+<h1 class="brand">Hani Properties</h1>
 
-  <div class="headline">
-    Welcome to Hani Properties
-  </div>
+<div class="headline">
+Welcome to Hani Properties
+</div>
 
-  <p class="intro">
-    We provide a wide selection of properties for rent and for sale across Selangor, Kuala Lumpur and Negeri Sembilan. Whether you are looking for a home to stay in or an investment property, we are here to help you find the right unit that fits your needs and budget.
-  </p>
+<p class="intro">
+We provide a wide selection of properties for rent and for sale across Selangor, Kuala Lumpur and Negeri Sembilan. Whether you are looking for a home to stay in or an investment property, we are here to help you find the right unit that fits your needs and budget.
+</p>
 
-  <p class="services">
-    • Loan eligibility check • Property marketing • Tenant sourcing • Property advisory • Sales & tenancy documentation
-  </p>
+<p class="services">
+• Loan eligibility check • Property marketing • Tenant sourcing • Property advisory • Sales & tenancy documentation
+</p>
 
-  <div class="trustRow">
-    <div class="trustBadge">Rental & Sale Listings</div>
-    <div class="trustBadge">WhatsApp Enquiry</div>
-    <div class="trustBadge">Property Advisory</div>
-  </div>
+<div class="section">
 
-  <div class="statsRow">
-    <div class="statCard">
-      <strong>Rental Listings</strong>
-      <span>Browse by state</span>
-    </div>
+<div class="grid">
 
-    <div class="statCard">
-      <strong>Property Sales</strong>
-      <span>Browse by property type</span>
-    </div>
+<a class="btn btnWhats"
+href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
+target="_blank">
+Contact Hani on WhatsApp
+</a>
 
-    <div class="statCard">
-      <strong>Direct Contact</strong>
-      <span>Fast WhatsApp response</span>
-    </div>
-  </div>
+<a class="btn btnPrimary"
+href="#rental-listings">
+View Rental Listings
+</a>
 
-  <div class="section">
-    <div class="highlightBox">
-      <div class="highlightTitle">Unit Highlights</div>
-      <div class="highlightText">
-        Explore highlighted rental and sale opportunities across key locations. Browse listings by state for rentals, or by property type for sale listings. If you need a faster recommendation based on your budget, preferred area or property goals, contact Hani directly on WhatsApp.
-      </div>
-    </div>
-  </div>
+<a class="btn btnPrimary"
+href="#sale-listings">
+View Properties for Sale
+</a>
 
-  <div class="section">
-    <div class="grid">
-      <a class="btn btnWhats"
-         href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
-         target="_blank"
-         rel="noopener">
-        Contact Hani on WhatsApp
-      </a>
+</div>
 
-      <a class="btn btnPrimary"
-         href="#rental-listings">
-        View Rental Listings
-      </a>
+</div>
 
-      <a class="btn btnPrimary"
-         href="#sale-listings">
-        View Properties for Sale
-      </a>
-    </div>
-  </div>
+<div class="section" id="rental-listings">
 
-  <div class="section" id="rental-listings">
-    <div class="sectionTitle">
-      Rental Listings
-    </div>
+<div class="sectionTitle">
+Rental Listings
+</div>
 
-    <div class="grid">
-      <a class="btn btnSoft"
-         href="https://haniproperties.notion.site/Selangor-31eff4d844bb80e99940fcc6dce12844?source=copy_link"
-         target="_blank"
-         rel="noopener">
-        Selangor
-      </a>
+<div class="grid">
 
-      <a class="btn btnSoft"
-         href="https://haniproperties.notion.site/Kuala-Lumpur-31eff4d844bb8054ba7eff487b913269?source=copy_link"
-         target="_blank"
-         rel="noopener">
-        Kuala Lumpur
-      </a>
+<a class="btn btnSoft"
+href="https://haniproperties.notion.site/Selangor-31eff4d844bb80e99940fcc6dce12844?source=copy_link"
+target="_blank">
+Selangor
+</a>
 
-      <a class="btn btnSoft"
-         href="https://haniproperties.notion.site/Negeri-Sembilan-31eff4d844bb80dfa40bcb649aa9dba0?source=copy_link"
-         target="_blank"
-         rel="noopener">
-        Negeri Sembilan
-      </a>
-    </div>
-  </div>
+<a class="btn btnSoft"
+href="https://haniproperties.notion.site/Kuala-Lumpur-31eff4d844bb8054ba7eff487b913269?source=copy_link"
+target="_blank">
+Kuala Lumpur
+</a>
 
-  <div class="section" id="sale-listings">
-    <div class="sectionTitle">
-      Properties for Sale
-    </div>
+<a class="btn btnSoft"
+href="https://haniproperties.notion.site/Negeri-Sembilan-31eff4d844bb80dfa40bcb649aa9dba0?source=copy_link"
+target="_blank">
+Negeri Sembilan
+</a>
 
-    <div class="grid">
-      <a class="btn btnSoft"
-         href="https://www.notion.so/haniproperties/High-rise-318ff4d844bb8082bee1c7d18a0c487d?source=copy_link"
-         target="_blank"
-         rel="noopener">
-        High-Rise
-      </a>
+</div>
 
-      <a class="btn btnSoft"
-         href="https://www.notion.so/haniproperties/Landed-318ff4d844bb80d2932df2bb04cfd534?source=copy_link"
-         target="_blank"
-         rel="noopener">
-        Landed
-      </a>
+</div>
 
-      <a class="btn btnSoft"
-         href="https://www.notion.so/haniproperties/Projects-31dff4d844bb80c0892dd7c78ff37374?source=copy_link"
-         target="_blank"
-         rel="noopener">
-        New Projects
-      </a>
+<div class="section" id="sale-listings">
 
-      <a class="btn btnSoft"
-         href="https://www.notion.so/haniproperties/Land-for-Sale-318ff4d844bb804ebc86e01e935b4216?source=copy_link"
-         target="_blank"
-         rel="noopener">
-        Land
-      </a>
+<div class="sectionTitle">
+Properties for Sale
+</div>
 
-      <a class="btn btnSoft"
-         href="https://www.notion.so/haniproperties/Commercial-318ff4d844bb8070aed9ef8caeb2bb25?source=copy_link"
-         target="_blank"
-         rel="noopener">
-        Commercial
-      </a>
-    </div>
-  </div>
+<div class="grid">
 
-  <footer>
-    © 2026 Hani Properties
-  </footer>
+<a class="btn btnSoft"
+href="https://www.notion.so/haniproperties/High-rise-318ff4d844bb8082bee1c7d18a0c487d?source=copy_link"
+target="_blank">
+High-Rise
+</a>
+
+<a class="btn btnSoft"
+href="https://www.notion.so/haniproperties/Landed-318ff4d844bb80d2932df2bb04cfd534?source=copy_link"
+target="_blank">
+Landed
+</a>
+
+<a class="btn btnSoft"
+href="https://www.notion.so/haniproperties/Projects-31dff4d844bb80c0892dd7c78ff37374?source=copy_link"
+target="_blank">
+New Projects
+</a>
+
+<a class="btn btnSoft"
+href="https://www.notion.so/haniproperties/Land-for-Sale-318ff4d844bb804ebc86e01e935b4216?source=copy_link"
+target="_blank">
+Land
+</a>
+
+<a class="btn btnSoft"
+href="https://www.notion.so/haniproperties/Commercial-318ff4d844bb8070aed9ef8caeb2bb25?source=copy_link"
+target="_blank">
+Commercial
+</a>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Hani Properties
+</footer>
 
 </main>
 
 <a class="floatingWhats"
-   href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
-   target="_blank"
-   rel="noopener">
-  💬
+href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
+target="_blank">
+💬
 </a>
 
 </body>
