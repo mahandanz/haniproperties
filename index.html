@@ -102,18 +102,29 @@ min-height:40px;
 display:flex;
 align-items:center;
 justify-content:center;
+text-decoration:none;
+transition:all .2s ease;
 }
 
 .btnWhats{
 background:#25D366;
 color:#fff;
-text-decoration:none;
+}
+
+.btnWhats:hover{
+transform:translateY(-1px);
+box-shadow:0 10px 24px rgba(37,211,102,.25);
 }
 
 .btnSoft{
 background:#f3f6ff;
 border:1px solid rgba(79,124,255,.3);
 color:#2b2f55;
+}
+
+.btnSoft:hover{
+background:#e9efff;
+transform:translateY(-1px);
 }
 
 footer{
@@ -137,6 +148,10 @@ color:#fff;
 font-size:28px;
 text-decoration:none;
 box-shadow:0 12px 30px rgba(37,211,102,.4);
+}
+
+.floatingWhats:hover{
+transform:translateY(-2px);
 }
 
 @media (max-width:640px){
@@ -194,13 +209,19 @@ Our Offerings
 
 <div class="grid">
 
-<div class="btn btnSoft">
+<a class="btn btnSoft"
+href="https://haniproperties.notion.site/Hani-Properties-312ff4d844bb80d79e85c721c0537d59?source=copy_link"
+target="_blank"
+rel="noopener">
 Property Listings
-</div>
+</a>
 
-<div class="btn btnSoft">
+<a class="btn btnSoft"
+href="https://haniproperties.notion.site/What-is-it-321ff4d844bb80a8b90df790bb9dddd1?source=copy_link"
+target="_blank"
+rel="noopener">
 Property Makeover
-</div>
+</a>
 
 </div>
 
