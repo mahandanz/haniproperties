@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://haniproperties.com/sitemap.xml
