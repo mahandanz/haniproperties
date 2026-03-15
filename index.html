@@ -53,15 +53,13 @@ width:100%;
 background:rgba(255,255,255,0.92);
 backdrop-filter:blur(10px);
 border-radius:26px;
-padding:36px 36px 52px 36px;
+padding:36px;
 box-shadow:
 0 25px 70px rgba(25,35,90,0.10),
 0 6px 16px rgba(25,35,90,0.06);
 border:1px solid rgba(255,255,255,0.6);
 text-align:center;
 }
-
-/* Banner */
 
 .banner{
 width:100%;
@@ -76,8 +74,6 @@ height:240px;
 object-fit:cover;
 display:block;
 }
-
-/* Text */
 
 .brand{
 font-size:2.7rem;
@@ -101,8 +97,7 @@ font-size:1rem;
 line-height:1.8;
 color:#5a63a3;
 max-width:760px;
-margin-left:auto;
-margin-right:auto;
+margin:auto;
 }
 
 .services{
@@ -111,8 +106,7 @@ font-size:0.94rem;
 color:#6a72a8;
 line-height:1.7;
 max-width:760px;
-margin-left:auto;
-margin-right:auto;
+margin:auto;
 }
 
 .section{
@@ -121,22 +115,29 @@ margin-top:34px;
 
 .sectionTitle{
 font-weight:800;
-margin-bottom:12px;
+margin-bottom:16px;
 color:#2b2f55;
 }
 
-.grid{
+.gridPrimary{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:12px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:14px;
+margin-bottom:12px;
+}
+
+.gridSecondary{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:14px;
 }
 
 .btn{
-padding:12px 18px;
+padding:14px 18px;
 border-radius:999px;
 font-weight:700;
-font-size:0.92rem;
-min-height:44px;
+font-size:0.95rem;
+min-height:48px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -201,10 +202,6 @@ box-shadow:0 12px 30px rgba(37,211,102,.4);
 
 @media (max-width:640px){
 
-.card{
-padding:30px 18px 44px 18px;
-}
-
 .banner img{
 height:180px;
 }
@@ -213,7 +210,8 @@ height:180px;
 font-size:2.2rem;
 }
 
-.grid{
+.gridPrimary,
+.gridSecondary{
 grid-template-columns:1fr;
 }
 
@@ -238,7 +236,7 @@ Property Listings for Rent & Sale in Selangor, Kuala Lumpur and Negeri Sembilan
 
 <div style="margin-top:20px;">
 <a class="btn btnWhats"
-href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
+href="https://wa.me/60125459182"
 target="_blank"
 rel="noopener">
 Contact Hani on WhatsApp
@@ -254,41 +252,43 @@ Property listings • Property marketing • Property makeover • Tenant sourci
 </p>
 
 <div class="section">
+
 <div class="sectionTitle">
 Our Offerings
 </div>
 
-<div class="grid">
+<div class="gridPrimary">
 
 <a class="btn btnPrimary"
 href="https://haniproperties.notion.site/Rental-listings-31eff4d844bb800eabd6e357c33e572e?source=copy_link"
-target="_blank"
-rel="noopener">
+target="_blank">
 🏠 View Rental Listings
 </a>
 
 <a class="btn btnPrimary"
 href="https://haniproperties.notion.site/Properties-for-Sale-31dff4d844bb8051b90ed58159414d0a?source=copy_link"
-target="_blank"
-rel="noopener">
+target="_blank">
 🏡 View Properties for Sale
 </a>
 
+</div>
+
+<div class="gridSecondary">
+
 <a class="btn btnSoft"
 href="https://haniproperties.notion.site/Proven-Results-by-Hani-Properties-At-A-Glance-31eff4d844bb808eb413f50fc6181e02?source=copy_link"
-target="_blank"
-rel="noopener">
+target="_blank">
 📊 Proven Results by Hani Properties
 </a>
 
 <a class="btn btnSoft"
 href="https://haniproperties.notion.site/What-is-it-321ff4d844bb80a8b90df790bb9dddd1"
-target="_blank"
-rel="noopener">
+target="_blank">
 🛠 Property Makeover Services
 </a>
 
 </div>
+
 </div>
 
 <footer>
@@ -299,8 +299,7 @@ rel="noopener">
 
 <a class="floatingWhats"
 href="https://wa.me/60125459182"
-target="_blank"
-rel="noopener">
+target="_blank">
 💬
 </a>
 
