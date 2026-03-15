@@ -18,76 +18,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Hani Properties">
-<meta property="og:title" content="Hani Properties | Property Listings for Rent & Sale">
-<meta property="og:description" content="Browse rental and subsale property listings across Selangor, Kuala Lumpur and Negeri Sembilan.">
-<meta property="og:url" content="https://haniproperties.com/">
-<meta property="og:image" content="https://haniproperties.com/og-image.jpg">
-<meta property="og:locale" content="en_MY">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hani Properties | Property Listings for Rent & Sale">
-<meta name="twitter:description" content="Browse rental and subsale property listings across Selangor, Kuala Lumpur and Negeri Sembilan.">
-<meta name="twitter:image" content="https://haniproperties.com/og-image.jpg">
-
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"Organization",
-      "@id":"https://haniproperties.com/#organization",
-      "name":"Hani Properties",
-      "url":"https://haniproperties.com/",
-      "logo":"https://haniproperties.com/og-image.jpg",
-      "contactPoint":{
-        "@type":"ContactPoint",
-        "telephone":"+60125459182",
-        "contactType":"customer service",
-        "areaServed":"MY",
-        "availableLanguage":["English","Malay"]
-      }
-    },
-    {
-      "@type":"RealEstateAgent",
-      "@id":"https://haniproperties.com/#realestateagent",
-      "name":"Hani Properties",
-      "url":"https://haniproperties.com/",
-      "areaServed":[
-        "Selangor",
-        "Kuala Lumpur",
-        "Negeri Sembilan",
-        "Klang Valley",
-        "Petaling Jaya",
-        "Bandar Sunway",
-        "Shah Alam",
-        "Ampang",
-        "Klang",
-        "Subang Jaya"
-      ],
-      "telephone":"+60125459182",
-      "sameAs":[
-        "https://haniproperties.notion.site/Hani-Properties-312ff4d844bb80d79e85c721c0537d59"
-      ]
-    },
-    {
-      "@type":"WebSite",
-      "@id":"https://haniproperties.com/#website",
-      "url":"https://haniproperties.com/",
-      "name":"Hani Properties",
-      "publisher":{
-        "@id":"https://haniproperties.com/#organization"
-      },
-      "inLanguage":"en-MY"
-    }
-  ]
-}
-</script>
-
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -118,13 +53,31 @@ width:100%;
 background:rgba(255,255,255,0.92);
 backdrop-filter:blur(10px);
 border-radius:26px;
-padding:52px 36px;
+padding:36px 36px 52px 36px;
 box-shadow:
 0 25px 70px rgba(25,35,90,0.10),
 0 6px 16px rgba(25,35,90,0.06);
 border:1px solid rgba(255,255,255,0.6);
 text-align:center;
 }
+
+/* BANNER */
+
+.banner{
+width:100%;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:24px;
+}
+
+.banner img{
+width:100%;
+height:240px;
+object-fit:cover;
+display:block;
+}
+
+/* TEXT */
 
 .brand{
 font-size:2.7rem;
@@ -240,7 +193,6 @@ padding:6px 12px;
 border-radius:999px;
 font-size:0.85rem;
 border:1px solid rgba(79,124,255,.12);
-cursor:default;
 }
 
 footer{
@@ -266,13 +218,14 @@ text-decoration:none;
 box-shadow:0 12px 30px rgba(37,211,102,.4);
 }
 
-.floatingWhats:hover{
-transform:translateY(-2px);
+@media (max-width:640px){
+
+.card{
+padding:30px 18px 44px 18px;
 }
 
-@media (max-width:640px){
-.card{
-padding:36px 20px;
+.banner img{
+height:180px;
 }
 
 .brand{
@@ -282,13 +235,19 @@ font-size:2.2rem;
 .grid{
 grid-template-columns:1fr;
 }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <main class="card">
+
+<div class="banner">
+<img src="/banner.jpg" alt="Hani Properties real estate listings in Selangor and Kuala Lumpur">
+</div>
 
 <h1 class="brand">Hani Properties</h1>
 
@@ -306,7 +265,7 @@ Contact Hani on WhatsApp
 </div>
 
 <p class="intro">
-Hani Properties provides rental and subsale property listings across Selangor, Kuala Lumpur, Negeri Sembilan and the Klang Valley. We help tenants, buyers and investors find condominiums, serviced apartments and landed homes in areas such as Petaling Jaya, Bandar Sunway, Shah Alam, Ampang, Klang and Subang Jaya.
+Hani Properties provides rental and subsale property listings across Selangor, Kuala Lumpur, Negeri Sembilan and the Klang Valley.
 </p>
 
 <p class="services">
@@ -314,9 +273,7 @@ Property listings • Property marketing • Property makeover • Tenant sourci
 </p>
 
 <div class="section">
-<div class="sectionTitle">
-Some Areas We Cover
-</div>
+<div class="sectionTitle">Some Areas We Cover</div>
 
 <ul class="areas">
 <li>Petaling Jaya</li>
@@ -331,11 +288,10 @@ Some Areas We Cover
 </div>
 
 <div class="section">
-<div class="sectionTitle">
-Our Offerings
-</div>
+<div class="sectionTitle">Our Offerings</div>
 
 <div class="grid">
+
 <a class="btn btnPrimary"
 href="https://haniproperties.notion.site/Hani-Properties-312ff4d844bb80d79e85c721c0537d59"
 target="_blank"
@@ -349,17 +305,8 @@ target="_blank"
 rel="noopener">
 🛠 Property Makeover Services
 </a>
-</div>
-</div>
 
-<div class="section">
-<div class="sectionTitle">
-Why Choose Hani Properties
 </div>
-
-<p style="font-size:0.95rem;color:#5a63a3;line-height:1.8;max-width:700px;margin:auto;">
-Hani Properties assists tenants, buyers and property owners across Selangor and Kuala Lumpur with rental listings, subsale opportunities and property marketing support. We help clients find suitable homes within their budget while guiding them through viewings, negotiations and documentation.
-</p>
 </div>
 
 <footer>
@@ -369,7 +316,7 @@ Hani Properties assists tenants, buyers and property owners across Selangor and 
 </main>
 
 <a class="floatingWhats"
-href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
+href="https://wa.me/60125459182"
 target="_blank"
 rel="noopener">
 💬
