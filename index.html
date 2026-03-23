@@ -8,7 +8,7 @@
 
   <title>Hani Properties | Property Listings for Rent, Sale & Projects in Klang Valley</title>
 
-  <meta name="description" content="Browse property listings for rent and sale across Selangor, Kuala Lumpur and Negeri Sembilan with Hani Properties. Explore area-based pages, latest projects and direct WhatsApp enquiry." />
+  <meta name="description" content="Browse property listings for rent and sale across Selangor, Kuala Lumpur and Negeri Sembilan with Hani Properties. Explore area-based pages, latest projects and direct WhatsApp enquiry.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Hani Properties">
   <meta name="theme-color" content="#4f7cff">
@@ -16,9 +16,39 @@
   <link rel="canonical" href="https://haniproperties.com/">
   <link rel="icon" href="/favicon.ico">
 
+  <meta property="og:title" content="Hani Properties | Property Listings in Klang Valley">
+  <meta property="og:description" content="Browse rental and subsale properties across Selangor, Kuala Lumpur and Negeri Sembilan with Hani Properties.">
+  <meta property="og:url" content="https://haniproperties.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://haniproperties.com/banner.jpg">
+  <meta property="og:site_name" content="Hani Properties">
+  <meta property="og:locale" content="en_MY">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hani Properties | Property Listings in Klang Valley">
+  <meta name="twitter:description" content="Browse rental and subsale properties across Selangor, Kuala Lumpur and Negeri Sembilan with Hani Properties.">
+  <meta name="twitter:image" content="https://haniproperties.com/banner.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Hani Properties",
+    "url": "https://haniproperties.com/",
+    "image": "https://haniproperties.com/banner.jpg",
+    "telephone": "+60125459182",
+    "areaServed": [
+      "Kuala Lumpur",
+      "Selangor",
+      "Negeri Sembilan",
+      "Klang Valley"
+    ]
+  }
+  </script>
 
   <style>
     * {
@@ -56,10 +86,22 @@
       text-align: center;
     }
 
+    .hero {
+      margin-bottom: 24px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(25,35,90,0.15);
+    }
+
     .brand {
       font-size: 2.6rem;
       font-weight: 900;
-      background: linear-gradient(90deg,#4f7cff,#6f42ff);
+      background: linear-gradient(90deg, #4f7cff, #6f42ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -75,7 +117,7 @@
       margin-top: 16px;
       color: #5a63a3;
       line-height: 1.7;
-      max-width: 760px;
+      max-width: 780px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -186,6 +228,10 @@
 
   <main class="card">
 
+    <div class="hero">
+      <img src="/banner.jpg" alt="Hani Properties listings across Klang Valley">
+    </div>
+
     <h1 class="brand">Hani Properties</h1>
 
     <p class="headline">
@@ -203,14 +249,18 @@
       Browse property listings across Selangor, Kuala Lumpur and Negeri Sembilan with Hani Properties. Explore homes for rent, subsale opportunities and latest projects through clean area-based pages designed to help you find the right location faster.
     </p>
 
+    <p class="intro">
+      Hani Properties is a Klang Valley property specialist focusing on rental listings, subsale homes and selected projects across Selangor, Kuala Lumpur and Negeri Sembilan. Whether you are looking for a house to rent, a property for sale or investment opportunities, our location-based pages help you discover the right area faster.
+    </p>
+
     <div class="section">
       <div class="sectionTitle">Rental Listings</div>
       <div class="sectionSub">Browse available rental listings by state.</div>
 
       <div class="grid">
         <a class="btn btnPrimary" href="/rental/selangor/index.html">For Rent in Selangor</a>
-        <a class="btn btnPrimary" href="/rental/KL/index.html">For Rent in Kuala Lumpur</a>
-        <a class="btn btnPrimary" href="/NS/rental/index.html">For Rent in Negeri Sembilan</a>
+        <a class="btn btnPrimary" href="/rental/kl/index.html">For Rent in Kuala Lumpur</a>
+        <a class="btn btnPrimary" href="/rental/ns/index.html">For Rent in Negeri Sembilan</a>
       </div>
     </div>
 
@@ -220,8 +270,8 @@
 
       <div class="grid">
         <a class="btn btnGreen" href="/subsale/selangor/index.html">For Sale in Selangor</a>
-        <a class="btn btnGreen" href="/subsale/KL/index.html">For Sale in Kuala Lumpur</a>
-        <a class="btn btnGreen" href="/subsale/NS/index.html">For Sale in Negeri Sembilan</a>
+        <a class="btn btnGreen" href="/subsale/kl/index.html">For Sale in Kuala Lumpur</a>
+        <a class="btn btnGreen" href="/subsale/ns/index.html">For Sale in Negeri Sembilan</a>
       </div>
     </div>
 
