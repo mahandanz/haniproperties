@@ -9,62 +9,164 @@
   <link rel="canonical" href="https://haniproperties.com/for-rent/selangor/" />
 
   <style>
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --border-hover: #c7d2fe;
+      --accent: #4338ca;
+      --accent-soft: #eef2ff;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --shadow-hover: 0 14px 34px rgba(67, 56, 202, 0.12);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f7f8fc;
-      color: #1f2937;
+      background: var(--bg);
+      color: var(--text);
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 48px 20px 60px;
+    }
+
+    .hero {
+      margin-bottom: 36px;
     }
 
     h1 {
-      margin-bottom: 10px;
+      margin: 0 0 14px;
+      font-size: 44px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
 
     .intro {
-      color: #4b5563;
-      margin-bottom: 30px;
-      max-width: 750px;
-      line-height: 1.6;
+      margin: 0;
+      max-width: 780px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 18px;
     }
 
     .cluster {
-      margin-bottom: 30px;
+      margin-bottom: 34px;
     }
 
     .cluster h2 {
-      font-size: 16px;
-      margin-bottom: 12px;
-      color: #374151;
+      margin: 0 0 14px;
+      font-size: 22px;
+      line-height: 1.3;
+      color: #24324a;
+      letter-spacing: -0.01em;
     }
 
-    /* TEXT LINKS (no more pills) */
     .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 20px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
     }
 
     .area {
+      display: flex;
+      align-items: center;
+      min-height: 72px;
+      padding: 18px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
       text-decoration: none;
-      color: #374151;
-      transition: color 0.15s ease;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.35;
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        color 0.18s ease;
     }
 
     .area:hover {
-      color: #4f46e5;
-      text-decoration: underline;
+      transform: translateY(-2px);
+      border-color: var(--border-hover);
+      background: var(--accent-soft);
+      color: var(--accent);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .area:focus-visible {
+      outline: 3px solid rgba(67, 56, 202, 0.18);
+      outline-offset: 2px;
+      border-color: var(--accent);
     }
 
     .footer {
-      margin-top: 40px;
+      margin-top: 44px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
       font-size: 14px;
       color: #9ca3af;
+    }
+
+    @media (max-width: 980px) {
+      h1 {
+        font-size: 38px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        padding: 36px 16px 48px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .intro {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .cluster h2 {
+        font-size: 19px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .area {
+        min-height: 66px;
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
@@ -72,59 +174,60 @@
 <body>
   <div class="container">
 
-    <h1>Selangor Rental Areas</h1>
-
-    <p class="intro">
-      Explore rental properties across Selangor with Hani Properties. Browse listings by key areas including
-      Shah Alam, Petaling Jaya, Subang Jaya, Puchong, Cyberjaya, Kajang and more.
-      Areas are grouped by location to help you quickly find homes that match your commute, lifestyle and budget.
-    </p>
+    <div class="hero">
+      <h1>Selangor Rental Areas</h1>
+      <p class="intro">
+        Explore rental properties across Selangor with Hani Properties. Browse listings by key areas including
+        Shah Alam, Petaling Jaya, Subang Jaya, Puchong, Cyberjaya, Kajang and more.
+        Areas are grouped by location to help you quickly find homes that match your commute, lifestyle and budget.
+      </p>
+    </div>
 
     <div class="cluster">
       <h2>Subang • Puchong • South-West Corridor</h2>
       <div class="grid">
-        <a class="area" href="https://t.me/hanipropertiesrentals/74" target="_blank">Subang Jaya</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/49" target="_blank">Puchong</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/7" target="_blank">Bandar Saujana Putra</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/24" target="_blank">Cyberjaya</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/30" target="_blank">Dengkil</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/74" target="_blank" rel="noopener noreferrer">Subang Jaya</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/49" target="_blank" rel="noopener noreferrer">Puchong</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/7" target="_blank" rel="noopener noreferrer">Bandar Saujana Putra</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/24" target="_blank" rel="noopener noreferrer">Cyberjaya</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/30" target="_blank" rel="noopener noreferrer">Dengkil</a>
       </div>
     </div>
 
     <div class="cluster">
       <h2>Kajang • Bangi • Seri Kembangan</h2>
       <div class="grid">
-        <a class="area" href="https://t.me/hanipropertiesrentals/33" target="_blank">Kajang</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/11" target="_blank">Bangi</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/52" target="_blank">Semenyih</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/58" target="_blank">Seri Kembangan</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/33" target="_blank" rel="noopener noreferrer">Kajang</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/11" target="_blank" rel="noopener noreferrer">Bangi</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/52" target="_blank" rel="noopener noreferrer">Semenyih</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/58" target="_blank" rel="noopener noreferrer">Seri Kembangan</a>
       </div>
     </div>
 
     <div class="cluster">
       <h2>Shah Alam • Klang Corridor</h2>
       <div class="grid">
-        <a class="area" href="https://t.me/hanipropertiesrentals/69" target="_blank">Shah Alam</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/66" target="_blank">Setia Alam</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/36" target="_blank">Klang</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/77" target="_blank">Telok Panglima Garang / Rimbayu</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/69" target="_blank" rel="noopener noreferrer">Shah Alam</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/66" target="_blank" rel="noopener noreferrer">Setia Alam</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/36" target="_blank" rel="noopener noreferrer">Klang</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/77" target="_blank" rel="noopener noreferrer">Telok Panglima Garang / Rimbayu</a>
       </div>
     </div>
 
     <div class="cluster">
       <h2>Petaling Jaya • Damansara</h2>
       <div class="grid">
-        <a class="area" href="https://t.me/hanipropertiesrentals/46" target="_blank">Petaling Jaya</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/27" target="_blank">Damansara</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/59" target="_blank">Selayang</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/46" target="_blank" rel="noopener noreferrer">Petaling Jaya</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/27" target="_blank" rel="noopener noreferrer">Damansara</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/59" target="_blank" rel="noopener noreferrer">Selayang</a>
       </div>
     </div>
 
     <div class="cluster">
       <h2>Outer Areas</h2>
       <div class="grid">
-        <a class="area" href="https://t.me/hanipropertiesrentals/55" target="_blank">Sepang</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/14" target="_blank">Banting</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/55" target="_blank" rel="noopener noreferrer">Sepang</a>
+        <a class="area" href="https://t.me/hanipropertiesrentals/14" target="_blank" rel="noopener noreferrer">Banting</a>
       </div>
     </div>
 
