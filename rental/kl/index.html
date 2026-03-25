@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Kuala Lumpur Rental Areas | Hani Properties</title>
-  <meta name="description" content="Browse rental listings across Kuala Lumpur including Cheras, Setapak, Sentul, Bukit Jalil, Ampang and more. Updated listings by Hani Properties." />
-  <link rel="canonical" href="https://haniproperties.com/for-rent/kuala-lumpur/" />
+  <title>Selangor Rental Areas | Hani Properties</title>
+  <meta name="description" content="Browse rental listings across Selangor including Subang, Puchong, Cyberjaya, Kajang and more. Updated listings by Hani Properties." />
+  <link rel="canonical" href="https://haniproperties.com/for-rent/selangor/" />
 
   <style>
     body {
@@ -17,103 +17,150 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 32px 20px 48px;
     }
 
     h1 {
       margin-bottom: 10px;
+      font-size: 26px;
     }
 
     .intro {
       color: #4b5563;
       margin-bottom: 30px;
-      max-width: 750px;
+      max-width: 720px;
       line-height: 1.6;
     }
 
-    .cluster {
-      margin-bottom: 30px;
+    .area-section {
+      margin-bottom: 36px;
     }
 
-    .cluster h2 {
-      font-size: 16px;
-      margin-bottom: 12px;
-      color: #374151;
+    .area-section h2 {
+      margin: 0 0 18px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #17325c;
     }
 
-    .grid {
+    .area-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .area-card {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px 20px;
-    }
-
-    .area {
+      align-items: center;
+      min-height: 78px;
+      padding: 0 18px;
+      background: #ffffff;
+      border: 1px solid #d9dee8;
+      border-radius: 18px;
+      color: #17325c;
+      font-size: 17px;
+      font-weight: 500;
       text-decoration: none;
-      color: #374151;
-      transition: color 0.15s ease;
+      transition: all 0.2s ease;
     }
 
-    .area:hover {
-      color: #4f46e5;
-      text-decoration: underline;
+    .area-card:hover {
+      transform: translateY(-2px);
+      border-color: #b9c6db;
+      box-shadow: 0 8px 20px rgba(23, 50, 92, 0.08);
     }
 
-    .footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #9ca3af;
+    /* Tablet */
+    @media (max-width: 900px) {
+      .area-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px 14px 40px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .area-section h2 {
+        font-size: 16px;
+      }
+
+      .area-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .area-card {
+        min-height: 64px;
+        font-size: 16px;
+        border-radius: 16px;
+        padding: 0 16px;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <div class="container">
-
-    <h1>Kuala Lumpur Rental Areas</h1>
-
+    <h1>Selangor Rental Areas</h1>
     <p class="intro">
-      Explore rental properties across Kuala Lumpur with Hani Properties. Browse listings by key areas including
-      Cheras, Setapak, Sentul, Bukit Jalil, Ampang and more.
-      Areas are grouped to help you quickly find homes that match your commute, lifestyle and budget.
+      Explore rental properties across key areas in Selangor. Browse by location to find available units that match your budget and lifestyle.
     </p>
 
-    <div class="cluster">
-      <h2>Central Kuala Lumpur</h2>
-      <div class="grid">
-        <a class="area" href="https://t.me/hanipropertiesrentals/39" target="_blank">Kuala Lumpur</a>
-      </div>
-    </div>
+    <!-- Subang / Puchong Corridor -->
+    <section class="area-section">
+      <h2>Subang • Puchong • South-West Corridor</h2>
 
-    <div class="cluster">
-      <h2>Cheras • Ampang Corridor</h2>
-      <div class="grid">
-        <a class="area" href="https://t.me/hanipropertiesrentals/21" target="_blank">Cheras</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/4" target="_blank">Ampang</a>
+      <div class="area-grid">
+        <a class="area-card" href="/for-rent/selangor/subang-jaya/">Subang Jaya</a>
+        <a class="area-card" href="/for-rent/selangor/puchong/">Puchong</a>
+        <a class="area-card" href="/for-rent/selangor/bandar-saujana-putra/">Bandar Saujana Putra</a>
+        <a class="area-card" href="/for-rent/selangor/cyberjaya/">Cyberjaya</a>
+        <a class="area-card" href="/for-rent/selangor/dengkil/">Dengkil</a>
       </div>
-    </div>
+    </section>
 
-    <div class="cluster">
-      <h2>Setapak • Sentul • North KL</h2>
-      <div class="grid">
-        <a class="area" href="https://t.me/hanipropertiesrentals/63" target="_blank">Setapak</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/57" target="_blank">Sentul</a>
-        <a class="area" href="https://t.me/hanipropertiesrentals/59" target="_blank">Selayang</a>
+    <!-- Kajang / Bangi Corridor -->
+    <section class="area-section">
+      <h2>Kajang • Bangi • Semenyih Corridor</h2>
+
+      <div class="area-grid">
+        <a class="area-card" href="/for-rent/selangor/kajang/">Kajang</a>
+        <a class="area-card" href="/for-rent/selangor/bangi/">Bangi</a>
+        <a class="area-card" href="/for-rent/selangor/semenyih/">Semenyih</a>
       </div>
-    </div>
+    </section>
 
-    <div class="cluster">
-      <h2>South KL</h2>
-      <div class="grid">
-        <a class="area" href="https://t.me/hanipropertiesrentals/17" target="_blank">Bukit Jalil</a>
+    <!-- Klang Valley Core -->
+    <section class="area-section">
+      <h2>Klang • Shah Alam Corridor</h2>
+
+      <div class="area-grid">
+        <a class="area-card" href="/for-rent/selangor/shah-alam/">Shah Alam</a>
+        <a class="area-card" href="/for-rent/selangor/klang/">Klang</a>
       </div>
-    </div>
+    </section>
 
-    <div class="footer">
-      Hani Properties • Kuala Lumpur Rental Listings
-    </div>
+    <!-- South Selangor -->
+    <section class="area-section">
+      <h2>Banting • Sepang Corridor</h2>
+
+      <div class="area-grid">
+        <a class="area-card" href="/for-rent/selangor/banting/">Banting</a>
+        <a class="area-card" href="/for-rent/selangor/sepang/">Sepang</a>
+      </div>
+    </section>
 
   </div>
+
 </body>
 </html>
