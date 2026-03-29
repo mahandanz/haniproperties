@@ -1,0 +1,634 @@
+Cyberjaya
+Cyberjaya
+Puchong
+Bukit Jalil
+Puchong
+<!DOCTYPE html>
+<html lang="en-MY">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Sewa Rumah Selangor & Klang Valley (2026) | Hani Properties</title>
+
+  <meta name="description" content="Cari rumah untuk disewa di Selangor dan Klang Valley. Browse apartment, condo dan rumah sewa ikut kawasan seperti Shah Alam, Puchong, Petaling Jaya, Cyberjaya dan banyak lagi dengan Hani Properties.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Hani Properties">
+  <meta name="theme-color" content="#4f7cff">
+
+  <link rel="canonical" href="https://haniproperties.com/">
+  <link rel="icon" href="/favicon.ico">
+
+  <meta property="og:title" content="Sewa Rumah Selangor & Klang Valley (2026) | Hani Properties">
+  <meta property="og:description" content="Cari apartment, condo dan rumah untuk disewa di Selangor dan Klang Valley ikut kawasan, bajet dan jenis unit.">
+  <meta property="og:url" content="https://haniproperties.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://haniproperties.com/banner.jpg">
+  <meta property="og:site_name" content="Hani Properties">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sewa Rumah Selangor & Klang Valley (2026) | Hani Properties">
+  <meta name="twitter:description" content="Cari apartment, condo dan rumah untuk disewa di Selangor dan Klang Valley.">
+  <meta name="twitter:image" content="https://haniproperties.com/banner.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Hani Properties",
+    "url": "https://haniproperties.com/",
+    "image": "https://haniproperties.com/banner.jpg",
+    "telephone": "+60125459182",
+    "areaServed": [
+      "Selangor",
+      "Kuala Lumpur",
+      "Negeri Sembilan",
+      "Klang Valley"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Selangor",
+      "addressCountry": "MY"
+    }
+  }
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+      --bg1: #f7f9ff;
+      --bg2: #eef2ff;
+      --bg3: #f2f6ff;
+      --bg4: #e8efff;
+      --text: #24304f;
+      --muted: #5f6999;
+      --soft: #6f78a8;
+      --border: rgba(79, 124, 255, 0.14);
+      --blue: #4f7cff;
+      --blue-dark: #3d63d6;
+      --green: #16a34a;
+      --green-dark: #12833b;
+      --white: rgba(255,255,255,0.92);
+      --soft-card: #f6f8ff;
+      --shadow: 0 25px 70px rgba(25,35,90,0.10);
+      --shadow-soft: 0 14px 28px rgba(79,124,255,.12);
+      --radius-xl: 26px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 24px;
+      background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4));
+      background-size: 400% 400%;
+      animation: bgMove 12s ease infinite;
+      color: var(--text);
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .card {
+      width: 100%;
+      background: var(--white);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      margin-bottom: 28px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 22px;
+      box-shadow: 0 20px 50px rgba(25,35,90,0.15);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #edf3ff;
+      color: var(--blue-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .brand {
+      margin-top: 18px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--blue-dark);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin-top: 12px;
+      font-size: 2.85rem;
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #212b4a;
+    }
+
+    .headline {
+      margin-top: 14px;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 860px;
+    }
+
+    .ctaRow {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 8px;
+      min-height: 54px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btnPrimary {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btnPrimary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(79,124,255,.30);
+      background: var(--blue-dark);
+    }
+
+    .btnWhats {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .btnWhats:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(22,163,74,.28);
+      background: var(--green-dark);
+    }
+
+    .btnSoft {
+      background: var(--soft-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btnSoft:hover {
+      transform: translateY(-2px);
+      background: #eef3ff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section {
+      margin-top: 34px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sectionTitle {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #253253;
+      margin-bottom: 8px;
+    }
+
+    .sectionSub {
+      color: var(--soft);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .areaCard {
+      display: block;
+      text-decoration: none;
+      background: var(--soft-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      color: var(--text);
+      transition: 0.2s ease;
+      min-height: 112px;
+    }
+
+    .areaCard:hover {
+      transform: translateY(-2px);
+      background: #eef3ff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .areaCard h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #2a3560;
+    }
+
+    .areaCard p {
+      font-size: 0.94rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .pillGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+    }
+
+    .pillLink {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      text-decoration: none;
+      text-align: center;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-weight: 700;
+      background: var(--soft-card);
+      border: 1px solid var(--border);
+      color: #2b2f55;
+      transition: 0.2s ease;
+    }
+
+    .pillLink:hover {
+      transform: translateY(-2px);
+      background: #eef3ff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .infoBox {
+      background: linear-gradient(180deg, #f8faff 0%, #f3f6ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .infoBox strong {
+      color: #28345b;
+    }
+
+    .miniGrid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .miniCard {
+      background: #f8faff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .miniCard h3 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #2b3560;
+    }
+
+    .miniCard p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    .footerCta {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    footer {
+      margin-top: 34px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #8a93c8;
+      line-height: 1.8;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: all 0.2s ease;
+      animation: whatsappPulse 2.2s infinite;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      animation: none;
+    }
+
+    .floating-whatsapp::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(37, 211, 102, 0.4);
+      z-index: -1;
+      animation: whatsappRing 2.2s infinite;
+    }
+
+    @keyframes whatsappPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes whatsappRing {
+      0% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      70% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .card {
+        padding: 28px 18px 34px;
+      }
+
+      h1 {
+        font-size: 2.15rem;
+      }
+
+      .headline {
+        font-size: 1rem;
+      }
+
+      .miniGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-whatsapp {
+        width: 54px;
+        height: 54px;
+        bottom: 18px;
+        right: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+    <main class="card">
+
+      <div class="hero">
+        <img src="/banner.jpg" alt="Hani Properties listings across Selangor and Klang Valley">
+      </div>
+
+      <div class="eyebrow">Rental • Sale • Projects</div>
+      <div class="brand">Hani Properties</div>
+
+      <h1>Sewa Rumah Selangor &amp; Klang Valley</h1>
+
+      <p class="headline">
+        Cari apartment, condo dan rumah untuk disewa ikut kawasan, bajet dan jenis unit. Browse pilihan di Shah Alam, Puchong, Petaling Jaya, Cyberjaya dan kawasan lain dengan Hani Properties.
+      </p>
+
+      <div class="ctaRow">
+        <a class="btn btnWhats"
+          href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20cari%20unit%20untuk%20disewa."
+          target="_blank"
+          rel="noopener">
+          WhatsApp Hani
+        </a>
+
+        <a class="btn btnPrimary" href="/rental/selangor/index.html">
+          Browse Rental Areas
+        </a>
+      </div>
+
+      <div class="section">
+        <div class="sectionTitle">Kawasan Sewa Popular</div>
+        <div class="sectionSub">
+          Antara kawasan paling kerap dicari untuk sewa rumah, condo dan apartment di Selangor dan Klang Valley.
+        </div>
+
+        <div class="grid">
+          <a class="areaCard" href="/rental/selangor/shah-alam.html">
+            <h3>Shah Alam</h3>
+            <p>Popular untuk family, working adult dan student dengan banyak pilihan apartment dan condo.</p>
+          </a>
+
+          <a class="areaCard" href="/rental/selangor/puchong.html">
+            <h3>Puchong</h3>
+            <p>Kawasan matang dengan akses highway yang kuat dan banyak pilihan unit mengikut bajet.</p>
+          </a>
+
+          <a class="areaCard" href="/rental/selangor/petaling-jaya.html">
+            <h3>Petaling Jaya</h3>
+            <p>Lokasi strategik untuk penyewa yang bekerja di PJ atau Kuala Lumpur.</p>
+          </a>
+
+          <a class="areaCard" href="/rental/selangor/cyberjaya.html">
+            <h3>Cyberjaya</h3>
+            <p>High demand untuk studio, 1 bilik dan unit moden bagi working adult dan pasangan.</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sectionTitle">Properties for Rent</div>
+        <div class="sectionSub">
+          Browse rental listings by state and continue into area pages untuk semak pilihan yang lebih spesifik.
+        </div>
+
+        <div class="grid">
+          <a class="btn btnPrimary" href="/rental/selangor/index.html">For Rent in Selangor</a>
+          <a class="btn btnPrimary" href="/rental/kuala/index.html">For Rent in Kuala Lumpur</a>
+          <a class="btn btnPrimary" href="/rental/negeri/index.html">For Rent in Negeri Sembilan</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sectionTitle">Properties for Sale</div>
+        <div class="sectionSub">
+          Browse subsale and sale listings by state.
+        </div>
+
+        <div class="grid">
+          <a class="btn btnSoft" href="/subsale/selangor/index.html">For Sale in Selangor</a>
+          <a class="btn btnSoft" href="/subsale/kuala/index.html">For Sale in Kuala Lumpur</a>
+          <a class="btn btnSoft" href="/subsale/ns/index.html">For Sale in Negeri Sembilan</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sectionTitle">Browse by Popular Rental Areas</div>
+        <div class="sectionSub">
+          Masuk terus ke area page untuk tengok ringkasan kawasan, julat harga sewa dan akses ke listing semasa.
+        </div>
+
+        <div class="pillGrid">
+          <a class="pillLink" href="/rental/selangor/shah-alam.html">Shah Alam</a>
+          <a class="pillLink" href="/rental/selangor/puchong.html">Puchong</a>
+          <a class="pillLink" href="/rental/selangor/subang-jaya.html">Subang Jaya</a>
+          <a class="pillLink" href="/rental/selangor/petaling-jaya.html">Petaling Jaya</a>
+          <a class="pillLink" href="/rental/selangor/kajang.html">Kajang</a>
+          <a class="pillLink" href="/rental/selangor/cyberjaya.html">Cyberjaya</a>
+          <a class="pillLink" href="/rental/selangor/seri-kembangan.html">Seri Kembangan</a>
+          <a class="pillLink" href="/rental/selangor/klang.html">Klang</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sectionTitle">Sewa Rumah di Selangor</div>
+
+        <div class="infoBox">
+          Selangor merupakan antara kawasan paling aktif untuk sewaan di Malaysia dengan pelbagai pilihan <strong>apartment</strong>, <strong>condo</strong> dan <strong>rumah untuk disewa</strong>. Kawasan seperti <strong>Shah Alam</strong> dan <strong>Puchong</strong> biasanya sesuai untuk family, manakala <strong>Cyberjaya</strong> dan <strong>Petaling Jaya</strong> sering menjadi pilihan working adult. Julat harga sewa boleh berbeza mengikut lokasi, jenis unit, saiz dan furnishing.
+        </div>
+
+        <div class="miniGrid">
+          <div class="miniCard">
+            <h3>Untuk Working Adult</h3>
+            <p>Biasanya cari kawasan dengan akses highway, MRT atau lokasi kerja yang dekat seperti PJ, Cyberjaya dan Subang.</p>
+          </div>
+
+          <div class="miniCard">
+            <h3>Untuk Pasangan &amp; Family</h3>
+            <p>Selalunya fokus pada unit 2 hingga 3 bilik di Shah Alam, Puchong, Kajang atau Seri Kembangan.</p>
+          </div>
+
+          <div class="miniCard">
+            <h3>Untuk Cari Unit Cepat</h3>
+            <p>Pilih kawasan dulu, semak area page, kemudian terus enquire melalui WhatsApp untuk shortlist unit yang sesuai.</p>
+          </div>
+        </div>
+
+        <div class="footerCta">
+          <a class="btn btnWhats"
+            href="https://wa.me/60125459182?text=Hi%20Hani%2C%20boleh%20bantu%20saya%20cari%20unit%20yang%20sesuai%3F"
+            target="_blank"
+            rel="noopener">
+            Tak jumpa unit yang sesuai? WhatsApp Hani
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sectionTitle">More from Hani Properties</div>
+        <div class="sectionSub">
+          Explore projects, results and additional services.
+        </div>
+
+        <div class="grid">
+          <a class="btn btnSoft"
+            href="https://haniproperties.notion.site/Latest-Projects-31dff4d844bb80c0892dd7c78ff37374?source=copy_link"
+            target="_blank"
+            rel="noopener">
+            Latest Projects
+          </a>
+
+          <a class="btn btnSoft"
+            href="https://haniproperties.notion.site/Proven-Results-by-Hani-Properties-At-A-Glance-31eff4d844bb808eb413f50fc6181e02"
+            target="_blank"
+            rel="noopener">
+            Proven Results
+          </a>
+
+          <a class="btn btnSoft"
+            href="https://haniproperties.notion.site/What-is-it-321ff4d844bb80a8b90df790bb9dddd1"
+            target="_blank"
+            rel="noopener">
+            Property Makeover
+          </a>
+        </div>
+      </div>
+
+      <footer>
+        © 2026 Hani Properties<br>
+        Properties across Selangor, Kuala Lumpur &amp; Negeri Sembilan
+      </footer>
+
+    </main>
+  </div>
+
+  <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
+     class="floating-whatsapp"
+     target="_blank"
+     rel="noopener"
+     aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" width="26" height="26" fill="white" aria-hidden="true">
+      <path d="M19.11 17.38c-.28-.14-1.65-.81-1.9-.9-.25-.09-.43-.14-.61.14-.18.28-.7.9-.86 1.08-.16.18-.32.2-.6.07-.28-.14-1.2-.44-2.28-1.4-.84-.75-1.4-1.67-1.57-1.95-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.84-2.03-.22-.53-.45-.46-.61-.46h-.52c-.18 0-.48.07-.73.34-.25.28-.96.94-.96 2.3 0 1.36.98 2.68 1.12 2.86.14.18 1.93 2.94 4.67 4.12.65.28 1.16.44 1.56.56.66.21 1.27.18 1.75.11.53-.08 1.65-.67 1.88-1.32.23-.65.23-1.21.16-1.32-.07-.11-.25-.18-.53-.32z"/>
+      <path d="M26.67 5.33C23.95 2.61 20.21 1.11 16.33 1.11 8.67 1.11 2.44 7.34 2.44 15c0 2.64.69 5.2 2.01 7.45L2 30l7.77-2.41c2.18 1.19 4.64 1.82 7.13 1.82h.01c7.66 0 13.89-6.23 13.89-13.89 0-3.87-1.5-7.61-4.13-10.19zM16.9 26.1h-.01c-2.24 0-4.43-.6-6.34-1.75l-.45-.27-4.61 1.43 1.5-4.49-.29-.46c-1.23-1.96-1.88-4.23-1.88-6.56 0-6.86 5.59-12.45 12.45-12.45 3.32 0 6.44 1.29 8.79 3.64 2.35 2.35 3.64 5.47 3.64 8.79 0 6.86-5.59 12.45-12.45 12.45z"/>
+    </svg>
+  </a>
+
+</body>
+</html>
