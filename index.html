@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en-MY">
+<html lang="ms-MY">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Hani Properties | Properties for Rent, Sale & Projects in Klang Valley</title>
+  <title>Hani Properties | Sewa &amp; Beli Rumah di Klang Valley</title>
 
-  <meta name="description" content="Browse properties for rent and sale across Selangor, Kuala Lumpur and Negeri Sembilan with Hani Properties. Explore listings by area and enquire directly via WhatsApp.">
+  <meta name="description" content="Cari rumah sewa atau beli di Selangor, KL &amp; Negeri Sembilan. Listing update harian. Tanya terus dengan Hani via WhatsApp.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Hani Properties">
   <meta name="theme-color" content="#4f7cff">
@@ -16,21 +16,21 @@
   <link rel="canonical" href="https://haniproperties.com/">
   <link rel="icon" href="/favicon.ico">
 
-  <meta property="og:title" content="Hani Properties | Properties for Rent & Sale in Klang Valley">
-  <meta property="og:description" content="Browse rental and sale properties across Selangor, Kuala Lumpur and Negeri Sembilan.">
+  <meta property="og:title" content="Hani Properties | Sewa &amp; Beli Rumah di Klang Valley">
+  <meta property="og:description" content="Cari rumah sewa atau beli di Selangor, KL &amp; Negeri Sembilan. Listing update harian.">
   <meta property="og:url" content="https://haniproperties.com/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://haniproperties.com/banner.jpg">
   <meta property="og:site_name" content="Hani Properties">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Hani Properties | Properties for Rent & Sale in Klang Valley">
-  <meta name="twitter:description" content="Browse rental and sale properties across Klang Valley.">
+  <meta name="twitter:title" content="Hani Properties | Sewa &amp; Beli Rumah di Klang Valley">
+  <meta name="twitter:description" content="Cari rumah sewa atau beli di Selangor, KL &amp; Negeri Sembilan. Listing update harian.">
   <meta name="twitter:image" content="https://haniproperties.com/banner.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -54,7 +54,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
@@ -85,8 +85,9 @@
       text-align: center;
     }
 
+    /* HERO */
     .hero {
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .hero img {
@@ -105,36 +106,77 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .headline {
-      margin-top: 10px;
-      font-weight: 700;
+    .tagline {
+      margin-top: 8px;
+      font-size: 1.05rem;
+      font-weight: 600;
       color: #2b2f55;
-      line-height: 1.5;
     }
 
-    .intro {
-      margin-top: 16px;
+    .heroSub {
+      margin-top: 10px;
       color: #5a63a3;
+      font-size: 0.95rem;
       line-height: 1.7;
-      max-width: 780px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
+    .btnWhats {
+      background: #16a34a;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    .btnWhats:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(22,163,74,.3);
+    }
+
+    /* TRUST BAR */
+    .trustBar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .trustPill {
+      background: #f0f4ff;
+      border: 1px solid rgba(79,124,255,0.18);
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #3a4490;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: rgba(79,124,255,0.10);
+      margin: 30px 0;
+    }
+
+    /* SECTIONS */
     .section {
-      margin-top: 34px;
+      margin-top: 0;
     }
 
     .sectionTitle {
       font-weight: 800;
-      margin-bottom: 10px;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
       color: #2b2f55;
     }
 
     .sectionSub {
       color: #6a72a8;
       margin-bottom: 16px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       line-height: 1.6;
     }
 
@@ -155,6 +197,7 @@
       text-align: center;
       transition: 0.2s;
       min-height: 54px;
+      font-size: 0.95rem;
     }
 
     .btnPrimary {
@@ -189,17 +232,63 @@
       box-shadow: 0 10px 20px rgba(79,124,255,.12);
     }
 
-    .btnWhats {
-      background: #16a34a;
+    .btnTelegram {
+      background: #229ED9;
       color: #fff;
-      margin-top: 20px;
     }
 
-    .btnWhats:hover {
+    .btnTelegram:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(22,163,74,.3);
+      box-shadow: 0 10px 20px rgba(34,158,217,.3);
     }
 
+    /* CHANNEL EXPLAINER */
+    .channelBox {
+      background: #f8faff;
+      border: 1px solid rgba(79,124,255,0.14);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: left;
+    }
+
+    .channelBox .sectionTitle {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .channelGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .channelCard {
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid rgba(79,124,255,0.12);
+    }
+
+    .channelCard .icon {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .channelCard .channelName {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #2b2f55;
+      margin-bottom: 4px;
+    }
+
+    .channelCard .channelDesc {
+      font-size: 0.83rem;
+      color: #6a72a8;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    /* FLOATING WA */
     .floating-whatsapp {
       position: fixed;
       bottom: 22px;
@@ -241,17 +330,9 @@
     }
 
     @keyframes whatsappRing {
-      0% {
-        transform: scale(1);
-        opacity: 0.6;
-      }
-      70% {
-        transform: scale(1.8);
-        opacity: 0;
-      }
-      100% {
-        opacity: 0;
-      }
+      0% { transform: scale(1); opacity: 0.6; }
+      70% { transform: scale(1.8); opacity: 0; }
+      100% { opacity: 0; }
     }
 
     footer {
@@ -274,6 +355,19 @@
         grid-template-columns: 1fr;
       }
 
+      .channelGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .trustBar {
+        gap: 8px;
+      }
+
+      .trustPill {
+        font-size: 0.8rem;
+        padding: 7px 14px;
+      }
+
       .floating-whatsapp {
         width: 54px;
         height: 54px;
@@ -289,79 +383,96 @@
   <main class="card">
 
     <div class="hero">
-      <img src="/banner.jpg" alt="Hani Properties listings across Klang Valley">
+      <img src="/banner.jpg" alt="Hani Properties — Hartanah Sewa &amp; Jual di Klang Valley">
     </div>
 
     <h1 class="brand">Hani Properties</h1>
 
-    <p class="headline">
-      Properties for Rent, Sale &amp; Projects
+    <p class="tagline">Agen Hartanah Aktif di Klang Valley</p>
+
+    <p class="heroSub">
+      Cari rumah sewa atau beli di Selangor, KL &amp; Negeri Sembilan.<br>
+      Listing update harian. Balas dalam masa 1 jam.
     </p>
 
     <a class="btn btnWhats"
       href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
       target="_blank"
       rel="noopener">
-      WhatsApp Hani
+      💬 WhatsApp Hani Sekarang
     </a>
 
-    <p class="intro">
-      Browse properties for rent and sale across Selangor, Kuala Lumpur and Negeri Sembilan with Hani Properties. Explore listings by area and enquire directly via WhatsApp.
-    </p>
+    <!-- TRUST BAR -->
+    <div class="trustBar">
+      <span class="trustPill">🏠 [XX]+ listing aktif</span>
+      <span class="trustPill">⚡ Respon dalam 1 jam</span>
+      <span class="trustPill">✅ [X]+ tahun beroperasi</span>
+    </div>
 
+    <div class="divider"></div>
+
+    <!-- RENT -->
     <div class="section">
-      <div class="sectionTitle">Properties for Rent</div>
-      <div class="sectionSub">Browse available properties for rent by state.</div>
+      <div class="sectionTitle">Sewa Rumah</div>
+      <div class="sectionSub">Cari mengikut kawasan anda.</div>
 
       <div class="grid">
-        <a class="btn btnPrimary" href="/rental/selangor/index.html" target="_blank" rel="noopener">For Rent in Selangor</a>
-        <a class="btn btnPrimary" href="/rental/kuala/index.html" target="_blank" rel="noopener">For Rent in Kuala Lumpur</a>
-        <a class="btn btnPrimary" href="/rental/negeri/index.html" target="_blank" rel="noopener">For Rent in Negeri Sembilan</a>
+        <a class="btn btnPrimary" href="/rental/selangor/index.html">Sewa di Selangor</a>
+        <a class="btn btnPrimary" href="/rental/kuala/index.html">Sewa di Kuala Lumpur</a>
+        <a class="btn btnPrimary" href="/rental/negeri/index.html">Sewa di Negeri Sembilan</a>
       </div>
     </div>
 
+    <div class="divider"></div>
+
+    <!-- SALE -->
     <div class="section">
-      <div class="sectionTitle">Properties for Sale</div>
-      <div class="sectionSub">Browse available properties for sale by state.</div>
+      <div class="sectionTitle">Beli Rumah</div>
+      <div class="sectionSub">Unit subsale &amp; projek baru.</div>
 
       <div class="grid">
-        <a class="btn btnGreen" href="/subsale/selangor/index.html" target="_blank" rel="noopener">For Sale in Selangor</a>
-        <a class="btn btnGreen" href="/subsale/kuala/index.html" target="_blank" rel="noopener">For Sale in Kuala Lumpur</a>
-        <a class="btn btnGreen" href="/subsale/ns/index.html" target="_blank" rel="noopener">For Sale in Negeri Sembilan</a>
+        <a class="btn btnGreen" href="/subsale/selangor/index.html">Beli di Selangor</a>
+        <a class="btn btnGreen" href="/subsale/kuala/index.html">Beli di Kuala Lumpur</a>
+        <a class="btn btnGreen" href="/subsale/ns/index.html">Beli di Negeri Sembilan</a>
       </div>
     </div>
 
-    <div class="section">
-      <div class="sectionTitle">More from Hani Properties</div>
-      <div class="sectionSub">Explore projects, results and additional services.</div>
+    <div class="divider"></div>
 
-      <div class="grid">
-        <a class="btn btnSoft"
-          href="https://haniproperties.notion.site/Latest-Projects-31dff4d844bb80c0892dd7c78ff37374?source=copy_link"
-          target="_blank"
-          rel="noopener">
-          Latest Projects
-        </a>
+    <!-- CHANNEL EXPLAINER -->
+    <div class="channelBox">
+      <div class="sectionTitle">Macam Mana Nak Mulakan?</div>
 
-        <a class="btn btnSoft"
-          href="https://haniproperties.notion.site/Proven-Results-by-Hani-Properties-At-A-Glance-31eff4d844bb808eb413f50fc6181e02"
-          target="_blank"
-          rel="noopener">
-          Proven Results
-        </a>
+      <div class="channelGrid">
+        <div class="channelCard">
+          <div class="icon">📲</div>
+          <div class="channelName">Telegram</div>
+          <div class="channelDesc">Tengok semua listing terkini. Free join, update setiap hari.</div>
+          <a class="btn btnTelegram"
+            href="https://t.me/AniListings"
+            target="_blank"
+            rel="noopener">
+            Join Channel
+          </a>
+        </div>
 
-        <a class="btn btnSoft"
-          href="https://haniproperties.notion.site/What-is-it-321ff4d844bb80a8b90df790bb9dddd1"
-          target="_blank"
-          rel="noopener">
-          Property Makeover
-        </a>
+        <div class="channelCard">
+          <div class="icon">💬</div>
+          <div class="channelName">WhatsApp</div>
+          <div class="channelDesc">Tanya terus dengan Hani — untuk pertanyaan spesifik atau nak buat lawatan unit.</div>
+          <a class="btn btnWhats"
+            href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20would%20like%20to%20enquire%20about%20a%20property."
+            target="_blank"
+            rel="noopener">
+            WhatsApp Hani
+          </a>
+        </div>
       </div>
     </div>
 
     <footer>
       © 2026 Hani Properties<br>
-      Properties across Selangor, Kuala Lumpur &amp; Negeri Sembilan
+      Hartanah di Selangor, Kuala Lumpur &amp; Negeri Sembilan
     </footer>
 
   </main>
