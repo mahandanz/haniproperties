@@ -73,7 +73,7 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --sand:#f6f1e7;--paper:#fdfaf5;--terra:#bf5533;--forest:#2a5c3a;
@@ -82,7 +82,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(253,250,245,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
@@ -99,11 +99,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;ali
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 80% 50%,rgba(191,85,51,.07) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 10% 80%,rgba(42,92,58,.06) 0%,transparent 60%);pointer-events:none}
 .hero-inner{max-width:640px;width:100%;position:relative;z-index:1;animation:fadeUp .7s ease both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);background:rgba(191,85,51,.09);padding:5px 12px;border-radius:20px;margin-bottom:24px;float:left;clear:both}
+.hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);background:rgba(191,85,51,.09);padding:5px 12px;border-radius:20px;margin-bottom:24px}
 .hero-tag::before{content:'●';font-size:8px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-family:'Lora',serif;font-size:clamp(34px,5.5vw,58px);font-weight:700;line-height:1.08;letter-spacing:-.025em;color:var(--ink);margin-bottom:20px}
-.hero h1 em{font-style:italic;color:var(--terra)}
+.hero h1{font-family:'DM Sans',sans-serif;font-size:clamp(34px,5.5vw,58px);font-weight:700;line-height:1.08;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--terra)}
 .hero-desc{font-size:15px;color:var(--muted);max-width:520px;margin:0 auto 14px;line-height:1.75}
 .hero-desc2{font-size:14px;color:var(--muted);max-width:520px;margin:0 auto 28px;line-height:1.75;opacity:.85}
 .hero-trust{display:flex;gap:24px;flex-wrap:wrap}
@@ -186,13 +186,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   <div class="hero-bg"></div>
   <div class="hero-inner">
     <div class="hero-tag">✦ Listing Baru Setiap Hari</div>
-    <h1>Rumah untuk<br><em>disewa &amp; dibeli</em><br>di Klang Valley.</h1>
-    <p class="hero-desc">Nak sewa atau beli rumah di Klang Valley, tapi tak tahu nak mula dari mana? Hani bantu anda cari unit yang sesuai — listing disaring sendiri, maklumat tepat, dan balas dalam masa 1 jam.</p>
-    <p class="hero-desc2">Dari apartment bawah RM1,500 sebulan hingga landed double-storey, dari subsale bawah market value hingga unit hasil sewa tinggi — Hani tahu kawasan dan tahu harga.</p>
+    <h1>MENCARI RUMAH<br>UNTUK SEWA<br>ATAU BELI?</h1>
+    <p class="hero-desc">Jom tengok listing Hani. Ada banyak pilihan untuk sewa dan beli di pelbagai kawasan — Shah Alam, Puchong, KL, Setapak, dan banyak lagi. Hari-hari ada unit baru.</p>
+    <p class="hero-desc2">Range harga dari bawah RM300k hingga bawah RM1M. Estimated installment dah dikira siap — bawah RM1k ada, bawah RM2k ada, bawah RM3k pun ada. Untuk yang nak exclusive dan luxury, ada juga beberapa pilihan menarik.</p>
     <div class="hero-trust">
-      <div class="trust-item"><div class="trust-icon ti-green">✓</div>Balas dalam masa 1 jam</div>
-      <div class="trust-item"><div class="trust-icon ti-terra">✓</div>Semak loan percuma</div>
-      <div class="trust-item"><div class="trust-icon ti-green">✓</div>Tiada bayaran tersembunyi</div>
+      <div class="trust-item"><div class="trust-icon ti-green">✓</div>Respon pantas</div>
+      <div class="trust-item"><div class="trust-icon ti-terra">✓</div>Nak tahu kelayakan? Jom cek loan. Free!</div>
+      <div class="trust-item"><div class="trust-icon ti-green">✓</div>No hidden charges</div>
     </div>
   </div>
 </section>
@@ -200,7 +200,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <!-- SPLIT CARDS -->
 <div class="split">
   <a href="sewa.html" class="split-card sc-sewa">
-    <div class="sc-badge">Rumah Sewa</div>
+    <div class="sc-badge">Nak Sewa Rumah?</div>
     <h2>Cari rumah sewa yang sesuai.</h2>
     <p>33 unit terpilih di Shah Alam, Puchong, Cyberjaya, Putrajaya &amp; lebih. Fully furnished hingga landed.</p>
     <div class="sc-stat">
@@ -211,7 +211,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <div class="sc-deco">🏡</div>
   </a>
   <a href="jual.html" class="split-card sc-jual">
-    <div class="sc-badge">Rumah Subsale</div>
+    <div class="sc-badge">Nak Beli Rumah?</div>
     <h2>Beli rumah. Ansuran dari RM660/bln.</h2>
     <p>20 unit subsale terpilih — apartment, kondominium &amp; landed. Bawah MV, hasil tinggi, atau family-ready.</p>
     <div class="sc-stat">
