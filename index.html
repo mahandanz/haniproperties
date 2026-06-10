@@ -80,7 +80,7 @@
     .illustration {
       width: 100%;
       max-width: 360px;
-      margin-bottom: 44px;
+      margin-top: 44px;
     }
 
     .illustration img {
@@ -263,21 +263,6 @@
   <!-- Main -->
   <main>
 
-    <div class="illustration">
-      <img
-        src="under.png"
-        alt="Maintenance in progress"
-        onerror="this.style.display='none'; document.querySelector('.illustration-fallback').style.display='flex';"
-      />
-    </div>
-    <!-- shown only if under.png fails to load -->
-    <div class="illustration-fallback">
-      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="36" cy="36" r="28" stroke="#2E7D52" stroke-width="2.5" stroke-dasharray="6 4"/>
-        <path d="M28 36h16M36 28v16" stroke="#2E7D52" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-    </div>
-
     <p class="eyebrow">Sebentar lagi, lebih baik</p>
 
     <p class="subtext">
@@ -312,6 +297,21 @@
         WhatsApp Kami
       </a>
 
+    </div>
+
+    <div class="illustration">
+      <img
+        src="under.png"
+        alt="Maintenance in progress"
+        onerror="this.style.display='none'; document.querySelector('.illustration-fallback').style.display='flex';"
+      />
+    </div>
+    <!-- shown only if under.png fails to load -->
+    <div class="illustration-fallback">
+      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="36" r="28" stroke="#2E7D52" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <path d="M28 36h16M36 28v16" stroke="#2E7D52" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
     </div>
 
   </main>
