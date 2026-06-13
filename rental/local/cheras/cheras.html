@@ -1,238 +1,669 @@
 <!DOCTYPE html>
-<html lang="en-MY">
-
+<html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rumah Sewa Cheras | Hani Properties – ERA Real Estate</title>
+  <meta name="description" content="Cari rumah sewa di Cheras? Hani Properties menawarkan pilihan kondominium, apartment dan rumah teres dengan lokasi strategik berdekatan MRT, LRT, hospital dan pusat membeli-belah. Hubungi Hani sekarang." />
+  <link rel="canonical" href="https://www.haniproperties.com/cheras.html" />
 
-  <title>Sewa Rumah Cheras | Kawasan & Pilihan Unit 2026</title>
-  <meta name="description" content="Cari rumah untuk disewa di Cheras. Lihat kelebihan kawasan dan browse listing terkini Cheras di Telegram.">
-  <meta name="robots" content="index, follow">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.haniproperties.com/cheras.html" />
+  <meta property="og:title" content="Rumah Sewa Cheras | Hani Properties" />
+  <meta property="og:description" content="Sewa rumah di Cheras — kondominium, apartment &amp; teres berdekatan MRT, LRT, hospital dan mall. Hubungi Hani hari ini." />
+  <meta property="og:image" content="https://www.haniproperties.com/og-cheras.jpg" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Hani Properties",
+    "url": "https://www.haniproperties.com",
+    "telephone": "+60125459182",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Selangor",
+      "addressCountry": "MY"
+    },
+    "agent": {
+      "@type": "Person",
+      "name": "Marhani Bt Mohamad Nor",
+      "telephone": "+60125459182"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Cheras"
+    }
+  }
+  </script>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1B4D35;
+      --green-mid:  #2E7D52;
+      --green-light:#52B788;
+      --cream:      #F7F5F0;
+      --white:      #ffffff;
+      --text:       #1a1a1a;
+      --text-muted: #555;
+      --radius-sm:  6px;
+      --radius-md:  12px;
+      --radius-lg:  18px;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      min-height: 100vh;
-      padding: 24px;
-      background: linear-gradient(-45deg, #f7f9ff, #eef2ff, #f2f6ff, #e8efff);
-      background-size: 400% 400%;
-      animation: bgMove 12s ease infinite;
-      color: #2b2f55;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--green-dark);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+      height: 60px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
     }
+    .nav-logo {
+      font-size: 1.1rem; font-weight: 700; color: var(--white);
+      text-decoration: none; letter-spacing: .02em;
+    }
+    .nav-logo span { color: var(--green-light); }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a {
+      color: rgba(255,255,255,.82); text-decoration: none;
+      font-size: .875rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-wa {
+      background: #25D366; color: var(--white) !important;
+      padding: 7px 14px; border-radius: 20px;
+      font-size: .82rem !important; font-weight: 600 !important;
+      white-space: nowrap;
+      transition: background .2s !important;
+    }
+    .nav-wa:hover { background: #1fba58 !important; color: var(--white) !important; }
 
-    .card {
-      max-width: 900px;
+    /* ── HERO (green top) ── */
+    .hero {
+      background: var(--green-dark);
+      padding: 60px 24px 52px;
+      text-align: center;
+    }
+    .hero-pill {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      color: rgba(255,255,255,.9);
+      font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 14px; border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; color: var(--white);
+      white-space: nowrap;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .hero-desc {
+      color: rgba(255,255,255,.8);
+      font-size: 1rem; max-width: 520px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 24px;
-      padding: 34px;
-      box-shadow: 0 25px 70px rgba(25, 35, 90, 0.10);
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    .headline {
-      color: #5a63a3;
       line-height: 1.7;
     }
 
-    .cta {
-      margin-top: 22px;
-      text-align: center;
+    /* ── ABOUT (white bottom) ── */
+    .about {
+      background: var(--white);
+      padding: 52px 24px;
+    }
+    .about-inner {
+      max-width: 960px; margin: 0 auto;
+    }
+    .about h2 {
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 28px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .about-text p { color: var(--text-muted); font-size: .95rem; line-height: 1.75; }
+    .about-text p + p { margin-top: 14px; }
+    .highlights { display: flex; flex-direction: column; gap: 14px; }
+    .highlight-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--cream); border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+    .highlight-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+    .highlight-label { font-size: .82rem; font-weight: 700; color: var(--green-dark); text-transform: uppercase; letter-spacing: .04em; }
+    .highlight-val { font-size: .9rem; color: var(--text-muted); margin-top: 2px; }
+
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero h1 { white-space: normal; }
     }
 
-    .btn {
-      display: inline-block;
-      padding: 16px 22px;
-      background: #4f7cff;
-      color: #fff;
-      border-radius: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.2s;
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: var(--cream);
+      padding: 14px 24px;
+      font-size: .8rem; color: var(--text-muted);
+      border-bottom: 1px solid #e5e2db;
     }
+    .breadcrumb a { color: var(--green-mid); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 6px; }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(79,124,255,.30);
+    /* ── ZONE PILLS ── */
+    .zone-bar {
+      padding: 24px 24px 8px;
+      max-width: 1100px; margin: 0 auto;
     }
-
-    .note {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #6b7280;
-    }
-
-    .section {
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(79,124,255,0.1);
-    }
-
-    .sectionTitle {
-      font-size: 1.2rem;
-      font-weight: 800;
+    .zone-bar-label {
+      font-size: .75rem; font-weight: 700; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: .06em;
       margin-bottom: 10px;
     }
-
-    .sectionIntro {
-      color: #5a63a3;
-      line-height: 1.7;
-      margin-bottom: 14px;
+    .zone-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .zone-pill {
+      padding: 6px 16px; border-radius: 20px;
+      font-size: .82rem; font-weight: 600; cursor: pointer;
+      border: 1.5px solid var(--green-mid);
+      color: var(--green-mid); background: transparent;
+      transition: all .18s;
+    }
+    .zone-pill:hover, .zone-pill.active {
+      background: var(--green-dark); border-color: var(--green-dark);
+      color: var(--white);
     }
 
-    .infoGrid {
+    /* ── UNIT GRID ── */
+    .grid-section {
+      padding: 20px 24px 48px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .unit-grid {
       display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 14px;
-      margin-top: 12px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
+    @media (max-width: 900px) { .unit-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
 
-    .infoCard {
-      background: #f6f8ff;
+    .unit-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      display: flex; flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .unit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(27,77,53,.15);
+    }
+    .unit-card.hidden { display: none; }
+
+    /* Green tile */
+    .card-tile {
+      background: var(--green-dark);
       padding: 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(79,124,255,.10);
     }
-
-    .infoCard h3 {
-      font-size: 0.95rem;
-      font-weight: 800;
+    .card-name {
+      font-size: .9rem; font-weight: 700; color: var(--white);
+      line-height: 1.3; margin-bottom: 6px;
+    }
+    .card-micro {
+      font-size: .75rem; color: rgba(255,255,255,.72);
+      display: flex; align-items: center; gap: 4px;
       margin-bottom: 8px;
     }
-
-    .infoCard li {
-      margin-bottom: 6px;
-      color: #4b557e;
-    }
-
-    .pushLine {
-      margin-top: 22px;
-      text-align: center;
-      color: #5a63a3;
-    }
-
-    .bottom {
-      margin-top: 18px;
-      text-align: center;
-    }
-
-    .backLink {
+    .card-landmark {
+      font-size: .72rem;
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.85);
+      border-radius: var(--radius-sm);
+      padding: 3px 8px;
       display: inline-block;
-      margin-top: 28px;
-      color: #4f7cff;
-      text-decoration: none;
-      font-weight: 700;
     }
 
-    @media(max-width:720px){
-      .infoGrid {
-        grid-template-columns: 1fr;
-      }
+    /* Card body */
+    .card-body {
+      padding: 14px 16px;
+      flex: 1; display: flex; flex-direction: column; gap: 10px;
     }
+    .card-price {
+      font-size: 1.05rem; font-weight: 800;
+      color: var(--green-dark);
+    }
+    .card-price span { font-size: .75rem; font-weight: 500; color: var(--text-muted); }
+    .card-badges { display: flex; flex-wrap: wrap; gap: 5px; }
+    .badge {
+      font-size: .7rem; font-weight: 700; letter-spacing: .03em;
+      padding: 3px 8px; border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-ff   { background: #d1fae5; color: #065f46; }
+    .badge-pf   { background: #fef3c7; color: #92400e; }
+    .badge-uf   { background: #f1f5f9; color: #475569; }
+    .badge-type { background: #ede9fe; color: #5b21b6; }
+    .card-rooms {
+      font-size: .8rem; color: var(--text-muted);
+      display: flex; gap: 12px;
+    }
+    .card-rooms span { display: flex; align-items: center; gap: 4px; }
+
+    .btn-wa {
+      display: block;
+      background: #25D366;
+      color: var(--white);
+      text-align: center;
+      text-decoration: none;
+      font-size: .85rem; font-weight: 700;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      margin-top: auto;
+      transition: background .2s;
+    }
+    .btn-wa:hover { background: #1fba58; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--green-dark);
+      padding: 52px 24px;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-size: 1.6rem; font-weight: 800;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .cta-band p {
+      color: rgba(255,255,255,.75);
+      font-size: .95rem; margin-bottom: 28px;
+    }
+    .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .btn-cta-wa {
+      background: #25D366; color: var(--white);
+      text-decoration: none; font-weight: 700;
+      padding: 12px 24px; border-radius: 8px;
+      font-size: .9rem; transition: background .2s;
+    }
+    .btn-cta-wa:hover { background: #1fba58; }
+    .btn-cta-list {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,.5);
+      color: var(--white);
+      text-decoration: none; font-weight: 600;
+      padding: 12px 24px; border-radius: 8px;
+      font-size: .9rem; transition: border-color .2s;
+    }
+    .btn-cta-list:hover { border-color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,.55);
+      font-size: .78rem;
+      text-align: center;
+      padding: 28px 24px;
+      line-height: 1.8;
+    }
+    footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+    footer a:hover { color: var(--white); }
   </style>
 </head>
-
 <body>
 
-  <main class="card">
+<!-- ── NAV ── -->
+<nav class="nav">
+  <a class="nav-logo" href="https://www.haniproperties.com"><span>Hani</span> Properties</a>
+  <div class="nav-links">
+    <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
+    <a class="nav-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20rumah%20sewa%20di%20Cheras" target="_blank" rel="noopener">💬 WhatsApp Hani</a>
+  </div>
+</nav>
 
-    <h1>Sewa Rumah Cheras</h1>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-pill">📍 Cheras · Wilayah Persekutuan / Selangor</div>
+  <h1>Cari rumah sewa di Cheras?</h1>
+  <p class="hero-desc">Hani bantu anda jumpa unit yang sesuai — sama ada kondominium, apartment atau teres — di kawasan Cheras yang strategik, dekat MRT, LRT, hospital dan mall.</p>
+</section>
 
-    <p class="headline">
-      Kawasan besar dengan banyak pilihan sewa, akses MRT/LRT dan kemudahan matang. Sesuai untuk tenant yang nak balance antara city access dan bajet.
-    </p>
+<!-- ── ABOUT ── -->
+<section class="about">
+  <div class="about-inner">
+    <h2>Kenapa pilih Cheras?</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Cheras adalah antara kawasan kediaman paling aktif di Lembah Klang, dengan rangkaian laluan MRT Putrajaya Line dan LRT Ampang Line yang menghubungkan penduduk terus ke Kuala Lumpur dalam masa 20 minit. Harga sewa yang kompetitif berbanding Damansara atau Bangsar menjadikannya pilihan bijak untuk keluarga muda dan profesional.</p>
+        <p>Kawasan ini terus berkembang dengan pelbagai projek kondominium baru, kemudahan runcit dan hospital swasta yang semakin bertambah — menjadikan kehidupan harian lebih mudah dan lengkap tanpa perlu keluar jauh dari kawasan kediaman anda.</p>
+      </div>
+      <div class="highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">🎓</div>
+          <div>
+            <div class="highlight-label">Pendidikan</div>
+            <div class="highlight-val">UKM, UTAR Cheras, UCSI University, pelbagai sekolah kebangsaan</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🏥</div>
+          <div>
+            <div class="highlight-label">Kesihatan</div>
+            <div class="highlight-val">HUKM, Columbia Asia Cheras, Hospital Cheras, Hospital Canselor Tuanku Muhriz</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🛍️</div>
+          <div>
+            <div class="highlight-label">Membeli-belah</div>
+            <div class="highlight-val">Sunway Velocity, EkoCheras Mall, Leisure Mall, MyTown, Cheras Sentral</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🛣️</div>
+          <div>
+            <div class="highlight-label">Lebuh Raya</div>
+            <div class="highlight-val">SUKE, SILK, BESRAYA, Grand Saga, Cheras-Kajang Highway, MRR2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="cta">
-      <a href="https://t.me/hanipropertiesrentals/102" target="_blank" class="btn">
-        📲 Tengok Unit Cheras Sekarang
-      </a>
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb">
+  <a href="https://www.haniproperties.com">Hani Properties</a>
+  <span>›</span>
+  <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a>
+  <span>›</span>
+  Cheras
+</div>
 
-      <p class="note">
-        Listing update harian • Unit cepat habis
-      </p>
+<!-- ── ZONE PILLS ── -->
+<div class="zone-bar">
+  <div class="zone-bar-label">Tapis kawasan</div>
+  <div class="zone-pills">
+    <button class="zone-pill active" data-zone="semua" onclick="filterZone('semua')">Semua</button>
+    <button class="zone-pill" data-zone="bandar-mahkota-cheras" onclick="filterZone('bandar-mahkota-cheras')">Bandar Mahkota Cheras</button>
+    <button class="zone-pill" data-zone="taman-cheras-utama" onclick="filterZone('taman-cheras-utama')">Taman Cheras Utama</button>
+    <button class="zone-pill" data-zone="taman-suntex" onclick="filterZone('taman-suntex')">Taman Suntex</button>
+    <button class="zone-pill" data-zone="batu-9-cheras" onclick="filterZone('batu-9-cheras')">Batu 9 Cheras</button>
+    <button class="zone-pill" data-zone="bandar-sri-permaisuri" onclick="filterZone('bandar-sri-permaisuri')">Bandar Sri Permaisuri</button>
+    <button class="zone-pill" data-zone="cheras-permaisuri" onclick="filterZone('cheras-permaisuri')">Cheras Permaisuri</button>
+    <button class="zone-pill" data-zone="wangsa-maju" onclick="filterZone('wangsa-maju')">Wangsa Maju</button>
+    <button class="zone-pill" data-zone="cheras" onclick="filterZone('cheras')">Cheras (Umum)</button>
+  </div>
+</div>
+
+<!-- ── UNIT GRID ── -->
+<div class="grid-section">
+  <div class="unit-grid" id="unitGrid">
+
+    <!-- 1. Kondominium Sri Hijau — OWN LISTING T1 -->
+    <div class="unit-card" data-zone="bandar-mahkota-cheras">
+      <div class="card-tile">
+        <div class="card-name">Kondominium Sri Hijau</div>
+        <div class="card-micro">📍 Bandar Mahkota Cheras</div>
+        <div class="card-landmark">🏥 Columbia Asia Cheras</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,400 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-ff">FF</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 Bilik</span>
+          <span>🚿 2 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Kondominium%20Sri%20Hijau%20di%20Bandar%20Mahkota%20Cheras.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
     </div>
 
-    <div class="section">
-      <div class="sectionTitle">Kenapa pilih Cheras?</div>
-
-      <p class="sectionIntro">
-        Cheras sentiasa ada demand sebab pilihan rumah banyak, akses public transport makin kuat dan kawasan komersial dia pun sangat hidup.
-      </p>
-
-      <div class="infoGrid">
-
-        <div class="infoCard">
-          <h3>Lifestyle</h3>
-          <ul>
-            <li>Cheras LeisureMall</li>
-            <li>EkoCheras Mall</li>
-            <li>Nearby retail strips</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Education</h3>
-          <ul>
-            <li>UCSI University</li>
-            <li>Nearby schools</li>
-            <li>Private colleges nearby</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Access</h3>
-          <ul>
-            <li>MRT Kajang Line</li>
-            <li>SUKE</li>
-            <li>Cheras-Kajang Expressway</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Sesuai Untuk Siapa</h3>
-          <ul>
-            <li>Working adult</li>
-            <li>Student</li>
-            <li>Family</li>
-          </ul>
-        </div>
-
+    <!-- 2. Apartment Taman Cheras Utama — 100% -->
+    <div class="unit-card" data-zone="taman-cheras-utama">
+      <div class="card-tile">
+        <div class="card-name">Apartment Taman Cheras Utama</div>
+        <div class="card-micro">📍 Taman Cheras Utama</div>
+        <div class="card-landmark">🏥 Columbia Asia Hospital Cheras</div>
       </div>
-
-      <p class="pushLine">
-        Dah tahu Cheras sesuai? Klik bawah untuk tengok unit available sekarang.
-      </p>
-
-      <div class="bottom">
-        <a href="https://t.me/hanipropertiesrentals/102" target="_blank" class="btn">
-          View Listings on Telegram
-        </a>
+      <div class="card-body">
+        <div class="card-price">RM 1,300 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-ff">FF</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 Bilik</span>
+          <span>🚿 2 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Apartment%20Taman%20Cheras%20Utama.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
       </div>
-
     </div>
 
-    <a class="backLink" href="index.html">← Back to Selangor Areas</a>
+    <!-- 3. You City III — 93% -->
+    <div class="unit-card" data-zone="taman-suntex">
+      <div class="card-tile">
+        <div class="card-name">You City III</div>
+        <div class="card-micro">📍 Taman Suntex</div>
+        <div class="card-landmark">🚇 MRT Taman Suntex</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 2,800 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-ff">FF</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 Bilik</span>
+          <span>🚿 2 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20You%20City%20III%20di%20Taman%20Suntex%2C%20Cheras.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
 
-  </main>
+    <!-- 4. Casa Suria Condominium — 93% -->
+    <div class="unit-card" data-zone="batu-9-cheras">
+      <div class="card-tile">
+        <div class="card-name">Casa Suria Condominium</div>
+        <div class="card-micro">📍 Batu 9 Cheras</div>
+        <div class="card-landmark">🚇 MRT Taman Suntex</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,500 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-ff">FF</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 4 Bilik</span>
+          <span>🚿 3 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Casa%20Suria%20Condominium%20di%20Batu%209%20Cheras.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 5. Angkasa Condominiums — 93% -->
+    <div class="unit-card" data-zone="cheras">
+      <div class="card-tile">
+        <div class="card-name">Angkasa Condominiums</div>
+        <div class="card-micro">📍 Cheras</div>
+        <div class="card-landmark">🎓 UCSI University</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,700 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-ff">FF</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 Bilik</span>
+          <span>🚿 2 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Angkasa%20Condominiums%20di%20Cheras.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 6. Q SOVO Queenville — 93% -->
+    <div class="unit-card" data-zone="cheras-permaisuri">
+      <div class="card-tile">
+        <div class="card-name">Q SOVO (Queenville)</div>
+        <div class="card-micro">📍 Cheras Permaisuri</div>
+        <div class="card-landmark">🚇 LRT Sri Permaisuri</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,800 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-ff">FF</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 1 Bilik</span>
+          <span>🚿 1 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Q%20SOVO%20(Queenville)%20di%20Cheras%20Permaisuri.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 7. Suasana Lumayan — 89% -->
+    <div class="unit-card" data-zone="bandar-sri-permaisuri">
+      <div class="card-tile">
+        <div class="card-name">Suasana Lumayan</div>
+        <div class="card-micro">📍 Bandar Sri Permaisuri</div>
+        <div class="card-landmark">🎓 UKM</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 2,200 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-ff">FF</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 Bilik</span>
+          <span>🚿 2 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Suasana%20Lumayan%20di%20Bandar%20Sri%20Permaisuri%2C%20Cheras.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 8. Angkasa Condominium Jun-26 — 86% -->
+    <div class="unit-card" data-zone="cheras">
+      <div class="card-tile">
+        <div class="card-name">Angkasa Condominium</div>
+        <div class="card-micro">📍 Cheras</div>
+        <div class="card-landmark">🎓 UTAR Cheras</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,700 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-ff">FF</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 Bilik</span>
+          <span>🚿 2 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Angkasa%20Condominium%20di%20Cheras.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 9. Residensi WangsaMas — 85% -->
+    <div class="unit-card" data-zone="wangsa-maju">
+      <div class="card-tile">
+        <div class="card-name">Residensi WangsaMas</div>
+        <div class="card-micro">📍 Wangsa Maju</div>
+        <div class="card-landmark">🎓 UTAR Setapak</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 2,050 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-ff">FF</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 Bilik</span>
+          <span>🚿 2 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Residensi%20WangsaMas%20di%20Wangsa%20Maju.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 10. Residensi Amansuri RM2,100 L18 — 83% -->
+    <div class="unit-card" data-zone="bandar-sri-permaisuri">
+      <div class="card-tile">
+        <div class="card-name">Residensi Amansuri</div>
+        <div class="card-micro">📍 Bandar Sri Permaisuri</div>
+        <div class="card-landmark">🚇 MRT Taman Mutiara</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 2,100 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-pf">PF</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 Bilik</span>
+          <span>🚿 2 Bilik Mandi</span>
+        </div>
+        <a class="btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Residensi%20Amansuri%20di%20Bandar%20Sri%20Permaisuri%2C%20Cheras.%20Boleh%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+  </div><!-- /unit-grid -->
+</div>
+
+<!-- ── CTA BAND ── -->
+<section class="cta-band">
+  <h2>Tak jumpa yang sesuai?</h2>
+  <p>Beritahu Hani bajet dan keperluan anda — kami ada lebih banyak listing yang belum disiarkan di sini.</p>
+  <div class="cta-actions">
+    <a class="btn-cta-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Cheras%20tapi%20tak%20jumpa%20yang%20sesuai.%20Boleh%20tolong%3F" target="_blank" rel="noopener">💬 WhatsApp Hani Sekarang</a>
+    <a class="btn-cta-list" href="https://www.haniproperties.com/kawasan_sewa.html">Lihat Semua Listing</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© Hani Properties · ERA Real Estate E(1)1773/3 · Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></p>
+  <p style="margin-top:6px;">Property made personal.</p>
+</footer>
+
+<script>
+  function filterZone(zone) {
+    // Update pills
+    document.querySelectorAll('.zone-pill').forEach(p => {
+      p.classList.toggle('active', p.dataset.zone === zone);
+    });
+    // Show/hide cards
+    document.querySelectorAll('.unit-card').forEach(card => {
+      if (zone === 'semua') {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.toggle('hidden', card.dataset.zone !== zone);
+      }
+    });
+  }
+</script>
 
 </body>
 </html>

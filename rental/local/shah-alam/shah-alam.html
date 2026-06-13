@@ -3,27 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rumah Sewa Shah Alam — Hani Properties</title>
-  <meta name="description" content="Cari rumah sewa di Shah Alam — apartment, kondominium, landed, SOHO. Hubungi Hani Properties untuk unit terbaik di I-City, Alam Impian, Setia Alam & lebih banyak lagi." />
-  <link rel="canonical" href="https://haniproperties.com/shah-alam.html" />
-  <meta property="og:title" content="Rumah Sewa Shah Alam — Hani Properties" />
-  <meta property="og:description" content="Jumpa rumah sewa ideal di Shah Alam. Pelbagai pilihan dari apartment hingga landed. Hubungi Hani sekarang." />
-  <meta property="og:url" content="https://haniproperties.com/shah-alam.html" />
+  <title>Sewa Rumah Shah Alam | Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa di Shah Alam — apartment, kondominium, dan teres dari RM1,200 hingga RM5,000. Hubungi Hani Properties untuk pilihan terbaik di Selangor." />
+  <link rel="canonical" href="https://www.haniproperties.com/shah-alam.html" />
+  <meta property="og:title" content="Sewa Rumah Shah Alam | Hani Properties" />
+  <meta property="og:description" content="Listing sewa terpilih di Shah Alam — apartment, kondominium & teres. Semak sekarang." />
+  <meta property="og:url" content="https://www.haniproperties.com/shah-alam.html" />
   <meta property="og:type" content="website" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Hani Properties",
-    "url": "https://haniproperties.com",
+    "url": "https://www.haniproperties.com",
     "telephone": "+60125459182",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Shah Alam",
       "addressRegion": "Selangor",
       "addressCountry": "MY"
     },
-    "description": "Hani Properties — ERA Real Estate. Pakar hartanah Shah Alam & Selangor. Hubungi Marhani untuk sewa atau beli."
+    "employee": {
+      "@type": "Person",
+      "name": "Marhani Bt Mohamad Nor",
+      "telephone": "+60125459182"
+    },
+    "areaServed": "Shah Alam, Selangor"
   }
   </script>
   <style>
@@ -32,174 +36,389 @@
       --green-mid: #2E7D52;
       --green-light: #52B788;
       --cream: #F7F5F0;
-      --white: #ffffff;
-      --text: #1a1a1a;
-      --muted: #666;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-muted: #888;
       --radius: 10px;
+      --radius-sm: 6px;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; background: var(--cream); color: var(--text); }
 
-    /* NAV */
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--white);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 1.5rem; height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
-    .nav-logo { font-weight: 800; font-size: 1.1rem; color: var(--green-dark); text-decoration: none; letter-spacing: -0.3px; }
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
     .nav-logo span { color: var(--green-light); }
-    .nav-links { display: flex; align-items: center; gap: 1rem; }
-    .nav-links a { text-decoration: none; font-size: 0.9rem; font-weight: 600; color: var(--green-dark); }
-    .nav-links a.wa-btn {
-      background: var(--green-mid); color: var(--white);
-      padding: 0.45rem 1rem; border-radius: 20px; font-size: 0.85rem;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .nav-links a.wa-btn:hover { background: var(--green-dark); }
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .85rem;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
+    .nav-wa {
+      background: var(--green-light) !important;
+      color: var(--green-dark) !important;
+      font-weight: 600 !important;
+      padding: 7px 14px !important;
+    }
+    .nav-wa:hover { background: #62cc98 !important; }
 
-    /* HERO */
-    .hero-green {
-      background: var(--green-dark); color: var(--white);
-      padding: 3.5rem 1.5rem 3rem; text-align: center;
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-dark);
+      padding: 52px 24px 48px;
+      text-align: center;
     }
-    .eyebrow-pill {
-      display: inline-block; background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      padding: 0.3rem 0.9rem; border-radius: 20px;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
-      margin-bottom: 1.1rem;
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      color: var(--green-light);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 18px;
     }
-    .hero-green h1 {
+    .hero h1 {
+      color: #fff;
       font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-weight: 800; line-height: 1.2;
+      font-weight: 800;
       white-space: nowrap;
-      margin-bottom: 1rem;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
     }
-    .hero-green p { font-size: 1rem; opacity: 0.88; max-width: 540px; margin: 0 auto; line-height: 1.7; }
-
-    /* ABOUT */
-    .about-white { background: var(--white); padding: 3rem 1.5rem; }
-    .about-inner { max-width: 960px; margin: 0 auto; }
-    .about-white h2 { font-size: 1.4rem; font-weight: 800; color: var(--green-dark); margin-bottom: 1.5rem; }
-    .about-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .about-left p { font-size: 0.95rem; line-height: 1.8; color: #333; margin-bottom: 1rem; }
-    .highlights { display: flex; flex-direction: column; gap: 0.8rem; }
-    .highlight-item { display: flex; align-items: flex-start; gap: 0.7rem; background: var(--cream); border-radius: var(--radius); padding: 0.75rem 1rem; }
-    .highlight-item .icon { font-size: 1.3rem; flex-shrink: 0; }
-    .highlight-item strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--green-dark); }
-    .highlight-item span { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-
-    /* BREADCRUMB */
-    .breadcrumb { padding: 0.75rem 1.5rem; font-size: 0.8rem; color: var(--muted); max-width: 960px; margin: 0 auto; }
-    .breadcrumb a { color: var(--green-mid); text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-
-    /* ZONE PILLS */
-    .zones { padding: 1rem 1.5rem 0; max-width: 960px; margin: 0 auto; }
-    .zone-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .zone-pill {
-      cursor: pointer; padding: 0.4rem 1rem; border-radius: 20px;
-      font-size: 0.8rem; font-weight: 600; border: 1.5px solid var(--green-mid);
-      color: var(--green-mid); background: var(--white); transition: all 0.15s;
+    .hero-desc {
+      color: rgba(255,255,255,.75);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.65;
     }
-    .zone-pill.active, .zone-pill:hover { background: var(--green-mid); color: var(--white); }
 
-    /* GRID */
-    .grid-section { padding: 1.5rem 1.5rem 3rem; max-width: 960px; margin: 0 auto; }
+    /* ── ABOUT ── */
+    .about {
+      background: #fff;
+      padding: 48px 24px;
+    }
+    .about-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .about h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .about-text p {
+      font-size: .95rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    .highlight-item .icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+    .highlight-item .hl-label { font-size: .75rem; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: .04em; }
+    .highlight-item .hl-text { font-size: .88rem; color: var(--text-mid); margin-top: 2px; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: var(--cream);
+      padding: 10px 24px;
+      border-bottom: 1px solid #e5e3de;
+    }
+    .breadcrumb-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .breadcrumb-inner a { color: var(--green-mid); text-decoration: none; }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-inner span { margin: 0 6px; }
+
+    /* ── LISTINGS SECTION ── */
+    .listings-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    .listings-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .listings-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .listings-count {
+      font-size: .85rem;
+      color: var(--text-muted);
+    }
+
+    /* ── ZONE PILLS ── */
+    .zone-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .pill {
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid #d5d2cc;
+      background: #fff;
+      color: var(--text-mid);
+      transition: all .15s;
+      user-select: none;
+    }
+    .pill:hover { border-color: var(--green-mid); color: var(--green-mid); }
+    .pill.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+
+    /* ── UNIT GRID ── */
     .unit-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 18px;
     }
+
+    /* ── CARD ── */
     .unit-card {
-      background: var(--white); border-radius: var(--radius);
-      overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-      transition: transform 0.15s, box-shadow 0.15s;
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
     }
-    .unit-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
-    .unit-card[data-zone] { transition: opacity 0.2s; }
-    .unit-card.hidden { display: none; }
-    .card-img-wrap {
-      position: relative; width: 100%; aspect-ratio: 4/3;
-      background: #e8ede9; cursor: pointer; overflow: hidden;
+    .unit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.1), 0 12px 32px rgba(0,0,0,.08);
     }
-    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .card-img-placeholder {
-      width: 100%; height: 100%; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 0.3rem;
-      color: var(--green-mid); font-size: 0.75rem; font-weight: 600;
-    }
-    .card-img-placeholder .ph-icon { font-size: 2rem; opacity: 0.4; }
-    .card-footer { padding: 0.7rem; }
-    .tanya-btn {
-      display: block; width: 100%; text-align: center;
-      background: var(--green-mid); color: var(--white);
-      border: none; border-radius: 8px; padding: 0.55rem 0.5rem;
-      font-size: 0.82rem; font-weight: 700; cursor: pointer;
-      text-decoration: none; transition: background 0.15s;
-    }
-    .tanya-btn:hover { background: var(--green-dark); }
 
-    /* CTA BAND */
+    .card-tile {
+      background: var(--green-dark);
+      padding: 16px;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-tile-name {
+      font-size: .92rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .card-tile-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .card-tile-location {
+      font-size: .75rem;
+      color: rgba(255,255,255,.75);
+    }
+    .card-tile-landmark {
+      font-size: .72rem;
+      color: var(--green-light);
+      opacity: .9;
+    }
+
+    .card-body {
+      padding: 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      line-height: 1.1;
+    }
+    .card-price-label {
+      font-size: .72rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .badge {
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: .02em;
+    }
+    .badge-ff   { background: #dcf4e8; color: #1a6640; }
+    .badge-pf   { background: #fff3d6; color: #7a5200; }
+    .badge-uf   { background: #f0f0f0; color: #555; }
+    .badge-type { background: #e8f0fe; color: #1a4fa0; }
+
+    .card-rooms {
+      font-size: .82rem;
+      color: var(--text-mid);
+      display: flex;
+      gap: 12px;
+    }
+    .card-rooms span { display: flex; align-items: center; gap: 4px; }
+
+    .card-wa-btn {
+      display: block;
+      margin-top: auto;
+      background: var(--green-mid);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
+    }
+    .card-wa-btn:hover { background: var(--green-dark); }
+
+    /* ── CTA BAND ── */
     .cta-band {
-      background: var(--green-dark); color: var(--white);
-      text-align: center; padding: 3rem 1.5rem;
+      background: var(--green-dark);
+      padding: 40px 24px;
+      text-align: center;
+      margin-top: 40px;
     }
-    .cta-band h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .cta-band p { opacity: 0.85; margin-bottom: 1.5rem; font-size: 0.95rem; }
-    .cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
-    .cta-btn-wa {
-      background: #25D366; color: var(--white);
-      padding: 0.7rem 1.4rem; border-radius: 25px; font-weight: 700;
-      text-decoration: none; font-size: 0.9rem;
+    .cta-band h2 {
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 8px;
     }
-    .cta-btn-all {
-      background: transparent; color: var(--white);
-      border: 2px solid rgba(255,255,255,0.6);
-      padding: 0.7rem 1.4rem; border-radius: 25px; font-weight: 700;
-      text-decoration: none; font-size: 0.9rem;
+    .cta-band p {
+      color: rgba(255,255,255,.7);
+      font-size: .95rem;
+      margin-bottom: 24px;
     }
-    .cta-btn-all:hover { border-color: var(--white); }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-wa {
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .btn-wa:hover { background: #62cc98; }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.4);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: border-color .15s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,.8); }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      background: #111; color: #aaa;
-      text-align: center; padding: 1.5rem 1rem;
-      font-size: 0.78rem; line-height: 1.8;
+      background: #111;
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 24px;
+      font-size: .78rem;
+      line-height: 1.8;
     }
     footer a { color: var(--green-light); text-decoration: none; }
 
-    /* LIGHTBOX */
-    .lightbox {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.88); z-index: 999;
-      align-items: center; justify-content: center;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox-img-wrap {
-      position: relative; max-width: 90vw; max-height: 88vh;
-      animation: scaleIn 0.2s ease;
-    }
-    @keyframes scaleIn { from { transform: scale(0.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .lightbox-img-wrap img { display: block; max-width: 90vw; max-height: 85vh; border-radius: 8px; }
-    .lb-close {
-      position: absolute; top: -14px; right: -14px;
-      background: var(--white); border: none; border-radius: 50%;
-      width: 32px; height: 32px; font-size: 1.1rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hero-green h1 { font-size: 1.5rem; white-space: normal; }
-      .about-cols { grid-template-columns: 1fr; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
       .unit-grid { grid-template-columns: repeat(2, 1fr); }
-      .nav-links .hide-mobile { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 480px) {
-      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.5rem; white-space: normal; }
+      .nav-links .nav-text { display: none; }
+      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .listings-section { padding: 24px 14px 40px; }
+    }
+    @media (max-width: 380px) {
+      .unit-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -207,57 +426,57 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="https://haniproperties.com">Hani<span>Properties</span></a>
+  <a href="https://www.haniproperties.com" class="nav-logo">Hani<span>Properties</span></a>
   <div class="nav-links">
-    <a href="https://www.haniproperties.com/kawasan_sewa.html" class="hide-mobile">Sewa</a>
-    <a href="https://www.haniproperties.com/kawasan_jual.html" class="hide-mobile">Beli</a>
-    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20unit%20di%20Shah%20Alam" class="wa-btn" target="_blank" rel="noopener">💬 WhatsApp Hani</a>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html" class="nav-text">Sewa</a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html" class="nav-text">Jual</a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20listing%20di%20Shah%20Alam" class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
   </div>
 </nav>
 
-<!-- HERO GREEN -->
-<section class="hero-green">
-  <div class="eyebrow-pill">📍 Shah Alam · Selangor</div>
-  <h1>Cari rumah di Shah Alam?</h1>
-  <p>Dari apartment cozy di I-City hingga landed spacious di Alam Impian — Hani bantu jumpa unit yang sesuai dengan bajet dan keperluan anda.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">📍 Shah Alam · Selangor</div>
+  <h1>Cari rumah sewa di Shah Alam?</h1>
+  <p class="hero-desc">Dari Seksyen 7 hinggalah ke i-City — kami ada listing terpilih untuk pelbagai bajet dan keperluan. Flat, apartment, teres, hingga kondominium premium.</p>
 </section>
 
-<!-- ABOUT WHITE -->
-<section class="about-white">
+<!-- ABOUT -->
+<section class="about">
   <div class="about-inner">
     <h2>Kenapa pilih Shah Alam?</h2>
-    <div class="about-cols">
-      <div class="about-left">
-        <p>Shah Alam adalah ibu negeri Selangor — bandar terancang dengan highway yang lengkap, institusi pendidikan bertaraf tinggi, dan kemudahan harian yang mudah dicapai. Dari Seksyen 7 yang matang hingga I-City yang moden, pilihan tempat tinggal di sini sangat pelbagai untuk setiap peringkat kehidupan.</p>
-        <p>Sama ada anda keluarga muda yang perlukan ruang, profesional yang nak dekat dengan kerja, atau pelajar yang cari unit berdekatan universiti — Shah Alam ada untuk semua. Dengan akses mudah ke Federal Highway, KESAS, ELITE dan DASH, keluar masuk bandar pun jadi senang.</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Shah Alam adalah ibu kota Selangor — bandar terancang dengan lebuh raya yang baik, kawasan hijau yang luas, dan infrastruktur matang. Dari Seksyen 7 yang stabil hingga ke i-City yang moden, pilihan sewa di sini sesuai untuk keluarga, pelajar, dan profesional muda.</p>
+        <p>Akses ke Federal Highway, KESAS, dan ELITE menjadikan Shah Alam pilihan strategik untuk mereka yang bekerja di KL atau Subang. Kemudahan harian seperti AEON, Giant, dan hospital kerajaan boleh didapati di hampir setiap zon.</p>
       </div>
-      <div class="about-right highlights">
+      <div class="about-highlights">
         <div class="highlight-item">
           <span class="icon">🎓</span>
           <div>
-            <strong>Pendidikan</strong>
-            <span>UiTM Shah Alam, MSU, HELP University, Tenby International School — semua dalam radius dekat</span>
+            <div class="hl-label">Pendidikan</div>
+            <div class="hl-text">UiTM Shah Alam, MSU, HELP University, Tenby International School</div>
           </div>
         </div>
         <div class="highlight-item">
           <span class="icon">🏥</span>
           <div>
-            <strong>Kesihatan</strong>
-            <span>Hospital Shah Alam, Columbia Asia, MSU Medical Centre, Ara Damansara Medical Centre</span>
+            <div class="hl-label">Kesihatan</div>
+            <div class="hl-text">Hospital Shah Alam, Columbia Asia, MSU Medical Centre, SALAM Medical</div>
           </div>
         </div>
         <div class="highlight-item">
           <span class="icon">🛍️</span>
           <div>
-            <strong>Beli-belah</strong>
-            <span>AEON Shah Alam, Setia City Mall, Central i-City Mall, Elmina Lakeside Mall</span>
+            <div class="hl-label">Membeli-belah</div>
+            <div class="hl-text">AEON Shah Alam, Setia City Mall, Central i-City Mall, SACC Mall</div>
           </div>
         </div>
         <div class="highlight-item">
           <span class="icon">🛣️</span>
           <div>
-            <strong>Lebuh Raya</strong>
-            <span>Federal Highway, KESAS, ELITE, DASH, Guthrie Corridor — sambungan ke seluruh Klang Valley</span>
+            <div class="hl-label">Lebuh Raya</div>
+            <div class="hl-text">Federal Highway, KESAS, ELITE, Guthrie Corridor, DASH Highway</div>
           </div>
         </div>
       </div>
@@ -267,202 +486,334 @@
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
-  <a href="https://haniproperties.com">Hani Properties</a> › <a href="#">Listing</a> › Shah Alam
-</div>
-
-<!-- ZONE PILLS -->
-<div class="zones">
-  <div class="zone-pills" id="zonePills">
-    <span class="zone-pill active" data-filter="semua">Semua</span>
-    <span class="zone-pill" data-filter="I-City">I-City</span>
-    <span class="zone-pill" data-filter="Alam Impian">Alam Impian</span>
-    <span class="zone-pill" data-filter="Seksyen 7">Seksyen 7</span>
-    <span class="zone-pill" data-filter="Padang Jawa">Padang Jawa</span>
-    <span class="zone-pill" data-filter="Seksyen U6">Seksyen U6</span>
-    <span class="zone-pill" data-filter="Setia Alam">Setia Alam</span>
-    <span class="zone-pill" data-filter="Seksyen 13">Seksyen 13</span>
-    <span class="zone-pill" data-filter="Alam Budiman">Alam Budiman</span>
+  <div class="breadcrumb-inner">
+    <a href="https://www.haniproperties.com">Hani Properties</a>
+    <span>›</span>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a>
+    <span>›</span>
+    Shah Alam
   </div>
 </div>
 
-<!-- UNIT GRID -->
-<section class="grid-section" id="grid">
-  <div class="unit-grid" id="unitGrid">
+<!-- LISTINGS -->
+<section class="listings-section">
+  <div class="listings-header">
+    <div class="listings-title">Listing Sewa — Shah Alam</div>
+    <div class="listings-count" id="unit-count">10 unit tersedia</div>
+  </div>
 
-    <!-- Unit 1: Alam Impian 2-Storey Terrace (98%) -->
-    <div class="unit-card" data-zone="Alam Impian">
-      <div class="card-img-wrap" onclick="openLightbox('unit_1.png', this)">
-        <img src="unit_1.png" alt="Alam Impian 2-Storey Terrace" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>Alam Impian</span></div>'" />
+  <!-- ZONE PILLS -->
+  <div class="zone-pills">
+    <div class="pill active" data-zone="all" onclick="filterZone(this, 'all')">Semua</div>
+    <div class="pill" data-zone="seksyen-7" onclick="filterZone(this, 'seksyen-7')">Seksyen 7</div>
+    <div class="pill" data-zone="padang-jawa" onclick="filterZone(this, 'padang-jawa')">Padang Jawa</div>
+    <div class="pill" data-zone="seksyen-u6" onclick="filterZone(this, 'seksyen-u6')">Seksyen U6</div>
+    <div class="pill" data-zone="seksyen-13" onclick="filterZone(this, 'seksyen-13')">Seksyen 13</div>
+    <div class="pill" data-zone="batu-tiga" onclick="filterZone(this, 'batu-tiga')">Batu Tiga</div>
+    <div class="pill" data-zone="denai-alam" onclick="filterZone(this, 'denai-alam')">Denai Alam</div>
+    <div class="pill" data-zone="alam-impian" onclick="filterZone(this, 'alam-impian')">Alam Impian</div>
+    <div class="pill" data-zone="bukit-jelutong" onclick="filterZone(this, 'bukit-jelutong')">Bukit Jelutong</div>
+    <div class="pill" data-zone="kg-baru-hicom" onclick="filterZone(this, 'kg-baru-hicom')">Kg Baru Hicom</div>
+    <div class="pill" data-zone="kemuning-utama" onclick="filterZone(this, 'kemuning-utama')">Kemuning Utama</div>
+  </div>
+
+  <!-- UNIT GRID -->
+  <div class="unit-grid" id="unit-grid">
+
+    <!-- 1. Seksyen 7 2-Storey Terrace — 95% AniListings -->
+    <div class="unit-card" data-zone="seksyen-7">
+      <div class="card-tile">
+        <div class="card-tile-name">Seksyen 7 2-Storey Terrace</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Seksyen 7, Shah Alam</div>
+          <div class="card-tile-landmark">🎓 UiTM Shah Alam</div>
+        </div>
       </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Alam%20Impian%202-Storey%20Terrace%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 2,400</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 4 bilik</span>
+          <span>🚿 3 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Seksyen%207%202-Storey%20Terrace%20di%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
       </div>
     </div>
 
-    <!-- Unit 2: I-SOHO @ I-City (96%) -->
-    <div class="unit-card" data-zone="I-City">
-      <div class="card-img-wrap" onclick="openLightbox('unit_2.png', this)">
-        <img src="unit_2.png" alt="I-SOHO @ I-City" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>I-City</span></div>'" />
+    <!-- 2. Suria Jaya e-Sofo — 93% AniListings -->
+    <div class="unit-card" data-zone="padang-jawa">
+      <div class="card-tile">
+        <div class="card-tile-name">Suria Jaya e-Sofo</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Padang Jawa, Shah Alam</div>
+          <div class="card-tile-landmark">🚉 KTM Padang Jawa</div>
+        </div>
       </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20I-SOHO%20%40%20I-City%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Unit 3: Seksyen 7 2-Storey Terrace (95%) -->
-    <div class="unit-card" data-zone="Seksyen 7">
-      <div class="card-img-wrap" onclick="openLightbox('unit_3.png', this)">
-        <img src="unit_3.png" alt="Seksyen 7 2-Storey Terrace" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>Seksyen 7</span></div>'" />
-      </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Seksyen%207%202-Storey%20Terrace%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Unit 4: Suria Jaya e-Sofo (93%) -->
-    <div class="unit-card" data-zone="Padang Jawa">
-      <div class="card-img-wrap" onclick="openLightbox('unit_4.png', this)">
-        <img src="unit_4.png" alt="Suria Jaya e-Sofo" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>Padang Jawa</span></div>'" />
-      </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Suria%20Jaya%20e-Sofo%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,200</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 2 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Suria%20Jaya%20e-Sofo%20di%20Padang%20Jawa%2C%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
       </div>
     </div>
 
-    <!-- Unit 5: Seiring Residensi (93%) -->
-    <div class="unit-card" data-zone="Seksyen U6">
-      <div class="card-img-wrap" onclick="openLightbox('unit_5.png', this)">
-        <img src="unit_5.png" alt="Seiring Residensi" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>Seksyen U6</span></div>'" />
+    <!-- 3. Seiring Residensi — 93% AniListings -->
+    <div class="unit-card" data-zone="seksyen-u6">
+      <div class="card-tile">
+        <div class="card-tile-name">Seiring Residensi</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Seksyen U6, Shah Alam</div>
+          <div class="card-tile-landmark">🎓 REAL International School</div>
+        </div>
       </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Seiring%20Residensi%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Unit 6: i-Suite @ i-City (93%) -->
-    <div class="unit-card" data-zone="I-City">
-      <div class="card-img-wrap" onclick="openLightbox('unit_6.png', this)">
-        <img src="unit_6.png" alt="i-Suite @ i-City" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>I-City</span></div>'" />
-      </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20i-Suite%20%40%20i-City%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Unit 7: i-Suite i-City student (93%) -->
-    <div class="unit-card" data-zone="I-City">
-      <div class="card-img-wrap" onclick="openLightbox('unit_7.png', this)">
-        <img src="unit_7.png" alt="i-Suite i-City" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>I-City</span></div>'" />
-      </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20i-Suite%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 2,800</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 4 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Seiring%20Residensi%20di%20Seksyen%20U6%2C%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
       </div>
     </div>
 
-    <!-- Unit 8: Pangsapuri Alam Budiman (93%) -->
-    <div class="unit-card" data-zone="Alam Budiman">
-      <div class="card-img-wrap" onclick="openLightbox('unit_8.png', this)">
-        <img src="unit_8.png" alt="Pangsapuri Alam Budiman" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>Alam Budiman</span></div>'" />
+    <!-- 4. Menara U2 — 90% AniListings -->
+    <div class="unit-card" data-zone="seksyen-13">
+      <div class="card-tile">
+        <div class="card-tile-name">Menara U2</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Seksyen 13, Shah Alam</div>
+          <div class="card-tile-landmark">🚉 LRT Seksyen 13</div>
+        </div>
       </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Pangsapuri%20Alam%20Budiman%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Unit 9: Seri Baiduri (93%) -->
-    <div class="unit-card" data-zone="Setia Alam">
-      <div class="card-img-wrap" onclick="openLightbox('unit_9.png', this)">
-        <img src="unit_9.png" alt="Seri Baiduri" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>Setia Alam</span></div>'" />
-      </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Seri%20Baiduri%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Unit 10: Menara U2 (90%) -->
-    <div class="unit-card" data-zone="Seksyen 13">
-      <div class="card-img-wrap" onclick="openLightbox('unit_10.png', this)">
-        <img src="unit_10.png" alt="Menara U2" loading="lazy"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><span class=\'ph-icon\'>🏠</span><span>Seksyen 13</span></div>'" />
-      </div>
-      <div class="card-footer">
-        <a class="tanya-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Menara%20U2%20di%20Shah%20Alam.%20Boleh%20share%20details%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,900</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 2 bilik</span>
+          <span>🚿 1 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Menara%20U2%20di%20Seksyen%2013%2C%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
       </div>
     </div>
 
+    <!-- 5. Pangsapuri Indah Ria — 88% AniListings -->
+    <div class="unit-card" data-zone="batu-tiga">
+      <div class="card-tile">
+        <div class="card-tile-name">Pangsapuri Indah Ria</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Batu Tiga, Shah Alam</div>
+          <div class="card-tile-landmark">🚉 KTM Batu Tiga</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,700</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Pangsapuri%20Indah%20Ria%20di%20Batu%20Tiga%2C%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 6. Tulip Residence Denai Alam — 79% AniListings -->
+    <div class="unit-card" data-zone="denai-alam">
+      <div class="card-tile">
+        <div class="card-tile-name">Tulip Residence Denai Alam</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Denai Alam, Shah Alam</div>
+          <div class="card-tile-landmark">🛣️ Guthrie Corridor / DASH</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,600</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 1 bilik</span>
+          <span>🚿 1 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Tulip%20Residence%20Denai%20Alam%20di%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 7. Pangsapuri Tun Teja 1 — 78% AniListings -->
+    <div class="unit-card" data-zone="alam-impian">
+      <div class="card-tile">
+        <div class="card-tile-name">Pangsapuri Tun Teja 1</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Alam Impian, Shah Alam</div>
+          <div class="card-tile-landmark">🎓 UiTM Shah Alam</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,200</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Pangsapuri%20Tun%20Teja%201%20di%20Alam%20Impian%2C%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 8. 2 Storey Terrace Bukit Jelutong — 77% AniListings -->
+    <div class="unit-card" data-zone="bukit-jelutong">
+      <div class="card-tile">
+        <div class="card-tile-name">2 Storey Terrace House</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Bukit Jelutong, Shah Alam</div>
+          <div class="card-tile-landmark">🛍️ AEON Mall Shah Alam</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 2,900</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 4 bilik</span>
+          <span>🚿 4 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%202%20Storey%20Terrace%20House%20di%20Bukit%20Jelutong%2C%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 9. Double Storey Terrace Kg Baru Hicom — 76% AniListings -->
+    <div class="unit-card" data-zone="kg-baru-hicom">
+      <div class="card-tile">
+        <div class="card-tile-name">Double Storey Terrace</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Kg Baru Hicom, Shah Alam</div>
+          <div class="card-tile-landmark">🛣️ Federal Highway / LKSA</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 5,000</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-uf">Not Furnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 7 bilik</span>
+          <span>🚿 5 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Double%20Storey%20Terrace%20di%20Kampung%20Baru%20Hicom%2C%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 10. Pangsapuri Kemuning Aman — 76% AniListings -->
+    <div class="unit-card" data-zone="kemuning-utama">
+      <div class="card-tile">
+        <div class="card-tile-name">Pangsapuri Kemuning Aman</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Kemuning Utama, Shah Alam</div>
+          <div class="card-tile-landmark">🏥 Columbia Asia Hospital Klang</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,300</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Pangsapuri%20Kemuning%20Aman%20di%20Kemuning%20Utama%2C%20Shah%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
 
   </div><!-- /unit-grid -->
 </section>
 
 <!-- CTA BAND -->
-<section class="cta-band">
+<div class="cta-band">
   <h2>Tak jumpa yang sesuai?</h2>
-  <p>Ada lebih banyak unit yang tak tersenarai di sini. Tanya Hani terus — dia akan carikan yang paling sesuai untuk anda.</p>
-  <div class="cta-btns">
-    <a class="cta-btn-wa" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20rumah%20sewa%20di%20Shah%20Alam.%20Ada%20pilihan%20lain%3F" target="_blank" rel="noopener">💬 WhatsApp Hani Sekarang</a>
-    <a class="cta-btn-all" href="https://t.me/hanipropertiesrentals/239" target="_blank" rel="noopener">📋 Lihat Semua Listing</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© Hani Properties · ERA Real Estate E(1)1773/3 · Marhani Bt Mohamad Nor (REN)</p>
-  <p>📞 <a href="tel:+60125459182">012-545 9182</a> · <a href="https://haniproperties.com">haniproperties.com</a></p>
-  <p style="margin-top:0.3rem;font-style:italic;color:#777">Property made personal.</p>
-</footer>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
-  <div class="lightbox-img-wrap" id="lbWrap">
-    <button class="lb-close" onclick="closeLightbox()">✕</button>
-    <img id="lbImg" src="" alt="Unit preview" />
+  <p>Hani ada lebih banyak listing yang belum tersenarai di sini. Wasap terus untuk pilihan terkini.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Shah%20Alam.%20Boleh%20tolong%20carikan%3F" class="btn-wa" target="_blank" rel="noopener">💬 Wasap Hani Sekarang</a>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html" class="btn-outline">Lihat Semua Listing →</a>
   </div>
 </div>
 
-<script>
-  // Zone filter
-  document.getElementById('zonePills').addEventListener('click', function(e) {
-    const pill = e.target.closest('.zone-pill');
-    if (!pill) return;
-    document.querySelectorAll('.zone-pill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    const filter = pill.dataset.filter;
-    document.querySelectorAll('.unit-card').forEach(card => {
-      if (filter === 'semua' || card.dataset.zone === filter) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-  });
+<!-- FOOTER -->
+<footer>
+  <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
+  <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></div>
+  <div style="margin-top:4px; color:rgba(255,255,255,.3)">Property made personal.</div>
+</footer>
 
-  // Lightbox
-  function openLightbox(src, wrapper) {
-    const img = wrapper.querySelector('img');
-    if (!img) return;
-    document.getElementById('lbImg').src = img.src;
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
+<script>
+  function filterZone(el, zone) {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    const cards = document.querySelectorAll('.unit-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const match = zone === 'all' || card.dataset.zone === zone;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    document.getElementById('unit-count').textContent = visible + ' unit tersedia';
   }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closeLightboxOutside(e) {
-    if (e.target === document.getElementById('lightbox')) closeLightbox();
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
 </script>
+
 </body>
 </html>

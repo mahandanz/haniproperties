@@ -3,18 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rumah Sewa &amp; Jual di Puchong | Hani Properties</title>
-  <meta name="description" content="Cari rumah sewa atau beli di Puchong? Hani Properties tawarkan pilihan kondominium, townhouse &amp; service residence di Bandar 16 Sierra, Taman Mas Sepang &amp; lebih. Hubungi kami sekarang." />
+  <title>Sewa Rumah Puchong | Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa di Puchong — apartment, kondominium dan teres dari RM950 hingga RM5,000. Hubungi Hani Properties untuk pilihan terbaik di Selangor." />
   <link rel="canonical" href="https://www.haniproperties.com/puchong.html" />
-
-  <!-- OG Tags -->
-  <meta property="og:title" content="Rumah Sewa &amp; Jual di Puchong | Hani Properties" />
-  <meta property="og:description" content="Cari rumah sewa atau beli di Puchong? Hani Properties bantu anda jumpa unit yang sesuai — cepat, mudah, personal." />
+  <meta property="og:title" content="Sewa Rumah Puchong | Hani Properties" />
+  <meta property="og:description" content="Listing sewa terpilih di Puchong — apartment, kondo & teres. Semak sekarang." />
   <meta property="og:url" content="https://www.haniproperties.com/puchong.html" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://www.haniproperties.com/og-puchong.jpg" />
-
-  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -24,129 +19,115 @@
     "telephone": "+60125459182",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Puchong",
       "addressRegion": "Selangor",
       "addressCountry": "MY"
     },
-    "description": "Hani Properties — ERA Real Estate. Hartanah sewa dan jual di Puchong, Selangor.",
+    "employee": {
+      "@type": "Person",
+      "name": "Marhani Bt Mohamad Nor",
+      "telephone": "+60125459182"
+    },
     "areaServed": "Puchong, Selangor"
   }
   </script>
-
   <style>
     :root {
       --green-dark: #1B4D35;
       --green-mid: #2E7D52;
       --green-light: #52B788;
       --cream: #F7F5F0;
-      --text: #1a1a1a;
-      --muted: #666;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-muted: #888;
       --radius: 10px;
+      --radius-sm: 6px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--cream);
-      color: var(--text);
+      color: var(--text-dark);
       line-height: 1.6;
     }
-
-    a { text-decoration: none; color: inherit; }
 
     /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: #fff;
-      border-bottom: 1px solid #e5e5e5;
-      padding: 0 24px;
-      height: 60px;
+      background: var(--green-dark);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      padding: 0 24px;
+      height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
-
     .nav-logo {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
-      color: var(--green-dark);
-      letter-spacing: -0.3px;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: .02em;
     }
-
-    .nav-logo span {
-      color: var(--green-light);
-    }
-
+    .nav-logo span { color: var(--green-light); }
     .nav-links {
       display: flex;
       align-items: center;
       gap: 8px;
     }
-
     .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      padding: 6px 14px;
-      border-radius: 20px;
-      color: var(--green-dark);
-      border: 1.5px solid var(--green-dark);
-      transition: background 0.15s, color 0.15s;
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .85rem;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
     }
-
-    .nav-links a:hover {
-      background: var(--green-dark);
-      color: #fff;
-    }
-
+    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
     .nav-wa {
-      background: #25D366 !important;
-      border-color: #25D366 !important;
-      color: #fff !important;
+      background: var(--green-light) !important;
+      color: var(--green-dark) !important;
       font-weight: 600 !important;
+      padding: 7px 14px !important;
     }
-
-    .nav-wa:hover {
-      background: #1ebe5a !important;
-      border-color: #1ebe5a !important;
-    }
+    .nav-wa:hover { background: #62cc98 !important; }
 
     /* ── HERO ── */
     .hero {
       background: var(--green-dark);
-      padding: 56px 24px 52px;
+      padding: 52px 24px 48px;
       text-align: center;
     }
-
-    .eyebrow-pill {
+    .hero-eyebrow {
       display: inline-block;
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-      font-size: 0.8rem;
+      background: rgba(255,255,255,.12);
+      color: var(--green-light);
+      font-size: .8rem;
       font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       padding: 5px 14px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
+      border-radius: 50px;
       margin-bottom: 18px;
     }
-
     .hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 800;
       color: #fff;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
       white-space: nowrap;
+      letter-spacing: -.02em;
       line-height: 1.1;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
-
-    .hero p {
-      color: rgba(255,255,255,0.82);
-      max-width: 520px;
-      margin: 0 auto;
+    .hero-desc {
+      color: rgba(255,255,255,.75);
       font-size: 1rem;
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.65;
     }
 
     /* ── ABOUT ── */
@@ -154,386 +135,347 @@
       background: #fff;
       padding: 48px 24px;
     }
-
     .about-inner {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
     }
-
     .about h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--green-dark);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
-
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 32px;
     }
-
     .about-text p {
-      color: #444;
-      font-size: 0.95rem;
+      font-size: .95rem;
+      color: var(--text-mid);
+      line-height: 1.75;
       margin-bottom: 14px;
     }
-
     .about-highlights {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
-
     .highlight-item {
       display: flex;
       align-items: flex-start;
       gap: 12px;
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
     }
-
-    .highlight-icon {
-      font-size: 1.4rem;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .highlight-item strong {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--green-dark);
-      margin-bottom: 2px;
-    }
-
-    .highlight-item span {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    @media (max-width: 640px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .hero h1 { white-space: normal; }
-    }
+    .highlight-item .icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+    .highlight-item .hl-label { font-size: .75rem; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: .04em; }
+    .highlight-item .hl-text { font-size: .88rem; color: var(--text-mid); margin-top: 2px; }
 
     /* ── BREADCRUMB ── */
     .breadcrumb {
-      padding: 12px 24px;
-      font-size: 0.8rem;
-      color: var(--muted);
+      background: var(--cream);
+      padding: 10px 24px;
+      border-bottom: 1px solid #e5e3de;
+    }
+    .breadcrumb-inner {
       max-width: 1100px;
       margin: 0 auto;
+      font-size: .8rem;
+      color: var(--text-muted);
     }
+    .breadcrumb-inner a { color: var(--green-mid); text-decoration: none; }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-inner span { margin: 0 6px; }
 
-    .breadcrumb span { margin: 0 6px; }
+    /* ── LISTINGS SECTION ── */
+    .listings-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    .listings-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .listings-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .listings-count {
+      font-size: .85rem;
+      color: var(--text-muted);
+    }
 
     /* ── ZONE PILLS ── */
-    .zone-section {
-      padding: 0 24px 16px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
     .zone-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      margin-bottom: 28px;
     }
-
-    .zone-pill {
+    .pill {
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 600;
       cursor: pointer;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      border: 1.5px solid var(--green-mid);
-      color: var(--green-mid);
-      background: transparent;
-      transition: all 0.15s;
+      border: 1.5px solid #d5d2cc;
+      background: #fff;
+      color: var(--text-mid);
+      transition: all .15s;
+      user-select: none;
     }
+    .pill:hover { border-color: var(--green-mid); color: var(--green-mid); }
+    .pill.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
 
-    .zone-pill.active,
-    .zone-pill:hover {
-      background: var(--green-mid);
-      color: #fff;
-    }
-
-    /* ── GRID ── */
-    .listing-section {
-      padding: 8px 24px 48px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
+    /* ── UNIT GRID ── */
     .unit-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 18px;
     }
 
-    @media (max-width: 900px) {
-      .unit-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 480px) {
-      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    }
-
+    /* ── CARD ── */
     .unit-card {
       background: #fff;
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-
-    .unit-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    }
-
-    .unit-card[data-zone] { transition: opacity 0.2s; }
-    .unit-card.hidden { display: none; }
-
-    .card-img-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: #e8f0eb;
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .card-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.2s;
-    }
-
-    .card-img-wrap:hover img {
-      transform: scale(1.04);
-    }
-
-    .card-img-placeholder {
-      width: 100%;
-      height: 100%;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--green-mid);
-      font-size: 0.8rem;
-      gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .unit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.1), 0 12px 32px rgba(0,0,0,.08);
     }
 
-    .card-img-placeholder svg {
-      opacity: 0.4;
+    .card-tile {
+      background: var(--green-dark);
+      padding: 16px;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-tile-name {
+      font-size: .92rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .card-tile-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .card-tile-location {
+      font-size: .75rem;
+      color: rgba(255,255,255,.75);
+    }
+    .card-tile-landmark {
+      font-size: .72rem;
+      color: var(--green-light);
+      opacity: .9;
     }
 
     .card-body {
-      padding: 12px;
-    }
-
-    .btn-wa {
+      padding: 14px 16px;
+      flex: 1;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      width: 100%;
-      padding: 9px 12px;
-      background: #25D366;
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 7px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.15s;
+      flex-direction: column;
+      gap: 10px;
     }
-
-    .btn-wa:hover { background: #1ebe5a; }
-
-    /* ── LIGHTBOX ── */
-    #lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(0,0,0,0.88);
-      align-items: center;
-      justify-content: center;
+    .card-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      line-height: 1.1;
     }
-
-    #lightbox.open {
-      display: flex;
-      animation: lbFadeIn 0.15s ease;
-    }
-
-    @keyframes lbFadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    #lightbox-img {
-      max-width: 90vw;
-      max-height: 85vh;
-      border-radius: 8px;
-      animation: lbScale 0.18s ease;
+    .card-price-label {
+      font-size: .72rem;
+      font-weight: 400;
+      color: var(--text-muted);
       display: block;
+      margin-top: 2px;
+    }
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .badge {
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: .02em;
+    }
+    .badge-ff   { background: #dcf4e8; color: #1a6640; }
+    .badge-pf   { background: #fff3d6; color: #7a5200; }
+    .badge-uf   { background: #f0f0f0; color: #555; }
+    .badge-type { background: #e8f0fe; color: #1a4fa0; }
+
+    .card-rooms {
+      font-size: .82rem;
+      color: var(--text-mid);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    @keyframes lbScale {
-      from { transform: scale(0.88); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    #lightbox-close {
-      position: absolute;
-      top: 18px;
-      right: 22px;
+    .card-wa-btn {
+      display: block;
+      margin-top: auto;
+      background: var(--green-mid);
       color: #fff;
-      font-size: 1.8rem;
-      cursor: pointer;
-      line-height: 1;
-      opacity: 0.8;
-      background: none;
-      border: none;
+      text-align: center;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
     }
-
-    #lightbox-close:hover { opacity: 1; }
+    .card-wa-btn:hover { background: var(--green-dark); }
 
     /* ── CTA BAND ── */
     .cta-band {
       background: var(--green-dark);
-      padding: 44px 24px;
+      padding: 40px 24px;
       text-align: center;
+      margin-top: 40px;
     }
-
     .cta-band h2 {
       color: #fff;
       font-size: 1.4rem;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 8px;
     }
-
     .cta-band p {
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,.7);
+      font-size: .95rem;
       margin-bottom: 24px;
-      font-size: 0.95rem;
     }
-
     .cta-buttons {
       display: flex;
       justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
     }
-
-    .btn-wa-big {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .btn-wa {
+      background: var(--green-light);
+      color: var(--green-dark);
       padding: 12px 24px;
-      background: #25D366;
-      color: #fff;
+      border-radius: var(--radius-sm);
       font-weight: 700;
-      font-size: 0.95rem;
-      border-radius: 8px;
-      transition: background 0.15s;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: background .15s;
     }
-
-    .btn-wa-big:hover { background: #1ebe5a; }
-
-    .btn-outline-white {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border: 2px solid rgba(255,255,255,0.6);
+    .btn-wa:hover { background: #62cc98; }
+    .btn-outline {
+      background: transparent;
       color: #fff;
+      border: 2px solid rgba(255,255,255,.4);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
       font-weight: 600;
-      font-size: 0.95rem;
-      border-radius: 8px;
-      transition: border-color 0.15s, background 0.15s;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: border-color .15s;
     }
-
-    .btn-outline-white:hover {
-      border-color: #fff;
-      background: rgba(255,255,255,0.08);
-    }
+    .btn-outline:hover { border-color: rgba(255,255,255,.8); }
 
     /* ── FOOTER ── */
     footer {
       background: #111;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,.5);
       text-align: center;
       padding: 24px;
-      font-size: 0.8rem;
+      font-size: .78rem;
       line-height: 1.8;
     }
+    footer a { color: var(--green-light); text-decoration: none; }
 
-    footer a { color: rgba(255,255,255,0.7); }
-    footer a:hover { color: #fff; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .unit-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.5rem; white-space: normal; }
+      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .listings-section { padding: 24px 14px 40px; }
+    }
+    @media (max-width: 380px) {
+      .unit-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">Hani <span>Properties</span></div>
+  <a href="https://www.haniproperties.com" class="nav-logo">Hani<span>Properties</span></a>
   <div class="nav-links">
     <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
     <a href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
-    <a href="https://wa.me/60125459182" class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20listing%20di%20Puchong" class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
-  <div class="eyebrow-pill">📍 Puchong · Selangor</div>
-  <h1>Cari rumah di Puchong?</h1>
-  <p>Hani Properties bantu anda jumpa unit yang sesuai — sama ada kondominium, townhouse atau service residence. Cepat, mudah, dan personal.</p>
+  <div class="hero-eyebrow">📍 Puchong · Selangor</div>
+  <h1>Cari rumah sewa di Puchong?</h1>
+  <p class="hero-desc">Dari kondominium LRT-connected di Puchong Prima hinggalah ke townhouse premium di 16 Sierra — kami ada pilihan untuk setiap bajet dan gaya hidup.</p>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section class="about">
   <div class="about-inner">
     <h2>Kenapa pilih Puchong?</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Puchong adalah salah satu kawasan paling berkembang pesat di Selangor, menawarkan pelbagai pilihan perumahan dari yang mampu milik hinggalah kondominium mewah. Lokasinya yang strategik menjadikannya pilihan utama keluarga muda dan profesional.</p>
-        <p>Dengan akses mudah ke Kuala Lumpur melalui LDP, MEX dan ELITE highway, serta rangkaian LRT yang menghubungkan Puchong ke pusat bandar, kehidupan seharian di sini lebih mudah dan selesa dari sebelumnya.</p>
+        <p>Puchong adalah salah satu kawasan perumahan paling aktif di Selangor — padat dengan kemudahan, harga sewa kompetitif, dan rangkaian LRT yang menghubungkan terus ke KL. Dari Puchong Perdana ke Bandar Puteri hingga ke 16 Sierra yang lebih baharu, setiap zon menawarkan karakter tersendiri.</p>
+        <p>IOI Mall Puchong, Taylor's University Lakeside, Columbia Asia Hospital — semua dalam jarak mudah. LDP dan ELITE menjadikan perjalanan ke Putrajaya, Subang, atau KL lebih ringan.</p>
       </div>
       <div class="about-highlights">
         <div class="highlight-item">
-          <div class="highlight-icon">🎓</div>
+          <span class="icon">🎓</span>
           <div>
-            <strong>Pendidikan</strong>
-            <span>Taylor's University Lakeside, Multimedia University, MAHSA University, Rafflesia International School</span>
+            <div class="hl-label">Pendidikan</div>
+            <div class="hl-text">Taylor's University Lakeside, MAHSA University, Multimedia University, Binary University</div>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon">🏥</div>
+          <span class="icon">🏥</span>
           <div>
-            <strong>Kesihatan</strong>
-            <span>Columbia Asia Hospital Puchong, Hospital Serdang — pusat perubatan dalam jarak dekat</span>
+            <div class="hl-label">Kesihatan</div>
+            <div class="hl-text">Columbia Asia Hospital Puchong, KPJ Puchong Specialist, Hospital Serdang</div>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon">🛒</div>
+          <span class="icon">🛍️</span>
           <div>
-            <strong>Beli-belah</strong>
-            <span>IOI Mall Puchong, AEON Big, AEON Taman Equine, Lotus's Puchong, Sierra Fresco</span>
+            <div class="hl-label">Membeli-belah</div>
+            <div class="hl-text">IOI Mall Puchong, AEON Big Puchong, Lotus's Puchong, Sierra Fresco</div>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon">🛣️</div>
+          <span class="icon">🛣️</span>
           <div>
-            <strong>Akses Highway</strong>
-            <span>LDP, MEX, ELITE, SKVE — sambungan terus ke KL, Putrajaya &amp; Cyberjaya</span>
+            <div class="hl-label">Lebuh Raya</div>
+            <div class="hl-text">LDP, ELITE Highway, MEX Highway, SKVE, KESAS</div>
           </div>
         </div>
       </div>
@@ -541,157 +483,329 @@
   </div>
 </section>
 
-<!-- ── BREADCRUMB ── -->
+<!-- BREADCRUMB -->
 <div class="breadcrumb">
-  <a href="https://www.haniproperties.com">Hani Properties</a>
-  <span>›</span>
-  <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a>
-  <span>›</span>
-  Puchong
+  <div class="breadcrumb-inner">
+    <a href="https://www.haniproperties.com">Hani Properties</a>
+    <span>›</span>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a>
+    <span>›</span>
+    Puchong
+  </div>
 </div>
 
-<!-- ── ZONE PILLS ── -->
-<div class="zone-section">
+<!-- LISTINGS -->
+<section class="listings-section">
+  <div class="listings-header">
+    <div class="listings-title">Listing Sewa — Puchong</div>
+    <div class="listings-count" id="unit-count">10 unit tersedia</div>
+  </div>
+
+  <!-- ZONE PILLS -->
   <div class="zone-pills">
-    <button class="zone-pill active" onclick="filterZone('semua', this)">Semua</button>
-    <button class="zone-pill" onclick="filterZone('bandar-16-sierra', this)">Bandar 16 Sierra</button>
-    <button class="zone-pill" onclick="filterZone('taman-mas-sepang', this)">Taman Mas Sepang</button>
-    <button class="zone-pill" onclick="filterZone('puchong', this)">Puchong</button>
+    <div class="pill active" data-zone="all" onclick="filterZone(this, 'all')">Semua</div>
+    <div class="pill" data-zone="16-sierra" onclick="filterZone(this, '16-sierra')">Bandar 16 Sierra</div>
+    <div class="pill" data-zone="puchong-perdana" onclick="filterZone(this, 'puchong-perdana')">Puchong Perdana</div>
+    <div class="pill" data-zone="puchong-prima" onclick="filterZone(this, 'puchong-prima')">Puchong Prima</div>
+    <div class="pill" data-zone="bandar-puteri" onclick="filterZone(this, 'bandar-puteri')">Bandar Puteri</div>
+    <div class="pill" data-zone="taman-putra-perdana" onclick="filterZone(this, 'taman-putra-perdana')">Taman Putra Perdana</div>
+  </div>
+
+  <!-- UNIT GRID -->
+  <div class="unit-grid" id="unit-grid">
+
+    <!-- 1. N'Dira 16 Sierra — 100% T1 AniListings -->
+    <div class="unit-card" data-zone="16-sierra">
+      <div class="card-tile">
+        <div class="card-tile-name">N'Dira 16 Sierra</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Bandar 16 Sierra, Puchong</div>
+          <div class="card-tile-landmark">🚉 MRT 16 Sierra</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 5,000</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Townhouse</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 7 bilik</span>
+          <span>🚿 4 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20N%27Dira%2016%20Sierra%20di%20Puchong.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 2. Seri Topaz — 96% T1 AniListings -->
+    <div class="unit-card" data-zone="puchong-perdana">
+      <div class="card-tile">
+        <div class="card-tile-name">Seri Topaz</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Puchong Perdana, Puchong</div>
+          <div class="card-tile-landmark">🚉 LRT Puchong Perdana</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 2,000</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 3 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Seri%20Topaz%20di%20Puchong%20Perdana.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 3. Zentro Residences Level 4 — 92% T1 AniListings -->
+    <div class="unit-card" data-zone="16-sierra">
+      <div class="card-tile">
+        <div class="card-tile-name">Zentro Residences</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Bandar 16 Sierra, Puchong</div>
+          <div class="card-tile-landmark">🚉 MRT 16 Sierra</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 3,600</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 4 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Zentro%20Residences%20di%20Bandar%2016%20Sierra%2C%20Puchong.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 4. Zentro Residences Level 10 — 92% T1 AniListings -->
+    <div class="unit-card" data-zone="16-sierra">
+      <div class="card-tile">
+        <div class="card-tile-name">Zentro Residences (High Floor)</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Bandar 16 Sierra, Puchong</div>
+          <div class="card-tile-landmark">🚉 MRT 16 Sierra</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 3,600</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 4 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Zentro%20Residences%20(High%20Floor)%20di%20Bandar%2016%20Sierra%2C%20Puchong.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 5. Koi Prima — 90% T1 AniListings -->
+    <div class="unit-card" data-zone="puchong-prima">
+      <div class="card-tile">
+        <div class="card-tile-name">Koi Prima</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Taman Mas Sepang, Puchong</div>
+          <div class="card-tile-landmark">🚉 LRT Puchong Prima</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,700</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Koi%20Prima%20di%20Puchong%20Prima.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 6. LBS Skylake Residence — 90% T1 AniListings -->
+    <div class="unit-card" data-zone="taman-putra-perdana">
+      <div class="card-tile">
+        <div class="card-tile-name">LBS Skylake Residence</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Taman Putra Perdana, Puchong</div>
+          <div class="card-tile-landmark">🛍️ IOI Mall Puchong</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,500</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 2 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20LBS%20Skylake%20Residence%20di%20Taman%20Putra%20Perdana%2C%20Puchong.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 7. Saville @ D Lake — 86% T1 AniListings -->
+    <div class="unit-card" data-zone="puchong-prima">
+      <div class="card-tile">
+        <div class="card-tile-name">Saville @ D Lake</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Puchong, Puchong</div>
+          <div class="card-tile-landmark">🚉 LRT Puchong Prima</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,700</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Saville%20%40%20D%20Lake%20di%20Puchong.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 8. Taman Putra Perdana Townhouse — 86% T1 AniListings -->
+    <div class="unit-card" data-zone="taman-putra-perdana">
+      <div class="card-tile">
+        <div class="card-tile-name">Taman Putra Perdana Townhouse</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Taman Putra Perdana, Puchong</div>
+          <div class="card-tile-landmark">🚉 LRT Kinrara BK5</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 2,200</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 3 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Taman%20Putra%20Perdana%20Townhouse%20di%20Puchong.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 9. KR7 Residences — 83% T1 AniListings -->
+    <div class="unit-card" data-zone="puchong-prima">
+      <div class="card-tile">
+        <div class="card-tile-name">KR7 Residences</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Puchong Prima, Puchong</div>
+          <div class="card-tile-landmark">🚉 LRT Puchong Prima</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,850</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20KR7%20Residences%20di%20Puchong%20Prima.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 10. Residensi Vierra — 93% T2 -->
+    <div class="unit-card" data-zone="bandar-puteri">
+      <div class="card-tile">
+        <div class="card-tile-name">Residensi Vierra</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Bandar Puteri Puchong, Puchong</div>
+          <div class="card-tile-landmark">🚉 LRT Pusat Bandar Puchong</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 2,400</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Residensi%20Vierra%20di%20Bandar%20Puteri%20Puchong.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+  </div><!-- /unit-grid -->
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Tak jumpa yang sesuai?</h2>
+  <p>Hani ada lebih banyak listing yang belum tersenarai di sini. Wasap terus untuk pilihan terkini.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Puchong.%20Boleh%20tolong%20carikan%3F" class="btn-wa" target="_blank" rel="noopener">💬 Wasap Hani Sekarang</a>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html" class="btn-outline">Lihat Semua Listing →</a>
   </div>
 </div>
 
-<!-- ── UNIT GRID ── -->
-<section class="listing-section">
-  <div class="unit-grid">
-
-    <!-- Unit 1: N'Dira 16 Sierra -->
-    <div class="unit-card" data-zone="bandar-16-sierra">
-      <div class="card-img-wrap" onclick="openLightbox('unit_1.png', this)">
-        <img src="unit_1.png" alt="N'Dira 16 Sierra, Bandar 16 Sierra"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><svg width=\'40\' height=\'40\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>Gambar akan dikemaskini</span></div>'" />
-      </div>
-      <div class="card-body">
-        <a class="btn-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20N%27Dira%2016%20Sierra%20di%20Puchong.%20Boleh%20kongsi%20maklumat%20lanjut%3F" target="_blank" rel="noopener">
-          💬 Tanya Hani
-        </a>
-      </div>
-    </div>
-
-    <!-- Unit 2: Zentro Residences L4 -->
-    <div class="unit-card" data-zone="bandar-16-sierra">
-      <div class="card-img-wrap" onclick="openLightbox('unit_2.png', this)">
-        <img src="unit_2.png" alt="Zentro Residences Level 4, Bandar 16 Sierra"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><svg width=\'40\' height=\'40\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>Gambar akan dikemaskini</span></div>'" />
-      </div>
-      <div class="card-body">
-        <a class="btn-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Zentro%20Residences%20(Level%204)%20di%20Puchong.%20Boleh%20kongsi%20maklumat%20lanjut%3F" target="_blank" rel="noopener">
-          💬 Tanya Hani
-        </a>
-      </div>
-    </div>
-
-    <!-- Unit 3: Zentro Residences L10 -->
-    <div class="unit-card" data-zone="bandar-16-sierra">
-      <div class="card-img-wrap" onclick="openLightbox('unit_3.png', this)">
-        <img src="unit_3.png" alt="Zentro Residences Level 10, Bandar 16 Sierra"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><svg width=\'40\' height=\'40\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>Gambar akan dikemaskini</span></div>'" />
-      </div>
-      <div class="card-body">
-        <a class="btn-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Zentro%20Residences%20(Level%2010)%20di%20Puchong.%20Boleh%20kongsi%20maklumat%20lanjut%3F" target="_blank" rel="noopener">
-          💬 Tanya Hani
-        </a>
-      </div>
-    </div>
-
-    <!-- Unit 4: Koi Prima -->
-    <div class="unit-card" data-zone="taman-mas-sepang">
-      <div class="card-img-wrap" onclick="openLightbox('unit_4.png', this)">
-        <img src="unit_4.png" alt="Koi Prima, Taman Mas Sepang"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><svg width=\'40\' height=\'40\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>Gambar akan dikemaskini</span></div>'" />
-      </div>
-      <div class="card-body">
-        <a class="btn-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Koi%20Prima%20di%20Puchong.%20Boleh%20kongsi%20maklumat%20lanjut%3F" target="_blank" rel="noopener">
-          💬 Tanya Hani
-        </a>
-      </div>
-    </div>
-
-    <!-- Unit 5: Saville @ D Lake -->
-    <div class="unit-card" data-zone="puchong">
-      <div class="card-img-wrap" onclick="openLightbox('unit_5.png', this)">
-        <img src="unit_5.png" alt="Saville @ D Lake, Puchong"
-          onerror="this.parentElement.innerHTML='<div class=\'card-img-placeholder\'><svg width=\'40\' height=\'40\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'m21 15-5-5L5 21\'/></svg><span>Gambar akan dikemaskini</span></div>'" />
-      </div>
-      <div class="card-body">
-        <a class="btn-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Saville%20%40%20D%20Lake%20di%20Puchong.%20Boleh%20kongsi%20maklumat%20lanjut%3F" target="_blank" rel="noopener">
-          💬 Tanya Hani
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── CTA BAND ── -->
-<section class="cta-band">
-  <h2>Tak jumpa yang sesuai?</h2>
-  <p>Ada banyak lagi pilihan — Hani boleh bantu cari unit yang betul-betul kena dengan keperluan anda.</p>
-  <div class="cta-buttons">
-    <a href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20nak%20cari%20rumah%20di%20Puchong.%20Boleh%20bantu%3F" class="btn-wa-big" target="_blank" rel="noopener">
-      💬 Hubungi Hani
-    </a>
-    <a href="https://www.haniproperties.com/kawasan_sewa.html" class="btn-outline-white">
-      🏠 Lihat Semua Listing
-    </a>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
-  <p>© Hani Properties · ERA Real Estate E(1)1773/3 · Marhani Bt Mohamad Nor (REN)</p>
-  <p>📞 <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com" target="_blank">haniproperties.com</a></p>
-  <p>Property made personal.</p>
+  <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
+  <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></div>
+  <div style="margin-top:4px; color:rgba(255,255,255,.3)">Property made personal.</div>
 </footer>
 
-<!-- ── LIGHTBOX ── -->
-<div id="lightbox" onclick="closeLightboxOutside(event)">
-  <button id="lightbox-close" onclick="closeLightbox()" aria-label="Tutup">✕</button>
-  <img id="lightbox-img" src="" alt="Gambar unit" />
-</div>
-
 <script>
-  function openLightbox(src, el) {
-    const lb = document.getElementById('lightbox');
-    const img = document.getElementById('lightbox-img');
-    img.src = src;
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function closeLightboxOutside(e) {
-    if (e.target === document.getElementById('lightbox')) closeLightbox();
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  function filterZone(zone, btn) {
-    document.querySelectorAll('.zone-pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-
-    document.querySelectorAll('.unit-card').forEach(card => {
-      if (zone === 'semua' || card.dataset.zone === zone) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
+  function filterZone(el, zone) {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    const cards = document.querySelectorAll('.unit-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const match = zone === 'all' || card.dataset.zone === zone;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
     });
+    document.getElementById('unit-count').textContent = visible + ' unit tersedia';
   }
 </script>
 

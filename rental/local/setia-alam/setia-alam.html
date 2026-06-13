@@ -3,18 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rumah Sewa di Setia Alam — Hani Properties</title>
-  <meta name="description" content="Cari rumah sewa di Setia Alam, Shah Alam? Hani Properties ada pilihan apartment dan kondominium di Setia Alam. Hubungi kami sekarang!" />
+  <title>Sewa Rumah Setia Alam | Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa di Setia Alam — apartment dan kondominium dari RM700 hingga RM2,500. Hubungi Hani Properties untuk pilihan terbaik di Selangor." />
   <link rel="canonical" href="https://www.haniproperties.com/setia-alam.html" />
-
-  <!-- OG Tags -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Rumah Sewa di Setia Alam — Hani Properties" />
-  <meta property="og:description" content="Cari rumah sewa di Setia Alam? Hani Properties ada pilihan apartment dan kondominium. Hubungi kami sekarang!" />
+  <meta property="og:title" content="Sewa Rumah Setia Alam | Hani Properties" />
+  <meta property="og:description" content="Listing sewa terpilih di Setia Alam — apartment & kondominium. Semak sekarang." />
   <meta property="og:url" content="https://www.haniproperties.com/setia-alam.html" />
-  <meta property="og:site_name" content="Hani Properties" />
-
-  <!-- JSON-LD -->
+  <meta property="og:type" content="website" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,37 +22,33 @@
       "addressRegion": "Selangor",
       "addressCountry": "MY"
     },
-    "areaServed": {
-      "@type": "Place",
-      "name": "Setia Alam, Shah Alam, Selangor"
-    },
-    "agent": {
+    "employee": {
       "@type": "Person",
       "name": "Marhani Bt Mohamad Nor",
       "telephone": "+60125459182"
-    }
+    },
+    "areaServed": "Setia Alam, Selangor"
   }
   </script>
-
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --green-dark: #1B4D35;
       --green-mid: #2E7D52;
       --green-light: #52B788;
       --cream: #F7F5F0;
-      --white: #ffffff;
-      --text: #1a1a1a;
-      --text-muted: #555;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-muted: #888;
       --radius: 10px;
-      --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --radius-sm: 6px;
     }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: var(--font);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--cream);
-      color: var(--text);
+      color: var(--text-dark);
       line-height: 1.6;
     }
 
@@ -66,449 +57,460 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid #e2ddd6;
+      background: var(--green-dark);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 24px;
-      height: 58px;
-      gap: 16px;
+      height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
     .nav-logo {
-      font-weight: 800;
-      font-size: 1.05rem;
-      color: var(--green-dark);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
       text-decoration: none;
-      letter-spacing: -0.3px;
-      white-space: nowrap;
+      letter-spacing: .02em;
     }
     .nav-logo span { color: var(--green-light); }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
     .nav-links a {
+      color: rgba(255,255,255,.8);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--green-dark);
-      padding: 6px 14px;
-      border-radius: 20px;
-      border: 1.5px solid var(--green-dark);
-      transition: background 0.15s, color 0.15s;
+      font-size: .85rem;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
     }
-    .nav-links a:hover { background: var(--green-dark); color: #fff; }
+    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
     .nav-wa {
-      background: #25D366;
-      color: #fff !important;
-      border-color: #25D366 !important;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      background: var(--green-light) !important;
+      color: var(--green-dark) !important;
+      font-weight: 600 !important;
+      padding: 7px 14px !important;
     }
-    .nav-wa:hover { background: #1ebe5c !important; }
+    .nav-wa:hover { background: #62cc98 !important; }
 
     /* ── HERO ── */
     .hero {
       background: var(--green-dark);
-      padding: 56px 24px 52px;
+      padding: 52px 24px 48px;
       text-align: center;
     }
-    .hero-pill {
+    .hero-eyebrow {
       display: inline-block;
-      background: rgba(82,183,136,0.22);
+      background: rgba(255,255,255,.12);
       color: var(--green-light);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
       text-transform: uppercase;
       padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(82,183,136,0.35);
+      border-radius: 50px;
+      margin-bottom: 18px;
     }
     .hero h1 {
-      font-size: clamp(1.9rem, 5vw, 3rem);
-      font-weight: 900;
-      color: var(--white);
+      color: #fff;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
       white-space: nowrap;
-      line-height: 1.15;
+      letter-spacing: -.02em;
+      line-height: 1.1;
       margin-bottom: 16px;
-      letter-spacing: -0.5px;
     }
-    .hero p {
-      color: rgba(255,255,255,0.78);
+    .hero-desc {
+      color: rgba(255,255,255,.75);
       font-size: 1rem;
       max-width: 520px;
       margin: 0 auto;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    /* ── ABOUT SECTION ── */
+    /* ── ABOUT ── */
     .about {
-      background: var(--white);
-      padding: 52px 24px;
+      background: #fff;
+      padding: 48px 24px;
     }
     .about-inner {
       max-width: 960px;
       margin: 0 auto;
     }
     .about h2 {
-      font-size: 1.35rem;
-      font-weight: 800;
+      font-size: 1.3rem;
+      font-weight: 700;
       color: var(--green-dark);
-      margin-bottom: 28px;
-      letter-spacing: -0.2px;
+      margin-bottom: 24px;
     }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 32px;
     }
     .about-text p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: .95rem;
+      color: var(--text-mid);
       line-height: 1.75;
       margin-bottom: 14px;
     }
-    .highlights {
+    .about-highlights {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
     .highlight-item {
       display: flex;
       align-items: flex-start;
       gap: 12px;
       background: var(--cream);
-      border-radius: var(--radius);
-      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
     }
-    .highlight-item .icon {
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-    .highlight-item strong {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--green-dark);
-      margin-bottom: 2px;
-    }
-    .highlight-item span {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
+    .highlight-item .icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+    .highlight-item .hl-label { font-size: .75rem; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: .04em; }
+    .highlight-item .hl-text { font-size: .88rem; color: var(--text-mid); margin-top: 2px; }
 
     /* ── BREADCRUMB ── */
     .breadcrumb {
       background: var(--cream);
-      padding: 12px 24px;
-      border-bottom: 1px solid #e5e0d8;
+      padding: 10px 24px;
+      border-bottom: 1px solid #e5e3de;
     }
     .breadcrumb-inner {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
-      font-size: 0.8rem;
+      font-size: .8rem;
       color: var(--text-muted);
     }
-    .breadcrumb-inner a {
-      color: var(--green-mid);
-      text-decoration: none;
-      font-weight: 600;
-    }
+    .breadcrumb-inner a { color: var(--green-mid); text-decoration: none; }
     .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-inner span { margin: 0 6px; }
 
-    /* ── LISTINGS ── */
+    /* ── LISTINGS SECTION ── */
     .listings-section {
-      padding: 40px 24px 56px;
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    .listings-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .listings-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .listings-count {
+      font-size: .85rem;
+      color: var(--text-muted);
     }
 
-    /* Zone Pills */
-    .zone-bar {
+    /* ── ZONE PILLS ── */
+    .zone-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 28px;
     }
-    .zone-pill {
-      padding: 7px 18px;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      border: 1.5px solid var(--green-mid);
-      background: transparent;
-      color: var(--green-mid);
+    .pill {
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.15s, color 0.15s;
+      border: 1.5px solid #d5d2cc;
+      background: #fff;
+      color: var(--text-mid);
+      transition: all .15s;
+      user-select: none;
     }
-    .zone-pill.active,
-    .zone-pill:hover {
-      background: var(--green-dark);
-      border-color: var(--green-dark);
-      color: #fff;
-    }
+    .pill:hover { border-color: var(--green-mid); color: var(--green-mid); }
+    .pill.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
 
-    /* Grid */
+    /* ── UNIT GRID ── */
     .unit-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
+    /* ── CARD ── */
     .unit-card {
-      background: var(--white);
-      border-radius: 12px;
+      background: #fff;
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      transition: transform 0.18s, box-shadow 0.18s;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
       display: flex;
       flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
     }
     .unit-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 4px 12px rgba(0,0,0,.1), 0 12px 32px rgba(0,0,0,.08);
     }
 
-    .unit-img-wrap {
-      position: relative;
-      cursor: pointer;
-      aspect-ratio: 4/3;
-      background: #e8e4dd;
-      overflow: hidden;
-    }
-    .unit-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s;
-    }
-    .unit-img-wrap:hover img { transform: scale(1.04); }
-    .unit-placeholder {
-      width: 100%;
-      height: 100%;
+    .card-tile {
+      background: var(--green-dark);
+      padding: 16px;
+      min-height: 90px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #ddd8cf 0%, #ccc7bc 100%);
-      color: #999;
-      font-size: 0.78rem;
-      gap: 6px;
+      justify-content: space-between;
     }
-    .unit-placeholder .ph-icon { font-size: 2rem; opacity: 0.5; }
-
-    .unit-card-body {
-      padding: 12px;
+    .card-tile-name {
+      font-size: .92rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 8px;
     }
-    .btn-wa {
+    .card-tile-meta {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      width: 100%;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .card-tile-location {
+      font-size: .75rem;
+      color: rgba(255,255,255,.75);
+    }
+    .card-tile-landmark {
+      font-size: .72rem;
+      color: var(--green-light);
+      opacity: .9;
+    }
+
+    .card-body {
+      padding: 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      line-height: 1.1;
+    }
+    .card-price-label {
+      font-size: .72rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .badge {
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: .02em;
+    }
+    .badge-ff  { background: #dcf4e8; color: #1a6640; }
+    .badge-pf  { background: #fff3d6; color: #7a5200; }
+    .badge-uf  { background: #f0f0f0; color: #555; }
+    .badge-type { background: #e8f0fe; color: #1a4fa0; }
+
+    .card-rooms {
+      font-size: .82rem;
+      color: var(--text-mid);
+      display: flex;
+      gap: 12px;
+    }
+
+    .card-wa-btn {
+      display: block;
+      margin-top: auto;
+      background: var(--green-mid);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 700;
       padding: 10px;
-      background: #25D366;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
+    }
+    .card-wa-btn:hover { background: var(--green-dark); }
+
+    /* ── COMING SOON BAND ── */
+    .coming-soon-band {
+      background: #fff;
+      border: 2px dashed #c8c4bc;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      margin-top: 24px;
+    }
+    .coming-soon-band .cs-icon { font-size: 2rem; margin-bottom: 10px; }
+    .coming-soon-band h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .coming-soon-band p {
+      font-size: .88rem;
+      color: var(--text-muted);
+      max-width: 360px;
+      margin: 0 auto 16px;
+      line-height: 1.6;
+    }
+    .cs-wa-btn {
+      display: inline-block;
+      background: var(--green-mid);
       color: #fff;
       text-decoration: none;
-      border-radius: 8px;
-      font-size: 0.83rem;
+      font-size: .85rem;
       font-weight: 700;
-      transition: background 0.15s;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
     }
-    .btn-wa:hover { background: #1ebe5c; }
+    .cs-wa-btn:hover { background: var(--green-dark); }
 
     /* ── CTA BAND ── */
     .cta-band {
       background: var(--green-dark);
-      padding: 52px 24px;
+      padding: 40px 24px;
       text-align: center;
+      margin-top: 40px;
     }
     .cta-band h2 {
-      color: var(--white);
-      font-size: 1.5rem;
+      color: #fff;
+      font-size: 1.4rem;
       font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: -0.2px;
+      margin-bottom: 8px;
     }
     .cta-band p {
-      color: rgba(255,255,255,0.72);
-      font-size: 0.95rem;
-      margin-bottom: 28px;
+      color: rgba(255,255,255,.7);
+      font-size: .95rem;
+      margin-bottom: 24px;
     }
     .cta-buttons {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
     }
-    .btn-primary {
-      padding: 13px 28px;
-      background: #25D366;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
+    .btn-wa {
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
       font-weight: 700;
-      font-size: 0.92rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      transition: background 0.15s;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: background .15s;
     }
-    .btn-primary:hover { background: #1ebe5c; }
+    .btn-wa:hover { background: #62cc98; }
     .btn-outline {
-      padding: 13px 28px;
-      border: 2px solid rgba(255,255,255,0.4);
-      color: var(--white);
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.4);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: .95rem;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.92rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      transition: background 0.15s, border-color 0.15s;
+      transition: border-color .15s;
     }
-    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
+    .btn-outline:hover { border-color: rgba(255,255,255,.8); }
 
     /* ── FOOTER ── */
     footer {
       background: #111;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,.5);
       text-align: center;
-      padding: 28px 24px;
-      font-size: 0.78rem;
+      padding: 24px;
+      font-size: .78rem;
       line-height: 1.8;
     }
     footer a { color: var(--green-light); text-decoration: none; }
-    footer strong { color: rgba(255,255,255,0.8); }
-
-    /* ── LIGHTBOX ── */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(0,0,0,0.88);
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      cursor: zoom-out;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 88vh;
-      border-radius: 8px;
-      object-fit: contain;
-      box-shadow: 0 20px 80px rgba(0,0,0,0.5);
-      animation: scalein 0.2s ease;
-      cursor: default;
-    }
-    @keyframes scalein {
-      from { transform: scale(0.88); opacity: 0; }
-      to   { transform: scale(1);    opacity: 1; }
-    }
-    .lightbox-close {
-      position: fixed;
-      top: 18px;
-      right: 22px;
-      background: rgba(255,255,255,0.15);
-      border: none;
-      color: #fff;
-      font-size: 1.4rem;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s;
-    }
-    .lightbox-close:hover { background: rgba(255,255,255,0.28); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 760px) {
-      .hero h1 { font-size: 1.55rem; white-space: normal; }
-      .about-grid { grid-template-columns: 1fr; gap: 28px; }
-      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      nav { padding: 0 16px; }
-      .nav-links a:not(.nav-wa) { display: none; }
+    @media (max-width: 900px) {
+      .unit-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 480px) {
-      .hero { padding: 40px 16px 36px; }
-      .listings-section { padding: 28px 16px 40px; }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.5rem; white-space: normal; }
+      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .listings-section { padding: 24px 14px 40px; }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      .unit-card, .unit-img-wrap img, .lightbox img { transition: none; animation: none; }
+    @media (max-width: 380px) {
+      .unit-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
   <a href="https://www.haniproperties.com" class="nav-logo">Hani<span>Properties</span></a>
   <div class="nav-links">
     <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
     <a href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
-    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20tentang%20listing%20di%20Setia%20Alam" class="nav-wa" target="_blank" rel="noopener">
-      💬 WhatsApp
-    </a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20listing%20di%20Setia%20Alam" class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-pill">📍 Setia Alam · Selangor</div>
-  <h1>Cari rumah di Setia Alam?</h1>
-  <p>Kawasan moden dengan kemudahan lengkap — sekolah, hospital, mall, dan lebuh raya semuanya dalam jarak dekat. Hani ada pilihan untuk keluarga anda.</p>
+  <div class="hero-eyebrow">📍 Setia Alam · Selangor</div>
+  <h1>Cari rumah sewa di Setia Alam?</h1>
+  <p class="hero-desc">Kawasan perumahan terancang dengan kemudahan lengkap — Setia City Mall, hospital, dan akses NKVE. Sesuai untuk keluarga yang mahukan ketenangan bandar baru.</p>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section class="about">
   <div class="about-inner">
     <h2>Kenapa pilih Setia Alam?</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Setia Alam adalah sebuah bandar rancangan moden di Shah Alam yang berkembang pesat. Dengan perancangan bandar yang tersusun, kawasan ini menawarkan persekitaran kediaman yang selesa, tenang, dan sesuai untuk semua peringkat umur — daripada pasangan muda hingga keluarga besar.</p>
-        <p>Infrastruktur yang matang termasuk jalanraya dalaman yang luas, taman kejiranan, dan pelbagai kemudahan awam menjadikan Setia Alam pilihan utama bagi mereka yang mengutamakan kualiti hidup tanpa perlu jauh dari pusat bandar.</p>
+        <p>Setia Alam adalah bandar baru yang dirancang teliti oleh S P Setia — dengan jalan lebar, taman rekreasi, dan kepelbagaian jenis kediaman. Ia sesuai untuk keluarga muda yang mahukan suasana selesa jauh dari kesesakan, tapi masih dekat dengan kemudahan bandar.</p>
+        <p>Setia City Mall berada di jantung kawasan ini, dikelilingi hospital swasta, sekolah antarabangsa, dan supermarket harian. Akses NKVE memudahkan perjalanan ke Shah Alam, Subang, dan KL.</p>
       </div>
-      <div class="highlights">
+      <div class="about-highlights">
         <div class="highlight-item">
-          <div class="icon">🎓</div>
+          <span class="icon">🎓</span>
           <div>
-            <strong>Pendidikan</strong>
-            <span>Tenby International School Setia Alam, pelbagai sekolah kebangsaan berdekatan</span>
+            <div class="hl-label">Pendidikan</div>
+            <div class="hl-text">Tenby International School Setia Alam, UiTM Puncak Perdana</div>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="icon">🏥</div>
+          <span class="icon">🏥</span>
           <div>
-            <strong>Kesihatan</strong>
-            <span>Columbia Asia Hospital Setia Alam, Selgate Hospital — pilihan rawatan swasta yang mantap</span>
+            <div class="hl-label">Kesihatan</div>
+            <div class="hl-text">Columbia Asia Hospital Setia Alam, Selgate Hospital</div>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="icon">🛍️</div>
+          <span class="icon">🛍️</span>
           <div>
-            <strong>Membeli-belah</strong>
-            <span>Setia City Mall, Giant Shah Alam, Lotus's Setia Alam — semua dalam radius mudah</span>
+            <div class="hl-label">Membeli-belah</div>
+            <div class="hl-text">Setia City Mall, Lotus's Setia Alam, Giant Setia Alam</div>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="icon">🛣️</div>
+          <span class="icon">🛣️</span>
           <div>
-            <strong>Akses Lebuh Raya</strong>
-            <span>NKVE dan KESAS memudahkan perjalanan ke KL, Subang, PJ, dan Klang</span>
+            <div class="hl-label">Lebuh Raya</div>
+            <div class="hl-text">NKVE, KESAS Highway</div>
           </div>
         </div>
       </div>
@@ -516,139 +518,154 @@
   </div>
 </section>
 
-<!-- ── BREADCRUMB ── -->
+<!-- BREADCRUMB -->
 <div class="breadcrumb">
   <div class="breadcrumb-inner">
     <a href="https://www.haniproperties.com">Hani Properties</a>
-    &nbsp;›&nbsp;
+    <span>›</span>
     <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a>
-    &nbsp;›&nbsp;
+    <span>›</span>
     Setia Alam
   </div>
 </div>
 
-<!-- ── LISTINGS ── -->
+<!-- LISTINGS -->
 <section class="listings-section">
-
-  <!-- Zone Pills -->
-  <div class="zone-bar">
-    <button class="zone-pill active" onclick="filterZone('semua', this)">Semua</button>
-    <button class="zone-pill" onclick="filterZone('Setia Alam', this)">Setia Alam</button>
+  <div class="listings-header">
+    <div class="listings-title">Listing Sewa — Setia Alam</div>
+    <div class="listings-count" id="unit-count">3 unit tersedia</div>
   </div>
 
-  <!-- Unit Grid -->
-  <div class="unit-grid" id="unitGrid">
-
-    <!-- Unit 1: Apartmen Seroja -->
-    <div class="unit-card" data-zone="Setia Alam">
-      <div class="unit-img-wrap" onclick="openLightbox('unit_1.png')">
-        <img src="unit_1.png" alt="Apartmen Seroja, Setia Alam"
-             onerror="this.parentElement.innerHTML='<div class=\'unit-placeholder\'><div class=\'ph-icon\'>🏠</div><span>Gambar akan datang</span></div>'" />
-      </div>
-      <div class="unit-card-body">
-        <a class="btn-wa"
-           href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Apartmen%20Seroja%20di%20Setia%20Alam.%20Boleh%20share%20info%20lanjut%3F"
-           target="_blank" rel="noopener">
-          💬 Tanya Hani
-        </a>
-      </div>
-    </div>
-
-    <!-- Unit 2: D'sini Residence -->
-    <div class="unit-card" data-zone="Setia Alam">
-      <div class="unit-img-wrap" onclick="openLightbox('unit_2.png')">
-        <img src="unit_2.png" alt="D'sini Residence, Setia Alam"
-             onerror="this.parentElement.innerHTML='<div class=\'unit-placeholder\'><div class=\'ph-icon\'>🏠</div><span>Gambar akan datang</span></div>'" />
-      </div>
-      <div class="unit-card-body">
-        <a class="btn-wa"
-           href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20D%27sini%20Residence%20di%20Setia%20Alam.%20Boleh%20share%20info%20lanjut%3F"
-           target="_blank" rel="noopener">
-          💬 Tanya Hani
-        </a>
-      </div>
-    </div>
-
-    <!-- Unit 3: Seri Baiduri -->
-    <div class="unit-card" data-zone="Setia Alam">
-      <div class="unit-img-wrap" onclick="openLightbox('unit_3.png')">
-        <img src="unit_3.png" alt="Seri Baiduri, Setia Alam"
-             onerror="this.parentElement.innerHTML='<div class=\'unit-placeholder\'><div class=\'ph-icon\'>🏠</div><span>Gambar akan datang</span></div>'" />
-      </div>
-      <div class="unit-card-body">
-        <a class="btn-wa"
-           href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20unit%20Seri%20Baiduri%20di%20Setia%20Alam.%20Boleh%20share%20info%20lanjut%3F"
-           target="_blank" rel="noopener">
-          💬 Tanya Hani
-        </a>
-      </div>
-    </div>
-
+  <!-- ZONE PILLS -->
+  <div class="zone-pills">
+    <div class="pill active" data-zone="all" onclick="filterZone(this, 'all')">Semua</div>
+    <div class="pill" data-zone="setia-alam" onclick="filterZone(this, 'setia-alam')">Setia Alam</div>
   </div>
+
+  <!-- UNIT GRID -->
+  <div class="unit-grid" id="unit-grid">
+
+    <!-- 1. Apartmen Seroja — 56% Tier 1 AniListings -->
+    <div class="unit-card" data-zone="setia-alam">
+      <div class="card-tile">
+        <div class="card-tile-name">Apartmen Seroja</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Setia Alam, Shah Alam</div>
+          <div class="card-tile-landmark">🛍️ Setia City Mall</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 700</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-uf">Unfurnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Apartmen%20Seroja%20di%20Setia%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 2. Seri Baiduri — 93% Tier 2 -->
+    <div class="unit-card" data-zone="setia-alam">
+      <div class="card-tile">
+        <div class="card-tile-name">Seri Baiduri</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Setia Alam, Shah Alam</div>
+          <div class="card-tile-landmark">🎓 Tenby International School</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,800</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Seri%20Baiduri%20di%20Setia%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 3. D'sini Residence — 81% Tier 2 -->
+    <div class="unit-card" data-zone="setia-alam">
+      <div class="card-tile">
+        <div class="card-tile-name">D'sini Residence</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Setia Alam, Shah Alam</div>
+          <div class="card-tile-landmark">🛍️ Setia City Mall</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 2,500</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20D%27sini%20Residence%20di%20Setia%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+  </div><!-- /unit-grid -->
+
+  <!-- COMING SOON BAND -->
+  <div class="coming-soon-band">
+    <div class="cs-icon">🏡</div>
+    <h3>Lebih banyak listing sedang dikemas kini</h3>
+    <p>Kami sentiasa tambah unit baru di Setia Alam. Wasap Hani terus untuk tahu yang terkini — sebelum ia tersenarai di sini.</p>
+    <a class="cs-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Setia%20Alam.%20Ada%20unit%20baru%20tak%3F" target="_blank" rel="noopener">💬 Tanya unit terkini</a>
+  </div>
+
 </section>
 
-<!-- ── CTA BAND ── -->
-<section class="cta-band">
+<!-- CTA BAND -->
+<div class="cta-band">
   <h2>Tak jumpa yang sesuai?</h2>
-  <p>Beritahu Hani apa yang anda cari — bajet, saiz, kawasan. Hani bantu carikan.</p>
+  <p>Hani ada lebih banyak listing yang belum tersenarai di sini. Wasap terus untuk pilihan terkini.</p>
   <div class="cta-buttons">
-    <a class="btn-primary"
-       href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20tengah%20cari%20rumah%20di%20Setia%20Alam%20tapi%20belum%20jumpa%20yang%20sesuai.%20Boleh%20tolong%3F"
-       target="_blank" rel="noopener">
-      💬 Hubungi Hani
-    </a>
-    <a class="btn-outline" href="https://www.haniproperties.com/kawasan_sewa.html">
-      🏠 Semua Listing
-    </a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Setia%20Alam.%20Boleh%20tolong%20carikan%3F" class="btn-wa" target="_blank" rel="noopener">💬 Wasap Hani Sekarang</a>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html" class="btn-outline">Lihat Semua Listing →</a>
   </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <p>
-    © Hani Properties &nbsp;·&nbsp;
-    <strong>ERA Real Estate E(1)1773/3</strong> &nbsp;·&nbsp;
-    Marhani Bt Mohamad Nor (REN) &nbsp;·&nbsp;
-    <a href="tel:+60125459182">012-545 9182</a> &nbsp;·&nbsp;
-    <a href="https://www.haniproperties.com">haniproperties.com</a>
-  </p>
-  <p style="margin-top:6px; font-style: italic; opacity: 0.6;">Property made personal.</p>
-</footer>
-
-<!-- ── LIGHTBOX ── -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" onclick="closeLightboxDirect()" aria-label="Tutup">✕</button>
-  <img id="lightboxImg" src="" alt="Unit photo" onclick="event.stopPropagation()" />
 </div>
 
-<script>
-  /* ── Zone filter ── */
-  function filterZone(zone, btn) {
-    document.querySelectorAll('.zone-pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.unit-card').forEach(card => {
-      card.style.display = (zone === 'semua' || card.dataset.zone === zone) ? '' : 'none';
-    });
-  }
+<!-- FOOTER -->
+<footer>
+  <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
+  <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></div>
+  <div style="margin-top:4px; color:rgba(255,255,255,.3)">Property made personal.</div>
+</footer>
 
-  /* ── Lightbox ── */
-  function openLightbox(src) {
-    const lb = document.getElementById('lightbox');
-    const img = document.getElementById('lightboxImg');
-    img.src = src;
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
+<script>
+  function filterZone(el, zone) {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    const cards = document.querySelectorAll('.unit-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const match = zone === 'all' || card.dataset.zone === zone;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    document.getElementById('unit-count').textContent = visible + ' unit tersedia';
   }
-  function closeLightbox(e) {
-    if (e.target === document.getElementById('lightbox')) closeLightboxDirect();
-  }
-  function closeLightboxDirect() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLightboxDirect();
-  });
 </script>
+
 </body>
 </html>

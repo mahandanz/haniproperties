@@ -1,239 +1,699 @@
 <!DOCTYPE html>
-<html lang="en-MY">
-
+<html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rumah Sewa di Subang Jaya — Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa di Subang Jaya, Selangor? Hani Properties ada pilihan apartment, kondominium dan landed di Subang Jaya. Hubungi Hani sekarang!" />
+  <link rel="canonical" href="https://www.haniproperties.com/subang-jaya.html" />
 
-  <title>Sewa Rumah Subang Jaya | Kawasan & Pilihan Unit 2026</title>
-  <meta name="description" content="Cari rumah untuk disewa di Subang Jaya. Lihat kelebihan kawasan dan browse listing terkini Subang di Telegram.">
-  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rumah Sewa di Subang Jaya — Hani Properties" />
+  <meta property="og:description" content="Cari rumah sewa di Subang Jaya? Hani Properties ada pilihan terbaik dari SS15 hingga USJ. Hubungi kami sekarang!" />
+  <meta property="og:url" content="https://www.haniproperties.com/subang-jaya.html" />
+  <meta property="og:site_name" content="Hani Properties" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Hani Properties",
+    "url": "https://www.haniproperties.com",
+    "telephone": "+60125459182",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Selangor",
+      "addressCountry": "MY"
+    },
+    "agent": {
+      "@type": "Person",
+      "name": "Marhani Bt Mohamad Nor"
+    },
+    "areaServed": "Subang Jaya, Selangor"
+  }
+  </script>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1B4D35;
+      --green-mid: #2E7D52;
+      --green-light: #52B788;
+      --cream: #F7F5F0;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-light: #777;
+      --radius: 10px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      min-height: 100vh;
-      padding: 24px;
-      background: linear-gradient(-45deg, #f7f9ff, #eef2ff, #f2f6ff, #e8efff);
-      background-size: 400% 400%;
-      animation: bgMove 12s ease infinite;
-      color: #2b2f55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
     }
 
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 58px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
-    .card {
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 24px;
-      padding: 34px;
-      box-shadow: 0 25px 70px rgba(25, 35, 90, 0.10);
+    .nav-logo {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      text-decoration: none;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      margin-bottom: 12px;
+    .nav-logo span { color: var(--green-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .headline {
-      color: #5a63a3;
-      line-height: 1.7;
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.875rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.2s;
     }
 
-    .cta {
-      margin-top: 22px;
+    .nav-links a:hover { background: rgba(255,255,255,0.1); }
+
+    .nav-wa {
+      background: var(--green-light) !important;
+      color: #fff !important;
+      font-weight: 600;
+      padding: 6px 14px !important;
+    }
+
+    .nav-wa:hover { background: #3fa070 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-dark);
+      padding: 56px 24px 52px;
       text-align: center;
     }
 
-    .btn {
+    .hero-eyebrow {
       display: inline-block;
-      padding: 16px 22px;
-      background: #4f7cff;
+      background: rgba(82,183,136,0.18);
+      border: 1px solid rgba(82,183,136,0.4);
+      color: var(--green-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 4px 14px;
+      border-radius: 99px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
       color: #fff;
-      border-radius: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(79,124,255,.30);
-    }
-
-    .note {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #6b7280;
-    }
-
-    .section {
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(79,124,255,0.1);
-    }
-
-    .sectionTitle {
-      font-size: 1.2rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
+      line-height: 1.1;
+      white-space: nowrap;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: #fff;
+      padding: 52px 24px;
+    }
+
+    .about-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 28px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+      line-height: 1.75;
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+    }
+
+    .highlight-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .highlight-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--green-mid);
+      margin-bottom: 2px;
+    }
+
+    .highlight-value {
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      padding: 12px 24px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb a {
+      color: var(--green-mid);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ── ZONE PILLS ── */
+    .zone-section {
+      padding: 20px 24px 8px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .zone-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .zone-pill {
+      background: #fff;
+      border: 1.5px solid #ddd;
+      color: var(--text-mid);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .zone-pill:hover {
+      border-color: var(--green-mid);
+      color: var(--green-mid);
+    }
+
+    .zone-pill.active {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: #fff;
+    }
+
+    /* ── UNIT GRID ── */
+    .listings-section {
+      padding: 20px 24px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .unit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .unit-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .unit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .card-header {
+      background: var(--green-dark);
+      padding: 16px;
+    }
+
+    .card-unit-name {
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .card-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      margin-bottom: 6px;
+    }
+
+    .card-landmark {
+      color: var(--green-light);
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+
+    .card-body {
+      padding: 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-price {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .card-price span {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 99px;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-furnish {
+      background: #e8f5ed;
+      color: var(--green-mid);
+    }
+
+    .badge-type {
+      background: #f0ede8;
+      color: #6b5744;
+    }
+
+    .card-rooms {
+      font-size: 0.8rem;
+      color: var(--text-mid);
+    }
+
+    .card-wa {
+      display: block;
+      background: var(--green-dark);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 11px 16px;
+      transition: background 0.2s;
+      margin-top: auto;
+    }
+
+    .card-wa:hover { background: var(--green-mid); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--green-dark);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
       margin-bottom: 10px;
     }
 
-    .sectionIntro {
-      color: #5a63a3;
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-
-    .infoGrid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 14px;
-      margin-top: 12px;
-    }
-
-    .infoCard {
-      background: #f6f8ff;
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(79,124,255,.10);
-    }
-
-    .infoCard h3 {
+    .cta-band p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
       font-size: 0.95rem;
-      font-weight: 800;
-      margin-bottom: 8px;
     }
 
-    .infoCard li {
-      margin-bottom: 6px;
-      color: #4b557e;
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .pushLine {
-      margin-top: 22px;
-      text-align: center;
-      color: #5a63a3;
-    }
-
-    .bottom {
-      margin-top: 18px;
-      text-align: center;
-    }
-
-    .backLink {
-      display: inline-block;
-      margin-top: 28px;
-      color: #4f7cff;
+    .btn-wa {
+      background: var(--green-light);
+      color: #fff;
       text-decoration: none;
       font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: background 0.2s;
     }
 
-    @media(max-width:720px){
-      .infoGrid {
-        grid-template-columns: 1fr;
-      }
+    .btn-wa:hover { background: #3fa070; }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.8rem;
+      line-height: 1.8;
+    }
+
+    footer a {
+      color: var(--green-light);
+      text-decoration: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .unit-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { white-space: normal; font-size: 1.8rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 24px; }
+      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      nav { padding: 0 16px; }
+      .nav-links a:not(.nav-wa) { display: none; }
+    }
+
+    @media (max-width: 400px) {
+      .unit-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
     }
   </style>
 </head>
 
 <body>
 
-  <main class="card">
+<!-- NAV -->
+<nav>
+  <a href="https://www.haniproperties.com" class="nav-logo">Hani <span>Properties</span></a>
+  <div class="nav-links">
+    <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
+    <a href="https://wa.me/60125459182" class="nav-wa" target="_blank" rel="noopener">💬 Hubungi Hani</a>
+  </div>
+</nav>
 
-    <h1>Sewa Rumah Subang Jaya</h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">📍 Subang Jaya · Selangor</div>
+  <h1>Cari rumah di Subang Jaya?</h1>
+  <p>Dari SS15 hingga USJ, Subang Jaya menawarkan kehidupan urban yang lengkap — universiti, hospital, mall, dan transit semuanya dalam jangkauan. Hani bantu cari unit yang sesuai untuk anda.</p>
+</section>
 
-    <p class="headline">
-      Kawasan popular dengan LRT, lifestyle lengkap dan sesuai untuk working adult serta student.
-    </p>
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <h2>Kenapa pilih Subang Jaya?</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Subang Jaya adalah salah satu kawasan paling mapan di Selangor — dengan ekosistem yang lengkap dari pendidikan tinggi, pusat perubatan swasta, hingga pusat membeli-belah kelas pertama. Sunway Pyramid, Empire Shopping Gallery, dan Subang Parade semua mudah dicapai dalam masa beberapa minit.</p>
+        <p>Kawasan ini juga berdekatan dengan Taylor's University, Monash University, dan Sunway University — menjadikan Subang Jaya pilihan utama bagi pelajar, pensyarah, dan profesional muda. Dengan LRT, KTM, dan akses Federal Highway serta KESAS, pergerakan ke KL dan Petaling Jaya amat mudah.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">🎓</div>
+          <div>
+            <div class="highlight-label">Pendidikan</div>
+            <div class="highlight-value">Taylor's University, Monash University Malaysia, Sunway University, UiTM Shah Alam</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🏥</div>
+          <div>
+            <div class="highlight-label">Kesihatan</div>
+            <div class="highlight-value">Sunway Medical Centre, Subang Jaya Medical Centre, KPJ Selangor Specialist Hospital</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🛍️</div>
+          <div>
+            <div class="highlight-label">Membeli-belah</div>
+            <div class="highlight-value">Sunway Pyramid, Empire Shopping Gallery, Subang Parade, Giant USJ, AEON BIG</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🚇</div>
+          <div>
+            <div class="highlight-label">Transit &amp; Lebuh Raya</div>
+            <div class="highlight-value">LRT USJ 7, LRT Taipan, LRT Subang Jaya, KTM Subang Jaya · Federal Highway, KESAS, ELITE Highway</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- TOP CTA -->
-    <div class="cta">
-      <a href="https://t.me/hanipropertiesrentals/151" target="_blank" class="btn">
-        📲 Tengok Unit Subang Sekarang
-      </a>
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="https://www.haniproperties.com">Hani Properties</a> › <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a> › Subang Jaya
+</div>
 
-      <p class="note">
-        Listing update harian • Unit cepat habis
-      </p>
+<!-- ZONE PILLS -->
+<div class="zone-section">
+  <div class="zone-pills">
+    <button class="zone-pill active" onclick="filterZone('semua', this)">Semua</button>
+    <button class="zone-pill" onclick="filterZone('subang-jaya', this)">Subang Jaya</button>
+    <button class="zone-pill" onclick="filterZone('ss15', this)">SS15</button>
+    <button class="zone-pill" onclick="filterZone('usj1', this)">USJ 1</button>
+    <button class="zone-pill" onclick="filterZone('usj', this)">USJ</button>
+    <button class="zone-pill" onclick="filterZone('subang-mas', this)">Subang Mas</button>
+  </div>
+</div>
+
+<!-- UNIT GRID -->
+<div class="listings-section">
+  <div class="unit-grid" id="unitGrid">
+
+    <!-- 1: Alstonea — Tier 1, 90% -->
+    <div class="unit-card" data-zone="subang-jaya">
+      <div class="card-header">
+        <div class="card-unit-name">Alstonea Taman Subang Mas</div>
+        <div class="card-sub">📍 Subang Jaya</div>
+        <div class="card-landmark">🎓 Taylor's University</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 4,200 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Partially Furnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">6 Bilik · 5 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Alstonea%20Taman%20Subang%20Mas%20di%20Subang%20Jaya.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
     </div>
 
-    <div class="section">
-      <div class="sectionTitle">Kenapa pilih Subang?</div>
-
-      <p class="sectionIntro">
-        Subang Jaya antara kawasan paling mature di Selangor dengan akses LRT, banyak mall dan kawasan komersial yang aktif sepanjang hari.
-      </p>
-
-      <div class="infoGrid">
-
-        <div class="infoCard">
-          <h3>Lifestyle</h3>
-          <ul>
-            <li>Sunway Pyramid</li>
-            <li>Subang Parade</li>
-            <li>Empire Subang</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Education</h3>
-          <ul>
-            <li>Sunway University</li>
-            <li>Monash University</li>
-            <li>Taylor’s University</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Access</h3>
-          <ul>
-            <li>LRT Kelana Jaya Line</li>
-            <li>Federal Highway</li>
-            <li>NPE / KESAS</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Sesuai Untuk Siapa</h3>
-          <ul>
-            <li>Working adult</li>
-            <li>Student</li>
-            <li>Room rental / sharing</li>
-          </ul>
-        </div>
-
+    <!-- 2: Menara Geno — Tier 1, 73% -->
+    <div class="unit-card" data-zone="subang-mas">
+      <div class="card-header">
+        <div class="card-unit-name">Menara Geno</div>
+        <div class="card-sub">📍 Subang Mas, Subang Jaya</div>
+        <div class="card-landmark">🛍️ Sunway Pyramid</div>
       </div>
-
-      <p class="pushLine">
-        Dah tahu Subang sesuai? Klik bawah untuk tengok unit available sekarang.
-      </p>
-
-      <div class="bottom">
-        <a href="https://t.me/hanipropertiesrentals/151" target="_blank" class="btn">
-          View Listings on Telegram
-        </a>
+      <div class="card-body">
+        <div class="card-price">RM 1,400 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Fully Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">1 Bilik · 1 Bilik Mandi</div>
       </div>
-
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Menara%20Geno%20di%20Subang%20Mas%2C%20Subang%20Jaya.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
     </div>
 
-    <a class="backLink" href="index.html">← Back to Selangor Areas</a>
+    <!-- 3: Paisley Serviced Residences — Tier 2, 84% -->
+    <div class="unit-card" data-zone="ss15">
+      <div class="card-header">
+        <div class="card-unit-name">Paisley Serviced Residences</div>
+        <div class="card-sub">📍 SS15, Subang Jaya</div>
+        <div class="card-landmark">🎓 Taylor's University</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 2,000 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Fully Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">1 Bilik · 1 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Paisley%20Serviced%20Residences%20di%20SS15%2C%20Subang%20Jaya.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
 
-  </main>
+    <!-- 4: Putra Residence — Tier 2, 81% -->
+    <div class="unit-card" data-zone="usj">
+      <div class="card-header">
+        <div class="card-unit-name">Putra Residence</div>
+        <div class="card-sub">📍 USJ, Subang Jaya</div>
+        <div class="card-landmark">🎓 Sunway University</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,600 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Partially Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">2 Bilik · 1 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Putra%20Residence%20di%20USJ%2C%20Subang%20Jaya.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
+
+    <!-- 5: Edumetro Residence — Tier 2, 76% -->
+    <div class="unit-card" data-zone="usj1">
+      <div class="card-header">
+        <div class="card-unit-name">Edumetro Residence</div>
+        <div class="card-sub">📍 USJ 1, Subang Jaya</div>
+        <div class="card-landmark">🎓 Monash University Malaysia</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 2,500 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Fully Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">2 Bilik · 1 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Edumetro%20Residence%20di%20USJ%201%2C%20Subang%20Jaya.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
+
+    <!-- 6: Goodyear Court 5 — Tier 2, 66% -->
+    <div class="unit-card" data-zone="usj">
+      <div class="card-header">
+        <div class="card-unit-name">Goodyear Court 5</div>
+        <div class="card-sub">📍 USJ, Subang Jaya</div>
+        <div class="card-landmark">🎓 Sunway University</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,500 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Unfurnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Goodyear%20Court%205%20di%20USJ%2C%20Subang%20Jaya.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Tak jumpa yang sesuai?</h2>
+  <p>Beritahu Hani apa yang anda cari — beliau akan carikan unit yang paling matching untuk anda di Subang Jaya.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20nak%20cari%20rumah%20sewa%20di%20Subang%20Jaya.%20Boleh%20tolong%3F" class="btn-wa" target="_blank" rel="noopener">💬 WhatsApp Hani</a>
+    <a href="https://t.me/hanipropertiesrentals/239" class="btn-outline" target="_blank" rel="noopener">Lihat Semua Listing</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Hani Properties · ERA Real Estate E(1)1773/3</p>
+  <p>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a></p>
+  <p><a href="https://www.haniproperties.com">haniproperties.com</a> · Property made personal.</p>
+</footer>
+
+<script>
+  function filterZone(zone, btn) {
+    document.querySelectorAll('.zone-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.unit-card').forEach(card => {
+      card.style.display = (zone === 'semua' || card.dataset.zone === zone) ? 'flex' : 'none';
+    });
+  }
+</script>
 
 </body>
 </html>

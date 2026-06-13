@@ -1,238 +1,736 @@
 <!DOCTYPE html>
-<html lang="en-MY">
-
+<html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rumah Sewa di Klang — Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa di Klang, Selangor? Hani Properties ada pilihan apartment dan landed di Klang. Hubungi Hani sekarang!" />
+  <link rel="canonical" href="https://www.haniproperties.com/klang.html" />
 
-  <title>Sewa Rumah Klang | Kawasan & Pilihan Unit 2026</title>
-  <meta name="description" content="Cari rumah untuk disewa di Klang. Lihat kelebihan kawasan dan browse listing terkini Klang di Telegram.">
-  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rumah Sewa di Klang — Hani Properties" />
+  <meta property="og:description" content="Cari rumah sewa di Klang? Hani Properties ada pilihan terbaik untuk keluarga dan profesional. Hubungi kami sekarang!" />
+  <meta property="og:url" content="https://www.haniproperties.com/klang.html" />
+  <meta property="og:site_name" content="Hani Properties" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Hani Properties",
+    "url": "https://www.haniproperties.com",
+    "telephone": "+60125459182",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Selangor",
+      "addressCountry": "MY"
+    },
+    "agent": {
+      "@type": "Person",
+      "name": "Marhani Bt Mohamad Nor"
+    },
+    "areaServed": "Klang, Selangor"
+  }
+  </script>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1B4D35;
+      --green-mid: #2E7D52;
+      --green-light: #52B788;
+      --cream: #F7F5F0;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-light: #777;
+      --radius: 10px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      min-height: 100vh;
-      padding: 24px;
-      background: linear-gradient(-45deg, #f7f9ff, #eef2ff, #f2f6ff, #e8efff);
-      background-size: 400% 400%;
-      animation: bgMove 12s ease infinite;
-      color: #2b2f55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
     }
 
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 58px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
-    .card {
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 24px;
-      padding: 34px;
-      box-shadow: 0 25px 70px rgba(25, 35, 90, 0.10);
+    .nav-logo {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      text-decoration: none;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      margin-bottom: 12px;
+    .nav-logo span { color: var(--green-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .headline {
-      color: #5a63a3;
-      line-height: 1.7;
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.875rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.2s;
     }
 
-    .cta {
-      margin-top: 22px;
+    .nav-links a:hover { background: rgba(255,255,255,0.1); }
+
+    .nav-wa {
+      background: var(--green-light) !important;
+      color: #fff !important;
+      font-weight: 600;
+      padding: 6px 14px !important;
+    }
+
+    .nav-wa:hover { background: #3fa070 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-dark);
+      padding: 56px 24px 52px;
       text-align: center;
     }
 
-    .btn {
+    .hero-eyebrow {
       display: inline-block;
-      padding: 16px 22px;
-      background: #4f7cff;
+      background: rgba(82,183,136,0.18);
+      border: 1px solid rgba(82,183,136,0.4);
+      color: var(--green-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 4px 14px;
+      border-radius: 99px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
       color: #fff;
-      border-radius: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(79,124,255,.30);
-    }
-
-    .note {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #6b7280;
-    }
-
-    .section {
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(79,124,255,0.1);
-    }
-
-    .sectionTitle {
-      font-size: 1.2rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 800;
+      line-height: 1.1;
+      white-space: nowrap;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: #fff;
+      padding: 52px 24px;
+    }
+
+    .about-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 28px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+      line-height: 1.75;
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+    }
+
+    .highlight-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .highlight-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--green-mid);
+      margin-bottom: 2px;
+    }
+
+    .highlight-value {
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      padding: 12px 24px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb a {
+      color: var(--green-mid);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ── ZONE PILLS ── */
+    .zone-section {
+      padding: 20px 24px 8px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .zone-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .zone-pill {
+      background: #fff;
+      border: 1.5px solid #ddd;
+      color: var(--text-mid);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .zone-pill:hover {
+      border-color: var(--green-mid);
+      color: var(--green-mid);
+    }
+
+    .zone-pill.active {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: #fff;
+    }
+
+    /* ── UNIT GRID ── */
+    .listings-section {
+      padding: 20px 24px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .unit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .unit-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .unit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .card-header {
+      background: var(--green-dark);
+      padding: 16px;
+    }
+
+    .card-unit-name {
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .card-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      margin-bottom: 6px;
+    }
+
+    .card-landmark {
+      color: var(--green-light);
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+
+    .card-body {
+      padding: 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-price {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .card-price span {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 99px;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-furnish {
+      background: #e8f5ed;
+      color: var(--green-mid);
+    }
+
+    .badge-type {
+      background: #f0ede8;
+      color: #6b5744;
+    }
+
+    .card-rooms {
+      font-size: 0.8rem;
+      color: var(--text-mid);
+    }
+
+    .card-wa {
+      display: block;
+      background: var(--green-dark);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 11px 16px;
+      transition: background 0.2s;
+      margin-top: auto;
+    }
+
+    .card-wa:hover { background: var(--green-mid); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--green-dark);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
       margin-bottom: 10px;
     }
 
-    .sectionIntro {
-      color: #5a63a3;
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-
-    .infoGrid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 14px;
-      margin-top: 12px;
-    }
-
-    .infoCard {
-      background: #f6f8ff;
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(79,124,255,.10);
-    }
-
-    .infoCard h3 {
+    .cta-band p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
       font-size: 0.95rem;
-      font-weight: 800;
-      margin-bottom: 8px;
     }
 
-    .infoCard li {
-      margin-bottom: 6px;
-      color: #4b557e;
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .pushLine {
-      margin-top: 22px;
-      text-align: center;
-      color: #5a63a3;
-    }
-
-    .bottom {
-      margin-top: 18px;
-      text-align: center;
-    }
-
-    .backLink {
-      display: inline-block;
-      margin-top: 28px;
-      color: #4f7cff;
+    .btn-wa {
+      background: var(--green-light);
+      color: #fff;
       text-decoration: none;
       font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: background 0.2s;
     }
 
-    @media(max-width:720px){
-      .infoGrid {
-        grid-template-columns: 1fr;
-      }
+    .btn-wa:hover { background: #3fa070; }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.8rem;
+      line-height: 1.8;
+    }
+
+    footer a {
+      color: var(--green-light);
+      text-decoration: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .unit-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { white-space: normal; font-size: 1.8rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 24px; }
+      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      nav { padding: 0 16px; }
+      .nav-links a:not(.nav-wa) { display: none; }
+    }
+
+    @media (max-width: 400px) {
+      .unit-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
     }
   </style>
 </head>
 
 <body>
 
-  <main class="card">
+<!-- NAV -->
+<nav>
+  <a href="https://www.haniproperties.com" class="nav-logo">Hani <span>Properties</span></a>
+  <div class="nav-links">
+    <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
+    <a href="https://wa.me/60125459182" class="nav-wa" target="_blank" rel="noopener">💬 Hubungi Hani</a>
+  </div>
+</nav>
 
-    <h1>Sewa Rumah Klang</h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">📍 Klang · Selangor</div>
+  <h1>Cari rumah di Klang?</h1>
+  <p>Klang menawarkan pelbagai pilihan — dari apartment mampu milik hingga rumah landed yang luas. Hani bantu cari yang paling sesuai untuk anda.</p>
+</section>
 
-    <p class="headline">
-      Bandar besar dengan pilihan sewa yang pelbagai, kemudahan lengkap dan banyak kawasan perumahan sesuai untuk family.
-    </p>
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <h2>Kenapa pilih Klang?</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Klang ialah salah satu bandar tertua dan tersibuk di Selangor, dengan kemudahan lengkap yang dah lama bertapak. Kawasan perumahan seperti Bandar Bukit Raja, Bandar Botanic, dan Bandar Baru Klang menawarkan kehidupan selesa dengan akses mudah ke pusat membeli-belah, sekolah, dan hospital.</p>
+        <p>Dari segi kenaikan nilai dan kepadatan kemudahan, Klang terus kukuh — boleh sambung ke Shah Alam, Putrajaya, dan KL dengan pantas melalui Federal Highway, KESAS, dan NKVE. Ideal untuk keluarga mahupun profesional yang mahukan ruang lebih besar dengan kos yang berpatutan.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">🎓</div>
+          <div>
+            <div class="highlight-label">Pendidikan</div>
+            <div class="highlight-value">UiTM Shah Alam, SMK Bayu Perdana, sekolah-sekolah kebangsaan dan swasta di sekitar</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🏥</div>
+          <div>
+            <div class="highlight-label">Kesihatan</div>
+            <div class="highlight-value">KPJ Klang Specialist Hospital, Columbia Asia Hospital Klang, Hospital Tengku Ampuan Rahimah, Columbia Asia Bukit Rimau</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🛍️</div>
+          <div>
+            <div class="highlight-label">Membeli-belah</div>
+            <div class="highlight-value">AEON Bukit Raja, AEON Bukit Tinggi, Setia City Mall, Giant Klang, Lotus's Klang</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">🛣️</div>
+          <div>
+            <div class="highlight-label">Lebuh Raya &amp; Transit</div>
+            <div class="highlight-value">Federal Highway, KESAS, NKVE, WCE, KTM Klang, KTM Teluk Pulai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="cta">
-      <a href="https://t.me/hanipropertiesrentals/116" target="_blank" class="btn">
-        📲 Tengok Unit Klang Sekarang
-      </a>
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="https://www.haniproperties.com">Hani Properties</a> › <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a> › Klang
+</div>
 
-      <p class="note">
-        Listing update harian • Unit cepat habis
-      </p>
+<!-- ZONE PILLS -->
+<div class="zone-section">
+  <div class="zone-pills">
+    <button class="zone-pill active" onclick="filterZone('semua', this)">Semua</button>
+    <button class="zone-pill" onclick="filterZone('bandar-bukit-raja', this)">Bandar Bukit Raja</button>
+    <button class="zone-pill" onclick="filterZone('bandar-baru-klang', this)">Bandar Baru Klang</button>
+    <button class="zone-pill" onclick="filterZone('bandar-botanic', this)">Bandar Botanic</button>
+    <button class="zone-pill" onclick="filterZone('taman-bayu-perdana', this)">Taman Bayu Perdana</button>
+    <button class="zone-pill" onclick="filterZone('bandar-parklands', this)">Bandar Parklands</button>
+    <button class="zone-pill" onclick="filterZone('air-hitam', this)">Taman Perindustrian Air Hitam</button>
+  </div>
+</div>
+
+<!-- UNIT GRID -->
+<div class="listings-section">
+  <div class="unit-grid" id="unitGrid">
+
+    <!-- 1: Bandar Bukit Raja FF Landed — 98% -->
+    <div class="unit-card" data-zone="bandar-bukit-raja">
+      <div class="card-header">
+        <div class="card-unit-name">Bandar Bukit Raja Landed</div>
+        <div class="card-sub">📍 Bandar Bukit Raja, Klang</div>
+        <div class="card-landmark">🛍️ AEON Mall Bukit Raja</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,800 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Fully Furnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Bandar%20Bukit%20Raja%20Landed%20di%20Klang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
     </div>
 
-    <div class="section">
-      <div class="sectionTitle">Kenapa pilih Klang?</div>
-
-      <p class="sectionIntro">
-        Klang sesuai untuk tenant yang perlukan rumah dengan nilai sewa lebih berbaloi, sambil kekal dekat dengan kawasan kerja di Shah Alam, Port Klang atau PJ corridor.
-      </p>
-
-      <div class="infoGrid">
-
-        <div class="infoCard">
-          <h3>Lifestyle</h3>
-          <ul>
-            <li>AEON Bukit Tinggi</li>
-            <li>GM Klang</li>
-            <li>Local retail hubs</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Education</h3>
-          <ul>
-            <li>Nearby schools</li>
-            <li>International school options nearby</li>
-            <li>Kindergartens & daily needs</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Access</h3>
-          <ul>
-            <li>KESAS</li>
-            <li>NKVE</li>
-            <li>Federal Highway connections</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Sesuai Untuk Siapa</h3>
-          <ul>
-            <li>Family</li>
-            <li>Working adult</li>
-            <li>Tenant cari ruang lebih besar</li>
-          </ul>
-        </div>
-
+    <!-- 2: Vista Bayu — 90% -->
+    <div class="unit-card" data-zone="taman-bayu-perdana">
+      <div class="card-header">
+        <div class="card-unit-name">Vista Bayu</div>
+        <div class="card-sub">📍 Taman Bayu Perdana, Klang</div>
+        <div class="card-landmark">🏥 Hospital Tengku Ampuan Rahimah</div>
       </div>
-
-      <p class="pushLine">
-        Dah tahu Klang sesuai? Klik bawah untuk tengok unit available sekarang.
-      </p>
-
-      <div class="bottom">
-        <a href="https://t.me/hanipropertiesrentals/116" target="_blank" class="btn">
-          View Listings on Telegram
-        </a>
+      <div class="card-body">
+        <div class="card-price">RM 1,300 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Partially Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
       </div>
-
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Vista%20Bayu%20di%20Taman%20Bayu%20Perdana%2C%20Klang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
     </div>
 
-    <a class="backLink" href="index.html">← Back to Selangor Areas</a>
+    <!-- 3: Palm Garden Apartment — 82% -->
+    <div class="unit-card" data-zone="bandar-baru-klang">
+      <div class="card-header">
+        <div class="card-unit-name">Palm Garden Apartment</div>
+        <div class="card-sub">📍 Bandar Baru Klang, Klang</div>
+        <div class="card-landmark">🏥 KPJ Klang Specialist Hospital</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,500 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Partially Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Palm%20Garden%20Apartment%20di%20Bandar%20Baru%20Klang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
 
-  </main>
+    <!-- 4: Kasuarina Apartment — 81% -->
+    <div class="unit-card" data-zone="bandar-botanic">
+      <div class="card-header">
+        <div class="card-unit-name">Kasuarina Apartment</div>
+        <div class="card-sub">📍 Bandar Botanic, Klang</div>
+        <div class="card-landmark">🛍️ AEON Mall Bukit Tinggi</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,100 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Partially Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Kasuarina%20Apartment%20di%20Bandar%20Botanic%2C%20Klang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
+
+    <!-- 5: Bandar Parklands Shop Lot — 76% -->
+    <div class="unit-card" data-zone="bandar-parklands">
+      <div class="card-header">
+        <div class="card-unit-name">Bandar Parklands Shop Lot</div>
+        <div class="card-sub">📍 Bandar Parklands, Klang</div>
+        <div class="card-landmark">🛍️ AEON Bukit Tinggi</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 5,200 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Unfurnished</span>
+          <span class="badge badge-type">Shop Lot</span>
+        </div>
+        <div class="card-rooms">Ruang Komersial · 3,000 sqft</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Bandar%20Parklands%20Shop%20Lot%20di%20Klang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
+
+    <!-- 6: Bandar Bukit Raja Corner — 71% -->
+    <div class="unit-card" data-zone="bandar-bukit-raja">
+      <div class="card-header">
+        <div class="card-unit-name">Bandar Bukit Raja Corner Terrace</div>
+        <div class="card-sub">📍 Bandar Bukit Raja, Klang</div>
+        <div class="card-landmark">🛍️ Setia City Mall</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,600 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Unfurnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Bandar%20Bukit%20Raja%20Corner%20Terrace%20di%20Klang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
+
+    <!-- 7: Bandar Bukit Raja 1.5-Storey — 69% -->
+    <div class="unit-card" data-zone="bandar-bukit-raja">
+      <div class="card-header">
+        <div class="card-unit-name">Bandar Bukit Raja 1.5-Storey</div>
+        <div class="card-sub">📍 Bandar Bukit Raja, Klang</div>
+        <div class="card-landmark">🏥 Columbia Asia Hospital Klang</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,500 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Partially Furnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Bandar%20Bukit%20Raja%201.5-Storey%20di%20Klang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
+
+    <!-- 8: Taman Perindustrian Air Hitam Factory — 71% -->
+    <div class="unit-card" data-zone="air-hitam">
+      <div class="card-header">
+        <div class="card-unit-name">Kilang Semi-D Air Hitam</div>
+        <div class="card-sub">📍 Taman Perindustrian Air Hitam, Klang</div>
+        <div class="card-landmark">🛣️ KESAS / WCE / ELITE Highway</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 18,500 <span>sebulan</span></div>
+        <div class="card-badges">
+          <span class="badge badge-furnish">Unfurnished</span>
+          <span class="badge badge-type">Landed Industrial</span>
+        </div>
+        <div class="card-rooms">Kilang · 7,318 sqft</div>
+      </div>
+      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20kilang%20Semi-D%20di%20Taman%20Perindustrian%20Air%20Hitam%2C%20Klang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Tak jumpa yang sesuai?</h2>
+  <p>Beritahu Hani apa yang anda cari — beliau akan carikan unit yang paling matching untuk anda.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20nak%20cari%20rumah%20sewa%20di%20Klang.%20Boleh%20tolong%3F" class="btn-wa" target="_blank" rel="noopener">💬 WhatsApp Hani</a>
+    <a href="https://t.me/hanipropertiesrentals/239" class="btn-outline" target="_blank" rel="noopener">Lihat Semua Listing</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Hani Properties · ERA Real Estate E(1)1773/3</p>
+  <p>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a></p>
+  <p><a href="https://www.haniproperties.com">haniproperties.com</a> · Property made personal.</p>
+</footer>
+
+<script>
+  function filterZone(zone, btn) {
+    document.querySelectorAll('.zone-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.unit-card').forEach(card => {
+      card.style.display = (zone === 'semua' || card.dataset.zone === zone) ? 'flex' : 'none';
+    });
+  }
+</script>
 
 </body>
 </html>

@@ -1,238 +1,811 @@
 <!DOCTYPE html>
-<html lang="en-MY">
-
+<html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Sewa Rumah Damansara | Kawasan & Pilihan Unit 2026</title>
-  <meta name="description" content="Cari rumah untuk disewa di Damansara. Lihat kelebihan kawasan dan browse listing terkini Damansara di Telegram.">
-  <meta name="robots" content="index, follow">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sewa Rumah Damansara | Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa di Damansara — studio, kondominium dan servis residens dari RM1,100 hingga RM5,500. Hubungi Hani Properties untuk pilihan terbaik di Selangor." />
+  <link rel="canonical" href="https://www.haniproperties.com/damansara.html" />
+  <meta property="og:title" content="Sewa Rumah Damansara | Hani Properties" />
+  <meta property="og:description" content="Listing sewa terpilih di Damansara — studio, kondo & servis residens. Semak sekarang." />
+  <meta property="og:url" content="https://www.haniproperties.com/damansara.html" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Hani Properties",
+    "url": "https://www.haniproperties.com",
+    "telephone": "+60125459182",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Selangor",
+      "addressCountry": "MY"
+    },
+    "employee": {
+      "@type": "Person",
+      "name": "Marhani Bt Mohamad Nor",
+      "telephone": "+60125459182"
+    },
+    "areaServed": "Damansara, Selangor"
+  }
+  </script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    :root {
+      --green-dark: #1B4D35;
+      --green-mid: #2E7D52;
+      --green-light: #52B788;
+      --cream: #F7F5F0;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-muted: #888;
+      --radius: 10px;
+      --radius-sm: 6px;
     }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      min-height: 100vh;
-      padding: 24px;
-      background: linear-gradient(-45deg, #f7f9ff, #eef2ff, #f2f6ff, #e8efff);
-      background-size: 400% 400%;
-      animation: bgMove 12s ease infinite;
-      color: #2b2f55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
     }
 
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
-
-    .card {
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 24px;
-      padding: 34px;
-      box-shadow: 0 25px 70px rgba(25, 35, 90, 0.10);
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: .02em;
     }
-
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      margin-bottom: 12px;
+    .nav-logo span { color: var(--green-light); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-
-    .headline {
-      color: #5a63a3;
-      line-height: 1.7;
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .85rem;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
     }
+    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
+    .nav-wa {
+      background: var(--green-light) !important;
+      color: var(--green-dark) !important;
+      font-weight: 600 !important;
+      padding: 7px 14px !important;
+    }
+    .nav-wa:hover { background: #62cc98 !important; }
 
-    .cta {
-      margin-top: 22px;
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-dark);
+      padding: 52px 24px 48px;
       text-align: center;
     }
-
-    .btn {
+    .hero-eyebrow {
       display: inline-block;
-      padding: 16px 22px;
-      background: #4f7cff;
+      background: rgba(255,255,255,.12);
+      color: var(--green-light);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
       color: #fff;
-      border-radius: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(79,124,255,.30);
-    }
-
-    .note {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #6b7280;
-    }
-
-    .section {
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(79,124,255,0.1);
-    }
-
-    .sectionTitle {
-      font-size: 1.2rem;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 800;
-      margin-bottom: 10px;
+      white-space: nowrap;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      color: rgba(255,255,255,.75);
+      font-size: 1rem;
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.65;
     }
 
-    .sectionIntro {
-      color: #5a63a3;
-      line-height: 1.7;
+    /* ── ABOUT ── */
+    .about {
+      background: #fff;
+      padding: 48px 24px;
+    }
+    .about-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .about h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .about-text p {
+      font-size: .95rem;
+      color: var(--text-mid);
+      line-height: 1.75;
       margin-bottom: 14px;
     }
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    .highlight-item .icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+    .highlight-item .hl-label { font-size: .75rem; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: .04em; }
+    .highlight-item .hl-text { font-size: .88rem; color: var(--text-mid); margin-top: 2px; }
 
-    .infoGrid {
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: var(--cream);
+      padding: 10px 24px;
+      border-bottom: 1px solid #e5e3de;
+    }
+    .breadcrumb-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .breadcrumb-inner a { color: var(--green-mid); text-decoration: none; }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-inner span { margin: 0 6px; }
+
+    /* ── LISTINGS SECTION ── */
+    .listings-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    .listings-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .listings-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .listings-count {
+      font-size: .85rem;
+      color: var(--text-muted);
+    }
+
+    /* ── ZONE PILLS ── */
+    .zone-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .pill {
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid #d5d2cc;
+      background: #fff;
+      color: var(--text-mid);
+      transition: all .15s;
+      user-select: none;
+    }
+    .pill:hover { border-color: var(--green-mid); color: var(--green-mid); }
+    .pill.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+
+    /* ── UNIT GRID ── */
+    .unit-grid {
       display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 14px;
-      margin-top: 12px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
     }
 
-    .infoCard {
-      background: #f6f8ff;
+    /* ── CARD ── */
+    .unit-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .unit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.1), 0 12px 32px rgba(0,0,0,.08);
+    }
+
+    .card-tile {
+      background: var(--green-dark);
       padding: 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(79,124,255,.10);
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-tile-name {
+      font-size: .92rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .card-tile-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .card-tile-location {
+      font-size: .75rem;
+      color: rgba(255,255,255,.75);
+    }
+    .card-tile-landmark {
+      font-size: .72rem;
+      color: var(--green-light);
+      opacity: .9;
     }
 
-    .infoCard h3 {
-      font-size: 0.95rem;
+    .card-body {
+      padding: 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      line-height: 1.1;
+    }
+    .card-price-label {
+      font-size: .72rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .badge {
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: .02em;
+    }
+    .badge-ff   { background: #dcf4e8; color: #1a6640; }
+    .badge-pf   { background: #fff3d6; color: #7a5200; }
+    .badge-uf   { background: #f0f0f0; color: #555; }
+    .badge-type { background: #e8f0fe; color: #1a4fa0; }
+
+    .card-rooms {
+      font-size: .82rem;
+      color: var(--text-mid);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .card-wa-btn {
+      display: block;
+      margin-top: auto;
+      background: var(--green-mid);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
+    }
+    .card-wa-btn:hover { background: var(--green-dark); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--green-dark);
+      padding: 40px 24px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .cta-band h2 {
+      color: #fff;
+      font-size: 1.4rem;
       font-weight: 800;
       margin-bottom: 8px;
     }
-
-    .infoCard li {
-      margin-bottom: 6px;
-      color: #4b557e;
+    .cta-band p {
+      color: rgba(255,255,255,.7);
+      font-size: .95rem;
+      margin-bottom: 24px;
     }
-
-    .pushLine {
-      margin-top: 22px;
-      text-align: center;
-      color: #5a63a3;
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-
-    .bottom {
-      margin-top: 18px;
-      text-align: center;
-    }
-
-    .backLink {
-      display: inline-block;
-      margin-top: 28px;
-      color: #4f7cff;
-      text-decoration: none;
+    .btn-wa {
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
       font-weight: 700;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: background .15s;
     }
+    .btn-wa:hover { background: #62cc98; }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.4);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: border-color .15s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,.8); }
 
-    @media(max-width:720px){
-      .infoGrid {
-        grid-template-columns: 1fr;
-      }
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 24px;
+      font-size: .78rem;
+      line-height: 1.8;
+    }
+    footer a { color: var(--green-light); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .unit-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.5rem; white-space: normal; }
+      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .listings-section { padding: 24px 14px 40px; }
+    }
+    @media (max-width: 380px) {
+      .unit-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
 
-  <main class="card">
+<!-- NAV -->
+<nav>
+  <a href="https://www.haniproperties.com" class="nav-logo">Hani<span>Properties</span></a>
+  <div class="nav-links">
+    <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20listing%20di%20Damansara" class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+  </div>
+</nav>
 
-    <h1>Sewa Rumah Damansara</h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">📍 Damansara · Selangor</div>
+  <h1>Cari rumah sewa di Damansara?</h1>
+  <p class="hero-desc">Dari studio moden di i-City Damansara Perdana hingga kondominium luas di Ara Damansara — kami ada pilihan untuk pelajar, profesional muda, dan keluarga.</p>
+</section>
 
-    <p class="headline">
-      Kawasan premium dan matang dengan lifestyle kuat, akses bandar yang baik dan banyak pilihan condo untuk tenant yang nak lokasi strategik.
-    </p>
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <h2>Kenapa pilih Damansara?</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Damansara merangkumi beberapa sub-kawasan premium — dari Damansara Perdana yang padat dengan studio dan servis residens berdekatan MRT, hingga Ara Damansara yang lebih tenang dengan laluan LRT tersendiri. Kawasan ini popular di kalangan pelajar, profesional muda, dan keluarga muda yang mahukan akses bandar tanpa tinggal di tengah KL.</p>
+        <p>Dengan LDP, NKVE, dan SPRINT sebagai tulang belakang, perjalanan ke Subang, PJ, dan KL City Center mudah dan pantas. 1 Utama, IPC, The Curve, dan Citta Mall semuanya dalam radius yang selesa.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <span class="icon">🎓</span>
+          <div>
+            <div class="hl-label">Pendidikan</div>
+            <div class="hl-text">Taylor's University, SEGi University, HELP University, Sunway University</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="icon">🏥</span>
+          <div>
+            <div class="hl-label">Kesihatan</div>
+            <div class="hl-text">KPJ Damansara Specialist, Damansara Specialist Hospital, Columbia Asia Ara Damansara</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="icon">🛍️</span>
+          <div>
+            <div class="hl-label">Membeli-belah</div>
+            <div class="hl-text">1 Utama, IPC Shopping Centre, The Curve, Citta Mall, Paradigm Mall</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="icon">🛣️</span>
+          <div>
+            <div class="hl-label">Lebuh Raya</div>
+            <div class="hl-text">LDP, NKVE, SPRINT Highway, Federal Highway</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="cta">
-      <a href="https://t.me/hanipropertiesrentals/108" target="_blank" class="btn">
-        📲 Tengok Unit Damansara Sekarang
-      </a>
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="https://www.haniproperties.com">Hani Properties</a>
+    <span>›</span>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a>
+    <span>›</span>
+    Damansara
+  </div>
+</div>
 
-      <p class="note">
-        Listing update harian • Unit cepat habis
-      </p>
+<!-- LISTINGS -->
+<section class="listings-section">
+  <div class="listings-header">
+    <div class="listings-title">Listing Sewa — Damansara</div>
+    <div class="listings-count" id="unit-count">10 unit tersedia</div>
+  </div>
+
+  <!-- ZONE PILLS -->
+  <div class="zone-pills">
+    <div class="pill active" data-zone="all" onclick="filterZone(this, 'all')">Semua</div>
+    <div class="pill" data-zone="damansara-perdana" onclick="filterZone(this, 'damansara-perdana')">Damansara Perdana</div>
+    <div class="pill" data-zone="ara-damansara" onclick="filterZone(this, 'ara-damansara')">Ara Damansara</div>
+    <div class="pill" data-zone="damansara-damai" onclick="filterZone(this, 'damansara-damai')">Damansara Damai</div>
+  </div>
+
+  <!-- UNIT GRID -->
+  <div class="unit-grid" id="unit-grid">
+
+    <!-- 1. Maya Ara Residences — 76% Tier 1 AniListings -->
+    <div class="unit-card" data-zone="ara-damansara">
+      <div class="card-tile">
+        <div class="card-tile-name">Maya Ara Residences</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Ara Damansara, Damansara</div>
+          <div class="card-tile-landmark">🚉 LRT Ara Damansara</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 3,000</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 2 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Maya%20Ara%20Residences%20di%20Ara%20Damansara.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
     </div>
 
-    <div class="section">
-      <div class="sectionTitle">Kenapa pilih Damansara?</div>
-
-      <p class="sectionIntro">
-        Damansara sentiasa jadi pilihan sebab dekat dengan KL, PJ dan banyak hub komersial. Sesuai untuk tenant yang utamakan convenience dan lifestyle.
-      </p>
-
-      <div class="infoGrid">
-
-        <div class="infoCard">
-          <h3>Lifestyle</h3>
-          <ul>
-            <li>1 Utama</li>
-            <li>Curve / IPC</li>
-            <li>Starling Mall nearby</li>
-          </ul>
+    <!-- 2. Puncak Seri Kelana — 83% Tier 1 AniListings -->
+    <div class="unit-card" data-zone="ara-damansara">
+      <div class="card-tile">
+        <div class="card-tile-name">Puncak Seri Kelana</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Ara Damansara, Damansara</div>
+          <div class="card-tile-landmark">🚉 LRT Ara Damansara</div>
         </div>
-
-        <div class="infoCard">
-          <h3>Education</h3>
-          <ul>
-            <li>Nearby international schools</li>
-            <li>Private colleges</li>
-            <li>Many established schools</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Access</h3>
-          <ul>
-            <li>MRT</li>
-            <li>SPRINT / LDP</li>
-            <li>Easy access ke PJ / KL</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Sesuai Untuk Siapa</h3>
-          <ul>
-            <li>Working adult</li>
-            <li>Family</li>
-            <li>Tenant cari kawasan matang</li>
-          </ul>
-        </div>
-
       </div>
-
-      <p class="pushLine">
-        Dah tahu Damansara sesuai? Klik bawah untuk tengok unit available sekarang.
-      </p>
-
-      <div class="bottom">
-        <a href="https://t.me/hanipropertiesrentals/108" target="_blank" class="btn">
-          View Listings on Telegram
-        </a>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,800</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Puncak%20Seri%20Kelana%20di%20Ara%20Damansara.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
       </div>
-
     </div>
 
-    <a class="backLink" href="index.html">← Back to Selangor Areas</a>
+    <!-- 3. Empire City Halo Sunday — 100% Tier 2 -->
+    <div class="unit-card" data-zone="damansara-perdana">
+      <div class="card-tile">
+        <div class="card-tile-name">Empire City Halo Sunday</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Damansara Perdana, Damansara</div>
+          <div class="card-tile-landmark">🚉 MRT Mutiara Damansara</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,100</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Studio</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 Studio</span>
+          <span>🚿 1 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Empire%20City%20Halo%20Sunday%20di%20Damansara%20Perdana.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
 
-  </main>
+    <!-- 4. The Paxtonz — 93% Tier 2 -->
+    <div class="unit-card" data-zone="damansara-perdana">
+      <div class="card-tile">
+        <div class="card-tile-name">The Paxtonz</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Damansara Perdana, Damansara</div>
+          <div class="card-tile-landmark">🚉 MRT Bandar Utama</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,600</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Studio</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 Studio</span>
+          <span>🚿 1 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20The%20Paxtonz%20di%20Damansara%20Perdana.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 5. Empire City Halo Sunday Tower — 90% Tier 2 -->
+    <div class="unit-card" data-zone="damansara-perdana">
+      <div class="card-tile">
+        <div class="card-tile-name">Empire City Halo Sunday Tower</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Damansara Perdana, Damansara</div>
+          <div class="card-tile-landmark">🚉 MRT Mutiara Damansara</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,100</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Studio</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 Studio</span>
+          <span>🚿 1 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Empire%20City%20Halo%20Sunday%20Tower%20di%20Damansara%20Perdana.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 6. D'Vine Residence — 90% Tier 2 -->
+    <div class="unit-card" data-zone="damansara-perdana">
+      <div class="card-tile">
+        <div class="card-tile-name">D'Vine Residence</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Damansara Perdana, Damansara</div>
+          <div class="card-tile-landmark">🚉 MRT Mutiara Damansara</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,800</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 2 bilik</span>
+          <span>🚿 1 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20D%27Vine%20Residence%20di%20Damansara%20Perdana.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 7. Lestari Apartment — 90% Tier 2 -->
+    <div class="unit-card" data-zone="damansara-damai">
+      <div class="card-tile">
+        <div class="card-tile-name">Lestari Apartment</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Damansara Damai, Damansara</div>
+          <div class="card-tile-landmark">🚉 LRT Taman Bahagia</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,100</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Lestari%20Apartment%20di%20Damansara%20Damai.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 8. Neo Damansara — 88% Tier 2 -->
+    <div class="unit-card" data-zone="damansara-perdana">
+      <div class="card-tile">
+        <div class="card-tile-name">Neo Damansara</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Damansara Perdana, Damansara</div>
+          <div class="card-tile-landmark">🚉 MRT Mutiara Damansara</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,400</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Studio</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 Studio</span>
+          <span>🚿 1 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Neo%20Damansara%20di%20Damansara%20Perdana.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 9. Ritze Perdana 1 — 83% Tier 2 -->
+    <div class="unit-card" data-zone="damansara-perdana">
+      <div class="card-tile">
+        <div class="card-tile-name">Ritze Perdana 1</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Damansara Perdana, Damansara</div>
+          <div class="card-tile-landmark">🚉 MRT Mutiara Damansara</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 1,200</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Studio</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 Studio</span>
+          <span>🚿 1 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Ritze%20Perdana%201%20di%20Damansara%20Perdana.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- 10. Cantara Residence — 81% Tier 2 -->
+    <div class="unit-card" data-zone="ara-damansara">
+      <div class="card-tile">
+        <div class="card-tile-name">Cantara Residence</div>
+        <div class="card-tile-meta">
+          <div class="card-tile-location">📍 Ara Damansara, Damansara</div>
+          <div class="card-tile-landmark">🚉 LRT Ara Damansara</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-price">RM 5,500</div>
+          <span class="card-price-label">sebulan</span>
+        </div>
+        <div class="card-badges">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Service Residence</span>
+        </div>
+        <div class="card-rooms">
+          <span>🛏 3 bilik</span>
+          <span>🚿 2 bilik mandi</span>
+        </div>
+        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Cantara%20Residence%20di%20Ara%20Damansara.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+  </div><!-- /unit-grid -->
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Tak jumpa yang sesuai?</h2>
+  <p>Hani ada lebih banyak listing yang belum tersenarai di sini. Wasap terus untuk pilihan terkini.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Damansara.%20Boleh%20tolong%20carikan%3F" class="btn-wa" target="_blank" rel="noopener">💬 Wasap Hani Sekarang</a>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html" class="btn-outline">Lihat Semua Listing →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
+  <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></div>
+  <div style="margin-top:4px; color:rgba(255,255,255,.3)">Property made personal.</div>
+</footer>
+
+<script>
+  function filterZone(el, zone) {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    const cards = document.querySelectorAll('.unit-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const match = zone === 'all' || card.dataset.zone === zone;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    document.getElementById('unit-count').textContent = visible + ' unit tersedia';
+  }
+</script>
 
 </body>
 </html>
