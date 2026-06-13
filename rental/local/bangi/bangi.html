@@ -1,238 +1,656 @@
 <!DOCTYPE html>
-<html lang="en-MY">
-
+<html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Sewa Rumah Bangi | Kawasan & Pilihan Unit 2026</title>
-  <meta name="description" content="Cari rumah untuk disewa di Bangi. Lihat kelebihan kawasan dan browse listing terkini Bangi di Telegram.">
-  <meta name="robots" content="index, follow">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rumah Sewa Bangi | Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa di Bangi, Selangor. Kondominium, apartment, teres — berdekatan UKM, UNITEN dan KTM Bangi. Disenaraikan oleh Hani Properties, ERA Real Estate." />
+  <link rel="canonical" href="https://www.haniproperties.com/bangi.html" />
+  <meta property="og:title" content="Rumah Sewa Bangi | Hani Properties" />
+  <meta property="og:description" content="Cari rumah sewa di Bangi, Selangor. Disenaraikan oleh Hani Properties." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.haniproperties.com/bangi.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Hani Properties",
+    "url": "https://www.haniproperties.com",
+    "telephone": "+60125459182",
+    "agent": {
+      "@type": "Person",
+      "name": "Marhani Bt Mohamad Nor"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Bangi, Selangor"
     }
+  }
+  </script>
+  <style>
+    :root {
+      --green-dark: #1B4D35;
+      --green-mid: #2E7D52;
+      --green-light: #52B788;
+      --cream: #F7F5F0;
+      --text: #1A1A1A;
+      --text-muted: #555;
+      --radius: 10px;
+      --card-radius: 12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      min-height: 100vh;
-      padding: 24px;
-      background: linear-gradient(-45deg, #f7f9ff, #eef2ff, #f2f6ff, #e8efff);
-      background-size: 400% 400%;
-      animation: bgMove 12s ease infinite;
-      color: #2b2f55;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.25rem;
+      height: 56px;
+      gap: 1rem;
     }
 
-    .card {
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--green-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.85rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+    .nav-link:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+    .nav-wa {
+      background: #25D366;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .nav-wa:hover { background: #1ebe5d; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-dark);
+      padding: 3rem 1.25rem 2.5rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero-pill {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.85rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 5vw, 2.8rem);
+      font-weight: 800;
+      white-space: nowrap;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-desc {
+      max-width: 540px;
+      margin: 0 auto;
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.65;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: #fff;
+      padding: 2.5rem 1.25rem;
+    }
+
+    .about-inner {
       max-width: 900px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 24px;
-      padding: 34px;
-      box-shadow: 0 25px 70px rgba(25, 35, 90, 0.10);
     }
 
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-
-    .headline {
-      color: #5a63a3;
-      line-height: 1.7;
-    }
-
-    .cta {
-      margin-top: 22px;
-      text-align: center;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 16px 22px;
-      background: #4f7cff;
-      color: #fff;
-      border-radius: 16px;
+    .about h2 {
+      font-size: 1.25rem;
       font-weight: 700;
-      text-decoration: none;
-      transition: 0.2s;
+      color: var(--green-dark);
+      margin-bottom: 1.5rem;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(79,124,255,.30);
-    }
-
-    .note {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #6b7280;
-    }
-
-    .section {
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(79,124,255,0.1);
-    }
-
-    .sectionTitle {
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .sectionIntro {
-      color: #5a63a3;
-      line-height: 1.7;
-      margin-bottom: 14px;
-    }
-
-    .infoGrid {
+    .about-grid {
       display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 14px;
-      margin-top: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
 
-    .infoCard {
-      background: #f6f8ff;
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(79,124,255,.10);
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
     }
 
-    .infoCard h3 {
-      font-size: 0.95rem;
-      font-weight: 800;
-      margin-bottom: 8px;
+    .about-text p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.85rem; }
+
+    .about-highlights { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 0.7rem 0.85rem;
+      font-size: 0.88rem;
     }
 
-    .infoCard li {
-      margin-bottom: 6px;
-      color: #4b557e;
+    .highlight-item .hi-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .highlight-item strong { display: block; font-size: 0.82rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.1rem; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      padding: 0.6rem 1.25rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: var(--cream);
+      border-bottom: 1px solid #e8e4dc;
+    }
+    .breadcrumb a:hover { color: var(--green-mid); text-decoration: underline; }
+
+    /* ── ZONE PILLS ── */
+    .zone-bar {
+      padding: 1rem 1.25rem 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    .pushLine {
-      margin-top: 22px;
-      text-align: center;
-      color: #5a63a3;
+    .zone-pill {
+      background: #fff;
+      border: 1.5px solid #d4d0c8;
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.18s;
+      color: var(--text-muted);
+    }
+    .zone-pill:hover, .zone-pill.active {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: #fff;
     }
 
-    .bottom {
-      margin-top: 18px;
-      text-align: center;
+    /* ── GRID ── */
+    .listing-section {
+      padding: 1rem 1.25rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    .backLink {
-      display: inline-block;
-      margin-top: 28px;
-      color: #4f7cff;
-      text-decoration: none;
+    .listing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) { .listing-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .listing-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ── CARD ── */
+    .card {
+      background: #fff;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover { box-shadow: 0 6px 20px rgba(27,77,53,0.13); transform: translateY(-2px); }
+
+    .card-tile {
+      background: var(--green-dark);
+      padding: 0.9rem 0.85rem 0.75rem;
+      color: #fff;
+    }
+
+    .card-title {
+      font-size: 0.88rem;
       font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
     }
 
-    @media(max-width:720px){
-      .infoGrid {
-        grid-template-columns: 1fr;
-      }
+    .card-micro {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.3rem;
     }
+
+    .card-landmark {
+      font-size: 0.72rem;
+      color: var(--green-light);
+      opacity: 0.9;
+    }
+
+    .card-body {
+      padding: 0.75rem 0.85rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .card-price {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--green-dark);
+    }
+    .card-price span { font-size: 0.75rem; font-weight: 400; color: var(--text-muted); }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 20px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-ff   { background: #D4EDDA; color: #155724; }
+    .badge-pf   { background: #FFF3CD; color: #856404; }
+    .badge-uf   { background: #F8D7DA; color: #721C24; }
+    .badge-type { background: #E2EDF8; color: #1A4D7C; }
+
+    .card-rooms {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .card-cta {
+      display: block;
+      margin-top: auto;
+      background: #25D366;
+      color: #fff;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.55rem;
+      border-radius: 7px;
+      transition: background 0.18s;
+    }
+    .card-cta:hover { background: #1ebe5d; }
+
+    /* ── "MORE COMING" BAND ── */
+    .coming-band {
+      grid-column: 1 / -1;
+      border: 2px dashed #c8c3b8;
+      border-radius: var(--card-radius);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      background: transparent;
+    }
+    .coming-band p { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .coming-band strong { color: var(--green-mid); }
+    .coming-band a {
+      display: inline-block;
+      margin-top: 0.6rem;
+      background: var(--green-dark);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 1.1rem;
+      border-radius: 20px;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--green-dark);
+      padding: 2.5rem 1.25rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    .cta-band h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-band p {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.25rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 25px;
+    }
+    .btn-wa:hover { background: #1ebe5d; }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: #fff;
+      font-size: 0.9rem;
+      padding: 0.63rem 1.4rem;
+      border-radius: 25px;
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
+    footer a { color: rgba(255,255,255,0.7); }
+    footer a:hover { color: #fff; }
   </style>
 </head>
-
 <body>
 
-  <main class="card">
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Hani<span>Properties</span></div>
+  <div class="nav-links">
+    <a class="nav-link" href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
+    <a class="nav-link" href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
+    <a class="nav-wa" href="https://wa.me/60125459182">WhatsApp</a>
+  </div>
+</nav>
 
-    <h1>Sewa Rumah Bangi</h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pill">📍 Bangi · Selangor</div>
+  <h1>Cari rumah sewa di Bangi?</h1>
+  <p class="hero-desc">Hab universiti yang berkembang pesat — UKM, UNITEN, dan lebih banyak lagi. Bangi menawarkan pilihan sewa yang pelbagai dengan akses KTM dan lebuh raya yang baik.</p>
+</section>
 
-    <p class="headline">
-      Kawasan besar dengan vibe pendidikan, kemudahan harian lengkap dan banyak pilihan rumah sewa untuk family, student dan working adult.
-    </p>
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <h2>Kenapa pilih Bangi?</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Bangi ialah salah satu kawasan paling aktif di Selangor Selatan, didorong oleh kehadiran Universiti Kebangsaan Malaysia (UKM) dan UNITEN. Permintaan sewa yang tinggi dari pelajar, staf akademik, dan profesional menjadikan kawasan ini pilihan yang kukuh untuk penyewa mahupun pelabur.</p>
+        <p>Sambungan KTM di stesen Bangi dan UKM, ditambah akses ke Lebuhraya SILK, LEKAS, dan PLUS, memudahkan perjalanan ke Kuala Lumpur, Putrajaya, dan Cyberjaya. Pusat membeli-belah seperti AEON Bangi, EVO Mall, dan Bangi Gateway melengkapi keperluan harian penduduk.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="hi-icon">🎓</div>
+          <div><strong>Pendidikan</strong>UKM dan UNITEN — dua universiti utama dalam kawasan yang sama.</div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">🚆</div>
+          <div><strong>Transit</strong>Stesen KTM Bangi dan KTM UKM — sambungan ke KL Sentral tanpa tukar.</div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">🛒</div>
+          <div><strong>Membeli-belah</strong>AEON Bangi, EVO Mall, Bangi Gateway, dan Bangi Wonderland semuanya berdekatan.</div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">🛣️</div>
+          <div><strong>Lebuhraya</strong>Akses SILK, LEKAS, dan PLUS — ke KL, Putrajaya, dan Cyberjaya dengan mudah.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="cta">
-      <a href="https://t.me/hanipropertiesrentals/94" target="_blank" class="btn">
-        📲 Tengok Unit Bangi Sekarang
-      </a>
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="https://www.haniproperties.com">Hani Properties</a> › <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a> › Bangi
+</div>
 
-      <p class="note">
-        Listing update harian • Unit cepat habis
-      </p>
+<!-- ZONE PILLS -->
+<div class="zone-bar">
+  <button class="zone-pill active" onclick="filterZone('semua', this)">Semua</button>
+  <button class="zone-pill" onclick="filterZone('southville-city', this)">Southville City</button>
+  <button class="zone-pill" onclick="filterZone('bandar-baru-bangi', this)">Bandar Baru Bangi</button>
+  <button class="zone-pill" onclick="filterZone('bangi', this)">Bangi</button>
+</div>
+
+<!-- LISTING GRID -->
+<div class="listing-section">
+  <div class="listing-grid" id="listingGrid">
+
+    <!-- Card 1: Cerrado @ Southville City — 100% -->
+    <div class="card" data-zone="southville-city">
+      <div class="card-tile">
+        <div class="card-title">Cerrado @ Southville City</div>
+        <div class="card-micro">📍 Southville City, Bangi</div>
+        <div class="card-landmark">🎓 Berhampiran UNITEN</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,400 <span>sebulan</span></div>
+        <div class="badge-row">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">2 Bilik · 1 Bilik Mandi · 655 sqft</div>
+        <a class="card-cta"
+           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Cerrado%20%40%20Southville%20City%20di%20Bangi.%20Boleh%20tahu%20lebih%20lanjut%3F"
+           target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
     </div>
 
-    <div class="section">
-      <div class="sectionTitle">Kenapa pilih Bangi?</div>
-
-      <p class="sectionIntro">
-        Bangi terkenal sebagai kawasan yang seimbang antara kediaman, pendidikan dan akses. Sebab tu ramai cari sewa di sini untuk duduk sendiri atau kongsi dengan housemate.
-      </p>
-
-      <div class="infoGrid">
-
-        <div class="infoCard">
-          <h3>Lifestyle</h3>
-          <ul>
-            <li>Evo Mall</li>
-            <li>Bangi Gateway</li>
-            <li>Local cafés & shops</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Education</h3>
-          <ul>
-            <li>UKM</li>
-            <li>UniKL nearby</li>
-            <li>Many schools around Bangi</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Access</h3>
-          <ul>
-            <li>PLUS</li>
-            <li>LEKAS</li>
-            <li>Easy access ke Kajang / Putrajaya</li>
-          </ul>
-        </div>
-
-        <div class="infoCard">
-          <h3>Sesuai Untuk Siapa</h3>
-          <ul>
-            <li>Student</li>
-            <li>Working adult</li>
-            <li>Family</li>
-          </ul>
-        </div>
-
+    <!-- Card 2: Vista Bangi — 96% -->
+    <div class="card" data-zone="bandar-baru-bangi">
+      <div class="card-tile">
+        <div class="card-title">Vista Bangi</div>
+        <div class="card-micro">📍 Bandar Baru Bangi</div>
+        <div class="card-landmark">🎓 Berhampiran UKM</div>
       </div>
-
-      <p class="pushLine">
-        Dah tahu Bangi sesuai? Klik bawah untuk tengok unit available sekarang.
-      </p>
-
-      <div class="bottom">
-        <a href="https://t.me/hanipropertiesrentals/94" target="_blank" class="btn">
-          View Listings on Telegram
-        </a>
+      <div class="card-body">
+        <div class="card-price">RM 1,800 <span>sebulan</span></div>
+        <div class="badge-row">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">SOHO</span>
+        </div>
+        <div class="card-rooms">1 Bilik · 1 Bilik Mandi · 501 sqft · Lvl 19</div>
+        <a class="card-cta"
+           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Vista%20Bangi%20di%20Bangi.%20Boleh%20tahu%20lebih%20lanjut%3F"
+           target="_blank" rel="noopener">💬 Tanya Hani</a>
       </div>
-
     </div>
 
-    <a class="backLink" href="index.html">← Back to Selangor Areas</a>
+    <!-- Card 3: BBB Seksyen 4 Terrace — 95% -->
+    <div class="card" data-zone="bandar-baru-bangi">
+      <div class="card-tile">
+        <div class="card-title">Bandar Baru Bangi Sek. 4 2-Storey Terrace</div>
+        <div class="card-micro">📍 Bandar Baru Bangi</div>
+        <div class="card-landmark">🎓 Berhampiran UKM</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,800 <span>sebulan</span></div>
+        <div class="badge-row">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">4 Bilik · 3 Bilik Mandi · 1,400 sqft</div>
+        <a class="card-cta"
+           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20teres%20di%20Bandar%20Baru%20Bangi%20Seksyen%204.%20Boleh%20tahu%20lebih%20lanjut%3F"
+           target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
 
-  </main>
+    <!-- Card 4: Residensi Adelia 4 Level 25 — 95% -->
+    <div class="card" data-zone="bangi">
+      <div class="card-tile">
+        <div class="card-title">Residensi Adelia 4</div>
+        <div class="card-micro">📍 Bangi · Level 25</div>
+        <div class="card-landmark">🎓 Berhampiran UKM</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,500 <span>sebulan</span></div>
+        <div class="badge-row">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">3 Bilik · 3 Bilik Mandi · 1,045 sqft</div>
+        <a class="card-cta"
+           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Residensi%20Adelia%204%20(Level%2025)%20di%20Bangi.%20Boleh%20tahu%20lebih%20lanjut%3F"
+           target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- Card 5: Cerrado Mid Floor — 93% -->
+    <div class="card" data-zone="southville-city">
+      <div class="card-tile">
+        <div class="card-title">Cerrado</div>
+        <div class="card-micro">📍 Southville City, Bangi</div>
+        <div class="card-landmark">🎓 Berhampiran UKM</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,600 <span>sebulan</span></div>
+        <div class="badge-row">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Condominium</span>
+        </div>
+        <div class="card-rooms">2 Bilik · 1 Bilik Mandi · 656 sqft</div>
+        <a class="card-cta"
+           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Cerrado%20di%20Southville%20City%2C%20Bangi.%20Boleh%20tahu%20lebih%20lanjut%3F"
+           target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- Card 6: Residensi Adelia 4 Level 19 — 93% -->
+    <div class="card" data-zone="bangi">
+      <div class="card-tile">
+        <div class="card-title">Residensi Adelia 4</div>
+        <div class="card-micro">📍 Bangi · Level 19</div>
+        <div class="card-landmark">🎓 Berhampiran UKM</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,800 <span>sebulan</span></div>
+        <div class="badge-row">
+          <span class="badge badge-ff">Fully Furnished</span>
+          <span class="badge badge-type">Apartment</span>
+        </div>
+        <div class="card-rooms">3 Bilik · 3 Bilik Mandi · 1,045 sqft</div>
+        <a class="card-cta"
+           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Residensi%20Adelia%204%20(Level%2019)%20di%20Bangi.%20Boleh%20tahu%20lebih%20lanjut%3F"
+           target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- Card 7: BBB 2-Storey Terrace — 86% -->
+    <div class="card" data-zone="bandar-baru-bangi">
+      <div class="card-tile">
+        <div class="card-title">Bandar Baru Bangi 2-Storey Terrace</div>
+        <div class="card-micro">📍 Bandar Baru Bangi</div>
+        <div class="card-landmark">🎓 Berhampiran UKM</div>
+      </div>
+      <div class="card-body">
+        <div class="card-price">RM 1,600 <span>sebulan</span></div>
+        <div class="badge-row">
+          <span class="badge badge-pf">Partially Furnished</span>
+          <span class="badge badge-type">Landed</span>
+        </div>
+        <div class="card-rooms">4 Bilik · 3 Bilik Mandi · 1,600 sqft</div>
+        <a class="card-cta"
+           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20teres%20di%20Bandar%20Baru%20Bangi.%20Boleh%20tahu%20lebih%20lanjut%3F"
+           target="_blank" rel="noopener">💬 Tanya Hani</a>
+      </div>
+    </div>
+
+    <!-- More listings coming band (3 slots remaining) -->
+    <div class="coming-band">
+      <p><strong>Lebih banyak listing sedang ditambah.</strong></p>
+      <p>Unit-unit baru disenaraikan setiap minggu. Hubungi kami terus untuk pilihan terkini di Bangi.</p>
+      <a href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Bangi.%20Ada%20listing%20terbaru%3F" target="_blank" rel="noopener">💬 Tanya listing terbaru</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Tak jumpa yang sesuai?</h2>
+  <p>Beritahu kami bajet dan keperluan anda — kami carikan unit yang paling kena.</p>
+  <div class="cta-buttons">
+    <a class="btn-wa" href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Bangi%20tapi%20belum%20jumpa%20yang%20sesuai.%20Boleh%20bantu%3F" target="_blank" rel="noopener">💬 WhatsApp Hani</a>
+    <a class="btn-outline" href="https://www.haniproperties.com/kawasan_sewa.html">Lihat semua listing</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
+  <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a></div>
+  <div><a href="https://www.haniproperties.com">haniproperties.com</a> · Property made personal.</div>
+</footer>
+
+<script>
+  function filterZone(zone, el) {
+    document.querySelectorAll('.zone-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.card').forEach(card => {
+      if (zone === 'semua' || card.dataset.zone === zone) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
