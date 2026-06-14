@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sewa Rumah Setia Alam | Hani Properties</title>
-  <meta name="description" content="Cari rumah sewa di Setia Alam — apartment dan kondominium dari RM700 hingga RM2,500. Hubungi Hani Properties untuk pilihan terbaik di Selangor." />
+  <title>Hartanah Setia Alam | Sewa &amp; Jual | Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa atau beli di Setia Alam — apartment, kondominium, dan teres. Hani Properties meliputi Setia Alam Core, Alam Nusantara, Setia Eco Park dan lebih lagi." />
   <link rel="canonical" href="https://www.haniproperties.com/setia-alam.html" />
-  <meta property="og:title" content="Sewa Rumah Setia Alam | Hani Properties" />
-  <meta property="og:description" content="Listing sewa terpilih di Setia Alam — apartment & kondominium. Semak sekarang." />
+  <meta property="og:title" content="Hartanah Setia Alam | Sewa &amp; Jual | Hani Properties" />
+  <meta property="og:description" content="Cari rumah sewa atau beli di Setia Alam — apartment, kondominium, dan teres. Semak listing terkini sekarang." />
   <meta property="og:url" content="https://www.haniproperties.com/setia-alam.html" />
   <meta property="og:type" content="website" />
   <script type="application/ld+json">
@@ -27,7 +27,7 @@
       "name": "Marhani Bt Mohamad Nor",
       "telephone": "+60125459182"
     },
-    "areaServed": "Setia Alam, Selangor"
+    "areaServed": ["Setia Alam, Selangor"]
   }
   </script>
   <style>
@@ -94,6 +94,9 @@
       padding: 7px 14px !important;
     }
     .nav-wa:hover { background: #62cc98 !important; }
+    @media (max-width: 600px) {
+      .nav-text-label { display: none; }
+    }
 
     /* ── HERO ── */
     .hero {
@@ -122,6 +125,9 @@
       line-height: 1.1;
       margin-bottom: 16px;
     }
+    @media (max-width: 480px) {
+      .hero h1 { white-space: normal; font-size: 1.7rem; }
+    }
     .hero-desc {
       color: rgba(255,255,255,.75);
       font-size: 1rem;
@@ -149,6 +155,9 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 32px;
+    }
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
     }
     .about-text p {
       font-size: .95rem;
@@ -180,7 +189,7 @@
       border-bottom: 1px solid #e5e3de;
     }
     .breadcrumb-inner {
-      max-width: 1100px;
+      max-width: 960px;
       margin: 0 auto;
       font-size: .8rem;
       color: var(--text-muted);
@@ -189,246 +198,214 @@
     .breadcrumb-inner a:hover { text-decoration: underline; }
     .breadcrumb-inner span { margin: 0 6px; }
 
-    /* ── LISTINGS SECTION ── */
-    .listings-section {
-      max-width: 1100px;
+    /* ── TELEGRAM + ZONES SECTION ── */
+    .content-section {
+      max-width: 960px;
       margin: 0 auto;
-      padding: 32px 20px 48px;
+      padding: 48px 24px;
     }
-    .listings-header {
+
+    /* Telegram block */
+    .tg-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 48px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    .tg-label {
+      font-size: .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .tg-buttons {
       display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .tg-btn {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .listings-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--green-dark);
-    }
-    .listings-count {
-      font-size: .85rem;
-      color: var(--text-muted);
-    }
-
-    /* ── ZONE PILLS ── */
-    .zone-pills {
-      display: flex;
-      flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 28px;
-    }
-    .pill {
-      padding: 6px 14px;
-      border-radius: 50px;
-      font-size: .82rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1.5px solid #d5d2cc;
-      background: #fff;
-      color: var(--text-mid);
-      transition: all .15s;
-      user-select: none;
-    }
-    .pill:hover { border-color: var(--green-mid); color: var(--green-mid); }
-    .pill.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
-
-    /* ── UNIT GRID ── */
-    .unit-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    /* ── CARD ── */
-    .unit-card {
-      background: #fff;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
-      display: flex;
-      flex-direction: column;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .unit-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,.1), 0 12px 32px rgba(0,0,0,.08);
-    }
-
-    .card-tile {
-      background: var(--green-dark);
-      padding: 16px;
-      min-height: 90px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .card-tile-name {
-      font-size: .92rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.3;
-      margin-bottom: 8px;
-    }
-    .card-tile-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .card-tile-location {
-      font-size: .75rem;
-      color: rgba(255,255,255,.75);
-    }
-    .card-tile-landmark {
-      font-size: .72rem;
-      color: var(--green-light);
-      opacity: .9;
-    }
-
-    .card-body {
-      padding: 14px 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .card-price {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--green-dark);
-      line-height: 1.1;
-    }
-    .card-price-label {
-      font-size: .72rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      display: block;
-      margin-top: 2px;
-    }
-    .card-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-    .badge {
-      font-size: .7rem;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: .02em;
-    }
-    .badge-ff  { background: #dcf4e8; color: #1a6640; }
-    .badge-pf  { background: #fff3d6; color: #7a5200; }
-    .badge-uf  { background: #f0f0f0; color: #555; }
-    .badge-type { background: #e8f0fe; color: #1a4fa0; }
-
-    .card-rooms {
-      font-size: .82rem;
-      color: var(--text-mid);
-      display: flex;
-      gap: 12px;
-    }
-
-    .card-wa-btn {
-      display: block;
-      margin-top: auto;
-      background: var(--green-mid);
-      color: #fff;
-      text-align: center;
-      text-decoration: none;
-      font-size: .85rem;
-      font-weight: 700;
-      padding: 10px;
+      padding: 10px 20px;
       border-radius: var(--radius-sm);
-      transition: background .15s;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .15s;
     }
-    .card-wa-btn:hover { background: var(--green-dark); }
+    .tg-btn:hover { opacity: .85; }
+    .tg-btn-sewa {
+      background: #EAF4EE;
+      color: #1B4D35;
+    }
+    .tg-btn-jual {
+      background: #E8F0FE;
+      color: #1a4fa0;
+    }
+    .tg-icon {
+      flex-shrink: 0;
+    }
 
-    /* ── COMING SOON BAND ── */
-    .coming-soon-band {
-      background: #fff;
-      border: 2px dashed #c8c4bc;
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      text-align: center;
-      margin-top: 24px;
+    /* Zones */
+    .zones h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 10px;
     }
-    .coming-soon-band .cs-icon { font-size: 2rem; margin-bottom: 10px; }
-    .coming-soon-band h3 {
-      font-size: 1rem;
+    .zones-intro {
+      font-size: .95rem;
+      color: var(--text-mid);
+      margin-bottom: 24px;
+    }
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 700px) {
+      .zones-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 440px) {
+      .zones-grid { grid-template-columns: 1fr; }
+    }
+    .zone-card {
+      background: #fff;
+      border-left: 4px solid var(--green-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 16px 16px 18px;
+    }
+    .zone-name {
+      font-size: .95rem;
       font-weight: 700;
       color: var(--green-dark);
       margin-bottom: 6px;
     }
-    .coming-soon-band p {
-      font-size: .88rem;
-      color: var(--text-muted);
-      max-width: 360px;
-      margin: 0 auto 16px;
+    .zone-desc {
+      font-size: .85rem;
+      color: var(--text-mid);
       line-height: 1.6;
     }
-    .cs-wa-btn {
-      display: inline-block;
-      background: var(--green-mid);
-      color: #fff;
-      text-decoration: none;
-      font-size: .85rem;
-      font-weight: 700;
-      padding: 10px 20px;
-      border-radius: var(--radius-sm);
-      transition: background .15s;
+
+    /* ── PRICE BAND ── */
+    .price-band {
+      background: #fff;
+      border-top: 1px solid #e5e3de;
+      border-bottom: 1px solid #e5e3de;
+      padding: 48px 24px;
     }
-    .cs-wa-btn:hover { background: var(--green-dark); }
+    .price-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .price-inner h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+    }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 700px) {
+      .price-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 440px) {
+      .price-grid { grid-template-columns: 1fr; }
+    }
+    .price-cell {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+    }
+    .price-type {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--green-mid);
+      margin-bottom: 6px;
+    }
+    .price-range {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .price-note {
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .price-row-label {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--text-muted);
+      margin-top: 20px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e3de;
+      grid-column: 1 / -1;
+    }
 
     /* ── CTA BAND ── */
     .cta-band {
       background: var(--green-dark);
-      padding: 40px 24px;
+      padding: 52px 24px;
       text-align: center;
-      margin-top: 40px;
     }
     .cta-band h2 {
       color: #fff;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 800;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .cta-band p {
-      color: rgba(255,255,255,.7);
+      color: rgba(255,255,255,.75);
       font-size: .95rem;
-      margin-bottom: 24px;
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
     }
     .cta-buttons {
       display: flex;
-      justify-content: center;
       gap: 12px;
+      justify-content: center;
       flex-wrap: wrap;
     }
     .btn-wa {
       background: var(--green-light);
       color: var(--green-dark);
-      padding: 12px 24px;
-      border-radius: var(--radius-sm);
       font-weight: 700;
-      font-size: .95rem;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
       text-decoration: none;
+      font-size: .95rem;
       transition: background .15s;
     }
     .btn-wa:hover { background: #62cc98; }
     .btn-outline {
       background: transparent;
-      color: #fff;
-      border: 2px solid rgba(255,255,255,.4);
-      padding: 12px 24px;
-      border-radius: var(--radius-sm);
+      color: rgba(255,255,255,.85);
       font-weight: 600;
-      font-size: .95rem;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid rgba(255,255,255,.35);
       text-decoration: none;
-      transition: border-color .15s;
+      font-size: .95rem;
+      transition: border-color .15s, color .15s;
     }
-    .btn-outline:hover { border-color: rgba(255,255,255,.8); }
+    .btn-outline:hover { border-color: #fff; color: #fff; }
 
     /* ── FOOTER ── */
     footer {
@@ -440,20 +417,6 @@
       line-height: 1.8;
     }
     footer a { color: var(--green-light); text-decoration: none; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .unit-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 1.5rem; white-space: normal; }
-      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .listings-section { padding: 24px 14px 40px; }
-    }
-    @media (max-width: 380px) {
-      .unit-grid { grid-template-columns: 1fr; }
-    }
   </style>
 </head>
 <body>
@@ -462,17 +425,17 @@
 <nav>
   <a href="https://www.haniproperties.com" class="nav-logo">Hani<span>Properties</span></a>
   <div class="nav-links">
-    <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
-    <a href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
-    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20listing%20di%20Setia%20Alam" class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html"><span class="nav-text-label">Sewa</span></a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html"><span class="nav-text-label">Jual</span></a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20hartanah%20di%20Setia%20Alam." class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">📍 Setia Alam · Selangor</div>
-  <h1>Cari rumah sewa di Setia Alam?</h1>
-  <p class="hero-desc">Kawasan perumahan terancang dengan kemudahan lengkap — Setia City Mall, hospital, dan akses NKVE. Sesuai untuk keluarga yang mahukan ketenangan bandar baru.</p>
+  <h1>Hartanah di Setia Alam</h1>
+  <p class="hero-desc">Sewa atau beli di Setia Alam — bandar baru S P Setia yang terancang dengan jalan lebar, taman rekreasi, dan kemudahan lengkap. Apartment, teres, hingga kondominium premium untuk pelbagai bajet dan keperluan.</p>
 </section>
 
 <!-- ABOUT -->
@@ -481,15 +444,15 @@
     <h2>Kenapa pilih Setia Alam?</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Setia Alam adalah bandar baru yang dirancang teliti oleh S P Setia — dengan jalan lebar, taman rekreasi, dan kepelbagaian jenis kediaman. Ia sesuai untuk keluarga muda yang mahukan suasana selesa jauh dari kesesakan, tapi masih dekat dengan kemudahan bandar.</p>
-        <p>Setia City Mall berada di jantung kawasan ini, dikelilingi hospital swasta, sekolah antarabangsa, dan supermarket harian. Akses NKVE memudahkan perjalanan ke Shah Alam, Subang, dan KL.</p>
+        <p>Setia Alam adalah salah satu bandar perancangan terbaik di Selangor — direka oleh S P Setia dengan konsep "live, work, play" yang menarik keluarga muda dan profesional. Jalan yang lebar, taman rekreasi yang hijau, dan kepelbagaian jenis kediaman menjadikan kawasan ini pilihan utama bagi mereka yang inginkan ketenangan bandar baru tanpa jauh dari kemudahan.</p>
+        <p>Setia City Mall dan Columbia Asia Hospital berada di tengah kawasan ini. Akses terus ke NKVE dan KESAS menghubungkan penduduk ke Shah Alam, Subang Jaya, dan Kuala Lumpur dalam masa yang singkat — menjadikan Setia Alam pilihan praktikal untuk pelbagai gaya hidup.</p>
       </div>
       <div class="about-highlights">
         <div class="highlight-item">
           <span class="icon">🎓</span>
           <div>
             <div class="hl-label">Pendidikan</div>
-            <div class="hl-text">Tenby International School Setia Alam, UiTM Puncak Perdana</div>
+            <div class="hl-text">UiTM Puncak Perdana, Tenby International School Setia Alam</div>
           </div>
         </div>
         <div class="highlight-item">
@@ -523,125 +486,106 @@
   <div class="breadcrumb-inner">
     <a href="https://www.haniproperties.com">Hani Properties</a>
     <span>›</span>
-    <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a>
-    <span>›</span>
     Setia Alam
   </div>
 </div>
 
-<!-- LISTINGS -->
-<section class="listings-section">
-  <div class="listings-header">
-    <div class="listings-title">Listing Sewa — Setia Alam</div>
-    <div class="listings-count" id="unit-count">3 unit tersedia</div>
+<!-- TELEGRAM + ZONES -->
+<section class="content-section">
+
+  <!-- Telegram block -->
+  <div class="tg-card">
+    <div class="tg-label">Semak listing terkini di Telegram</div>
+    <div class="tg-buttons">
+      <a class="tg-btn tg-btn-sewa" href="https://t.me/hanipropertiesrentals/245" target="_blank" rel="noopener">
+        <svg class="tg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.81l-1.68 7.92c-.12.54-.46.67-.93.42l-2.58-1.9-1.24 1.19c-.14.14-.26.26-.52.26l.18-2.62 4.74-4.28c.21-.18-.04-.28-.32-.1L7.7 14.37l-2.52-.79c-.55-.17-.56-.55.12-.82l9.84-3.79c.46-.17.86.11.79.84z" fill="currentColor"/>
+        </svg>
+        Sewa Setia Alam
+      </a>
+      <a class="tg-btn tg-btn-jual" href="https://t.me/hanipropertiesforsale/116" target="_blank" rel="noopener">
+        <svg class="tg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.81l-1.68 7.92c-.12.54-.46.67-.93.42l-2.58-1.9-1.24 1.19c-.14.14-.26.26-.52.26l.18-2.62 4.74-4.28c.21-.18-.04-.28-.32-.1L7.7 14.37l-2.52-.79c-.55-.17-.56-.55.12-.82l9.84-3.79c.46-.17.86.11.79.84z" fill="currentColor"/>
+        </svg>
+        Jual Setia Alam
+      </a>
+    </div>
   </div>
 
-  <!-- ZONE PILLS -->
-  <div class="zone-pills">
-    <div class="pill active" data-zone="all" onclick="filterZone(this, 'all')">Semua</div>
-    <div class="pill" data-zone="setia-alam" onclick="filterZone(this, 'setia-alam')">Setia Alam</div>
-  </div>
-
-  <!-- UNIT GRID -->
-  <div class="unit-grid" id="unit-grid">
-
-    <!-- 1. Apartmen Seroja — 56% Tier 1 AniListings -->
-    <div class="unit-card" data-zone="setia-alam">
-      <div class="card-tile">
-        <div class="card-tile-name">Apartmen Seroja</div>
-        <div class="card-tile-meta">
-          <div class="card-tile-location">📍 Setia Alam, Shah Alam</div>
-          <div class="card-tile-landmark">🛍️ Setia City Mall</div>
-        </div>
+  <!-- Zones -->
+  <div class="zones">
+    <h2>Kawasan di Setia Alam</h2>
+    <p class="zones-intro">Kami meliputi pelbagai zon di Setia Alam — dari Setia Alam Core yang mapan, hingga Alam Nusantara dan Setia Eco Park yang semakin pesat berkembang.</p>
+    <div class="zones-grid">
+      <div class="zone-card">
+        <div class="zone-name">Setia Alam Core</div>
+        <div class="zone-desc">Kawasan matang di jantung Setia Alam. Dekat Setia City Mall dan Columbia Asia Hospital — pilihan utama keluarga yang utamakan kemudahan harian.</div>
       </div>
-      <div class="card-body">
-        <div>
-          <div class="card-price">RM 700</div>
-          <span class="card-price-label">sebulan</span>
-        </div>
-        <div class="card-badges">
-          <span class="badge badge-uf">Unfurnished</span>
-          <span class="badge badge-type">Apartment</span>
-        </div>
-        <div class="card-rooms">
-          <span>🛏 3 bilik</span>
-          <span>🚿 2 bilik mandi</span>
-        </div>
-        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Apartmen%20Seroja%20di%20Setia%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+      <div class="zone-card">
+        <div class="zone-name">Alam Nusantara</div>
+        <div class="zone-desc">Fasa perumahan yang lebih baru dengan rekabentuk teres dan apartment moden. Sesuai untuk pembeli pertama dan pasangan muda yang cari nilai terbaik.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Setia Eco Park</div>
+        <div class="zone-desc">Enklaf eksklusif dengan rekabentuk lanskap hijau dan rumah semi-D premium. Pilihan untuk pembeli yang cari privasi dan gaya hidup tenang di persekitaran asri.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Setia Perdana</div>
+        <div class="zone-desc">Zon kediaman teres dan kondominium berdekatan NKVE — akses mudah ke Shah Alam dan Subang menjadikannya popular dalam kalangan profesional yang bekerja di luar kawasan.</div>
       </div>
     </div>
-
-    <!-- 2. Seri Baiduri — 93% Tier 2 -->
-    <div class="unit-card" data-zone="setia-alam">
-      <div class="card-tile">
-        <div class="card-tile-name">Seri Baiduri</div>
-        <div class="card-tile-meta">
-          <div class="card-tile-location">📍 Setia Alam, Shah Alam</div>
-          <div class="card-tile-landmark">🎓 Tenby International School</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div>
-          <div class="card-price">RM 1,800</div>
-          <span class="card-price-label">sebulan</span>
-        </div>
-        <div class="card-badges">
-          <span class="badge badge-ff">Fully Furnished</span>
-          <span class="badge badge-type">Apartment</span>
-        </div>
-        <div class="card-rooms">
-          <span>🛏 3 bilik</span>
-          <span>🚿 2 bilik mandi</span>
-        </div>
-        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20Seri%20Baiduri%20di%20Setia%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- 3. D'sini Residence — 81% Tier 2 -->
-    <div class="unit-card" data-zone="setia-alam">
-      <div class="card-tile">
-        <div class="card-tile-name">D'sini Residence</div>
-        <div class="card-tile-meta">
-          <div class="card-tile-location">📍 Setia Alam, Shah Alam</div>
-          <div class="card-tile-landmark">🛍️ Setia City Mall</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div>
-          <div class="card-price">RM 2,500</div>
-          <span class="card-price-label">sebulan</span>
-        </div>
-        <div class="card-badges">
-          <span class="badge badge-pf">Partially Furnished</span>
-          <span class="badge badge-type">Condominium</span>
-        </div>
-        <div class="card-rooms">
-          <span>🛏 3 bilik</span>
-          <span>🚿 2 bilik mandi</span>
-        </div>
-        <a class="card-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20berminat%20dengan%20D%27sini%20Residence%20di%20Setia%20Alam.%20Boleh%20bagi%20info%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-  </div><!-- /unit-grid -->
-
-  <!-- COMING SOON BAND -->
-  <div class="coming-soon-band">
-    <div class="cs-icon">🏡</div>
-    <h3>Lebih banyak listing sedang dikemas kini</h3>
-    <p>Kami sentiasa tambah unit baru di Setia Alam. Wasap Hani terus untuk tahu yang terkini — sebelum ia tersenarai di sini.</p>
-    <a class="cs-wa-btn" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Setia%20Alam.%20Ada%20unit%20baru%20tak%3F" target="_blank" rel="noopener">💬 Tanya unit terkini</a>
   </div>
 
 </section>
 
+<!-- PRICE BAND -->
+<div class="price-band">
+  <div class="price-inner">
+    <h2>Anggaran Harga di Setia Alam</h2>
+    <div class="price-grid">
+      <div class="price-row-label">🏠 Sewa (Sebulan)</div>
+      <div class="price-cell">
+        <div class="price-type">Apartment / Flat</div>
+        <div class="price-range">RM 1,000 – RM 2,000</div>
+        <div class="price-note">Unit standard, sesuai untuk pasangan atau individu</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Servis Residensi</div>
+        <div class="price-range">RM 1,500 – RM 3,000</div>
+        <div class="price-note">Kemudahan fasiliti penuh, lokasi strategik</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Teres / Landed</div>
+        <div class="price-range">RM 2,000 – RM 5,000</div>
+        <div class="price-note">Ruang luas untuk keluarga, ada taman peribadi</div>
+      </div>
+      <div class="price-row-label">🏡 Beli (Harga Pasaran)</div>
+      <div class="price-cell">
+        <div class="price-type">Apartment / Servis</div>
+        <div class="price-range">RM 250k – RM 600k</div>
+        <div class="price-note">Pilihan pelaburan dan kediaman pertama</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Teres 2 Tingkat</div>
+        <div class="price-range">RM 450k – RM 900k</div>
+        <div class="price-note">Rumah keluarga matang dalam kawasan terancang</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Semi-D / Banglo</div>
+        <div class="price-range">RM 800k ke atas</div>
+        <div class="price-note">Eksklusif di Setia Eco Park dan fasa premium</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CTA BAND -->
 <div class="cta-band">
-  <h2>Tak jumpa yang sesuai?</h2>
-  <p>Hani ada lebih banyak listing yang belum tersenarai di sini. Wasap terus untuk pilihan terkini.</p>
+  <h2>Tanya Hani untuk listing terkini</h2>
+  <p>Sewa atau beli — listing bertukar cepat. Wasap terus untuk tahu unit yang ada sekarang.</p>
   <div class="cta-buttons">
-    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Setia%20Alam.%20Boleh%20tolong%20carikan%3F" class="btn-wa" target="_blank" rel="noopener">💬 Wasap Hani Sekarang</a>
-    <a href="https://www.haniproperties.com/kawasan_sewa.html" class="btn-outline">Lihat Semua Listing →</a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20hartanah%20di%20Setia%20Alam." class="btn-wa" target="_blank" rel="noopener">💬 Wasap Hani Sekarang</a>
+    <a href="https://www.haniproperties.com" class="btn-outline">Kembali ke Laman Utama →</a>
   </div>
 </div>
 
@@ -651,21 +595,6 @@
   <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></div>
   <div style="margin-top:4px; color:rgba(255,255,255,.3)">Property made personal.</div>
 </footer>
-
-<script>
-  function filterZone(el, zone) {
-    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
-    const cards = document.querySelectorAll('.unit-card');
-    let visible = 0;
-    cards.forEach(card => {
-      const match = zone === 'all' || card.dataset.zone === zone;
-      card.style.display = match ? '' : 'none';
-      if (match) visible++;
-    });
-    document.getElementById('unit-count').textContent = visible + ' unit tersedia';
-  }
-</script>
 
 </body>
 </html>
