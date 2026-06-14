@@ -3,16 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rumah Sewa di Ampang — Hani Properties</title>
-  <meta name="description" content="Cari rumah sewa di Ampang, Selangor? Hani Properties ada pilihan kondominium, service residence dan landed di Ampang. Hubungi Hani sekarang!" />
+  <title>Hartanah Ampang | Sewa &amp; Jual | Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa atau beli di Ampang — kondominium, servis residensi, dan landed berdekatan hospital utama dan KLCC. Hani Properties meliputi Ampang Hilir, Ukay Perdana, Jelatek dan lebih lagi." />
   <link rel="canonical" href="https://www.haniproperties.com/ampang.html" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Rumah Sewa di Ampang — Hani Properties" />
-  <meta property="og:description" content="Cari rumah sewa di Ampang? Hani Properties ada pilihan terbaik dari Ampang Hilir hingga Ukay Perdana. Hubungi kami sekarang!" />
+  <meta property="og:title" content="Hartanah Ampang | Sewa &amp; Jual | Hani Properties" />
+  <meta property="og:description" content="Cari rumah sewa atau beli di Ampang — kondominium, servis residensi, dan landed berdekatan hospital utama dan KLCC. Semak listing terkini sekarang." />
   <meta property="og:url" content="https://www.haniproperties.com/ampang.html" />
-  <meta property="og:site_name" content="Hani Properties" />
-
+  <meta property="og:type" content="website" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -25,17 +22,15 @@
       "addressRegion": "Selangor",
       "addressCountry": "MY"
     },
-    "agent": {
+    "employee": {
       "@type": "Person",
-      "name": "Marhani Bt Mohamad Nor"
+      "name": "Marhani Bt Mohamad Nor",
+      "telephone": "+60125459182"
     },
-    "areaServed": "Ampang, Selangor"
+    "areaServed": ["Ampang, Selangor"]
   }
   </script>
-
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --green-dark: #1B4D35;
       --green-mid: #2E7D52;
@@ -43,20 +38,21 @@
       --cream: #F7F5F0;
       --text-dark: #1a1a1a;
       --text-mid: #444;
-      --text-light: #777;
+      --text-muted: #888;
       --radius: 10px;
-      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --radius-sm: 6px;
     }
 
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--cream);
       color: var(--text-dark);
       line-height: 1.6;
     }
 
+    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
@@ -66,454 +62,411 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 24px;
-      height: 58px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
-
     .nav-logo {
-      color: #fff;
+      font-size: 1rem;
       font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: -0.01em;
+      color: #fff;
       text-decoration: none;
+      letter-spacing: .02em;
     }
-
     .nav-logo span { color: var(--green-light); }
-
     .nav-links {
       display: flex;
       align-items: center;
       gap: 8px;
     }
-
     .nav-links a {
-      color: rgba(255,255,255,0.82);
+      color: rgba(255,255,255,.8);
       text-decoration: none;
-      font-size: 0.875rem;
+      font-size: .85rem;
       padding: 6px 12px;
-      border-radius: 6px;
-      transition: background 0.2s;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
     }
-
-    .nav-links a:hover { background: rgba(255,255,255,0.1); }
-
+    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
     .nav-wa {
       background: var(--green-light) !important;
-      color: #fff !important;
-      font-weight: 600;
-      padding: 6px 14px !important;
+      color: var(--green-dark) !important;
+      font-weight: 600 !important;
+      padding: 7px 14px !important;
+    }
+    .nav-wa:hover { background: #62cc98 !important; }
+    @media (max-width: 600px) {
+      .nav-text-label { display: none; }
     }
 
-    .nav-wa:hover { background: #3fa070 !important; }
-
+    /* ── HERO ── */
     .hero {
       background: var(--green-dark);
-      padding: 56px 24px 52px;
+      padding: 52px 24px 48px;
       text-align: center;
     }
-
     .hero-eyebrow {
       display: inline-block;
-      background: rgba(82,183,136,0.18);
-      border: 1px solid rgba(82,183,136,0.4);
+      background: rgba(255,255,255,.12);
       color: var(--green-light);
-      font-size: 0.8rem;
+      font-size: .8rem;
       font-weight: 600;
-      letter-spacing: 0.04em;
-      padding: 4px 14px;
-      border-radius: 99px;
-      margin-bottom: 20px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 18px;
     }
-
     .hero h1 {
       color: #fff;
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 800;
-      line-height: 1.1;
       white-space: nowrap;
+      letter-spacing: -.02em;
+      line-height: 1.1;
       margin-bottom: 16px;
     }
-
-    .hero p {
-      color: rgba(255,255,255,0.72);
+    @media (max-width: 480px) {
+      .hero h1 { white-space: normal; font-size: 1.7rem; }
+    }
+    .hero-desc {
+      color: rgba(255,255,255,.75);
       font-size: 1rem;
       max-width: 520px;
       margin: 0 auto;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
+    /* ── ABOUT ── */
     .about {
       background: #fff;
-      padding: 52px 24px;
+      padding: 48px 24px;
     }
-
     .about-inner {
-      max-width: 1000px;
+      max-width: 960px;
       margin: 0 auto;
     }
-
     .about h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--green-dark);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
-
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
+      gap: 32px;
     }
-
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
     .about-text p {
+      font-size: .95rem;
       color: var(--text-mid);
-      font-size: 0.95rem;
-      margin-bottom: 14px;
       line-height: 1.75;
+      margin-bottom: 14px;
     }
-
     .about-highlights {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
-
     .highlight-item {
       display: flex;
       align-items: flex-start;
       gap: 12px;
       background: var(--cream);
-      border-radius: var(--radius);
-      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
     }
+    .highlight-item .icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+    .highlight-item .hl-label { font-size: .75rem; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: .04em; }
+    .highlight-item .hl-text { font-size: .88rem; color: var(--text-mid); margin-top: 2px; }
 
-    .highlight-icon {
-      font-size: 1.3rem;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .highlight-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--green-mid);
-      margin-bottom: 2px;
-    }
-
-    .highlight-value {
-      font-size: 0.9rem;
-      color: var(--text-dark);
-      font-weight: 500;
-    }
-
+    /* ── BREADCRUMB ── */
     .breadcrumb {
-      padding: 12px 24px;
-      font-size: 0.8rem;
-      color: var(--text-light);
-      max-width: 1100px;
+      background: var(--cream);
+      padding: 10px 24px;
+      border-bottom: 1px solid #e5e3de;
+    }
+    .breadcrumb-inner {
+      max-width: 960px;
       margin: 0 auto;
+      font-size: .8rem;
+      color: var(--text-muted);
     }
+    .breadcrumb-inner a { color: var(--green-mid); text-decoration: none; }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-inner span { margin: 0 6px; }
 
-    .breadcrumb a {
-      color: var(--green-mid);
-      text-decoration: none;
-    }
-
-    .breadcrumb a:hover { text-decoration: underline; }
-
-    .zone-section {
-      padding: 20px 24px 8px;
-      max-width: 1100px;
+    /* ── TELEGRAM + ZONES SECTION ── */
+    .content-section {
+      max-width: 960px;
       margin: 0 auto;
+      padding: 48px 24px;
     }
 
-    .zone-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .zone-pill {
-      background: #fff;
-      border: 1.5px solid #ddd;
-      color: var(--text-mid);
-      font-size: 0.82rem;
-      font-weight: 500;
-      padding: 6px 16px;
-      border-radius: 99px;
-      cursor: pointer;
-      transition: all 0.18s;
-    }
-
-    .zone-pill:hover {
-      border-color: var(--green-mid);
-      color: var(--green-mid);
-    }
-
-    .zone-pill.active {
-      background: var(--green-dark);
-      border-color: var(--green-dark);
-      color: #fff;
-    }
-
-    .listings-section {
-      padding: 20px 24px 48px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .unit-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .unit-card {
+    /* Telegram block */
+    .tg-card {
       background: #fff;
       border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 48px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
     }
-
-    .unit-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    }
-
-    .card-header {
-      background: var(--green-dark);
-      padding: 16px;
-    }
-
-    .card-unit-name {
-      color: #fff;
-      font-size: 0.92rem;
+    .tg-label {
+      font-size: .8rem;
       font-weight: 700;
-      margin-bottom: 4px;
-      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
     }
-
-    .card-sub {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.75rem;
-      margin-bottom: 6px;
-    }
-
-    .card-landmark {
-      color: var(--green-light);
-      font-size: 0.72rem;
-      font-weight: 500;
-    }
-
-    .card-body {
-      padding: 14px 16px;
-      flex: 1;
+    .tg-buttons {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
+    .tg-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .tg-btn:hover { opacity: .85; }
+    .tg-btn-sewa { background: #EAF4EE; color: #1B4D35; }
+    .tg-btn-jual { background: #E8F0FE; color: #1a4fa0; }
+    .tg-icon { flex-shrink: 0; }
 
-    .card-price {
-      font-size: 1.05rem;
+    /* Zones */
+    .zones h2 {
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--green-dark);
+      margin-bottom: 10px;
     }
-
-    .card-price span {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: var(--text-light);
-    }
-
-    .card-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .badge {
-      font-size: 0.68rem;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 99px;
-      letter-spacing: 0.02em;
-    }
-
-    .badge-furnish {
-      background: #e8f5ed;
-      color: var(--green-mid);
-    }
-
-    .badge-type {
-      background: #f0ede8;
-      color: #6b5744;
-    }
-
-    .card-rooms {
-      font-size: 0.8rem;
+    .zones-intro {
+      font-size: .95rem;
       color: var(--text-mid);
+      margin-bottom: 24px;
+    }
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 700px) {
+      .zones-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 440px) {
+      .zones-grid { grid-template-columns: 1fr; }
+    }
+    .zone-card {
+      background: #fff;
+      border-left: 4px solid var(--green-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 16px 16px 18px;
+    }
+    .zone-name {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .zone-desc {
+      font-size: .85rem;
+      color: var(--text-mid);
+      line-height: 1.6;
     }
 
-    .card-wa {
-      display: block;
-      background: var(--green-dark);
-      color: #fff;
-      text-align: center;
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 11px 16px;
-      transition: background 0.2s;
-      margin-top: auto;
+    /* ── PRICE BAND ── */
+    .price-band {
+      background: #fff;
+      border-top: 1px solid #e5e3de;
+      border-bottom: 1px solid #e5e3de;
+      padding: 48px 24px;
+    }
+    .price-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .price-inner h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+    }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 700px) {
+      .price-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 440px) {
+      .price-grid { grid-template-columns: 1fr; }
+    }
+    .price-row-label {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--text-muted);
+      margin-top: 20px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e3de;
+      grid-column: 1 / -1;
+    }
+    .price-row-label:first-child { margin-top: 0; }
+    .price-cell {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+    }
+    .price-type {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--green-mid);
+      margin-bottom: 6px;
+    }
+    .price-range {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .price-note {
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
-    .card-wa:hover { background: var(--green-mid); }
-
+    /* ── CTA BAND ── */
     .cta-band {
       background: var(--green-dark);
-      padding: 48px 24px;
+      padding: 52px 24px;
       text-align: center;
     }
-
     .cta-band h2 {
       color: #fff;
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 10px;
     }
-
     .cta-band p {
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 28px;
-      font-size: 0.95rem;
+      color: rgba(255,255,255,.75);
+      font-size: .95rem;
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
     }
-
     .cta-buttons {
       display: flex;
       gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
     }
-
     .btn-wa {
       background: var(--green-light);
-      color: #fff;
-      text-decoration: none;
+      color: var(--green-dark);
       font-weight: 700;
-      padding: 13px 28px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      transition: background 0.2s;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: background .15s;
     }
-
-    .btn-wa:hover { background: #3fa070; }
-
+    .btn-wa:hover { background: #62cc98; }
     .btn-outline {
       background: transparent;
-      color: #fff;
-      text-decoration: none;
+      color: rgba(255,255,255,.85);
       font-weight: 600;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      border: 1.5px solid rgba(255,255,255,0.4);
-      transition: border-color 0.2s;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid rgba(255,255,255,.35);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: border-color .15s, color .15s;
     }
+    .btn-outline:hover { border-color: #fff; color: #fff; }
 
-    .btn-outline:hover { border-color: #fff; }
-
+    /* ── FOOTER ── */
     footer {
       background: #111;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,.5);
       text-align: center;
-      padding: 28px 24px;
-      font-size: 0.8rem;
+      padding: 24px;
+      font-size: .78rem;
       line-height: 1.8;
     }
-
     footer a { color: var(--green-light); text-decoration: none; }
-
-    @media (max-width: 900px) {
-      .unit-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 { white-space: normal; font-size: 1.8rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 24px; }
-      .unit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      nav { padding: 0 16px; }
-      .nav-links a:not(.nav-wa) { display: none; }
-    }
-
-    @media (max-width: 400px) {
-      .unit-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; }
-    }
   </style>
 </head>
-
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="https://www.haniproperties.com" class="nav-logo">Hani <span>Properties</span></a>
+  <a href="https://www.haniproperties.com" class="nav-logo">Hani<span>Properties</span></a>
   <div class="nav-links">
-    <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
-    <a href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
-    <a href="https://wa.me/60125459182" class="nav-wa" target="_blank" rel="noopener">💬 Hubungi Hani</a>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html"><span class="nav-text-label">Sewa</span></a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html"><span class="nav-text-label">Jual</span></a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20hartanah%20di%20Ampang." class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">📍 Ampang · Selangor</div>
-  <h1>Cari rumah di Ampang?</h1>
-  <p>Dari studio moden di Ampang Hilir hingga penthouse tepi tasik — Ampang menawarkan gaya hidup urban yang tenang, hanya selangkah dari KLCC dan Gleneagles.</p>
+  <h1>Hartanah di Ampang</h1>
+  <p class="hero-desc">Sewa atau beli di Ampang — kawasan kediaman premium berdekatan hospital bertaraf antarabangsa dan pusat bandar KL. Kondominium, servis residensi, hingga landed untuk pelbagai bajet dan keperluan.</p>
 </section>
 
+<!-- ABOUT -->
 <section class="about">
   <div class="about-inner">
     <h2>Kenapa pilih Ampang?</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Ampang ialah kawasan residensial premium yang bersempadan terus dengan KLCC dan Jalan Ampang — menjadikannya pilihan kegemaran eksekutif, profesional muda, dan warga asing yang mahukan kehidupan tenang tanpa jauh dari pusat bandar. LRT Ampang Park menghubungkan anda ke seluruh KL dalam minit.</p>
-        <p>Kawasan Ampang Hilir dan Ukay Perdana khususnya terkenal dengan komuniti antarabangsa, persekitaran hijau, dan kediaman bertaraf tinggi. Dengan Gleneagles Hospital, Ampang Puteri Specialist, dan Great Eastern Mall semuanya berdekatan, Ampang menawarkan keselesaan hidup yang lengkap.</p>
+        <p>Ampang menawarkan kombinasi yang jarang ditemui — kedekatan dengan pusat bandar KL dan KLCC, dalam kawasan kediaman yang lebih tenang dan hijau. Kehadiran Ampang Puteri Specialist Hospital dan Gleneagles KL menjadikan Ampang pilihan utama kakitangan perubatan, ekspatriat, dan keluarga yang utamakan akses mudah ke kemudahan kesihatan bertaraf tinggi.</p>
+        <p>Dari kondominium waterfront di Ampang inti hingga banglo dan semi-D di Ukay Perdana yang tersembunyi di lereng bukit — Ampang menawarkan spektrum kediaman yang luas. Laluan LRT Ampang dan akses Lebuhraya AKLEH memudahkan pergerakan ke KL Sentral dan seluruh Lembah Klang dalam masa yang singkat.</p>
       </div>
       <div class="about-highlights">
         <div class="highlight-item">
-          <div class="highlight-icon">🎓</div>
+          <span class="icon">🏥</span>
           <div>
-            <div class="highlight-label">Pendidikan</div>
-            <div class="highlight-value">HELP University, UCSI University, Alice Smith School, ISKL (International School of KL)</div>
+            <div class="hl-label">Kesihatan</div>
+            <div class="hl-text">Ampang Puteri Specialist Hospital, Gleneagles Kuala Lumpur, Hospital Ampang</div>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon">🏥</div>
+          <span class="icon">🎓</span>
           <div>
-            <div class="highlight-label">Kesihatan</div>
-            <div class="highlight-value">Gleneagles Hospital KL, Ampang Puteri Specialist Hospital, KPJ Ampang Puteri</div>
+            <div class="hl-label">Pendidikan</div>
+            <div class="hl-text">HELP University (Ukay Perdana), pelbagai sekolah antarabangsa di koridor Ampang</div>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon">🛍️</div>
+          <span class="icon">🛍️</span>
           <div>
-            <div class="highlight-label">Membeli-belah</div>
-            <div class="highlight-value">Suria KLCC, Great Eastern Mall, The Elements @ Ampang, Ampang Point Mall</div>
+            <div class="hl-label">Membeli-belah</div>
+            <div class="hl-text">Great Eastern Mall, Suria KLCC (berdekatan), Ampang Point, Aeon Mall Ampang</div>
           </div>
         </div>
         <div class="highlight-item">
-          <div class="highlight-icon">🚇</div>
+          <span class="icon">🛣️</span>
           <div>
-            <div class="highlight-label">Transit &amp; Lebuh Raya</div>
-            <div class="highlight-value">LRT Ampang Park, LRT Jelatek, LRT Damai, LRT Sri Rampai · AKLEH, MRR2</div>
+            <div class="hl-label">Lebuh Raya</div>
+            <div class="hl-text">AKLEH, MRR2, LRT Ampang Line · akses terus ke KLCC dan pusat bandar KL</div>
           </div>
         </div>
       </div>
@@ -521,230 +474,120 @@
   </div>
 </section>
 
+<!-- BREADCRUMB -->
 <div class="breadcrumb">
-  <a href="https://www.haniproperties.com">Hani Properties</a> › <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a> › Ampang
-</div>
-
-<div class="zone-section">
-  <div class="zone-pills">
-    <button class="zone-pill active" onclick="filterZone('semua', this)">Semua</button>
-    <button class="zone-pill" onclick="filterZone('ampang', this)">Ampang</button>
-    <button class="zone-pill" onclick="filterZone('ampang-hilir', this)">Ampang Hilir</button>
-    <button class="zone-pill" onclick="filterZone('ukay-perdana', this)">Ukay Perdana</button>
-    <button class="zone-pill" onclick="filterZone('jelatek', this)">Jelatek</button>
+  <div class="breadcrumb-inner">
+    <a href="https://www.haniproperties.com">Hani Properties</a>
+    <span>›</span>
+    Ampang
   </div>
 </div>
 
-<div class="listings-section">
-  <div class="unit-grid" id="unitGrid">
+<!-- TELEGRAM + ZONES -->
+<section class="content-section">
 
-    <!-- 1: Impiana — 100% -->
-    <div class="unit-card" data-zone="ampang">
-      <div class="card-header">
-        <div class="card-unit-name">Impiana On The Waterfront</div>
-        <div class="card-sub">📍 Ampang</div>
-        <div class="card-landmark">🏥 Ampang Puteri Specialist Hospital</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 9,000 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Fully Furnished</span>
-          <span class="badge badge-type">Condominium</span>
-        </div>
-        <div class="card-rooms">4 Bilik · 5 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Impiana%20On%20The%20Waterfront%20di%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
+  <!-- Telegram block -->
+  <div class="tg-card">
+    <div class="tg-label">Semak listing terkini di Telegram</div>
+    <div class="tg-buttons">
+      <a class="tg-btn tg-btn-sewa" href="https://t.me/hanipropertiesrentals/293" target="_blank" rel="noopener">
+        <svg class="tg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.81l-1.68 7.92c-.12.54-.46.67-.93.42l-2.58-1.9-1.24 1.19c-.14.14-.26.26-.52.26l.18-2.62 4.74-4.28c.21-.18-.04-.28-.32-.1L7.7 14.37l-2.52-.79c-.55-.17-.56-.55.12-.82l9.84-3.79c.46-.17.86.11.79.84z" fill="currentColor"/>
+        </svg>
+        Sewa Ampang
+      </a>
+      <a class="tg-btn tg-btn-jual" href="https://wa.me/60125459182" target="_blank" rel="noopener">
+        <svg class="tg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.81l-1.68 7.92c-.12.54-.46.67-.93.42l-2.58-1.9-1.24 1.19c-.14.14-.26.26-.52.26l.18-2.62 4.74-4.28c.21-.18-.04-.28-.32-.1L7.7 14.37l-2.52-.79c-.55-.17-.56-.55.12-.82l9.84-3.79c.46-.17.86.11.79.84z" fill="currentColor"/>
+        </svg>
+        Jual Ampang
+      </a>
     </div>
-
-    <!-- 2: Duta Suria — 98% -->
-    <div class="unit-card" data-zone="ukay-perdana">
-      <div class="card-header">
-        <div class="card-unit-name">Duta Suria Residency</div>
-        <div class="card-sub">📍 Ukay Perdana, Ampang</div>
-        <div class="card-landmark">🎓 HELP University</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 6,000 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Fully Furnished</span>
-          <span class="badge badge-type">Landed</span>
-        </div>
-        <div class="card-rooms">5 Bilik · 6 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Duta%20Suria%20Residency%20di%20Ukay%20Perdana%2C%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-    </div>
-
-    <!-- 3: Reizz Residence — 96% -->
-    <div class="unit-card" data-zone="ampang">
-      <div class="card-header">
-        <div class="card-unit-name">Reizz Residence</div>
-        <div class="card-sub">📍 Ampang</div>
-        <div class="card-landmark">🛍️ Suria KLCC</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 3,100 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Fully Furnished</span>
-          <span class="badge badge-type">Condominium</span>
-        </div>
-        <div class="card-rooms">2 Bilik · 2 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Reizz%20Residence%20di%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-    </div>
-
-    <!-- 4: The Elements — 96% -->
-    <div class="unit-card" data-zone="ampang">
-      <div class="card-header">
-        <div class="card-unit-name">The Elements</div>
-        <div class="card-sub">📍 Ampang</div>
-        <div class="card-landmark">🏥 Gleneagles Kuala Lumpur</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 2,300 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Fully Furnished</span>
-          <span class="badge badge-type">Service Residence</span>
-        </div>
-        <div class="card-rooms">2 Bilik · 1 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20The%20Elements%20di%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-    </div>
-
-    <!-- 5: Neu Suites L33 — 95% -->
-    <div class="unit-card" data-zone="ampang">
-      <div class="card-header">
-        <div class="card-unit-name">Neu Suites</div>
-        <div class="card-sub">📍 Ampang</div>
-        <div class="card-landmark">🛍️ Suria KLCC</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 1,800 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Fully Furnished</span>
-          <span class="badge badge-type">Studio</span>
-        </div>
-        <div class="card-rooms">1 Bilik · 1 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Neu%20Suites%20(Level%2033)%20di%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-    </div>
-
-    <!-- 6: M City Studio — 93% -->
-    <div class="unit-card" data-zone="ampang-hilir">
-      <div class="card-header">
-        <div class="card-unit-name">M City</div>
-        <div class="card-sub">📍 Ampang Hilir, Ampang</div>
-        <div class="card-landmark">🏥 Gleneagles Hospital KL</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 1,800 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Fully Furnished</span>
-          <span class="badge badge-type">Studio</span>
-        </div>
-        <div class="card-rooms">Studio · 1 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20M%20City%20Studio%20di%20Ampang%20Hilir%2C%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-    </div>
-
-    <!-- 7: Neu Suites Jelatek — 89% -->
-    <div class="unit-card" data-zone="jelatek">
-      <div class="card-header">
-        <div class="card-unit-name">Neu Suites</div>
-        <div class="card-sub">📍 Jelatek, Ampang</div>
-        <div class="card-landmark">🛍️ Great Eastern Mall</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 2,000 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Fully Furnished</span>
-          <span class="badge badge-type">Condominium</span>
-        </div>
-        <div class="card-rooms">2 Bilik · 1 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Neu%20Suites%20di%20Jelatek%2C%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-    </div>
-
-    <!-- 8: M City SR — 86% -->
-    <div class="unit-card" data-zone="ampang-hilir">
-      <div class="card-header">
-        <div class="card-unit-name">M City</div>
-        <div class="card-sub">📍 Ampang Hilir, Ampang</div>
-        <div class="card-landmark">🏥 Gleneagles Hospital KL</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 3,000 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Fully Furnished</span>
-          <span class="badge badge-type">Service Residence</span>
-        </div>
-        <div class="card-rooms">2 Bilik · 2 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20M%20City%20Service%20Residence%20di%20Ampang%20Hilir%2C%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-    </div>
-
-    <!-- 9: Trinity Wellnessa — 81% -->
-    <div class="unit-card" data-zone="ampang">
-      <div class="card-header">
-        <div class="card-unit-name">Trinity Wellnessa</div>
-        <div class="card-sub">📍 Ampang</div>
-        <div class="card-landmark">🏥 Ampang Puteri Specialist Hospital</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 2,450 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Partially Furnished</span>
-          <span class="badge badge-type">Condominium</span>
-        </div>
-        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Trinity%20Wellnessa%20di%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-    </div>
-
-    <!-- 10: Astoria Ampang — 76% -->
-    <div class="unit-card" data-zone="ampang">
-      <div class="card-header">
-        <div class="card-unit-name">Astoria Ampang</div>
-        <div class="card-sub">📍 Ampang</div>
-        <div class="card-landmark">🏥 Ampang Puteri Specialist Hospital</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 2,900 <span>sebulan</span></div>
-        <div class="card-badges">
-          <span class="badge badge-furnish">Fully Furnished</span>
-          <span class="badge badge-type">Service Residence</span>
-        </div>
-        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
-      </div>
-      <a class="card-wa" href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20berminat%20dengan%20unit%20Astoria%20Ampang%2C%20Ampang.%20Boleh%20kongsikan%20maklumat%20lanjut%3F" target="_blank" rel="noopener">💬 Tanya Hani</a>
-    </div>
-
   </div>
-</div>
 
-<section class="cta-band">
-  <h2>Tak jumpa yang sesuai?</h2>
-  <p>Beritahu Hani apa yang anda cari — beliau akan carikan unit yang paling matching untuk anda di Ampang.</p>
-  <div class="cta-buttons">
-    <a href="https://wa.me/60125459182?text=Salam%20Hani%2C%20saya%20nak%20cari%20rumah%20sewa%20di%20Ampang.%20Boleh%20tolong%3F" class="btn-wa" target="_blank" rel="noopener">💬 WhatsApp Hani</a>
-    <a href="https://t.me/hanipropertiesrentals/239" class="btn-outline" target="_blank" rel="noopener">Lihat Semua Listing</a>
+  <!-- Zones -->
+  <div class="zones">
+    <h2>Kawasan di Ampang</h2>
+    <p class="zones-intro">Kami meliputi pelbagai zon di Ampang — dari kawasan inti berdekatan hospital utama, hingga Ampang Hilir, Jelatek, dan Ukay Perdana yang lebih eksklusif.</p>
+    <div class="zones-grid">
+      <div class="zone-card">
+        <div class="zone-name">Ampang</div>
+        <div class="zone-desc">Kawasan inti dengan kondominium dan servis residensi berdekatan Ampang Puteri Specialist Hospital. Popular dalam kalangan kakitangan perubatan, ekspatriat, dan profesional yang bekerja di koridor KLCC-Ampang.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Ampang Hilir</div>
+        <div class="zone-desc">Zon premium berdekatan Gleneagles KL dan Great Eastern Mall. Servis residensi moden seperti M City menawarkan pilihan studio hingga unit 2 bilik yang popular untuk penyewa jangka pendek dan ekspatriat.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Jelatek</div>
+        <div class="zone-desc">Kawasan tenang berdekatan Great Eastern Mall dan LRT Jelatek. Kondominium berharga sederhana sesuai untuk profesional muda yang mahu tinggal dekat KL tanpa kos Ampang Hilir.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Ukay Perdana</div>
+        <div class="zone-desc">Enklaf eksklusif di lereng bukit Ampang dengan banglo, semi-D, dan teres berpagar. Persekitaran yang tenang dan hijau — pilihan keluarga dan ekspatriat yang utamakan privasi dan ruang yang luas.</div>
+      </div>
+    </div>
   </div>
+
 </section>
 
-<footer>
-  <p>© Hani Properties · ERA Real Estate E(1)1773/3</p>
-  <p>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a></p>
-  <p><a href="https://www.haniproperties.com">haniproperties.com</a> · Property made personal.</p>
-</footer>
+<!-- PRICE BAND -->
+<div class="price-band">
+  <div class="price-inner">
+    <h2>Anggaran Harga di Ampang</h2>
+    <div class="price-grid">
+      <div class="price-row-label">🏠 Sewa (Sebulan)</div>
+      <div class="price-cell">
+        <div class="price-type">Apartment / Servis</div>
+        <div class="price-range">RM 1,500 – RM 3,000</div>
+        <div class="price-note">Studio hingga 2 bilik di Jelatek dan Ampang inti</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Kondominium / Servis</div>
+        <div class="price-range">RM 2,500 – RM 5,000</div>
+        <div class="price-note">Ampang Hilir berdekatan Gleneagles dan KLCC</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Landed / Semi-D</div>
+        <div class="price-range">RM 4,000 – RM 10,000+</div>
+        <div class="price-note">Ukay Perdana — banglo dan semi-D eksklusif di lereng bukit</div>
+      </div>
+      <div class="price-row-label">🏡 Beli (Harga Pasaran)</div>
+      <div class="price-cell">
+        <div class="price-type">Apartment / Servis</div>
+        <div class="price-range">RM 350k – RM 700k</div>
+        <div class="price-note">Pelaburan stabil, permintaan sewa ekspatriat yang tinggi</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Kondominium Premium</div>
+        <div class="price-range">RM 600k – RM 1.5j</div>
+        <div class="price-note">Ampang Hilir dan kawasan berdekatan KLCC</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Semi-D / Banglo</div>
+        <div class="price-range">RM 1j ke atas</div>
+        <div class="price-note">Ukay Perdana — nilai modal jangka panjang yang kukuh</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<script>
-  function filterZone(zone, btn) {
-    document.querySelectorAll('.zone-pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.unit-card').forEach(card => {
-      card.style.display = (zone === 'semua' || card.dataset.zone === zone) ? 'flex' : 'none';
-    });
-  }
-</script>
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Tanya Hani untuk listing terkini</h2>
+  <p>Sewa atau beli — listing bertukar cepat. Wasap terus untuk tahu unit yang ada sekarang.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20hartanah%20di%20Ampang." class="btn-wa" target="_blank" rel="noopener">💬 Wasap Hani Sekarang</a>
+    <a href="https://www.haniproperties.com" class="btn-outline">Kembali ke Laman Utama →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
+  <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></div>
+  <div style="margin-top:4px; color:rgba(255,255,255,.3)">Property made personal.</div>
+</footer>
 
 </body>
 </html>
