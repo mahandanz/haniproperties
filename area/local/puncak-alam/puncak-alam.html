@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rumah Sewa Puncak Alam | Hani Properties</title>
-  <meta name="description" content="Cari rumah sewa di Puncak Alam, Selangor. Teres dan landed berdekatan UiTM Puncak Alam. Disenaraikan oleh Hani Properties, ERA Real Estate." />
+  <title>Hartanah Puncak Alam | Sewa &amp; Jual | Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa atau beli di Puncak Alam — teres, semi-D, dan landed berdekatan UiTM Puncak Alam. Hani Properties meliputi Puncak Alam, Bandar Puncak Alam, Eco Grandeur dan lebih lagi." />
   <link rel="canonical" href="https://www.haniproperties.com/puncak-alam.html" />
-  <meta property="og:title" content="Rumah Sewa Puncak Alam | Hani Properties" />
-  <meta property="og:description" content="Cari rumah sewa di Puncak Alam, Selangor. Disenaraikan oleh Hani Properties." />
-  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hartanah Puncak Alam | Sewa &amp; Jual | Hani Properties" />
+  <meta property="og:description" content="Cari rumah sewa atau beli di Puncak Alam — teres, semi-D, dan landed berdekatan UiTM Puncak Alam. Semak listing terkini sekarang." />
   <meta property="og:url" content="https://www.haniproperties.com/puncak-alam.html" />
+  <meta property="og:type" content="website" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -17,14 +17,17 @@
     "name": "Hani Properties",
     "url": "https://www.haniproperties.com",
     "telephone": "+60125459182",
-    "agent": {
-      "@type": "Person",
-      "name": "Marhani Bt Mohamad Nor"
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Selangor",
+      "addressCountry": "MY"
     },
-    "areaServed": {
-      "@type": "Place",
-      "name": "Puncak Alam, Selangor"
-    }
+    "employee": {
+      "@type": "Person",
+      "name": "Marhani Bt Mohamad Nor",
+      "telephone": "+60125459182"
+    },
+    "areaServed": ["Puncak Alam, Selangor"]
   }
   </script>
   <style>
@@ -33,10 +36,11 @@
       --green-mid: #2E7D52;
       --green-light: #52B788;
       --cream: #F7F5F0;
-      --text: #1A1A1A;
-      --text-muted: #555;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-muted: #888;
       --radius: 10px;
-      --card-radius: 12px;
+      --radius-sm: 6px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,11 +48,9 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--cream);
-      color: var(--text);
+      color: var(--text-dark);
       line-height: 1.6;
     }
-
-    a { color: inherit; text-decoration: none; }
 
     /* ── NAV ── */
     nav {
@@ -59,368 +61,374 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.25rem;
+      padding: 0 24px;
       height: 56px;
-      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
     }
-
     .nav-logo {
-      font-weight: 700;
       font-size: 1rem;
+      font-weight: 700;
       color: #fff;
-      white-space: nowrap;
-      letter-spacing: 0.01em;
+      text-decoration: none;
+      letter-spacing: .02em;
     }
     .nav-logo span { color: var(--green-light); }
-
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      flex-shrink: 0;
+      gap: 8px;
     }
-
-    .nav-link {
-      color: rgba(255,255,255,0.8);
-      font-size: 0.85rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 20px;
-      transition: background 0.2s;
+    .nav-links a {
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .85rem;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
     }
-    .nav-link:hover { background: rgba(255,255,255,0.1); color: #fff; }
-
+    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
     .nav-wa {
-      background: #25D366;
-      color: #fff;
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 0.35rem 0.85rem;
-      border-radius: 20px;
-      white-space: nowrap;
+      background: var(--green-light) !important;
+      color: var(--green-dark) !important;
+      font-weight: 600 !important;
+      padding: 7px 14px !important;
     }
-    .nav-wa:hover { background: #1ebe5d; }
+    .nav-wa:hover { background: #62cc98 !important; }
+    @media (max-width: 600px) {
+      .nav-text-label { display: none; }
+    }
 
     /* ── HERO ── */
     .hero {
       background: var(--green-dark);
-      padding: 3rem 1.25rem 2.5rem;
+      padding: 52px 24px 48px;
       text-align: center;
-      color: #fff;
     }
-
-    .hero-pill {
+    .hero-eyebrow {
       display: inline-block;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      padding: 0.25rem 0.85rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.03em;
+      background: rgba(255,255,255,.12);
+      color: var(--green-light);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 18px;
     }
-
     .hero h1 {
-      font-size: clamp(1.75rem, 5vw, 2.8rem);
+      color: #fff;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 800;
       white-space: nowrap;
-      line-height: 1.15;
-      margin-bottom: 0.75rem;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
     }
-
+    @media (max-width: 480px) {
+      .hero h1 { white-space: normal; font-size: 1.7rem; }
+    }
     .hero-desc {
+      color: rgba(255,255,255,.75);
+      font-size: 1rem;
       max-width: 520px;
       margin: 0 auto;
-      font-size: 0.98rem;
-      color: rgba(255,255,255,0.78);
       line-height: 1.65;
     }
 
     /* ── ABOUT ── */
     .about {
       background: #fff;
-      padding: 2.5rem 1.25rem;
+      padding: 48px 24px;
     }
-
     .about-inner {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
     }
-
     .about h2 {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--green-dark);
-      margin-bottom: 1.5rem;
+      margin-bottom: 24px;
     }
-
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 32px;
     }
-
-    @media (max-width: 640px) {
+    @media (max-width: 700px) {
       .about-grid { grid-template-columns: 1fr; }
     }
-
-    .about-text p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.85rem; }
-
-    .about-highlights { display: flex; flex-direction: column; gap: 0.75rem; }
-
+    .about-text p {
+      font-size: .95rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
     .highlight-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.65rem;
+      gap: 12px;
       background: var(--cream);
-      border-radius: var(--radius);
-      padding: 0.7rem 0.85rem;
-      font-size: 0.88rem;
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
     }
-
-    .highlight-item .hi-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.05rem; }
-    .highlight-item strong { display: block; font-size: 0.82rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.1rem; }
+    .highlight-item .icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+    .highlight-item .hl-label { font-size: .75rem; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: .04em; }
+    .highlight-item .hl-text { font-size: .88rem; color: var(--text-mid); margin-top: 2px; }
 
     /* ── BREADCRUMB ── */
     .breadcrumb {
-      padding: 0.6rem 1.25rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
       background: var(--cream);
-      border-bottom: 1px solid #e8e4dc;
+      padding: 10px 24px;
+      border-bottom: 1px solid #e5e3de;
     }
-    .breadcrumb a:hover { color: var(--green-mid); text-decoration: underline; }
-
-    /* ── ZONE PILLS ── */
-    .zone-bar {
-      padding: 1rem 1.25rem 0.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      max-width: 1100px;
+    .breadcrumb-inner {
+      max-width: 960px;
       margin: 0 auto;
-    }
-
-    .zone-pill {
-      background: #fff;
-      border: 1.5px solid #d4d0c8;
-      border-radius: 20px;
-      padding: 0.3rem 0.9rem;
-      font-size: 0.82rem;
-      cursor: pointer;
-      transition: all 0.18s;
+      font-size: .8rem;
       color: var(--text-muted);
     }
-    .zone-pill:hover, .zone-pill.active {
-      background: var(--green-dark);
-      border-color: var(--green-dark);
-      color: #fff;
-    }
+    .breadcrumb-inner a { color: var(--green-mid); text-decoration: none; }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-inner span { margin: 0 6px; }
 
-    /* ── GRID ── */
-    .listing-section {
-      padding: 1rem 1.25rem 2.5rem;
-      max-width: 1100px;
+    /* ── TELEGRAM + ZONES SECTION ── */
+    .content-section {
+      max-width: 960px;
       margin: 0 auto;
+      padding: 48px 24px;
     }
 
-    .listing-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-    }
-
-    @media (max-width: 900px) { .listing-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .listing-grid { grid-template-columns: repeat(2, 1fr); } }
-
-    /* ── CARD ── */
-    .card {
+    /* Telegram block */
+    .tg-card {
       background: #fff;
-      border-radius: var(--card-radius);
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.2s, transform 0.2s;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 48px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
     }
-    .card:hover { box-shadow: 0 6px 20px rgba(27,77,53,0.13); transform: translateY(-2px); }
-
-    .card-tile {
-      background: var(--green-dark);
-      padding: 0.9rem 0.85rem 0.75rem;
-      color: #fff;
-    }
-
-    .card-title {
-      font-size: 0.88rem;
+    .tg-label {
+      font-size: .8rem;
       font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
     }
-
-    .card-micro {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 0.3rem;
-    }
-
-    .card-landmark {
-      font-size: 0.72rem;
-      color: var(--green-light);
-      opacity: 0.9;
-    }
-
-    .card-body {
-      padding: 0.75rem 0.85rem 0.85rem;
+    .tg-buttons {
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex: 1;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
+    .tg-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .tg-btn:hover { opacity: .85; }
+    .tg-btn-sewa { background: #EAF4EE; color: #1B4D35; }
+    .tg-btn-jual { background: #E8F0FE; color: #1a4fa0; }
+    .tg-icon { flex-shrink: 0; }
 
-    .card-price {
-      font-size: 1.05rem;
-      font-weight: 800;
+    /* Zones */
+    .zones h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
       color: var(--green-dark);
+      margin-bottom: 10px;
     }
-    .card-price span { font-size: 0.75rem; font-weight: 400; color: var(--text-muted); }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
+    .zones-intro {
+      font-size: .95rem;
+      color: var(--text-mid);
+      margin-bottom: 24px;
     }
-
-    .badge {
-      font-size: 0.7rem;
-      padding: 0.18rem 0.55rem;
-      border-radius: 20px;
-      font-weight: 600;
-      white-space: nowrap;
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-
-    .badge-ff   { background: #D4EDDA; color: #155724; }
-    .badge-pf   { background: #FFF3CD; color: #856404; }
-    .badge-uf   { background: #F8D7DA; color: #721C24; }
-    .badge-type { background: #E2EDF8; color: #1A4D7C; }
-
-    .card-rooms {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    @media (max-width: 700px) {
+      .zones-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
-    .card-cta {
-      display: block;
-      margin-top: auto;
-      background: #25D366;
-      color: #fff;
-      text-align: center;
-      font-size: 0.82rem;
+    @media (max-width: 440px) {
+      .zones-grid { grid-template-columns: 1fr; }
+    }
+    .zone-card {
+      background: #fff;
+      border-left: 4px solid var(--green-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 16px 16px 18px;
+    }
+    .zone-name {
+      font-size: .95rem;
       font-weight: 700;
-      padding: 0.55rem;
-      border-radius: 7px;
-      transition: background 0.18s;
+      color: var(--green-dark);
+      margin-bottom: 6px;
     }
-    .card-cta:hover { background: #1ebe5d; }
+    .zone-desc {
+      font-size: .85rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
 
-    /* ── "MORE COMING" BAND ── */
-    .coming-band {
-      grid-column: 1 / -1;
-      border: 2px dashed #c8c3b8;
-      border-radius: var(--card-radius);
-      padding: 1.5rem 1.25rem;
-      text-align: center;
-      color: var(--text-muted);
-      background: transparent;
+    /* ── PRICE BAND ── */
+    .price-band {
+      background: #fff;
+      border-top: 1px solid #e5e3de;
+      border-bottom: 1px solid #e5e3de;
+      padding: 48px 24px;
     }
-    .coming-band p { font-size: 0.88rem; margin-bottom: 0.5rem; }
-    .coming-band strong { color: var(--green-mid); }
-    .coming-band a {
-      display: inline-block;
-      margin-top: 0.6rem;
-      background: var(--green-dark);
-      color: #fff;
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 0.45rem 1.1rem;
-      border-radius: 20px;
+    .price-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .price-inner h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+    }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 700px) {
+      .price-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 440px) {
+      .price-grid { grid-template-columns: 1fr; }
+    }
+    .price-row-label {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--text-muted);
+      margin-top: 20px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e3de;
+      grid-column: 1 / -1;
+    }
+    .price-row-label:first-child { margin-top: 0; }
+    .price-cell {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+    }
+    .price-type {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--green-mid);
+      margin-bottom: 6px;
+    }
+    .price-range {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .price-note {
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* ── CTA BAND ── */
     .cta-band {
       background: var(--green-dark);
-      padding: 2.5rem 1.25rem;
+      padding: 52px 24px;
       text-align: center;
-      color: #fff;
     }
-
     .cta-band h2 {
-      font-size: 1.4rem;
+      color: #fff;
+      font-size: 1.5rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      margin-bottom: 10px;
     }
-
     .cta-band p {
-      font-size: 0.93rem;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 1.25rem;
+      color: rgba(255,255,255,.75);
+      font-size: .95rem;
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
     }
-
     .cta-buttons {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 12px;
       justify-content: center;
+      flex-wrap: wrap;
     }
-
     .btn-wa {
-      background: #25D366;
-      color: #fff;
+      background: var(--green-light);
+      color: var(--green-dark);
       font-weight: 700;
-      font-size: 0.9rem;
-      padding: 0.65rem 1.4rem;
-      border-radius: 25px;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: background .15s;
     }
-    .btn-wa:hover { background: #1ebe5d; }
-
+    .btn-wa:hover { background: #62cc98; }
     .btn-outline {
-      border: 2px solid rgba(255,255,255,0.5);
-      color: #fff;
-      font-size: 0.9rem;
-      padding: 0.63rem 1.4rem;
-      border-radius: 25px;
+      background: transparent;
+      color: rgba(255,255,255,.85);
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid rgba(255,255,255,.35);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: border-color .15s, color .15s;
     }
-    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+    .btn-outline:hover { border-color: #fff; color: #fff; }
 
     /* ── FOOTER ── */
     footer {
       background: #111;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,.5);
       text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 0.78rem;
+      padding: 24px;
+      font-size: .78rem;
       line-height: 1.8;
     }
-    footer a { color: rgba(255,255,255,0.7); }
-    footer a:hover { color: #fff; }
+    footer a { color: var(--green-light); text-decoration: none; }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Hani<span>Properties</span></div>
+  <a href="https://www.haniproperties.com" class="nav-logo">Hani<span>Properties</span></a>
   <div class="nav-links">
-    <a class="nav-link" href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
-    <a class="nav-link" href="https://www.haniproperties.com/kawasan_jual.html">Jual</a>
-    <a class="nav-wa" href="https://wa.me/60125459182">WhatsApp</a>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html"><span class="nav-text-label">Sewa</span></a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html"><span class="nav-text-label">Jual</span></a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20hartanah%20di%20Puncak%20Alam." class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-pill">📍 Puncak Alam · Selangor</div>
-  <h1>Cari rumah sewa di Puncak Alam?</h1>
-  <p class="hero-desc">Kawasan perumahan landed yang tenang dan berkembang pesat — didukung oleh kehadiran UiTM Puncak Alam dan akses Lebuhraya LATAR dan Guthrie Corridor.</p>
+  <div class="hero-eyebrow">📍 Puncak Alam · Selangor</div>
+  <h1>Hartanah di Puncak Alam</h1>
+  <p class="hero-desc">Sewa atau beli di Puncak Alam — kawasan landed yang tenang dan berkembang pesat, dengan UiTM Puncak Alam sebagai nadi utama. Teres, semi-D, hingga banglo untuk pelbagai bajet dan keperluan.</p>
 </section>
 
 <!-- ABOUT -->
@@ -429,25 +437,37 @@
     <h2>Kenapa pilih Puncak Alam?</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Puncak Alam berkembang pesat sebagai hab pendidikan dan perumahan di utara Selangor, didorong oleh kehadiran UiTM Puncak Alam — antara kampus UiTM terbesar di Malaysia. Permintaan sewa yang stabil dari pelajar, staf akademik, dan keluarga menjadikan kawasan ini pilihan pelaburan yang kukuh.</p>
-        <p>Perumahan landed seperti teres dua tingkat mendominasi kawasan ini, menawarkan ruang hidup yang lebih luas pada harga yang lebih berpatutan berbanding kawasan tengah bandar. Lebuhraya LATAR dan Guthrie Corridor Expressway menghubungkan Puncak Alam ke Shah Alam, Subang, dan Kuala Lumpur.</p>
+        <p>Puncak Alam menawarkan sesuatu yang semakin jarang ditemui berhampiran KL — ruang landed yang luas pada harga yang masih berpatutan. Kawasan ini didominasi oleh teres dua tingkat dengan halaman sendiri, menjadikannya pilihan utama untuk keluarga yang mahukan lebih ruang tanpa perlu berkompromi dengan lokasi.</p>
+        <p>Kehadiran UiTM Puncak Alam dan Hospital UiTM menjana permintaan sewa yang stabil sepanjang tahun, terutama dari staf akademik dan kakitangan hospital. Akses melalui Lebuhraya LATAR dan Guthrie Corridor menghubungkan penduduk ke Shah Alam, Subang Jaya, dan KL dalam masa yang singkat.</p>
       </div>
       <div class="about-highlights">
         <div class="highlight-item">
-          <div class="hi-icon">🎓</div>
-          <div><strong>Pendidikan</strong>UiTM Puncak Alam — kampus besar dengan puluhan ribu pelajar dan staf.</div>
+          <span class="icon">🎓</span>
+          <div>
+            <div class="hl-label">Pendidikan</div>
+            <div class="hl-text">UiTM Puncak Alam — kampus besar dengan puluhan ribu pelajar dan staf akademik</div>
+          </div>
         </div>
         <div class="highlight-item">
-          <div class="hi-icon">🏥</div>
-          <div><strong>Kesihatan</strong>Hospital UiTM Puncak Alam — hospital pengajaran dengan perkhidmatan perubatan lengkap.</div>
+          <span class="icon">🏥</span>
+          <div>
+            <div class="hl-label">Kesihatan</div>
+            <div class="hl-text">Hospital UiTM Puncak Alam — hospital pengajaran dengan perkhidmatan perubatan lengkap</div>
+          </div>
         </div>
         <div class="highlight-item">
-          <div class="hi-icon">🏘️</div>
-          <div><strong>Perumahan Landed</strong>Teres dan semi-D dengan halaman — pilihan ideal untuk keluarga yang mahukan ruang lebih.</div>
+          <span class="icon">🛍️</span>
+          <div>
+            <div class="hl-label">Membeli-belah</div>
+            <div class="hl-text">Pasaraya Puncak Alam, kedai-kedai tempatan, Giant Shah Alam (berdekatan)</div>
+          </div>
         </div>
         <div class="highlight-item">
-          <div class="hi-icon">🛣️</div>
-          <div><strong>Lebuhraya</strong>LATAR dan Guthrie Corridor Expressway — akses ke Shah Alam, Subang, dan KL.</div>
+          <span class="icon">🛣️</span>
+          <div>
+            <div class="hl-label">Lebuh Raya</div>
+            <div class="hl-text">Lebuhraya LATAR, Guthrie Corridor Expressway — akses ke Shah Alam, Subang, dan KL</div>
+          </div>
         </div>
       </div>
     </div>
@@ -456,201 +476,114 @@
 
 <!-- BREADCRUMB -->
 <div class="breadcrumb">
-  <a href="https://www.haniproperties.com">Hani Properties</a> › <a href="https://www.haniproperties.com/kawasan_sewa.html">Listing</a> › Puncak Alam
+  <div class="breadcrumb-inner">
+    <a href="https://www.haniproperties.com">Hani Properties</a>
+    <span>›</span>
+    Puncak Alam
+  </div>
 </div>
 
-<!-- ZONE PILLS -->
-<div class="zone-bar">
-  <button class="zone-pill active" onclick="filterZone('semua', this)">Semua</button>
-  <button class="zone-pill" onclick="filterZone('puncak-alam', this)">Puncak Alam</button>
-  <button class="zone-pill" onclick="filterZone('bandar-puncak-alam', this)">Bandar Puncak Alam</button>
-  <button class="zone-pill" onclick="filterZone('eco-grandeur', this)">Eco Grandeur</button>
-</div>
+<!-- TELEGRAM + ZONES -->
+<section class="content-section">
 
-<!-- LISTING GRID -->
-<div class="listing-section">
-  <div class="listing-grid" id="listingGrid">
+  <!-- Telegram block -->
+  <div class="tg-card">
+    <div class="tg-label">Semak listing terkini di Telegram</div>
+    <div class="tg-buttons">
+      <a class="tg-btn tg-btn-sewa" href="https://t.me/hanipropertiesrentals/307" target="_blank" rel="noopener">
+        <svg class="tg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.81l-1.68 7.92c-.12.54-.46.67-.93.42l-2.58-1.9-1.24 1.19c-.14.14-.26.26-.52.26l.18-2.62 4.74-4.28c.21-.18-.04-.28-.32-.1L7.7 14.37l-2.52-.79c-.55-.17-.56-.55.12-.82l9.84-3.79c.46-.17.86.11.79.84z" fill="currentColor"/>
+        </svg>
+        Sewa Puncak Alam
+      </a>
+      <a class="tg-btn tg-btn-jual" href="https://wa.me/60125459182" target="_blank" rel="noopener">
+        <svg class="tg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.81l-1.68 7.92c-.12.54-.46.67-.93.42l-2.58-1.9-1.24 1.19c-.14.14-.26.26-.52.26l.18-2.62 4.74-4.28c.21-.18-.04-.28-.32-.1L7.7 14.37l-2.52-.79c-.55-.17-.56-.55.12-.82l9.84-3.79c.46-.17.86.11.79.84z" fill="currentColor"/>
+        </svg>
+        Jual Puncak Alam
+      </a>
+    </div>
+  </div>
 
-    <!-- Card 1: Puncak Alam Fasa 1 — T1, 69% -->
-    <div class="card" data-zone="puncak-alam">
-      <div class="card-tile">
-        <div class="card-title">Puncak Alam Fasa 1, 2-Storey Terrace</div>
-        <div class="card-micro">📍 Puncak Alam</div>
-        <div class="card-landmark">🎓 Berhampiran UiTM Puncak Alam</div>
+  <!-- Zones -->
+  <div class="zones">
+    <h2>Kawasan di Puncak Alam</h2>
+    <p class="zones-intro">Kami meliputi pelbagai zon di Puncak Alam — dari kawasan inti berdekatan UiTM, hingga Bandar Puncak Alam dan Eco Grandeur yang lebih eksklusif.</p>
+    <div class="zones-grid">
+      <div class="zone-card">
+        <div class="zone-name">Puncak Alam</div>
+        <div class="zone-desc">Kawasan inti berdekatan UiTM dan Hospital UiTM. Teres dua tingkat pelbagai fasa — dari Fasa 1 yang matang hingga fasa terbaru seperti Meranti Hillpark dan Puncak Bestari. Pilihan utama staf universiti dan keluarga.</div>
       </div>
-      <div class="card-body">
-        <div class="card-price">RM 1,100 <span>sebulan</span></div>
-        <div class="badge-row">
-          <span class="badge badge-uf">Unfurnished</span>
-          <span class="badge badge-type">Landed</span>
-        </div>
-        <div class="card-rooms">3 Bilik · 2 Bilik Mandi</div>
-        <a class="card-cta"
-           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Puncak%20Alam%20Fasa%201%20di%20Puncak%20Alam.%20Boleh%20tahu%20lebih%20lanjut%3F"
-           target="_blank" rel="noopener">💬 Tanya Hani</a>
+      <div class="zone-card">
+        <div class="zone-name">Bandar Puncak Alam</div>
+        <div class="zone-desc">Kawasan bandar baru Puncak Alam dengan teres yang lebih moden dan kemudahan perniagaan. Pembangunan seperti Daunan menawarkan teres fully furnished yang sesuai untuk penyewa yang mahu masuk terus tanpa perlu sesuaikan rumah.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Eco Grandeur</div>
+        <div class="zone-desc">Enklaf perumahan premium di sempadan Puncak Alam dengan rekabentuk lanskap dan saiz unit yang lebih besar. Sesuai untuk pembeli yang cari teres spacious dalam persekitaran terancang dengan kemudahan fasiliti.</div>
       </div>
     </div>
+  </div>
 
-    <!-- Card 2: Meranti Hillpark — T2, 83% -->
-    <div class="card" data-zone="puncak-alam">
-      <div class="card-tile">
-        <div class="card-title">Meranti Hillpark, 2-Storey Terrace</div>
-        <div class="card-micro">📍 Puncak Alam</div>
-        <div class="card-landmark">🎓 Berhampiran UiTM Puncak Alam</div>
+</section>
+
+<!-- PRICE BAND -->
+<div class="price-band">
+  <div class="price-inner">
+    <h2>Anggaran Harga di Puncak Alam</h2>
+    <div class="price-grid">
+      <div class="price-row-label">🏠 Sewa (Sebulan)</div>
+      <div class="price-cell">
+        <div class="price-type">Teres 2 Tingkat</div>
+        <div class="price-range">RM 1,100 – RM 2,000</div>
+        <div class="price-note">Fasa matang berdekatan UiTM, pelbagai tahap perabot</div>
       </div>
-      <div class="card-body">
-        <div class="card-price">RM 1,900 <span>sebulan</span></div>
-        <div class="badge-row">
-          <span class="badge badge-pf">Partially Furnished</span>
-          <span class="badge badge-type">Landed</span>
-        </div>
-        <div class="card-rooms">4 Bilik · 3 Bilik Mandi · 1,400 sqft</div>
-        <a class="card-cta"
-           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Meranti%20Hillpark%20di%20Puncak%20Alam.%20Boleh%20tahu%20lebih%20lanjut%3F"
-           target="_blank" rel="noopener">💬 Tanya Hani</a>
+      <div class="price-cell">
+        <div class="price-type">Teres Corner / Besar</div>
+        <div class="price-range">RM 2,000 – RM 3,000</div>
+        <div class="price-note">Unit corner lot atau saiz lebih besar, fully furnished</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Semi-D / Banglo</div>
+        <div class="price-range">RM 3,000 – RM 5,000</div>
+        <div class="price-note">Eco Grandeur dan fasa premium Bandar Puncak Alam</div>
+      </div>
+      <div class="price-row-label">🏡 Beli (Harga Pasaran)</div>
+      <div class="price-cell">
+        <div class="price-type">Teres 2 Tingkat</div>
+        <div class="price-range">RM 350k – RM 600k</div>
+        <div class="price-note">Nilai baik berbanding kawasan Shah Alam dan Subang</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Teres Corner / Besar</div>
+        <div class="price-range">RM 550k – RM 900k</div>
+        <div class="price-note">Eco Grandeur dan Bandar Puncak Alam fasa terkini</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Semi-D / Banglo</div>
+        <div class="price-range">RM 800k ke atas</div>
+        <div class="price-note">Fasa premium Eco Grandeur — ruang luas, nilai modal kukuh</div>
       </div>
     </div>
-
-    <!-- Card 3: Rentak Perdana — T2, 83% -->
-    <div class="card" data-zone="puncak-alam">
-      <div class="card-tile">
-        <div class="card-title">Rentak Perdana, 2-Storey Terrace</div>
-        <div class="card-micro">📍 Puncak Alam</div>
-        <div class="card-landmark">🎓 Berhampiran UiTM Puncak Alam</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 1,900 <span>sebulan</span></div>
-        <div class="badge-row">
-          <span class="badge badge-pf">Partially Furnished</span>
-          <span class="badge badge-type">Landed</span>
-        </div>
-        <div class="card-rooms">4 Bilik · 3 Bilik Mandi · 1,400 sqft</div>
-        <a class="card-cta"
-           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Rentak%20Perdana%20di%20Puncak%20Alam.%20Boleh%20tahu%20lebih%20lanjut%3F"
-           target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Card 4: Halya 2 @ Daunan — T2, 78% -->
-    <div class="card" data-zone="bandar-puncak-alam">
-      <div class="card-tile">
-        <div class="card-title">Halya 2 @ Daunan, 2-Storey Terrace</div>
-        <div class="card-micro">📍 Bandar Puncak Alam</div>
-        <div class="card-landmark">🎓 Berhampiran UiTM Puncak Alam</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 2,500 <span>sebulan</span></div>
-        <div class="badge-row">
-          <span class="badge badge-ff">Fully Furnished</span>
-          <span class="badge badge-type">Landed</span>
-        </div>
-        <div class="card-rooms">4 Bilik · 3 Bilik Mandi</div>
-        <a class="card-cta"
-           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Halya%202%20%40%20Daunan%20di%20Bandar%20Puncak%20Alam.%20Boleh%20tahu%20lebih%20lanjut%3F"
-           target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Card 5: Ritma Perdana Corner Lot — T2, 76% -->
-    <div class="card" data-zone="puncak-alam">
-      <div class="card-tile">
-        <div class="card-title">Ritma Perdana, Corner Lot</div>
-        <div class="card-micro">📍 Puncak Alam</div>
-        <div class="card-landmark">🎓 Berhampiran UiTM Puncak Alam</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 2,000 <span>sebulan</span></div>
-        <div class="badge-row">
-          <span class="badge badge-pf">Partially Furnished</span>
-          <span class="badge badge-type">Landed</span>
-        </div>
-        <div class="card-rooms">4 Bilik · 4 Bilik Mandi · 1,450 sqft</div>
-        <a class="card-cta"
-           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Ritma%20Perdana%20Corner%20Lot%20di%20Puncak%20Alam.%20Boleh%20tahu%20lebih%20lanjut%3F"
-           target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Card 6: Eco Grandeur Graham Garden — T2, 76% -->
-    <div class="card" data-zone="eco-grandeur">
-      <div class="card-tile">
-        <div class="card-title">Eco Grandeur Graham Garden, 2-Storey Terrace</div>
-        <div class="card-micro">📍 Eco Grandeur, Puncak Alam</div>
-        <div class="card-landmark">🎓 Berhampiran UiTM Puncak Alam</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 1,750 <span>sebulan</span></div>
-        <div class="badge-row">
-          <span class="badge badge-pf">Partially Furnished</span>
-          <span class="badge badge-type">Landed</span>
-        </div>
-        <div class="card-rooms">3 Bilik · 3 Bilik Mandi · 1,635 sqft</div>
-        <a class="card-cta"
-           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Eco%20Grandeur%20Graham%20Garden%20di%20Puncak%20Alam.%20Boleh%20tahu%20lebih%20lanjut%3F"
-           target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- Card 7: Puncak Bestari 2 — T2, 74% -->
-    <div class="card" data-zone="puncak-alam">
-      <div class="card-tile">
-        <div class="card-title">Puncak Bestari 2, 2-Storey Terrace</div>
-        <div class="card-micro">📍 Puncak Alam</div>
-        <div class="card-landmark">🎓 Berhampiran UiTM Puncak Alam</div>
-      </div>
-      <div class="card-body">
-        <div class="card-price">RM 1,800 <span>sebulan</span></div>
-        <div class="badge-row">
-          <span class="badge badge-uf">Unfurnished</span>
-          <span class="badge badge-type">Landed</span>
-        </div>
-        <div class="card-rooms">4 Bilik · 3 Bilik Mandi · 1,470 sqft</div>
-        <a class="card-cta"
-           href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20berminat%20dengan%20unit%20Puncak%20Bestari%202%20di%20Puncak%20Alam.%20Boleh%20tahu%20lebih%20lanjut%3F"
-           target="_blank" rel="noopener">💬 Tanya Hani</a>
-      </div>
-    </div>
-
-    <!-- More listings coming band — 3 slots remaining -->
-    <div class="coming-band">
-      <p><strong>Lebih banyak listing sedang ditambah.</strong></p>
-      <p>Unit-unit baru disenaraikan setiap minggu. Hubungi kami terus untuk pilihan terkini di Puncak Alam.</p>
-      <a href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Puncak%20Alam.%20Ada%20listing%20terbaru%3F" target="_blank" rel="noopener">💬 Tanya listing terbaru</a>
-    </div>
-
   </div>
 </div>
 
 <!-- CTA BAND -->
-<section class="cta-band">
-  <h2>Tak jumpa yang sesuai?</h2>
-  <p>Beritahu kami bajet dan keperluan anda — kami carikan unit yang paling kena.</p>
+<div class="cta-band">
+  <h2>Tanya Hani untuk listing terkini</h2>
+  <p>Sewa atau beli — listing bertukar cepat. Wasap terus untuk tahu unit yang ada sekarang.</p>
   <div class="cta-buttons">
-    <a class="btn-wa" href="https://wa.me/60125459182?text=Assalamualaikum%20Kak%20Hani%2C%20saya%20cari%20rumah%20sewa%20di%20Puncak%20Alam%20tapi%20belum%20jumpa%20yang%20sesuai.%20Boleh%20bantu%3F" target="_blank" rel="noopener">💬 WhatsApp Hani</a>
-    <a class="btn-outline" href="https://www.haniproperties.com/kawasan_sewa.html">Lihat semua listing</a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20hartanah%20di%20Puncak%20Alam." class="btn-wa" target="_blank" rel="noopener">💬 Wasap Hani Sekarang</a>
+    <a href="https://www.haniproperties.com" class="btn-outline">Kembali ke Laman Utama →</a>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer>
   <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
-  <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a></div>
-  <div><a href="https://www.haniproperties.com">haniproperties.com</a> · Property made personal.</div>
+  <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></div>
+  <div style="margin-top:4px; color:rgba(255,255,255,.3)">Property made personal.</div>
 </footer>
-
-<script>
-  function filterZone(zone, el) {
-    document.querySelectorAll('.zone-pill').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
-    document.querySelectorAll('.card').forEach(card => {
-      if (zone === 'semua' || card.dataset.zone === zone) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
-</script>
 
 </body>
 </html>
