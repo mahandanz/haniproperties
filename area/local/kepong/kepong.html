@@ -1,329 +1,593 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hani Properties – No Units Available</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <title>Hartanah Kepong | Sewa &amp; Jual | Hani Properties</title>
+  <meta name="description" content="Cari rumah sewa atau beli di Kepong — apartment, kondominium, dan teres berdekatan MRT Putrajaya Line dan pusat membeli-belah utama. Hani Properties meliputi Sri Damansara, Desa Park City, Taman Ehsan dan lebih lagi." />
+  <link rel="canonical" href="https://www.haniproperties.com/kepong.html" />
+  <meta property="og:title" content="Hartanah Kepong | Sewa &amp; Jual | Hani Properties" />
+  <meta property="og:description" content="Cari rumah sewa atau beli di Kepong — apartment, kondominium, dan teres. Semak listing terkini sekarang." />
+  <meta property="og:url" content="https://www.haniproperties.com/kepong.html" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Hani Properties",
+    "url": "https://www.haniproperties.com",
+    "telephone": "+60125459182",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Kuala Lumpur",
+      "addressCountry": "MY"
+    },
+    "employee": {
+      "@type": "Person",
+      "name": "Marhani Bt Mohamad Nor",
+      "telephone": "+60125459182"
+    },
+    "areaServed": ["Kepong, Kuala Lumpur"]
+  }
+  </script>
   <style>
+    :root {
+      --green-dark: #1B4D35;
+      --green-mid: #2E7D52;
+      --green-light: #52B788;
+      --cream: #F7F5F0;
+      --text-dark: #1a1a1a;
+      --text-mid: #444;
+      --text-muted: #888;
+      --radius: 10px;
+      --radius-sm: 6px;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --green-dark:   #1B4D35;
-      --green-mid:    #2E7D52;
-      --green-light:  #52B788;
-      --cream:        #F5F2EB;
-      --cream-dark:   #EDE9DF;
-      --text-primary: #1A1A1A;
-      --text-muted:   #6B7566;
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
     }
 
-    html, body {
-      height: 100%;
-      background-color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      color: var(--text-primary);
-    }
-
-    /* ── Layout ───────────────────────────────────── */
-    .page {
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      grid-template-columns: 1fr;
-    }
-
-    /* ── Header ───────────────────────────────────── */
-    header {
-      padding: 28px 40px;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .logo-mark {
-      width: 36px;
-      height: 36px;
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       background: var(--green-dark);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-mark svg { display: block; }
-
-    .logo-text {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.15rem;
-      color: var(--green-dark);
-      letter-spacing: -0.01em;
-    }
-
-    /* ── Main content ─────────────────────────────── */
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px 60px;
-      text-align: center;
-    }
-
-    /* Illustration container */
-    .illustration {
-      width: 100%;
-      max-width: 360px;
-      margin-top: 44px;
-    }
-
-    .illustration img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 16px;
-    }
-
-    /* Fallback shown if under.png is missing */
-    .illustration-fallback {
-      display: none;
-      width: 100%;
-      max-width: 360px;
-      aspect-ratio: 4/3;
-      background: var(--cream-dark);
-      border-radius: 16px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green-mid);
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.15;
-      color: var(--green-dark);
-      margin-bottom: 16px;
-      max-width: 520px;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--green-mid);
-    }
-
-    .subtext {
-      font-size: 0.97rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-      max-width: 400px;
-      margin-bottom: 36px;
-    }
-
-    /* ── CTA pill ─────────────────────────────────── */
-    .cta-group {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .cta-pill--outline {
-      background: transparent;
-      color: var(--green-dark);
-      border: 2px solid var(--green-dark);
-      box-shadow: none;
-    }
-
-    .cta-pill--outline:hover {
-      background: var(--cream-dark);
-      color: var(--green-dark);
-      box-shadow: 0 4px 14px rgba(27,77,53,0.12);
-    }
-
-    .cta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      background: var(--green-dark);
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      border-radius: 999px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
-      box-shadow: 0 2px 12px rgba(27,77,53,0.20);
-    }
-
-    .cta-pill:hover {
-      background: var(--green-mid);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(27,77,53,0.26);
-    }
-
-    .cta-pill:active {
-      transform: translateY(0);
-    }
-
-    .cta-pill svg {
-      flex-shrink: 0;
-    }
-
-    .cta-secondary {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .cta-secondary a {
-      color: var(--green-mid);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .cta-secondary a:hover {
-      text-decoration: underline;
-    }
-
-    /* ── Footer ───────────────────────────────────── */
-    footer {
-      padding: 20px 40px;
-      border-top: 1px solid var(--cream-dark);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
+      padding: 0 24px;
+      height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
+    .nav-logo span { color: var(--green-light); }
+    .nav-links {
+      display: flex;
+      align-items: center;
       gap: 8px;
     }
-
-    .footer-tagline {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    .footer-contact {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .footer-contact a {
-      color: var(--green-mid);
+    .nav-links a {
+      color: rgba(255,255,255,.8);
       text-decoration: none;
+      font-size: .85rem;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: background .15s;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
+    .nav-wa {
+      background: var(--green-light) !important;
+      color: var(--green-dark) !important;
+      font-weight: 600 !important;
+      padding: 7px 14px !important;
+    }
+    .nav-wa:hover { background: #62cc98 !important; }
+    @media (max-width: 600px) {
+      .nav-text-label { display: none; }
     }
 
-    /* ── Reduced motion ───────────────────────────── */
-    @media (prefers-reduced-motion: reduce) {
-      .cta-pill { transition: none; }
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-dark);
+      padding: 52px 24px 48px;
+      text-align: center;
     }
-
-    /* ── Mobile ───────────────────────────────────── */
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      color: var(--green-light);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      white-space: nowrap;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
     @media (max-width: 480px) {
-      header { padding: 20px 20px; }
-      footer  { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
+      .hero h1 { white-space: normal; font-size: 1.7rem; }
     }
+    .hero-desc {
+      color: rgba(255,255,255,.75);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: #fff;
+      padding: 48px 24px;
+    }
+    .about-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .about h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    .about-text p {
+      font-size: .95rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    .highlight-item .icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 1px; }
+    .highlight-item .hl-label { font-size: .75rem; font-weight: 700; color: var(--green-mid); text-transform: uppercase; letter-spacing: .04em; }
+    .highlight-item .hl-text { font-size: .88rem; color: var(--text-mid); margin-top: 2px; }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: var(--cream);
+      padding: 10px 24px;
+      border-bottom: 1px solid #e5e3de;
+    }
+    .breadcrumb-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .breadcrumb-inner a { color: var(--green-mid); text-decoration: none; }
+    .breadcrumb-inner a:hover { text-decoration: underline; }
+    .breadcrumb-inner span { margin: 0 6px; }
+
+    /* ── TELEGRAM + ZONES SECTION ── */
+    .content-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .tg-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 48px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    .tg-label {
+      font-size: .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .tg-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .tg-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .tg-btn:hover { opacity: .85; }
+    .tg-btn-sewa { background: #EAF4EE; color: #1B4D35; }
+    .tg-btn-jual { background: #E8F0FE; color: #1a4fa0; }
+    .tg-icon { flex-shrink: 0; }
+
+    .zones h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+    .zones-intro {
+      font-size: .95rem;
+      color: var(--text-mid);
+      margin-bottom: 24px;
+    }
+    .zones-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 700px) {
+      .zones-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 440px) {
+      .zones-grid { grid-template-columns: 1fr; }
+    }
+    .zone-card {
+      background: #fff;
+      border-left: 4px solid var(--green-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 16px 16px 18px;
+    }
+    .zone-name {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .zone-desc {
+      font-size: .85rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ── PRICE BAND ── */
+    .price-band {
+      background: #fff;
+      border-top: 1px solid #e5e3de;
+      border-bottom: 1px solid #e5e3de;
+      padding: 48px 24px;
+    }
+    .price-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .price-inner h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+    }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 700px) {
+      .price-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 440px) {
+      .price-grid { grid-template-columns: 1fr; }
+    }
+    .price-row-label {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--text-muted);
+      margin-top: 20px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e3de;
+      grid-column: 1 / -1;
+    }
+    .price-row-label:first-child { margin-top: 0; }
+    .price-cell {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+    }
+    .price-type {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--green-mid);
+      margin-bottom: 6px;
+    }
+    .price-range {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .price-note {
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--green-dark);
+      padding: 52px 24px;
+      text-align: center;
+    }
+    .cta-band h2 {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .cta-band p {
+      color: rgba(255,255,255,.75);
+      font-size: .95rem;
+      max-width: 480px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-wa {
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: background .15s;
+    }
+    .btn-wa:hover { background: #62cc98; }
+    .btn-outline {
+      background: transparent;
+      color: rgba(255,255,255,.85);
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid rgba(255,255,255,.35);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: border-color .15s, color .15s;
+    }
+    .btn-outline:hover { border-color: #fff; color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 24px;
+      font-size: .78rem;
+      line-height: 1.8;
+    }
+    footer a { color: var(--green-light); text-decoration: none; }
   </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- Header -->
-  <header>
-    <a href="https://haniproperties.com" class="logo">
-      <div class="logo-mark">
-        <!-- Simple H monogram -->
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="3" height="14" fill="white"/>
-          <rect x="14" y="3" width="3" height="14" fill="white"/>
-          <rect x="3" y="8.5" width="14" height="3" fill="white"/>
-        </svg>
+<!-- NAV -->
+<nav>
+  <a href="https://www.haniproperties.com" class="nav-logo">Hani<span>Properties</span></a>
+  <div class="nav-links">
+    <a href="https://www.haniproperties.com/kawasan_sewa.html"><span class="nav-text-label">Sewa</span></a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html"><span class="nav-text-label">Jual</span></a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20hartanah%20di%20Kepong." class="nav-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">📍 Kepong · Kuala Lumpur</div>
+  <h1>Hartanah di Kepong</h1>
+  <p class="hero-desc">Sewa atau beli di Kepong — kawasan kediaman mapan di utara KL dengan akses MRT Putrajaya Line, berdekatan Desa Park City dan Sri Damansara. Apartment, kondominium, hingga teres untuk pelbagai bajet dan keperluan.</p>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <h2>Kenapa pilih Kepong?</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Kepong adalah kawasan kediaman matang di utara KL yang menawarkan pelbagai pilihan hartanah pada harga yang lebih berpatutan berbanding kawasan dalam bandar. Dari kondominium moden di Sri Damansara dan Desa Park City hingga teres dan apartment di Taman Ehsan dan Kepong Baru — kawasan ini merangkumi spektrum kediaman yang luas untuk pelbagai profil pembeli dan penyewa.</p>
+        <p>Pembukaan MRT Putrajaya Line dengan stesen di Sri Damansara Timur dan Sri Damansara Barat telah mengubah aksesibiliti Kepong secara ketara — menghubungkan penduduk terus ke Putrajaya, Cyberjaya, dan KL Sentral. Lebuhraya MRR2, DUKE, dan SPRINT turut menjadikan Kepong pilihan strategik untuk profesional yang bekerja di pelbagai koridor Lembah Klang.</p>
       </div>
-      <span class="logo-text">Hani Properties</span>
-    </a>
-  </header>
-
-  <!-- Main -->
-  <main>
-
-    <p class="eyebrow"></p>
-
-    <p class="subtext">
-     
-    </p>
-
-    <div class="cta-group">
-
-      <!-- Rental -->
-      <a href="https://t.me/hanipropertiesrentals/239" class="cta-pill" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.981l-2.965-.924c-.644-.204-.657-.644.136-.953l11.57-4.461c.537-.194 1.006.131.963.578z" fill="white"/>
-        </svg>
-        Semak Kawasan Lain (Sewa)
-      </a>
-
-      <!-- Subsale -->
-      <a href="https://t.me/hanipropertiesforsale/87" class="cta-pill cta-pill--outline" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.981l-2.965-.924c-.644-.204-.657-.644.136-.953l11.57-4.461c.537-.194 1.006.131.963.578z" fill="var(--green-dark)"/>
-        </svg>
-        Semak Kawasan Lain (Subsale)
-      </a>
-
-      <!-- WhatsApp -->
-      <a href="https://wa.me/60125459182" class="cta-pill cta-pill--outline" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="var(--green-dark)"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.524 5.843L.054 23.285a.75.75 0 00.924.924l5.442-1.47A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.722 9.722 0 01-4.964-1.36l-.355-.213-3.683.994.994-3.683-.213-.355A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" fill="var(--green-dark)"/>
-        </svg>
-        WhatsApp Kami
-      </a>
-
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <span class="icon">🎓</span>
+          <div>
+            <div class="hl-label">Pendidikan</div>
+            <div class="hl-text">SEGi University Kota Damansara, pelbagai sekolah kebangsaan dan swasta dalam kawasan Kepong</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="icon">🏥</span>
+          <div>
+            <div class="hl-label">Kesihatan</div>
+            <div class="hl-text">Hospital Kepong, KPJ Damansara Specialist Hospital, Klinik Kesihatan Kepong</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="icon">🛍️</span>
+          <div>
+            <div class="hl-label">Membeli-belah</div>
+            <div class="hl-text">Encorp Strand Mall, Publika Sri Hartamas (berdekatan), Giant Kepong, AEON Kepong</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="icon">🛣️</span>
+          <div>
+            <div class="hl-label">Transit &amp; Lebuh Raya</div>
+            <div class="hl-text">MRT Sri Damansara Timur &amp; Barat (Putrajaya Line), KTM Kepong · MRR2, DUKE, SPRINT Highway</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="illustration">
-      <img
-        src="sorry.png"
-        alt="Maintenance in progress"
-        onerror="this.style.display='none'; document.querySelector('.illustration-fallback').style.display='flex';"
-      />
-    </div>
-    <!-- shown only if under.png fails to load -->
-    <div class="illustration-fallback">
-      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="36" cy="36" r="28" stroke="#2E7D52" stroke-width="2.5" stroke-dasharray="6 4"/>
-        <path d="M28 36h16M36 28v16" stroke="#2E7D52" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <span class="footer-tagline">Property made personal.</span>
-    <span class="footer-contact">
-      ERA Real Estate E(1)1773/3 &nbsp;·&nbsp;
-      <a href="tel:+60125459182">012-545 9182</a>
-    </span>
-  </footer>
-
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="https://www.haniproperties.com">Hani Properties</a>
+    <span>›</span>
+    Kepong
+  </div>
 </div>
+
+<!-- TELEGRAM + ZONES -->
+<section class="content-section">
+
+  <div class="tg-card">
+    <div class="tg-label">Semak listing terkini di Telegram</div>
+    <div class="tg-buttons">
+      <a class="tg-btn tg-btn-sewa" href="https://t.me/hanipropertiesrentals/269" target="_blank" rel="noopener">
+        <svg class="tg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.81l-1.68 7.92c-.12.54-.46.67-.93.42l-2.58-1.9-1.24 1.19c-.14.14-.26.26-.52.26l.18-2.62 4.74-4.28c.21-.18-.04-.28-.32-.1L7.7 14.37l-2.52-.79c-.55-.17-.56-.55.12-.82l9.84-3.79c.46-.17.86.11.79.84z" fill="currentColor"/>
+        </svg>
+        Sewa Kepong
+      </a>
+      <a class="tg-btn tg-btn-jual" href="https://wa.me/60125459182" target="_blank" rel="noopener">
+        <svg class="tg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.81l-1.68 7.92c-.12.54-.46.67-.93.42l-2.58-1.9-1.24 1.19c-.14.14-.26.26-.52.26l.18-2.62 4.74-4.28c.21-.18-.04-.28-.32-.1L7.7 14.37l-2.52-.79c-.55-.17-.56-.55.12-.82l9.84-3.79c.46-.17.86.11.79.84z" fill="currentColor"/>
+        </svg>
+        Jual Kepong
+      </a>
+    </div>
+  </div>
+
+  <div class="zones">
+    <h2>Kawasan di Kepong</h2>
+    <p class="zones-intro">Kami meliputi pelbagai zon di Kepong — dari Sri Damansara dan Desa Park City yang premium, hingga Taman Ehsan, Kepong Baru, dan Sri Kepong.</p>
+    <div class="zones-grid">
+      <div class="zone-card">
+        <div class="zone-name">Sri Damansara</div>
+        <div class="zone-desc">Zon premium Kepong dengan kondominium moden berdekatan MRT Sri Damansara Timur dan Barat. Stesen MRT baharu menjadikan kawasan ini semakin dicari oleh profesional yang bekerja di koridor Putrajaya-KL Sentral.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Desa Park City</div>
+        <div class="zone-desc">Enklaf eksklusif dengan rekabentuk bandar yang teliti, tasik, dan taman besar. Kondominium dan banglo premium popular dalam kalangan keluarga dan ekspatriat yang utamakan kualiti persekitaran dan gaya hidup.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Taman Ehsan</div>
+        <div class="zone-desc">Kawasan kediaman matang dengan teres dua tingkat berharga berpatutan berdekatan KTM Kepong dan Giant. Sesuai untuk keluarga yang mahukan rumah landed dalam kawasan yang lengkap kemudahan asas.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Kepong Baru</div>
+        <div class="zone-desc">Kawasan campuran teres dan apartment bersejarah di Kepong dengan harga kediaman yang kompetitif. Popular dalam kalangan penyewa yang utamakan nilai dan akses mudah ke KL melalui MRR2 dan DUKE.</div>
+      </div>
+      <div class="zone-card">
+        <div class="zone-name">Sri Kepong</div>
+        <div class="zone-desc">Zon kediaman tenang dengan apartment dan kondominium berharga sederhana berdekatan Encorp Strand Mall. Pilihan baik untuk pasangan muda dan individu yang cari kemudahan membeli-belah dan aksesibiliti lebuhraya.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- PRICE BAND -->
+<div class="price-band">
+  <div class="price-inner">
+    <h2>Anggaran Harga di Kepong</h2>
+    <div class="price-grid">
+      <div class="price-row-label">🏠 Sewa (Sebulan)</div>
+      <div class="price-cell">
+        <div class="price-type">Apartment / Flat</div>
+        <div class="price-range">RM 900 – RM 1,800</div>
+        <div class="price-note">Kepong Baru dan Taman Ehsan, kawasan matang berharga berpatutan</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Servis Residensi</div>
+        <div class="price-range">RM 1,500 – RM 3,000</div>
+        <div class="price-note">Sri Damansara berdekatan MRT — permintaan meningkat sejak stesen dibuka</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Teres / Landed</div>
+        <div class="price-range">RM 2,000 – RM 5,000</div>
+        <div class="price-note">Taman Ehsan dan kawasan landed Kepong, sesuai untuk keluarga</div>
+      </div>
+      <div class="price-row-label">🏡 Beli (Harga Pasaran)</div>
+      <div class="price-cell">
+        <div class="price-type">Apartment / Servis</div>
+        <div class="price-range">RM 250k – RM 600k</div>
+        <div class="price-note">Pelaburan stabil dengan aksesibiliti MRT yang semakin meningkat</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Teres 2 Tingkat</div>
+        <div class="price-range">RM 450k – RM 900k</div>
+        <div class="price-note">Kawasan matang Kepong — nilai modal yang terjaga jangka panjang</div>
+      </div>
+      <div class="price-cell">
+        <div class="price-type">Semi-D / Banglo</div>
+        <div class="price-range">RM 900k ke atas</div>
+        <div class="price-note">Desa Park City — premium lifestyle enclave dalam Kepong</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Tanya Hani untuk listing terkini</h2>
+  <p>Sewa atau beli — listing bertukar cepat. Wasap terus untuk tahu unit yang ada sekarang.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20saya%20nak%20tanya%20pasal%20hartanah%20di%20Kepong." class="btn-wa" target="_blank" rel="noopener">💬 Wasap Hani Sekarang</a>
+    <a href="https://www.haniproperties.com" class="btn-outline">Kembali ke Laman Utama →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
+  <div>Marhani Bt Mohamad Nor (REN) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></div>
+  <div style="margin-top:4px; color:rgba(255,255,255,.3)">Property made personal.</div>
+</footer>
+
 </body>
 </html>
