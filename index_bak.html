@@ -103,11 +103,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;ali
 .hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);background:rgba(191,85,51,.09);padding:5px 12px;border-radius:20px;margin-bottom:24px}
 .hero-tag::before{content:'●';font-size:8px;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{font-family:'DM Sans',sans-serif;font-size:clamp(34px,5.5vw,58px);font-weight:700;line-height:1.08;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px;text-transform:uppercase}
+.hero h1{font-family:'DM Sans',sans-serif;font-size:clamp(22px,3.2vw,42px);font-weight:700;line-height:1.08;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px;text-transform:uppercase;white-space:nowrap;text-align:center}
 .hero h1 em{font-style:normal;color:var(--terra)}
-.hero-desc{font-size:15px;color:var(--muted);max-width:520px;margin:0 auto 14px;line-height:1.75}
-.hero-desc2{font-size:14px;color:var(--muted);max-width:520px;margin:0 auto 28px;line-height:1.75;opacity:.85}
-.hero-trust{display:flex;gap:24px;flex-wrap:wrap}
+.hero-desc{font-size:15px;color:var(--muted);max-width:520px;margin:0 auto 28px;line-height:1.75;text-align:center}
+.hero-trust{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
 .trust-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);font-weight:500}
 .trust-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
 .ti-green{background:rgba(42,92,58,.1)}
@@ -177,17 +176,17 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <body>
 
 <nav>
-  <a href="index.html" class="brand" target="_blank" rel="noopener noreferrer">Hani <span>Properties</span></a>
+  <a href="https://haniproperties.com/" class="brand">Hani <span>Properties</span></a>
   <div class="nav-links">
-    <a href="https://t.me/hanipropertiesrentals/239" target="_blank" rel="noopener noreferrer">Sewa</a>
-    <a href="https://t.me/hanipropertiesforsale/87" target="_blank" rel="noopener noreferrer">Beli</a>
+    <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a>
+    <a href="https://www.haniproperties.com/kawasan_jual.html">Beli</a>
     <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20boleh%20bantu%20saya%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
   </div>
 </nav>
 
 <!-- SITE BANNER -->
 <div class="site-banner">
-  <img src="banner.jpg" alt="Hani Properties — ERA Realtor Sdn Bhd. Marhani Bt Mohamad Nor, Real Estate Negotiator, 012-545 9182, haniproperties.com" width="1584" height="396">
+  <img src="banner.png" alt="Hani Properties — ERA Realtor Sdn Bhd. Marhani Bt Mohamad Nor, Real Estate Negotiator, 012-545 9182, haniproperties.com" width="1584" height="396">
 </div>
 
 <!-- HERO -->
@@ -195,9 +194,8 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   <div class="hero-bg"></div>
   <div class="hero-inner">
     <div class="hero-tag">✦ Listing Baru Setiap Hari</div>
-    <h1>MENCARI RUMAH<br>UNTUK SEWA<br>ATAU BELI?</h1>
+    <h1>MENCARI RUMAH UNTUK SEWA ATAU BELI?</h1>
     <p class="hero-desc">Jom tengok listing Hani. Ada banyak pilihan untuk sewa dan beli di pelbagai kawasan — Shah Alam, Puchong, KL, Setapak, dan banyak lagi. Hari-hari ada unit baru.</p>
-    <p class="hero-desc2">Range harga dari bawah RM300k hingga bawah RM1M. Estimated installment dah dikira siap — bawah RM1k ada, bawah RM2k ada, bawah RM3k pun ada. Untuk yang nak exclusive dan luxury, ada juga beberapa pilihan menarik.</p>
     <div class="hero-trust">
       <div class="trust-item"><div class="trust-icon ti-green">✓</div>Respon pantas</div>
       <div class="trust-item"><div class="trust-icon ti-terra">✓</div>Nak tahu kelayakan? Jom cek loan. Free!</div>
@@ -208,27 +206,17 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 
 <!-- SPLIT CARDS -->
 <div class="split">
-  <a href="https://t.me/hanipropertiesrentals/239" class="split-card sc-sewa" target="_blank" rel="noopener noreferrer">
+  <a href="https://www.haniproperties.com/kawasan_sewa.html" class="split-card sc-sewa">
     <div class="sc-badge">Cari rumah sewa?</div>
     <h2>Listing sewa terkini<br>di Klang Valley.</h2>
     <p>Pelbagai unit di Shah Alam, Setia Alam, Puchong, Cyberjaya, Putrajaya dan kawasan lain. Dikemaskini setiap hari.</p>
-    <div class="sc-divider"></div>
-    <div class="sc-stat">
-      <div class="sc-stat-item"><span class="sc-num">302</span><span class="sc-label">Unit Aktif</span></div>
-      <div class="sc-stat-item"><span class="sc-num">RM700</span><span class="sc-label">Sewa Dari</span></div>
-    </div>
     <div class="sc-arrow">Lihat semua listing sewa <span class="sc-arrow-icon">→</span></div>
     <div class="sc-deco">🏡</div>
   </a>
-  <a href="https://t.me/hanipropertiesforsale/87" class="split-card sc-jual" target="_blank" rel="noopener noreferrer">
+  <a href="https://www.haniproperties.com/kawasan_jual.html" class="split-card sc-jual">
     <div class="sc-badge">Nak beli rumah?</div>
-    <h2>Beli rumah.<br>Ansuran dari RM660/bln.</h2>
-    <p>20 unit subsale terpilih — apartment, kondominium &amp; landed. Bawah MV, hasil tinggi, atau family-ready.</p>
-    <div class="sc-divider"></div>
-    <div class="sc-stat">
-      <div class="sc-stat-item"><span class="sc-num">20</span><span class="sc-label">Unit Aktif</span></div>
-      <div class="sc-stat-item"><span class="sc-num">RM150k</span><span class="sc-label">Harga Dari</span></div>
-    </div>
+    <h2>Beli rumah.<br>Subsale terpilih Klang Valley.</h2>
+    <p>Apartment, kondominium &amp; landed. Bawah MV, hasil tinggi, atau family-ready.</p>
     <div class="sc-arrow">Lihat semua listing beli <span class="sc-arrow-icon">→</span></div>
     <div class="sc-deco">🏢</div>
   </a>
@@ -288,8 +276,8 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 </div>
 
 <footer>
-  © 2025 Hani Properties &nbsp;·&nbsp; Hartanah Selangor, KL &amp; Negeri Sembilan<br>
-  <a href="https://wa.me/60125459182" target="_blank" rel="noopener noreferrer">+60 12-545 9182</a> &nbsp;·&nbsp; <a href="sewa.html" target="_blank" rel="noopener noreferrer">Sewa</a> &nbsp;·&nbsp; <a href="jual.html" target="_blank" rel="noopener noreferrer">Beli</a>
+  © 2025–2026 Hani Properties &nbsp;·&nbsp; Hartanah Selangor, KL &amp; Negeri Sembilan<br>
+  <a href="https://wa.me/60125459182" target="_blank" rel="noopener noreferrer">+60 12-545 9182</a> &nbsp;·&nbsp; <a href="https://www.haniproperties.com/kawasan_sewa.html">Sewa</a> &nbsp;·&nbsp; <a href="https://www.haniproperties.com/kawasan_jual.html">Beli</a>
 </footer>
 
 </body>
