@@ -113,14 +113,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;ali
 .ti-terra{background:rgba(191,85,51,.1)}
 
 /* SPLIT CARDS */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1100px;margin:0 auto;padding:0 20px}
-@media(max-width:760px){.split{grid-template-columns:1fr}}
+.split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;max-width:1100px;margin:0 auto;padding:0 20px}
+@media(max-width:900px){.split{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.split{grid-template-columns:1fr}}
 .split-card{padding:44px 40px 40px;position:relative;overflow:hidden;text-decoration:none;display:block;transition:filter .2s;border-radius:0}
 .split:has(.split-card){border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,0.08)}
 .split-card:hover{filter:brightness(1.05)}
 .sc-sewa{background:var(--olive);color:#fff}
+.sc-bilik{background:#5a7a6a;color:#fff}
 .sc-jual{background:var(--navy);color:#fff}
-.sc-sewa+.sc-jual{border-left:1px solid rgba(255,255,255,.1)}
+.sc-sewa+.sc-bilik,.sc-bilik+.sc-jual{border-left:1px solid rgba(255,255,255,.1)}
 .sc-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:20px;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.65)}
 .sc-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.5);display:inline-block}
 .split-card h2{font-family:'Lora',serif;font-size:clamp(22px,2.8vw,30px);font-weight:700;line-height:1.15;margin-bottom:10px;color:#fff;letter-spacing:-.01em}
@@ -207,11 +209,18 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <!-- SPLIT CARDS -->
 <div class="split">
   <a href="https://www.haniproperties.com/kawasan_sewa.html" class="split-card sc-sewa">
-    <div class="sc-badge">Looking to rent?</div>
-    <h2>Latest rental listings<br>across Klang Valley.</h2>
+    <div class="sc-badge">Looking to rent a unit?</div>
+    <h2>Unit Rental listings<br>across Klang Valley.</h2>
     <p>Units in Shah Alam, Setia Alam, Puchong, Cyberjaya, Putrajaya and more. Updated daily.</p>
-    <div class="sc-arrow">Browse all rental listings <span class="sc-arrow-icon">→</span></div>
+    <div class="sc-arrow">Browse unit rentals <span class="sc-arrow-icon">→</span></div>
     <div class="sc-deco">🏡</div>
+  </a>
+  <a href="https://t.me/haniroomforrent/2" class="split-card sc-bilik" target="_blank" rel="noopener noreferrer">
+    <div class="sc-badge">Need a room?</div>
+    <h2>Room Rental listings<br>across Klang Valley.</h2>
+    <p>Furnished rooms in shared units. Affordable options for singles and working adults. View on Telegram.</p>
+    <div class="sc-arrow">Browse room rentals <span class="sc-arrow-icon">→</span></div>
+    <div class="sc-deco">🛏️</div>
   </a>
   <a href="https://www.haniproperties.com/kawasan_jual.html" class="split-card sc-jual">
     <div class="sc-badge">Ready to buy?</div>
