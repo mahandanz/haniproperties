@@ -74,6 +74,16 @@
     .card-cta{display:block;text-align:center;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
     .card-cta:hover{background:#1e4a2c}
 
+    .carousel{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#e8f0ea}
+    .carousel-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
+    .carousel-slide.active{opacity:1}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.35);color:#fff;border:none;width:28px;height:28px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;transition:background .15s}
+    .carousel-btn:hover{background:rgba(0,0,0,.6)}
+    .carousel-prev{left:8px}
+    .carousel-next{right:8px}
+    .carousel-dots{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:2}
+    .carousel-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);cursor:pointer;transition:background .15s}
+    .carousel-dot.active{background:#fff}
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -184,9 +194,45 @@ function wa(text) {
   return WA_BASE + encodeURIComponent(text);
 }
 
-function img(src, alt) {
-  if (src) return `<img class="card-img" src="${src}" alt="${alt}" loading="lazy">`;
-  return `<div class="card-img-placeholder">${alt}</div>`;
+let carouselCount = 0;
+
+function mediaBlock(src, alt) {
+  if (!src) return `<div class="card-img-placeholder">${alt}</div>`;
+  const imgs = src.split('|').map(s => s.trim()).filter(Boolean);
+  if (imgs.length === 1) {
+    return `<img class="card-img" src="${imgs[0]}" alt="${alt}" loading="lazy">`;
+  }
+  const id = 'c' + (++carouselCount);
+  const slides = imgs.map((s, i) =>
+    `<img class="carousel-slide${i===0?' active':''}" src="${s}" alt="${alt} ${i+1}" loading="lazy">`
+  ).join('');
+  const dots = imgs.map((_, i) =>
+    `<span class="carousel-dot${i===0?' active':''}" onclick="carouselGo('${id}',${i})"></span>`
+  ).join('');
+  return `<div class="carousel" id="${id}">
+    ${slides}
+    <button class="carousel-btn carousel-prev" onclick="carouselStep('${id}',-1)">&#8249;</button>
+    <button class="carousel-btn carousel-next" onclick="carouselStep('${id}',1)">&#8250;</button>
+    <div class="carousel-dots">${dots}</div>
+  </div>`;
+}
+
+function carouselStep(id, dir) {
+  const el = document.getElementById(id);
+  const slides = el.querySelectorAll('.carousel-slide');
+  const dots = el.querySelectorAll('.carousel-dot');
+  let cur = [...slides].findIndex(s => s.classList.contains('active'));
+  slides[cur].classList.remove('active');
+  dots[cur].classList.remove('active');
+  cur = (cur + dir + slides.length) % slides.length;
+  slides[cur].classList.add('active');
+  dots[cur].classList.add('active');
+}
+
+function carouselGo(id, idx) {
+  const el = document.getElementById(id);
+  el.querySelectorAll('.carousel-slide').forEach((s,i) => s.classList.toggle('active', i===idx));
+  el.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
 }
 
 function unitCard(r) {
@@ -197,9 +243,8 @@ function unitCard(r) {
     r.furnishing || '',
     r.type || ''
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-
   return `<div class="card">
-    ${img(r.image, r.project_name)}
+    ${mediaBlock(r.image, r.project_name)}
     <div class="card-body">
       <div><span class="card-badge badge-unit">Unit Rental</span></div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
@@ -217,9 +262,8 @@ function roomCard(r) {
     r.bath_type || '',
     r.furnishing || ''
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-
   return `<div class="card">
-    ${img(r.image, r.project_name)}
+    ${mediaBlock(r.image, r.project_name)}
     <div class="card-body">
       <div><span class="card-badge badge-room">Room Rental</span></div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
@@ -239,9 +283,8 @@ function subsaleCard(r) {
     r.tenure || '',
     r.type || ''
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-
   return `<div class="card">
-    ${img(r.image, r.project_name)}
+    ${mediaBlock(r.image, r.project_name)}
     <div class="card-body">
       <div><span class="card-badge badge-subsale">Subsale</span></div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
