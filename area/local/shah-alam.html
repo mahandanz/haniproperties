@@ -96,8 +96,18 @@
     footer{background:#111;color:rgba(255,255,255,.4);text-align:center;padding:24px;font-size:11px;line-height:1.8}
     footer a{color:rgba(255,255,255,.5);text-decoration:none}
 
+    .filter-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;padding:16px;background:#fff;border-radius:12px;border:1px solid #e3ddd0}
+    .filter-group{display:flex;flex-direction:column;gap:4px;min-width:120px;flex:1}
+    .filter-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a7268}
+    .filter-select{font-size:12px;font-weight:600;color:#1c1c18;background:#faf9f6;border:1px solid #e3ddd0;border-radius:8px;padding:7px 10px;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a7268'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+    .filter-select:focus{outline:none;border-color:#2a5c3a}
+    .filter-reset{font-size:12px;font-weight:600;color:#7a7268;background:none;border:1px solid #e3ddd0;border-radius:8px;padding:7px 14px;cursor:pointer;align-self:flex-end;transition:all .15s;white-space:nowrap}
+    .filter-reset:hover{color:#1c1c18;border-color:#1c1c18}
+    .filter-count{font-size:12px;color:#7a7268;align-self:flex-end;padding-bottom:8px;white-space:nowrap}
     @media(max-width:600px){
       nav{padding:0 16px}
+      .filter-bar{gap:8px;padding:12px}
+      .filter-group{min-width:calc(50% - 4px)}
       .main{padding:28px 16px 48px}
       .listing-grid{grid-template-columns:1fr}
       .tabs{width:100%}
@@ -139,6 +149,51 @@
     <button class="tab-btn" onclick="switchTab('jual',this)">For Sale</button>
   </div>
 
+  <!-- FILTERS -->
+  <div class="filter-bar" id="filter-bar">
+    <div class="filter-group" id="fg-furnishing">
+      <div class="filter-label">Furnishing</div>
+      <select class="filter-select" id="f-furnishing" onchange="applyFilters()">
+        <option value="">All</option>
+        <option>Fully Furnished</option>
+        <option>Partially Furnished</option>
+        <option>Unfurnished</option>
+      </select>
+    </div>
+    <div class="filter-group" id="fg-type">
+      <div class="filter-label">Type</div>
+      <select class="filter-select" id="f-type" onchange="applyFilters()">
+        <option value="">All</option>
+      </select>
+    </div>
+    <div class="filter-group" id="fg-bed">
+      <div class="filter-label">Bedrooms</div>
+      <select class="filter-select" id="f-bed" onchange="applyFilters()">
+        <option value="">All</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4+</option>
+      </select>
+    </div>
+    <div class="filter-group" id="fg-price">
+      <div class="filter-label">Max Price</div>
+      <select class="filter-select" id="f-price" onchange="applyFilters()">
+        <option value="">Any</option>
+      </select>
+    </div>
+    <div class="filter-group" id="fg-tenure" style="display:none">
+      <div class="filter-label">Tenure</div>
+      <select class="filter-select" id="f-tenure" onchange="applyFilters()">
+        <option value="">All</option>
+        <option>Freehold</option>
+        <option>Leasehold</option>
+      </select>
+    </div>
+    <div class="filter-count" id="filter-count"></div>
+    <button class="filter-reset" onclick="resetFilters()">Reset</button>
+  </div>
+
   <div id="tab-sewa">
     <div class="section-label">Unit Rentals</div>
     <div class="listing-grid" id="grid-unit"><div class="loading">Loading listings…</div></div>
@@ -167,12 +222,106 @@
 <script>
 const AREA = 'Shah Alam';
 const WA_BASE = 'https://wa.me/60125459182?text=';
+let allUnits = [], allRooms = [], allSubsales = [];
+let currentTab = 'sewa';
 
 function switchTab(tab, btn) {
+  currentTab = tab;
   document.getElementById('tab-sewa').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('tab-jual').style.display = tab === 'jual' ? '' : 'none';
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  // Show/hide relevant filters
+  document.getElementById('fg-furnishing').style.display = tab === 'sewa' ? '' : 'none';
+  document.getElementById('fg-bed').style.display = tab === 'sewa' ? '' : 'none';
+  document.getElementById('fg-tenure').style.display = tab === 'jual' ? '' : 'none';
+  resetFilters();
+}
+
+function applyFilters() {
+  const furnishing = document.getElementById('f-furnishing').value;
+  const type = document.getElementById('f-type').value;
+  const bed = document.getElementById('f-bed').value;
+  const price = document.getElementById('f-price').value;
+  const tenure = document.getElementById('f-tenure').value;
+
+  function matchBed(r, val) {
+    if (!val) return true;
+    const b = parseInt(r.bed);
+    if (val === '4') return b >= 4;
+    return b === parseInt(val);
+  }
+
+  function matchPrice(r, val) {
+    if (!val) return true;
+    return parseFloat(r.price) <= parseFloat(val);
+  }
+
+  if (currentTab === 'sewa') {
+    const fu = allUnits.filter(r =>
+      (!furnishing || r.furnishing === furnishing) &&
+      (!type || r.type === type) &&
+      matchBed(r, bed) &&
+      matchPrice(r, price)
+    );
+    const fr = allRooms.filter(r =>
+      (!furnishing || r.furnishing === furnishing) &&
+      matchPrice(r, price)
+    );
+    document.getElementById('grid-unit').innerHTML =
+      fu.length ? fu.map(unitCard).join('') : empty('No unit rentals match your filters.');
+    document.getElementById('grid-room').innerHTML =
+      fr.length ? fr.map(roomCard).join('') : empty('No room rentals match your filters.');
+    document.getElementById('filter-count').textContent = `${fu.length + fr.length} listing${fu.length + fr.length !== 1 ? 's' : ''}`;
+  } else {
+    const fs = allSubsales.filter(r =>
+      (!type || r.type === type) &&
+      matchBed(r, bed) &&
+      matchPrice(r, price) &&
+      (!tenure || r.tenure === tenure)
+    );
+    document.getElementById('grid-subsale').innerHTML =
+      fs.length ? fs.map(subsaleCard).join('') : empty('No subsale listings match your filters.');
+    document.getElementById('filter-count').textContent = `${fs.length} listing${fs.length !== 1 ? 's' : ''}`;
+  }
+}
+
+function resetFilters() {
+  ['f-furnishing','f-type','f-bed','f-price','f-tenure'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  applyFilters();
+}
+
+function buildPriceOptions(rows, isRent) {
+  const prices = rows.map(r => parseFloat(r.price)).filter(Boolean).sort((a,b) => a-b);
+  if (!prices.length) return;
+  const sel = document.getElementById('f-price');
+  sel.innerHTML = '<option value="">Any</option>';
+  let steps;
+  if (isRent) {
+    steps = [1000,1500,2000,2500,3000,4000,5000,7000,10000];
+  } else {
+    steps = [200000,300000,400000,500000,600000,800000,1000000,1500000];
+  }
+  const max = prices[prices.length - 1];
+  steps.filter(s => s <= max * 1.1).forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s;
+    opt.textContent = isRent ? `RM ${s.toLocaleString()}/mo` : `RM ${(s/1000).toFixed(0)}k`;
+    sel.appendChild(opt);
+  });
+}
+
+function buildTypeOptions(rows) {
+  const types = [...new Set(rows.map(r => r.type).filter(Boolean))].sort();
+  const sel = document.getElementById('f-type');
+  sel.innerHTML = '<option value="">All</option>';
+  types.forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t; opt.textContent = t;
+    sel.appendChild(opt);
+  });
 }
 
 function parseCSV(text) {
@@ -322,18 +471,16 @@ fetch('../../listings.csv')
   .then(text => {
     const rows = parseCSV(text);
     const filtered = rows.filter(r => r.area === AREA);
-    const units    = filtered.filter(r => r.listing_type === 'unit');
-    const rooms    = filtered.filter(r => r.listing_type === 'room');
-    const subsales = filtered.filter(r => r.listing_type === 'subsale');
+    allUnits    = filtered.filter(r => r.listing_type === 'unit');
+    allRooms    = filtered.filter(r => r.listing_type === 'room');
+    allSubsales = filtered.filter(r => r.listing_type === 'subsale');
 
-    document.getElementById('grid-unit').innerHTML =
-      units.length ? units.map(unitCard).join('') : empty('No unit rentals at the moment. WhatsApp Hani for updates.');
+    // Build dynamic filter options
+    buildTypeOptions([...allUnits, ...allSubsales]);
+    buildPriceOptions([...allUnits, ...allRooms], true);
 
-    document.getElementById('grid-room').innerHTML =
-      rooms.length ? rooms.map(roomCard).join('') : empty('No room rentals at the moment. WhatsApp Hani for updates.');
-
-    document.getElementById('grid-subsale').innerHTML =
-      subsales.length ? subsales.map(subsaleCard).join('') : empty('No subsale listings at the moment. WhatsApp Hani for updates.');
+    // Initial render
+    applyFilters();
   })
   .catch((e) => {
     console.error('Fetch error:', e);
