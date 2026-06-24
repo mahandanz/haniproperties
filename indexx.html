@@ -83,12 +83,10 @@ body{font-family:'DM Sans',sans-serif;background:#fff;color:#1c1c18;-webkit-font
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
-  background:rgba(253,250,245,.94);backdrop-filter:blur(14px);
-  border-bottom:1px solid #e3ddd0;
-}
-.nav-inner{
   height:58px;display:flex;align-items:center;justify-content:space-between;
   padding:0 28px;
+  background:rgba(253,250,245,.94);backdrop-filter:blur(14px);
+  border-bottom:1px solid #e3ddd0;
 }
 .brand{font-family:'Lora',serif;font-weight:700;font-size:18px;color:#1c1c18;text-decoration:none;letter-spacing:-.01em}
 .brand span{color:#bf5533}
@@ -97,33 +95,6 @@ nav{
 .nav-links a:hover{color:#1c1c18;background:#f6f1e7}
 .nav-links a.cta-nav{background:#2a5c3a;color:#fff;padding:7px 16px}
 .nav-links a.cta-nav:hover{background:#1e4a2c}
-
-/* MOBILE NAV ROW */
-.nav-mobile{display:none}
-
-@media(max-width:600px){
-  .nav-inner{height:46px;padding:0 16px}
-  .brand{font-size:17px}
-  .nav-links{display:none}
-  .nav-mobile{
-    display:flex;
-    border-top:1px solid #e3ddd0;
-    background:rgba(253,250,245,.97);
-  }
-  .nav-mobile a{
-    flex:1;text-align:center;
-    font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-    text-decoration:none;color:#7a7268;
-    padding:10px 4px;
-    transition:color .18s, background .18s;
-    white-space:nowrap;
-  }
-  .nav-mobile a:not(:last-child){border-right:1px solid #e3ddd0}
-  .nav-mobile a:hover{color:#1c1c18;background:#f6f1e7}
-  .nav-mobile a.cta-nav{background:#2a5c3a;color:#fff}
-  .nav-mobile a.cta-nav:hover{background:#1e4a2c}
-  .hero{margin-top:84px}
-}
 
 /* HERO */
 .hero{
@@ -195,16 +166,8 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <body>
 
 <nav>
-  <div class="nav-inner">
-    <a href="https://haniproperties.com/" class="brand">Hani <span>Properties</span></a>
-    <div class="nav-links">
-      <a href="kawasan.html">Rentals</a>
-      <a href="kawasan.html">Subsales</a>
-      <a href="projects.html">Projects</a>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-    </div>
-  </div>
-  <div class="nav-mobile">
+  <a href="https://haniproperties.com/" class="brand">Hani <span>Properties</span></a>
+  <div class="nav-links">
     <a href="kawasan.html">Rentals</a>
     <a href="kawasan.html">Subsales</a>
     <a href="projects.html">Projects</a>
