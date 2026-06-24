@@ -300,7 +300,7 @@ function empty(msg) {
   return `<div class="empty">${msg}</div>`;
 }
 
-fetch('../../listings.tsv')
+fetch('../../listings.txt')
   .then(r => r.text())
   .then(text => {
     const rows = parseTSV(text).filter(r => r.area === AREA);
