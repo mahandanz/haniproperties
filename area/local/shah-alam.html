@@ -320,10 +320,11 @@ function empty(msg) {
 fetch('../../listings.csv')
   .then(r => r.text())
   .then(text => {
-    const rows = parseTSV(text).filter(r => r.area === AREA);
-    const units    = rows.filter(r => r.listing_type === 'unit');
-    const rooms    = rows.filter(r => r.listing_type === 'room');
-    const subsales = rows.filter(r => r.listing_type === 'subsale');
+    const rows = parseCSV(text);
+    const filtered = rows.filter(r => r.area === AREA);
+    const units    = filtered.filter(r => r.listing_type === 'unit');
+    const rooms    = filtered.filter(r => r.listing_type === 'room');
+    const subsales = filtered.filter(r => r.listing_type === 'subsale');
 
     document.getElementById('grid-unit').innerHTML =
       units.length ? units.map(unitCard).join('') : empty('No unit rentals at the moment. WhatsApp Hani for updates.');
@@ -334,7 +335,8 @@ fetch('../../listings.csv')
     document.getElementById('grid-subsale').innerHTML =
       subsales.length ? subsales.map(subsaleCard).join('') : empty('No subsale listings at the moment. WhatsApp Hani for updates.');
   })
-  .catch(() => {
+  .catch((e) => {
+    console.error('Fetch error:', e);
     ['grid-unit','grid-room','grid-subsale'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.innerHTML = empty('Unable to load listings. Please try again.');
