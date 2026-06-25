@@ -1,48 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-<loc>https://haniproperties.com/</loc>
-<lastmod>2026-03-27</lastmod>
-<priority>1.0</priority>
-</url>
+  <!-- Core pages -->
+  <url>
+    <loc>https://haniproperties.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/offerings.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/kawasan.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/simple.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-<!-- RENTAL -->
-<url>
-<loc>https://haniproperties.com/rental/selangor/index.html</loc>
-<lastmod>2026-03-27</lastmod>
-<priority>0.9</priority>
-</url>
+  <!-- Area pages — Kuala Lumpur -->
+  <url>
+    <loc>https://haniproperties.com/area/local/ampang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/bukit-jalil.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/cheras.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/kuala-lumpur.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/kepong.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/sentul.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/setapak.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/selayang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-<url>
-<loc>https://haniproperties.com/rental/kuala/index.html</loc>
-<lastmod>2026-03-27</lastmod>
-<priority>0.9</priority>
-</url>
+  <!-- Area pages — Selangor -->
+  <url>
+    <loc>https://haniproperties.com/area/local/cyberjaya-putrajaya.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/kajang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/bangi.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/klang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/petaling-jaya.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/puchong.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/puncak-alam.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/seri-kembangan.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/shah-alam.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/subang-jaya.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-<url>
-<loc>https://haniproperties.com/rental/negeri/index.html</loc>
-<lastmod>2026-03-27</lastmod>
-<priority>0.9</priority>
-</url>
-
-<!-- SUBSALE -->
-<url>
-<loc>https://haniproperties.com/subsale/selangor/index.html</loc>
-<lastmod>2026-03-27</lastmod>
-<priority>0.9</priority>
-</url>
-
-<url>
-<loc>https://haniproperties.com/subsale/kuala/index.html</loc>
-<lastmod>2026-03-27</lastmod>
-<priority>0.9</priority>
-</url>
-
-<url>
-<loc>https://haniproperties.com/subsale/ns/index.html</loc>
-<lastmod>2026-03-27</lastmod>
-<priority>0.9</priority>
-</url>
+  <!-- Area pages — Selangor Outskirt -->
+  <url>
+    <loc>https://haniproperties.com/area/local/sepang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
 </urlset>
