@@ -3,328 +3,466 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hani Properties – Under Maintenance</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <title>Property Made Simple — Guides &amp; Tips | Hani Properties</title>
+  <meta name="description" content="Plain-English property guides for Malaysia — rental deposits, freehold vs leasehold, subsale buying process and more. By Hani Properties, ERA Real Estate." />
+  <link rel="canonical" href="https://haniproperties.com/simple.html" />
+  <meta property="og:title" content="Property Made Simple — Guides &amp; Tips | Hani Properties" />
+  <meta property="og:description" content="Plain-English property guides for Malaysia — rental deposits, freehold vs leasehold, subsale buying process and more." />
+  <meta property="og:url" content="https://haniproperties.com/simple.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://haniproperties.com/og-cover.jpg" />
+  <meta property="og:locale" content="en_MY" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        "@id": "https://haniproperties.com/simple.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much is rental deposit in Malaysia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In Malaysia, the standard rental deposit is 2+1+0.5 months. This means 2 months security deposit, 1 month utility deposit, and 0.5 month advance rental (half month rent paid upfront). For example, if monthly rent is RM1,500, you pay RM3,000 + RM1,500 + RM750 = RM5,250 upon signing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between freehold and leasehold property in Malaysia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Freehold means you own the land and property forever with no expiry. Leasehold means the land is leased from the state government, typically for 99 years. Freehold properties are generally easier to sell and finance. Leasehold properties can still be a good investment if the remaining lease is above 60 years, but banks may impose stricter loan conditions as the lease drops below that threshold."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the steps to buy a subsale property in Malaysia?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The subsale buying process in Malaysia involves: (1) Get a loan pre-approval from a bank. (2) Find a property and negotiate price with the seller. (3) Sign a Letter of Offer and pay a 2% booking fee. (4) Engage a lawyer to prepare the Sale and Purchase Agreement (SPA). (5) Pay the balance 8% deposit within 14 days of SPA signing. (6) Bank processes the loan and disburses funds. (7) Vacant possession — keys handed over. The full process typically takes 3 to 6 months."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Hani Properties", "item": "https://haniproperties.com/"},
+          {"@type": "ListItem", "position": 2, "name": "Property Made Simple", "item": "https://haniproperties.com/simple.html"}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:#faf9f6;color:#1c1c18;-webkit-font-smoothing:antialiased}
 
-    :root {
-      --green-dark:   #1B4D35;
-      --green-mid:    #2E7D52;
-      --green-light:  #52B788;
-      --cream:        #F5F2EB;
-      --cream-dark:   #EDE9DF;
-      --text-primary: #1A1A1A;
-      --text-muted:   #6B7566;
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(253,250,245,.94);backdrop-filter:blur(14px);border-bottom:1px solid #e3ddd0}
+    .brand{font-family:'Lora',serif;font-weight:700;font-size:18px;color:#1c1c18;text-decoration:none;letter-spacing:-.01em}
+    .brand span{color:#bf5533}
+    .nav-links{display:flex;gap:6px;align-items:center}
+    .nav-links a{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:6px 12px;border-radius:20px;transition:all .18s}
+    .nav-links a:hover{color:#1c1c18;background:#f6f1e7}
+    .nav-links a.cta-nav{background:#2a5c3a;color:#fff;padding:7px 16px}
+    .nav-links a.cta-nav:hover{background:#1e4a2c}
+
+    .hero{background:#1B4D35;padding:52px 24px 44px;text-align:center;margin-top:58px}
+    .hero-eyebrow{display:inline-block;background:rgba(255,255,255,.12);color:#52B788;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px}
+    .hero h1{font-family:'Lora',serif;color:#fff;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.01em;line-height:1.2;margin-bottom:12px}
+    .hero-desc{color:rgba(255,255,255,.7);font-size:.95rem;max-width:500px;margin:0 auto;line-height:1.7}
+
+    .breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
+    .breadcrumb-inner{max-width:860px;margin:0 auto;font-size:12px;color:#7a7268}
+    .breadcrumb-inner a{color:#2a5c3a;text-decoration:none}
+    .breadcrumb-inner a:hover{text-decoration:underline}
+    .breadcrumb-inner span{margin:0 6px}
+
+    .main{max-width:860px;margin:0 auto;padding:48px 24px 80px}
+
+    /* ARTICLE CARDS INDEX */
+    .article-index{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:56px}
+    .article-chip{background:#fff;border:1px solid #e3ddd0;border-radius:12px;padding:18px 20px;text-decoration:none;display:block;transition:box-shadow .18s,transform .15s}
+    .article-chip:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);transform:translateY(-2px)}
+    .chip-tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2a5c3a;margin-bottom:8px}
+    .chip-title{font-size:14px;font-weight:700;color:#1c1c18;line-height:1.4;margin-bottom:6px}
+    .chip-read{font-size:12px;color:#7a7268}
+
+    /* ARTICLE BODY */
+    .article{margin-bottom:72px;scroll-margin-top:80px}
+    .article-header{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid #e3ddd0}
+    .article-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2a5c3a;background:#e8f4ed;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+    .article h2{font-family:'Lora',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;color:#1c1c18;line-height:1.25;margin-bottom:10px}
+    .article-meta{font-size:12px;color:#7a7268}
+
+    .article p{font-size:.95rem;color:#3a3830;line-height:1.85;margin-bottom:16px}
+    .article p:last-child{margin-bottom:0}
+    .article h3{font-size:1rem;font-weight:700;color:#1c1c18;margin:28px 0 10px}
+    .article ul,.article ol{padding-left:20px;margin-bottom:16px}
+    .article li{font-size:.95rem;color:#3a3830;line-height:1.8;margin-bottom:6px}
+
+    /* CALLOUT BOX */
+    .callout{background:#e8f4ed;border-left:3px solid #2a5c3a;border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0}
+    .callout p{color:#1B4D35;font-size:.9rem;font-weight:500;margin:0}
+
+    /* FORMULA BOX */
+    .formula{background:#fff;border:1px solid #e3ddd0;border-radius:12px;padding:20px 24px;margin:24px 0;text-align:center}
+    .formula-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a7268;margin-bottom:10px}
+    .formula-eq{font-size:1.1rem;font-weight:700;color:#1c1c18;margin-bottom:8px}
+    .formula-sub{font-size:.85rem;color:#7a7268}
+
+    /* COMPARISON TABLE */
+    .compare-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.9rem}
+    .compare-table th{background:#1B4D35;color:#fff;padding:12px 16px;text-align:left;font-weight:700;font-size:.82rem;letter-spacing:.04em}
+    .compare-table th:first-child{border-radius:8px 0 0 0}
+    .compare-table th:last-child{border-radius:0 8px 0 0}
+    .compare-table td{padding:12px 16px;border-bottom:1px solid #e3ddd0;color:#3a3830;vertical-align:top;line-height:1.6}
+    .compare-table tr:last-child td{border-bottom:none}
+    .compare-table tr:nth-child(even) td{background:#faf9f6}
+
+    /* STEP LIST */
+    .steps{list-style:none;padding:0;margin:24px 0}
+    .steps li{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px}
+    .step-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+    .step-body{flex:1;padding-top:4px}
+    .step-title{font-size:.95rem;font-weight:700;color:#1c1c18;margin-bottom:4px}
+    .step-desc{font-size:.88rem;color:#7a7268;line-height:1.7}
+
+    /* CTA BAND */
+    .cta-band{background:#1B4D35;padding:40px 24px;text-align:center;border-radius:16px;margin-top:16px}
+    .cta-band h2{color:#fff;font-family:'Lora',serif;font-size:1.3rem;font-weight:700;margin-bottom:8px}
+    .cta-band p{color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:22px}
+    .btn-wa{display:inline-block;background:#52B788;color:#1B4D35;padding:12px 28px;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background .15s}
+    .btn-wa:hover{background:#62cc98}
+
+    footer{background:#111;color:rgba(255,255,255,.4);text-align:center;padding:24px;font-size:11px;line-height:1.8}
+    footer a{color:rgba(255,255,255,.5);text-decoration:none}
+
+    @media(max-width:600px){
+      nav{padding:0 16px}
+      .main{padding:32px 16px 60px}
+      .compare-table{font-size:.82rem}
+      .compare-table th,.compare-table td{padding:10px 12px}
     }
+  
+    /* ARTICLE BANNER */
+    .article-banner{width:100%;aspect-ratio:16/6;border-radius:14px;overflow:hidden;margin-bottom:32px;background:#e8f0ea;display:flex;align-items:center;justify-content:center;border:2px dashed #b8d4c0;position:relative}
+    .article-banner img{width:100%;height:100%;object-fit:cover;display:block;border-radius:14px}
+    .banner-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#2a5c3a;opacity:.5}
+    .banner-placeholder-icon{font-size:32px}
+    .banner-placeholder-text{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 
-    html, body {
-      height: 100%;
-      background-color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      color: var(--text-primary);
-    }
-
-    /* ── Layout ───────────────────────────────────── */
-    .page {
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      grid-template-columns: 1fr;
-    }
-
-    /* ── Header ───────────────────────────────────── */
-    header {
-      padding: 28px 40px;
-      display: flex;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-      background: var(--green-dark);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-mark svg { display: block; }
-
-    .logo-text {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.15rem;
-      color: var(--green-dark);
-      letter-spacing: -0.01em;
-    }
-
-    /* ── Main content ─────────────────────────────── */
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px 60px;
-      text-align: center;
-    }
-
-    /* Illustration container */
-    .illustration {
-      width: 100%;
-      max-width: 360px;
-      margin-top: 44px;
-    }
-
-    .illustration img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 16px;
-    }
-
-    /* Fallback shown if under.png is missing */
-    .illustration-fallback {
-      display: none;
-      width: 100%;
-      max-width: 360px;
-      aspect-ratio: 4/3;
-      background: var(--cream-dark);
-      border-radius: 16px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green-mid);
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.15;
-      color: var(--green-dark);
-      margin-bottom: 16px;
-      max-width: 520px;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--green-mid);
-    }
-
-    .subtext {
-      font-size: 0.97rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-      max-width: 400px;
-      margin-bottom: 36px;
-    }
-
-    /* ── CTA pill ─────────────────────────────────── */
-    .cta-group {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .cta-pill--outline {
-      background: transparent;
-      color: var(--green-dark);
-      border: 2px solid var(--green-dark);
-      box-shadow: none;
-    }
-
-    .cta-pill--outline:hover {
-      background: var(--cream-dark);
-      color: var(--green-dark);
-      box-shadow: 0 4px 14px rgba(27,77,53,0.12);
-    }
-
-    .cta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      background: var(--green-dark);
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      border-radius: 999px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
-      box-shadow: 0 2px 12px rgba(27,77,53,0.20);
-    }
-
-    .cta-pill:hover {
-      background: var(--green-mid);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(27,77,53,0.26);
-    }
-
-    .cta-pill:active {
-      transform: translateY(0);
-    }
-
-    .cta-pill svg {
-      flex-shrink: 0;
-    }
-
-    .cta-secondary {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .cta-secondary a {
-      color: var(--green-mid);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .cta-secondary a:hover {
-      text-decoration: underline;
-    }
-
-    /* ── Footer ───────────────────────────────────── */
-    footer {
-      padding: 20px 40px;
-      border-top: 1px solid var(--cream-dark);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .footer-tagline {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    .footer-contact {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .footer-contact a {
-      color: var(--green-mid);
-      text-decoration: none;
-    }
-
-    /* ── Reduced motion ───────────────────────────── */
-    @media (prefers-reduced-motion: reduce) {
-      .cta-pill { transition: none; }
-    }
-
-    /* ── Mobile ───────────────────────────────────── */
-    @media (max-width: 480px) {
-      header { padding: 20px 20px; }
-      footer  { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
-    }
   </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- Header -->
-  <header>
-    <a href="https://haniproperties.com" class="logo">
-      <div class="logo-mark">
-        <!-- Simple H monogram -->
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="3" height="14" fill="white"/>
-          <rect x="14" y="3" width="3" height="14" fill="white"/>
-          <rect x="3" y="8.5" width="14" height="3" fill="white"/>
-        </svg>
-      </div>
-      <span class="logo-text">Hani Properties</span>
+<nav>
+  <a href="index.html" class="brand">Hani <span>Properties</span></a>
+  <div class="nav-links">
+    <a href="kawasan.html">Rentals</a>
+    <a href="kawasan.html">Subsales</a>
+    <a href="projects.html">Projects</a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Property Made Simple</div>
+  <h1>Property Guides — Plain &amp; Practical</h1>
+  <p class="hero-desc">No jargon. No fluff. Just the things you actually need to know before renting, buying or investing in Malaysian property.</p>
+</section>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">Hani Properties</a>
+    <span>›</span>
+    Property Made Simple
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ARTICLE INDEX -->
+  <div class="article-index">
+    <a class="article-chip" href="#deposit">
+      <div class="chip-tag">Rental</div>
+      <div class="chip-title">How to Calculate Rental Deposit in Malaysia</div>
+      <div class="chip-read">5 min read</div>
     </a>
-  </header>
+    <a class="article-chip" href="#tenure">
+      <div class="chip-tag">Buying</div>
+      <div class="chip-title">Freehold vs Leasehold — What's the Difference?</div>
+      <div class="chip-read">6 min read</div>
+    </a>
+    <a class="article-chip" href="#subsale">
+      <div class="chip-tag">Buying</div>
+      <div class="chip-title">How to Buy a Subsale Property — Step by Step</div>
+      <div class="chip-read">7 min read</div>
+    </a>
+  </div>
 
-  <!-- Main -->
-  <main>
+  <!-- ARTICLE 1 -->
 
-    <p class="eyebrow">Sebentar lagi, lebih baik</p>
+  <!-- BANNER 1 -->
+  <div class="article-banner" id="banner-deposit">
+    <!-- Replace this div with: <img src="your-image.jpg" alt="Rental deposit guide Malaysia"> -->
+    <div class="banner-placeholder">
+      <div class="banner-placeholder-icon">🏠</div>
+      <div class="banner-placeholder-text">Banner — Rental Deposit Guide</div>
+    </div>
+  </div>
 
-    <p class="subtext">
-      Kami sedang mengemaskini laman web untuk memberikan pengalaman yang lebih baik kepada anda.
-      Sementara itu, listing kami masih boleh dilayari di bawah.
-    </p>
-
-    <div class="cta-group">
-
-      <!-- Rental -->
-      <a href="https://t.me/hanipropertiesrentals/379" class="cta-pill" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.981l-2.965-.924c-.644-.204-.657-.644.136-.953l11.57-4.461c.537-.194 1.006.131.963.578z" fill="white"/>
-        </svg>
-        Lihat Listing Sewa
-      </a>
-
-      <!-- Subsale -->
-      <a href="https://t.me/hanipropertiesforsale/87" class="cta-pill cta-pill--outline" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.981l-2.965-.924c-.644-.204-.657-.644.136-.953l11.57-4.461c.537-.194 1.006.131.963.578z" fill="var(--green-dark)"/>
-        </svg>
-        Lihat Listing Subsale
-      </a>
-
-      <!-- WhatsApp -->
-      <a href="https://wa.me/60125459182" class="cta-pill cta-pill--outline" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="var(--green-dark)"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.524 5.843L.054 23.285a.75.75 0 00.924.924l5.442-1.47A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.722 9.722 0 01-4.964-1.36l-.355-.213-3.683.994.994-3.683-.213-.355A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" fill="var(--green-dark)"/>
-        </svg>
-        WhatsApp Kami
-      </a>
-
+  <article class="article" id="deposit">
+    <div class="article-header">
+      <div class="article-tag">Rental</div>
+      <h2>How to Calculate Rental Deposit in Malaysia</h2>
+      <div class="article-meta">By Hani Properties &nbsp;·&nbsp; ERA Real Estate (REN 84031)</div>
     </div>
 
-    <div class="illustration">
-      <img
-        src="under.png"
-        alt="Maintenance in progress"
-        onerror="this.style.display='none'; document.querySelector('.illustration-fallback').style.display='flex';"
-      />
-    </div>
-    <!-- shown only if under.png fails to load -->
-    <div class="illustration-fallback">
-      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="36" cy="36" r="28" stroke="#2E7D52" stroke-width="2.5" stroke-dasharray="6 4"/>
-        <path d="M28 36h16M36 28v16" stroke="#2E7D52" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
+    <p>Before you sign a tenancy agreement in Malaysia, you need to prepare more than just the first month's rent. The standard deposit structure is known as <strong>2+1+0.5</strong> — and knowing how to calculate it correctly will save you from surprises on move-in day.</p>
+
+    <h3>What is the 2+1+0.5 deposit formula?</h3>
+    <p>In Malaysia, landlords typically require three separate payments upfront when you sign a tenancy agreement:</p>
+    <ul>
+      <li><strong>2 months security deposit</strong> — held by the landlord as protection against damages or unpaid rent. Refunded at end of tenancy if the unit is in good condition.</li>
+      <li><strong>1 month utility deposit</strong> — covers unpaid utility bills (electricity, water, internet) at end of tenancy. Also refundable.</li>
+      <li><strong>0.5 month advance rental</strong> — half a month's rent paid in advance, which typically covers the second half of your first month.</li>
+    </ul>
+
+    <div class="formula">
+      <div class="formula-label">Total move-in cost formula</div>
+      <div class="formula-eq">(2 × rent) + (1 × rent) + (0.5 × rent) = 3.5 months rent</div>
+      <div class="formula-sub">Plus your first month's rent = 4.5 months total upfront</div>
     </div>
 
-  </main>
+    <h3>Example calculation</h3>
+    <p>Say the monthly rent is <strong>RM1,500</strong>:</p>
+    <ul>
+      <li>Security deposit: RM1,500 × 2 = <strong>RM3,000</strong></li>
+      <li>Utility deposit: RM1,500 × 1 = <strong>RM1,500</strong></li>
+      <li>Advance rental: RM1,500 × 0.5 = <strong>RM750</strong></li>
+      <li>First month rent: <strong>RM1,500</strong></li>
+      <li><strong>Total upfront: RM6,750</strong></li>
+    </ul>
 
-  <!-- Footer -->
-  <footer>
-    <span class="footer-tagline">Property made personal.</span>
-    <span class="footer-contact">
-      ERA Real Estate E(1)1773/3 &nbsp;·&nbsp;
-      <a href="tel:+60125459182">012-545 9182</a>
-    </span>
-  </footer>
+    <div class="callout">
+      <p>💡 Some landlords negotiate the deposit structure — especially for long-term tenancies (2 years+). Always clarify before signing. The 2+1+0.5 is standard but not law.</p>
+    </div>
+
+    <h3>When do you get your deposit back?</h3>
+    <p>Your security deposit and utility deposit should be returned within 30 days after the tenancy ends — provided there are no outstanding bills or damages beyond normal wear and tear. Always do a walkthrough inspection with photos on move-in day to protect yourself.</p>
+
+    <h3>What if the landlord doesn't return the deposit?</h3>
+    <p>If a landlord refuses to return a deposit without valid reason, you can file a claim at the Tribunal for Consumer Claims Malaysia (Tribunal Tuntutan Pengguna Malaysia) for amounts below RM50,000. Filing fee is minimal and no lawyer is required.</p>
+
+    <div class="callout">
+      <p>📋 Need help checking a tenancy agreement before signing? WhatsApp Hani at <a href="https://wa.me/60125459182" target="_blank" rel="noopener noreferrer" style="color:#1B4D35">012-545 9182</a> — free advisory for tenants.</p>
+    </div>
+  </article>
+
+  <!-- ARTICLE 2 -->
+
+  <!-- BANNER 2 -->
+  <div class="article-banner" id="banner-tenure">
+    <!-- Replace this div with: <img src="your-image.jpg" alt="Freehold vs leasehold Malaysia"> -->
+    <div class="banner-placeholder">
+      <div class="banner-placeholder-icon">🏗️</div>
+      <div class="banner-placeholder-text">Banner — Freehold vs Leasehold</div>
+    </div>
+  </div>
+
+  <article class="article" id="tenure">
+    <div class="article-header">
+      <div class="article-tag">Buying</div>
+      <h2>Freehold vs Leasehold — What's the Difference in Malaysia?</h2>
+      <div class="article-meta">By Hani Properties &nbsp;·&nbsp; ERA Real Estate (REN 84031)</div>
+    </div>
+
+    <p>When buying property in Malaysia, one of the first things you'll encounter is the tenure type — freehold or leasehold. It affects your loan terms, your ability to resell, and the long-term value of your investment. Here's everything you need to know.</p>
+
+    <h3>What is freehold?</h3>
+    <p>A freehold title means you own the land and the property on it permanently — with no expiry date. The government cannot reclaim the land without due process and fair compensation. Freehold properties are generally considered the gold standard in Malaysian real estate.</p>
+
+    <h3>What is leasehold?</h3>
+    <p>A leasehold title means the land is leased from the state government, typically for 99 years. After the lease expires, ownership reverts to the state — though in practice, leases are almost always renewed. Some older properties may be on 60-year or even 30-year leases.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Freehold</th>
+          <th>Leasehold</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ownership period</td>
+          <td>Permanent</td>
+          <td>99 years (typically)</td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>Usually 10–20% higher</td>
+          <td>More affordable entry price</td>
+        </tr>
+        <tr>
+          <td>Bank loan</td>
+          <td>Full loan margin available</td>
+          <td>Stricter if lease &lt; 60 years remaining</td>
+        </tr>
+        <tr>
+          <td>Resale ease</td>
+          <td>Easier to sell</td>
+          <td>Harder as lease shortens</td>
+        </tr>
+        <tr>
+          <td>Bumi lot restriction</td>
+          <td>May apply</td>
+          <td>Common — limits buyer pool</td>
+        </tr>
+        <tr>
+          <td>Capital appreciation</td>
+          <td>Generally stronger</td>
+          <td>Good if lease is long (&gt;60 years)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Which should you choose?</h3>
+    <p>For own-stay, leasehold is perfectly fine — especially if the remaining lease is above 70 years and the location is strong. Most Malaysians live in leasehold properties without issue. For investment or long-term capital gain, freehold gives you more flexibility and a wider buyer pool when you decide to sell.</p>
+
+    <div class="callout">
+      <p>⚠️ Always check the remaining lease years before buying leasehold. A property with only 45 years remaining will be very difficult to finance and nearly impossible to sell.</p>
+    </div>
+
+    <h3>Can leasehold be converted to freehold?</h3>
+    <p>Yes, in some states — but it involves an application to the state land office, a premium payment, and approval is not guaranteed. The process can take years and cost tens of thousands of ringgit. Don't count on it when making a purchase decision.</p>
+
+    <div class="callout">
+      <p>📋 Not sure if a property you're eyeing is freehold or leasehold? WhatsApp Hani at <a href="https://wa.me/60125459182" target="_blank" rel="noopener noreferrer" style="color:#1B4D35">012-545 9182</a> — we'll check the title for you.</p>
+    </div>
+  </article>
+
+  <!-- ARTICLE 3 -->
+
+  <!-- BANNER 3 -->
+  <div class="article-banner" id="banner-subsale">
+    <!-- Replace this div with: <img src="your-image.jpg" alt="How to buy subsale property Malaysia"> -->
+    <div class="banner-placeholder">
+      <div class="banner-placeholder-icon">🔑</div>
+      <div class="banner-placeholder-text">Banner — Subsale Buying Guide</div>
+    </div>
+  </div>
+
+  <article class="article" id="subsale">
+    <div class="article-header">
+      <div class="article-tag">Buying</div>
+      <h2>How to Buy a Subsale Property in Malaysia — Step by Step</h2>
+      <div class="article-meta">By Hani Properties &nbsp;·&nbsp; ERA Real Estate (REN 84031)</div>
+    </div>
+
+    <p>A subsale property is a property being sold by an existing owner — as opposed to a new launch from a developer. The process is more straightforward than most people think, but it involves several legal and financial steps that need to happen in the right order.</p>
+
+    <h3>The full subsale buying process</h3>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Get your loan pre-approval</div>
+          <div class="step-desc">Before viewing properties, check how much a bank is willing to lend you. Submit your payslips, EPF statement and CCRIS report to 2–3 banks. Pre-approval gives you a realistic budget and makes you a credible buyer when negotiating.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Find the property and negotiate price</div>
+          <div class="step-desc">View shortlisted properties and negotiate with the seller. Your agent will help you check the market value and advise on a fair offer. Once both parties agree on price, proceed to the next step.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Sign the Letter of Offer (LOO) and pay 2% booking fee</div>
+          <div class="step-desc">The LOO formalises your intent to buy. You pay 2% of the purchase price as an earnest deposit — this is usually paid to the seller's lawyer or held by the agent. The seller then takes the property off the market.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Engage a lawyer and sign the Sale &amp; Purchase Agreement (SPA)</div>
+          <div class="step-desc">Your lawyer prepares the SPA — the legally binding contract. Both buyer and seller sign. The SPA specifies price, payment schedule, conditions, and completion date. Budget RM3,000–RM8,000 for legal fees depending on property price.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">Pay the balance 8% deposit</div>
+          <div class="step-desc">Within 14 days of signing the SPA, you pay the remaining 8% (total 10% deposit paid so far). This is typically paid via the lawyer's client account.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <div class="step-title">Bank processes your loan</div>
+          <div class="step-desc">Your bank conducts a valuation of the property and processes your loan formally. Once approved, the bank issues a Letter of Offer for the loan. Your lawyer handles the loan documentation. This stage typically takes 4–8 weeks.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">7</div>
+        <div class="step-body">
+          <div class="step-title">Loan disbursement and transfer of ownership</div>
+          <div class="step-desc">The bank disburses the loan amount to the seller. The title is transferred to your name at the land office. Stamp duty is paid at this stage.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">8</div>
+        <div class="step-body">
+          <div class="step-title">Vacant possession — collect your keys</div>
+          <div class="step-desc">Once all payments clear and title transfer is done, the seller hands over the keys. The full process typically takes 3 to 6 months from LOO to key collection.</div>
+        </div>
+      </li>
+    </ol>
+
+    <h3>Other costs to budget for</h3>
+    <ul>
+      <li><strong>Stamp duty (MOT):</strong> 1% on first RM100k, 2% on next RM400k, 3% above RM500k</li>
+      <li><strong>Legal fees (SPA + loan):</strong> Roughly 1–1.5% of purchase price</li>
+      <li><strong>Valuation fee:</strong> RM300–RM800 depending on property value</li>
+      <li><strong>Agent commission:</strong> Typically 2–3% paid by the seller, not the buyer</li>
+    </ul>
+
+    <div class="callout">
+      <p>💡 As a buyer, you do not pay agent commission in Malaysia. The seller pays the agent fee. Your costs are deposit, legal fees, stamp duty, and valuation only.</p>
+    </div>
+
+    <div class="callout">
+      <p>📋 Looking for a subsale property in Klang Valley? WhatsApp Hani at <a href="https://wa.me/60125459182" target="_blank" rel="noopener noreferrer" style="color:#1B4D35">012-545 9182</a> — we'll shortlist units that match your budget and guide you through the whole process.</p>
+    </div>
+  </article>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <h2>Still have questions?</h2>
+    <p>WhatsApp Hani directly — free property advice, no obligation.</p>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20read%20your%20property%20guide%20and%20have%20a%20question." class="btn-wa" target="_blank" rel="noopener noreferrer">💬 WhatsApp Hani</a>
+  </div>
 
 </div>
+
+<footer>
+  <div>© 2025–2026 Hani Properties · ERA Real Estate E(1)1773/3</div>
+  <div>Marhani Bt Mohamad Nor (REN 84031) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://haniproperties.com">haniproperties.com</a></div>
+  <div style="margin-top:4px;color:rgba(255,255,255,.2)">Property made personal.</div>
+</footer>
+
 </body>
 </html>
