@@ -148,19 +148,9 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   .pins-grid{grid-template-columns:1fr}
 }
 
-.pin-landmarks{
-  display:flex;flex-direction:column;gap:3px;
-  margin-top:7px;padding-top:7px;
-  border-top:1px solid #e3ddd0;
-}
-.pin-landmark{
-  font-size:10px;color:#7a7268;
-  display:flex;align-items:center;gap:5px;
-  line-height:1.3;
-}
-.pin-landmark::before{
-  content:'📍';font-size:9px;flex-shrink:0;
-}
+.pin-landmarks{margin-top:8px;padding-top:8px;border-top:1px solid #e3ddd0;display:flex;flex-direction:column;gap:4px}
+.pin-landmark{font-size:10px;color:#7a7268;display:flex;align-items:flex-start;gap:4px;line-height:1.4}
+.pin-landmark::before{content:'📍';font-size:9px;flex-shrink:0;margin-top:1px}
 
 </style>
 </head>
@@ -203,8 +193,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <div class="region-header"><span>Kuala Lumpur</span></div>
     <div class="pins-grid">
       <a class="pin-card" href="area/local/ampang.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot kl"></div><div><div class="pin-name">Ampang</div><div class="pin-sub">Kuala Lumpur</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Ampang</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Zoo Negara</div>
           <div class="pin-landmark">Ampang LRT Line</div>
@@ -212,8 +207,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/bukit-jalil.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot kl"></div><div><div class="pin-name">Bukit Jalil</div><div class="pin-sub">Kuala Lumpur</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Bukit Jalil</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Pavilion Bukit Jalil</div>
           <div class="pin-landmark">National Sports Complex</div>
@@ -221,8 +221,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/cheras.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot kl"></div><div><div class="pin-name">Cheras</div><div class="pin-sub">Kuala Lumpur</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Cheras</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Taman Connaught Night Market</div>
           <div class="pin-landmark">MRT Putrajaya Line</div>
@@ -230,8 +235,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/kuala-lumpur.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot kl"></div><div><div class="pin-name">Kuala Lumpur</div><div class="pin-sub">City Centre</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Kuala Lumpur</div>
+            <div class="pin-sub">City Centre</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Petronas Twin Towers</div>
           <div class="pin-landmark">Bukit Bintang</div>
@@ -239,8 +249,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/kepong.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot kl"></div><div><div class="pin-name">Kepong</div><div class="pin-sub">Kuala Lumpur</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Kepong</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">FRIM Forest Reserve</div>
           <div class="pin-landmark">MRT Kepong</div>
@@ -248,8 +263,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/sentul.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot kl"></div><div><div class="pin-name">Sentul</div><div class="pin-sub">Kuala Lumpur</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Sentul</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Sentul West Arts District</div>
           <div class="pin-landmark">KTM & LRT Sentul</div>
@@ -257,8 +277,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/setapak.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot kl"></div><div><div class="pin-name">Setapak</div><div class="pin-sub">Kuala Lumpur</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Setapak</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">UTAR & KTAR Campus</div>
           <div class="pin-landmark">Wangsa Maju LRT</div>
@@ -266,8 +291,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/selayang.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot kl"></div><div><div class="pin-name">Selayang</div><div class="pin-sub">Kuala Lumpur</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Selayang</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Batu Caves Temple</div>
           <div class="pin-landmark">Selayang Hospital</div>
@@ -282,8 +312,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <div class="region-header"><span>Selangor</span></div>
     <div class="pins-grid">
       <a class="pin-card" href="area/local/cyberjaya-putrajaya.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Cyberjaya / Putrajaya</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Cyberjaya / Putrajaya</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Putrajaya Lake Gardens</div>
           <div class="pin-landmark">Multimedia University</div>
@@ -291,8 +326,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/kajang.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Kajang</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Kajang</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Satay Kajang</div>
           <div class="pin-landmark">MRT Kajang Station</div>
@@ -300,17 +340,27 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/bangi.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Bangi</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Bangi</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
-          <div class="pin-landmark">Universiti Kebangsaan Malaysia (UKM)</div>
+          <div class="pin-landmark">Universiti Kebangsaan Malaysia</div>
           <div class="pin-landmark">Bangi Gateway Mall</div>
           <div class="pin-landmark">LEKAS Highway</div>
         </div>
       </a>
       <a class="pin-card" href="area/local/klang.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Klang</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Klang</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Royal Klang Town</div>
           <div class="pin-landmark">Port Klang</div>
@@ -318,17 +368,27 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/petaling-jaya.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Petaling Jaya / Damansara</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Petaling Jaya / Damansara</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Damansara Uptown</div>
           <div class="pin-landmark">LRT Kelana Jaya Line</div>
-          <div class="pin-landmark">Sunway Pyramid</div>
+          <div class="pin-landmark">SS2 & Damansara</div>
         </div>
       </a>
       <a class="pin-card" href="area/local/puchong.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Puchong</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Puchong</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">IOI Mall Puchong</div>
           <div class="pin-landmark">LRT Puchong Line</div>
@@ -336,8 +396,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/puncak-alam.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Puncak Alam</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Puncak Alam</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">UiTM Puncak Alam</div>
           <div class="pin-landmark">AEON Mall Bukit Raja</div>
@@ -345,8 +410,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/seri-kembangan.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Seri Kembangan</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Seri Kembangan</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">The Mines Resort City</div>
           <div class="pin-landmark">MRT Serdang Jaya</div>
@@ -354,8 +424,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/shah-alam.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Shah Alam / Setia Alam</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Shah Alam / Setia Alam</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Blue Mosque (Sultan Salahuddin)</div>
           <div class="pin-landmark">i-City</div>
@@ -363,8 +438,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
         </div>
       </a>
       <a class="pin-card" href="area/local/subang-jaya.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot sel"></div><div><div class="pin-name">Subang Jaya</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Subang Jaya</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">Sunway Pyramid</div>
           <div class="pin-landmark">Taylor's & Sunway University</div>
@@ -379,8 +459,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <div class="region-header"><span>Selangor Outskirt</span></div>
     <div class="pins-grid">
       <a class="pin-card" href="area/local/sepang.html">
-        <div style="display:flex;align-items:center;gap:10px;"><div class="pin-dot out"></div><div><div class="pin-name">Sepang / Banting / Dengkil</div><div class="pin-sub">Selangor</div></div>
-      
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot out"></div>
+          <div>
+            <div class="pin-name">Sepang / Banting / Dengkil</div>
+            <div class="pin-sub">Selangor</div>
+          </div>
+        </div>
         <div class="pin-landmarks">
           <div class="pin-landmark">KLIA & klia2</div>
           <div class="pin-landmark">Sepang International Circuit</div>
