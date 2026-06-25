@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shah Alam Properties — Rent & Buy | Hani Properties</title>
+  <title>Cheras Properties — Rent &amp; Buy | Hani Properties</title>
   <meta name="description" content="Find rental and subsale properties in Cheras — apartments, condos and landed homes near Taman Connaught, MRT Cheras and the Cheras-Kajang Highway." />
   <link rel="canonical" href="https://haniproperties.com/area/local/cheras.html" />
-  <meta property="og:title" content="Shah Alam Properties — Rent & Buy | Hani Properties" />
+  <meta property="og:title" content="Cheras Properties — Rent &amp; Buy | Hani Properties" />
   <meta property="og:description" content="Rental and subsale listings in Cheras. Apartments, condos, landed. WhatsApp Hani directly." />
   <meta property="og:url" content="https://haniproperties.com/area/local/cheras.html" />
   <meta property="og:type" content="website" />
@@ -471,7 +471,7 @@ fetch('../../listings.csv')
   .then(text => {
     const rows = parseCSV(text);
     const filtered = rows.filter(r => r.area === AREA);
-    allUnits    = filtered.filter(r => r.listing_type === 'unit');
+    allUnits    = filtered.filter(r => r.listing_type === 'rental');
     allRooms    = filtered.filter(r => r.listing_type === 'room');
     allSubsales = filtered.filter(r => r.listing_type === 'subsale');
 
