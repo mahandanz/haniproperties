@@ -412,22 +412,9 @@ function wa(text) {
 }
 
 
-const COA_MAP = {
-  'iqalisting':'HF','rumahsewajualbelikldanselangor':'NS','anilistings':'MMN',
-  'aabithaproperty':'AA','rumahsewaklslgrbelowrm2000':'EX','listingnikksyafiq':'LNS',
-  'listingsyazuanproperty':'LSY','listingmazhar':'LMZ','fathurpropertyrental':'FPR',
-  'missnoriproperty':'MNP','bala_listing':'BLA','erinyusofpropertylisting':'EYP',
-  'firdausrahimhartanahlisting':'FRH','deepropmall':'DPM','tanahrumahkilanguntukdijual':'TRK',
-  'listingrentalhaikalayu':'LRH','adiblisting':'ADL','sjhartanah':'SJH',
-  'nourladyhartanah':'NLH','nuraswadren':'NA','marroikmalproperty':'MAP',
-  'pakyahartanahlisting':'PYH','rumahsewakl8055aw':'AW','listinghartanahridzuanrosli':'LHR',
-  'wanrentallisting':'WRL'
-};
-
 function coaBadge(r) {
   if (!r.source) return '';
-  const code = COA_MAP[r.source.toLowerCase()] || r.source.toUpperCase();
-  return `<span class="card-badge badge-coa">${code}</span>`;
+  return `<span class="card-badge badge-coa">${r.source}</span>`;
 }
 
 function unitCard(r) {
