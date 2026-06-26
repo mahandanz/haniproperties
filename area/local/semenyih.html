@@ -196,6 +196,9 @@
     <div class="filter-count" id="filter-count"></div>
     <button class="filter-reset" onclick="resetFilters()">Reset</button>
   </div>
+  <div id="instalment-disclaimer" style="display:none;font-size:11px;color:#7a7268;background:#f6f1e7;border:1px solid #e3ddd0;border-radius:8px;padding:8px 14px;margin-bottom:16px;">
+    ⚠️ Est. instalment based on 90% loan, 35-year tenure, 4.5% interest rate. Actual amount may vary depending on bank and eligibility.
+  </div>
 
   <div id="tab-sewa" style="overflow:hidden">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
@@ -241,6 +244,7 @@ function switchTab(tab, btn) {
   document.getElementById('fg-tenure').style.display = tab === 'jual' ? '' : 'none';
   document.getElementById('fg-price').style.display = '';
   document.getElementById('fg-instalment').style.display = tab === 'jual' ? '' : 'none';
+  document.getElementById('instalment-disclaimer').style.display = tab === 'jual' ? '' : 'none';
   // Rebuild price options for the active tab
   if (tab === 'jual') {
     buildPriceOptions(allSubsales, false);
