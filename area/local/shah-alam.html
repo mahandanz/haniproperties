@@ -369,7 +369,10 @@ function buildTypeOptions(rows) {
 
 function parseCSV(text) {
   const lines = text.trim().split('\n');
+  // Auto-detect delimiter: TSV or CSV
+  const delim = lines[0].includes('\t') ? '\t' : ',';
   function splitLine(line) {
+    if (delim === '\t') return line.split('\t').map(v => v.trim());
     const vals = [];
     let cur = '', inQ = false;
     for (let i = 0; i < line.length; i++) {
@@ -377,7 +380,7 @@ function parseCSV(text) {
       if (ch === '"') {
         if (inQ && line[i+1] === '"') { cur += '"'; i++; }
         else { inQ = !inQ; }
-      } else if (ch === ',' && !inQ) {
+      } else if (ch === ',') {
         vals.push(cur); cur = '';
       } else {
         cur += ch;
