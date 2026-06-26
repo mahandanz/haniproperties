@@ -239,8 +239,16 @@ function switchTab(tab, btn) {
   document.getElementById('fg-furnishing').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('fg-bed').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('fg-tenure').style.display = tab === 'jual' ? '' : 'none';
-  document.getElementById('fg-price').style.display = tab === 'jual' ? 'none' : '';
+  document.getElementById('fg-price').style.display = '';
   document.getElementById('fg-instalment').style.display = tab === 'jual' ? '' : 'none';
+  // Rebuild price options for the active tab
+  if (tab === 'jual') {
+    buildPriceOptions(allSubsales, false);
+  } else if (tab === 'room') {
+    buildPriceOptions(allRooms, true);
+  } else {
+    buildPriceOptions([...allUnits, ...allRooms], true);
+  }
   resetFilters();
 }
 
@@ -290,6 +298,7 @@ function applyFilters() {
     const fs = allSubsales.filter(r =>
       (!type || r.type === type) &&
       matchBed(r, bed) &&
+      matchPrice(r, price) &&
       (!instalment || (r.installment && parseFloat(r.installment) <= parseFloat(instalment))) &&
       (!tenure || r.tenure === tenure)
     );
