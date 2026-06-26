@@ -170,6 +170,21 @@
         <option value="">Any</option>
       </select>
     </div>
+    <div class="filter-group" id="fg-instalment" style="display:none">
+      <div class="filter-label">Max Instalment</div>
+      <select class="filter-select" id="f-instalment" onchange="applyFilters()">
+        <option value="">Any</option>
+        <option value="500">RM 500/mo</option>
+        <option value="800">RM 800/mo</option>
+        <option value="1000">RM 1,000/mo</option>
+        <option value="1500">RM 1,500/mo</option>
+        <option value="2000">RM 2,000/mo</option>
+        <option value="2500">RM 2,500/mo</option>
+        <option value="3000">RM 3,000/mo</option>
+        <option value="4000">RM 4,000/mo</option>
+        <option value="5000">RM 5,000/mo</option>
+      </select>
+    </div>
     <div class="filter-group" id="fg-tenure" style="display:none">
       <div class="filter-label">Tenure</div>
       <select class="filter-select" id="f-tenure" onchange="applyFilters()">
@@ -227,6 +242,8 @@ function switchTab(tab, btn) {
   document.getElementById('fg-bed').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('fg-type').style.display = (tab === 'sewa' || tab === 'jual') ? '' : 'none';
   document.getElementById('fg-tenure').style.display = tab === 'jual' ? '' : 'none';
+  document.getElementById('fg-price').style.display = tab === 'jual' ? 'none' : '';
+  document.getElementById('fg-instalment').style.display = tab === 'jual' ? '' : 'none';
   resetFilters();
 }
 
@@ -272,10 +289,11 @@ function applyFilters() {
       fr.length ? fr.map(roomCard).join('') : empty('No room rentals match your filters.');
     document.getElementById('filter-count').textContent = `${fr.length} listing${fr.length !== 1 ? 's' : ''}`;
   } else {
+    const instalment = document.getElementById('f-instalment') ? document.getElementById('f-instalment').value : '';
     const fs = allSubsales.filter(r =>
       (!type || r.type === type) &&
       matchBed(r, bed) &&
-      matchPrice(r, price) &&
+      (!instalment || (r.installment && parseFloat(r.installment) <= parseFloat(instalment))) &&
       (!tenure || r.tenure === tenure)
     );
     document.getElementById('grid-subsale').innerHTML =
@@ -285,7 +303,7 @@ function applyFilters() {
 }
 
 function resetFilters() {
-  ['f-furnishing','f-type','f-bed','f-price','f-tenure'].forEach(id => {
+  ['f-furnishing','f-type','f-bed','f-price','f-tenure','f-instalment'].forEach(id => {
     document.getElementById(id).value = '';
   });
   applyFilters();
@@ -410,6 +428,7 @@ function subsaleCard(r) {
       <div><span class="card-badge badge-subsale">Subsale</span></div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}</div>
+      ${r.installment ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
       <div class="card-pills">${pills}</div>
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
