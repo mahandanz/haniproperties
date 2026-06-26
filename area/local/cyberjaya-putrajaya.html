@@ -247,6 +247,7 @@ function switchTab(tab, btn) {
   // Rebuild price options for the active tab
   if (tab === 'jual') {
     buildPriceOptions(allSubsales, false);
+    buildInstalmentOptions(allSubsales);
   } else if (tab === 'room') {
     buildPriceOptions(allRooms, true);
   } else {
@@ -271,7 +272,13 @@ function applyFilters() {
 
   function matchPrice(r, val) {
     if (!val) return true;
-    return parseFloat(String(r.price).replace(/,/g, '')) <= parseFloat(val);
+    return parseFloat(String(r.price).replace(/,/g,'')) <= parseFloat(val);
+  }
+
+  function matchInstalment(r, val) {
+    if (!val) return true;
+    const inst = parseFloat(String(r.installment).replace(/,/g,''));
+    return !isNaN(inst) && inst <= parseFloat(val);
   }
 
   if (currentTab === 'sewa') {
@@ -279,10 +286,6 @@ function applyFilters() {
       (!furnishing || r.furnishing === furnishing) &&
       (!type || r.type === type) &&
       matchBed(r, bed) &&
-      matchPrice(r, price)
-    );
-    const fr = allRooms.filter(r =>
-      (!furnishing || r.furnishing === furnishing) &&
       matchPrice(r, price)
     );
     document.getElementById('grid-unit').innerHTML =
@@ -302,7 +305,7 @@ function applyFilters() {
       (!type || r.type === type) &&
       matchBed(r, bed) &&
       matchPrice(r, price) &&
-      (!instalment || (r.installment && parseFloat(r.installment) <= parseFloat(instalment))) &&
+      matchInstalment(r, instalment) &&
       (!tenure || r.tenure === tenure)
     );
     document.getElementById('grid-subsale').innerHTML =
@@ -319,21 +322,31 @@ function resetFilters() {
 }
 
 function buildPriceOptions(rows, isRent) {
-  const prices = rows.map(r => parseFloat(String(r.price).replace(/,/g,''))).filter(Boolean).sort((a,b) => a-b);
-  if (!prices.length) return;
   const sel = document.getElementById('f-price');
   sel.innerHTML = '<option value="">Any</option>';
   let steps;
   if (isRent) {
     steps = [1000,1500,2000,2500,3000,4000,5000,7000,10000];
   } else {
-    steps = [200000,300000,400000,500000,600000,800000,1000000,1500000];
+    steps = [150000,200000,300000,400000,500000,600000,800000,1000000,1500000];
   }
-  const max = prices[prices.length - 1];
   steps.forEach(s => {
     const opt = document.createElement('option');
     opt.value = s;
     opt.textContent = isRent ? `RM ${s.toLocaleString()}/mo` : (s >= 1000000 ? `RM ${(s/1000000).toFixed(s%1000000===0?0:1)}M` : `RM ${(s/1000).toFixed(0)}k`);
+    sel.appendChild(opt);
+  });
+}
+
+function buildInstalmentOptions(rows) {
+  const sel = document.getElementById('f-instalment');
+  if (!sel) return;
+  sel.innerHTML = '<option value="">Any</option>';
+  const steps = [500,700,1000,1200,1500,2000,2500,3000,4000,5000];
+  steps.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s;
+    opt.textContent = `RM ${s.toLocaleString()}/mo`;
     sel.appendChild(opt);
   });
 }
@@ -351,7 +364,9 @@ function buildTypeOptions(rows) {
 
 function parseCSV(text) {
   const lines = text.trim().split('\n');
+  const delim = lines[0].includes('\t') ? '\t' : ',';
   function splitLine(line) {
+    if (delim === '\t') return line.split('\t').map(v => v.trim());
     const vals = [];
     let cur = '', inQ = false;
     for (let i = 0; i < line.length; i++) {
@@ -359,7 +374,7 @@ function parseCSV(text) {
       if (ch === '"') {
         if (inQ && line[i+1] === '"') { cur += '"'; i++; }
         else { inQ = !inQ; }
-      } else if (ch === ',' && !inQ) {
+      } else if (ch === ',') {
         vals.push(cur); cur = '';
       } else {
         cur += ch;
@@ -461,6 +476,7 @@ fetch('../../listings.csv')
     // Build dynamic filter options
     buildTypeOptions([...allUnits, ...allSubsales]);
     buildPriceOptions([...allUnits, ...allRooms], true);
+    buildInstalmentOptions(allSubsales);
 
     // Initial render
     applyFilters();
