@@ -4,13 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hani Properties — New Launch Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Arial, sans-serif; background: #f4f4f0; color: #1a1a1a; min-height: 100vh; }
-  header { background: #0d1f0d; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-  header .brand { color: #c9a84c; font-size: 20px; font-weight: 700; letter-spacing: 1px; }
-  header .sub { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 2px; }
-  .page { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  body { font-family: 'DM Sans', Arial, sans-serif; background: #f4f4f0; color: #1a1a1a; min-height: 100vh; }
+
+  /* ── Nav ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(253,250,245,.94);backdrop-filter:blur(14px);border-bottom:1px solid #e3ddd0}
+  .nav-inner{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+  .brand{font-family:'Lora',serif;font-weight:700;font-size:18px;color:#1c1c18;text-decoration:none;letter-spacing:-.01em}
+  .brand span{color:#bf5533}
+  .nav-links{display:flex;gap:6px;align-items:center}
+  .nav-links a{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:6px 12px;border-radius:20px;transition:all .18s}
+  .nav-links a:hover{color:#1c1c18;background:#f6f1e7}
+  .nav-links a.cta-nav{background:#2a5c3a;color:#fff;padding:7px 16px}
+  .nav-links a.cta-nav:hover{background:#1e4a2c}
+  .nav-mobile{display:none}
+  @media(max-width:600px){
+    .nav-inner{height:46px;padding:0 16px}
+    .brand{font-size:17px}
+    .nav-links{display:none}
+    .nav-mobile{display:flex;border-top:1px solid #e3ddd0;background:rgba(253,250,245,.97)}
+    .nav-mobile a{flex:1;text-align:center;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:10px 4px;transition:color .18s,background .18s;white-space:nowrap}
+    .nav-mobile a:not(:last-child){border-right:1px solid #e3ddd0}
+    .nav-mobile a:hover{color:#1c1c18;background:#f6f1e7}
+    .nav-mobile a.cta-nav{background:#2a5c3a;color:#fff}
+    .nav-mobile a.cta-nav:hover{background:#1e4a2c}
+  }
+
+  .page { max-width: 960px; margin: 0 auto; padding: 80px 1.25rem 4rem; }
   h1 { font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
   .page-sub { font-size: 14px; color: #666; margin-bottom: 1.5rem; }
 
@@ -58,12 +81,23 @@
 </head>
 <body>
 
-<header>
-  <div>
-    <div class="brand">Hani Properties</div>
-    <div class="sub">New Launch Projects</div>
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="brand">Hani <span>Properties</span></a>
+    <div class="nav-links">
+      <a href="../kawasan.html">Rentals</a>
+      <a href="../kawasan.html">Subsales</a>
+      <a href="projects.html" style="color:#1c1c18;font-weight:700;">Projects</a>
+      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
   </div>
-</header>
+  <div class="nav-mobile">
+    <a href="../kawasan.html">Rentals</a>
+    <a href="../kawasan.html">Subsales</a>
+    <a href="projects.html" style="color:#1c1c18;font-weight:700;">Projects</a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+</nav>
 
 <div class="page">
   <h1>New Launch Projects</h1>
