@@ -271,7 +271,7 @@ function applyFilters() {
 
   function matchPrice(r, val) {
     if (!val) return true;
-    return parseFloat(r.price) <= parseFloat(val);
+    return parseFloat(String(r.price).replace(/,/g, '')) <= parseFloat(val);
   }
 
   if (currentTab === 'sewa') {
