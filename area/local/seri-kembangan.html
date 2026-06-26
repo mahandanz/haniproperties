@@ -319,7 +319,7 @@ function resetFilters() {
 }
 
 function buildPriceOptions(rows, isRent) {
-  const prices = rows.map(r => parseFloat(r.price)).filter(Boolean).sort((a,b) => a-b);
+  const prices = rows.map(r => parseFloat(String(r.price).replace(/,/g,''))).filter(Boolean).sort((a,b) => a-b);
   if (!prices.length) return;
   const sel = document.getElementById('f-price');
   sel.innerHTML = '<option value="">Any</option>';
@@ -330,7 +330,7 @@ function buildPriceOptions(rows, isRent) {
     steps = [200000,300000,400000,500000,600000,800000,1000000,1500000];
   }
   const max = prices[prices.length - 1];
-  steps.filter(s => s <= max * 1.1).forEach(s => {
+  steps.forEach(s => {
     const opt = document.createElement('option');
     opt.value = s;
     opt.textContent = isRent ? `RM ${s.toLocaleString()}/mo` : (s >= 1000000 ? `RM ${(s/1000000).toFixed(s%1000000===0?0:1)}M` : `RM ${(s/1000).toFixed(0)}k`);
