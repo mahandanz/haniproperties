@@ -184,14 +184,13 @@
 
   <div id="tab-sewa">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;">
-    <div class="listing-grid" id="grid-unit"><div class="loading">Loading listings…</div></div>
+    <div class="listing-grid" id="grid-unit"><div class="loading">Loading listings…</div></div></div>
   </div>
 
   <div id="tab-jual" style="display:none">
     <img src="/images/banner-subsale.png" alt="Subsales" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;">
     <div class="listing-grid" id="grid-subsale"><div class="loading">Loading listings…</div></div>
   </div>
-
   <div id="tab-room" style="display:none">
     <img src="/images/banner-room.png" alt="Room Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;">
     <div class="listing-grid" id="grid-room-tab"><div class="loading">Loading listings…</div></div>
@@ -263,9 +262,7 @@ function applyFilters() {
     );
     document.getElementById('grid-unit').innerHTML =
       fu.length ? fu.map(unitCard).join('') : empty('No unit rentals match your filters.');
-    document.getElementById('grid-room').innerHTML =
-      fr.length ? fr.map(roomCard).join('') : empty('No room rentals match your filters.');
-    document.getElementById('filter-count').textContent = `${fu.length + fr.length} listing${fu.length + fr.length !== 1 ? 's' : ''}`;
+    document.getElementById('filter-count').textContent = `${fu.length} listing${fu.length !== 1 ? 's' : ''}`;
   } else if (currentTab === 'room') {
     const fr = allRooms.filter(r =>
       (!furnishing || r.furnishing === furnishing) &&

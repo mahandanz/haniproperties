@@ -134,6 +134,7 @@
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('sewa',this)">For Rent</button>
     <button class="tab-btn" onclick="switchTab('jual',this)">For Sale</button>
+    <button class="tab-btn" onclick="switchTab('room',this)">Rooms</button>
   </div>
 
   <!-- FILTERS -->
@@ -183,14 +184,16 @@
 
   <div id="tab-sewa">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;">
-    <div class="listing-grid" id="grid-unit"><div class="loading">Loading listings…</div></div>
-    <img src="/images/banner-room.png" alt="Room Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;">
-    <div class="listing-grid" id="grid-room"><div class="loading">Loading listings…</div></div>
+    <div class="listing-grid" id="grid-unit"><div class="loading">Loading listings…</div></div></div>
   </div>
 
   <div id="tab-jual" style="display:none">
     <img src="/images/banner-subsale.png" alt="Subsales" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;">
     <div class="listing-grid" id="grid-subsale"><div class="loading">Loading listings…</div></div>
+  </div>
+  <div id="tab-room" style="display:none">
+    <img src="/images/banner-room.png" alt="Room Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;">
+    <div class="listing-grid" id="grid-room-tab"><div class="loading">Loading listings…</div></div>
   </div>
 
   <div class="cta-band">
@@ -256,9 +259,15 @@ function applyFilters() {
     );
     document.getElementById('grid-unit').innerHTML =
       fu.length ? fu.map(unitCard).join('') : empty('No unit rentals match your filters.');
-    document.getElementById('grid-room').innerHTML =
+    document.getElementById('filter-count').textContent = `${fu.length} listing${fu.length !== 1 ? 's' : ''}`;
+  } else if (currentTab === 'room') {
+    const fr = allRooms.filter(r =>
+      (!furnishing || r.furnishing === furnishing) &&
+      matchPrice(r, price)
+    );
+    document.getElementById('grid-room-tab').innerHTML =
       fr.length ? fr.map(roomCard).join('') : empty('No room rentals match your filters.');
-    document.getElementById('filter-count').textContent = `${fu.length + fr.length} listing${fu.length + fr.length !== 1 ? 's' : ''}`;
+    document.getElementById('filter-count').textContent = `${fr.length} listing${fr.length !== 1 ? 's' : ''}`;
   } else {
     const fs = allSubsales.filter(r =>
       (!type || r.type === type) &&
@@ -424,7 +433,7 @@ fetch('../../listings.csv')
   })
   .catch((e) => {
     console.error('Fetch error:', e);
-    ['grid-unit','grid-room','grid-subsale'].forEach(id => {
+    ['grid-unit','grid-room-tab','grid-subsale'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.innerHTML = empty('Unable to load listings. Please try again.');
     });
