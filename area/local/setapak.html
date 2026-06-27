@@ -483,7 +483,7 @@ fetch('../../listings.csv')
   .then(r => r.text())
   .then(text => {
     const rows = parseCSV(text);
-    const filtered = rows.filter(r => r.area === AREA);
+    const filtered = rows.filter(r => r.area === AREA && (r.status === '-' || r.status === ''));
     allUnits    = filtered.filter(r => r.listing_type === 'rental');
     allRooms    = filtered.filter(r => r.listing_type === 'room');
     allSubsales = filtered.filter(r => r.listing_type === 'subsale');
