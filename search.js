@@ -46,11 +46,19 @@
       const buf = await res.arrayBuffer();
       const text = new TextDecoder('windows-1252').decode(buf);
       const lines = text.split(/\r?\n/).filter(Boolean);
-      const headers = lines[0].split('\t').map(h => h.trim().toLowerCase());
+      const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
 
       allListings = lines.slice(1).map(line => {
-        // TSV: split on tab
-        const cols = line.split('\t');
+        // Handle quoted fields
+        const cols = [];
+        let cur = '', inQ = false;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (ch === '"') { inQ = !inQ; continue; }
+          if (ch === ',' && !inQ) { cols.push(cur); cur = ''; continue; }
+          cur += ch;
+        }
+        cols.push(cur);
         const obj = {};
         headers.forEach((h, i) => obj[h] = (cols[i] || '').trim());
         return obj;
@@ -131,7 +139,8 @@
 
       const item = document.createElement('a');
       item.className = 'hp-sd-item';
-      item.href = `${href}#${slug}`;
+      const tabParam = r.listing_type === 'subsale' ? 'jual' : r.listing_type === 'room' ? 'room' : 'sewa';
+      item.href = `${href}?tab=${tabParam}#${slug}`;
       item.innerHTML = `
         <span class="hp-sd-badge" style="background:${b.color}">${b.label}</span>
         <span class="hp-sd-info">
@@ -356,7 +365,8 @@
 
       const item = document.createElement('a');
       item.className = 'hp-sd-item';
-      item.href = `${href}#${slug}`;
+      const tabParam = r.listing_type === 'subsale' ? 'jual' : r.listing_type === 'room' ? 'room' : 'sewa';
+      item.href = `${href}?tab=${tabParam}#${slug}`;
       item.innerHTML = `
         <span class="hp-sd-badge" style="background:${b.color}">${b.label}</span>
         <span class="hp-sd-info">
