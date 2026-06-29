@@ -154,7 +154,7 @@
     // Footer
     const footer = document.createElement('div');
     footer.className = 'hp-sd-footer';
-    footer.textContent = `${results.length} result${results.length > 1 ? 's' : ''} — click to view area listings`;
+    footer.innerHTML = `${results.length} result${results.length > 1 ? 's' : ''} · <a href="/search.html?q=${encodeURIComponent(query)}" style="color:#2a5c3a;font-weight:700;text-decoration:none;">View all results →</a>`;
     dropdown.appendChild(footer);
 
     dropdown.style.display = 'block';
@@ -329,6 +329,13 @@
       const results = search(q);
       if (q.length < 2) { dropdown.style.display = 'none'; return; }
       renderDropdown(results, q);
+    });
+
+    searchBox.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const q = searchBox.value.trim();
+        if (q) window.location.href = `/search.html?q=${encodeURIComponent(q)}`;
+      }
     });
 
     document.addEventListener('click', (e) => {
