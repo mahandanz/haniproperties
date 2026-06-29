@@ -46,7 +46,7 @@
       const buf = await res.arrayBuffer();
       const text = new TextDecoder('windows-1252').decode(buf);
       const lines = text.split(/\r?\n/).filter(Boolean);
-      const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+      const headers = lines[0].split('\t').map(h => h.trim().toLowerCase());
 
       allListings = lines.slice(1).map(line => {
         // TSV: split on tab
