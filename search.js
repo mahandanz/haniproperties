@@ -49,16 +49,8 @@
       const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
 
       allListings = lines.slice(1).map(line => {
-        // Handle quoted fields
-        const cols = [];
-        let cur = '', inQ = false;
-        for (let i = 0; i < line.length; i++) {
-          const ch = line[i];
-          if (ch === '"') { inQ = !inQ; continue; }
-          if (ch === ',' && !inQ) { cols.push(cur); cur = ''; continue; }
-          cur += ch;
-        }
-        cols.push(cur);
+        // TSV: split on tab
+        const cols = line.split('\t');
         const obj = {};
         headers.forEach((h, i) => obj[h] = (cols[i] || '').trim());
         return obj;
