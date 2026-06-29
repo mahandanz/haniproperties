@@ -68,6 +68,14 @@
     }
   }
 
+  /* ── Slug generator (must match area page logic) ─────────── */
+  function toSlug(...parts) {
+    return parts.filter(Boolean).join('-')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
   /* ── Search logic ───────────────────────────────────────── */
   function search(query) {
     if (!query || query.length < 2) return [];
@@ -123,13 +131,15 @@
       const price = formatPrice(r);
       const areaKey = (r.area || '').toLowerCase();
       const href = AREA_MAP[areaKey] || 'kawasan.html';
+      const slugPart2 = r.listing_type === 'room' ? r.room_type : r.bed;
+      const slug = toSlug(r.project_name, slugPart2, r.price);
       const bed = r.bed ? `${r.bed}BR` : '';
       const size = r.size ? `${r.size} sqft` : '';
       const meta = [bed, size, r.furnishing].filter(Boolean).join(' · ');
 
       const item = document.createElement('a');
       item.className = 'hp-sd-item';
-      item.href = href;
+      item.href = `${href}#${slug}`;
       item.innerHTML = `
         <span class="hp-sd-badge" style="background:${b.color}">${b.label}</span>
         <span class="hp-sd-info">
@@ -339,13 +349,15 @@
       const price = formatPrice(r);
       const areaKey = (r.area || '').toLowerCase();
       const href = AREA_MAP[areaKey] || 'kawasan.html';
+      const slugPart2 = r.listing_type === 'room' ? r.room_type : r.bed;
+      const slug = toSlug(r.project_name, slugPart2, r.price);
       const bed = r.bed ? `${r.bed}BR` : '';
       const size = r.size ? `${r.size} sqft` : '';
       const meta = [bed, size, r.furnishing].filter(Boolean).join(' · ');
 
       const item = document.createElement('a');
       item.className = 'hp-sd-item';
-      item.href = href;
+      item.href = `${href}#${slug}`;
       item.innerHTML = `
         <span class="hp-sd-badge" style="background:${b.color}">${b.label}</span>
         <span class="hp-sd-info">

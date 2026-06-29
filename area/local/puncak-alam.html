@@ -72,6 +72,10 @@
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
     .card-cta{display:block;text-align:center;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
     .card-cta:hover{background:#1e4a2c}
+    .card-highlight{box-shadow:0 0 0 3px #2a5c3a,0 6px 24px rgba(42,92,58,.18)!important;transform:translateY(-2px);transition:box-shadow .3s,transform .3s}
+    @keyframes hp-pulse{0%,100%{box-shadow:0 0 0 3px #2a5c3a}50%{box-shadow:0 0 0 6px rgba(42,92,58,.3)}}
+    .card-highlight{animation:hp-pulse 1s ease 2}
+
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -402,6 +406,30 @@ function parseCSV(text) {
   });
 }
 
+function toSlug(...parts) {
+  return parts.filter(Boolean).join('-')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function scrollToHash() {
+  const hash = window.location.hash.slice(1);
+  if (!hash) return;
+  let attempts = 0;
+  const poll = setInterval(() => {
+    const el = document.getElementById(hash);
+    if (el) {
+      clearInterval(poll);
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      el.classList.add('card-highlight');
+      setTimeout(() => el.classList.remove('card-highlight'), 2800);
+    }
+    if (++attempts > 40) clearInterval(poll);
+  }, 100);
+}
+window.addEventListener('load', scrollToHash);
+
 function fmt(price) {
   return 'RM ' + Number(price).toLocaleString('en-MY');
 }
@@ -424,7 +452,7 @@ function unitCard(r) {
     r.furnishing || '',
     r.type || ''
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-  return `<div class="card">
+  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     <div class="card-body">
       <div><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
@@ -442,7 +470,7 @@ function roomCard(r) {
     r.bath_type || '',
     r.furnishing || ''
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-  return `<div class="card">
+  return `<div class="card" id="${toSlug(r.project_name, r.room_type, r.price)}">
     <div class="card-body">
       <div><span class="card-badge badge-room">Room Rental</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
@@ -462,7 +490,7 @@ function subsaleCard(r) {
     r.tenure || '',
     r.type || ''
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-  return `<div class="card">
+  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     <div class="card-body">
       <div><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
