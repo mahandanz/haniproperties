@@ -77,43 +77,22 @@
   }
 
   /* ── Search logic ───────────────────────────────────────── */
-  // Malay/English synonyms so "sewa" matches rental, "jual" matches subsale, etc.
-  const TYPE_SYNONYMS = {
-    rental: 'rental rent sewa disewa',
-    subsale: 'subsale sale jual dijual',
-    room: 'room bilik kamar'
-  };
-
   function search(query) {
     if (!query || query.length < 2) return [];
     const q = query.toLowerCase();
     const tokens = q.split(/\s+/);
 
-    const matches = allListings.filter(r => {
-      // skip rented/sold
-      if (r.status && r.status !== '-' && r.status !== '') return false;
-      const haystack = [
-        r.listing_type, TYPE_SYNONYMS[r.listing_type] || '', r.area, r.zone, r.project_name,
-        r.type, r.furnishing, r.price, r.bed, r.size, r.anchors
-      ].join(' ').toLowerCase();
-      return tokens.every(t => haystack.includes(t));
-    });
-
-    // Round-robin across listing types so e.g. an area search doesn't get
-    // swamped by subsale results and push rentals/rooms out of the cap.
-    const LIMIT = 8;
-    const byType = { rental: [], subsale: [], room: [] };
-    matches.forEach(r => { (byType[r.listing_type] || byType.subsale).push(r); });
-
-    const result = [];
-    let i = 0;
-    while (result.length < LIMIT && (byType.rental[i] || byType.subsale[i] || byType.room[i])) {
-      if (byType.rental[i]) result.push(byType.rental[i]);
-      if (result.length < LIMIT && byType.subsale[i]) result.push(byType.subsale[i]);
-      if (result.length < LIMIT && byType.room[i]) result.push(byType.room[i]);
-      i++;
-    }
-    return result.slice(0, LIMIT);
+    return allListings
+      .filter(r => {
+        // skip rented/sold
+        if (r.status && r.status !== '-' && r.status !== '') return false;
+        const haystack = [
+          r.listing_type, r.area, r.zone, r.project_name,
+          r.type, r.furnishing, r.price, r.bed, r.size, r.anchors
+        ].join(' ').toLowerCase();
+        return tokens.every(t => haystack.includes(t));
+      })
+      .slice(0, 8);
   }
 
   /* ── Format price ───────────────────────────────────────── */
@@ -216,13 +195,11 @@
         top: calc(100% + 6px);
         right: 0;
         width: 340px;
-        max-height: 70vh;
-        overflow-y: auto;
-        overflow-x: hidden;
         background: #fff;
         border: 1px solid #e3ddd0;
         border-radius: 14px;
         box-shadow: 0 8px 32px rgba(0,0,0,.13);
+        overflow: hidden;
         z-index: 999;
       }
       .hp-sd-item {
@@ -291,14 +268,7 @@
       @media (max-width: 600px) {
         .hp-search-wrap { width: 100%; }
         .hp-search-input { width: 100% !important; border-radius: 10px; }
-        .hp-search-dropdown {
-          position: fixed;
-          width: auto;
-          left: 12px;
-          right: 12px;
-          max-height: 60vh;
-          border-radius: 10px;
-        }
+        .hp-search-dropdown { width: 100%; right: 0; left: 0; border-radius: 10px; }
         .nav-search-mobile {
           padding: 8px 16px;
           background: rgba(253,250,245,.97);
@@ -347,8 +317,6 @@
         const q = mSearchBox.value.trim();
         const results = search(q);
         if (q.length < 2) { mDropdown.style.display = 'none'; return; }
-        const rect = mSearchBox.getBoundingClientRect();
-        mDropdown.style.top = (rect.bottom + 6) + 'px';
         renderDropdownEl(mDropdown, results, q);
       });
 
