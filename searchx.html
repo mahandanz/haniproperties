@@ -139,7 +139,7 @@
   <div class="hero-eyebrow">🔍 Search Listings</div>
   <h1>Find Your Perfect Property</h1>
   <div class="hero-search-wrap">
-    <input type="search" class="hero-search-input" id="hero-search" placeholder="Try 'Shah Alam 3 bed' or 'Cyberjaya fully furnished'…" autocomplete="off" />
+    <input type="search" class="hero-search-input" id="hero-search" placeholder="Try "Shah Alam 3 bed" or "Cyberjaya fully furnished"…" autocomplete="off" />
     <button class="hero-search-btn" onclick="doSearch()">Search</button>
   </div>
 </section>
@@ -297,7 +297,7 @@ function populateAreaFilter() {
 
 /* ── Search ─────────────────────────────────────────────── */
 function searchListings(query) {
-  if (!query || query.length < 1) return allListings;
+  if (!query || query.length < 2) return allListings;
   const tokens = query.toLowerCase().split(/\s+/);
   return allListings.filter(r => {
     const haystack = [r.listing_type, r.area, r.zone, r.project_name,
@@ -441,13 +441,8 @@ function doSearch() {
   applyFilters();
 }
 
-let searchDebounce;
-document.getElementById('hero-search').addEventListener('input', () => {
-  clearTimeout(searchDebounce);
-  searchDebounce = setTimeout(doSearch, 250);
-});
 document.getElementById('hero-search').addEventListener('keydown', e => {
-  if (e.key === 'Enter') { clearTimeout(searchDebounce); doSearch(); }
+  if (e.key === 'Enter') doSearch();
 });
 
 /* ── Init ───────────────────────────────────────────────── */
