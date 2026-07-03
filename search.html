@@ -352,6 +352,12 @@ function wa(text) {
   return `https://wa.me/60125459182?text=${encodeURIComponent(text)}`;
 }
 
+function moveInText(val) {
+  const v = (val || '').trim();
+  if (!v || v === '-') return '';
+  return `🗓 Move-in: ${v}`;
+}
+
 function renderCard(r) {
   const areaKey = (r.area || '').toLowerCase();
   const areaHref = AREA_MAP[areaKey] || '/kawasan.html';
@@ -369,10 +375,11 @@ function renderCard(r) {
     : fmt(r.price);
 
   const pillItems = r.listing_type === 'room'
-    ? [r.room_type, r.bath_type, r.furnishing]
+    ? [r.room_type, r.bath_type, r.furnishing, moveInText(r.move_in_date)]
     : [r.bed ? `🛏 ${r.bed} bed` : '', r.bath ? `🚿 ${r.bath} bath` : '',
        r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
-       r.furnishing, r.listing_type === 'subsale' ? r.tenure : r.type];
+       r.furnishing, r.listing_type === 'subsale' ? r.tenure : r.type,
+       r.listing_type === 'rental' ? moveInText(r.move_in_date) : ''];
 
   const pills = pillItems.filter(Boolean)
     .map(p => `<span class="pill">${p}</span>`).join('');
