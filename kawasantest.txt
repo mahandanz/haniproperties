@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Properties by Area in Klang Valley — Rent &amp; Buy | Hani Properties</title>
+<meta name="description" content="Browse rental and subsale properties by area across Klang Valley — Shah Alam, Petaling Jaya, Subang Jaya, Cheras, Cyberjaya, Kajang and more. Find your area with Hani Properties.">
+<link rel="canonical" href="https://haniproperties.com/kawasan.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://haniproperties.com/kawasan.html">
+<meta property="og:title" content="Properties by Area in Klang Valley — Rent &amp; Buy | Hani Properties">
+<meta property="og:description" content="Browse rental and subsale properties by area across Klang Valley — Shah Alam, Petaling Jaya, Subang Jaya, Cheras, Cyberjaya and more.">
+<meta property="og:image" content="https://haniproperties.com/og-cover.jpg">
+<meta property="og:locale" content="en_MY">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#1c1c18;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(253,250,245,.94);backdrop-filter:blur(14px);
+  border-bottom:1px solid #e3ddd0;
+}
+.nav-inner{
+  height:58px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;
+}
+.brand{font-family:'Lora',serif;font-weight:700;font-size:18px;color:#1c1c18;text-decoration:none;letter-spacing:-.01em}
+.brand span{color:#bf5533}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:6px 12px;border-radius:20px;transition:all .18s}
+.nav-links a:hover{color:#1c1c18;background:#f6f1e7}
+.nav-links a.active{color:#1c1c18}
+.nav-links a.cta-nav{background:#2a5c3a;color:#fff;padding:7px 16px}
+.nav-links a.cta-nav:hover{background:#1e4a2c}
+
+/* MOBILE NAV ROW */
+.nav-mobile{display:none}
+
+@media(max-width:600px){
+  .nav-inner{height:46px;padding:0 16px}
+  .brand{font-size:17px}
+  .nav-links{display:none}
+  .nav-mobile{
+    display:flex;
+    border-top:1px solid #e3ddd0;
+    background:rgba(253,250,245,.97);
+  }
+  .nav-mobile a{
+    flex:1;text-align:center;
+    font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    text-decoration:none;color:#7a7268;
+    padding:10px 4px;
+    transition:color .18s, background .18s;
+    white-space:nowrap;
+  }
+  .nav-mobile a:not(:last-child){border-right:1px solid #e3ddd0}
+  .nav-mobile a:hover{color:#1c1c18;background:#f6f1e7}
+  .nav-mobile a.cta-nav{background:#2a5c3a;color:#fff}
+  .nav-mobile a.cta-nav:hover{background:#1e4a2c}
+}
+
+/* PAGE */
+.page{
+  padding:96px 24px 72px;
+  max-width:960px;
+  margin:0 auto;
+}
+
+/* HERO */
+.page-hero{text-align:center;margin-bottom:48px}
+.page-eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#bf5533;margin-bottom:10px;
+}
+.page-hero h1{
+  font-family:'Lora',serif;
+  font-size:clamp(26px,4vw,40px);
+  font-weight:700;
+  color:#1c1c18;
+  margin-bottom:10px;
+  letter-spacing:-.01em;
+}
+.page-hero p{font-size:15px;color:#7a7268;line-height:1.6}
+
+/* LEGEND */
+.legend{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#7a7268;letter-spacing:.03em}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* REGION */
+.region{margin-bottom:36px}
+.region-header{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.region-header span{
+  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#7a7268;white-space:nowrap;
+}
+.region-header::after{content:'';flex:1;height:1px;background:#e3ddd0}
+
+/* PINS GRID */
+.pins-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:10px;
+}
+
+/* PIN CARD */
+.pin-card{
+  display:flex;flex-direction:column;
+  padding:12px 14px;
+  background:#fff;
+  border:1px solid #e3ddd0;
+  border-radius:10px;
+  text-decoration:none;
+  transition:border-color .18s, background .18s, transform .15s;
+}
+.pin-card:hover{
+  border-color:#2a5c3a;
+  background:#f4f9f6;
+  transform:translateY(-1px);
+}
+.pin-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.pin-dot.kl{background:#2a5c3a}
+.pin-dot.sel{background:#185FA5}
+.pin-dot.out{background:#bf5533}
+.pin-name{font-size:13px;font-weight:600;color:#1c1c18;line-height:1.3}
+.pin-sub{font-size:11px;color:#7a7268;margin-top:1px}
+.pin-count{font-size:11px;color:#2a5c3a;font-weight:700;margin-top:1px}
+.pin-card[data-hidden="true"]{display:none}
+
+/* FOOTER */
+footer{background:#111;color:rgba(255,255,255,.35);text-align:center;padding:24px;font-size:11px;line-height:1.8}
+footer a{color:rgba(255,255,255,.5);text-decoration:none}
+
+@media(max-width:600px){
+  .page{padding:96px 16px 48px}
+  .pins-grid{grid-template-columns:1fr 1fr}
+  .legend{gap:12px}
+}
+@media(max-width:380px){
+  .pins-grid{grid-template-columns:1fr}
+}
+
+.pin-landmarks{margin-top:8px;padding-top:8px;border-top:1px solid #e3ddd0;display:flex;flex-direction:column;gap:4px}
+.pin-landmark{font-size:10px;color:#7a7268;display:flex;align-items:flex-start;gap:4px;line-height:1.4}
+.pin-landmark::before{content:'📍';font-size:9px;flex-shrink:0;margin-top:1px}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="brand">Hani <span>Properties</span></a>
+    <div class="nav-links">
+      <a href="kawasan.html" class="active">Rentals</a>
+      <a href="kawasan.html">Subsales</a>
+      <a href="projects.html">Projects</a>
+      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+  <div class="nav-mobile">
+    <a href="kawasan.html" class="active">Rentals</a>
+    <a href="kawasan.html">Subsales</a>
+    <a href="projects.html">Projects</a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="page-hero">
+    <p class="page-eyebrow">Rent &amp; Buy</p>
+    <h1>Browse Properties by Area</h1>
+    <p>Explore rental and subsale listings across 21 areas in Klang Valley and Selangor — from Shah Alam and Petaling Jaya to Cyberjaya, Kajang, Semenyih and beyond.</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot kl"></div>Kuala Lumpur</div>
+    <div class="legend-item"><div class="legend-dot sel"></div>Selangor</div>
+    <div class="legend-item"><div class="legend-dot out"></div>Selangor Outskirt</div>
+  </div>
+
+  <!-- KUALA LUMPUR -->
+  <div class="region" id="region-kl">
+    <div class="region-header"><span>Kuala Lumpur</span></div>
+    <div class="pins-grid">
+      <a class="pin-card" href="area/local/ampang.html" data-area="Ampang">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Ampang</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Zoo Negara</div>
+          <div class="pin-landmark">Ampang LRT Line</div>
+          <div class="pin-landmark">KLCC proximity</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/bukit-jalil.html" data-area="Bukit Jalil">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Bukit Jalil</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Pavilion Bukit Jalil</div>
+          <div class="pin-landmark">National Sports Complex</div>
+          <div class="pin-landmark">Sri Petaling LRT</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/cheras.html" data-area="Cheras">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Cheras</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Taman Connaught Night Market</div>
+          <div class="pin-landmark">MRT Putrajaya Line</div>
+          <div class="pin-landmark">Cheras-Kajang Highway</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/kuala-lumpur.html" data-area="Kuala Lumpur">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Kuala Lumpur</div>
+            <div class="pin-sub">City Centre</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Petronas Twin Towers</div>
+          <div class="pin-landmark">Bukit Bintang</div>
+          <div class="pin-landmark">KL Sentral</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/kepong.html" data-area="Kepong">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Kepong</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">FRIM Forest Reserve</div>
+          <div class="pin-landmark">MRT Kepong</div>
+          <div class="pin-landmark">Middle Ring Road 2</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/sentul.html" data-area="Sentul">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Sentul</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Sentul West Arts District</div>
+          <div class="pin-landmark">KTM & LRT Sentul</div>
+          <div class="pin-landmark">Titiwangsa Lake Gardens</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/setapak.html" data-area="Setapak">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Setapak</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">UTAR & KTAR Campus</div>
+          <div class="pin-landmark">Wangsa Maju LRT</div>
+          <div class="pin-landmark">Melati Utama</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/selayang.html" data-area="Selayang">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot kl"></div>
+          <div>
+            <div class="pin-name">Selayang</div>
+            <div class="pin-sub">Kuala Lumpur</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Batu Caves Temple</div>
+          <div class="pin-landmark">Selayang Hospital</div>
+          <div class="pin-landmark">MRR2 Highway</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- SELANGOR -->
+  <div class="region" id="region-sel">
+    <div class="region-header"><span>Selangor</span></div>
+    <div class="pins-grid">
+      <a class="pin-card" href="area/local/cyberjaya-putrajaya.html" data-area="Cyberjaya / Putrajaya">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Cyberjaya / Putrajaya</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Putrajaya Lake Gardens</div>
+          <div class="pin-landmark">Multimedia University</div>
+          <div class="pin-landmark">KLIA Transit (ERL)</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/kajang.html" data-area="Kajang">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Kajang</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Satay Kajang</div>
+          <div class="pin-landmark">MRT Kajang Station</div>
+          <div class="pin-landmark">SILK Highway</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/bangi.html" data-area="Bangi">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Bangi</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Universiti Kebangsaan Malaysia</div>
+          <div class="pin-landmark">Bangi Gateway Mall</div>
+          <div class="pin-landmark">LEKAS Highway</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/klang.html" data-area="Klang">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Klang</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Royal Klang Town</div>
+          <div class="pin-landmark">Port Klang</div>
+          <div class="pin-landmark">KTM Klang Station</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/petaling-jaya.html" data-area="Petaling Jaya / Damansara">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Petaling Jaya / Damansara</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Damansara Uptown</div>
+          <div class="pin-landmark">LRT Kelana Jaya Line</div>
+          <div class="pin-landmark">SS2 & Damansara</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/puchong.html" data-area="Puchong">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Puchong</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">IOI Mall Puchong</div>
+          <div class="pin-landmark">LRT Puchong Line</div>
+          <div class="pin-landmark">LDP Highway</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/bandar-saujana-putra.html" data-area="Bandar Saujana Putra">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Bandar Saujana Putra</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Cyberjaya</div>
+          <div class="pin-landmark">Putra Heights</div>
+          <div class="pin-landmark">ELITE Highway</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/puncak-alam.html" data-area="Puncak Alam">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Puncak Alam</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">UiTM Puncak Alam</div>
+          <div class="pin-landmark">AEON Mall Bukit Raja</div>
+          <div class="pin-landmark">Guthrie Corridor Expressway</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/seri-kembangan.html" data-area="Seri Kembangan">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Seri Kembangan</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">The Mines Resort City</div>
+          <div class="pin-landmark">MRT Serdang Jaya</div>
+          <div class="pin-landmark">Besraya Highway</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/shah-alam.html" data-area="Shah Alam">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Shah Alam / Setia Alam</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Blue Mosque (Sultan Salahuddin)</div>
+          <div class="pin-landmark">i-City</div>
+          <div class="pin-landmark">AEON Shah Alam</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/subang-jaya.html" data-area="Subang Jaya">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot sel"></div>
+          <div>
+            <div class="pin-name">Subang Jaya</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Sunway Pyramid</div>
+          <div class="pin-landmark">Taylor's & Sunway University</div>
+          <div class="pin-landmark">LRT Subang Jaya</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- SELANGOR OUTSKIRT -->
+  <div class="region" id="region-out">
+    <div class="region-header"><span>Selangor Outskirt</span></div>
+    <div class="pins-grid">
+      <a class="pin-card" href="area/local/sepang.html" data-area="Sepang,Banting,Dengkil">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot out"></div>
+          <div>
+            <div class="pin-name">Sepang / Banting / Dengkil</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">KLIA & klia2</div>
+          <div class="pin-landmark">Sepang International Circuit</div>
+          <div class="pin-landmark">ELITE Highway</div>
+        </div>
+      </a>
+      <a class="pin-card" href="area/local/semenyih.html" data-area="Semenyih">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="pin-dot out"></div>
+          <div>
+            <div class="pin-name">Semenyih</div>
+            <div class="pin-sub">Selangor</div>
+            <div class="pin-count"></div>
+          </div>
+        </div>
+        <div class="pin-landmarks">
+          <div class="pin-landmark">Universiti Tenaga Nasional (UNITEN)</div>
+          <div class="pin-landmark">Semenyih Hot Springs</div>
+          <div class="pin-landmark">LEKAS Highway</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2025–2026 Hani Properties &nbsp;·&nbsp; Property in Selangor, KL &amp; Negeri Sembilan<br>
+  <a href="https://wa.me/60125459182" target="_blank" rel="noopener noreferrer">+60 12-545 9182</a>
+</footer>
+<script src="/search.js"></script>
+<script>
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const delim = lines[0].includes('\t') ? '\t' : ',';
+  function splitLine(line) {
+    if (delim === '\t') return line.split('\t').map(v => v.trim());
+    const vals = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (ch === '"') {
+        if (inQ && line[i+1] === '"') { cur += '"'; i++; }
+        else inQ = !inQ;
+      } else if (ch === ',' && !inQ) {
+        vals.push(cur); cur = '';
+      } else {
+        cur += ch;
+      }
+    }
+    vals.push(cur);
+    return vals.map(v => v.trim());
+  }
+  const headers = splitLine(lines[0]);
+  return lines.slice(1).filter(l => l.trim()).map(line => {
+    const vals = splitLine(line);
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = (vals[i] || '').trim());
+    return obj;
+  });
+}
+
+fetch('listings.csv')
+  .then(r => r.text())
+  .then(text => {
+    const rows = parseCSV(text);
+    const active = rows.filter(r => r.status === '-' || r.status === '');
+
+    // Count active listings per CSV area value
+    const counts = {};
+    active.forEach(r => {
+      const a = (r.area || '').trim();
+      if (!a) return;
+      counts[a] = (counts[a] || 0) + 1;
+    });
+
+    // Apply counts / visibility to each pin card
+    document.querySelectorAll('.pin-card[data-area]').forEach(card => {
+      const areas = card.getAttribute('data-area').split(',').map(a => a.trim());
+      const total = areas.reduce((sum, a) => sum + (counts[a] || 0), 0);
+      const countEl = card.querySelector('.pin-count');
+      if (total > 0) {
+        if (countEl) countEl.textContent = `${total} listing${total !== 1 ? 's' : ''}`;
+        card.removeAttribute('data-hidden');
+      } else {
+        card.setAttribute('data-hidden', 'true');
+      }
+    });
+
+    // Hide a region entirely if every pin inside it is hidden
+    document.querySelectorAll('.region').forEach(region => {
+      const cards = region.querySelectorAll('.pin-card[data-area]');
+      const visible = [...cards].some(c => c.getAttribute('data-hidden') !== 'true');
+      region.style.display = visible ? '' : 'none';
+    });
+
+    // Flag CSV areas that don't have a matching pin yet (dev-only, console)
+    const known = new Set();
+    document.querySelectorAll('.pin-card[data-area]').forEach(card => {
+      card.getAttribute('data-area').split(',').forEach(a => known.add(a.trim()));
+    });
+    const unmatched = Object.keys(counts).filter(a => !known.has(a));
+    if (unmatched.length) {
+      console.warn('Areas in listings.csv with no kawasan.html pin yet:', unmatched);
+    }
+  })
+  .catch(e => console.error('Could not load listings.csv for area counts:', e));
+</script>
+</body>
+</html>
