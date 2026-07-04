@@ -433,7 +433,17 @@ function moveInText(val) {
 
 function cardImage(r) {
   const raw = (r.image || '').trim();
-  let imgs = (!raw || raw === '-') ? [] : raw.split('|').map(s => s.trim()).filter(Boolean);
+  let imgs = [];
+  if (raw && raw !== '-') {
+    let base = '';
+    imgs = raw.split('|').map(s => s.trim()).filter(Boolean).map(p => {
+      if (/^https?:\/\//i.test(p)) {
+        base = p.substring(0, p.lastIndexOf('/') + 1);
+        return p;
+      }
+      return base ? base + p : p;
+    });
+  }
   if (imgs.length === 0) imgs = ['/images/update.png'];
   const nav = imgs.length > 1 ? `
     <button type="button" class="card-img-nav prev" onclick="cardImgNav(event,this,-1)" aria-label="Previous photo">‹</button>
