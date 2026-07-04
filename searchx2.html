@@ -69,29 +69,6 @@
     /* CARDS */
     .card{background:#fff;border-radius:14px;border:1px solid #e3ddd0;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .18s,transform .15s}
     .card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
-    .card-image-wrap{position:relative;width:100%;height:160px;overflow:hidden;background:#f0ede8}
-    .card-image-wrap .card-image{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;transition:transform .35s ease}
-    .card-image-wrap:hover .card-image{transform:scale(1.06)}
-    .lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;display:none;align-items:center;justify-content:center;padding:24px}
-    .lightbox-overlay.open{display:flex}
-    .lightbox-img-wrap{position:relative;max-width:min(900px,92vw);max-height:88vh;width:100%}
-    .lightbox-img-wrap img{width:100%;max-height:88vh;object-fit:contain;display:block;border-radius:4px}
-    .lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer;padding:4px 8px}
-    .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-    .lightbox-nav:hover{background:rgba(0,0,0,.7)}
-    .lightbox-nav.prev{left:-8px}
-    .lightbox-nav.next{right:-8px}
-    .lightbox-dots{position:absolute;bottom:-28px;left:0;right:0;display:flex;justify-content:center;gap:6px}
-    .lightbox-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer}
-    .lightbox-dot.active{background:#fff}
-    @media(max-width:640px){.lightbox-nav.prev{left:4px}.lightbox-nav.next{right:4px}.lightbox-close{top:8px;right:8px;background:rgba(0,0,0,.4);border-radius:50%;width:36px;height:36px}}
-    .card-img-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.35);color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background .15s}
-    .card-img-nav:hover{background:rgba(0,0,0,.6)}
-    .card-img-nav.prev{left:8px}
-    .card-img-nav.next{right:8px}
-    .card-img-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:4px}
-    .card-img-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.55)}
-    .card-img-dot.active{background:#fff}
     .card-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;gap:10px}
     .card-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
     .badge-unit{background:#e8f4ed;color:#1B4D35}
@@ -381,83 +358,6 @@ function moveInText(val) {
   return `🗓 Move-in: ${v}`;
 }
 
-/* ── Card images / carousel / lightbox ─────────────────── */
-function cardImage(r) {
-  const raw = (r.image || '').trim();
-  let imgs = [];
-  if (raw && raw !== '-') {
-    let base = '';
-    imgs = raw.split('|').map(s => s.trim()).filter(Boolean).map(p => {
-      if (/^https?:\/\//i.test(p)) {
-        base = p.substring(0, p.lastIndexOf('/') + 1);
-        return p;
-      }
-      return base ? base + p : p;
-    });
-  }
-  if (imgs.length === 0) imgs = ['/images/update.png'];
-  const nav = imgs.length > 1 ? `
-    <button type="button" class="card-img-nav prev" onclick="cardImgNav(event,this,-1)" aria-label="Previous photo">‹</button>
-    <button type="button" class="card-img-nav next" onclick="cardImgNav(event,this,1)" aria-label="Next photo">›</button>
-    <div class="card-img-dots">${imgs.map((_, i) => `<span class="card-img-dot${i === 0 ? ' active' : ''}"></span>`).join('')}</div>` : '';
-  return `<div class="card-image-wrap" data-images="${imgs.join('|')}" data-index="0">
-    <img src="${imgs[0]}" alt="${r.project_name}" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)">${nav}
-  </div>`;
-}
-
-function cardImgNav(e, btn, dir) {
-  e.preventDefault();
-  e.stopPropagation();
-  const wrap = btn.closest('.card-image-wrap');
-  const imgs = wrap.getAttribute('data-images').split('|');
-  let idx = parseInt(wrap.getAttribute('data-index'), 10) || 0;
-  idx = (idx + dir + imgs.length) % imgs.length;
-  wrap.setAttribute('data-index', idx);
-  wrap.querySelector('.card-image').src = imgs[idx];
-  wrap.querySelectorAll('.card-img-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
-}
-
-let lbImgs = [];
-let lbIdx = 0;
-
-function openLightbox(e, img) {
-  e.preventDefault();
-  e.stopPropagation();
-  const wrap = img.closest('.card-image-wrap');
-  lbImgs = wrap.getAttribute('data-images').split('|');
-  lbIdx = parseInt(wrap.getAttribute('data-index'), 10) || 0;
-  renderLightbox();
-  document.getElementById('lightboxOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  document.getElementById('lightboxOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function lbNav(dir) {
-  lbIdx = (lbIdx + dir + lbImgs.length) % lbImgs.length;
-  renderLightbox();
-}
-
-function renderLightbox() {
-  document.getElementById('lightboxImg').src = lbImgs[lbIdx];
-  const nav = lbImgs.length > 1 ? `
-    <button type="button" class="lightbox-nav prev" onclick="event.stopPropagation();lbNav(-1)" aria-label="Previous photo">‹</button>
-    <button type="button" class="lightbox-nav next" onclick="event.stopPropagation();lbNav(1)" aria-label="Next photo">›</button>
-    <div class="lightbox-dots">${lbImgs.map((_, i) => `<span class="lightbox-dot${i === lbIdx ? ' active' : ''}" onclick="event.stopPropagation();lbIdx=${i};renderLightbox()"></span>`).join('')}</div>` : '';
-  document.getElementById('lightboxNavWrap').innerHTML = nav;
-}
-
-document.addEventListener('keydown', (e) => {
-  const overlay = document.getElementById('lightboxOverlay');
-  if (!overlay || !overlay.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') lbNav(-1);
-  if (e.key === 'ArrowRight') lbNav(1);
-});
-
 function renderCard(r) {
   const areaKey = (r.area || '').toLowerCase();
   const areaHref = AREA_MAP[areaKey] || '/kawasan.html';
@@ -491,7 +391,6 @@ function renderCard(r) {
   const waText = r.wa_text || `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`;
 
   return `<div class="card">
-    ${cardImage(r)}
     <div class="card-body">
       <div><span class="card-badge ${badgeClass}">${badge}</span>${r.code ? `<span class="card-badge badge-coa">${r.code}</span>` : ''}</div>
       <div>
@@ -567,12 +466,5 @@ async function init() {
 init();
 </script>
 <script src="/search.js"></script>
-<div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
-  <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
-    <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
-    <img id="lightboxImg" src="" alt="Property photo">
-    <div id="lightboxNavWrap"></div>
-  </div>
-</div>
 </body>
 </html>
