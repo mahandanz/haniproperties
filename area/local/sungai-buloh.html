@@ -476,7 +476,9 @@ function cardImgNav(e, btn, dir) {
   let idx = parseInt(wrap.getAttribute('data-index'), 10) || 0;
   idx = (idx + dir + imgs.length) % imgs.length;
   wrap.setAttribute('data-index', idx);
-  wrap.querySelector('.card-image').src = imgs[idx];
+  const cardImgEl = wrap.querySelector('.card-image');
+  cardImgEl.onerror = function() { this.onerror = null; this.src = '/images/update.png'; };
+  cardImgEl.src = imgs[idx];
   wrap.querySelectorAll('.card-img-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
 }
 
@@ -505,7 +507,9 @@ function lbNav(dir) {
 }
 
 function renderLightbox() {
-  document.getElementById('lightboxImg').src = lbImgs[lbIdx];
+  const lbImgEl = document.getElementById('lightboxImg');
+  lbImgEl.onerror = function() { this.onerror = null; this.src = '/images/update.png'; };
+  lbImgEl.src = lbImgs[lbIdx];
   const nav = lbImgs.length > 1 ? `
     <button type="button" class="lightbox-nav prev" onclick="event.stopPropagation();lbNav(-1)" aria-label="Previous photo">‹</button>
     <button type="button" class="lightbox-nav next" onclick="event.stopPropagation();lbNav(1)" aria-label="Next photo">›</button>
