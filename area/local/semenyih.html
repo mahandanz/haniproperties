@@ -226,16 +226,16 @@
 
   <div id="tab-sewa" style="overflow:hidden">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
-    <div class="listing-grid" id="grid-unit"><div class="loading">Loading listings…</div></div>
+    <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="empty">No unit rentals available right now.</div><!--SSR_END--></div>
   </div>
 
   <div id="tab-jual" style="display:none;overflow:hidden">
     <img src="/images/banner-subsale.png" alt="Subsales" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
-    <div class="listing-grid" id="grid-subsale"><div class="loading">Loading listings…</div></div>
+    <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="empty">No subsale listings available right now.</div><!--SSR_END--></div>
   </div>
   <div id="tab-room" style="display:none;overflow:hidden">
     <img src="/images/banner-room.png" alt="Room Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
-    <div class="listing-grid" id="grid-room-tab"><div class="loading">Loading listings…</div></div>
+    <div class="listing-grid" id="grid-room-tab"><!--SSR_START--><div class="empty">No room rentals available right now.</div><!--SSR_END--></div>
   </div>
 
   <div class="cta-band">
@@ -252,7 +252,7 @@
 </footer>
 
 <script>
-const AREA = 'Kajang';
+const AREA = 'Semenyih';
 const WA_BASE = 'https://wa.me/60125459182?text=';
 let allUnits = [], allRooms = [], allSubsales = [];
 let currentTab = 'sewa';
