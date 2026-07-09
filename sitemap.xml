@@ -23,9 +23,19 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Area pages — Kuala Lumpur -->
+  <!-- Area pages (auto-generated from area/local/) -->
   <url>
     <loc>https://haniproperties.com/area/local/ampang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/bandar-saujana-putra.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/bangi.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -40,33 +50,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haniproperties.com/area/local/kuala-lumpur.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://haniproperties.com/area/local/kepong.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://haniproperties.com/area/local/sentul.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://haniproperties.com/area/local/setapak.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://haniproperties.com/area/local/selayang.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Area pages — Selangor -->
-  <url>
     <loc>https://haniproperties.com/area/local/cyberjaya-putrajaya.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -77,12 +60,22 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haniproperties.com/area/local/bangi.html</loc>
+    <loc>https://haniproperties.com/area/local/kepong.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://haniproperties.com/area/local/klang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/kuala-lumpur.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/nilai.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -102,7 +95,47 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://haniproperties.com/area/local/rawang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/rimbayu-tpg.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/selayang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/semenyih.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/sentul.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/sepang.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/seremban.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://haniproperties.com/area/local/seri-kembangan.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/setapak.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -116,12 +149,10 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- Area pages — Selangor Outskirt -->
   <url>
-    <loc>https://haniproperties.com/area/local/sepang.html</loc>
+    <loc>https://haniproperties.com/area/local/sungai-buloh.html</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

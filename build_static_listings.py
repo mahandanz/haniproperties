@@ -309,6 +309,55 @@ def process_area_file(path: Path, all_rows):
     print(f"  {path.name}: {area} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale, {len(lelongs)} lelong")
 
 
+SITEMAP_PATH = ROOT / "sitemap.xml"
+SITE_BASE = "https://haniproperties.com"
+
+# Core (non-area) pages that always belong in the sitemap.
+CORE_PAGES = [
+    ("/", "weekly", "1.0"),
+    ("/offerings.html", "monthly", "0.8"),
+    ("/kawasan.html", "weekly", "0.9"),
+    ("/simple.html", "monthly", "0.8"),
+]
+
+
+def regenerate_sitemap(area_files) -> None:
+    """Rebuild sitemap.xml from CORE_PAGES + every file currently in area/local/.
+
+    This runs every time the script runs, so any area page added or removed
+    from area/local/ is automatically reflected -- no more manual sitemap
+    edits, no more drift between the folder and what crawlers are told about.
+    """
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        "",
+        "  <!-- Core pages -->",
+    ]
+    for path, changefreq, priority in CORE_PAGES:
+        lines += [
+            "  <url>",
+            f"    <loc>{SITE_BASE}{path}</loc>",
+            f"    <changefreq>{changefreq}</changefreq>",
+            f"    <priority>{priority}</priority>",
+            "  </url>",
+        ]
+
+    lines += ["", "  <!-- Area pages (auto-generated from area/local/) -->"]
+    for f in sorted(area_files, key=lambda p: p.name):
+        lines += [
+            "  <url>",
+            f"    <loc>{SITE_BASE}/area/local/{f.name}</loc>",
+            "    <changefreq>weekly</changefreq>",
+            "    <priority>0.7</priority>",
+            "  </url>",
+        ]
+
+    lines += ["", "</urlset>", ""]
+    SITEMAP_PATH.write_text("\n".join(lines), encoding="utf-8")
+    print(f"\nsitemap.xml regenerated: {len(CORE_PAGES)} core pages + {len(area_files)} area pages")
+
+
 def main():
     if not LISTINGS_CSV.exists():
         print(f"ERROR: {LISTINGS_CSV} not found", file=sys.stderr)
@@ -320,6 +369,8 @@ def main():
     print(f"Processing {len(area_files)} area pages...")
     for f in area_files:
         process_area_file(f, rows)
+
+    regenerate_sitemap(area_files)
 
     print("\nDone. Static SSR cards injected -- JS filtering/fetch still works as before.")
 
