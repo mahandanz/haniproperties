@@ -1,330 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hani Properties – Under Maintenance</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hani Properties — New Launch Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', Arial, sans-serif; background: #f4f4f0; color: #1a1a1a; min-height: 100vh; }
 
-    :root {
-      --green-dark:   #1B4D35;
-      --green-mid:    #2E7D52;
-      --green-light:  #52B788;
-      --cream:        #F5F2EB;
-      --cream-dark:   #EDE9DF;
-      --text-primary: #1A1A1A;
-      --text-muted:   #6B7566;
-    }
+  /* ── Nav ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(253,250,245,.94);backdrop-filter:blur(14px);border-bottom:1px solid #e3ddd0}
+  .nav-inner{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+  .brand{font-family:'Lora',serif;font-weight:700;font-size:18px;color:#1c1c18;text-decoration:none;letter-spacing:-.01em}
+  .brand span{color:#bf5533}
+  .nav-links{display:flex;gap:6px;align-items:center}
+  .nav-links a{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:6px 12px;border-radius:20px;transition:all .18s}
+  .nav-links a:hover{color:#1c1c18;background:#f6f1e7}
+  .nav-links a.cta-nav{background:#2a5c3a;color:#fff;padding:7px 16px}
+  .nav-links a.cta-nav:hover{background:#1e4a2c}
+  .nav-mobile{display:none}
+  @media(max-width:600px){
+    .nav-inner{height:46px;padding:0 16px}
+    .brand{font-size:17px}
+    .nav-links{display:none}
+    .nav-mobile{display:flex;border-top:1px solid #e3ddd0;background:rgba(253,250,245,.97)}
+    .nav-mobile a{flex:1;text-align:center;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:10px 4px;transition:color .18s,background .18s;white-space:nowrap}
+    .nav-mobile a:not(:last-child){border-right:1px solid #e3ddd0}
+    .nav-mobile a:hover{color:#1c1c18;background:#f6f1e7}
+    .nav-mobile a.cta-nav{background:#2a5c3a;color:#fff}
+    .nav-mobile a.cta-nav:hover{background:#1e4a2c}
+  }
 
-    html, body {
-      height: 100%;
-      background-color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      color: var(--text-primary);
-    }
+  .page { max-width: 960px; margin: 0 auto; padding: 80px 1.25rem 4rem; }
+  h1 { font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+  .page-sub { font-size: 14px; color: #666; margin-bottom: 1.5rem; }
 
-    /* ── Layout ───────────────────────────────────── */
-    .page {
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      grid-template-columns: 1fr;
-    }
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.75rem; }
+  .tab-btn { background: #fff; border: 1px solid #ddd; border-radius: 999px; padding: 7px 16px; font-size: 13px; cursor: pointer; transition: all 0.15s; color: #444; white-space: nowrap; }
+  .tab-btn:hover { border-color: #0d1f0d; color: #0d1f0d; }
+  .tab-btn.active { background: #0d1f0d; border-color: #0d1f0d; color: #fff; font-weight: 600; }
 
-    /* ── Header ───────────────────────────────────── */
-    header {
-      padding: 28px 40px;
-      display: flex;
-      align-items: center;
-    }
+  .project-panel { display: none; }
+  .project-panel.active { display: block; }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
+  .banner { border-radius: 14px; overflow: hidden; display: flex; align-items: center; min-height: 88px; margin-bottom: 1.25rem; }
+  .banner-thumb { width: 180px; height: 88px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+  .banner-body { flex: 1; padding: 0 1.5rem; }
+  .banner-tag { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .banner-name { font-size: 22px; font-weight: 700; line-height: 1.15; }
+  .banner-right { padding: 0 1.5rem; text-align: right; flex-shrink: 0; }
+  .banner-from { font-size: 10px; font-weight: 500; margin-bottom: 2px; }
+  .banner-price { font-size: 18px; font-weight: 700; }
+  .banner-type { font-size: 10px; opacity: 0.6; margin-top: 2px; }
 
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-      background: var(--green-dark);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .detail-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 14px; padding: 1.25rem 1.5rem; }
+  .meta-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #f0f0f0; }
+  .meta-label { font-size: 11px; color: #888; margin-bottom: 3px; }
+  .meta-value { font-size: 13px; font-weight: 600; color: #1a1a1a; }
 
-    .logo-mark svg { display: block; }
+  .product-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  @media (max-width: 520px) { .product-row { grid-template-columns: 1fr; } }
+  .product-box { background: #f7f7f5; border-radius: 10px; padding: 0.85rem 1rem; }
+  .product-type { font-size: 12px; color: #555; font-weight: 600; margin-bottom: 5px; }
+  .product-detail { font-size: 12px; color: #777; line-height: 1.6; }
+  .product-price { font-size: 14px; font-weight: 700; color: #0d1f0d; margin-top: 6px; }
 
-    .logo-text {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.15rem;
-      color: var(--green-dark);
-      letter-spacing: -0.01em;
-    }
+  .product-single { background: #f7f7f5; border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 1rem; }
 
-    /* ── Main content ─────────────────────────────── */
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px 60px;
-      text-align: center;
-    }
+  .highlights { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+  .highlight-pill { background: #eef5ee; color: #1a3a1a; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
 
-    /* Illustration container */
-    .illustration {
-      width: 100%;
-      max-width: 360px;
-      margin-top: 44px;
-    }
-
-    .illustration img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 16px;
-    }
-
-    /* Fallback shown if under.png is missing */
-    .illustration-fallback {
-      display: none;
-      width: 100%;
-      max-width: 360px;
-      aspect-ratio: 4/3;
-      background: var(--cream-dark);
-      border-radius: 16px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green-mid);
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.15;
-      color: var(--green-dark);
-      margin-bottom: 16px;
-      max-width: 520px;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--green-mid);
-    }
-
-    .subtext {
-      font-size: 0.97rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-      max-width: 400px;
-      margin-bottom: 36px;
-    }
-
-    /* ── CTA pill ─────────────────────────────────── */
-    .cta-group {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .cta-pill--outline {
-      background: transparent;
-      color: var(--green-dark);
-      border: 2px solid var(--green-dark);
-      box-shadow: none;
-    }
-
-    .cta-pill--outline:hover {
-      background: var(--cream-dark);
-      color: var(--green-dark);
-      box-shadow: 0 4px 14px rgba(27,77,53,0.12);
-    }
-
-    .cta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      background: var(--green-dark);
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      border-radius: 999px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
-      box-shadow: 0 2px 12px rgba(27,77,53,0.20);
-    }
-
-    .cta-pill:hover {
-      background: var(--green-mid);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(27,77,53,0.26);
-    }
-
-    .cta-pill:active {
-      transform: translateY(0);
-    }
-
-    .cta-pill svg {
-      flex-shrink: 0;
-    }
-
-    .cta-secondary {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .cta-secondary a {
-      color: var(--green-mid);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .cta-secondary a:hover {
-      text-decoration: underline;
-    }
-
-    /* ── Footer ───────────────────────────────────── */
-    footer {
-      padding: 20px 40px;
-      border-top: 1px solid var(--cream-dark);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .footer-tagline {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    .footer-contact {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .footer-contact a {
-      color: var(--green-mid);
-      text-decoration: none;
-    }
-
-    /* ── Reduced motion ───────────────────────────── */
-    @media (prefers-reduced-motion: reduce) {
-      .cta-pill { transition: none; }
-    }
-
-    /* ── Mobile ───────────────────────────────────── */
-    @media (max-width: 480px) {
-      header { padding: 20px 20px; }
-      footer  { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+  .summary-text { font-size: 13px; color: #555; line-height: 1.75; }
+  .cta-row { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #f0f0f0; display: flex; gap: 10px; flex-wrap: wrap; }
+  .cta-btn { padding: 9px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
+  .cta-primary { background: #0d1f0d; color: #fff; }
+  .cta-secondary { background: #f0f0ec; color: #333; }
+</style>
 </head>
 <body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="brand">Hani <span>Properties</span></a>
+    <div class="nav-links">
+      <a href="../kawasan.html">Rentals</a>
+      <a href="../kawasan.html">Subsales</a>
+      <a href="projects.html" style="color:#1c1c18;font-weight:700;">Projects</a>
+      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+  <div class="nav-mobile">
+    <a href="../kawasan.html">Rentals</a>
+    <a href="../kawasan.html">Subsales</a>
+    <a href="projects.html" style="color:#1c1c18;font-weight:700;">Projects</a>
+    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+</nav>
+
 <div class="page">
+  <h1>New Launch Projects</h1>
+  <p class="page-sub">Click a project below to view details.</p>
 
-  <!-- Header -->
-  <header>
-    <a href="https://haniproperties.com" class="logo">
-      <div class="logo-mark">
-        <!-- Simple H monogram -->
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="3" width="3" height="14" fill="white"/>
-          <rect x="14" y="3" width="3" height="14" fill="white"/>
-          <rect x="3" y="8.5" width="14" height="3" fill="white"/>
-        </svg>
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" onclick="showTab('ksl', this)">KSL Blossom Square · Setia Alam</button>
+    <button class="tab-btn" onclick="showTab('allegro', this)">Allegro @ Symphony Hills · Cyberjaya</button>
+    <button class="tab-btn" onclick="showTab('j3', this)">J3 Residence · Dengkil</button>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       PROJECT 1: KSL BLOSSOM SQUARE
+  ══════════════════════════════════════ -->
+  <div class="project-panel active" id="panel-ksl">
+    <div class="banner" style="background:#0d1f0d;">
+      <div class="banner-thumb" style="background:#1a3a1a; overflow:hidden; position:relative;"><img id="img-ksl" src="ksl-blossom.jpg" alt="KSL Blossom Square" style="width:100%;height:100%;object-fit:cover;"><div id="ph-ksl" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById('file-ksl').click()"><div style="font-size:22px;">📷</div><div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:3px;">Add photo</div></div><input type="file" id="file-ksl" accept="image/*" style="display:none" onchange="loadImg(this,'img-ksl','ph-ksl')"></div>
+      <div class="banner-body">
+        <div class="banner-tag" style="color:#c9a84c;">New Launch · Setia Alam</div>
+        <div class="banner-name" style="color:#fff;">KSL Blossom Square</div>
       </div>
-      <span class="logo-text">Hani Properties</span>
-    </a>
-  </header>
-
-  <!-- Main -->
-  <main>
-
-    <p class="eyebrow">Sebentar lagi, lebih baik</p>
-
-    <p class="subtext">
-      Kami sedang mengemaskini laman web untuk memberikan pengalaman yang lebih baik kepada anda.
-      Sementara itu, listing kami masih boleh dilayari di bawah.
-    </p>
-
-    <div class="cta-group">
-
-      <!-- Rental -->
-      <a href="https://t.me/hanipropertiesrentals/379" class="cta-pill" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.981l-2.965-.924c-.644-.204-.657-.644.136-.953l11.57-4.461c.537-.194 1.006.131.963.578z" fill="white"/>
-        </svg>
-        Lihat Listing Sewa
-      </a>
-
-      <!-- Subsale -->
-      <a href="https://t.me/hanipropertiesforsale/87" class="cta-pill cta-pill--outline" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.981l-2.965-.924c-.644-.204-.657-.644.136-.953l11.57-4.461c.537-.194 1.006.131.963.578z" fill="var(--green-dark)"/>
-        </svg>
-        Lihat Listing Subsale
-      </a>
-
-      <!-- WhatsApp -->
-      <a href="https://wa.me/60125459182" class="cta-pill cta-pill--outline" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="var(--green-dark)"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.524 5.843L.054 23.285a.75.75 0 00.924.924l5.442-1.47A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.722 9.722 0 01-4.964-1.36l-.355-.213-3.683.994.994-3.683-.213-.355A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" fill="var(--green-dark)"/>
-        </svg>
-        WhatsApp Kami
-      </a>
-
+      <div class="banner-right">
+        <div class="banner-from" style="color:#c9a84c;">From</div>
+        <div class="banner-price" style="color:#fff;">RM345,000</div>
+        <div class="banner-type" style="color:#fff;">Serviced Apartment</div>
+      </div>
     </div>
-
-    <div class="illustration">
-      <img
-        src="under.png"
-        alt="Maintenance in progress"
-        onerror="this.style.display='none'; document.querySelector('.illustration-fallback').style.display='flex';"
-      />
+    <div class="detail-card">
+      <div class="meta-row">
+        <div><div class="meta-label">Developer</div><div class="meta-value">KSL Holdings Berhad</div></div>
+        <div><div class="meta-label">Location</div><div class="meta-value">Setia Alam, Shah Alam</div></div>
+        <div><div class="meta-label">Tenure</div><div class="meta-value">Freehold · 18 Acres</div></div>
+        <div><div class="meta-label">Est. Completion</div><div class="meta-value">54 Months</div></div>
+      </div>
+      <div class="product-row">
+        <div class="product-box">
+          <div class="product-type">🏢 Shop-Office</div>
+          <div class="product-detail">21 units · 3 storey<br>4,502 – 16,990 sf</div>
+          <div class="product-price">From RM1,755,780</div>
+        </div>
+        <div class="product-box">
+          <div class="product-type">🏠 Serviced Apartment</div>
+          <div class="product-detail">733 units · 49 storey<br>550 – 900 sf · 2BR & 3BR</div>
+          <div class="product-price">From RM345,000</div>
+        </div>
+      </div>
+      <p class="summary-text">Mixed development in the heart of Setia Alam — one of Klang Valley's fastest-growing townships. Freehold title with strong investment potential. Connected via NKVE, Federal Highway & DASH Expressway. 20 min to Shah Alam, 25 min to Subang Jaya. Packages include free SPA legal fees, free MOT & loan stamp duty.</p>
+      <div class="cta-row">
+        <a class="cta-btn cta-primary" href="https://wa.me/60125459182?text=Hi%2C%20I%27m%20interested%20in%20KSL%20Blossom%20Square" target="_blank">Enquire via WhatsApp</a>
+        <a class="cta-btn cta-secondary" href="ksl-blossom-brochure.pdf" target="_blank">Download Brochure</a>
+      </div>
     </div>
-    <!-- shown only if under.png fails to load -->
-    <div class="illustration-fallback">
-      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="36" cy="36" r="28" stroke="#2E7D52" stroke-width="2.5" stroke-dasharray="6 4"/>
-        <path d="M28 36h16M36 28v16" stroke="#2E7D52" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       PROJECT 2: ALLEGRO @ SYMPHONY HILLS
+  ══════════════════════════════════════ -->
+  <div class="project-panel" id="panel-allegro">
+    <div class="banner" style="background:#1a2a1e;">
+      <div class="banner-thumb" style="background:#243b2a; overflow:hidden; position:relative;"><img id="img-allegro" src="allegro-symphony.jpg" alt="Allegro Symphony Hills" style="width:100%;height:100%;object-fit:cover;"><div id="ph-allegro" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById('file-allegro').click()"><div style="font-size:22px;">📷</div><div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:3px;">Add photo</div></div><input type="file" id="file-allegro" accept="image/*" style="display:none" onchange="loadImg(this,'img-allegro','ph-allegro')"></div>
+      <div class="banner-body">
+        <div class="banner-tag" style="color:#c9a84c;">New Launch · Cyberjaya</div>
+        <div class="banner-name" style="color:#fff;">Allegro @ Symphony Hills</div>
+      </div>
+      <div class="banner-right">
+        <div class="banner-from" style="color:#c9a84c;">From</div>
+        <div class="banner-price" style="color:#fff;">RM1.7 Million</div>
+        <div class="banner-type" style="color:#fff;">Semi-Detached</div>
+      </div>
     </div>
+    <div class="detail-card">
+      <div class="meta-row">
+        <div><div class="meta-label">Developer</div><div class="meta-value">UEM Sunrise</div></div>
+        <div><div class="meta-label">Location</div><div class="meta-value">Symphony Hills, Cyberjaya</div></div>
+        <div><div class="meta-label">Tenure</div><div class="meta-value">Freehold</div></div>
+        <div><div class="meta-label">Est. Completion</div><div class="meta-value">Around 2027</div></div>
+        <div><div class="meta-label">Total Units</div><div class="meta-value">68 Exclusive Units</div></div>
+        <div><div class="meta-label">Community</div><div class="meta-value">Gated & Guarded</div></div>
+      </div>
+      <div class="product-single">
+        <div class="product-type">🏡 Premium Freehold Semi-D</div>
+        <div class="product-detail">Land: 36' × 80' to 47' × 80' &nbsp;|&nbsp; Built-up: 2,866 – 5,115 sqft</div>
+        <div class="product-price">From RM1.7 Million+</div>
+      </div>
+      <div class="highlights">
+        <span class="highlight-pill">Freehold Individual Title</span>
+        <span class="highlight-pill">Only 68 Units — Low Density</span>
+        <span class="highlight-pill">EV Charging Ready</span>
+        <span class="highlight-pill">Rainwater Harvesting</span>
+        <span class="highlight-pill">Lift-Ready Design</span>
+        <span class="highlight-pill">Al Fresco Deck</span>
+        <span class="highlight-pill">Private Garden</span>
+      </div>
+      <p class="summary-text">Ultra-exclusive freehold semi-D in the established Symphony Hills township — a rare find in Cyberjaya where most launches are high-rise. Only 68 units, wide layouts built for multi-generational living with ground-floor guest room, lift-ready design, and EV charging. Connected via MEX / ELITE / SKVE. 5–10 min to Cyberjaya CBD, 10–15 min to Putrajaya, 20–25 min to KLIA, 30 min to KL city centre. Surrounded by MMU, Hospital Cyberjaya, Tamarind Square & DPULZE mall.</p>
+      <div class="cta-row">
+        <a class="cta-btn cta-primary" href="https://wa.me/60125459182?text=Hi%2C%20I%27m%20interested%20in%20Allegro%20Symphony%20Hills" target="_blank">Enquire via WhatsApp</a>
+        <a class="cta-btn cta-secondary" href="allegro-symphony-brochure.pdf" target="_blank">Download Brochure</a>
+      </div>
+    </div>
+  </div>
 
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <span class="footer-tagline">Property made personal.</span>
-    <span class="footer-contact">
-      ERA Real Estate E(1)1773/3 &nbsp;·&nbsp;
-      <a href="tel:+60125459182">012-545 9182</a>
-    </span>
-  </footer>
+  <!-- ══════════════════════════════════════
+       PROJECT 3: J3 RESIDENCE
+  ══════════════════════════════════════ -->
+  <div class="project-panel" id="panel-j3">
+    <div class="banner" style="background:#1a1e2a;">
+      <div class="banner-thumb" style="background:#252b3a; overflow:hidden; position:relative;"><img id="img-j3" src="j3-residence.jpg" alt="J3 Residence" style="width:100%;height:100%;object-fit:cover;"><div id="ph-j3" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById('file-j3').click()"><div style="font-size:22px;">📷</div><div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:3px;">Add photo</div></div><input type="file" id="file-j3" accept="image/*" style="display:none" onchange="loadImg(this,'img-j3','ph-j3')"></div>
+      <div class="banner-body">
+        <div class="banner-tag" style="color:#c9a84c;">New Launch · Dengkil, Sepang</div>
+        <div class="banner-name" style="color:#fff;">J3 Residence</div>
+      </div>
+      <div class="banner-right">
+        <div class="banner-from" style="color:#c9a84c;">From</div>
+        <div class="banner-price" style="color:#fff;">RM430,000</div>
+        <div class="banner-type" style="color:#fff;">1-Storey Terrace</div>
+      </div>
+    </div>
+    <div class="detail-card">
+      <div class="meta-row">
+        <div><div class="meta-label">Developer</div><div class="meta-value">MSN Ecoland Sdn Bhd</div></div>
+        <div><div class="meta-label">Location</div><div class="meta-value">Taman Jenderam Lestari, Dengkil</div></div>
+        <div><div class="meta-label">Tenure</div><div class="meta-value">Freehold · Tanah Rizab Melayu</div></div>
+        <div><div class="meta-label">Est. Completion</div><div class="meta-value">Februari 2028</div></div>
+        <div><div class="meta-label">Total Units</div><div class="meta-value">125 Units</div></div>
+        <div><div class="meta-label">Land Area</div><div class="meta-value">9.719 Acres</div></div>
+      </div>
+      <div class="product-row">
+        <div class="product-box">
+          <div class="product-type">🏠 Type A — 3+1 Bedrooms</div>
+          <div class="product-detail">Corner/End/Intermediate lots<br>Land: 20' × 73' · Built-up: 1,040 sf<br>2 bathrooms</div>
+          <div class="product-price">Net from RM430,000</div>
+        </div>
+        <div class="product-box">
+          <div class="product-type">🏠 Type B — 3 Bedrooms</div>
+          <div class="product-detail">Corner/End/Intermediate lots<br>Land: 20' × 73' · Built-up: 1,040 sf<br>2 bathrooms</div>
+          <div class="product-price">Net from RM430,000</div>
+        </div>
+      </div>
+      <div class="highlights">
+        <span class="highlight-pill">Freehold (Tanah Rizab Melayu)</span>
+        <span class="highlight-pill">0% Down Payment</span>
+        <span class="highlight-pill">RM500 Booking Fee</span>
+        <span class="highlight-pill">Free SPA Legal Fees</span>
+        <span class="highlight-pill">Free MOT Stamp Duty</span>
+        <span class="highlight-pill">Free Disbursement</span>
+        <span class="highlight-pill">RM70K Rebate (100% Loan)</span>
+      </div>
+      <p class="summary-text">Affordable 1-storey landed freehold on Malay Reserve land in Jenderam, Dengkil — ideal for first-time buyers and Bumiputera purchasers. 125 units across 8 blocks (A–H), 1,040 sf built-up with modern façade. SPA price from RM500,000; net price from RM430,000 after discount. Connected via ELITE (Exit Bandar Serenia, 5km), PLUS Highway, SKVE, MEX & KLIA Extension. Near Putrajaya, Cyberjaya, UiTM Dengkil, Xiamen University, Alamanda & IOI City Mall.</p>
+      <div class="cta-row">
+        <a class="cta-btn cta-primary" href="https://wa.me/60125459182?text=Hi%2C%20I%27m%20interested%20in%20J3%20Residence%20Dengkil" target="_blank">Enquire via WhatsApp</a>
+        <a class="cta-btn cta-secondary" href="j3-residence-brochure.pdf" target="_blank">Download Brochure</a>
+      </div>
+    </div>
+  </div>
 
 </div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.project-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function loadImg(input, imgId, phId) {
+  if (!input.files || !input.files[0]) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = document.getElementById(imgId);
+    img.src = e.target.result;
+    img.style.display = 'block';
+    document.getElementById(phId).style.display = 'none';
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+</script>
 </body>
 </html>
