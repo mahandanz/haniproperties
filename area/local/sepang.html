@@ -82,6 +82,7 @@
     .badge-unit{background:#e8f4ed;color:#1B4D35}
     .badge-room{background:#fef3e2;color:#92500a}
     .badge-subsale{background:#e8f0fe;color:#1a4fa0}
+    .badge-lelong{background:#fdeaea;color:#a3271f}
     .badge-coa{background:#f0ede8;color:#7a7268;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:6px}
 
     .card-name{font-size:14px;font-weight:700;color:#1c1c18;line-height:1.35}
@@ -159,6 +160,7 @@
     <button class="tab-btn active" onclick="switchTab('sewa',this)">For Rent</button>
     <button class="tab-btn" onclick="switchTab('jual',this)">For Sale</button>
     <button class="tab-btn" onclick="switchTab('room',this)">Rooms</button>
+    <button class="tab-btn" onclick="switchTab('lelong',this)">Lelong</button>
   </div>
 
   <!-- FILTERS -->
@@ -620,6 +622,11 @@
     <div class="listing-grid" id="grid-room-tab"><!--SSR_START--><div class="empty">No room rentals available right now.</div><!--SSR_END--></div>
   </div>
 
+<div id="tab-lelong" style="display:none;overflow:hidden">
+    <img src="/images/banner-subsale.png" alt="Lelong / Auction Properties" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
+    <div class="listing-grid" id="grid-lelong"><!--SSR_START--><!--SSR_END--></div>
+  </div>
+
   <div class="cta-band">
     <h2>Don't see what you need?</h2>
     <p>Listings move fast. WhatsApp Hani directly for the latest available units in Sepang / Banting / Dengkil.</p>
@@ -636,7 +643,7 @@
 <script>
 const AREA = 'Sepang';
 const WA_BASE = 'https://wa.me/60125459182?text=';
-let allUnits = [], allRooms = [], allSubsales = [];
+let allUnits = [], allRooms = [], allSubsales = [], allLelong = [];
 let currentTab = 'sewa';
 
 function switchTab(tab, btn) {
@@ -644,13 +651,14 @@ function switchTab(tab, btn) {
   document.getElementById('tab-sewa').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('tab-jual').style.display = tab === 'jual' ? '' : 'none';
   document.getElementById('tab-room').style.display = tab === 'room' ? '' : 'none';
+  document.getElementById('tab-lelong').style.display = tab === 'lelong' ? '' : 'none';
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   // Show/hide relevant filters
   document.getElementById('fg-furnishing').style.display = (tab === 'sewa' || tab === 'room') ? '' : 'none';
   document.getElementById('fg-bed').style.display = tab === 'sewa' ? '' : 'none';
-  document.getElementById('fg-type').style.display = (tab === 'sewa' || tab === 'jual') ? '' : 'none';
-  document.getElementById('fg-tenure').style.display = tab === 'jual' ? '' : 'none';
+  document.getElementById('fg-type').style.display = (tab === 'sewa' || tab === 'jual' || tab === 'lelong') ? '' : 'none';
+  document.getElementById('fg-tenure').style.display = (tab === 'jual' || tab === 'lelong') ? '' : 'none';
   document.getElementById('fg-price').style.display = '';
   document.getElementById('fg-instalment').style.display = tab === 'jual' ? '' : 'none';
   document.getElementById('instalment-disclaimer').style.display = tab === 'jual' ? '' : 'none';
@@ -658,6 +666,8 @@ function switchTab(tab, btn) {
   if (tab === 'jual') {
     buildPriceOptions(allSubsales, false);
     buildInstalmentOptions(allSubsales);
+  } else if (tab === 'lelong') {
+    buildPriceOptions(allLelong, false);
   } else if (tab === 'room') {
     buildPriceOptions(allRooms, true);
   } else {
@@ -709,6 +719,16 @@ function applyFilters() {
     document.getElementById('grid-room-tab').innerHTML =
       fr.length ? fr.map(roomCard).join('') : empty('No room rentals match your filters.');
     document.getElementById('filter-count').textContent = `${fr.length} listing${fr.length !== 1 ? 's' : ''}`;
+  } else if (currentTab === 'lelong') {
+    const fl = allLelong.filter(r =>
+      (!type || r.type === type) &&
+      matchBed(r, bed) &&
+      matchPrice(r, price) &&
+      (!tenure || r.tenure === tenure)
+    );
+    document.getElementById('grid-lelong').innerHTML =
+      fl.length ? fl.map(lelongCard).join('') : empty('No lelong/auction listings match your filters.');
+    document.getElementById('filter-count').textContent = `${fl.length} listing${fl.length !== 1 ? 's' : ''}`;
   } else {
     const instalment = document.getElementById('f-instalment') ? document.getElementById('f-instalment').value : '';
     const fs = allSubsales.filter(r =>
@@ -971,6 +991,31 @@ function subsaleCard(r) {
   </div>`;
 }
 
+function lelongCard(r) {
+  const pills = [
+    r.bed ? `🛏 ${r.bed} bed` : '',
+    r.bath ? `🚿 ${r.bath} bath` : '',
+    r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
+    r.tenure || '',
+    r.type || ''
+  ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
+  const lelongDate = (r['Lelong date'] || '').trim();
+  const auctionPill = (lelongDate && lelongDate !== '-') ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>` : '';
+  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
+    ${cardImage(r)}
+    <div class="card-body">
+      <div><span class="card-badge badge-lelong">Lelong</span>${coaBadge(r)}</div>
+      <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
+      <div class="card-price">${fmt(r.price)}</div>
+      ${r.installment ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
+      <div class="card-pills">${pills}</div>
+      ${auctionPill}
+      ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
+      <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the lelong/auction unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
+    </div>
+  </div>`;
+}
+
 function empty(msg) {
   return `<div class="empty">${msg}</div>`;
 }
@@ -983,9 +1028,10 @@ fetch('../../listings.csv')
     allUnits    = filtered.filter(r => r.listing_type === 'rental');
     allRooms    = filtered.filter(r => r.listing_type === 'room');
     allSubsales = filtered.filter(r => r.listing_type === 'subsale');
+    allLelong   = filtered.filter(r => r.listing_type === 'lelong');
 
     // Build dynamic filter options
-    buildTypeOptions([...allUnits, ...allSubsales]);
+    buildTypeOptions([...allUnits, ...allSubsales, ...allLelong]);
     buildPriceOptions([...allUnits, ...allRooms], true); // default: rental tab active
     buildInstalmentOptions(allSubsales);
 
@@ -994,7 +1040,7 @@ fetch('../../listings.csv')
   })
   .catch((e) => {
     console.error('Fetch error:', e);
-    ['grid-unit','grid-room-tab','grid-subsale'].forEach(id => {
+    ['grid-unit','grid-room-tab','grid-subsale','grid-lelong'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.innerHTML = empty('Unable to load listings. Please try again.');
     });

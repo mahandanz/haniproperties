@@ -97,6 +97,7 @@
     .badge-unit{background:#e8f4ed;color:#1B4D35}
     .badge-room{background:#fef3e2;color:#92500a}
     .badge-subsale{background:#e8f0fe;color:#1a4fa0}
+    .badge-lelong{background:#fdeaea;color:#a3271f}
     .badge-coa{background:#f0ede8;color:#7a7268;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:6px}
     .card-name{font-size:14px;font-weight:700;color:#1c1c18;line-height:1.35}
     .card-zone{font-size:12px;color:#7a7268;margin-top:1px}
@@ -179,6 +180,7 @@
         <option value="rental">For Rent</option>
         <option value="subsale">For Sale</option>
         <option value="room">Room</option>
+        <option value="lelong">Lelong</option>
       </select>
     </div>
     <div class="filter-group">
@@ -468,6 +470,7 @@ function renderCard(r) {
   let badge, badgeClass;
   if (r.listing_type === 'rental') { badge = 'Unit Rental'; badgeClass = 'badge-unit'; }
   else if (r.listing_type === 'room') { badge = 'Room Rental'; badgeClass = 'badge-room'; }
+  else if (r.listing_type === 'lelong') { badge = 'Lelong'; badgeClass = 'badge-lelong'; }
   else { badge = 'Subsale'; badgeClass = 'badge-subsale'; }
 
   const priceLabel = (r.listing_type === 'rental' || r.listing_type === 'room')
@@ -478,13 +481,18 @@ function renderCard(r) {
     ? [r.room_type, r.bath_type, r.furnishing, moveInText(r.move_in_date)]
     : [r.bed ? `🛏 ${r.bed} bed` : '', r.bath ? `🚿 ${r.bath} bath` : '',
        r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
-       r.furnishing, r.listing_type === 'subsale' ? r.tenure : r.type,
+       r.furnishing, (r.listing_type === 'subsale' || r.listing_type === 'lelong') ? r.tenure : r.type,
        r.listing_type === 'rental' ? moveInText(r.move_in_date) : ''];
 
   const pills = pillItems.filter(Boolean)
     .map(p => `<span class="pill">${p}</span>`).join('');
 
-  const instalment = r.listing_type === 'subsale' && r.installment
+  const lelongDate = (r['lelong date'] || '').trim();
+  const auctionPill = (r.listing_type === 'lelong' && lelongDate && lelongDate !== '-')
+    ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>`
+    : '';
+
+  const instalment = (r.listing_type === 'subsale' || r.listing_type === 'lelong') && r.installment
     ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>`
     : '';
 
@@ -502,6 +510,7 @@ function renderCard(r) {
       <div class="card-price">${priceLabel}</div>
       ${instalment}
       <div class="card-pills">${pills}</div>
+      ${auctionPill}
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(waText)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
       <a href="${unitHref}" class="card-view-area">View in Area Page →</a>
