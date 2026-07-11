@@ -105,6 +105,24 @@
   .field input[type=range]{width:100%;accent-color:var(--gold);}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 
+  .bank-rates{display:flex;flex-wrap:wrap;gap:6px;}
+  .bank-rates button{
+    flex:1 1 calc(25% - 6px);min-width:78px;
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+    padding:7px 6px;border:1px solid var(--line);border-radius:8px;
+    background:#FCFBF8;color:var(--navy);font-size:11px;font-weight:700;
+    cursor:pointer;transition:.15s;
+  }
+  .bank-rates button span{font-size:12.5px;font-weight:800;color:var(--muted);}
+  .bank-rates button:hover{border-color:var(--gold);}
+  .bank-rates button.active{background:var(--navy);color:#fff;}
+  .bank-rates button.active span{color:var(--gold-soft);}
+  .bank-rates-note{font-size:10.5px;color:var(--muted);margin-top:6px;line-height:1.5;}
+  .updated-badge{
+    font-size:10px;font-weight:700;text-transform:none;letter-spacing:0;
+    color:#7A5F16;background:var(--gold-soft);padding:2px 8px;border-radius:20px;
+  }
+
   .seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
   .seg button{
     flex:1;padding:8px 6px;border:none;background:#FCFBF8;color:var(--muted);
@@ -251,6 +269,21 @@
           <label>Loan tenure (years) <span class="val" id="tenureVal">35</span></label>
           <input type="range" id="tenure" min="5" max="35" step="1" value="35">
         </div>
+      </div>
+
+      <div class="field" style="margin-bottom:6px;">
+        <label>Latest bank rates (tap to apply) <span class="updated-badge" id="ratesUpdatedBadge">Updated 11 Jul 2026</span></label>
+        <div class="bank-rates" id="bankRates">
+          <button data-rate="4.22">Public Bank<span>4.22%</span></button>
+          <button data-rate="4.10">RHB<span>4.10%</span></button>
+          <button data-rate="4.11">Alliance<span>4.11%</span></button>
+          <button data-rate="4.20">SC<span>4.20%</span></button>
+          <button data-rate="4.25">Maybank<span>4.25%</span></button>
+          <button data-rate="4.35">CIMB<span>4.35%</span></button>
+          <button data-rate="4.50">AmBank<span>4.50%</span></button>
+          <button data-rate="4.75">Hong Leong<span>4.75%</span></button>
+        </div>
+        <div class="bank-rates-note">Indicative best-available headline rates, last checked 11 Jul 2026 (source: RinggitPlus). Actual offer depends on buyer profile — always verify with the bank.</div>
       </div>
 
       <h2 style="margin-top:20px;">Buyer profile</h2>
@@ -439,6 +472,7 @@ $('priceInput').addEventListener('change', e => {
 $('rate').addEventListener('input', e => {
   state.rate = +e.target.value;
   $('rateVal').textContent = (+e.target.value).toFixed(2) + '%';
+  document.querySelectorAll('#bankRates button').forEach(b=>b.classList.remove('active'));
   calc();
 });
 $('tenure').addEventListener('input', e => {
@@ -469,6 +503,18 @@ document.querySelectorAll('#statusSeg button').forEach(btn => {
     document.querySelectorAll('#statusSeg button').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     state.status = btn.dataset.v;
+    calc();
+  });
+});
+
+document.querySelectorAll('#bankRates button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#bankRates button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const r = +btn.dataset.rate;
+    state.rate = r;
+    $('rate').value = r;
+    $('rateVal').textContent = r.toFixed(2) + '%';
     calc();
   });
 });
