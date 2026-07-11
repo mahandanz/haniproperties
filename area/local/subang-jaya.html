@@ -83,6 +83,7 @@
     .badge-room{background:#fef3e2;color:#92500a}
     .badge-subsale{background:#e8f0fe;color:#1a4fa0}
     .badge-lelong{background:#fdeaea;color:#a3271f}
+    .badge-land{background:#f3ecf9;color:#5b3a94}
     .badge-coa{background:#f0ede8;color:#7a7268;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:6px}
 
     .card-name{font-size:14px;font-weight:700;color:#1c1c18;line-height:1.35}
@@ -160,7 +161,8 @@
     <button class="tab-btn active" onclick="switchTab('sewa',this)">For Rent</button>
     <button class="tab-btn" onclick="switchTab('jual',this)">For Sale</button>
     <button class="tab-btn" onclick="switchTab('room',this)">Rooms</button>
-    <button class="tab-btn" onclick="switchTab('lelong',this)">Lelong</button>
+    <button class="tab-btn" onclick="switchTab('lelong',this)">Auction</button>
+    <button class="tab-btn" onclick="switchTab('tanah',this)">Land/Commercial</button>
   </div>
 
   <!-- FILTERS -->
@@ -408,8 +410,13 @@
   </div>
 
 <div id="tab-lelong" style="display:none;overflow:hidden">
-    <img src="/images/banner-auction.png" alt="Lelong / Auction Properties" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
+    <img src="/images/banner-auction.png" alt="Auction Properties" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-lelong"><!--SSR_START--><div class="empty">No lelong/auction listings available right now.</div><!--SSR_END--></div>
+  </div>
+
+  <div id="tab-tanah" style="display:none;overflow:hidden">
+    <img src="/images/banner-land.png" alt="Land &amp; Commercial" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
+    <div class="listing-grid" id="grid-tanah"><!--SSR_START--><!--SSR_END--></div>
   </div>
 
   <div class="cta-band">
@@ -428,7 +435,7 @@
 <script>
 const AREA = 'Subang Jaya';
 const WA_BASE = 'https://wa.me/60125459182?text=';
-let allUnits = [], allRooms = [], allSubsales = [], allLelong = [];
+let allUnits = [], allRooms = [], allSubsales = [], allLelong = [], allLand = [];
 let currentTab = 'sewa';
 
 function switchTab(tab, btn) {
@@ -437,16 +444,23 @@ function switchTab(tab, btn) {
   document.getElementById('tab-jual').style.display = tab === 'jual' ? '' : 'none';
   document.getElementById('tab-room').style.display = tab === 'room' ? '' : 'none';
   document.getElementById('tab-lelong').style.display = tab === 'lelong' ? '' : 'none';
+  document.getElementById('tab-tanah').style.display = tab === 'tanah' ? '' : 'none';
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   // Show/hide relevant filters
   document.getElementById('fg-furnishing').style.display = (tab === 'sewa' || tab === 'room') ? '' : 'none';
   document.getElementById('fg-bed').style.display = tab === 'sewa' ? '' : 'none';
-  document.getElementById('fg-type').style.display = (tab === 'sewa' || tab === 'jual' || tab === 'lelong') ? '' : 'none';
-  document.getElementById('fg-tenure').style.display = (tab === 'jual' || tab === 'lelong') ? '' : 'none';
+  document.getElementById('fg-type').style.display = (tab === 'sewa' || tab === 'jual' || tab === 'lelong' || tab === 'tanah') ? '' : 'none';
+  document.getElementById('fg-tenure').style.display = (tab === 'jual' || tab === 'lelong' || tab === 'tanah') ? '' : 'none';
   document.getElementById('fg-price').style.display = '';
   document.getElementById('fg-instalment').style.display = tab === 'jual' ? '' : 'none';
   document.getElementById('instalment-disclaimer').style.display = tab === 'jual' ? '' : 'none';
+  // Rebuild type options for the active tab (land/commercial has a different type vocabulary)
+  if (tab === 'tanah') {
+    buildTypeOptions(allLand);
+  } else {
+    buildTypeOptions([...allUnits, ...allSubsales, ...allLelong]);
+  }
   // Rebuild price options for the active tab
   if (tab === 'jual') {
     buildPriceOptions(allSubsales, false);
@@ -455,6 +469,8 @@ function switchTab(tab, btn) {
     buildPriceOptions(allLelong, false);
   } else if (tab === 'room') {
     buildPriceOptions(allRooms, true);
+  } else if (tab === 'tanah') {
+    buildPriceOptions(allLand, false);
   } else {
     buildPriceOptions([...allUnits, ...allRooms], true);
   }
@@ -512,8 +528,17 @@ function applyFilters() {
       (!tenure || r.tenure === tenure)
     );
     document.getElementById('grid-lelong').innerHTML =
-      fl.length ? fl.map(lelongCard).join('') : empty('No lelong/auction listings match your filters.');
+      fl.length ? fl.map(lelongCard).join('') : empty('No auction listings match your filters.');
     document.getElementById('filter-count').textContent = `${fl.length} listing${fl.length !== 1 ? 's' : ''}`;
+  } else if (currentTab === 'tanah') {
+    const ft = allLand.filter(r =>
+      (!type || r.type === type) &&
+      matchPrice(r, price) &&
+      (!tenure || r.tenure === tenure)
+    );
+    document.getElementById('grid-tanah').innerHTML =
+      ft.length ? ft.map(landCard).join('') : empty('No land/commercial listings match your filters.');
+    document.getElementById('filter-count').textContent = `${ft.length} listing${ft.length !== 1 ? 's' : ''}`;
   } else {
     const instalment = document.getElementById('f-instalment') ? document.getElementById('f-instalment').value : '';
     const fs = allSubsales.filter(r =>
@@ -789,21 +814,58 @@ function lelongCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-lelong">Lelong</span>${coaBadge(r)}</div>
+      <div><span class="card-badge badge-lelong">Auction</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}</div>
       ${r.installment ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
       <div class="card-pills">${pills}</div>
       ${auctionPill}
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
-      <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the lelong/auction unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
+      <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the auction unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div>`;
 }
 
+function landCard(r) {
+  const isRental = r.listing_type === 'rental';
+  const isLelong = r.listing_type === 'lelong';
+  const pills = [
+    r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
+    r.tenure || '',
+    r.type || ''
+  ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
+  const priceHtml = isRental ? `${fmt(r.price)}<span> / month</span>` : fmt(r.price);
+  const inst = parseFloat(String(r.installment).replace(/,/g,''));
+  const installmentHtml = (!isRental && !isNaN(inst) && inst > 0)
+    ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${inst.toLocaleString('en-MY')}</strong>/mo instalment</div>` : '';
+  const lelongDate = (r['Lelong date'] || '').trim();
+  const auctionHtml = (isLelong && lelongDate && lelongDate !== '-')
+    ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>` : '';
+  const statusClass = isRental ? 'badge-unit' : isLelong ? 'badge-lelong' : 'badge-subsale';
+  const statusLabel = isRental ? 'Rental' : isLelong ? 'Auction' : 'Subsale';
+  return `<div class="card" id="${toSlug(r.project_name, r.type, r.price)}">
+    ${cardImage(r)}
+    <div class="card-body">
+      <div><span class="card-badge ${statusClass}">${statusLabel}</span><span class="card-badge badge-land" style="margin-left:6px;">Land/Commercial</span>${coaBadge(r)}</div>
+      <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
+      <div class="card-price">${priceHtml}</div>
+      ${installmentHtml}
+      <div class="card-pills">${pills}</div>
+      ${auctionHtml}
+      ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
+      <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the land/commercial listing at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
+    </div>
+  </div>`;
+}
 function empty(msg) {
   return `<div class="empty">${msg}</div>`;
 }
+
+const LAND_COMMERCIAL_TYPES = new Set([
+  'Agricultural Land', 'Agricultural Land with Bungalow', 'Commercial',
+  'Commercial STR Complex', 'Land', 'Office Space', 'Residential Land',
+  'Shop', 'Shop Apartment', 'Shop Lot', 'Shop Unit'
+]);
 
 fetch('../../listings.csv')
   .then(r => r.text())
@@ -814,6 +876,10 @@ fetch('../../listings.csv')
     allRooms    = filtered.filter(r => r.listing_type === 'room');
     allSubsales = filtered.filter(r => r.listing_type === 'subsale');
     allLelong   = filtered.filter(r => r.listing_type === 'lelong');
+    // Land/commercial is determined purely by the `type` column, regardless of listing_type
+    // (a commercial unit can be for rent, subsale, or lelong) — it's pulled in alongside
+    // whatever tab it already belongs to, not removed from it.
+    allLand     = filtered.filter(r => LAND_COMMERCIAL_TYPES.has(r.type));
 
     // Build dynamic filter options
     buildTypeOptions([...allUnits, ...allSubsales, ...allLelong]);
