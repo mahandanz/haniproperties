@@ -287,7 +287,7 @@ let filteredListings = [];
 async function loadCSV() {
   const res = await fetch('/listings.csv');
   const buf = await res.arrayBuffer();
-  const text = new TextDecoder('windows-1252').decode(buf);
+  const text = new TextDecoder('utf-8').decode(buf);
   const lines = text.split(/\r?\n/).filter(Boolean);
   const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
 
