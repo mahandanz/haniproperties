@@ -204,6 +204,8 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 .about-block h2{font-family:'Lora',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:#1c1c18;margin-bottom:14px;line-height:1.3}
 .about-block p{font-size:.95rem;color:#4a4640;line-height:1.8;margin-bottom:12px}
 .about-block p:last-child{margin-bottom:0}
+.about-block p a{color:#2a5c3a;font-weight:600;text-decoration:none;border-bottom:1px solid #cdbfa5}
+.about-block p a:hover{border-bottom-color:#2a5c3a}
 .about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
 .about-card{background:#fff;border:1px solid #e3ddd0;border-radius:12px;padding:20px 18px}
 .about-card-icon{font-size:22px;margin-bottom:10px}
@@ -216,6 +218,27 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 @media(max-width:600px){
   .about-section{padding:36px 16px 48px}
   .about-grid{grid-template-columns:1fr 1fr}
+}
+
+/* AREA EXPLORE GRID */
+.area-section{background:#fff;border-top:1px solid #e3ddd0;padding:56px 24px 64px}
+.area-inner{max-width:960px;margin:0 auto}
+.area-section h2{font-family:'Lora',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:#1c1c18;margin-bottom:8px;line-height:1.3}
+.area-section .area-sub{font-size:.9rem;color:#7a7268;margin-bottom:28px}
+.area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.area-card{
+  display:block;background:#faf9f6;border:1px solid #e3ddd0;border-radius:12px;
+  padding:16px 18px;text-decoration:none;transition:border-color .18s, transform .15s, background .18s;
+}
+.area-card:hover{border-color:#2a5c3a;background:#fff;transform:translateY(-2px)}
+.area-card-name{font-size:.92rem;font-weight:700;color:#1c1c18;margin-bottom:4px}
+.area-card-tag{font-size:.78rem;color:#7a7268}
+.area-more{margin-top:20px;text-align:center}
+.area-more a{font-size:.85rem;font-weight:700;color:#2a5c3a;text-decoration:none}
+.area-more a:hover{text-decoration:underline}
+@media(max-width:600px){
+  .area-section{padding:36px 16px 48px}
+  .area-grid{grid-template-columns:1fr 1fr}
 }
 
 </style>
@@ -264,8 +287,76 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <div class="about-block">
       <h2>Property in Klang Valley — Rental, Subsale &amp; New Projects</h2>
       <p>Hani Properties is a licensed real estate agency under ERA Real Estate (E(1)1773/3), serving buyers, sellers, and renters across Selangor and Kuala Lumpur. Whether you're looking to rent a condo in Shah Alam, buy a subsale unit in Cyberjaya, or invest in a new launch in Subang Jaya — we help you find the right property at the right price.</p>
-      <p>We cover 19 areas across the Klang Valley including Shah Alam, Petaling Jaya, Puchong, Subang Jaya, Cyberjaya, Kajang, Cheras, Ampang, Klang, Kepong, Bukit Jalil, and more. Our listings span unit rentals, room rentals, subsale residential properties, and new development projects.</p>
+      <p>We cover 26 areas across the Klang Valley including <a href="area/local/shah-alam.html">Shah Alam</a>, <a href="area/local/petaling-jaya.html">Petaling Jaya</a>, <a href="area/local/puchong.html">Puchong</a>, <a href="area/local/subang-jaya.html">Subang Jaya</a>, <a href="area/local/cyberjaya-putrajaya.html">Cyberjaya</a>, <a href="area/local/kajang.html">Kajang</a>, <a href="area/local/cheras.html">Cheras</a>, <a href="area/local/ampang.html">Ampang</a>, <a href="area/local/klang.html">Klang</a>, <a href="area/local/kepong.html">Kepong</a>, <a href="area/local/bukit-jalil.html">Bukit Jalil</a>, and more. Our listings span unit rentals, room rentals, subsale residential properties, and new development projects.</p>
     </div>
+
+  </div>
+</section>
+
+<!-- EXPLORE BY AREA -->
+<section class="area-section">
+  <div class="area-inner">
+    <h2>Explore Properties by Area</h2>
+    <p class="area-sub">Rentals, subsales and new projects across the Klang Valley and Negeri Sembilan.</p>
+    <div class="area-grid">
+      <a class="area-card" href="area/local/shah-alam.html">
+        <div class="area-card-name">Shah Alam</div>
+        <div class="area-card-tag">UiTM, Blue Mosque, PKNS</div>
+      </a>
+      <a class="area-card" href="area/local/petaling-jaya.html">
+        <div class="area-card-name">Petaling Jaya / Damansara</div>
+        <div class="area-card-tag">1 Utama, IKEA Damansara, The Curve</div>
+      </a>
+      <a class="area-card" href="area/local/puchong.html">
+        <div class="area-card-name">Puchong</div>
+        <div class="area-card-tag">IOI Mall, Setiawalk, PFCC</div>
+      </a>
+      <a class="area-card" href="area/local/subang-jaya.html">
+        <div class="area-card-name">Subang Jaya</div>
+        <div class="area-card-tag">Sunway Pyramid, Empire, SS15</div>
+      </a>
+      <a class="area-card" href="area/local/cyberjaya-putrajaya.html">
+        <div class="area-card-name">Cyberjaya / Putrajaya</div>
+        <div class="area-card-tag">MMU, Shaftsbury, Putrajaya Lake</div>
+      </a>
+      <a class="area-card" href="area/local/bukit-jalil.html">
+        <div class="area-card-name">Bukit Jalil</div>
+        <div class="area-card-tag">Pavilion, National Stadium, LRT</div>
+      </a>
+      <a class="area-card" href="area/local/kajang.html">
+        <div class="area-card-name">Kajang</div>
+        <div class="area-card-tag">Metro Kajang, MRT/KTM, UNITEN</div>
+      </a>
+      <a class="area-card" href="area/local/cheras.html">
+        <div class="area-card-name">Cheras</div>
+        <div class="area-card-tag">Sunway Velocity, IKEA, Taman Connaught</div>
+      </a>
+      <a class="area-card" href="area/local/ampang.html">
+        <div class="area-card-name">Ampang</div>
+        <div class="area-card-tag">Jalan Ampang, AKLEH, KL Golden Triangle</div>
+      </a>
+      <a class="area-card" href="area/local/klang.html">
+        <div class="area-card-name">Klang</div>
+        <div class="area-card-tag">Bandar Botanic, AEON Bukit Tinggi</div>
+      </a>
+      <a class="area-card" href="area/local/kepong.html">
+        <div class="area-card-name">Kepong</div>
+        <div class="area-card-tag">Desa ParkCity, KTM Kepong</div>
+      </a>
+      <a class="area-card" href="area/local/kuala-lumpur.html">
+        <div class="area-card-name">Kuala Lumpur</div>
+        <div class="area-card-tag">KLCC, Bukit Bintang, Mid Valley</div>
+      </a>
+    </div>
+    <div class="area-more">
+      <a href="kawasan.html">View all 26 areas we cover →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE CARDS -->
+<section class="about-section">
+  <div class="about-inner">
 
     <div class="about-grid">
       <div class="about-card">
