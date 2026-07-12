@@ -223,7 +223,9 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 
 /* FLOATING WHATSAPP BUTTON */
 .wa-float{
-  position:fixed;right:20px;bottom:20px;z-index:300;
+  position:fixed;right:20px;top:50%;
+  transform:translateY(-50%);
+  z-index:300;
   width:56px;height:56px;
   background:#25D366;
   border-radius:50%;
@@ -232,10 +234,10 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   text-decoration:none;
   transition:transform .18s, box-shadow .18s;
 }
-.wa-float:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.wa-float:hover{transform:translateY(-50%) scale(1.08);box-shadow:0 6px 20px rgba(0,0,0,.3)}
 .wa-float svg{width:30px;height:30px}
 @media(max-width:600px){
-  .wa-float{right:14px;bottom:14px;width:50px;height:50px}
+  .wa-float{right:14px;width:50px;height:50px}
   .wa-float svg{width:26px;height:26px}
 }
 
@@ -302,7 +304,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <div class="about-block">
       <h2>Property in Klang Valley — Rental, Subsale &amp; New Projects</h2>
       <p>Hani Properties is a licensed real estate agency under ERA Real Estate (E(1)1773/3), serving buyers, sellers, and renters across Selangor and Kuala Lumpur. Whether you're looking to rent a condo in Shah Alam, buy a subsale unit in Cyberjaya, or invest in a new launch in Subang Jaya — we help you find the right property at the right price.</p>
-      <p>We cover 26 areas across the Klang Valley including <a href="area/local/shah-alam.html">Shah Alam</a>, <a href="area/local/petaling-jaya.html">Petaling Jaya</a>, <a href="area/local/puchong.html">Puchong</a>, <a href="area/local/subang-jaya.html">Subang Jaya</a>, <a href="area/local/cyberjaya-putrajaya.html">Cyberjaya</a>, <a href="area/local/kajang.html">Kajang</a>, <a href="area/local/cheras.html">Cheras</a>, <a href="area/local/ampang.html">Ampang</a>, <a href="area/local/klang.html">Klang</a>, <a href="area/local/kepong.html">Kepong</a>, <a href="area/local/bukit-jalil.html">Bukit Jalil</a>, and more. Our listings span unit rentals, room rentals, subsale residential properties, and new development projects.</p>
+      <p>We cover 26 areas across the Klang Valley and Negeri Sembilan, from Shah Alam and Petaling Jaya to Puchong, Subang Jaya, Cheras, and beyond. Our listings span unit rentals, room rentals, subsale residential properties, and new development projects.</p>
     </div>
 
   </div>
