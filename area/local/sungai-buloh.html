@@ -85,6 +85,7 @@
     .badge-lelong{background:#fdeaea;color:#a3271f}
     .badge-land{background:#f3ecf9;color:#5b3a94}
     .badge-coa{background:#f0ede8;color:#7a7268;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:6px}
+    .badge-count{background:#eef7f0;color:#1B4D35;margin-left:6px}
 
     .card-name{font-size:14px;font-weight:700;color:#1c1c18;line-height:1.35}
     .card-zone{font-size:12px;color:#7a7268;margin-top:1px}
@@ -547,6 +548,21 @@ function fmt(price) {
   return 'RM ' + Number(price).toLocaleString('en-MY');
 }
 
+function fmtRange(price) {
+  const v = String(price).trim();
+  const m = v.match(/^(\d+)\s*-\s*(\d+)$/);
+  if (m) {
+    const lo = Number(m[1]).toLocaleString('en-MY');
+    const hi = Number(m[2]).toLocaleString('en-MY');
+    return `RM ${lo}–${hi}`;
+  }
+  return fmt(v);
+}
+
+function splitList(val) {
+  return (val || '').split('|').map(s => s.trim()).filter(v => v && v !== '-' && v.toUpperCase() !== 'TBC');
+}
+
 function wa(text) {
   return WA_BASE + encodeURIComponent(text);
 }
@@ -666,18 +682,22 @@ function unitCard(r) {
 }
 
 function roomCard(r) {
-  const pills = [
-    r.room_type || '',
-    r.bath_type || '',
-    r.furnishing || '',
-    moveInText(r.move_in_date)
-  ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
+  const typePills = [
+    ...splitList(r.room_type),
+    ...splitList(r.bath_type),
+    ...splitList(r.furnishing)
+  ].map(p => `<span class="pill">${p}</span>`).join('');
+  const moveIn = moveInText(r.move_in_date);
+  const pills = typePills + (moveIn ? `<span class="pill">${moveIn}</span>` : '');
+  const roomCount = (r.room_count || '').trim();
+  const countBadge = (roomCount && roomCount !== '-')
+    ? `<span class="card-badge badge-count">${roomCount} room${Number(roomCount) === 1 ? '' : 's'} available</span>` : '';
   return `<div class="card" id="${toSlug(r.project_name, r.room_type, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-room">Room Rental</span>${coaBadge(r)}</div>
+      <div><span class="card-badge badge-room">Room Rental</span>${countBadge}${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
-      <div class="card-price">${fmt(r.price)}<span> / month</span></div>
+      <div class="card-price">${fmtRange(r.price)}<span> / month</span></div>
       <div class="card-pills">${pills}</div>
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(r.wa_text || `Hi Hani, I'm interested in a room at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
