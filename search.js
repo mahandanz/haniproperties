@@ -98,7 +98,14 @@
 
   /* ── Inject search bar into nav ─────────────────────────── */
   function injectSearch() {
-    // Desktop — insert before WhatsApp CTA in nav-links
+    // Skip entirely on pages that already have their own dedicated
+    // search UI (e.g. search.html's hero search box) — avoids a
+    // duplicate search bar on that page.
+    if (document.querySelector('.hero-search-input')) return;
+
+    // Desktop — append into nav-links (falls back gracefully if
+    // a .cta-nav element isn't present, since WhatsApp is now a
+    // separate floating button rather than a nav link)
     const navLinks = document.querySelector('.nav-links');
     if (navLinks) {
       const cta = navLinks.querySelector('.cta-nav');
