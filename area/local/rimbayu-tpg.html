@@ -133,6 +133,24 @@
       .tabs{width:100%}
       .tab-btn{flex:1;text-align:center}
     }
+    .wa-float{
+      position:fixed;right:20px;top:50%;
+      transform:translateY(-50%);
+      z-index:300;
+      width:56px;height:56px;
+      background:#25D366;
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 4px 16px rgba(0,0,0,.25);
+      text-decoration:none;
+      transition:transform .18s, box-shadow .18s;
+    }
+    .wa-float:hover{transform:translateY(-50%) scale(1.08);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+    .wa-float svg{width:30px;height:30px}
+    @media(max-width:600px){
+      .wa-float{right:14px;width:50px;height:50px}
+      .wa-float svg{width:26px;height:26px}
+    }
   </style>
 </head>
 <body>
@@ -140,10 +158,8 @@
 <nav>
   <a href="../../index.html" class="brand">Hani <span>Properties</span></a>
   <div class="nav-links">
-    <a href="../../kawasan.html">Rentals</a>
-    <a href="../../kawasan.html">Subsales</a>
-    <a href="../../projects.html">Projects</a>
-    <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="cta-nav" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a href="../../simple.html">Guides</a>
+    <a href="../../calculator.html">Calculator</a>
   </div>
 </nav>
 
@@ -834,5 +850,12 @@ function toSlug(...parts) {
     <div id="lightboxNavWrap"></div>
   </div>
 </div>
+<a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
+  </svg>
+</a>
+<script src="/search.js"></script>
 </body>
 </html>
