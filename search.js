@@ -54,11 +54,15 @@
         padding: 0;
       }
 
-      /* Mobile search — full width below nav */
+      /* Mobile search — full width below nav.
+         Hidden by default; only shown at mobile widths, so it
+         doesn't render alongside the desktop nav-links search box. */
+      .nav-search-mobile { display: none; }
       @media (max-width: 600px) {
         .hp-search-wrap { width: 100%; }
         .hp-search-input { width: 100% !important; border-radius: 10px; }
         .nav-search-mobile {
+          display: block;
           padding: 8px 16px;
           background: rgba(253,250,245,.97);
           border-bottom: 1px solid #e3ddd0;
