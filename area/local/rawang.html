@@ -107,11 +107,11 @@
     .btn-wa{display:inline-block;background:#52B788;color:#1B4D35;padding:12px 28px;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background .15s}
     .btn-wa:hover{background:#62cc98}
 
-    .nearby-areas{margin-top:32px}
-    .nearby-areas h2{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:#1c1c18;margin-bottom:12px}
-    .nearby-grid{display:flex;flex-wrap:wrap;gap:10px}
-    .nearby-chip{display:inline-block;background:#faf9f6;border:1px solid #e3ddd0;border-radius:20px;padding:8px 16px;font-size:.85rem;font-weight:600;color:#2a5c3a;text-decoration:none;transition:background .15s,border-color .15s}
-    .nearby-chip:hover{background:#fff;border-color:#2a5c3a}
+    .nearby-in-band{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15)}
+    .nearby-label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px}
+    .nearby-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+    .nearby-chip{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:7px 15px;font-size:.8rem;font-weight:600;color:#fff;text-decoration:none;transition:background .15s,border-color .15s}
+    .nearby-chip:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4)}
 
     footer{background:#111;color:rgba(255,255,255,.4);text-align:center;padding:24px;font-size:11px;line-height:1.8}
     footer a{color:rgba(255,255,255,.5);text-decoration:none}
@@ -351,17 +351,17 @@
     <h2>Don't see what you need?</h2>
     <p>Listings move fast. WhatsApp Hani directly for the latest available units in Rawang.</p>
     <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%20am%20looking%20for%20a%20property%20in%20Rawang." class="btn-wa" target="_blank" rel="noopener noreferrer">💬 WhatsApp Hani</a>
+      <div class="nearby-in-band">
+        <span class="nearby-label">Nearby Areas</span>
+        <div class="nearby-grid">
+          <a class="nearby-chip" href="selayang.html">Selayang</a>
+          <a class="nearby-chip" href="kepong.html">Kepong</a>
+          <a class="nearby-chip" href="puncak-alam.html">Puncak Alam</a>
+        </div>
+      </div>
   </div>
 </div>
 
-<div class="nearby-areas">
-  <h2>Nearby Areas</h2>
-  <div class="nearby-grid">
-      <a class="nearby-chip" href="selayang.html">Selayang</a>
-      <a class="nearby-chip" href="kepong.html">Kepong</a>
-      <a class="nearby-chip" href="puncak-alam.html">Puncak Alam</a>
-  </div>
-</div>
 
 <footer>
   <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
