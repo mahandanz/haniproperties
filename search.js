@@ -128,10 +128,24 @@
     }
   }
 
+  /* ── Keep --nav-offset in sync with the *actual* nav height ──
+     nav is position:fixed, so it doesn't push content down by
+     itself. Anything meant to sit just below it (e.g. .hero)
+     should use margin-top:var(--nav-offset) rather than a
+     hardcoded px value, so it stays correct even after this
+     script adds the extra mobile search row. */
+  function updateNavOffset() {
+    const nav = document.querySelector('nav');
+    if (!nav) return;
+    document.documentElement.style.setProperty('--nav-offset', nav.offsetHeight + 'px');
+  }
+
   /* ── Init ───────────────────────────────────────────────── */
   function init() {
     injectCSS();
     injectSearch();
+    updateNavOffset();
+    window.addEventListener('resize', updateNavOffset);
   }
 
   if (document.readyState === 'loading') {
