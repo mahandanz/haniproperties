@@ -80,7 +80,6 @@
 
     .card-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
     .badge-unit{background:#e8f4ed;color:#1B4D35}
-    .badge-room{background:#fef3e2;color:#92500a}
     .badge-subsale{background:#e8f0fe;color:#1a4fa0}
     .badge-lelong{background:#fdeaea;color:#a3271f}
     .badge-land{background:#f3ecf9;color:#5b3a94}
@@ -184,7 +183,6 @@
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('sewa',this)">For Rent</button>
     <button class="tab-btn" onclick="switchTab('jual',this)">For Sale</button>
-    <button class="tab-btn" onclick="switchTab('room',this)">Rooms</button>
     <button class="tab-btn" onclick="switchTab('lelong',this)">Auction</button>
     <button class="tab-btn" onclick="switchTab('tanah',this)">Land/Commercial</button>
   </div>
@@ -386,11 +384,6 @@
     </div>
   </div><!--SSR_END--></div>
   </div>
-  <div id="tab-room" style="display:none;overflow:hidden">
-    <img src="/images/banner-room.png" alt="Room Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
-    <div class="listing-grid" id="grid-room-tab"><!--SSR_START--><div class="empty">No room rentals available right now.</div><!--SSR_END--></div>
-  </div>
-
 <div id="tab-lelong" style="display:none;overflow:hidden">
     <img src="/images/banner-auction.png" alt="Auction Properties" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-lelong"><!--SSR_START--><div class="card" id="the-rainz-4-783000">
@@ -438,20 +431,19 @@
 <script>
 const AREA = 'Bukit Jalil';
 const WA_BASE = 'https://wa.me/60125459182?text=';
-let allUnits = [], allRooms = [], allSubsales = [], allLelong = [], allLand = [];
+let allUnits = [], allSubsales = [], allLelong = [], allLand = [];
 let currentTab = 'sewa';
 
 function switchTab(tab, btn) {
   currentTab = tab;
   document.getElementById('tab-sewa').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('tab-jual').style.display = tab === 'jual' ? '' : 'none';
-  document.getElementById('tab-room').style.display = tab === 'room' ? '' : 'none';
   document.getElementById('tab-lelong').style.display = tab === 'lelong' ? '' : 'none';
   document.getElementById('tab-tanah').style.display = tab === 'tanah' ? '' : 'none';
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   // Show/hide relevant filters
-  document.getElementById('fg-furnishing').style.display = (tab === 'sewa' || tab === 'room') ? '' : 'none';
+  document.getElementById('fg-furnishing').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('fg-bed').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('fg-type').style.display = (tab === 'sewa' || tab === 'jual' || tab === 'lelong' || tab === 'tanah') ? '' : 'none';
   document.getElementById('fg-tenure').style.display = (tab === 'jual' || tab === 'lelong' || tab === 'tanah') ? '' : 'none';
@@ -469,13 +461,10 @@ function switchTab(tab, btn) {
     buildPriceOptions(allSubsales, false);
     buildInstalmentOptions(allSubsales);
   } else if (tab === 'lelong') {
-    buildPriceOptions(allLelong, false);
-  } else if (tab === 'room') {
-    buildPriceOptions(allRooms, true);
-  } else if (tab === 'tanah') {
+    buildPriceOptions(allLelong, false); } else if (tab === 'tanah') {
     buildPriceOptions(allLand, false);
   } else {
-    buildPriceOptions([...allUnits, ...allRooms], true);
+    buildPriceOptions(allUnits, true);
   }
   resetFilters();
 }
@@ -514,16 +503,7 @@ function applyFilters() {
     );
     document.getElementById('grid-unit').innerHTML =
       fu.length ? fu.map(unitCard).join('') : empty('No unit rentals match your filters.');
-    document.getElementById('filter-count').textContent = `${fu.length} listing${fu.length !== 1 ? 's' : ''}`;
-  } else if (currentTab === 'room') {
-    const fr = allRooms.filter(r =>
-      (!furnishing || r.furnishing === furnishing) &&
-      matchPrice(r, price)
-    );
-    document.getElementById('grid-room-tab').innerHTML =
-      fr.length ? fr.map(roomCard).join('') : empty('No room rentals match your filters.');
-    document.getElementById('filter-count').textContent = `${fr.length} listing${fr.length !== 1 ? 's' : ''}`;
-  } else if (currentTab === 'lelong') {
+    document.getElementById('filter-count').textContent = `${fu.length} listing${fu.length !== 1 ? 's' : ''}`;  } else if (currentTab === 'lelong') {
     const fl = allLelong.filter(r =>
       (!type || r.type === type) &&
       matchBed(r, bed) &&
@@ -777,30 +757,6 @@ function unitCard(r) {
   </div>`;
 }
 
-function roomCard(r) {
-  const typePills = [
-    ...splitList(r.room_type),
-    ...splitList(r.bath_type),
-    ...splitList(r.furnishing)
-  ].map(p => `<span class="pill">${p}</span>`).join('');
-  const moveIn = moveInText(r.move_in_date);
-  const pills = typePills + (moveIn ? `<span class="pill">${moveIn}</span>` : '');
-  const roomCount = (r.room_count || '').trim();
-  const countBadge = (roomCount && roomCount !== '-')
-    ? `<span class="card-badge badge-count">${roomCount} room${Number(roomCount) === 1 ? '' : 's'} available</span>` : '';
-  return `<div class="card" id="${toSlug(r.project_name, r.room_type, r.price)}">
-    ${cardImage(r)}
-    <div class="card-body">
-      <div><span class="card-badge badge-room">Room Rental</span>${countBadge}${coaBadge(r)}</div>
-      <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
-      <div class="card-price">${fmtRange(r.price)}<span> / month</span></div>
-      <div class="card-pills">${pills}</div>
-      ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
-      <a href="${wa(r.wa_text || `Hi Hani, I'm interested in a room at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div>`;
-}
-
 function subsaleCard(r) {
   const pills = [
     r.bed ? `🛏 ${r.bed} bed` : '',
@@ -895,7 +851,6 @@ fetch('../../listings.csv')
     const rows = parseCSV(text);
     const filtered = rows.filter(r => r.area === AREA && (r.status === '-' || r.status === ''));
     allUnits    = filtered.filter(r => r.listing_type === 'rental');
-    allRooms    = filtered.filter(r => r.listing_type === 'room');
     allSubsales = filtered.filter(r => r.listing_type === 'subsale');
     allLelong   = filtered.filter(r => r.listing_type === 'lelong');
     // Land/commercial is determined purely by the `type` column, regardless of listing_type
@@ -905,7 +860,7 @@ fetch('../../listings.csv')
 
     // Build dynamic filter options
     buildTypeOptions([...allUnits, ...allSubsales, ...allLelong]);
-    buildPriceOptions([...allUnits, ...allRooms], true); // default: rental tab active
+    buildPriceOptions(allUnits, true); // default: rental tab active
     buildInstalmentOptions(allSubsales);
 
     // Initial render
@@ -913,7 +868,7 @@ fetch('../../listings.csv')
   })
   .catch((e) => {
     console.error('Fetch error:', e);
-    ['grid-unit','grid-room-tab','grid-subsale','grid-lelong'].forEach(id => {
+    ['grid-unit','grid-subsale','grid-lelong'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.innerHTML = empty('Unable to load listings. Please try again.');
     });
