@@ -683,7 +683,7 @@ function lelongCard(r) {
     r.tenure || '',
     r.type || ''
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-  const lelongDate = (r['Lelong date'] || '').trim();
+  const lelongDate = (r.lelong_date || '').trim();
   const auctionPill = (lelongDate && lelongDate !== '-') ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>` : '';
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
@@ -691,7 +691,6 @@ function lelongCard(r) {
       <div><span class="card-badge badge-lelong">Auction</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}</div>
-      ${r.installment ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
       <div class="card-pills">${pills}</div>
       ${auctionPill}
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
@@ -710,9 +709,9 @@ function landCard(r) {
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
   const priceHtml = isRental ? `${fmt(r.price)}<span> / month</span>` : fmt(r.price);
   const inst = parseFloat(String(r.installment).replace(/,/g,''));
-  const installmentHtml = (!isRental && !isNaN(inst) && inst > 0)
+  const installmentHtml = (!isRental && !isLelong && !isNaN(inst) && inst > 0)
     ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${inst.toLocaleString('en-MY')}</strong>/mo instalment</div>` : '';
-  const lelongDate = (r['Lelong date'] || '').trim();
+  const lelongDate = (r.lelong_date || '').trim();
   const auctionHtml = (isLelong && lelongDate && lelongDate !== '-')
     ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>` : '';
   const statusClass = isRental ? 'badge-unit' : isLelong ? 'badge-lelong' : 'badge-subsale';
