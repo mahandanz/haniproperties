@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Interest — Hani Properties</title>
+  <meta name="description" content="Tell us what you're looking for — rent or buy — and Hani Properties will get back to you within 24 hours with matching options." />
+  <link rel="canonical" href="https://haniproperties.com/request.html" />
+  <meta property="og:title" content="Register Interest — Hani Properties" />
+  <meta property="og:description" content="Can't find the right listing? Tell us what you need and we'll find it for you." />
+  <meta property="og:url" content="https://haniproperties.com/request.html" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:#faf9f6;color:#1c1c18;-webkit-font-smoothing:antialiased}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(253,250,245,.94);backdrop-filter:blur(14px);border-bottom:1px solid #e3ddd0}
+    .brand{font-family:'Lora',serif;font-weight:700;font-size:18px;color:#1c1c18;text-decoration:none;letter-spacing:-.01em}
+    .brand span{color:#bf5533}
+    .nav-links{display:flex;gap:6px;align-items:center}
+    .nav-links a{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:6px 12px;border-radius:20px;transition:all .18s}
+    .nav-links a:hover{color:#1c1c18;background:#f6f1e7}
+    .nav-links a.cta-nav{background:#2a5c3a;color:#fff;padding:7px 16px}
+    .nav-links a.cta-nav:hover{background:#1e4a2c}
+
+    .hero{background:#1B4D35;padding:48px 24px 40px;text-align:center;margin-top:58px;position:relative}
+    .hero-eyebrow{display:inline-block;background:rgba(255,255,255,.12);color:#52B788;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px}
+    .hero h1{font-family:'Lora',serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px}
+    .hero-desc{color:rgba(255,255,255,.7);font-size:.95rem;max-width:520px;margin:0 auto;line-height:1.7}
+
+    .lang-toggle{position:absolute;top:16px;right:24px;display:flex;background:rgba(255,255,255,.12);border-radius:20px;padding:3px}
+    .lang-btn{font-size:11px;font-weight:700;letter-spacing:.04em;padding:5px 12px;border-radius:16px;border:none;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;transition:all .15s}
+    .lang-btn.active{background:#fff;color:#1B4D35}
+    @media(max-width:600px){.lang-toggle{position:static;justify-content:center;width:fit-content;margin:0 auto 14px}}
+
+    .breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
+    .breadcrumb-inner{max-width:1060px;margin:0 auto;font-size:12px;color:#7a7268}
+    .breadcrumb-inner a{color:#2a5c3a;text-decoration:none}
+    .breadcrumb-inner a:hover{text-decoration:underline}
+    .breadcrumb-inner span{margin:0 6px}
+
+    .main{max-width:640px;margin:0 auto;padding:40px 24px 64px}
+
+    .form-card{background:#fff;border-radius:16px;border:1px solid #e3ddd0;padding:32px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+
+    .field-group{margin-bottom:22px}
+    .field-label{display:block;font-size:12px;font-weight:700;letter-spacing:.03em;color:#1c1c18;margin-bottom:8px}
+    .field-label .req{color:#bf5533;margin-left:2px}
+    .field-hint{font-size:11.5px;color:#7a7268;margin-top:6px;line-height:1.5}
+
+    .field-input{width:100%;font-size:14px;font-family:'DM Sans',sans-serif;color:#1c1c18;background:#faf9f6;border:1px solid #e3ddd0;border-radius:9px;padding:11px 13px;transition:border-color .15s}
+    .field-input:focus{outline:none;border-color:#2a5c3a}
+    textarea.field-input{resize:vertical;min-height:80px;font-family:inherit}
+
+    .pill-group{display:flex;gap:8px;flex-wrap:wrap}
+    .pill-option{position:relative}
+    .pill-option input{position:absolute;opacity:0;width:0;height:0}
+    .pill-option label{display:inline-block;font-size:13px;font-weight:600;padding:9px 18px;border-radius:20px;border:1px solid #e3ddd0;background:#faf9f6;color:#7a7268;cursor:pointer;transition:all .15s}
+    .pill-option input:checked + label{background:#2a5c3a;border-color:#2a5c3a;color:#fff}
+
+    .checklist{display:flex;flex-wrap:wrap;gap:8px}
+    .check-option{position:relative}
+    .check-option input{position:absolute;opacity:0;width:0;height:0}
+    .check-option label{display:inline-block;font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:20px;border:1px solid #e3ddd0;background:#faf9f6;color:#444;cursor:pointer;transition:all .15s}
+    .check-option input:checked + label{background:#e8f4ed;border-color:#2a5c3a;color:#1B4D35}
+
+    .conditional-block{background:#f6f1e7;border-radius:12px;padding:18px;margin-top:4px;display:none}
+    .conditional-block.visible{display:block}
+    .conditional-block .field-group:last-child{margin-bottom:0}
+
+    .reassure-note{background:#eef7f0;border:1px solid #cfe8d8;border-radius:9px;padding:10px 13px;font-size:12.5px;color:#1B4D35;line-height:1.6;margin-top:8px;display:none}
+    .reassure-note.visible{display:block}
+
+    .submit-btn{width:100%;background:#2a5c3a;color:#fff;font-size:14px;font-weight:700;padding:14px;border:none;border-radius:9px;cursor:pointer;transition:background .18s;margin-top:8px}
+    .submit-btn:hover{background:#1e4a2c}
+    .submit-btn:disabled{background:#c7c2b6;cursor:not-allowed}
+
+    .success-panel{display:none;text-align:center;padding:24px 8px}
+    .success-panel.visible{display:block}
+    .success-panel .icon{font-size:36px;margin-bottom:10px}
+    .success-panel h3{font-family:'Lora',serif;font-size:1.2rem;margin-bottom:8px;color:#1B4D35}
+    .success-panel p{font-size:13.5px;color:#7a7268;line-height:1.6}
+
+    footer{background:#111;color:rgba(255,255,255,.4);text-align:center;padding:24px;font-size:11px;line-height:1.8}
+    footer a{color:rgba(255,255,255,.5);text-decoration:none}
+
+    .wa-float{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:300;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25);text-decoration:none;transition:transform .18s, box-shadow .18s}
+    .wa-float:hover{transform:translateY(-50%) scale(1.08);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+    .wa-float svg{width:30px;height:30px}
+
+    @media(max-width:600px){
+      nav{padding:0 16px}
+      .main{padding:28px 16px 48px}
+      .form-card{padding:22px}
+      .wa-float{right:14px;width:50px;height:50px}
+      .wa-float svg{width:26px;height:26px}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">Hani <span>Properties</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="simple.html">Guides</a>
+    <a href="calculator.html">Calculator</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="langBM" onclick="setLang('bm')">BM</button>
+    <button class="lang-btn" id="langEN" onclick="setLang('en')">EN</button>
+  </div>
+  <div class="hero-eyebrow" data-bm="Daftar Minat" data-en="Register Interest">Register Interest</div>
+  <h1 data-bm="Tak Jumpa Yang Sesuai?" data-en="Can't Find the Right Fit?">Can't Find the Right Fit?</h1>
+  <p class="hero-desc" data-bm="Bagitau kami apa yang anda cari — sewa atau beli — dan kami akan hubungi anda dalam 24 jam dengan pilihan yang sesuai." data-en="Tell us what you're looking for — rent or buy — and we'll get back to you within 24 hours with matching options.">Tell us what you're looking for — rent or buy — and we'll get back to you within 24 hours with matching options.</p>
+</section>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">Hani Properties</a>
+    <span>›</span>
+    <span data-bm="Daftar Minat" data-en="Register Interest">Register Interest</span>
+  </div>
+</div>
+
+<div class="main">
+  <div class="form-card">
+
+    <form id="requestForm">
+
+      <!-- Name -->
+      <div class="field-group">
+        <label class="field-label" data-bm="Nama" data-en="Name"><span data-bm="Nama" data-en="Name">Name</span><span class="req">*</span></label>
+        <input class="field-input" type="text" name="name" id="name" required
+               data-ph-bm="Nama penuh anda" data-ph-en="Your full name" placeholder="Your full name">
+      </div>
+
+      <!-- Contact -->
+      <div class="field-group">
+        <label class="field-label" data-bm="Nombor Telefon / Emel" data-en="Phone or Email">Phone or Email</label>
+        <input class="field-input" type="text" name="contact" id="contact"
+               data-ph-bm="Contoh: 012-345 6789 atau emel@contoh.com" data-ph-en="e.g. 012-345 6789 or you@email.com"
+               placeholder="e.g. 012-345 6789 or you@email.com">
+        <p class="field-hint" data-bm="Pilihan — tapi memudahkan kami hubungi anda." data-en="Optional — but helps us reach you faster.">Optional — but helps us reach you faster.</p>
+      </div>
+
+      <!-- Looking to -->
+      <div class="field-group">
+        <label class="field-label" data-bm="Mencari Untuk" data-en="Looking To"><span data-bm="Mencari Untuk" data-en="Looking To">Looking To</span><span class="req">*</span></label>
+        <div class="pill-group">
+          <div class="pill-option">
+            <input type="radio" name="looking_to" id="opt-rent" value="Rent" checked>
+            <label for="opt-rent" data-bm="Sewa" data-en="Rent">Rent</label>
+          </div>
+          <div class="pill-option">
+            <input type="radio" name="looking_to" id="opt-buy" value="Buy">
+            <label for="opt-buy" data-bm="Beli" data-en="Buy">Buy</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Areas of interest -->
+      <div class="field-group">
+        <label class="field-label" data-bm="Kawasan Diminati" data-en="Area(s) of Interest">Area(s) of Interest</label>
+        <input class="field-input" type="text" name="areas_of_interest" id="areasOfInterest"
+               data-ph-bm="Contoh: Shah Alam, Subang Jaya" data-ph-en="e.g. Shah Alam, Subang Jaya"
+               placeholder="e.g. Shah Alam, Subang Jaya">
+        <p class="field-hint" data-bm="Boleh senaraikan lebih dari satu kawasan." data-en="Feel free to list more than one area.">Feel free to list more than one area.</p>
+      </div>
+
+      <!-- Budget range -->
+      <div class="field-group">
+        <label class="field-label" data-bm="Julat Bajet" data-en="Budget Range">Budget Range</label>
+        <select class="field-input" name="budget_range" id="budgetRange"></select>
+      </div>
+
+      <!-- RENT-ONLY BLOCK -->
+      <div class="conditional-block visible" id="rentBlock">
+        <div class="field-group">
+          <label class="field-label" data-bm="Tarikh Masuk" data-en="Move-in Date">Move-in Date</label>
+          <input class="field-input" type="date" name="move_in_date" id="moveInDate">
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-bm="Lokasi Kerja" data-en="Work Location">Work Location</label>
+          <input class="field-input" type="text" name="work_location" id="workLocation"
+                 data-ph-bm="Contoh: Bangsar South, KL" data-ph-en="e.g. Bangsar South, KL" placeholder="e.g. Bangsar South, KL">
+        </div>
+      </div>
+
+      <!-- BUY-ONLY BLOCK -->
+      <div class="conditional-block" id="buyBlock">
+        <div class="field-group">
+          <label class="field-label" data-bm="Tujuan Pembelian" data-en="Purchase Intent">Purchase Intent</label>
+          <div class="pill-group">
+            <div class="pill-option">
+              <input type="radio" name="purchase_intent" id="intent-own" value="Own Stay" checked>
+              <label for="intent-own" data-bm="Untuk Didiami" data-en="Own Stay">Own Stay</label>
+            </div>
+            <div class="pill-option">
+              <input type="radio" name="purchase_intent" id="intent-invest" value="Investment">
+              <label for="intent-invest" data-bm="Pelaburan" data-en="Investment">Investment</label>
+            </div>
+          </div>
+        </div>
+        <div class="field-group" style="margin-bottom:0">
+          <label class="field-label" data-bm="Kelayakan Pinjaman Disemak?" data-en="Loan Eligibility Checked?">Loan Eligibility Checked?</label>
+          <div class="pill-group">
+            <div class="pill-option">
+              <input type="radio" name="loan_checked" id="loan-yes" value="Yes">
+              <label for="loan-yes" data-bm="Ya" data-en="Yes">Yes</label>
+            </div>
+            <div class="pill-option">
+              <input type="radio" name="loan_checked" id="loan-no" value="No" checked>
+              <label for="loan-no" data-bm="Belum" data-en="No">No</label>
+            </div>
+          </div>
+
+          <div class="field-group" id="amountEligibleWrap" style="display:none;margin-top:14px;margin-bottom:0">
+            <label class="field-label" data-bm="Jumlah Kelayakan (RM)" data-en="Amount Eligible (RM)">Amount Eligible (RM)</label>
+            <input class="field-input" type="number" name="amount_eligible" id="amountEligible"
+                   data-ph-bm="Contoh: 450000" data-ph-en="e.g. 450000" placeholder="e.g. 450000">
+          </div>
+
+          <p class="reassure-note" id="reassureNote"
+             data-bm="Tak apa — kami boleh bantu anda semak kelayakan pinjaman dulu sebelum proceed. 😊"
+             data-en="No worries — we can help you check your loan eligibility first before proceeding. 😊">
+            No worries — we can help you check your loan eligibility first before proceeding. 😊
+          </p>
+        </div>
+      </div>
+
+      <!-- Additional notes -->
+      <div class="field-group">
+        <label class="field-label" data-bm="Apa-apa Lagi Kami Perlu Tahu?" data-en="Anything Else We Should Know?">Anything Else We Should Know?</label>
+        <textarea class="field-input" name="additional_notes" id="additionalNotes"
+                  data-ph-bm="Pilihan — contoh: bilangan bilik, keperluan khas, dll." data-ph-en="Optional — e.g. number of rooms, special requirements, etc."
+                  placeholder="Optional — e.g. number of rooms, special requirements, etc."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn" data-bm="Hantar Permintaan" data-en="Submit Request">Submit Request</button>
+      <p class="field-hint" style="text-align:center;margin-top:12px" data-bm="Kami akan hubungi anda dalam masa 24 jam." data-en="We'll be in touch within 24 hours.">We'll be in touch within 24 hours.</p>
+    </form>
+
+    <div class="success-panel" id="successPanel">
+      <div class="icon">✅</div>
+      <h3 data-bm="Terima Kasih!" data-en="Thank You!">Thank You!</h3>
+      <p data-bm="Permintaan anda telah diterima. Kami akan hubungi anda dalam masa 24 jam dengan pilihan yang sesuai." data-en="Your request has been received. We'll contact you within 24 hours with matching options.">Your request has been received. We'll contact you within 24 hours with matching options.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div>© Hani Properties · ERA Real Estate E(1)1773/3</div>
+  <div>Marhani Bt Mohamad Nor (REN 84031) · <a href="tel:+60125459182">012-545 9182</a> · <a href="https://www.haniproperties.com">haniproperties.com</a></div>
+  <div style="margin-top:4px;color:rgba(255,255,255,.25)">Property made personal.</div>
+</footer>
+
+<a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
+  </svg>
+</a>
+
+<script>
+// ============================================================
+// CONFIG — submissions are emailed to hanimdnor08@gmail.com via
+// FormSubmit.co (no signup needed). On the FIRST submission,
+// FormSubmit sends a confirmation email to that inbox — click
+// the activation link there once, and all future submissions
+// will go through automatically.
+// ============================================================
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/hanimdnor08@gmail.com';
+
+// ---- Budget bands (Rent = monthly, Buy = purchase price) ----
+const BUDGET_BANDS = {
+  Rent: ['Under RM1,000', 'RM1,000 - RM1,500', 'RM1,500 - RM2,000', 'RM2,000 - RM3,000', 'RM3,000 - RM5,000', 'Above RM5,000'],
+  Buy:  ['Under RM300,000', 'RM300,000 - RM500,000', 'RM500,000 - RM700,000', 'RM700,000 - RM1,000,000', 'RM1,000,000 - RM2,000,000', 'Above RM2,000,000']
+};
+
+// ---- Budget band population ----
+const budgetSelect = document.getElementById('budgetRange');
+function populateBudget(kind) {
+  budgetSelect.innerHTML = '';
+  BUDGET_BANDS[kind].forEach(band => {
+    const opt = document.createElement('option');
+    opt.value = band;
+    opt.textContent = band;
+    budgetSelect.appendChild(opt);
+  });
+}
+populateBudget('Rent');
+
+// ---- Rent/Buy toggle logic ----
+const rentBlock = document.getElementById('rentBlock');
+const buyBlock = document.getElementById('buyBlock');
+document.querySelectorAll('input[name="looking_to"]').forEach(radio => {
+  radio.addEventListener('change', e => {
+    const isRent = e.target.value === 'Rent';
+    rentBlock.classList.toggle('visible', isRent);
+    buyBlock.classList.toggle('visible', !isRent);
+    populateBudget(isRent ? 'Rent' : 'Buy');
+  });
+});
+
+// ---- Loan eligibility conditional ----
+const amountWrap = document.getElementById('amountEligibleWrap');
+const reassureNote = document.getElementById('reassureNote');
+document.querySelectorAll('input[name="loan_checked"]').forEach(radio => {
+  radio.addEventListener('change', e => {
+    const isYes = e.target.value === 'Yes';
+    amountWrap.style.display = isYes ? 'block' : 'none';
+    reassureNote.classList.toggle('visible', !isYes);
+  });
+});
+
+// ---- Language toggle ----
+function setLang(lang) {
+  document.getElementById('langBM').classList.toggle('active', lang === 'bm');
+  document.getElementById('langEN').classList.toggle('active', lang === 'en');
+  document.querySelectorAll('[data-bm]').forEach(el => {
+    const text = lang === 'bm' ? el.getAttribute('data-bm') : el.getAttribute('data-en');
+    if (text !== null) el.textContent = text;
+  });
+  document.querySelectorAll('[data-ph-bm]').forEach(el => {
+    const ph = lang === 'bm' ? el.getAttribute('data-ph-bm') : el.getAttribute('data-ph-en');
+    if (ph !== null) el.setAttribute('placeholder', ph);
+  });
+}
+
+// ---- Form submission ----
+const form = document.getElementById('requestForm');
+const submitBtn = document.getElementById('submitBtn');
+const successPanel = document.getElementById('successPanel');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.textContent = '...';
+
+  const areas = document.getElementById('areasOfInterest').value;
+  const lookingTo = document.querySelector('input[name="looking_to"]:checked').value;
+
+  const payload = {
+    _subject: `New ${lookingTo} Request — ${document.getElementById('name').value}`,
+    _template: 'table',
+    name: document.getElementById('name').value,
+    contact: document.getElementById('contact').value,
+    looking_to: lookingTo,
+    areas_of_interest: areas,
+    budget_range: budgetSelect.value,
+    move_in_date: lookingTo === 'Rent' ? document.getElementById('moveInDate').value : 'N/A',
+    work_location: lookingTo === 'Rent' ? document.getElementById('workLocation').value : 'N/A',
+    purchase_intent: lookingTo === 'Buy' ? document.querySelector('input[name="purchase_intent"]:checked').value : 'N/A',
+    loan_eligibility_checked: lookingTo === 'Buy' ? document.querySelector('input[name="loan_checked"]:checked').value : 'N/A',
+    amount_eligible: (lookingTo === 'Buy' && document.querySelector('input[name="loan_checked"]:checked').value === 'Yes')
+      ? document.getElementById('amountEligible').value : 'N/A',
+    additional_notes: document.getElementById('additionalNotes').value || 'N/A'
+  };
+
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      successPanel.classList.add('visible');
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch (err) {
+    alert('Something went wrong. Please try again or WhatsApp us directly.');
+    submitBtn.disabled = false;
+    submitBtn.textContent = document.getElementById('langBM').classList.contains('active') ? 'Hantar Permintaan' : 'Submit Request';
+  }
+});
+</script>
+
+</body>
+</html>

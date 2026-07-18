@@ -167,6 +167,7 @@
   <div class="hero-eyebrow">Sungai Buloh &nbsp;·&nbsp; Selangor</div>
   <h1>Properties in Sungai Buloh</h1>
   <p class="hero-desc">Sungai Buloh is a key transit hub on the Selangor–KL border, anchored by the interchange MRT/KTM station connecting the Kajang and Putrajaya lines. Home to established neighbourhoods like Bukit Rahman Putra and Sierramas, with Hospital Sungai Buloh and the Kuala Selangor Expressway close by.</p>
+  <a href="../../request.html" class="btn-wa" style="margin-top:18px;">Can't Find It? Let Us Help</a>
 </section>
 
 <div class="breadcrumb">
@@ -771,8 +772,11 @@ function landCard(r) {
     </div>
   </div>`;
 }
-function empty(msg) {
-  return `<div class="empty">${msg}</div>`;
+function empty(msg, showCta = true) {
+  const cta = showCta
+    ? `<div style="margin-top:14px"><a href="../../request.html" style="display:inline-block;background:#2a5c3a;color:#fff;font-size:12.5px;font-weight:700;padding:9px 18px;border-radius:20px;text-decoration:none;">Tell us what you need →</a></div>`
+    : '';
+  return `<div class="empty">${msg}${cta}</div>`;
 }
 
 const LAND_COMMERCIAL_TYPES = new Set([
@@ -806,7 +810,7 @@ fetch('../../listings.csv')
     console.error('Fetch error:', e);
     ['grid-unit','grid-subsale','grid-lelong'].forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.innerHTML = empty('Unable to load listings. Please try again.');
+      if (el) el.innerHTML = empty('Unable to load listings. Please try again.', false);
     });
   });
 
