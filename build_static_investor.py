@@ -77,6 +77,7 @@ def deal_card(r: dict) -> str:
     rental_fully = to_num(r.get("rental_fully")) or 0
     cf_fully = to_num(r.get("cf_fully")) or 0
     yield_fully = to_num(r.get("yield_fully")) or 0
+    equity_10yr = to_num(r.get("equity_10yr")) or 0
     bed = r.get("bed", "")
     bath = r.get("bath", "")
     size = to_num(r.get("size"))
@@ -95,14 +96,10 @@ def deal_card(r: dict) -> str:
 
     return f'''<div class="card" id="{to_slug(project, area, r.get('price'))}">
     <div class="card-body">
-      <div><span class="card-badge badge-strong">\U0001F7E2 Pays For Itself</span><span class="card-badge badge-yield" style="margin-left:6px;">{yield_fully:.1f}% a year</span></div>
+      <div><span class="card-badge badge-strong">\U0001F7E2 +{fmt_price(cf_fully)}/mo</span></div>
       <div><div class="card-name">{esc(project)}</div><div class="card-zone">{esc(zone) + ', ' if zone else ''}{esc(area)}</div></div>
       <div class="card-price">{fmt_price(price)}</div>
-      <div class="cf-strip">
-        <div class="cf-item"><div class="cf-label">Est. Rent/mo</div><div class="cf-value yield">{fmt_price(rental_fully)}</div></div>
-        <div class="cf-item"><div class="cf-label">Extra/mo</div><div class="cf-value">+{fmt_price(cf_fully)}</div></div>
-        <div class="cf-item"><div class="cf-label">Rent vs Price</div><div class="cf-value yield">{yield_fully:.1f}%</div></div>
-      </div>
+      <div class="equity-row"><span class="equity-label">\U0001F4C8 Money in Your Pocket After 10 Yrs</span><span class="equity-amt">{fmt_price(equity_10yr)}</span></div>
       <div class="card-pills">{bed_bath}{size_pill}<span class="pill">{esc(type_)}</span><span class="pill">{esc(tenure)}</span></div>
       <a href="{wa(wa_text)}" class="card-cta" target="_blank" rel="noopener noreferrer">\U0001F4AC Ask Hani for the Full Numbers</a>
     </div>
