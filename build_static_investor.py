@@ -125,6 +125,8 @@ def deal_card(r: dict) -> str:
     cf_fully = to_num(r.get("cf_fully")) or 0
     yield_fully = to_num(r.get("yield_fully")) or 0
     equity_gain_net_10yr = to_num(r.get("equity_gain_net_10yr")) or 0
+    cum_cf_fully_10yr = to_num(r.get("cum_cf_fully_10yr")) or 0
+    nett_with_cf = equity_gain_net_10yr + cum_cf_fully_10yr
     bed = r.get("bed", "")
     bath = r.get("bath", "")
     size = to_num(r.get("size"))
@@ -146,7 +148,10 @@ def deal_card(r: dict) -> str:
       <div><span class="card-badge badge-strong">\U0001F7E2 +{fmt_price(cf_fully)}/mo Cashflow</span></div>
       <div><div class="card-name">{esc(project)}</div><div class="card-zone">{esc(zone) + ', ' if zone else ''}{esc(area)}</div></div>
       <div class="card-price">{fmt_price(price)}</div>
-      <div class="equity-row"><span class="equity-label">\U0001F4C8 Nett Profit After 10 Yrs</span><span class="equity-amt">{fmt_price(equity_gain_net_10yr)}</span></div>
+      <div class="equity-block">
+        <div class="equity-row"><span class="equity-label">\U0001F4C8 Nett Profit After 10 Yrs (with rental income)</span><span class="equity-amt">{fmt_price(nett_with_cf)}</span></div>
+        <div class="equity-sub"><span>Without rental income</span><span>{fmt_price(equity_gain_net_10yr)}</span></div>
+      </div>
       <div class="card-pills">{bed_bath}{size_pill}<span class="pill">{esc(type_)}</span><span class="pill">{esc(tenure)}</span></div>
       <a href="{wa(wa_text)}" class="card-cta" target="_blank" rel="noopener noreferrer">\U0001F4AC Ask Hani for the Full Numbers</a>
     </div>
