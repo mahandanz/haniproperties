@@ -143,7 +143,7 @@ def deal_card(r: dict) -> str:
 
     return f'''<div class="card" id="{to_slug(project, area, r.get('price'))}">
     <div class="card-body">
-      <div><span class="card-badge badge-strong">\U0001F7E2 +{fmt_price(cf_fully)}/mo</span></div>
+      <div><span class="card-badge badge-strong">\U0001F7E2 +{fmt_price(cf_fully)}/mo Cashflow</span></div>
       <div><div class="card-name">{esc(project)}</div><div class="card-zone">{esc(zone) + ', ' if zone else ''}{esc(area)}</div></div>
       <div class="card-price">{fmt_price(price)}</div>
       <div class="equity-row"><span class="equity-label">\U0001F4C8 Nett Profit After 10 Yrs</span><span class="equity-amt">{fmt_price(equity_gain_net_10yr)}</span></div>
