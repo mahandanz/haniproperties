@@ -317,7 +317,7 @@ function dealCard(r) {
       <div><div class="card-name">${r.project}</div><div class="card-zone">${r.zone ? r.zone + ', ' : ''}${r.area}</div></div>
       <div class="card-price">${fmt(r.price)}</div>
       <div class="equity-row"><span class="equity-label">📈 Money in Your Pocket After 10 Yrs</span><span class="equity-amt">${fmt(r.equity10yr)}</span></div>
-      <div class="card-pills">${bedBath}${sizePill}<span class="pill">${r.type}</span><span class="pill">${r.tenure}</span></div>
+      <div class="card-pills"><span class="pill">🏠 Est. Rental ${fmt(r.rentalFully)}/mo</span>${bedBath}${sizePill}<span class="pill">${r.type}</span><span class="pill">${r.tenure}</span></div>
       <a href="${wa(waText)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Ask Hani for the Full Numbers</a>
     </div>
   </div>`;
