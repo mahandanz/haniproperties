@@ -398,10 +398,38 @@ function latestDate() {
   document.getElementById('data-date').textContent = max.toLocaleDateString('en-MY', {day:'numeric', month:'short', year:'numeric'});
 }
 
+// Maps the friendly column headers used in the exported sheet
+// to the internal field names this page works with.
+const COLMAP = {
+  project: 'Project',
+  area: 'Area',
+  zone: 'Zone',
+  type: 'Type',
+  bed: 'Bed',
+  bath: 'Bath',
+  size: 'Size (sqft)',
+  tenure: 'Tenure',
+  price: 'Price (RM)',
+  installment: 'Installment (RM/mo)',
+  rental_fully: 'Rental Fully',
+  cf_fully: 'CF Fully',
+  yield_fully: 'Yield% Fully',
+  equity_10yr: 'Equity 10yr (RM)',
+  cf_rating: 'CF Rating (Best Case)',
+  date_added: 'Date Added'
+};
+
+function mapRow(raw) {
+  const out = {};
+  Object.keys(COLMAP).forEach(key => { out[key] = raw[COLMAP[key]]; });
+  return out;
+}
+
 fetch('investor-listings.csv')
   .then(r => r.text())
   .then(text => {
-    const rows = parseCSV(text).filter(isPositiveCF);
+    const rawRows = parseCSV(text).map(mapRow);
+    const rows = rawRows.filter(isPositiveCF);
     DEALS = rows.map(r => ({
       project: r.project,
       area: r.area,
