@@ -36,6 +36,41 @@ WA_BASE = "https://wa.me/60125459182?text="
 SSR_START = "<!--SSR_START-->"
 SSR_END = "<!--SSR_END-->"
 
+# Maps the friendly column headers used in the exported sheet to the
+# internal field names this script works with. MUST stay in sync with
+# the COLMAP object in investor-corner.html's client-side JS -- if you
+# add/rename a column in one, add/rename it in the other too.
+COLMAP = {
+    "project": "Project",
+    "area": "Area",
+    "zone": "Zone",
+    "type": "Type",
+    "bed": "Bed",
+    "bath": "Bath",
+    "size": "Size (sqft)",
+    "tenure": "Tenure",
+    "price": "Price (RM)",
+    "installment": "Installment (RM/mo)",
+    "rental_fully": "Rental Fully",
+    "cf_fully": "CF Fully",
+    "yield_fully": "Yield% Fully",
+    "equity_10yr": "Equity 10yr (RM)",
+    "cum_cf_unfurnished_10yr": "Cumulative CF Unfurnished 10yr (RM)",
+    "cum_cf_partial_10yr": "Cumulative CF Partial 10yr (RM)",
+    "cum_cf_fully_10yr": "Cumulative CF Fully 10yr (RM)",
+    "selling_cost_10yr": "Selling Cost 10yr (RM)",
+    "equity_gain_net_10yr": "Equity Gain 10yr Net of Selling Cost (RM)",
+    "cf_rating": "CF Rating (Best Case)",
+    "date_added": "Date Added",
+    "code": "Code",
+}
+
+
+def map_row(raw: dict) -> dict:
+    """Translate a raw CSV row (friendly headers) into the snake_case
+    field names the rest of this script expects."""
+    return {key: raw.get(header) for key, header in COLMAP.items()}
+
 
 def wa(text: str) -> str:
     return WA_BASE + urllib.parse.quote(text)
@@ -43,6 +78,18 @@ def wa(text: str) -> str:
 
 def esc(s) -> str:
     return html.escape(str(s or ""), quote=False)
+
+
+def clean_count(v) -> str:
+    """Bed/Bath sometimes arrive as '5.0' (source CSV stores them as a
+    float-typed column). Show a clean integer when the value is whole,
+    otherwise pass the original through unchanged."""
+    if v is None or str(v).strip() == "":
+        return ""
+    n = to_num(v)
+    if n is not None and n == int(n):
+        return str(int(n))
+    return str(v)
 
 
 def to_num(v):
@@ -77,7 +124,7 @@ def deal_card(r: dict) -> str:
     rental_fully = to_num(r.get("rental_fully")) or 0
     cf_fully = to_num(r.get("cf_fully")) or 0
     yield_fully = to_num(r.get("yield_fully")) or 0
-    equity_10yr = to_num(r.get("equity_10yr")) or 0
+    equity_gain_net_10yr = to_num(r.get("equity_gain_net_10yr")) or 0
     bed = r.get("bed", "")
     bath = r.get("bath", "")
     size = to_num(r.get("size"))
@@ -91,7 +138,7 @@ def deal_card(r: dict) -> str:
 
     bed_bath = ""
     if bed or bath:
-        bed_bath = f'<span class="pill">\U0001F6CF {esc(bed) or "-"} bed \u00b7 \U0001F6BF {esc(bath) or "-"} bath</span>'
+        bed_bath = f'<span class="pill">\U0001F6CF {esc(clean_count(bed)) or "-"} bed \u00b7 \U0001F6BF {esc(clean_count(bath)) or "-"} bath</span>'
     size_pill = f'<span class="pill">{int(size):,} sqft</span>' if size else ""
 
     return f'''<div class="card" id="{to_slug(project, area, r.get('price'))}">
@@ -99,7 +146,7 @@ def deal_card(r: dict) -> str:
       <div><span class="card-badge badge-strong">\U0001F7E2 +{fmt_price(cf_fully)}/mo</span></div>
       <div><div class="card-name">{esc(project)}</div><div class="card-zone">{esc(zone) + ', ' if zone else ''}{esc(area)}</div></div>
       <div class="card-price">{fmt_price(price)}</div>
-      <div class="equity-row"><span class="equity-label">\U0001F4C8 Money in Your Pocket After 10 Yrs</span><span class="equity-amt">{fmt_price(equity_10yr)}</span></div>
+      <div class="equity-row"><span class="equity-label">\U0001F4C8 Nett Profit After 10 Yrs</span><span class="equity-amt">{fmt_price(equity_gain_net_10yr)}</span></div>
       <div class="card-pills">{bed_bath}{size_pill}<span class="pill">{esc(type_)}</span><span class="pill">{esc(tenure)}</span></div>
       <a href="{wa(wa_text)}" class="card-cta" target="_blank" rel="noopener noreferrer">\U0001F4AC Ask Hani for the Full Numbers</a>
     </div>
@@ -113,7 +160,7 @@ def empty_html(msg: str) -> str:
 def load_listings():
     with open(LISTINGS_CSV, encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
-        return list(reader)
+        return [map_row(raw) for raw in reader]
 
 
 def inject_grid(html_text: str, grid_id: str, cards_markup: str) -> str:
