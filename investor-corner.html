@@ -103,6 +103,9 @@
     .card-cta:hover{background:var(--navy-deep)}
     .card-cta .gold-arrow{color:var(--gold)}
 
+    .card-source{display:block;text-align:center;font-size:10px;font-weight:600;letter-spacing:.03em;color:#7a7268;text-decoration:none;margin-top:8px;transition:color .15s}
+    .card-source:hover{color:var(--navy)}
+
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed var(--line);grid-column:1/-1}
 
     .cta-band{background:var(--navy);padding:40px 24px;text-align:center;margin-top:48px;border-radius:16px;position:relative;overflow:hidden}
@@ -252,7 +255,7 @@
 
    project,area,zone,type,bed,bath,size,tenure,price,
    rental_fully,cf_fully,yield_fully,equity_10yr,installment,
-   cf_rating,date_added
+   cf_rating,date_added,code
    ============================================================ */
 let DEALS = [];
 
@@ -318,6 +321,7 @@ function dealCard(r) {
       <div class="equity-row"><span class="equity-label">📈 Money in Your Pocket After 10 Yrs</span><span class="equity-amt">${fmt(r.equity10yr)}</span></div>
       <div class="card-pills">${bedBath}${sizePill}<span class="pill">${r.type}</span><span class="pill">${r.tenure}</span></div>
       <a href="${wa(waText)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Ask Hani for the Full Numbers</a>
+      ${r.code ? `<span class="card-source">${r.code}</span>` : ''}
     </div>
   </div>`;
 }
@@ -416,7 +420,8 @@ const COLMAP = {
   yield_fully: 'Yield% Fully',
   equity_10yr: 'Equity 10yr (RM)',
   cf_rating: 'CF Rating (Best Case)',
-  date_added: 'Date Added'
+  date_added: 'Date Added',
+  code: 'Code'
 };
 
 function mapRow(raw) {
@@ -445,7 +450,8 @@ fetch('investor-listings.csv')
       yieldFully: toNum(r.yield_fully),
       equity10yr: toNum(r.equity_10yr),
       installment: toNum(r.installment),
-      dateAdded: r.date_added
+      dateAdded: r.date_added,
+      code: r.code
     })).filter(r => r.project && r.price && r.rentalFully !== null && r.cfFully !== null && r.equity10yr !== null && r.yieldFully !== null);
 
     buildOptions();
