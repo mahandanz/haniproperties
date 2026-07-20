@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hani Properties — Home Loan & Cost Calculator</title>
+<title>Hani Properties — Loan, DSR & Rental Deposit Calculator</title>
 <style>
   :root{
     --navy: #0B2345;
@@ -15,6 +15,11 @@
     --ink: #1A1A1A;
     --muted: #6B7280;
     --good: #1E6B45;
+    --good-soft: #E4F2E9;
+    --warn: #8A6300;
+    --warn-soft: #FBF0D2;
+    --bad: #A33333;
+    --bad-soft: #F6E3E3;
   }
   *{box-sizing:border-box;}
   body{
@@ -49,7 +54,6 @@
     gap:16px;
     flex-wrap:wrap;
   }
-  /* Shown only if calculator.png fails to load */
   .banner.img-missing img{ display:none; }
   .banner.img-missing .banner-fallback{ display:flex; }
 
@@ -67,6 +71,21 @@
   .banner-fallback .tag{font-size:12.5px;color:#C9D3E4;margin-top:2px;}
   .banner-fallback .agent{text-align:right;font-size:12.5px;color:#D8DEEA;}
   .banner-fallback .agent strong{color:#fff;font-size:13.5px;display:block;}
+
+  /* Main tab switcher */
+  .main-tabs{
+    display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;
+  }
+  .main-tabs button{
+    flex:1;min-width:150px;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;
+    background:#fff;color:var(--navy);font-size:13.5px;font-weight:700;cursor:pointer;
+    transition:.15s;text-align:center;
+  }
+  .main-tabs button.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .main-tabs button:hover:not(.active){border-color:var(--gold);}
+
+  .tabpanel{display:none;}
+  .tabpanel.active{display:block;}
 
   /* Layout */
   .grid{
@@ -104,6 +123,8 @@
   }
   .field input[type=range]{width:100%;accent-color:var(--gold);}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+  @media (max-width:480px){ .row3{grid-template-columns:1fr;} }
 
   .bank-rates{display:flex;flex-wrap:wrap;gap:6px;}
   .bank-rates button{
@@ -148,6 +169,13 @@
   .switch input:checked + .slider{background:var(--gold);}
   .switch input:checked + .slider::before{transform:translateX(17px);}
 
+  .link-btn{
+    display:inline-block;font-size:11.5px;font-weight:700;color:var(--navy);
+    background:var(--gold-soft);border:1px solid #E4CE7A;border-radius:20px;
+    padding:5px 12px;cursor:pointer;margin-top:2px;
+  }
+  .link-btn:hover{background:var(--gold);}
+
   /* Results */
   .hero-num{
     background:var(--navy);
@@ -162,6 +190,14 @@
   .hero-num .amt{font-size:32px;font-weight:800;margin-top:4px;color:#fff;}
   .hero-num .sub{font-size:12px;color:#C9D3E4;margin-top:3px;}
 
+  .verdict{
+    display:inline-block;font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:9px;
+    margin-bottom:14px;line-height:1.4;
+  }
+  .verdict.good{background:var(--good-soft);color:var(--good);}
+  .verdict.warn{background:var(--warn-soft);color:var(--warn);}
+  .verdict.bad{background:var(--bad-soft);color:var(--bad);}
+
   .stat-line{
     display:flex;justify-content:space-between;align-items:center;
     padding:9px 0;border-bottom:1px dashed var(--line);font-size:13.5px;
@@ -170,6 +206,7 @@
   .stat-line .k{color:var(--muted);}
   .stat-line .v{font-weight:700;color:var(--ink);}
   .stat-line .v.pos{color:var(--good);}
+  .stat-line .v.neg{color:var(--bad);}
 
   .breakdown-title{
     margin:22px 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--navy);
@@ -215,6 +252,7 @@
     body{background:#fff;}
     .foot-actions{display:none;}
     .card{break-inside:avoid;}
+    .main-tabs{display:none;}
   }
 </style>
 </head>
@@ -222,13 +260,13 @@
 <div class="wrap">
 
   <div class="banner">
-    <img src="calculator.png" alt="Hani Properties — Home Loan & Purchase Cost Calculator" onerror="this.parentElement.classList.add('img-missing')">
+    <img src="calculator.png" alt="Hani Properties — Loan, DSR & Rental Deposit Calculator" onerror="this.parentElement.classList.add('img-missing')">
     <div class="banner-fallback">
       <div class="mark">
         <div class="badge">H</div>
         <div>
           <h1>Hani Properties</h1>
-          <div class="tag">Home Loan & Purchase Cost Calculator · Klang Valley & Selangor</div>
+          <div class="tag">Home Loan, DSR & Rental Deposit Calculator · Klang Valley & Selangor</div>
         </div>
       </div>
       <div class="agent">
@@ -238,6 +276,15 @@
     </div>
   </div>
 
+  <div class="main-tabs" id="mainTabs">
+    <button data-tab="loan" class="active">Bank Loan</button>
+    <button data-tab="dsr">DSR Check</button>
+    <button data-tab="deposit">Rental Deposit</button>
+    <button data-tab="auction">Auction Deposit</button>
+  </div>
+
+  <!-- ============ LOAN TAB ============ -->
+  <div class="tabpanel active" id="panel-loan">
   <div class="grid">
     <!-- INPUTS -->
     <div class="card">
@@ -341,12 +388,293 @@
   </div>
 
   <div class="disclaimer" id="disclaimerText"></div>
+  </div>
+  <!-- ============ /LOAN TAB ============ -->
+
+  <!-- ============ DSR TAB ============ -->
+  <div class="tabpanel" id="panel-dsr">
+  <div class="grid">
+    <!-- INPUTS -->
+    <div class="card">
+      <h2>Net income</h2>
+
+      <div class="row2">
+        <div class="field">
+          <label>Net monthly income (after EPF/SOCSO/tax)</label>
+          <input type="number" id="dsrIncome" value="8000" min="0" step="100">
+        </div>
+        <div class="field">
+          <label>Other net income (rental, side income)</label>
+          <input type="number" id="dsrOtherIncome" value="0" min="0" step="100">
+        </div>
+      </div>
+
+      <h2 style="margin-top:20px;">Existing monthly commitments</h2>
+
+      <div class="row2">
+        <div class="field">
+          <label>Car loan</label>
+          <input type="number" id="dsrCar" value="0" min="0" step="50">
+        </div>
+        <div class="field">
+          <label>Personal loan / PTPTN</label>
+          <input type="number" id="dsrPersonal" value="0" min="0" step="50">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label>Credit card (min. payment)</label>
+          <input type="number" id="dsrCard" value="0" min="0" step="50">
+        </div>
+        <div class="field">
+          <label>Other commitments</label>
+          <input type="number" id="dsrOtherCommit" value="0" min="0" step="50">
+        </div>
+      </div>
+
+      <h2 style="margin-top:20px;">New home loan</h2>
+
+      <div class="field" style="margin-bottom:6px;">
+        <label>Proposed monthly installment (RM)</label>
+        <input type="number" id="dsrProposed" value="3146" min="0" step="50">
+        <button class="link-btn" id="dsrUseLoan" type="button" style="margin-top:8px;">Pull figure from Bank Loan tab</button>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="card">
+      <h2>DSR outcome</h2>
+
+      <div class="hero-num">
+        <div class="label">Debt Service Ratio</div>
+        <div class="amt" id="dsrOut">0.0%</div>
+        <div class="sub">Total monthly commitments ÷ net monthly income</div>
+      </div>
+
+      <div class="verdict good" id="dsrVerdict">Enter your figures to see the outcome.</div>
+
+      <div class="stat-line"><span class="k">Total net income</span><span class="v" id="dsrIncomeOut">RM 0</span></div>
+      <div class="stat-line"><span class="k">Existing commitments</span><span class="v" id="dsrExistingOut">RM 0</span></div>
+      <div class="stat-line"><span class="k">Proposed new installment</span><span class="v" id="dsrProposedOut">RM 0</span></div>
+      <div class="stat-line"><span class="k">Total commitments</span><span class="v" id="dsrTotalOut">RM 0</span></div>
+      <div class="stat-line"><span class="k">Disposable income after loan</span><span class="v" id="dsrDisposableOut">RM 0</span></div>
+
+      <div class="foot-actions">
+        <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">Debt Service Ratio (DSR) is calculated on a net-income basis (income after EPF, SOCSO, and tax deductions), matching how most Malaysian banks stress-test affordability. Most banks work to an internal DSR ceiling of roughly 60–70%, but the exact threshold, and what counts as a "commitment," varies by bank, income type, and credit profile. This is an estimate for discussion purposes only — always confirm actual affordability with the bank or a licensed loan consultant.</div>
+  </div>
+  <!-- ============ /DSR TAB ============ -->
+
+  <!-- ============ DEPOSIT TAB ============ -->
+  <div class="tabpanel" id="panel-deposit">
+  <div class="grid">
+    <!-- INPUTS -->
+    <div class="card">
+      <h2>Tenancy details</h2>
+
+      <div class="field">
+        <label>Monthly rental (RM)</label>
+        <input type="number" id="depRent" value="2000" min="0" step="50">
+      </div>
+
+      <div class="row3">
+        <div class="field">
+          <label>Advance rental <span class="val" id="depAdvVal">1 mth</span></label>
+          <input type="number" id="depAdvMonths" value="1" min="0" step="0.5">
+        </div>
+        <div class="field">
+          <label>Security deposit <span class="val" id="depSecVal">2 mth</span></label>
+          <input type="number" id="depSecMonths" value="2" min="0" step="0.5">
+        </div>
+        <div class="field">
+          <label>Utility deposit <span class="val" id="depUtilVal">0.5 mth</span></label>
+          <input type="number" id="depUtilMonths" value="0.5" min="0" step="0.5">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Tenancy agreement duration</label>
+        <div class="seg" id="depDurationSeg">
+          <button data-v="short" class="active">3 years or less</button>
+          <button data-v="long">More than 3 years</button>
+        </div>
+      </div>
+
+      <div class="field" style="margin-bottom:6px;">
+        <label>Other move-in costs — agent fee, inventory list, admin (RM)</label>
+        <input type="number" id="depOther" value="0" min="0" step="50">
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="card">
+      <h2>Move-in cost</h2>
+
+      <div class="hero-num">
+        <div class="label">Total cash to prepare</div>
+        <div class="amt" id="depTotalOut">RM 7,000</div>
+        <div class="sub" id="depSub">Advance rental + deposits + TA stamp duty</div>
+      </div>
+
+      <div class="breakdown-title">Breakdown</div>
+      <table>
+        <thead><tr><th>Item</th><th style="text-align:right;">Amount</th></tr></thead>
+        <tbody id="depBreakdownBody"></tbody>
+      </table>
+
+      <div class="cash-box">
+        <div class="label">Tenancy agreement (TA) stamp duty</div>
+        <div class="amt" id="depStampOut">RM 0</div>
+        <div class="sub" id="depStampSub">Based on LHDN's tiered rate on annual rental</div>
+      </div>
+
+      <div class="foot-actions">
+        <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">Deposit amounts (typically 2 months security + 0.5 month utility, though this varies by landlord and property type) are negotiated between landlord and tenant, not fixed by law. Tenancy agreement stamp duty is calculated per LHDN's schedule: exempt where annual rental is RM2,400 or below; otherwise RM1 for every RM250 (or part thereof) of annual rental above RM2,400 for agreements of 3 years or less, and RM2 per RM250 for longer agreements. Figures are estimates for discussion purposes only — confirm exact stamping cost via LHDN's STAMPS portal or your appointed lawyer.</div>
+  </div>
+  <!-- ============ /DEPOSIT TAB ============ -->
+
+  <!-- ============ AUCTION TAB ============ -->
+  <div class="tabpanel" id="panel-auction">
+  <div class="grid">
+    <!-- INPUTS -->
+    <div class="card">
+      <h2>Auction bid details</h2>
+
+      <div class="row2">
+        <div class="field">
+          <label>Reserve price (RM)</label>
+          <input type="number" id="aucReserve" value="500000" min="0" step="10000">
+        </div>
+        <div class="field">
+          <label>Winning bid / final price (RM)</label>
+          <input type="number" id="aucBid" value="500000" min="0" step="10000">
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Deposit rate (% of reserve price)</label>
+          <input type="number" id="aucDepositRate" value="10" min="0" step="1">
+        </div>
+        <div class="field">
+          <label>Minimum deposit (RM)</label>
+          <input type="number" id="aucDepositMin" value="5000" min="0" step="500">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Margin of financing <span class="val" id="aucMarginVal">80%</span></label>
+        <div class="seg" id="aucMarginSeg">
+          <button data-v="70">70%</button>
+          <button data-v="80" class="active">80%</button>
+          <button data-v="90">90%</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Balance payment period</label>
+        <div class="seg" id="aucPeriodSeg">
+          <button data-v="90" class="active">90 days (standard)</button>
+          <button data-v="120">120 days (+30-day extension)</button>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Extension interest rate (% p.a.)</label>
+          <input type="number" id="aucExtRate" value="8" min="0" step="0.5">
+        </div>
+        <div class="field">
+          <label>Auction date (optional)</label>
+          <input type="date" id="aucDate">
+        </div>
+      </div>
+
+      <h2 style="margin-top:20px;">Buyer profile</h2>
+
+      <div class="field">
+        <label>Buyer status</label>
+        <div class="seg" id="aucStatusSeg">
+          <button data-v="citizen" class="active">Malaysian</button>
+          <button data-v="pr">PR</button>
+          <button data-v="foreign">Foreigner</button>
+        </div>
+      </div>
+
+      <div class="toggle-row">
+        <span>First-time home buyer (never owned residential property)</span>
+        <label class="switch"><input type="checkbox" id="aucFirstTime" checked><span class="slider"></span></label>
+      </div>
+
+      <div class="field" style="margin-bottom:6px;">
+        <label>Other costs — valuation, disbursements, etc. (RM)</label>
+        <input type="number" id="aucOther" value="0" min="0" step="50">
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="card">
+      <h2>Cash & timeline</h2>
+
+      <div class="hero-num">
+        <div class="label">Deposit due at fall of hammer</div>
+        <div class="amt" id="aucDepositOut">RM 50,000</div>
+        <div class="sub" id="aucDueSub">Balance payable within 90 days of the auction</div>
+      </div>
+
+      <div class="stat-line"><span class="k">Winning bid</span><span class="v" id="aucBidOut">RM 500,000</span></div>
+      <div class="stat-line"><span class="k">Bank loan (financing)</span><span class="v" id="aucLoanOut">RM 400,000</span></div>
+      <div class="stat-line"><span class="k">Balance payable to seller/bank</span><span class="v" id="aucBalanceOut">RM 450,000</span></div>
+      <div class="stat-line"><span class="k">Cash top-up needed at settlement</span><span class="v" id="aucTopUpOut">RM 0</span></div>
+
+      <div class="breakdown-title">Total cash breakdown</div>
+      <table>
+        <thead><tr><th>Item</th><th style="text-align:right;">Amount</th></tr></thead>
+        <tbody id="aucBreakdownBody"></tbody>
+      </table>
+
+      <div class="cash-box">
+        <div class="label">Total cash to prepare</div>
+        <div class="amt" id="aucTotalOut">RM 88,500</div>
+        <div class="sub">Deposit + cash top-up + stamp duty + legal fees + other costs</div>
+      </div>
+
+      <div class="foot-actions">
+        <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">Deposit is typically 10% of the reserve price (or a stated minimum, whichever is higher) and is payable immediately upon being declared the successful bidder — the exact rate and minimum vary by auctioneer/bank, so always confirm against the actual Proclamation of Sale. The balance purchase price is usually due within 90 days of the auction, extendable by a further period (commonly 30 days) subject to interest on the outstanding balance — extension terms and rates vary by bank and are set out in the Conditions of Sale. MOT stamp duty and legal fees follow the same statutory schedules as a normal purchase; the Budget 2026 first-time buyer exemption is applied where selected but auction-property eligibility should be verified with your lawyer. Margin of financing for auctioned properties is often capped lower and subject to bank valuation, which may differ from the winning bid. Figures are estimates for discussion purposes only.</div>
+  </div>
+  <!-- ============ /AUCTION TAB ============ -->
+
 </div>
 
 <script>
 const $ = id => document.getElementById(id);
 const fmt = n => 'RM ' + Math.round(n).toLocaleString('en-MY');
 
+/* ---------- Tab switching ---------- */
+document.querySelectorAll('#mainTabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#mainTabs button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tabpanel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    $('panel-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ================= LOAN CALCULATOR ================= */
 let state = {
   price: 700000,
   margin: 90,
@@ -356,6 +684,7 @@ let state = {
   firstTime: true,
   otherCosts: 0
 };
+let lastLoanMonthly = 0;
 
 function motStampDuty(price, foreignFlat){
   if(foreignFlat){ return price * 0.08; }
@@ -389,12 +718,12 @@ function calc(){
   const loan = price * margin / 100;
   const down = price - loan;
 
-  // Monthly installment (amortization)
   const r = (rate/100)/12;
   const n = tenure*12;
   const monthly = r === 0 ? loan/n : loan * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1);
   const totalRepay = monthly * n;
   const totalInterest = totalRepay - loan;
+  lastLoanMonthly = monthly;
 
   $('monthlyOut').textContent = fmt(monthly);
   $('loanSub').textContent = `Loan amount ${fmt(loan)} · ${tenure} years · ${rate.toFixed(2)}% p.a.`;
@@ -402,7 +731,6 @@ function calc(){
   $('interestOut').textContent = fmt(totalInterest);
   $('totalRepayOut').textContent = fmt(totalRepay);
 
-  // Stamp duty
   const isForeign = status === 'foreign';
   let motDuty = motStampDuty(price, isForeign);
   let loanDuty = loan * 0.005;
@@ -416,7 +744,6 @@ function calc(){
     loanExempted = loanDuty; loanDuty = 0;
     exemptNote = 'exempt';
   } else if(eligibleExemption && price <= 1000000){
-    // partial exemption on first RM500,000 portion — flagged as estimate, verify with lawyer
     const dutyOn500k = motStampDuty(500000, false);
     motExempted = dutyOn500k;
     motDuty = motDuty - dutyOn500k;
@@ -428,7 +755,6 @@ function calc(){
   const totalUpfront = motDuty + loanDuty + legalFee + other;
   const totalCash = down + totalUpfront;
 
-  // Breakdown table
   let rows = '';
   rows += `<tr><td>MOT stamp duty (transfer)${exemptNote==='exempt' ? '<span class="tag-exempt">Exempted</span>' : exemptNote==='partial' ? '<span class="tag-exempt">Partial exemption</span>' : ''}</td><td style="text-align:right;">${fmt(motDuty)}</td></tr>`;
   rows += `<tr><td>Loan agreement stamp duty (0.5%)${eligibleExemption && price<=500000 ? '<span class="tag-exempt">Exempted</span>' : ''}</td><td style="text-align:right;">${fmt(loanDuty)}</td></tr>`;
@@ -441,13 +767,17 @@ function calc(){
 
   $('cashOut').textContent = fmt(totalCash);
 
-  // Disclaimer
   let statusLabel = status === 'citizen' ? 'Malaysian citizen' : status === 'pr' ? 'Permanent Resident' : 'Foreign buyer';
   $('disclaimerText').innerHTML =
     `Figures are estimates for discussion purposes only, based on the Stamp Act 1949 tiered MOT schedule (1%/2%/3%/4%), a flat 8% MOT rate for non-PR foreign buyers under the Finance Act 2025 (effective 1 Jan 2026), 0.5% loan agreement stamp duty, and the standard SPA legal fee scale. The Budget 2026 first-time buyer exemption (100% on properties ≤ RM500,000, extended to 31 Dec 2027) is applied where selected; the partial-exemption treatment shown for the RM500,001–RM1,000,000 band is an estimate — confirm exact eligibility and amount with your conveyancing lawyer or LHDN. MRTA/MLTA insurance, valuation fees beyond your input, and bank processing fees are not included. Buyer status selected: ${statusLabel}${firstTime ? ', first-time buyer' : ''}.`;
+
+  // keep DSR tab's "proposed installment" fresh if it hasn't been hand-edited
+  if(!dsrProposedTouched){
+    $('dsrProposed').value = Math.round(monthly);
+    calcDSR();
+  }
 }
 
-// Wire up controls
 $('price').addEventListener('input', e => {
   state.price = +e.target.value;
   $('priceInput').value = e.target.value;
@@ -456,7 +786,6 @@ $('price').addEventListener('input', e => {
 $('priceInput').addEventListener('input', e => {
   let v = +e.target.value || 0;
   state.price = v;
-  // keep the slider in sync, clamped to its own min/max
   const sliderMin = +$('price').min, sliderMax = +$('price').max;
   $('price').value = Math.min(Math.max(v, sliderMin), sliderMax);
   calc();
@@ -519,7 +848,224 @@ document.querySelectorAll('#bankRates button').forEach(btn => {
   });
 });
 
+/* ================= DSR CALCULATOR ================= */
+let dsrProposedTouched = false;
+
+function calcDSR(){
+  const income = (+$('dsrIncome').value||0) + (+$('dsrOtherIncome').value||0);
+  const car = +$('dsrCar').value||0;
+  const personal = +$('dsrPersonal').value||0;
+  const card = +$('dsrCard').value||0;
+  const otherCommit = +$('dsrOtherCommit').value||0;
+  const proposed = +$('dsrProposed').value||0;
+
+  const existingTotal = car + personal + card + otherCommit;
+  const totalCommitments = existingTotal + proposed;
+  const dsr = income > 0 ? (totalCommitments / income * 100) : 0;
+  const disposable = income - totalCommitments;
+
+  $('dsrOut').textContent = income > 0 ? dsr.toFixed(1) + '%' : '—';
+  $('dsrIncomeOut').textContent = fmt(income);
+  $('dsrExistingOut').textContent = fmt(existingTotal);
+  $('dsrProposedOut').textContent = fmt(proposed);
+  $('dsrTotalOut').textContent = fmt(totalCommitments);
+  $('dsrDisposableOut').textContent = fmt(disposable);
+  $('dsrDisposableOut').className = 'v ' + (disposable >= 0 ? 'pos' : 'neg');
+
+  const verdictEl = $('dsrVerdict');
+  if(income <= 0){
+    verdictEl.className = 'verdict warn';
+    verdictEl.textContent = 'Enter net income to calculate DSR.';
+  } else if(dsr <= 60){
+    verdictEl.className = 'verdict good';
+    verdictEl.textContent = 'Comfortable — typically within most banks\u2019 DSR threshold (~60\u201370%).';
+  } else if(dsr <= 70){
+    verdictEl.className = 'verdict warn';
+    verdictEl.textContent = 'Borderline — approval likely depends on the bank and credit profile.';
+  } else {
+    verdictEl.className = 'verdict bad';
+    verdictEl.textContent = 'High DSR — likely to face difficulty. Consider a longer tenure, smaller loan, or paying down commitments first.';
+  }
+}
+
+['dsrIncome','dsrOtherIncome','dsrCar','dsrPersonal','dsrCard','dsrOtherCommit'].forEach(id => {
+  $(id).addEventListener('input', calcDSR);
+});
+$('dsrProposed').addEventListener('input', () => { dsrProposedTouched = true; calcDSR(); });
+$('dsrUseLoan').addEventListener('click', () => {
+  $('dsrProposed').value = Math.round(lastLoanMonthly);
+  dsrProposedTouched = false;
+  calcDSR();
+});
+
+/* ================= RENTAL DEPOSIT CALCULATOR ================= */
+let depDuration = 'short';
+
+function calcDeposit(){
+  const rent = +$('depRent').value||0;
+  const advMonths = +$('depAdvMonths').value||0;
+  const secMonths = +$('depSecMonths').value||0;
+  const utilMonths = +$('depUtilMonths').value||0;
+  const other = +$('depOther').value||0;
+
+  $('depAdvVal').textContent = advMonths + ' mth';
+  $('depSecVal').textContent = secMonths + ' mth';
+  $('depUtilVal').textContent = utilMonths + ' mth';
+
+  const advance = rent * advMonths;
+  const security = rent * secMonths;
+  const utility = rent * utilMonths;
+
+  const annualRent = rent * 12;
+  let stampDuty = 0;
+  if(annualRent > 2400){
+    const excess = annualRent - 2400;
+    const units = Math.ceil(excess / 250);
+    stampDuty = units * (depDuration === 'long' ? 2 : 1);
+  }
+
+  const total = advance + security + utility + stampDuty + other;
+
+  let rows = '';
+  rows += `<tr><td>Advance rental (${advMonths} mth)</td><td style="text-align:right;">${fmt(advance)}</td></tr>`;
+  rows += `<tr><td>Security deposit (${secMonths} mth)</td><td style="text-align:right;">${fmt(security)}</td></tr>`;
+  rows += `<tr><td>Utility deposit (${utilMonths} mth)</td><td style="text-align:right;">${fmt(utility)}</td></tr>`;
+  rows += `<tr><td>TA stamp duty${annualRent<=2400 ? '<span class="tag-exempt">Exempted</span>' : ''}</td><td style="text-align:right;">${fmt(stampDuty)}</td></tr>`;
+  if(other > 0){
+    rows += `<tr><td>Other move-in costs</td><td style="text-align:right;">${fmt(other)}</td></tr>`;
+  }
+  rows += `<tr class="total"><td>Total cash to prepare</td><td style="text-align:right;">${fmt(total)}</td></tr>`;
+  $('depBreakdownBody').innerHTML = rows;
+
+  $('depTotalOut').textContent = fmt(total);
+  $('depStampOut').textContent = fmt(stampDuty);
+  $('depStampSub').textContent = annualRent <= 2400
+    ? 'Exempt — annual rental is RM2,400 or below'
+    : `Based on annual rental of ${fmt(annualRent)}, ${depDuration === 'long' ? '>3 year' : '\u22643 year'} tenancy`;
+}
+
+['depRent','depAdvMonths','depSecMonths','depUtilMonths','depOther'].forEach(id => {
+  $(id).addEventListener('input', calcDeposit);
+});
+document.querySelectorAll('#depDurationSeg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#depDurationSeg button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    depDuration = btn.dataset.v;
+    calcDeposit();
+  });
+});
+
+/* ================= AUCTION DEPOSIT CALCULATOR ================= */
+let aucState = { margin: 80, period: 90, status: 'citizen' };
+
+function calcAuction(){
+  const reserve = +$('aucReserve').value||0;
+  const bid = +$('aucBid').value||0;
+  const depositRate = +$('aucDepositRate').value||0;
+  const depositMin = +$('aucDepositMin').value||0;
+  const extRate = +$('aucExtRate').value||0;
+  const aucDate = $('aucDate').value;
+  const firstTime = $('aucFirstTime').checked;
+  const other = +$('aucOther').value||0;
+  const { margin, period, status } = aucState;
+
+  const deposit = Math.max(reserve * depositRate/100, depositMin);
+  const loanAmount = bid * margin/100;
+  const balance = Math.max(0, bid - deposit);
+  const cashTopUp = Math.max(0, balance - loanAmount);
+
+  let extensionInterest = 0;
+  if(period === 120){
+    extensionInterest = balance * (extRate/100) * (30/365);
+  }
+
+  const isForeign = status === 'foreign';
+  let motDuty = motStampDuty(bid, isForeign);
+  let loanDuty = loanAmount * 0.005;
+  const eligibleExemption = firstTime && status !== 'foreign';
+  let exemptNote = '';
+  if(eligibleExemption && bid <= 500000){
+    motDuty = 0; loanDuty = 0; exemptNote = 'exempt';
+  } else if(eligibleExemption && bid <= 1000000){
+    const dutyOn500k = motStampDuty(500000, false);
+    motDuty = motDuty - dutyOn500k;
+    exemptNote = 'partial';
+  }
+  const legalFee = legalFeeSPA(bid);
+
+  const totalCash = deposit + cashTopUp + extensionInterest + motDuty + loanDuty + legalFee + other;
+
+  $('aucDepositOut').textContent = fmt(deposit);
+  $('aucBidOut').textContent = fmt(bid);
+  $('aucLoanOut').textContent = fmt(loanAmount);
+  $('aucBalanceOut').textContent = fmt(balance);
+  $('aucTopUpOut').textContent = fmt(cashTopUp);
+  $('aucTotalOut').textContent = fmt(totalCash);
+
+  let dueSub = period === 120 ? 'Balance payable within 120 days (90 + 30-day extension)' : 'Balance payable within 90 days of the auction';
+  if(aucDate){
+    const d = new Date(aucDate + 'T00:00:00');
+    if(!isNaN(d)){
+      d.setDate(d.getDate() + period);
+      const dateStr = d.toLocaleDateString('en-MY', {day:'numeric', month:'short', year:'numeric'});
+      dueSub = 'Balance payable by ' + dateStr;
+    }
+  }
+  $('aucDueSub').textContent = dueSub;
+
+  let rows = '';
+  rows += `<tr><td>Deposit at fall of hammer</td><td style="text-align:right;">${fmt(deposit)}</td></tr>`;
+  rows += `<tr><td>Cash top-up at balance settlement</td><td style="text-align:right;">${fmt(cashTopUp)}</td></tr>`;
+  if(period === 120){
+    rows += `<tr><td>Extension interest (30 days @ ${extRate.toFixed(2)}% p.a.)</td><td style="text-align:right;">${fmt(extensionInterest)}</td></tr>`;
+  }
+  rows += `<tr><td>MOT stamp duty (transfer)${exemptNote==='exempt' ? '<span class="tag-exempt">Exempted</span>' : exemptNote==='partial' ? '<span class="tag-exempt">Partial exemption</span>' : ''}</td><td style="text-align:right;">${fmt(motDuty)}</td></tr>`;
+  rows += `<tr><td>Loan agreement stamp duty (0.5%)${eligibleExemption && bid<=500000 ? '<span class="tag-exempt">Exempted</span>' : ''}</td><td style="text-align:right;">${fmt(loanDuty)}</td></tr>`;
+  rows += `<tr><td>Legal fees — transfer / SPA equivalent</td><td style="text-align:right;">${fmt(legalFee)}</td></tr>`;
+  if(other > 0){
+    rows += `<tr><td>Other costs</td><td style="text-align:right;">${fmt(other)}</td></tr>`;
+  }
+  rows += `<tr class="total"><td>Total cash to prepare</td><td style="text-align:right;">${fmt(totalCash)}</td></tr>`;
+  $('aucBreakdownBody').innerHTML = rows;
+}
+
+['aucReserve','aucBid','aucDepositRate','aucDepositMin','aucExtRate','aucDate','aucOther'].forEach(id => {
+  $(id).addEventListener('input', calcAuction);
+});
+$('aucFirstTime').addEventListener('change', calcAuction);
+
+document.querySelectorAll('#aucMarginSeg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#aucMarginSeg button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    aucState.margin = +btn.dataset.v;
+    $('aucMarginVal').textContent = btn.dataset.v + '%';
+    calcAuction();
+  });
+});
+document.querySelectorAll('#aucPeriodSeg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#aucPeriodSeg button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    aucState.period = +btn.dataset.v;
+    calcAuction();
+  });
+});
+document.querySelectorAll('#aucStatusSeg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#aucStatusSeg button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    aucState.status = btn.dataset.v;
+    calcAuction();
+  });
+});
+
+/* ---------- Init ---------- */
 calc();
+calcDSR();
+calcDeposit();
+calcAuction();
 </script>
 </body>
 </html>
