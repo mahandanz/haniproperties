@@ -505,7 +505,7 @@
       </div>
 
       <div class="field" style="margin-bottom:6px;">
-        <label>Other move-in costs — agent fee, inventory list, admin (RM)</label>
+        <label>Other move-in costs — inventory list, admin (RM)</label>
         <input type="number" id="depOther" value="0" min="0" step="50">
       </div>
     </div>
@@ -517,7 +517,7 @@
       <div class="hero-num">
         <div class="label">Total cash to prepare</div>
         <div class="amt" id="depTotalOut">RM 7,000</div>
-        <div class="sub" id="depSub">Advance rental + deposits + TA stamp duty</div>
+        <div class="sub" id="depSub">Advance rental + deposits + TA stamp duty + TA (Agency) fee</div>
       </div>
 
       <div class="breakdown-title">Breakdown</div>
@@ -915,6 +915,7 @@ function calcDeposit(){
   const advance = rent * advMonths;
   const security = rent * secMonths;
   const utility = rent * utilMonths;
+  const taLegalFee = rent * 0.25;
 
   const annualRent = rent * 12;
   let stampDuty = 0;
@@ -924,13 +925,14 @@ function calcDeposit(){
     stampDuty = units * (depDuration === 'long' ? 2 : 1);
   }
 
-  const total = advance + security + utility + stampDuty + other;
+  const total = advance + security + utility + stampDuty + taLegalFee + other;
 
   let rows = '';
   rows += `<tr><td>Advance rental (${advMonths} mth)</td><td style="text-align:right;">${fmt(advance)}</td></tr>`;
   rows += `<tr><td>Security deposit (${secMonths} mth)</td><td style="text-align:right;">${fmt(security)}</td></tr>`;
   rows += `<tr><td>Utility deposit (${utilMonths} mth)</td><td style="text-align:right;">${fmt(utility)}</td></tr>`;
   rows += `<tr><td>TA stamp duty${annualRent<=2400 ? '<span class="tag-exempt">Exempted</span>' : ''}</td><td style="text-align:right;">${fmt(stampDuty)}</td></tr>`;
+  rows += `<tr><td>TA (Agency drafted. Price is negotiable)</td><td style="text-align:right;">${fmt(taLegalFee)}</td></tr>`;
   if(other > 0){
     rows += `<tr><td>Other move-in costs</td><td style="text-align:right;">${fmt(other)}</td></tr>`;
   }
