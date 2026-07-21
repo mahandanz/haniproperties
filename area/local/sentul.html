@@ -93,6 +93,8 @@
 
     .card-pills{display:flex;flex-wrap:wrap;gap:6px}
     .pill{font-size:11px;font-weight:600;color:#444;background:#f0ede8;padding:4px 10px;border-radius:20px;white-space:nowrap}
+    .card-price-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+    .pill-mv{background:#fdeaea;color:#a3271f}
 
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
     .card-cta{display:block;text-align:center;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
@@ -892,12 +894,14 @@ function lelongCard(r) {
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
   const lelongDate = (r.lelong_date || '').trim();
   const auctionPill = (lelongDate && lelongDate !== '-') ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>` : '';
+  const estMv = parseFloat(String(r['estimated mv']).replace(/,/g,''));
+  const estMvPill = (!isNaN(estMv) && estMv > 0) ? `<span class="pill pill-mv">Est. MV ${fmt(estMv)}</span>` : '';
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
       <div><span class="card-badge badge-lelong">Auction</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
-      <div class="card-price">${fmt(r.price)}</div>
+      <div class="card-price-row"><div class="card-price">${fmt(r['lelong price'])}</div>${estMvPill}</div>
       <div class="card-pills">${pills}</div>
       ${auctionPill}
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
