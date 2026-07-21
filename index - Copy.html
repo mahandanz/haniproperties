@@ -139,7 +139,28 @@ nav{
   height:auto;
   display:block;
 }
-.hero-btn-wrap{display:none}
+.hero-overlay{
+  position:absolute;left:0;right:0;bottom:0;top:0;
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
+  padding:0 6% 6%;
+  background:linear-gradient(0deg, rgba(17,17,17,.72) 0%, rgba(17,17,17,.32) 45%, rgba(17,17,17,0) 75%);
+}
+.hero-overlay h1{
+  font-family:'Lora',serif;font-weight:700;color:#fff;
+  font-size:clamp(1.4rem,4vw,2.6rem);line-height:1.2;
+  max-width:640px;margin-bottom:10px;
+  text-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+.hero-overlay p{
+  color:rgba(255,255,255,.92);font-size:clamp(.85rem,1.6vw,1.05rem);
+  max-width:520px;margin-bottom:20px;line-height:1.5;
+  text-shadow:0 1px 8px rgba(0,0,0,.3);
+}
+.hero-btn-wrap{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:600px){
+  .hero-overlay{padding:0 5% 8%}
+  .hero-overlay p{display:none}
+}
 
 /* INFO STRIP */
 .info-strip{
@@ -287,7 +308,14 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <!-- HERO -->
 <section class="hero">
   <img class="hero-img" src="banner.png" alt="Hani Properties — Find Your Next Home With Confidence" width="1584" height="550">
-  <div class="hero-btn-wrap"></div>
+  <div class="hero-overlay">
+    <h1>Find Your Next Home or Investment in Klang Valley</h1>
+    <p>Rental, subsale and new project listings across Selangor &amp; KL — reply within 1 hour on WhatsApp.</p>
+    <div class="hero-btn-wrap">
+      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27d%20like%20to%20find%20a%20property." class="hero-cta" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+      <a href="request.html" class="hero-cta" style="background:transparent;border:1.5px solid #fff;box-shadow:none">Get New Listing Alerts</a>
+    </div>
+  </div>
 </section>
 
 <!-- INFO STRIP -->
