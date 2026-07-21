@@ -156,7 +156,6 @@ nav{
   max-width:520px;margin-bottom:20px;line-height:1.5;
   text-shadow:0 1px 8px rgba(0,0,0,.3);
 }
-.hero-btn-wrap{display:flex;gap:12px;flex-wrap:wrap}
 @media(max-width:600px){
   .hero-overlay{padding:0 5% 8%}
   .hero-overlay p{display:none}
@@ -218,6 +217,18 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   .info-strip{padding:12px 16px;flex-direction:column;align-items:center;gap:10px;text-align:center}
   .info-strip-left,.info-strip-right{font-size:13px}
 }
+
+.alerts-strip{
+  display:flex;justify-content:center;padding:10px 16px 16px;background:#fff;
+}
+.alerts-strip a{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:#2a5c3a;text-decoration:none;
+  border:1.5px solid #2a5c3a;border-radius:30px;padding:8px 20px;
+  transition:background .18s, color .18s;
+}
+.alerts-strip a:hover{background:#2a5c3a;color:#fff}
 
 /* ABOUT / SEO SECTION */
 .about-section{background:#faf9f6;border-top:1px solid #e3ddd0;padding:56px 24px 64px}
@@ -311,10 +322,6 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   <div class="hero-overlay">
     <h1>Find Your Next Home or Investment in Klang Valley</h1>
     <p>Rental, subsale and new project listings across Selangor &amp; KL — reply within 1 hour on WhatsApp.</p>
-    <div class="hero-btn-wrap">
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27d%20like%20to%20find%20a%20property." class="hero-cta" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-      <a href="request.html" class="hero-cta" style="background:transparent;border:1.5px solid #fff;box-shadow:none">Get New Listing Alerts</a>
-    </div>
   </div>
 </section>
 
@@ -325,6 +332,11 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <a href="projects/projects.html" class="offer-pill">🏗️ Projects</a>
   </div>
   <div class="info-strip-left">HANI &nbsp;|&nbsp; REN 84031 &nbsp;|&nbsp; 012-545 9182</div>
+</div>
+
+<!-- GET NEW LISTING ALERTS -->
+<div class="alerts-strip">
+  <a href="request.html">🔔 Get New Listing Alerts</a>
 </div>
 
 <!-- SEO CONTENT SECTION -->
