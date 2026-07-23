@@ -295,6 +295,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 .hero-tab-btn.active{background:#fff;color:#1B4D35;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 
 .hero-search-wrap{max-width:560px;margin:0 auto 14px;display:flex;gap:8px}
+.hero-search-label{display:block;max-width:560px;margin:0 auto 8px;font-size:12px;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.65);text-align:left}
 .hero-search-input{
   flex:1;padding:13px 18px;border:none;border-radius:10px;
   font-family:'DM Sans',sans-serif;font-size:15px;color:#1c1c18;
@@ -363,8 +364,9 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <button type="button" class="hero-tab-btn" onclick="switchHeroTab('tanah',this)">Land / Commercial</button>
   </div>
 
+  <div class="hero-search-label">🔎 Search by area or project name</div>
   <div class="hero-search-wrap">
-    <input type="search" id="hero-q" class="hero-search-input" placeholder="Search by area or project name — e.g. &quot;Shah Alam&quot; or &quot;Verdi Eco-Dominiums&quot;" autocomplete="off">
+    <input type="search" id="hero-q" class="hero-search-input" placeholder="e.g. &quot;Shah Alam&quot; or &quot;Verdi Eco-Dominiums&quot;" autocomplete="off">
   </div>
 
   <div class="hero-filter-bar" id="hero-filter-bar">
