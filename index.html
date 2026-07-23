@@ -250,12 +250,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 .area-section .area-sub{font-size:.9rem;color:#7a7268;margin-bottom:28px}
 .area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
 .area-card{
-  display:block;background:#faf9f6;border:1px solid #e3ddd0;border-radius:12px;
-  overflow:hidden;text-decoration:none;transition:border-color .18s, transform .15s, background .18s;
+  display:flex;align-items:center;gap:12px;
+  background:#faf9f6;border:1px solid #e3ddd0;border-radius:12px;
+  padding:10px;text-decoration:none;transition:border-color .18s, transform .15s, background .18s;
 }
 .area-card:hover{border-color:#2a5c3a;background:#fff;transform:translateY(-2px)}
-.area-card-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.area-card-body{padding:14px 16px 16px}
+.area-card-img{width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0}
+.area-card-body{min-width:0}
 .area-card-name{font-size:.92rem;font-weight:700;color:#1c1c18;margin-bottom:4px}
 .area-card-tag{font-size:.78rem;color:#7a7268}
 .area-more{margin-top:20px;text-align:center}
@@ -449,70 +450,70 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <p class="area-sub">Rentals, subsales and new projects across the Klang Valley and Negeri Sembilan.</p>
     <div class="area-grid">
       <a class="area-card" href="area/local/shah-alam.html">
-        <img class="area-card-img" src="/images/areas/shah-alam.png" alt="Shah Alam" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/shah-alam.png" alt="Shah Alam" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Shah Alam</div>
           <div class="area-card-tag">UiTM, Blue Mosque, PKNS</div>
         </div>
       </a>
       <a class="area-card" href="area/local/petaling-jaya.html">
-        <img class="area-card-img" src="/images/areas/petaling-jaya.png" alt="Petaling Jaya / Damansara" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/petaling-jaya.png" alt="Petaling Jaya / Damansara" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Petaling Jaya / Damansara</div>
           <div class="area-card-tag">1 Utama, IKEA Damansara, The Curve</div>
         </div>
       </a>
       <a class="area-card" href="area/local/puchong.html">
-        <img class="area-card-img" src="/images/areas/puchong.png" alt="Puchong" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/puchong.png" alt="Puchong" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Puchong</div>
           <div class="area-card-tag">IOI Mall, Setiawalk, PFCC</div>
         </div>
       </a>
       <a class="area-card" href="area/local/subang-jaya.html">
-        <img class="area-card-img" src="/images/areas/subang-jaya.png" alt="Subang Jaya" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/subang-jaya.png" alt="Subang Jaya" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Subang Jaya</div>
           <div class="area-card-tag">Sunway Pyramid, Empire, SS15</div>
         </div>
       </a>
       <a class="area-card" href="area/local/bukit-jalil.html">
-        <img class="area-card-img" src="/images/areas/bukit-jalil.png" alt="Bukit Jalil" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/bukit-jalil.png" alt="Bukit Jalil" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Bukit Jalil</div>
           <div class="area-card-tag">Pavilion, National Stadium, LRT</div>
         </div>
       </a>
       <a class="area-card" href="area/local/cheras.html">
-        <img class="area-card-img" src="/images/areas/cheras.png" alt="Cheras" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/cheras.png" alt="Cheras" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Cheras</div>
           <div class="area-card-tag">Sunway Velocity, IKEA, Taman Connaught</div>
         </div>
       </a>
       <a class="area-card" href="area/local/ampang.html">
-        <img class="area-card-img" src="/images/areas/ampang.png" alt="Ampang" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/ampang.png" alt="Ampang" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Ampang</div>
           <div class="area-card-tag">Jalan Ampang, AKLEH, KL Golden Triangle</div>
         </div>
       </a>
       <a class="area-card" href="area/local/klang.html">
-        <img class="area-card-img" src="/images/areas/klang.png" alt="Klang" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/klang.png" alt="Klang" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Klang</div>
           <div class="area-card-tag">Bandar Botanic, AEON Bukit Tinggi</div>
         </div>
       </a>
       <a class="area-card" href="area/local/kepong.html">
-        <img class="area-card-img" src="/images/areas/kepong.png" alt="Kepong" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/kepong.png" alt="Kepong" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Kepong</div>
           <div class="area-card-tag">Desa ParkCity, KTM Kepong</div>
         </div>
       </a>
       <a class="area-card" href="area/local/kuala-lumpur.html">
-        <img class="area-card-img" src="/images/areas/kuala-lumpur.png" alt="Kuala Lumpur" loading="lazy" width="800" height="600">
+        <img class="area-card-img" src="/images/areas/kuala-lumpur.png" alt="Kuala Lumpur" loading="lazy" width="112" height="112">
         <div class="area-card-body">
           <div class="area-card-name">Kuala Lumpur</div>
           <div class="area-card-tag">KLCC, Bukit Bintang, Mid Valley</div>
