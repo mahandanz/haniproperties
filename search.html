@@ -105,6 +105,8 @@
     .card-area-link:hover{text-decoration:underline}
     .card-price{font-size:20px;font-weight:900;color:#2a5c3a}
     .card-price span{font-size:12px;font-weight:500;color:#7a7268}
+    .card-price-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+    .pill-mv{background:#fdeaea;color:#a3271f}
     .card-pills{display:flex;flex-wrap:wrap;gap:6px}
     .pill{font-size:11px;font-weight:600;color:#444;background:#f0ede8;padding:4px 10px;border-radius:20px;white-space:nowrap}
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
@@ -210,7 +212,6 @@
         <option value="">All</option>
         <option value="rental">For Rent</option>
         <option value="subsale">For Sale</option>
-        <option value="room">Room</option>
         <option value="lelong">Lelong</option>
       </select>
     </div>
@@ -523,8 +524,9 @@ function renderCard(r) {
     ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>`
     : '';
 
-  const instalment = (r.listing_type === 'subsale' || r.listing_type === 'lelong') && r.installment
-    ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>`
+  const estMv = parseFloat(String(r['estimated mv'] || '').replace(/,/g,''));
+  const estMvPill = (r.listing_type === 'lelong' && !isNaN(estMv) && estMv > 0)
+    ? `<span class="pill pill-mv">Est. MV ${fmt(estMv)}</span>`
     : '';
 
   const waText = r.wa_text || `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`;
@@ -538,8 +540,7 @@ function renderCard(r) {
         <div class="card-zone">${r.zone}</div>
         <a href="${areaHref}" class="card-area-link">📍 ${r.area}</a>
       </div>
-      <div class="card-price">${priceLabel}</div>
-      ${instalment}
+      <div class="card-price-row"><div class="card-price">${priceLabel}</div>${estMvPill}</div>
       <div class="card-pills">${pills}</div>
       ${auctionPill}
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
