@@ -358,7 +358,7 @@ function searchListings(query) {
   const tokens = query.toLowerCase().split(/\s+/);
   return allListings.filter(r => {
     const haystack = [r.listing_type, r.area, r.zone, r.project_name,
-      r.type, r.furnishing, r.price, r.bed, r.size, r.anchors].join(' ').toLowerCase();
+      r.type, r.furnishing, getPrice(r), r.bed, r.size, r.anchors].join(' ').toLowerCase();
     return tokens.every(t => haystack.includes(t));
   });
 }
@@ -383,7 +383,7 @@ function applyFilters() {
       return bed === '4' ? b >= 4 : b === parseInt(bed);
     });
   }
-  if (price) filteredListings = filteredListings.filter(r => parseFloat(r.price) <= parseFloat(price));
+  if (price) filteredListings = filteredListings.filter(r => parseFloat(getPrice(r)) <= parseFloat(price));
   if (furn) filteredListings = filteredListings.filter(r => r.furnishing === furn);
 
   renderResults();
@@ -403,6 +403,10 @@ function fmt(price) {
   if (n >= 1000000) return `RM ${(n/1000000).toFixed(2)}M`;
   if (n >= 1000) return `RM ${n.toLocaleString()}`;
   return `RM ${n}`;
+}
+
+function getPrice(r) {
+  return r.listing_type === 'lelong' ? r['lelong price'] : r.price;
 }
 
 function wa(text) {
@@ -496,7 +500,7 @@ function renderCard(r) {
   const areaKey = (r.area || '').toLowerCase();
   const areaHref = AREA_MAP[areaKey] || '/kawasan.html';
   const slugPart2 = r.listing_type === 'room' ? r.room_type : r.bed;
-  const slug = toSlug(r.project_name, slugPart2, r.price);
+  const slug = toSlug(r.project_name, slugPart2, getPrice(r));
   const unitHref = `${areaHref}#${slug}`;
 
   let badge, badgeClass;
@@ -507,7 +511,7 @@ function renderCard(r) {
 
   const priceLabel = (r.listing_type === 'rental' || r.listing_type === 'room')
     ? `${fmt(r.price)}<span> / month</span>`
-    : fmt(r.price);
+    : fmt(getPrice(r));
 
   const pillItems = r.listing_type === 'room'
     ? [r.room_type, r.bath_type, r.furnishing, moveInText(r.move_in_date)]
@@ -519,7 +523,7 @@ function renderCard(r) {
   const pills = pillItems.filter(Boolean)
     .map(p => `<span class="pill">${p}</span>`).join('');
 
-  const lelongDate = (r['lelong date'] || '').trim();
+  const lelongDate = (r['lelong_date'] || '').trim();
   const auctionPill = (r.listing_type === 'lelong' && lelongDate && lelongDate !== '-')
     ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>`
     : '';
