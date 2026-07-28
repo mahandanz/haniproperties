@@ -206,13 +206,12 @@
 
   <div class="hero-tabs-label">I'm looking to:</div>
   <div class="hero-tabs" id="hero-tabs">
-    <button type="button" class="hero-tab-btn active" data-type="" onclick="selectCategory('', this)">All</button>
-    <button type="button" class="hero-tab-btn" data-type="rental" onclick="selectCategory('rental', this)">For Rent</button>
+    <button type="button" class="hero-tab-btn active" data-type="rental" onclick="selectCategory('rental', this)">For Rent</button>
     <button type="button" class="hero-tab-btn" data-type="subsale" onclick="selectCategory('subsale', this)">For Sale</button>
     <button type="button" class="hero-tab-btn" data-type="lelong" onclick="selectCategory('lelong', this)">Auction</button>
     <button type="button" class="hero-tab-btn" data-type="tanah" onclick="selectCategory('tanah', this)">Land / Commercial</button>
   </div>
-  <input type="hidden" id="f-type" value="">
+  <input type="hidden" id="f-type" value="rental">
 
   <div class="hero-search-label">🔎 Search by area or project name</div>
   <div class="hero-search-wrap">
@@ -400,8 +399,8 @@ async function loadCSV() {
   dataLand     = allListings.filter(r => LAND_COMMERCIAL_TYPES.has(r.type));
 
   populateAreaFilter();
-  buildPTypeOptions(''); // property-type dropdown for the default "All" category
-  buildPriceOptions('');  // price dropdown for the default "All" category
+  buildPTypeOptions('rental'); // property-type dropdown for the default "For Rent" category
+  buildPriceOptions('rental');  // price dropdown for the default "For Rent" category
 }
 
 function populateAreaFilter() {
@@ -468,13 +467,14 @@ function applyFilters() {
 }
 
 function resetFilters() {
-  ['f-type','f-ptype','f-area','f-bed','f-price','f-furnishing','f-tenure','f-instalment'].forEach(id => {
+  ['f-ptype','f-area','f-bed','f-price','f-furnishing','f-tenure','f-instalment'].forEach(id => {
     document.getElementById(id).value = '';
   });
-  setActiveTabButton('');
-  buildPTypeOptions('');
-  buildPriceOptions(''); // back to the mixed "All types" price list
-  toggleFilterVisibility('');
+  document.getElementById('f-type').value = 'rental';
+  setActiveTabButton('rental');
+  buildPTypeOptions('rental');
+  buildPriceOptions('rental');
+  toggleFilterVisibility('rental');
   applyFilters();
 }
 
@@ -784,12 +784,13 @@ async function init() {
 
   // Category always travels under ?tab= — index.html sends its tab names (sewa/jual/lelong/tanah);
   // this page's own shared links send the category value directly (rental/subsale/lelong/tanah).
+  // Default (no param) is 'rental' — matches index.html, which always opens on "For Rent".
   const typeEl = document.getElementById('f-type');
-  const VALID_TYPES = ['', 'rental', 'subsale', 'lelong', 'tanah'];
+  const VALID_TYPES = ['rental', 'subsale', 'lelong', 'tanah'];
   const TAB_TO_TYPE = { sewa: 'rental', jual: 'subsale', lelong: 'lelong', tanah: 'tanah' };
   const tabParam = params.get('tab');
   const category = TAB_TO_TYPE[tabParam]
-    || (VALID_TYPES.includes(tabParam) ? tabParam : '');
+    || (VALID_TYPES.includes(tabParam) ? tabParam : 'rental');
   typeEl.value = category;
   setActiveTabButton(category);
   toggleFilterVisibility(category);
