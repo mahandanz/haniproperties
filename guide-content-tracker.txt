@@ -1,0 +1,54 @@
+# Hani Properties — Guides Content Tracker
+
+VERSION: v1 — 29 Jul 2026
+
+Keep this file in the project alongside Add_Unit_CSV. Before drafting a new
+weekly article, Claude checks this file first. After each new article is
+written, this file is updated and handed back to re-upload.
+
+---
+
+## PUBLISHED (5)
+
+| # | Title | Pillar | Folder / filename | Published |
+|---|---|---|---|---|
+| 1 | How to Calculate Rental Deposit in Malaysia (2+1+0.5 Explained) | Rental | rental/guide_rental_deposit_malaysia.html | 12 Jan 2026 |
+| 2 | Freehold vs Leasehold in Malaysia — Which Should You Buy? | Buying | buying/guide_freehold_vs_leasehold_malaysia.html | 18 Feb 2026 |
+| 3 | How to Buy a Subsale Property in Malaysia — Step by Step | Buying | buying/guide_subsale_property_malaysia.html | 3 Mar 2026 |
+| 4 | How Does Lelong (Auction) Property Work in Malaysia? | Lelong | lelong/guide_lelong_property_malaysia.html | 5 May 2026 |
+| 5 | Lelong Reserve Price vs Market Value — What Buyers Should Know | Lelong | lelong/guide_lelong_reserve_vs_market_value.html | 12 May 2026 |
+
+---
+
+## ROADMAP — NOT YET WRITTEN
+
+### Rental pillar
+- [ ] Tenancy Agreement Basics in Malaysia — What Every Tenant Should Check
+- [ ] Tenant Rights in Malaysia — What Landlords Can and Can't Do
+- [ ] How to End a Tenancy Early in Malaysia (Without Losing Your Deposit)
+- [ ] Room Rental vs Whole-Unit Rental — Which Is Right for You?
+
+### Buying pillar
+- [ ] Loan Margin & Financing for Property Buyers in Malaysia
+- [ ] Legal Fees & Stamp Duty When Buying Property in Malaysia
+- [ ] Common Subsale Scams in Malaysia and How to Avoid Them
+
+### Lelong pillar
+- [ ] (open — add more once rental/buying roadmap thins out)
+
+### Ideas not yet assigned to a pillar
+- [ ] (add here as they come up)
+
+---
+
+## HOW TO USE THIS FILE
+
+1. Before writing a new article, scan "PUBLISHED" for title/topic overlap —
+   not just exact title matches, but overlapping subject matter (e.g. don't
+   write a second "how to check tenure" article under a different title).
+2. Pick the next unchecked roadmap item, or a new topic if none fit.
+3. After publishing, move the item from ROADMAP to PUBLISHED with its real
+   filename and date, and check the box.
+4. If a completely new topic comes up that isn't on the roadmap, add it
+   under the right pillar's roadmap list first, then immediately move it
+   to PUBLISHED once written — keeps the list from drifting out of sync.
