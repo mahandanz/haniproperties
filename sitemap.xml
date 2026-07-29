@@ -23,33 +23,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Guide articles (rental / buying / lelong pillars) -->
-  <url>
-    <loc>https://haniproperties.com/rental/guide_rental_deposit_malaysia.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://haniproperties.com/buying/guide_freehold_vs_leasehold_malaysia.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://haniproperties.com/buying/guide_subsale_property_malaysia.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://haniproperties.com/lelong/guide_lelong_property_malaysia.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://haniproperties.com/lelong/guide_lelong_reserve_vs_market_value.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
   <!-- Area pages (auto-generated from area/local/) -->
   <url>
     <loc>https://haniproperties.com/area/local/ampang.html</loc>
