@@ -1,7 +1,7 @@
 [
-  { "id": "unit1", "image": "/images/unithighlights/rental/unit1.jpg", "active": true },
-  { "id": "unit2", "image": "/images/unithighlights/rental/unit2.jpg", "active": true },
-  { "id": "unit3", "image": "/images/unithighlights/rental/unit3.jpg", "active": true },
-  { "id": "unit4", "image": "/images/unithighlights/rental/unit4.jpg", "active": true },
-  { "id": "unit5", "image": "/images/unithighlights/rental/unit5.jpg", "active": true }
+  { "id": "unit1", "image": "/images/unithighlights/rental/unit1.png", "active": true },
+  { "id": "unit2", "image": "/images/unithighlights/rental/unit2.png", "active": true },
+  { "id": "unit3", "image": "/images/unithighlights/rental/unit3.png", "active": true },
+  { "id": "unit4", "image": "/images/unithighlights/rental/unit4.png", "active": true },
+  { "id": "unit5", "image": "/images/unithighlights/rental/unit5.png", "active": true }
 ]
