@@ -15,6 +15,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/lightbox.css">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -56,26 +57,6 @@
     .card-image-wrap{position:relative;width:100%;height:160px;overflow:hidden;background:#f0ede8}
     .card-image-wrap .card-image{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer;transition:transform .35s ease}
     .card-image-wrap:hover .card-image{transform:scale(1.06)}
-    .lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;display:none;align-items:center;justify-content:center;padding:24px}
-    .lightbox-overlay.open{display:flex}
-    .lightbox-img-wrap{position:relative;max-width:min(900px,92vw);max-height:88vh;width:100%}
-    .lightbox-img-wrap img{width:100%;max-height:88vh;object-fit:contain;display:block;border-radius:4px}
-    .lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer;padding:4px 8px}
-    .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);color:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-    .lightbox-nav:hover{background:rgba(0,0,0,.7)}
-    .lightbox-nav.prev{left:-8px}
-    .lightbox-nav.next{right:-8px}
-    .lightbox-dots{position:absolute;bottom:-28px;left:0;right:0;display:flex;justify-content:center;gap:6px}
-    .lightbox-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer}
-    .lightbox-dot.active{background:#fff}
-    @media(max-width:640px){.lightbox-nav.prev{left:4px}.lightbox-nav.next{right:4px}.lightbox-close{top:8px;right:8px;background:rgba(0,0,0,.4);border-radius:50%;width:36px;height:36px}}
-    .card-img-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.35);color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background .15s}
-    .card-img-nav:hover{background:rgba(0,0,0,.6)}
-    .card-img-nav.prev{left:8px}
-    .card-img-nav.next{right:8px}
-    .card-img-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:4px}
-    .card-img-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.55)}
-    .card-img-dot.active{background:#fff}
     .card-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;gap:10px}
 
     .card-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
@@ -597,86 +578,6 @@ function moveInText(val) {
   return `🗓 Move-in: ${v}`;
 }
 
-function cardImage(r) {
-  const raw = (r.image || '').trim();
-  let imgs = [];
-  if (raw && raw !== '-') {
-    let base = '';
-    imgs = raw.split('|').map(s => s.trim()).filter(Boolean).map(p => {
-      if (/^https?:\/\//i.test(p)) {
-        base = p.substring(0, p.lastIndexOf('/') + 1);
-        return p;
-      }
-      return base ? base + p : p;
-    });
-  }
-  if (imgs.length === 0) imgs = ['/images/update.png'];
-  const nav = imgs.length > 1 ? `
-    <button type="button" class="card-img-nav prev" onclick="cardImgNav(event,this,-1)" aria-label="Previous photo">‹</button>
-    <button type="button" class="card-img-nav next" onclick="cardImgNav(event,this,1)" aria-label="Next photo">›</button>
-    <div class="card-img-dots">${imgs.map((_, i) => `<span class="card-img-dot${i === 0 ? ' active' : ''}"></span>`).join('')}</div>` : '';
-  return `<div class="card-image-wrap" data-images="${imgs.join('|')}" data-index="0">
-    <img src="${imgs[0]}" alt="${r.project_name}" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)">${nav}
-  </div>`;
-}
-
-function cardImgNav(e, btn, dir) {
-  e.preventDefault();
-  e.stopPropagation();
-  const wrap = btn.closest('.card-image-wrap');
-  const imgs = wrap.getAttribute('data-images').split('|');
-  let idx = parseInt(wrap.getAttribute('data-index'), 10) || 0;
-  idx = (idx + dir + imgs.length) % imgs.length;
-  wrap.setAttribute('data-index', idx);
-  const cardImgEl = wrap.querySelector('.card-image');
-  cardImgEl.onerror = function() { this.onerror = null; this.src = '/images/update.png'; };
-  cardImgEl.src = imgs[idx];
-  wrap.querySelectorAll('.card-img-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
-}
-
-let lbImgs = [];
-let lbIdx = 0;
-
-function openLightbox(e, img) {
-  e.preventDefault();
-  e.stopPropagation();
-  const wrap = img.closest('.card-image-wrap');
-  lbImgs = wrap.getAttribute('data-images').split('|');
-  lbIdx = parseInt(wrap.getAttribute('data-index'), 10) || 0;
-  renderLightbox();
-  document.getElementById('lightboxOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  document.getElementById('lightboxOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function lbNav(dir) {
-  lbIdx = (lbIdx + dir + lbImgs.length) % lbImgs.length;
-  renderLightbox();
-}
-
-function renderLightbox() {
-  const lbImgEl = document.getElementById('lightboxImg');
-  lbImgEl.onerror = function() { this.onerror = null; this.src = '/images/update.png'; };
-  lbImgEl.src = lbImgs[lbIdx];
-  const nav = lbImgs.length > 1 ? `
-    <button type="button" class="lightbox-nav prev" onclick="event.stopPropagation();lbNav(-1)" aria-label="Previous photo">‹</button>
-    <button type="button" class="lightbox-nav next" onclick="event.stopPropagation();lbNav(1)" aria-label="Next photo">›</button>
-    <div class="lightbox-dots">${lbImgs.map((_, i) => `<span class="lightbox-dot${i === lbIdx ? ' active' : ''}" onclick="event.stopPropagation();lbIdx=${i};renderLightbox()"></span>`).join('')}</div>` : '';
-  document.getElementById('lightboxNavWrap').innerHTML = nav;
-}
-
-document.addEventListener('keydown', (e) => {
-  const overlay = document.getElementById('lightboxOverlay');
-  if (!overlay || !overlay.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') lbNav(-1);
-  if (e.key === 'ArrowRight') lbNav(1);
-});
-
 function unitCard(r) {
   const pills = [
     r.bed ? `🛏 ${r.bed} bed` : '',
@@ -849,19 +750,13 @@ function toSlug(...parts) {
     .replace(/^-|-$/g, '');
 }
 </script>
-<div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
-  <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
-    <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
-    <img id="lightboxImg" src="" alt="Property photo">
-    <div id="lightboxNavWrap"></div>
-  </div>
-</div>
 <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
     <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
   </svg>
 </a>
+<script src="/lightbox.js"></script>
 <script src="/search.js"></script>
 </body>
 </html>
