@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.haniproperties.com"
+        }
+      ],
+      "destination": "https://haniproperties.com/:path*",
+      "permanent": true
+    }
+  ]
+}
