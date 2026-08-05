@@ -812,11 +812,19 @@ fetch('/listings.csv')
   .catch(e => console.error('Listings fetch error:', e));
 
 /* FEATURED UNIT HIGHLIGHTS CAROUSELS */
+function fallbackHighlightCard() {
+  return `
+    <a class="highlights-card" href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27d%20like%20to%20see%20what%20units%20are%20currently%20available." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Hani for available units">
+      <img src="/images/booked.jpg" alt="Another unit sold or rented by Hani Properties — WhatsApp Hani for current availability" loading="lazy">
+    </a>
+  `;
+}
+
 function renderHighlights(trackId, items, viewAllHref, viewAllLabel) {
   const track = document.getElementById(trackId);
   const active = (items || []).filter(u => u.active !== false);
   if (!active.length) {
-    track.innerHTML = '<p class="highlights-empty">No units to show right now.</p>';
+    track.innerHTML = fallbackHighlightCard();
     return;
   }
   const cards = active.map(u => `
@@ -855,7 +863,7 @@ fetch('/data/subsalehighlights.json')
   .then(data => renderHighlights('subsale-track', data, '/search.html?tab=jual', 'View All Subsale'))
   .catch(e => {
     console.error('Subsale highlights fetch error:', e);
-    document.getElementById('subsale-track').innerHTML = '<p class="highlights-empty">Unable to load units.</p>';
+    document.getElementById('subsale-track').innerHTML = fallbackHighlightCard();
   });
 
 fetch('/data/rentalhighlights.json')
@@ -863,7 +871,7 @@ fetch('/data/rentalhighlights.json')
   .then(data => renderHighlights('rental-track', data, '/search.html?tab=sewa', 'View All Rentals'))
   .catch(e => {
     console.error('Rental highlights fetch error:', e);
-    document.getElementById('rental-track').innerHTML = '<p class="highlights-empty">Unable to load units.</p>';
+    document.getElementById('rental-track').innerHTML = fallbackHighlightCard();
   });
 </script>
 <script src="/search.js"></script>
