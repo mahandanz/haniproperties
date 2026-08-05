@@ -13,6 +13,9 @@
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@graph": [{"@type": ["RealEstateAgent", "LocalBusiness"], "@id": "https://haniproperties.com/area/local/bukit-jalil.html#business", "name": "Hani Properties", "url": "https://haniproperties.com/area/local/bukit-jalil.html", "telephone": "+60125459182", "description": "Rental and subsale property agent in Bukit Jalil, Kuala Lumpur. Pavilion Bukit Jalil • LRT Bukit Jalil • National Sports Complex.", "address": {"@type": "PostalAddress", "addressLocality": "Bukit Jalil", "addressRegion": "Selangor", "addressCountry": "MY"}, "geo": {"@type": "GeoCoordinates", "latitude": 3.0572, "longitude": 101.6878}, "areaServed": {"@type": "Place", "name": "Bukit Jalil, Kuala Lumpur"}, "contactPoint": {"@type": "ContactPoint", "telephone": "+60125459182", "contactType": "customer service", "availableLanguage": ["English", "Malay"]}, "parentOrganization": {"@type": "Organization", "name": "ERA Real Estate", "identifier": "E(1)1773/3"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hani Properties", "item": "https://haniproperties.com/"}, {"@type": "ListItem", "position": 2, "name": "Areas", "item": "https://haniproperties.com/kawasan.html"}, {"@type": "ListItem", "position": 3, "name": "Bukit Jalil", "item": "https://haniproperties.com/area/local/bukit-jalil.html"}]}]}
   </script>
+    <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What types of properties are available in Bukit Jalil?", "acceptedAnswer": {"@type": "Answer", "text": "Hani Properties lists for-rent, for-sale (subsale), auction, and land/commercial properties in Bukit Jalil, including apartments, condominiums, and landed homes, updated regularly."}}, {"@type": "Question", "name": "Is Bukit Jalil a good area for renting or buying property?", "acceptedAnswer": {"@type": "Answer", "text": "Home to the National Stadium, Pavilion Bukit Jalil, and an LRT terminal — one of KL's fastest-growing urban hubs."}}, {"@type": "Question", "name": "How can I enquire about a property in Bukit Jalil?", "acceptedAnswer": {"@type": "Answer", "text": "WhatsApp Hani directly at 012-545 9182. Hani Properties is licensed under ERA Real Estate (E(1)1773/3, REN 84031) and typically replies within an hour."}}, {"@type": "Question", "name": "Can Hani Properties help find a specific unit in Bukit Jalil that isn't listed yet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. WhatsApp Hani or use the request form on the Bukit Jalil page, and Hani will search directly for matching units in Bukit Jalil."}}]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/lightbox.css">
@@ -152,6 +155,7 @@
   <div class="hero-eyebrow">Bukit Jalil &nbsp;·&nbsp; Kuala Lumpur</div>
   <h1>Properties in Bukit Jalil</h1>
   <p class="hero-desc">Home to the National Stadium, Pavilion Bukit Jalil, and an LRT terminal — one of KL's fastest-growing urban hubs.</p>
+  <p class="hero-desc" id="hero-summary-stat"></p>
   <a href="../../request.html" class="btn-wa" style="margin-top:18px;">Can't Find It? Let Us Help</a>
 </section>
 
@@ -763,6 +767,12 @@ fetch('../../listings.csv')
 
     // Initial render
     applyFilters();
+
+    const totalListings = allUnits.length + allSubsales.length + allLelong.length + allLand.length;
+    const summaryEl = document.getElementById('hero-summary-stat');
+    if (summaryEl && totalListings) {
+      summaryEl.textContent = `${totalListings} current listing${totalListings !== 1 ? 's' : ''} in Bukit Jalil — for rent, for sale, and auction.`;
+    }
   })
   .catch((e) => {
     console.error('Fetch error:', e);
