@@ -13,6 +13,9 @@
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@graph": [{"@type": ["RealEstateAgent", "LocalBusiness"], "@id": "https://haniproperties.com/investor-corner.html#business", "name": "Hani Properties", "url": "https://haniproperties.com/investor-corner.html", "telephone": "+60125459182", "description": "Investor-focused property sourcing across the Klang Valley — homes where rent covers the loan payment, updated weekly.", "address": {"@type": "PostalAddress", "addressLocality": "Shah Alam", "addressRegion": "Selangor", "addressCountry": "MY"}, "areaServed": {"@type": "Place", "name": "Klang Valley, Selangor"}, "contactPoint": {"@type": "ContactPoint", "telephone": "+60125459182", "contactType": "customer service", "availableLanguage": ["English", "Malay"]}, "parentOrganization": {"@type": "Organization", "name": "ERA Real Estate", "identifier": "E(1)1773/3"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hani Properties", "item": "https://haniproperties.com/"}, {"@type": "ListItem", "position": 2, "name": "Investor Corner", "item": "https://haniproperties.com/investor-corner.html"}]}]}
   </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does \"positive cashflow\" mean on Investor Corner?", "acceptedAnswer": {"@type": "Answer", "text": "Cashflow is the average market rental rate (fully furnished) minus the estimated monthly loan installment. Investor Corner only lists units where this number is positive — meaning the rent brings in more than the bank payment each month, leaving extra cash in the investor's pocket."}}, {"@type": "Question", "name": "How is \"Nett Profit After 10 Years\" calculated?", "acceptedAnswer": {"@type": "Answer", "text": "It's the projected sale price after 10 years (assuming 2% p.a. price growth for condos and apartments, or 3.5% p.a. for landed houses), minus the remaining loan balance, minus the original cash outlay, minus estimated selling costs (around 3.34% agent commission including SST, plus roughly RM3,000 in legal and discharge fees). It's shown both with 10 years of rental cashflow added, and without, so investors can see the property gain alone."}}, {"@type": "Question", "name": "Where do the 2% and 3.5% price growth assumptions come from?", "acceptedAnswer": {"@type": "Answer", "text": "These growth rates are based on NAPIC's Malaysian House Price Index, using separate long-run averages for high-rise properties (condos and apartments) versus landed houses."}}, {"@type": "Question", "name": "How often is Investor Corner updated?", "acceptedAnswer": {"@type": "Answer", "text": "Listings and figures are updated weekly. A last-updated date is shown at the top of the page. Availability can change quickly, so buyers should confirm with Hani before making a decision."}}, {"@type": "Question", "name": "Are the cashflow and profit figures on Investor Corner guaranteed?", "acceptedAnswer": {"@type": "Answer", "text": "No. These are estimates based on current market data and standard assumptions, and can change with market conditions — for example, if Bank Negara Malaysia adjusts the OPR (Overnight Policy Rate), which affects loan installments."}}]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
   <style>
@@ -150,6 +153,7 @@
   <div class="hero-eyebrow">Klang Valley &nbsp;·&nbsp; Investor Corner</div>
   <h1>Homes That Pay You Back</h1>
   <p class="hero-desc">These are homes where the rent brings in more than what you pay the bank each month — so there's extra left over in your pocket. Filter by area, price or how much extra you'd earn, then WhatsApp Hani for the full numbers on any home.</p>
+  <p class="hero-desc" id="hero-summary-stat"></p>
   <div class="hero-stamp">📊 Updated weekly &nbsp;·&nbsp; Last updated: <span id="data-date">2 Aug 2026</span></div>
   <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27d%20like%20help%20finding%20a%20home%20that%20pays%20for%20itself." class="btn-gold" target="_blank" rel="noopener noreferrer">Talk to Hani About Investing</a>
 </section>
@@ -2417,6 +2421,13 @@ fetch('investor-listings.csv')
     buildOptions();
     latestDate();
     applyFilters();
+
+    const prices = DEALS.map(d => d.price).filter(Boolean);
+    if (prices.length) {
+      const min = Math.min(...prices), max = Math.max(...prices);
+      document.getElementById('hero-summary-stat').textContent =
+        `${DEALS.length} units currently show positive cashflow, from RM${min.toLocaleString()} to RM${max.toLocaleString()}.`;
+    }
   })
   .catch((e) => {
     console.error('Fetch error:', e);
