@@ -515,12 +515,16 @@
         </div>
       </div>
 
-      <h2 style="margin-top:20px;">New home loan</h2>
+      <h2 style="margin-top:20px;">DSR ceiling</h2>
 
       <div class="field" style="margin-bottom:6px;">
-        <label>Proposed monthly installment (RM)</label>
-        <input type="number" id="dsrProposed" value="3146" min="0" step="50">
-        <button class="link-btn" id="dsrUseLoan" type="button" style="margin-top:8px;">Pull figure from Bank Loan tab</button>
+        <label>Bank's DSR ceiling <span class="val" id="dsrCeilingVal">70%</span></label>
+        <div class="seg" id="dsrCeilingSeg">
+          <button data-v="60">60%</button>
+          <button data-v="65">65%</button>
+          <button data-v="70" class="active">70%</button>
+        </div>
+        <div class="bank-rates-note">Most banks work to an internal ceiling of roughly 60–70%. Exact threshold varies by bank, income type, and credit profile.</div>
       </div>
     </div>
 
@@ -529,18 +533,18 @@
       <h2>DSR outcome</h2>
 
       <div class="hero-num">
-        <div class="label">Debt Service Ratio</div>
-        <div class="amt" id="dsrOut">0.0%</div>
-        <div class="sub">Total monthly commitments ÷ net monthly income</div>
+        <div class="label">Maximum new installment allowed</div>
+        <div class="amt" id="dsrOut">RM 0</div>
+        <div class="sub" id="dsrSub">At 70% DSR ceiling, after existing commitments</div>
       </div>
 
-      <div class="verdict good" id="dsrVerdict">Enter your figures to see the outcome.</div>
+      <div class="verdict good" id="dsrVerdict">Enter your income to see the outcome.</div>
 
       <div class="stat-line"><span class="k">Total net income</span><span class="v" id="dsrIncomeOut">RM 0</span></div>
       <div class="stat-line"><span class="k">Existing commitments</span><span class="v" id="dsrExistingOut">RM 0</span></div>
-      <div class="stat-line"><span class="k">Proposed new installment</span><span class="v" id="dsrProposedOut">RM 0</span></div>
-      <div class="stat-line"><span class="k">Total commitments</span><span class="v" id="dsrTotalOut">RM 0</span></div>
-      <div class="stat-line"><span class="k">Disposable income after loan</span><span class="v" id="dsrDisposableOut">RM 0</span></div>
+      <div class="stat-line"><span class="k">Max total commitments allowed</span><span class="v" id="dsrMaxTotalOut">RM 0</span></div>
+      <div class="stat-line"><span class="k">Maximum new installment</span><span class="v" id="dsrProposedOut">RM 0</span></div>
+      <div class="stat-line"><span class="k">Disposable income after new loan</span><span class="v" id="dsrDisposableOut">RM 0</span></div>
 
       <div class="foot-actions">
         <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
@@ -548,7 +552,7 @@
     </div>
   </div>
 
-  <div class="disclaimer">Debt Service Ratio (DSR) is calculated on a net-income basis (income after EPF, SOCSO, and tax deductions), matching how most Malaysian banks stress-test affordability. Most banks work to an internal DSR ceiling of roughly 60–70%, but the exact threshold, and what counts as a "commitment," varies by bank, income type, and credit profile. This is an estimate for discussion purposes only — always confirm actual affordability with the bank or a licensed loan consultant.</div>
+  <div class="disclaimer">Maximum new installment is calculated on a net-income basis (income after EPF, SOCSO, and tax deductions), matching how most Malaysian banks stress-test affordability: (net income × DSR ceiling%) − existing commitments. Most banks work to an internal DSR ceiling of roughly 60–70%, but the exact threshold, and what counts as a "commitment," varies by bank, income type, and credit profile. This is an estimate for discussion purposes only — always confirm actual affordability with the bank or a licensed loan consultant.</div>
   </div>
   <!-- ============ /DSR TAB ============ -->
 
@@ -853,12 +857,6 @@ function calc(){
   let statusLabel = status === 'citizen' ? 'Malaysian citizen' : status === 'pr' ? 'Permanent Resident' : 'Foreign buyer';
   $('disclaimerText').innerHTML =
     `Figures are estimates for discussion purposes only, based on the Stamp Act 1949 tiered MOT schedule (1%/2%/3%/4%), a flat 8% MOT rate for non-PR foreign buyers under the Finance Act 2025 (effective 1 Jan 2026), 0.5% loan agreement stamp duty, and the standard SPA legal fee scale. The Budget 2026 first-time buyer exemption (100% on properties ≤ RM500,000, extended to 31 Dec 2027) is applied where selected; the partial-exemption treatment shown for the RM500,001–RM1,000,000 band is an estimate — confirm exact eligibility and amount with your conveyancing lawyer or LHDN. MRTA/MLTA insurance, valuation fees beyond your input, and bank processing fees are not included. Buyer status selected: ${statusLabel}${firstTime ? ', first-time buyer' : ''}.`;
-
-  // keep DSR tab's "proposed installment" fresh if it hasn't been hand-edited
-  if(!dsrProposedTouched){
-    $('dsrProposed').value = Math.round(monthly);
-    calcDSR();
-  }
 }
 
 $('price').addEventListener('input', e => {
@@ -932,7 +930,7 @@ document.querySelectorAll('#bankRates button').forEach(btn => {
 });
 
 /* ================= DSR CALCULATOR ================= */
-let dsrProposedTouched = false;
+let dsrCeiling = 70;
 
 function calcDSR(){
   const income = (+$('dsrIncome').value||0) + (+$('dsrOtherIncome').value||0);
@@ -940,45 +938,48 @@ function calcDSR(){
   const personal = +$('dsrPersonal').value||0;
   const card = +$('dsrCard').value||0;
   const otherCommit = +$('dsrOtherCommit').value||0;
-  const proposed = +$('dsrProposed').value||0;
 
   const existingTotal = car + personal + card + otherCommit;
-  const totalCommitments = existingTotal + proposed;
-  const dsr = income > 0 ? (totalCommitments / income * 100) : 0;
-  const disposable = income - totalCommitments;
+  const maxTotalCommitments = income * (dsrCeiling/100);
+  const maxInstallment = Math.max(0, maxTotalCommitments - existingTotal);
+  const disposable = income - maxTotalCommitments;
 
-  $('dsrOut').textContent = income > 0 ? dsr.toFixed(1) + '%' : '—';
+  $('dsrOut').textContent = income > 0 ? fmt(maxInstallment) : 'RM 0';
+  $('dsrSub').textContent = `At ${dsrCeiling}% DSR ceiling, after existing commitments`;
   $('dsrIncomeOut').textContent = fmt(income);
   $('dsrExistingOut').textContent = fmt(existingTotal);
-  $('dsrProposedOut').textContent = fmt(proposed);
-  $('dsrTotalOut').textContent = fmt(totalCommitments);
+  $('dsrMaxTotalOut').textContent = fmt(maxTotalCommitments);
+  $('dsrProposedOut').textContent = fmt(maxInstallment);
   $('dsrDisposableOut').textContent = fmt(disposable);
   $('dsrDisposableOut').className = 'v ' + (disposable >= 0 ? 'pos' : 'neg');
 
   const verdictEl = $('dsrVerdict');
   if(income <= 0){
     verdictEl.className = 'verdict warn';
-    verdictEl.textContent = 'Enter net income to calculate DSR.';
-  } else if(dsr <= 60){
-    verdictEl.className = 'verdict good';
-    verdictEl.textContent = 'Comfortable — typically within most banks\u2019 DSR threshold (~60\u201370%).';
-  } else if(dsr <= 70){
-    verdictEl.className = 'verdict warn';
-    verdictEl.textContent = 'Borderline — approval likely depends on the bank and credit profile.';
-  } else {
+    verdictEl.textContent = 'Enter net income to calculate.';
+  } else if(existingTotal >= maxTotalCommitments){
     verdictEl.className = 'verdict bad';
-    verdictEl.textContent = 'High DSR — likely to face difficulty. Consider a longer tenure, smaller loan, or paying down commitments first.';
+    verdictEl.textContent = 'Existing commitments already meet or exceed the DSR ceiling \u2014 little to no room for a new loan without paying down debt first.';
+  } else if(maxInstallment < 500){
+    verdictEl.className = 'verdict warn';
+    verdictEl.textContent = 'Very limited room for a new installment at this ceiling.';
+  } else {
+    verdictEl.className = 'verdict good';
+    verdictEl.textContent = `You may qualify for up to ${fmt(maxInstallment)}/month in new loan installment, subject to the bank\u2019s actual assessment.`;
   }
 }
 
 ['dsrIncome','dsrOtherIncome','dsrCar','dsrPersonal','dsrCard','dsrOtherCommit'].forEach(id => {
   $(id).addEventListener('input', calcDSR);
 });
-$('dsrProposed').addEventListener('input', () => { dsrProposedTouched = true; calcDSR(); });
-$('dsrUseLoan').addEventListener('click', () => {
-  $('dsrProposed').value = Math.round(lastLoanMonthly);
-  dsrProposedTouched = false;
-  calcDSR();
+document.querySelectorAll('#dsrCeilingSeg button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#dsrCeilingSeg button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    dsrCeiling = +btn.dataset.v;
+    $('dsrCeilingVal').textContent = btn.dataset.v + '%';
+    calcDSR();
+  });
 });
 
 /* ================= RENTAL DEPOSIT CALCULATOR ================= */
