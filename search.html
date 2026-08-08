@@ -93,7 +93,6 @@
     .badge-unit{background:#e8f4ed;color:#5C1420}
     .badge-room{background:#fef3e2;color:#92500a}
     .badge-subsale{background:#e8f0fe;color:#1a4fa0}
-    .badge-lelong{background:#fdeaea;color:#a3271f}
     .badge-coa{background:#f0ede8;color:#7a7268;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:6px}
     .card-name{font-size:14px;font-weight:700;color:#1c1c18;line-height:1.35}
     .card-zone{font-size:12px;color:#7a7268;margin-top:1px}
@@ -102,7 +101,6 @@
     .card-price{font-size:20px;font-weight:900;color:#A82C3D}
     .card-price span{font-size:12px;font-weight:500;color:#7a7268}
     .card-price-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-    .pill-mv{background:#fdeaea;color:#a3271f}
     .card-pills{display:flex;flex-wrap:wrap;gap:6px}
     .pill{font-size:11px;font-weight:600;color:#444;background:#f0ede8;padding:4px 10px;border-radius:20px;white-space:nowrap}
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
@@ -191,7 +189,6 @@
   <div class="hero-tabs" id="hero-tabs">
     <button type="button" class="hero-tab-btn active" data-type="rental" onclick="selectCategory('rental', this)">For Rent</button>
     <button type="button" class="hero-tab-btn" data-type="subsale" onclick="selectCategory('subsale', this)">For Sale</button>
-    <button type="button" class="hero-tab-btn" data-type="lelong" onclick="selectCategory('lelong', this)">Auction</button>
     <button type="button" class="hero-tab-btn" data-type="tanah" onclick="selectCategory('tanah', this)">Land / Commercial</button>
   </div>
   <input type="hidden" id="f-type" value="rental">
@@ -350,9 +347,9 @@ const LAND_COMMERCIAL_TYPES = new Set([
   'Shop', 'Shop Apartment', 'Shop Lot', 'Shop Unit'
 ]);
 
-// Data subsets mirroring index.html's heroUnits/heroSubsales/heroLelong/heroLand,
+// Data subsets mirroring index.html's heroUnits/heroSubsales/heroLand,
 // used to build the Property Type dropdown per selected category.
-let dataUnits = [], dataSubsales = [], dataLelong = [], dataLand = [];
+let dataUnits = [], dataSubsales = [], dataLand = [];
 
 /* ── CSV loader ─────────────────────────────────────────── */
 async function loadCSV() {
@@ -375,11 +372,10 @@ async function loadCSV() {
     const obj = {};
     headers.forEach((h, i) => obj[h] = (cols[i] || '').trim());
     return obj;
-  }).filter(r => r.listing_type && r.area && (!r.status || r.status === '-' || r.status === ''));
+  }).filter(r => r.listing_type && r.area && r.listing_type !== 'lelong' && (!r.status || r.status === '-' || r.status === ''));
 
   dataUnits    = allListings.filter(r => r.listing_type === 'rental');
   dataSubsales = allListings.filter(r => r.listing_type === 'subsale');
-  dataLelong   = allListings.filter(r => r.listing_type === 'lelong');
   dataLand     = allListings.filter(r => LAND_COMMERCIAL_TYPES.has(r.type));
 
   populateAreaFilter();
@@ -411,7 +407,7 @@ function searchListings(query) {
 
 /* ── Filters ────────────────────────────────────────────── */
 function applyFilters() {
-  const type  = document.getElementById('f-type').value;   // rental / subsale / lelong / tanah
+  const type  = document.getElementById('f-type').value;   // rental / subsale / tanah
   const ptype = document.getElementById('f-ptype').value;  // property type, e.g. "Condominium"
   const area  = document.getElementById('f-area').value;
   const bed   = document.getElementById('f-bed').value;
@@ -430,7 +426,7 @@ function applyFilters() {
   }
   if (ptype) filteredListings = filteredListings.filter(r => r.type === ptype);
   if (area) filteredListings = filteredListings.filter(r => r.area === area);
-  // Bed/Furnishing only meaningful for rentals; Tenure only for sale/auction/land —
+  // Bed/Furnishing only meaningful for rentals; Tenure only for sale/land —
   // matching index.html, which only ever sends these params for the matching tabs.
   if (type === 'rental') {
     if (bed) {
@@ -441,7 +437,7 @@ function applyFilters() {
     }
     if (furn) filteredListings = filteredListings.filter(r => r.furnishing === furn);
   }
-  if (type === 'subsale' || type === 'lelong' || type === 'tanah') {
+  if (type === 'subsale' || type === 'tanah') {
     if (tenure) filteredListings = filteredListings.filter(r => r.tenure === tenure);
   }
   if (price) filteredListings = filteredListings.filter(r => parseFloat(getPrice(r)) <= parseFloat(price));
@@ -466,9 +462,9 @@ function resetFilters() {
 function buildPTypeOptions(type) {
   const sel = document.getElementById('f-ptype');
   const prevVal = sel.value;
-  // index.html quirk, replicated here for continuity: rental/subsale/lelong all pull property
+  // index.html quirk, replicated here for continuity: rental/subsale all pull property
   // types from the same combined pool; only "tanah" (Land/Commercial) uses its own subset.
-  const rows = type === 'tanah' ? dataLand : [...dataUnits, ...dataSubsales, ...dataLelong];
+  const rows = type === 'tanah' ? dataLand : [...dataUnits, ...dataSubsales];
   const types = [...new Set(rows.map(r => r.type).filter(Boolean))].sort();
 
   sel.innerHTML = '<option value="">All</option>';
@@ -485,7 +481,6 @@ const PRICE_STEPS = {
   '':       [1500,2000,3000,4000,5000,500000,700000,1000000], // mixed, for "All" categories
   rental:   [1000,1500,2000,2500,3000,4000,5000,7000,10000],
   subsale:  [150000,200000,300000,400000,500000,600000,800000,1000000,1500000],
-  lelong:   [150000,200000,300000,400000,500000,600000,800000,1000000,1500000],
   tanah:    [150000,200000,300000,400000,500000,600000,800000,1000000,1500000],
 };
 
@@ -512,7 +507,7 @@ function buildPriceOptions(type) {
 function toggleFilterVisibility(type) {
   document.getElementById('fg-furnishing').style.display = type === 'rental' ? '' : 'none';
   document.getElementById('fg-bed').style.display = type === 'rental' ? '' : 'none';
-  document.getElementById('fg-tenure').style.display = (type === 'subsale' || type === 'lelong' || type === 'tanah') ? '' : 'none';
+  document.getElementById('fg-tenure').style.display = (type === 'subsale' || type === 'tanah') ? '' : 'none';
   document.getElementById('fg-instalment').style.display = type === 'subsale' ? '' : 'none';
 }
 
@@ -548,7 +543,7 @@ function fmt(price) {
 }
 
 function getPrice(r) {
-  return r.listing_type === 'lelong' ? r['lelong price'] : r.price;
+  return r.price;
 }
 
 function wa(text) {
@@ -571,7 +566,6 @@ function renderCard(r) {
   let badge, badgeClass;
   if (r.listing_type === 'rental') { badge = 'Unit Rental'; badgeClass = 'badge-unit'; }
   else if (r.listing_type === 'room') { badge = 'Room Rental'; badgeClass = 'badge-room'; }
-  else if (r.listing_type === 'lelong') { badge = 'Lelong'; badgeClass = 'badge-lelong'; }
   else { badge = 'Subsale'; badgeClass = 'badge-subsale'; }
 
   const priceLabel = (r.listing_type === 'rental' || r.listing_type === 'room')
@@ -582,21 +576,11 @@ function renderCard(r) {
     ? [r.room_type, r.bath_type, r.furnishing, moveInText(r.move_in_date)]
     : [r.bed ? `🛏 ${r.bed} bed` : '', r.bath ? `🚿 ${r.bath} bath` : '',
        r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
-       r.furnishing, (r.listing_type === 'subsale' || r.listing_type === 'lelong') ? r.tenure : r.type,
+       r.furnishing, r.listing_type === 'subsale' ? r.tenure : r.type,
        r.listing_type === 'rental' ? moveInText(r.move_in_date) : ''];
 
   const pills = pillItems.filter(Boolean)
     .map(p => `<span class="pill">${p}</span>`).join('');
-
-  const lelongDate = (r['lelong_date'] || '').trim();
-  const auctionPill = (r.listing_type === 'lelong' && lelongDate && lelongDate !== '-')
-    ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>`
-    : '';
-
-  const estMv = parseFloat(String(r['estimated mv'] || '').replace(/,/g,''));
-  const estMvPill = (r.listing_type === 'lelong' && !isNaN(estMv) && estMv > 0)
-    ? `<span class="pill pill-mv">Est. MV ${fmt(estMv)}</span>`
-    : '';
 
   const waText = r.wa_text || `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`;
 
@@ -609,9 +593,8 @@ function renderCard(r) {
         <div class="card-zone">${r.zone}</div>
         <a href="${areaHref}" class="card-area-link">📍 ${r.area}</a>
       </div>
-      <div class="card-price-row"><div class="card-price">${priceLabel}</div>${estMvPill}</div>
+      <div class="card-price-row"><div class="card-price">${priceLabel}</div></div>
       <div class="card-pills">${pills}</div>
-      ${auctionPill}
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(waText)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
       <a href="${unitHref}" class="card-view-area">View in Area Page →</a>
@@ -653,7 +636,7 @@ function syncUrl() {
   const url = new URL(window.location);
   const params = {
     q: currentQuery,
-    tab: document.getElementById('f-type').value,     // category: rental/subsale/lelong/tanah
+    tab: document.getElementById('f-type').value,     // category: rental/subsale/tanah
     type: document.getElementById('f-ptype').value,    // property type, e.g. "Condominium" — matches index.html's ?type=
     area: document.getElementById('f-area').value,
     bed: document.getElementById('f-bed').value,
@@ -689,12 +672,12 @@ async function init() {
     currentQuery = q;
   }
 
-  // Category always travels under ?tab= — index.html sends its tab names (sewa/jual/lelong/tanah);
-  // this page's own shared links send the category value directly (rental/subsale/lelong/tanah).
+  // Category always travels under ?tab= — index.html sends its tab names (sewa/jual/tanah);
+  // this page's own shared links send the category value directly (rental/subsale/tanah).
   // Default (no param) is 'rental' — matches index.html, which always opens on "For Rent".
   const typeEl = document.getElementById('f-type');
-  const VALID_TYPES = ['rental', 'subsale', 'lelong', 'tanah'];
-  const TAB_TO_TYPE = { sewa: 'rental', jual: 'subsale', lelong: 'lelong', tanah: 'tanah' };
+  const VALID_TYPES = ['rental', 'subsale', 'tanah'];
+  const TAB_TO_TYPE = { sewa: 'rental', jual: 'subsale', tanah: 'tanah' };
   const tabParam = params.get('tab');
   const category = TAB_TO_TYPE[tabParam]
     || (VALID_TYPES.includes(tabParam) ? tabParam : 'rental');
