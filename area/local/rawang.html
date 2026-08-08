@@ -20,7 +20,7 @@
   {"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://haniproperties.com/area/local/rawang.html#page", "name": "Properties in Rawang", "url": "https://haniproperties.com/area/local/rawang.html", "dateModified": "2026-08-06"}, {"@type": ["RealEstateAgent", "LocalBusiness"], "@id": "https://haniproperties.com/area/local/rawang.html#business", "name": "Hani Properties", "url": "https://haniproperties.com/area/local/rawang.html", "telephone": "+60125459182", "description": "Rental and subsale listings in Rawang. Apartments, condos, landed. WhatsApp Hani directly.", "address": {"@type": "PostalAddress", "addressLocality": "Rawang", "addressRegion": "Selangor", "addressCountry": "MY"}, "geo": {"@type": "GeoCoordinates", "latitude": 3.3178, "longitude": 101.5765}, "areaServed": {"@type": "Place", "name": "Rawang, Selangor"}, "contactPoint": {"@type": "ContactPoint", "telephone": "+60125459182", "contactType": "customer service", "availableLanguage": ["English", "Malay"]}, "parentOrganization": {"@type": "Organization", "name": "ERA Real Estate", "identifier": "E(1)1773/3"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hani Properties", "item": "https://haniproperties.com/"}, {"@type": "ListItem", "position": 2, "name": "Areas", "item": "https://haniproperties.com/kawasan.html"}, {"@type": "ListItem", "position": 3, "name": "Rawang", "item": "https://haniproperties.com/area/local/rawang.html"}]}]}
   </script>
     <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What types of properties are available in Rawang?", "acceptedAnswer": {"@type": "Answer", "text": "Hani Properties lists for-rent, for-sale (subsale), auction, and land/commercial properties in Rawang, including apartments, condominiums, and landed homes, updated regularly."}}, {"@type": "Question", "name": "Is Rawang a good area for renting or buying property?", "acceptedAnswer": {"@type": "Answer", "text": "Rawang is a fast-growing satellite town in northern Selangor, well served by the KTM Komuter line, the North–South Expressway, and the Guthrie Corridor Expressway. Established townships like Bandar Country Homes and Rawang Perdana offer affordable landed and high-rise options close to Templer Park and the Rawang Bypass."}}, {"@type": "Question", "name": "How can I enquire about a property in Rawang?", "acceptedAnswer": {"@type": "Answer", "text": "WhatsApp Hani directly at 012-545 9182. Hani Properties is licensed under ERA Real Estate (E(1)1773/3, REN 84031) and typically replies within an hour."}}, {"@type": "Question", "name": "Can Hani Properties help find a specific unit in Rawang that isn't listed yet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. WhatsApp Hani or use the request form on the Rawang page, and Hani will search directly for matching units in Rawang."}}]}
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What types of properties are available in Rawang?", "acceptedAnswer": {"@type": "Answer", "text": "Hani Properties lists for-rent, for-sale (subsale), and land/commercial properties in Rawang, including apartments, condominiums, and landed homes, updated regularly."}}, {"@type": "Question", "name": "Is Rawang a good area for renting or buying property?", "acceptedAnswer": {"@type": "Answer", "text": "Rawang is a fast-growing satellite town in northern Selangor, well served by the KTM Komuter line, the North–South Expressway, and the Guthrie Corridor Expressway. Established townships like Bandar Country Homes and Rawang Perdana offer affordable landed and high-rise options close to Templer Park and the Rawang Bypass."}}, {"@type": "Question", "name": "How can I enquire about a property in Rawang?", "acceptedAnswer": {"@type": "Answer", "text": "WhatsApp Hani directly at 012-545 9182. Hani Properties is licensed under ERA Real Estate (E(1)1773/3, REN 84031) and typically replies within an hour."}}, {"@type": "Question", "name": "Can Hani Properties help find a specific unit in Rawang that isn't listed yet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. WhatsApp Hani or use the request form on the Rawang page, and Hani will search directly for matching units in Rawang."}}]}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
@@ -72,7 +72,6 @@
     .card-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
     .badge-unit{background:#e8f4ed;color:#1B4D35}
     .badge-subsale{background:#e8f0fe;color:#1a4fa0}
-    .badge-lelong{background:#fdeaea;color:#a3271f}
     .badge-land{background:#f3ecf9;color:#5b3a94}
     .badge-coa{background:#f0ede8;color:#7a7268;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:6px}
     .badge-count{background:#eef7f0;color:#1B4D35;margin-left:6px}
@@ -181,7 +180,6 @@
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('sewa',this)">For Rent</button>
     <button class="tab-btn" onclick="switchTab('jual',this)">For Sale</button>
-    <button class="tab-btn" onclick="switchTab('lelong',this)">Auction</button>
     <button class="tab-btn" onclick="switchTab('tanah',this)">Land/Commercial</button>
   </div>
 
@@ -344,12 +342,7 @@
     </div>
   </div><!--SSR_END--></div>
   </div>
-<div id="tab-lelong" style="display:none;overflow:hidden">
-    <img src="/images/banner-auction.png" alt="Auction Properties" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
-    <div class="listing-grid" id="grid-lelong"><!--SSR_START--><div class="empty">No lelong/auction listings available right now.</div><!--SSR_END--></div>
-  </div>
-
-  <div id="tab-tanah" style="display:none;overflow:hidden">
+<div id="tab-tanah" style="display:none;overflow:hidden">
     <img src="/images/banner-land.png" alt="Land &amp; Commercial" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-tanah"><!--SSR_START--><!--SSR_END--></div>
   </div>
@@ -379,22 +372,21 @@
 <script>
 const AREA = 'Rawang';
 const WA_BASE = 'https://wa.me/60125459182?text=';
-let allUnits = [], allSubsales = [], allLelong = [], allLand = [];
+let allUnits = [], allSubsales = [], allLand = [];
 let currentTab = 'sewa';
 
 function switchTab(tab, btn) {
   currentTab = tab;
   document.getElementById('tab-sewa').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('tab-jual').style.display = tab === 'jual' ? '' : 'none';
-  document.getElementById('tab-lelong').style.display = tab === 'lelong' ? '' : 'none';
   document.getElementById('tab-tanah').style.display = tab === 'tanah' ? '' : 'none';
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   // Show/hide relevant filters
   document.getElementById('fg-furnishing').style.display = tab === 'sewa' ? '' : 'none';
   document.getElementById('fg-bed').style.display = tab === 'sewa' ? '' : 'none';
-  document.getElementById('fg-type').style.display = (tab === 'sewa' || tab === 'jual' || tab === 'lelong' || tab === 'tanah') ? '' : 'none';
-  document.getElementById('fg-tenure').style.display = (tab === 'jual' || tab === 'lelong' || tab === 'tanah') ? '' : 'none';
+  document.getElementById('fg-type').style.display = (tab === 'sewa' || tab === 'jual' || tab === 'tanah') ? '' : 'none';
+  document.getElementById('fg-tenure').style.display = (tab === 'jual' || tab === 'tanah') ? '' : 'none';
   document.getElementById('fg-price').style.display = '';
   document.getElementById('fg-instalment').style.display = tab === 'jual' ? '' : 'none';
   document.getElementById('instalment-disclaimer').style.display = tab === 'jual' ? '' : 'none';
@@ -402,14 +394,13 @@ function switchTab(tab, btn) {
   if (tab === 'tanah') {
     buildTypeOptions(allLand);
   } else {
-    buildTypeOptions([...allUnits, ...allSubsales, ...allLelong]);
+    buildTypeOptions([...allUnits, ...allSubsales]);
   }
   // Rebuild price options for the active tab
   if (tab === 'jual') {
     buildPriceOptions(allSubsales, false);
     buildInstalmentOptions(allSubsales);
-  } else if (tab === 'lelong') {
-    buildPriceOptions(allLelong, false); } else if (tab === 'tanah') {
+  } else if (tab === 'tanah') {
     buildPriceOptions(allLand, false);
   } else {
     buildPriceOptions(allUnits, true);
@@ -451,17 +442,7 @@ function applyFilters() {
     );
     document.getElementById('grid-unit').innerHTML =
       fu.length ? fu.map(unitCard).join('') : empty('No unit rentals match your filters.');
-    document.getElementById('filter-count').textContent = `${fu.length} listing${fu.length !== 1 ? 's' : ''}`;  } else if (currentTab === 'lelong') {
-    const fl = allLelong.filter(r =>
-      (!type || r.type === type) &&
-      matchBed(r, bed) &&
-      matchPrice(r, price) &&
-      (!tenure || r.tenure === tenure)
-    );
-    document.getElementById('grid-lelong').innerHTML =
-      fl.length ? fl.map(lelongCard).join('') : empty('No auction listings match your filters.');
-    document.getElementById('filter-count').textContent = `${fl.length} listing${fl.length !== 1 ? 's' : ''}`;
-  } else if (currentTab === 'tanah') {
+    document.getElementById('filter-count').textContent = `${fu.length} listing${fu.length !== 1 ? 's' : ''}`;  } else if (currentTab === 'tanah') {
     const ft = allLand.filter(r =>
       (!type || r.type === type) &&
       matchPrice(r, price) &&
@@ -647,35 +628,8 @@ function subsaleCard(r) {
   </div>`;
 }
 
-function lelongCard(r) {
-  const pills = [
-    r.bed ? `🛏 ${r.bed} bed` : '',
-    r.bath ? `🚿 ${r.bath} bath` : '',
-    r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
-    r.tenure || '',
-    r.type || ''
-  ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-  const lelongDate = (r.lelong_date || '').trim();
-  const auctionPill = (lelongDate && lelongDate !== '-') ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>` : '';
-  const estMv = parseFloat(String(r['estimated mv']).replace(/,/g,''));
-  const estMvPill = (!isNaN(estMv) && estMv > 0) ? `<span class="pill pill-mv">Est. MV ${fmt(estMv)}</span>` : '';
-  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
-    ${cardImage(r)}
-    <div class="card-body">
-      <div><span class="card-badge badge-lelong">Auction</span>${coaBadge(r)}</div>
-      <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
-      <div class="card-price-row"><div class="card-price">${fmt(r['lelong price'])}</div>${estMvPill}</div>
-      <div class="card-pills">${pills}</div>
-      ${auctionPill}
-      ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
-      <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the auction unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div>`;
-}
-
 function landCard(r) {
   const isRental = r.listing_type === 'rental';
-  const isLelong = r.listing_type === 'lelong';
   const pills = [
     r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
     r.tenure || '',
@@ -683,13 +637,10 @@ function landCard(r) {
   ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
   const priceHtml = isRental ? `${fmt(r.price)}<span> / month</span>` : fmt(r.price);
   const inst = parseFloat(String(r.installment).replace(/,/g,''));
-  const installmentHtml = (!isRental && !isLelong && !isNaN(inst) && inst > 0)
+  const installmentHtml = (!isRental && !isNaN(inst) && inst > 0)
     ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${inst.toLocaleString('en-MY')}</strong>/mo instalment</div>` : '';
-  const lelongDate = (r.lelong_date || '').trim();
-  const auctionHtml = (isLelong && lelongDate && lelongDate !== '-')
-    ? `<div class="card-pills"><span class="pill">🔨 Auction: ${lelongDate}</span></div>` : '';
-  const statusClass = isRental ? 'badge-unit' : isLelong ? 'badge-lelong' : 'badge-subsale';
-  const statusLabel = isRental ? 'Rental' : isLelong ? 'Auction' : 'Subsale';
+  const statusClass = isRental ? 'badge-unit' : 'badge-subsale';
+  const statusLabel = isRental ? 'Rental' : 'Subsale';
   return `<div class="card" id="${toSlug(r.project_name, r.type, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
@@ -698,7 +649,6 @@ function landCard(r) {
       <div class="card-price">${priceHtml}</div>
       ${installmentHtml}
       <div class="card-pills">${pills}</div>
-      ${auctionHtml}
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the land/commercial listing at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -721,32 +671,31 @@ fetch('../../listings.csv')
   .then(r => r.text())
   .then(text => {
     const rows = parseCSV(text);
-    const filtered = rows.filter(r => r.area === AREA && (r.status === '-' || r.status === ''));
+    const filtered = rows.filter(r => r.area === AREA && r.listing_type !== 'lelong' && (r.status === '-' || r.status === ''));
     allUnits    = filtered.filter(r => r.listing_type === 'rental');
     allSubsales = filtered.filter(r => r.listing_type === 'subsale');
-    allLelong   = filtered.filter(r => r.listing_type === 'lelong');
     // Land/commercial is determined purely by the `type` column, regardless of listing_type
-    // (a commercial unit can be for rent, subsale, or lelong) — it's pulled in alongside
+    // (a commercial unit can be for rent or subsale) — it's pulled in alongside
     // whatever tab it already belongs to, not removed from it.
     allLand     = filtered.filter(r => LAND_COMMERCIAL_TYPES.has(r.type));
 
     // Build dynamic filter options
-    buildTypeOptions([...allUnits, ...allSubsales, ...allLelong]);
+    buildTypeOptions([...allUnits, ...allSubsales]);
     buildPriceOptions(allUnits, true); // default: rental tab active
     buildInstalmentOptions(allSubsales);
 
     // Initial render
     applyFilters();
 
-    const totalListings = allUnits.length + allSubsales.length + allLelong.length + allLand.length;
+    const totalListings = allUnits.length + allSubsales.length + allLand.length;
     const summaryEl = document.getElementById('hero-summary-stat');
     if (summaryEl && totalListings) {
-      summaryEl.textContent = `${totalListings} current listing${totalListings !== 1 ? 's' : ''} in Rawang — for rent, for sale, and auction.`;
+      summaryEl.textContent = `${totalListings} current listing${totalListings !== 1 ? 's' : ''} in Rawang — for rent and for sale.`;
     }
   })
   .catch((e) => {
     console.error('Fetch error:', e);
-    ['grid-unit','grid-subsale','grid-lelong'].forEach(id => {
+    ['grid-unit','grid-subsale'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.innerHTML = empty('Unable to load listings. Please try again.', false);
     });
