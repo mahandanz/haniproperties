@@ -170,7 +170,8 @@ nav{
 
 /* INFO STRIP */
 .info-strip{
-  display:flex;justify-content:space-between;align-items:center;
+  position:relative;
+  display:flex;justify-content:flex-end;align-items:center;
   padding:14px 32px;
   background:#fff;
   border-top:1px solid #e3ddd0;
@@ -179,11 +180,14 @@ nav{
 @media(max-width:700px){
   .info-strip{flex-direction:column;padding:16px}
   .info-strip-left,.info-strip-right{font-size:12px}
+  .info-strip-left{position:static;left:auto;transform:none}
 }
 .info-strip-left{
+  position:absolute;left:50%;transform:translateX(-50%);
   font-size:15px;font-weight:700;
   color:#2a5c3a;
   letter-spacing:.02em;
+  white-space:nowrap;
 }
 .info-strip-right{
   font-size:15px;font-weight:600;
@@ -210,6 +214,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 @media(max-width:600px){
   .info-strip{padding:12px 16px;flex-direction:column;gap:10px;text-align:center}
   .info-strip-left,.info-strip-right{font-size:13px}
+  .info-strip-left{position:static;left:auto;transform:none}
 }
 
 /* ABOUT / SEO SECTION */
