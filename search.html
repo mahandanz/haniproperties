@@ -49,7 +49,8 @@
     .hero-search-btn:hover{background:#A82C3D;color:#fff}
 
     /* HERO TABS (I'm looking to:) */
-    .hero-tabs-label{display:block;font-size:12px;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.65);margin-bottom:8px}
+    .hero-tabs-label{display:block;font-size:13px;font-weight:700;letter-spacing:.02em;color:rgba(255,255,255,.85);margin-bottom:8px}
+    .step-required-badge{display:inline-block;background:#E2818F;color:#5C1420;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-left:8px;vertical-align:middle}
     .hero-tabs{display:inline-flex;gap:4px;margin-bottom:16px;background:rgba(255,255,255,.1);padding:4px;border-radius:12px;flex-wrap:wrap;justify-content:center}
     .hero-tab-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:8px 16px;border-radius:9px;border:none;background:transparent;color:rgba(255,255,255,.8);cursor:pointer;transition:all .18s;white-space:nowrap}
     .hero-tab-btn svg{width:13px;height:13px;flex-shrink:0;opacity:.85}
@@ -189,7 +190,7 @@
   <div class="hero-eyebrow">🔍 Search Listings</div>
   <h1>Find Your Perfect Property</h1>
 
-  <div class="hero-tabs-label">Step 1 · I'm looking to</div>
+  <div class="hero-tabs-label">Step 1 · What are you looking for?<span class="step-required-badge">Choose 1</span></div>
   <div class="hero-tabs" id="hero-tabs">
     <button type="button" class="hero-tab-btn active" data-type="rental" onclick="selectCategory('rental', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>For Rent</button>
     <button type="button" class="hero-tab-btn" data-type="subsale" onclick="selectCategory('subsale', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 14.9 8.6 22 9.3l-5.3 4.8 1.6 7.1L12 17.8 5.7 21.2l1.6-7.1L2 9.3l7.1-.7z"/></svg>For Sale</button>
