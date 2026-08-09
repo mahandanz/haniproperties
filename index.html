@@ -273,18 +273,26 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 .area-section{background:#fff;border-top:1px solid #e3ddd0;padding:56px 24px 64px}
 .area-inner{max-width:960px;margin:0 auto}
 .area-section h2{font-family:'Lora',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:700;color:#1c1c18;margin-bottom:8px;line-height:1.3}
-.area-section .area-sub{font-size:.9rem;color:#7a7268;margin-bottom:28px}
+.area-section .area-sub{font-size:.9rem;color:#7a7268;margin-bottom:10px}
+.area-prompt{display:flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;color:#2a5c3a;margin-bottom:20px;letter-spacing:.02em;text-transform:uppercase}
+.area-prompt svg{width:14px;height:14px;flex-shrink:0}
 .area-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
 .area-card{
   display:block;background:#faf9f6;border:1px solid #e3ddd0;border-radius:12px;
-  overflow:hidden;text-decoration:none;transition:border-color .18s, transform .15s, background .18s;
+  overflow:hidden;text-decoration:none;transition:border-color .18s, transform .15s, background .18s, box-shadow .18s;
+  cursor:pointer;position:relative;
 }
-.area-card:hover{border-color:#2a5c3a;background:#fff;transform:translateY(-2px)}
+.area-card:hover{border-color:#2a5c3a;background:#fff;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
 .area-card-img-wrap{width:100%;aspect-ratio:16/10;overflow:hidden;background:#e3ddd0}
 .area-card-img{width:100%;height:100%;object-fit:cover;display:block}
-.area-card-body{padding:12px 16px 14px}
+.area-card-body{padding:12px 16px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.area-card-text{min-width:0}
 .area-card-name{font-size:.92rem;font-weight:700;color:#1c1c18;margin-bottom:4px}
-.area-card-tag{font-size:.78rem;color:#7a7268}
+.area-card-tag{font-size:.78rem;color:#7a7268;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.area-card-arrow{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#f1efe9;display:flex;align-items:center;justify-content:center;transition:background .18s, transform .18s}
+.area-card-arrow svg{width:11px;height:11px}
+.area-card:hover .area-card-arrow{background:#2a5c3a;transform:translateX(2px)}
+.area-card:hover .area-card-arrow svg{stroke:#fff}
 .area-more{margin-top:20px;text-align:center}
 .area-more a{font-size:.85rem;font-weight:700;color:#2a5c3a;text-decoration:none}
 .area-more a:hover{text-decoration:underline}
@@ -368,75 +376,106 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   <div class="area-inner">
     <h2>Popular Areas We Cover</h2>
     <p class="area-sub">Rentals, room rentals, subsales and new projects across the Klang Valley and Negeri Sembilan.</p>
+    <p class="area-prompt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>Choose an area to explore</p>
     <div class="area-grid">
       <a class="area-card" href="area/local/shah-alam.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/shah-alam.png" alt="Shah Alam" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Shah Alam</div>
-          <div class="area-card-tag">UiTM, Blue Mosque, PKNS</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Shah Alam</div>
+            <div class="area-card-tag">UiTM, Blue Mosque, PKNS</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
       <a class="area-card" href="area/local/petaling-jaya.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/petaling-jaya.png" alt="Petaling Jaya / Damansara" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Petaling Jaya / Damansara</div>
-          <div class="area-card-tag">1 Utama, IKEA Damansara, The Curve</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Petaling Jaya / Damansara</div>
+            <div class="area-card-tag">1 Utama, IKEA Damansara, The Curve</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
       <a class="area-card" href="area/local/puchong.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/puchong.png" alt="Puchong" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Puchong</div>
-          <div class="area-card-tag">IOI Mall, Setiawalk, PFCC</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Puchong</div>
+            <div class="area-card-tag">IOI Mall, Setiawalk, PFCC</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
       <a class="area-card" href="area/local/subang-jaya.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/subang-jaya.png" alt="Subang Jaya" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Subang Jaya</div>
-          <div class="area-card-tag">Sunway Pyramid, Empire, SS15</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Subang Jaya</div>
+            <div class="area-card-tag">Sunway Pyramid, Empire, SS15</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
       <a class="area-card" href="area/local/bukit-jalil.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/bukit-jalil.png" alt="Bukit Jalil" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Bukit Jalil</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Bukit Jalil</div>
           <div class="area-card-tag">Pavilion, National Stadium, LRT</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
       <a class="area-card" href="area/local/cheras.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/cheras.png" alt="Cheras" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Cheras</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Cheras</div>
           <div class="area-card-tag">Sunway Velocity, IKEA, Taman Connaught</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
       <a class="area-card" href="area/local/ampang.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/ampang.png" alt="Ampang" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Ampang</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Ampang</div>
           <div class="area-card-tag">Jalan Ampang, AKLEH, KL Golden Triangle</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
       <a class="area-card" href="area/local/klang.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/klang.png" alt="Klang" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Klang</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Klang</div>
           <div class="area-card-tag">Bandar Botanic, AEON Bukit Tinggi</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
       <a class="area-card" href="area/local/kepong.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/kepong.png" alt="Kepong" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Kepong</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Kepong</div>
           <div class="area-card-tag">Desa ParkCity, KTM Kepong</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
       <a class="area-card" href="area/local/kuala-lumpur.html">
         <div class="area-card-img-wrap"><img class="area-card-img" src="images/areas/kuala-lumpur.png" alt="Kuala Lumpur" loading="lazy"></div>
         <div class="area-card-body">
-          <div class="area-card-name">Kuala Lumpur</div>
+          <div class="area-card-text">
+            <div class="area-card-name">Kuala Lumpur</div>
           <div class="area-card-tag">KLCC, Bukit Bintang, Mid Valley</div>
+          </div>
+          <div class="area-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c18" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
         </div>
       </a>
     </div>
