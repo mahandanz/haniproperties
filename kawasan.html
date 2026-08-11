@@ -88,15 +88,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(253,250,245,
 .area-hero h1{font-family:'Lora',serif;color:#fff;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px}
 .area-hero-desc{color:rgba(255,255,255,.7);font-size:.92rem;max-width:520px;margin:0 auto 20px;line-height:1.7}
 
-.area-region-tabs{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-bottom:16px;background:rgba(255,255,255,.1);padding:4px;border-radius:12px}
-.area-tab-btn{font-size:12px;font-weight:700;padding:8px 16px;border-radius:9px;border:none;background:transparent;color:rgba(255,255,255,.7);cursor:pointer;transition:all .18s;white-space:nowrap}
-.area-tab-btn.active{background:#fff;color:#5C1420;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 
-.area-search-wrap{max-width:420px;margin:0 auto}
-.area-search-input{width:100%;padding:13px 18px;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;color:#1c1c18;outline:none;box-shadow:0 2px 12px rgba(0,0,0,.15)}
-.area-search-input::placeholder{color:#a89f94}
-
-.area-filter-card{background:#5C1420;padding:32px 24px 28px;text-align:center;max-width:820px;margin:36px auto 0;border-radius:20px;box-shadow:0 8px 28px rgba(92,20,32,.18)}
 
 /* BREADCRUMB */
 .breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
@@ -120,8 +112,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(253,250,245,
 .area-card-name{font-size:.92rem;font-weight:700;color:#1c1c18;margin-bottom:4px;display:flex;align-items:center;gap:6px}
 .area-card-tag{font-size:.78rem;color:#7a7268;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .badge-popular{background:#f7e6e9;color:#A82C3D;font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:20px;white-space:nowrap}
-.area-empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#faf9f6;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
-.area-empty a{color:#A82C3D;font-weight:700;text-decoration:none}
 
 .cta-band{background:#5C1420;padding:36px 24px;text-align:center;margin-top:48px;border-radius:20px}
 .cta-band h2{color:#fff;font-family:'Lora',serif;font-size:1.3rem;font-weight:700;margin-bottom:8px}
@@ -188,18 +178,6 @@ footer .footer-license-img{display:block;max-width:340px;width:100%;height:auto;
 <section class="area-section">
   <div class="area-inner">
     <div id="area-results"></div>
-
-    <div class="area-filter-card">
-      <div class="area-region-tabs" id="region-tabs">
-        <button type="button" class="area-tab-btn active" onclick="switchRegion('all',this)">All Areas</button>
-        <button type="button" class="area-tab-btn" onclick="switchRegion('Selangor',this)">Selangor</button>
-        <button type="button" class="area-tab-btn" onclick="switchRegion('Kuala Lumpur',this)">Kuala Lumpur</button>
-        <button type="button" class="area-tab-btn" onclick="switchRegion('Negeri Sembilan',this)">Negeri Sembilan</button>
-      </div>
-      <div class="area-search-wrap">
-        <input type="search" id="area-search" class="area-search-input" placeholder="Search an area..." autocomplete="off" oninput="renderAreas()">
-      </div>
-    </div>
     <div class="cta-band">
       <h2>Don't see your area yet?</h2>
       <p>We're always adding new listings across the Klang Valley. Tell us what you're looking for and we'll find it.</p>
@@ -250,14 +228,6 @@ const AREAS = [
   { slug: 'nilai', name: 'Nilai', region: 'Negeri Sembilan', tag: 'USIM, INTI University, AEON Nilai' },
 ];
 
-let currentRegion = 'all';
-
-function switchRegion(region, btn) {
-  currentRegion = region;
-  document.querySelectorAll('#region-tabs .area-tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderAreas();
-}
 
 function cardHtml(a) {
   return `<a class="area-card${a.popular ? ' popular' : ''}" href="area/local/${a.slug}.html">
@@ -270,25 +240,10 @@ function cardHtml(a) {
 }
 
 function renderAreas() {
-  const q = document.getElementById('area-search').value.trim().toLowerCase();
-  let list = AREAS.filter(a => currentRegion === 'all' || a.region === currentRegion);
-  if (q) list = list.filter(a => a.name.toLowerCase().includes(q));
-
   const wrap = document.getElementById('area-results');
-
-  if (!list.length) {
-    wrap.innerHTML = `<div class="area-empty">No areas match "${q}". <a href="request.html">Tell us what you're looking for →</a></div>`;
-    return;
-  }
-
-  if (currentRegion !== 'all' || q) {
-    wrap.innerHTML = `<div class="area-grid">${list.map(cardHtml).join('')}</div>`;
-    return;
-  }
-
   const regions = ['Selangor', 'Kuala Lumpur', 'Negeri Sembilan'];
   wrap.innerHTML = regions.map(r => {
-    const items = list.filter(a => a.region === r);
+    const items = AREAS.filter(a => a.region === r);
     if (!items.length) return '';
     return `<div class="region-label"><span>${r}</span><span class="region-count">${items.length} area${items.length > 1 ? 's' : ''}</span></div>
       <div class="area-grid">${items.map(cardHtml).join('')}</div>`;
