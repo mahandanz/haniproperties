@@ -96,6 +96,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(253,250,245,
 .area-search-input{width:100%;padding:13px 18px;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;color:#1c1c18;outline:none;box-shadow:0 2px 12px rgba(0,0,0,.15)}
 .area-search-input::placeholder{color:#a89f94}
 
+/* FILTER BAR (light context, sits above the area grid) */
+.area-filter-bar{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:36px}
+.area-filter-bar .area-region-tabs{background:#faf9f6;border:1px solid #e3ddd0;margin-bottom:0}
+.area-filter-bar .area-tab-btn{color:#7a7268}
+.area-filter-bar .area-tab-btn.active{background:#5C1420;color:#fff}
+.area-filter-bar .area-search-input{border:1px solid #e3ddd0;box-shadow:none}
+
 /* BREADCRUMB */
 .breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
 .breadcrumb-inner{max-width:960px;margin:0 auto;font-size:12px;color:#7a7268}
@@ -172,15 +179,6 @@ footer .footer-license-img{display:block;max-width:340px;width:100%;height:auto;
     <div class="area-hero-eyebrow">📍 Areas We Cover</div>
     <h1>Explore Properties by Area</h1>
     <p class="area-hero-desc">For rent, for sale, auction and new projects across the Klang Valley, Kuala Lumpur and Negeri Sembilan. Pick an area to see what's available.</p>
-    <div class="area-region-tabs" id="region-tabs">
-      <button type="button" class="area-tab-btn active" onclick="switchRegion('all',this)">All Areas</button>
-      <button type="button" class="area-tab-btn" onclick="switchRegion('Selangor',this)">Selangor</button>
-      <button type="button" class="area-tab-btn" onclick="switchRegion('Kuala Lumpur',this)">Kuala Lumpur</button>
-      <button type="button" class="area-tab-btn" onclick="switchRegion('Negeri Sembilan',this)">Negeri Sembilan</button>
-    </div>
-    <div class="area-search-wrap">
-      <input type="search" id="area-search" class="area-search-input" placeholder="Search an area..." autocomplete="off" oninput="renderAreas()">
-    </div>
   </section>
 </div>
 
@@ -195,6 +193,18 @@ footer .footer-license-img{display:block;max-width:340px;width:100%;height:auto;
 <section class="area-section">
   <div class="area-inner">
     <div id="area-results"></div>
+
+    <div class="area-filter-bar">
+      <div class="area-region-tabs" id="region-tabs">
+        <button type="button" class="area-tab-btn active" onclick="switchRegion('all',this)">All Areas</button>
+        <button type="button" class="area-tab-btn" onclick="switchRegion('Selangor',this)">Selangor</button>
+        <button type="button" class="area-tab-btn" onclick="switchRegion('Kuala Lumpur',this)">Kuala Lumpur</button>
+        <button type="button" class="area-tab-btn" onclick="switchRegion('Negeri Sembilan',this)">Negeri Sembilan</button>
+      </div>
+      <div class="area-search-wrap">
+        <input type="search" id="area-search" class="area-search-input" placeholder="Search an area..." autocomplete="off" oninput="renderAreas()">
+      </div>
+    </div>
 
     <div class="cta-band">
       <h2>Don't see your area yet?</h2>
