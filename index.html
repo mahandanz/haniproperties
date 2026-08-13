@@ -269,6 +269,58 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   .wa-float svg{width:26px;height:26px}
 }
 
+/* FEATURED UNIT HIGHLIGHTS */
+.highlights-section{background:#fff;border-top:1px solid #e3ddd0;padding:40px 0 8px}
+.highlights-section.highlights-rental{background:#faf9f6}
+.highlights-inner{max-width:1100px;margin:0 auto;padding:0 24px}
+.highlights-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:4px}
+.highlights-head h2{font-family:'Lora',serif;font-size:clamp(1.15rem,2.3vw,1.5rem);font-weight:700;color:#1c1c18;line-height:1.3}
+.highlights-sub{font-size:.88rem;color:#7a7268;margin-bottom:20px}
+.highlights-track{
+  display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:4px 4px 12px;-webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;scrollbar-color:#cdbfa5 transparent;
+}
+.highlights-track::-webkit-scrollbar{height:6px}
+.highlights-track::-webkit-scrollbar-thumb{background:#cdbfa5;border-radius:10px}
+.highlights-card{
+  flex:0 0 auto;scroll-snap-align:start;
+  width:240px;aspect-ratio:3/5;border-radius:14px;overflow:hidden;
+  box-shadow:0 4px 18px rgba(0,0,0,.12);text-decoration:none;border:none;padding:0;
+  background:#f2ede2;transition:transform .18s;cursor:pointer;
+}
+.highlights-card:hover{transform:translateY(-3px)}
+.highlights-card img{width:100%;height:100%;object-fit:cover;display:block}
+.highlights-empty{font-size:.85rem;color:#a89f94;padding:8px 0}
+.highlights-viewall{
+  flex:0 0 auto;scroll-snap-align:start;
+  width:240px;aspect-ratio:3/5;border-radius:14px;
+  border:1.5px dashed #cdbfa5;background:#faf9f6;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  text-decoration:none;transition:border-color .18s, background .18s;
+}
+.highlights-viewall:hover{border-color:#2a5c3a;background:#fff}
+.highlights-viewall-arrow{font-size:22px;color:#2a5c3a}
+.highlights-viewall-label{font-size:.85rem;font-weight:700;color:#2a5c3a;text-align:center;padding:0 16px}
+@media(max-width:600px){
+  .highlights-section{padding:28px 0 4px}
+  .highlights-inner{padding:0 16px}
+  .highlights-card,.highlights-viewall{width:190px}
+}
+
+/* HIGHLIGHT LIGHTBOX */
+.hl-lightbox{position:fixed;inset:0;background:rgba(20,15,10,.88);z-index:500;display:none;align-items:center;justify-content:center;padding:24px}
+.hl-lightbox.open{display:flex}
+.hl-lightbox-wrap{position:relative;width:min(94vw,720px);max-height:84vh;display:flex;flex-direction:column;align-items:center}
+.hl-lightbox-wrap img{width:100%;height:auto;max-height:72vh;object-fit:contain;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.hl-lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer}
+.hl-lightbox-wa{
+  margin-top:16px;display:inline-block;background:#25D366;color:#fff;
+  font-size:14px;font-weight:700;padding:12px 28px;border-radius:30px;
+  text-decoration:none;transition:background .15s;
+}
+.hl-lightbox-wa:hover{background:#1EBE57}
+
 /* AREA EXPLORE GRID */
 .area-section{background:#fff;border-top:1px solid #e3ddd0;padding:56px 24px 64px}
 .area-inner{max-width:960px;margin:0 auto}
@@ -334,6 +386,32 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   <div class="info-strip-left">HANI &nbsp;|&nbsp; REN 84031 &nbsp;|&nbsp; 012-545 9182</div>
   <div class="info-strip-right">since 2025</div>
 </div>
+
+<!-- FEATURED UNITS FOR SALE -->
+<section class="highlights-section highlights-subsale">
+  <div class="highlights-inner">
+    <div class="highlights-head">
+      <h2>Featured Units For Sale</h2>
+    </div>
+    <p class="highlights-sub">Handpicked subsale units across Klang Valley.</p>
+    <div class="highlights-track" id="subsale-track">
+      <p class="highlights-empty">Loading units…</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED UNITS FOR RENT -->
+<section class="highlights-section highlights-rental">
+  <div class="highlights-inner">
+    <div class="highlights-head">
+      <h2>Featured Units For Rent</h2>
+    </div>
+    <p class="highlights-sub">Move-in ready rentals, rooms and whole units.</p>
+    <div class="highlights-track" id="rental-track">
+      <p class="highlights-empty">Loading units…</p>
+    </div>
+  </div>
+</section>
 
 <!-- EXPLORE BY AREA -->
 <section class="area-section">
@@ -524,6 +602,15 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   <a href="https://wa.me/60125459182" target="_blank" rel="noopener noreferrer">+60 12-545 9182</a>
 </footer>
 
+<!-- HIGHLIGHT LIGHTBOX -->
+<div class="hl-lightbox" id="hl-lightbox" onclick="closeHighlightLightbox()">
+  <div class="hl-lightbox-wrap" onclick="event.stopPropagation()">
+    <button type="button" class="hl-lightbox-close" onclick="closeHighlightLightbox()" aria-label="Close">&times;</button>
+    <img id="hl-lightbox-img" src="" alt="Featured unit">
+    <a id="hl-lightbox-wa" class="hl-lightbox-wa" href="#" target="_blank" rel="noopener noreferrer">💬 Chat on WhatsApp</a>
+  </div>
+</div>
+
 <!-- FLOATING WHATSAPP BUTTON -->
 <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
@@ -533,6 +620,60 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 </a>
 
 <script>
+function renderHighlights(trackId, items, viewAllHref, viewAllLabel) {
+  const track = document.getElementById(trackId);
+  const active = (items || []).filter(u => u.active !== false).slice(0, 4);
+  if (!active.length) {
+    track.innerHTML = '<p class="highlights-empty">No units to show right now.</p>';
+    return;
+  }
+  const cards = active.map(u => `
+    <button type="button" class="highlights-card" aria-label="Enlarge unit ${u.id}" onclick="openHighlightLightbox('${u.image}','${u.id}')">
+      <img src="${u.image}" alt="Featured unit ${u.id}" loading="lazy">
+    </button>
+  `).join('');
+  const viewAll = viewAllHref ? `
+    <a class="highlights-viewall" href="${viewAllHref}">
+      <span class="highlights-viewall-arrow">→</span>
+      <span class="highlights-viewall-label">${viewAllLabel || 'View All Listings'}</span>
+    </a>
+  ` : '';
+  track.innerHTML = cards + viewAll;
+}
+
+function openHighlightLightbox(imgSrc, unitId) {
+  document.getElementById('hl-lightbox-img').src = imgSrc;
+  const waText = encodeURIComponent(`Hi Hani, I'm interested in the unit shown here (${unitId}). Can you share more details?`);
+  document.getElementById('hl-lightbox-wa').href = `https://wa.me/60125459182?text=${waText}`;
+  document.getElementById('hl-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeHighlightLightbox() {
+  document.getElementById('hl-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeHighlightLightbox();
+});
+
+fetch('/data/subsalehighlights.json')
+  .then(r => r.json())
+  .then(data => renderHighlights('subsale-track', data, '/search.html?tab=jual', 'View All Subsale'))
+  .catch(e => {
+    console.error('Subsale highlights fetch error:', e);
+    document.getElementById('subsale-track').innerHTML = '<p class="highlights-empty">Unable to load units.</p>';
+  });
+
+fetch('/data/rentalhighlights.json')
+  .then(r => r.json())
+  .then(data => renderHighlights('rental-track', data, '/search.html?tab=sewa', 'View All Rentals'))
+  .catch(e => {
+    console.error('Rental highlights fetch error:', e);
+    document.getElementById('rental-track').innerHTML = '<p class="highlights-empty">Unable to load units.</p>';
+  });
+
 let homeSearchType = 'rental';
 let saleTypeOptions = []; // property types pulled from listings.csv, for the "For Sale" dropdown
 
