@@ -285,7 +285,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 .highlights-track::-webkit-scrollbar-thumb{background:#cdbfa5;border-radius:10px}
 .highlights-card{
   flex:0 0 auto;scroll-snap-align:start;
-  width:240px;aspect-ratio:3/5;border-radius:14px;overflow:hidden;
+  width:170px;aspect-ratio:3/5;border-radius:14px;overflow:hidden;
   box-shadow:0 4px 18px rgba(0,0,0,.12);text-decoration:none;border:none;padding:0;
   background:#f2ede2;transition:transform .18s;cursor:pointer;
 }
@@ -294,7 +294,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 .highlights-empty{font-size:.85rem;color:#a89f94;padding:8px 0}
 .highlights-viewall{
   flex:0 0 auto;scroll-snap-align:start;
-  width:240px;aspect-ratio:3/5;border-radius:14px;
+  width:170px;aspect-ratio:3/5;border-radius:14px;
   border:1.5px dashed #cdbfa5;background:#faf9f6;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
   text-decoration:none;transition:border-color .18s, background .18s;
@@ -305,14 +305,14 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 @media(max-width:600px){
   .highlights-section{padding:28px 0 4px}
   .highlights-inner{padding:0 16px}
-  .highlights-card,.highlights-viewall{width:190px}
+  .highlights-card,.highlights-viewall{width:140px}
 }
 
 /* HIGHLIGHT LIGHTBOX */
 .hl-lightbox{position:fixed;inset:0;background:rgba(20,15,10,.88);z-index:500;display:none;align-items:center;justify-content:center;padding:24px}
 .hl-lightbox.open{display:flex}
-.hl-lightbox-wrap{position:relative;width:min(94vw,720px);max-height:84vh;display:flex;flex-direction:column;align-items:center}
-.hl-lightbox-wrap img{width:100%;height:auto;max-height:72vh;object-fit:contain;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.hl-lightbox-wrap{position:relative;width:min(80vw,420px);max-height:65vh;display:flex;flex-direction:column;align-items:center}
+.hl-lightbox-wrap img{width:100%;height:auto;max-height:55vh;object-fit:contain;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
 .hl-lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer}
 .hl-lightbox-wa{
   margin-top:16px;display:inline-block;background:#25D366;color:#fff;
@@ -349,8 +349,11 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 .area-more a{font-size:.85rem;font-weight:700;color:#2a5c3a;text-decoration:none}
 .area-more a:hover{text-decoration:underline}
 @media(max-width:600px){
-  .area-section{padding:36px 16px 48px}
-  .area-grid{grid-template-columns:1fr 1fr}
+  .area-section{padding:28px 12px 36px}
+  .area-grid{grid-template-columns:repeat(4,1fr);gap:8px}
+  .area-card-body{padding:6px 4px 8px;display:block;text-align:center}
+  .area-card-name{font-size:.66rem;margin-bottom:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .area-card-tag,.area-card-arrow{display:none}
 }
 
 </style>
@@ -386,32 +389,6 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   <div class="info-strip-left">HANI &nbsp;|&nbsp; REN 84031 &nbsp;|&nbsp; 012-545 9182</div>
   <div class="info-strip-right">since 2025</div>
 </div>
-
-<!-- FEATURED UNITS FOR SALE -->
-<section class="highlights-section highlights-subsale">
-  <div class="highlights-inner">
-    <div class="highlights-head">
-      <h2>Featured Units For Sale</h2>
-    </div>
-    <p class="highlights-sub">Handpicked subsale units across Klang Valley.</p>
-    <div class="highlights-track" id="subsale-track">
-      <p class="highlights-empty">Loading units…</p>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURED UNITS FOR RENT -->
-<section class="highlights-section highlights-rental">
-  <div class="highlights-inner">
-    <div class="highlights-head">
-      <h2>Featured Units For Rent</h2>
-    </div>
-    <p class="highlights-sub">Move-in ready rentals, rooms and whole units.</p>
-    <div class="highlights-track" id="rental-track">
-      <p class="highlights-empty">Loading units…</p>
-    </div>
-  </div>
-</section>
 
 <!-- EXPLORE BY AREA -->
 <section class="area-section">
@@ -523,6 +500,32 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     </div>
     <div class="area-more">
       <a href="kawasan.html">View all 26 areas we cover →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED UNITS FOR SALE -->
+<section class="highlights-section highlights-subsale">
+  <div class="highlights-inner">
+    <div class="highlights-head">
+      <h2>Featured Units For Sale</h2>
+    </div>
+    <p class="highlights-sub">Handpicked subsale units across Klang Valley.</p>
+    <div class="highlights-track" id="subsale-track">
+      <p class="highlights-empty">Loading units…</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED UNITS FOR RENT -->
+<section class="highlights-section highlights-rental">
+  <div class="highlights-inner">
+    <div class="highlights-head">
+      <h2>Featured Units For Rent</h2>
+    </div>
+    <p class="highlights-sub">Move-in ready rentals, rooms and whole units.</p>
+    <div class="highlights-track" id="rental-track">
+      <p class="highlights-empty">Loading units…</p>
     </div>
   </div>
 </section>
