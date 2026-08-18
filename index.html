@@ -523,9 +523,9 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <section class="highlights-section highlights-subsale">
   <div class="highlights-inner">
     <div class="highlights-head">
-      <h2>Featured Units For Sale</h2>
+      <h2>Positive Cashflow Units For Investors</h2>
     </div>
-    <p class="highlights-sub">Handpicked subsale units across Klang Valley.</p>
+    <p class="highlights-sub">Handpicked subsale units across Klang Valley with positive rental cashflow potential.</p>
     <div class="highlights-track" id="subsale-track">
       <p class="highlights-empty">Loading units…</p>
     </div>
@@ -625,6 +625,8 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 </a>
 
 <script>
+const HIGHLIGHT_FALLBACK_IMG = '/images/unithighlights/sold-rented.png';
+
 function renderHighlights(trackId, items, viewAllHref, viewAllLabel) {
   const track = document.getElementById(trackId);
   const active = (items || []).filter(u => u.active !== false).slice(0, 4);
@@ -633,8 +635,8 @@ function renderHighlights(trackId, items, viewAllHref, viewAllLabel) {
     return;
   }
   const cards = active.map(u => `
-    <button type="button" class="highlights-card" aria-label="Enlarge unit ${u.id}" onclick="openHighlightLightbox('${u.image}','${u.id}')">
-      <img src="${u.image}" alt="Featured unit ${u.id}" loading="lazy">
+    <button type="button" class="highlights-card" aria-label="Enlarge unit ${u.id}" onclick="openHighlightLightbox(this.querySelector('img').src,'${u.id}')">
+      <img src="${u.image}" alt="Featured unit ${u.id}" loading="lazy" onerror="this.onerror=null;this.src='${HIGHLIGHT_FALLBACK_IMG}';">
     </button>
   `).join('');
   const viewAll = viewAllHref ? `
@@ -665,7 +667,7 @@ document.addEventListener('keydown', e => {
 
 fetch('/data/subsalehighlights.json')
   .then(r => r.json())
-  .then(data => renderHighlights('subsale-track', data, '/search.html?tab=jual', 'View All Subsale'))
+  .then(data => renderHighlights('subsale-track', data, '/search.html?tab=jual', 'View All Cashflow Units'))
   .catch(e => {
     console.error('Subsale highlights fetch error:', e);
     document.getElementById('subsale-track').innerHTML = '<p class="highlights-empty">Unable to load units.</p>';
