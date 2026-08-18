@@ -84,14 +84,27 @@
     html{scroll-behavior:smooth}
     body{font-family:'DM Sans',sans-serif;background:#faf9f6;color:#1c1c18;-webkit-font-smoothing:antialiased}
 
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(253,250,245,.94);backdrop-filter:blur(14px);border-bottom:1px solid #e3ddd0}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(253,250,245,.94);backdrop-filter:blur(14px);border-bottom:1px solid #e3ddd0}
+    .nav-inner{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
     .brand{font-family:'Lora',serif;font-weight:700;font-size:18px;color:#1c1c18;text-decoration:none;letter-spacing:-.01em}
     .brand span{color:#bf5533}
     .nav-links{display:flex;gap:6px;align-items:center}
     .nav-links a{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:6px 12px;border-radius:20px;transition:all .18s}
     .nav-links a:hover{color:#1c1c18;background:#f6f1e7}
-    .nav-links a.cta-nav{background:#2a5c3a;color:#fff;padding:7px 16px}
-    .nav-links a.cta-nav:hover{background:#1e4a2c}
+    .nav-links a.cta-nav{background:#DC143C;color:#fff;padding:7px 16px}
+    .nav-links a.cta-nav:hover{background:#B8112F}
+    .nav-mobile{display:none}
+    @media(max-width:600px){
+      .nav-inner{height:46px;padding:0 16px}
+      .brand{font-size:17px}
+      .nav-links{display:none}
+      .nav-mobile{display:flex;border-top:1px solid #e3ddd0;background:rgba(253,250,245,.97)}
+      .nav-mobile a{flex:1;text-align:center;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:10px 4px;transition:color .18s,background .18s;white-space:nowrap}
+      .nav-mobile a:not(:last-child){border-right:1px solid #e3ddd0}
+      .nav-mobile a:hover{color:#1c1c18;background:#f6f1e7}
+      .nav-mobile a.cta-nav{background:#DC143C;color:#fff}
+      .nav-mobile a.cta-nav:hover{background:#B8112F}
+    }
 
     .hero{background:#1B4D35;padding:52px 24px 44px;text-align:center;margin-top:58px}
     .hero-eyebrow{display:inline-block;background:rgba(255,255,255,.12);color:#52B788;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px}
@@ -219,7 +232,7 @@
     .wa-float svg{width:30px;height:30px}
 
     @media(max-width:600px){
-      nav{padding:0 16px}
+      .hero{margin-top:84px}
       .main{padding:32px 16px 60px}
       .compare-table{font-size:.82rem}
       .compare-table th,.compare-table td{padding:10px 12px}
@@ -232,14 +245,25 @@
 </head>
 <body>
 
+<!-- NAV:START (auto-generated from partials/nav.html — run build-nav.js after editing, do not hand-edit) -->
 <nav>
-  <a href="/index.html" class="brand">Hani <span>Properties</span></a>
-  <div class="nav-links">
-    <a href="/index.html">Home</a>
-    <a href="/simple.html">Guides</a>
+  <div class="nav-inner">
+    <a href="https://haniproperties.com/" class="brand">Hani <span>Properties</span></a>
+    <div class="nav-links">
+      <a href="/investor-corner.html" class="cta-nav">Cashflow Units</a>
+      <a href="/projects/projects.html">Projects</a>
+      <a href="/simple.html">Knowledge Hub</a>
+      <a href="/calculator.html">Calculator</a>
+    </div>
+  </div>
+  <div class="nav-mobile">
+    <a href="/investor-corner.html" class="cta-nav">Cashflow Units</a>
+    <a href="/projects/projects.html">Projects</a>
+    <a href="/simple.html">Knowledge Hub</a>
     <a href="/calculator.html">Calculator</a>
   </div>
 </nav>
+<!-- NAV:END -->
 
 <section class="hero">
   <div class="hero-eyebrow">Property Made Simple</div>
