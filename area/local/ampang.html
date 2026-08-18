@@ -1335,6 +1335,18 @@ function coaBadge(r) {
   return `<span class="card-badge badge-coa">${r.code}</span>`;
 }
 
+function parseDateAdded(val) {
+  const v = (val || '').trim();
+  const m = v.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); // D/M/YYYY as used in listings.csv
+  if (!m) return 0; // unknown/blank dates sort to the end
+  const day = Number(m[1]), month = Number(m[2]), year = Number(m[3]);
+  return new Date(year, month - 1, day).getTime();
+}
+
+function sortByNewest(rows) {
+  return rows.slice().sort((a, b) => parseDateAdded(b.date_added) - parseDateAdded(a.date_added));
+}
+
 function moveInText(val) {
   const v = (val || '').trim();
   if (!v || v === '-') return '';
@@ -1397,8 +1409,8 @@ fetch('../../listings.csv')
   .then(text => {
     const rows = parseCSV(text);
     const filtered = rows.filter(r => r.area === AREA && r.listing_type !== 'lelong' && (r.status === '-' || r.status === ''));
-    allUnits    = filtered.filter(r => r.listing_type === 'rental');
-    allSubsales = filtered.filter(r => r.listing_type === 'subsale');
+    allUnits    = sortByNewest(filtered.filter(r => r.listing_type === 'rental'));
+    allSubsales = sortByNewest(filtered.filter(r => r.listing_type === 'subsale'));
 
     // Build dynamic filter options
     buildTypeOptions([...allUnits, ...allSubsales]);
