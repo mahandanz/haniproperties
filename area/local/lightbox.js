@@ -1,7 +1,11 @@
 /* ── Shared lightbox / card image carousel ─────────────────────────
    Used by search.html and every /area/local/*.html page.
    Include with: <script src="/lightbox.js"></script>
-   No other setup needed — the overlay markup is injected automatically. */
+   No other setup needed — the overlay markup is injected automatically.
+
+   Clicking a card's photo opens a popup with the enlarged photo carousel
+   PLUS the rest of that listing's details (name, price, pills, anchors,
+   WhatsApp button) — i.e. the whole card, not just the picture. */
 
 // Inject the lightbox overlay markup once, so no page needs to hand-code it in HTML.
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,10 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
   overlay.id = 'lightboxOverlay';
   overlay.setAttribute('onclick', 'closeLightbox()');
   overlay.innerHTML = `
-  <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
+  <div class="lightbox-card" onclick="event.stopPropagation()">
     <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
-    <img id="lightboxImg" src="" alt="Property photo">
-    <div id="lightboxNavWrap"></div>
+    <div class="lightbox-img-wrap">
+      <img id="lightboxImg" src="" alt="Property photo">
+      <div id="lightboxNavWrap"></div>
+    </div>
+    <div class="lightbox-details" id="lightboxDetails"></div>
   </div>`;
   document.body.appendChild(overlay);
 });
@@ -66,6 +73,14 @@ function openLightbox(e, img) {
   lbImgs = wrap.getAttribute('data-images').split('|');
   lbIdx = parseInt(wrap.getAttribute('data-index'), 10) || 0;
   renderLightbox();
+
+  // Clone the rest of this listing's card (badges, name, price, pills, anchors, CTA)
+  // into the popup so it shows the whole card, not just the photo.
+  const card = img.closest('.card');
+  const body = card ? card.querySelector('.card-body') : null;
+  const detailsEl = document.getElementById('lightboxDetails');
+  if (detailsEl) detailsEl.innerHTML = body ? body.innerHTML : '';
+
   document.getElementById('lightboxOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
