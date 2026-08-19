@@ -38,3 +38,45 @@
 .card-img-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:4px}
 .card-img-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.55)}
 .card-img-dot.active{background:#fff}
+
+/* ── Compact 3-per-row mobile grid, shared across every page ────────
+   Each page still defines its OWN base .card/.listing-grid rules inline —
+   these overrides just shrink them down for phones. Everything here is
+   scoped to .listing-grid so it never touches the popup, which clones the
+   same card markup/classes into #lightboxDetails (outside .listing-grid).
+   "body .listing-grid" (not just ".listing-grid") on the grid-columns rule
+   is deliberate: every page's own inline stylesheet also sets
+   .listing-grid{grid-template-columns:1fr} inside the same max-width:600px
+   query, and with equal specificity the later (per-page) rule would win —
+   the extra "body" ancestor bumps specificity so this shared rule wins
+   regardless of load order, without needing !important. */
+@media(max-width:600px){
+  body .listing-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+
+  /* Compact card: photo + name + zone + furnishing + price only.
+     Badges, remaining pills, anchors and the WhatsApp button are revealed
+     by tapping the card, which opens the full-detail popup. */
+  .listing-grid .card{border-radius:10px;cursor:pointer}
+  .listing-grid .card-image-wrap{height:100px}
+  .listing-grid .card-img-nav{display:none}
+  .listing-grid .card-img-dots{display:none}
+  .listing-grid .card-body{padding:8px 8px 9px;gap:2px}
+  .listing-grid .card-body>div:first-child{display:none} /* badge row */
+  .listing-grid .card-anchors,.listing-grid .card-cta{display:none}
+  .listing-grid .card-area-link,.listing-grid .card-view-area{display:none} /* search.html only */
+  .listing-grid .card-name{font-size:11.5px;line-height:1.25}
+  .listing-grid .card-zone{font-size:9.5px}
+  .listing-grid .card-price{order:2;font-size:13px;margin-top:2px}
+  .listing-grid .card-price span{font-size:8px}
+  /* search.html wraps .card-price in .card-price-row, which is the actual flex
+     child there (area pages have no such wrapper — .card-price is the direct
+     child and the rule above handles it). Ordering the wrapper reorders it on
+     search.html too, so furnishing still lands before price on both layouts. */
+  .listing-grid .card-price-row{order:2}
+  .listing-grid .card-pills{order:1;display:block;margin:0}
+  .listing-grid .card-pills .pill{display:none}
+  /* Neutral colors (not the green accent) since this file is shared by pages
+     with different theme colors (area pages are green, search.html is maroon) —
+     #f0ede8/#1c1c18 are the same base pill background/body text every page already uses. */
+  .listing-grid .card-pills .pill-furnishing{display:inline-block;font-size:8.5px;font-weight:700;color:#1c1c18;background:#f0ede8;padding:1.5px 6px;border-radius:8px}
+}

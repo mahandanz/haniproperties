@@ -113,3 +113,15 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') lbNav(-1);
   if (e.key === 'ArrowRight') lbNav(1);
 });
+
+// On the compact mobile card (badges/pills/anchors/CTA hidden — see lightbox.css),
+// tapping anywhere on the card opens the same full-detail popup that tapping the
+// photo does, since there's no visible CTA button left to tap on that layout.
+document.addEventListener('click', function(e) {
+  if (window.innerWidth > 600) return;
+  const card = e.target.closest('.card');
+  if (!card) return;
+  const img = card.querySelector('.card-image-wrap img');
+  if (!img) return;
+  openLightbox(e, img);
+});

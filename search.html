@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://haniproperties.com/search.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css">
+  <link rel="stylesheet" href="/lightbox.css?v=20260821">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -605,15 +605,26 @@ function renderCard(r) {
     ? `${fmt(r.price)}<span> / month</span>`
     : fmt(getPrice(r));
 
+  // Each item is its own <span> (rather than mapped uniformly at the end) so the
+  // furnishing pill can carry an extra pill-furnishing class — lightbox.css uses
+  // that to surface just this one pill on the compact mobile card.
   const pillItems = r.listing_type === 'room'
-    ? [r.room_type, r.bath_type, r.furnishing, moveInText(r.move_in_date)]
-    : [r.bed ? `🛏 ${r.bed} bed` : '', r.bath ? `🚿 ${r.bath} bath` : '',
-       r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
-       r.furnishing, r.listing_type === 'subsale' ? r.tenure : r.type,
-       r.listing_type === 'rental' ? moveInText(r.move_in_date) : ''];
+    ? [
+        r.room_type ? `<span class="pill">${r.room_type}</span>` : '',
+        r.bath_type ? `<span class="pill">${r.bath_type}</span>` : '',
+        r.furnishing ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
+        moveInText(r.move_in_date) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
+      ]
+    : [
+        r.bed ? `<span class="pill">🛏 ${r.bed} bed</span>` : '',
+        r.bath ? `<span class="pill">🚿 ${r.bath} bath</span>` : '',
+        r.size ? `<span class="pill">${Number(r.size).toLocaleString()} sqft</span>` : '',
+        r.furnishing ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
+        (r.listing_type === 'subsale' ? r.tenure : r.type) ? `<span class="pill">${r.listing_type === 'subsale' ? r.tenure : r.type}</span>` : '',
+        (r.listing_type === 'rental' && moveInText(r.move_in_date)) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
+      ];
 
-  const pills = pillItems.filter(Boolean)
-    .map(p => `<span class="pill">${p}</span>`).join('');
+  const pills = pillItems.filter(Boolean).join('');
 
   const waText = r.wa_text || `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`;
 
@@ -757,7 +768,7 @@ async function init() {
 
 init();
 </script>
-<script src="/lightbox.js"></script>
+<script src="/lightbox.js?v=20260821"></script>
 <script src="/search.js"></script>
 
 <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">

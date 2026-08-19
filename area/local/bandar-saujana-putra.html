@@ -24,7 +24,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css">
+  <link rel="stylesheet" href="/lightbox.css?v=20260821">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -552,13 +552,13 @@ function moveInText(val) {
 
 function unitCard(r) {
   const pills = [
-    r.bed ? `🛏 ${r.bed} bed` : '',
-    r.bath ? `🚿 ${r.bath} bath` : '',
-    r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
-    r.furnishing || '',
-    r.type || '',
-    moveInText(r.move_in_date)
-  ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
+    r.bed ? `<span class="pill">🛏 ${r.bed} bed</span>` : '',
+    r.bath ? `<span class="pill">🚿 ${r.bath} bath</span>` : '',
+    r.size ? `<span class="pill">${Number(r.size).toLocaleString()} sqft</span>` : '',
+    r.furnishing ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
+    r.type ? `<span class="pill">${r.type}</span>` : '',
+    moveInText(r.move_in_date) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
+  ].filter(Boolean).join('');
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
@@ -666,7 +666,7 @@ function toSlug(...parts) {
     <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
   </svg>
 </a>
-<script src="/lightbox.js"></script>
+<script src="/lightbox.js?v=20260821"></script>
 <script src="/search.js"></script>
 </body>
 </html>
