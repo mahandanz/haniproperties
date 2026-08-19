@@ -1,7 +1,11 @@
 /* ── Shared lightbox / card image carousel ─────────────────────────
    Used by search.html and every /area/local/*.html page.
    Include with: <script src="/lightbox.js"></script>
-   No other setup needed — the overlay markup is injected automatically. */
+   No other setup needed — the overlay markup is injected automatically.
+
+   Clicking a card's photo opens a popup with the enlarged photo carousel
+   PLUS the rest of that listing's details (name, price, pills, anchors,
+   WhatsApp button) — i.e. the whole card, not just the picture. */
 
 // Inject the lightbox overlay markup once, so no page needs to hand-code it in HTML.
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,10 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
   overlay.id = 'lightboxOverlay';
   overlay.setAttribute('onclick', 'closeLightbox()');
   overlay.innerHTML = `
-  <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
+  <div class="lightbox-card" onclick="event.stopPropagation()">
     <button type="button" class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
-    <img id="lightboxImg" src="" alt="Property photo">
-    <div id="lightboxNavWrap"></div>
+    <div class="lightbox-img-wrap">
+      <img id="lightboxImg" src="" alt="Property photo">
+      <div id="lightboxNavWrap"></div>
+    </div>
+    <div class="lightbox-details" id="lightboxDetails"></div>
   </div>`;
   document.body.appendChild(overlay);
 });
@@ -66,6 +73,14 @@ function openLightbox(e, img) {
   lbImgs = wrap.getAttribute('data-images').split('|');
   lbIdx = parseInt(wrap.getAttribute('data-index'), 10) || 0;
   renderLightbox();
+
+  // Clone the rest of this listing's card (badges, name, price, pills, anchors, CTA)
+  // into the popup so it shows the whole card, not just the photo.
+  const card = img.closest('.card');
+  const body = card ? card.querySelector('.card-body') : null;
+  const detailsEl = document.getElementById('lightboxDetails');
+  if (detailsEl) detailsEl.innerHTML = body ? body.innerHTML : '';
+
   document.getElementById('lightboxOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -98,72 +113,3 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') lbNav(-1);
   if (e.key === 'ArrowRight') lbNav(1);
 });
-
-/* ── Auto-detect extra photos (pic2, pic3…) for single-image cards ──
-   No CSV/pipe-list needed: if a listing's folder has more numbered
-   photos sitting next to pic1, they're picked up automatically.
-   Naming rule this depends on: same prefix + extension as the first
-   photo, sequential numbers, no gaps (pic1, pic2, pic3...). */
-
-const MAX_AUTO_DETECT = 8; // hard cap on how many extra photos to probe for
-
-function checkImageExists(url) {
-  return new Promise(resolve => {
-    const img = new Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-}
-
-async function autoDetectCardImages(wrap) {
-  if (wrap.dataset.detected) return; // never re-probe the same card
-  wrap.dataset.detected = '1';
-
-  const imgs = wrap.getAttribute('data-images').split('|');
-  if (imgs.length > 1) return; // already has an explicit multi-image list, leave it alone
-
-  const match = imgs[0].match(/^(.*\/)([a-zA-Z]+)(\d+)(\.[a-zA-Z0-9]+)$/);
-  if (!match) return; // filename doesn't follow the picN.ext pattern, skip
-
-  const [, folder, prefix, numStr, ext] = match;
-  const startNum = parseInt(numStr, 10);
-  const found = [imgs[0]];
-
-  for (let i = 1; i < MAX_AUTO_DETECT; i++) {
-    const candidate = `${folder}${prefix}${startNum + i}${ext}`;
-    const exists = await checkImageExists(candidate);
-    if (!exists) break; // stop at first gap
-    found.push(candidate);
-  }
-
-  if (found.length === 1) return; // nothing extra found
-
-  // Upgrade the card in place: update data-images and add nav/dots
-  wrap.setAttribute('data-images', found.join('|'));
-  const nav = `
-    <button type="button" class="card-img-nav prev" onclick="cardImgNav(event,this,-1)" aria-label="Previous photo">‹</button>
-    <button type="button" class="card-img-nav next" onclick="cardImgNav(event,this,1)" aria-label="Next photo">›</button>
-    <div class="card-img-dots">${found.map((_, i) => `<span class="card-img-dot${i === 0 ? ' active' : ''}"></span>`).join('')}</div>`;
-  wrap.insertAdjacentHTML('beforeend', nav);
-}
-
-function scanForNewCards(root) {
-  root.querySelectorAll('.card-image-wrap[data-images]:not([data-detected])').forEach(autoDetectCardImages);
-}
-
-document.addEventListener('DOMContentLoaded', () => scanForNewCards(document));
-
-// Listing cards get inserted dynamically (CSV/JSON fetch + innerHTML), so watch for that.
-new MutationObserver(mutations => {
-  for (const m of mutations) {
-    m.addedNodes.forEach(node => {
-      if (node.nodeType !== 1) return;
-      if (node.matches && node.matches('.card-image-wrap[data-images]')) {
-        autoDetectCardImages(node);
-      } else if (node.querySelectorAll) {
-        scanForNewCards(node);
-      }
-    });
-  }
-}).observe(document.body, { childList: true, subtree: true });
