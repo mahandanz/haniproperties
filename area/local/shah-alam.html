@@ -127,18 +127,20 @@
 
       /* Compact card so 3 fit per row on mobile: photo + name + zone + price only.
          Everything else (badges, pills, anchors, WhatsApp button) is revealed by
-         tapping the card, which opens the full-detail popup. */
-      .card{border-radius:10px;cursor:pointer}
-      .card-image-wrap{height:100px}
-      .card-img-nav{display:none}
-      .card-img-dots{display:none}
-      .card-body{padding:8px 8px 9px;gap:2px}
-      .card-body>div:first-child{display:none} /* badge row */
-      .card-pills,.card-anchors,.card-cta{display:none}
-      .card-name{font-size:11.5px;line-height:1.25}
-      .card-zone{font-size:9.5px}
-      .card-price{font-size:13px;margin-top:2px}
-      .card-price span{font-size:8px}
+         tapping the card, which opens the full-detail popup. Every rule here is
+         scoped to .listing-grid — the popup clones this same markup/classes into
+         #lightboxDetails outside .listing-grid, so it keeps showing everything. */
+      .listing-grid .card{border-radius:10px;cursor:pointer}
+      .listing-grid .card-image-wrap{height:100px}
+      .listing-grid .card-img-nav{display:none}
+      .listing-grid .card-img-dots{display:none}
+      .listing-grid .card-body{padding:8px 8px 9px;gap:2px}
+      .listing-grid .card-body>div:first-child{display:none} /* badge row */
+      .listing-grid .card-pills,.listing-grid .card-anchors,.listing-grid .card-cta{display:none}
+      .listing-grid .card-name{font-size:11.5px;line-height:1.25}
+      .listing-grid .card-zone{font-size:9.5px}
+      .listing-grid .card-price{font-size:13px;margin-top:2px}
+      .listing-grid .card-price span{font-size:8px}
     }
     .wa-float{
       position:fixed;right:20px;top:50%;
