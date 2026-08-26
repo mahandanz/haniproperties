@@ -1,0 +1,4 @@
+Rows with a non-blank/non-'-' status but no usable image folder (no image link, or URL didn't match the expected pattern).
+Check these manually -- they were NOT included in folders_to_delete.txt.
+
+- project: Pangsapuri Sri Nilam | status: sold | image: -
