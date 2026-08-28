@@ -47,6 +47,7 @@ bandarbukitrajajalanmakyonglandedHF
 bandardamaiperdana2storeyterraceMAP
 bandarmahkotabantingjalanangkasasinglestoreyNS
 bandarparklandsshoplotNS
+bandarsaujanaputraMMN
 bandarsaujanaputraclusterlinksemidMMN
 bayuapartmentNS
 bayuputeriapartmentMMN
@@ -73,6 +74,7 @@ dalamandaADL
 danaukotasuiteEX
 danaumurnicondominiumEX
 desakiaraADL
+desakiaraNS
 desamutiaraMMN
 desapalmaDPM
 desaputracondominiumblockaADL
@@ -136,6 +138,7 @@ ixoraapartmentADL
 jutaminescondominiumADL
 kasuarinaapartmentEX
 kelanaputericondominiumNS
+kemuninggreenvilleMMN
 kenangapointEX
 kenangapointcondominiumEXP
 kepongsentralcondominiumEX
@@ -156,6 +159,7 @@ lakefronthomesMMN
 lakefrontresidenceAA
 lakeparkresidenceADL
 lakeparkresidenceklnorthADL
+lakevilleresidenceNS
 lbsskylakeresidenceADL
 lejardincondominiumEXP
 lestariperdana7NS
@@ -249,6 +253,9 @@ ppa1mbukitjalilNS
 ppa1mselasihAA
 ppamsetapakrivieraEX
 prestigeresidenceADL
+prestigeresidenceBLA
+prestigeresidenceEX
+prestigeresidenceNS
 prestigeresidencesADL
 puncak7residenceDPM
 puncakalamfasa11storeyterraceMMN
@@ -296,12 +303,15 @@ residensizamrudEX
 residensizamrudNS
 ritmaperdanapuncakalamcornerlotHF
 ritzeperdana1ADL
+sarakaapartmentNS
 saujanaamanjalansaujanaaman2storeyterraceNS
 saujanapuchongEXP
 savillekajangEX
 savillemelawatiresidenceEX
 savvyrianadutamasADL
 sd2apartmentADL
+seasongardenresidenceADL
+seasonsgardenresidenceLSY
 seiringresidensidamaisuriaMMN
 seksyen232storeyterraceMMN
 selesairesortEX
@@ -387,6 +397,7 @@ verdiecodominiumsDPM
 villamakmurcondominiumMMN
 villariacondominiumEX
 vistabangiNS
+vistabangiapartmentEX
 vistaharmoniresidenceEX
 vistahijauanNS
 vistalavenderADL
@@ -399,3 +410,4 @@ wismaakarupperfloorEX
 youcity3ADL
 youcityiiiADL
 zentroresidencesMMN
+zevaequinesouthADL
