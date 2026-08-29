@@ -24,7 +24,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css?v=20260821">
+  <link rel="stylesheet" href="/lightbox.css?v=20260829b">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -89,6 +89,10 @@
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
     .card-cta{display:block;text-align:center;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
     .card-cta:hover{background:#1e4a2c}
+    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-installment{display:none}
+    .card-body .card-pills .pill{display:none}
+    .card-body .card-pills .pill-furnishing{display:inline-block}
+    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -121,7 +125,16 @@
       .filter-bar{gap:8px;padding:12px}
       .filter-group{min-width:calc(50% - 4px)}
       .main{padding:28px 16px 48px}
-      .listing-grid{grid-template-columns:1fr}
+      .listing-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+      .card{border-radius:10px}
+      .card-image-wrap{height:88px}
+      .card-body{padding:8px 8px 10px;gap:4px}
+      .card-name{font-size:10.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+      .card-zone{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .card-price{font-size:11.5px}
+      .card-price span{font-size:8px}
+      .card-pills{gap:0}
+      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
       .tabs{width:100%}
       .tab-btn{flex:1;text-align:center}
     }
@@ -248,9 +261,9 @@
   <div id="tab-sewa" style="overflow:hidden">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="vista-harmoni-residences-2099">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 2,099<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -258,9 +271,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Sentul.%20Price%3A%20RM2099.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1499">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,499<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -268,9 +281,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Sentul.%20Price%3A%20RM1499.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1499">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,499<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -278,9 +291,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Sentul.%20Price%3A%20RM1499.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-2099">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 2,099<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -288,9 +301,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Sentul.%20Price%3A%20RM2099.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1499">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,499<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -298,9 +311,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Sentul.%20Price%3A%20RM1499.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1499">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,499<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -308,9 +321,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Sentul.%20Price%3A%20RM1499.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1499">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,499<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -318,9 +331,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Sentul.%20Price%3A%20RM1499.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-2099">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 2,099<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -328,189 +341,189 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Sentul.%20Price%3A%20RM2099.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="m-arisa-residence-2-1800">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/marisaresidenceNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/marisaresidenceNS/pic1.jpg" alt="M Arisa Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/marisaresidenceNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/marisaresidenceNS/pic1.jpg" alt="M Arisa Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
       <div><div class="card-name">M Arisa Residence</div><div class="card-zone">Sentul Pasar</div></div>
       <div class="card-price">RM 1,800<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">708 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">708 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Sentul LRT/KTM Station | Sentul Village | Sunway Putra Mall | Quill City Mall</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20M%20Arisa%20Residence%2C%20Sentul%20Pasar.%20Price%3A%20RM1800.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="sentul-point-suites-2-1800">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulpointsuitesEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulpointsuitesEX/pic1.jpg" alt="Sentul Point Suites" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulpointsuitesEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulpointsuitesEX/pic1.jpg" alt="Sentul Point Suites" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">Sentul Point Suites</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 1,800<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">750 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">750 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Sentul KTM Station | Sunway Putra Mall | KPJ Sentul Specialist Hospital | Hospital Kuala Lumpur (HKL) | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sentul%20Point%20Suites%2C%20Sentul.%20Price%3A%20RM1800.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="sentul-point-suites-3-2200">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulpointsuitesEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulpointsuitesEX/pic1.jpg" alt="Sentul Point Suites" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulpointsuitesEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulpointsuitesEX/pic1.jpg" alt="Sentul Point Suites" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">Sentul Point Suites</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 2,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Mid July 2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Mid July 2026</span></div>
       <div class="card-anchors">Sentul KTM Station | Sunway Putra Mall | KPJ Sentul Specialist Hospital | Hospital Kuala Lumpur (HKL) | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sentul%20Point%20Suites%2C%20Sentul.%20Price%3A%20RM2200.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="rica-residence-2-2500">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/ricaresidenceADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/ricaresidenceADL/pic1.jpg" alt="Rica Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/ricaresidenceADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/ricaresidenceADL/pic1.jpg" alt="Rica Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Rica Residence</div><div class="card-zone">Jalan Perhentian</div></div>
       <div class="card-price">RM 2,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">800 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Sep-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">800 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Sep-26</span></div>
       <div class="card-anchors">Sentul KTM Station | Sentul Timur LRT Station | Publika Shopping Gallery | Hospital Kuala Lumpur (HKL) | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Rica%20Residence%2C%20Jalan%20Perhentian.%20Price%3A%20RM2500.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="residensi-max-3-2250">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/residensimaxADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/residensimaxADL/pic1.jpg" alt="Residensi MAX" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/residensimaxADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/residensimaxADL/pic1.jpg" alt="Residensi MAX" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Residensi MAX</div><div class="card-zone">Jalan Ipoh</div></div>
       <div class="card-price">RM 2,250<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">901 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Aug-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">901 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Aug-26</span></div>
       <div class="card-anchors">Sentul KTM Station | Sentul West MRT Station | Sunway Putra Mall | Hospital Kuala Lumpur (HKL) | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20MAX%2C%20Jalan%20Ipoh.%20Price%3A%20RM2250.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-2-1600">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniADL/pic1.jpg" alt="Vista Harmoni" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniADL/pic1.jpg" alt="Vista Harmoni" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Vista Harmoni</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 1,600<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">900 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">900 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">KTM Sentul | LRT Sentul Timur | Sunway Putra Mall | Hospital Kuala Lumpur | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%2C%20Sentul.%20Price%3A%20RM1800.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="sang-suria-condominium-3-2100">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sangsuriacondominiumADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sangsuriacondominiumADL/pic1.jpg" alt="Sang Suria Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sangsuriacondominiumADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sangsuriacondominiumADL/pic1.jpg" alt="Sang Suria Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Sang Suria Condominium</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 2,100<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,050 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Mid July / August 2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,050 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Mid July / August 2026</span></div>
       <div class="card-anchors">KTM Sentul | LRT Sentul Timur | Sunway Putra Mall | Sentul Point | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sang%20Suria%20Condominium%2C%20Sentul.%20Price%3A%20RM2100.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="rafflesia-sentul-condominium-3-2550">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/rafflesiasentulcondominiumADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/rafflesiasentulcondominiumADL/pic1.jpg" alt="Rafflesia Sentul Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/rafflesiasentulcondominiumADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/rafflesiasentulcondominiumADL/pic1.jpg" alt="Rafflesia Sentul Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Rafflesia Sentul Condominium</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 2,550<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,100 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: 5/8/2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,100 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: 5/8/2026</span></div>
       <div class="card-anchors">KTM Sentul | LRT Sentul Timur | Sunway Putra Mall | DUKE Highway | KLCC</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Rafflesia%20Sentul%20Condominium%2C%20Sentul.%20Price%3A%20RM2550.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="maxim-citylights-3-1750">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/maximcitylightsADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/maximcitylightsADL/pic1.jpg" alt="Maxim Citylights" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/maximcitylightsADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/maximcitylightsADL/pic1.jpg" alt="Maxim Citylights" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Maxim Citylights</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 1,750<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,009 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: 1/10/2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,009 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: 1/10/2026</span></div>
       <div class="card-anchors">Sentul LRT | Sunway Putra Mall | Hospital Kuala Lumpur | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Maxim%20Citylights%2C%20Sentul.%20Price%3A%20RM1750.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="minest-residence-3-2100">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/minestresidenceADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/minestresidenceADL/pic1.jpg" alt="Minest Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/minestresidenceADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/minestresidenceADL/pic1.jpg" alt="Minest Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Minest Residence</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 2,100<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">822 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">822 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">LRT Sentul Timur | The Beam Sentul | SMK Sentul | Hospital Kuala Lumpur | Mydin Sentul | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Minest%20Residence%2C%20Sentul.%20Price%3A%20RM2100.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="residensi-sky-awani-2-3-2200">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/residensiskyawani2ADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/residensiskyawani2ADL/pic1.jpg" alt="Residensi Sky Awani 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/residensiskyawani2ADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/residensiskyawani2ADL/pic1.jpg" alt="Residensi Sky Awani 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Residensi Sky Awani 2</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 2,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">800 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">800 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">MRT Kampung Batu Station | No | No | No | No | No</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20Sky%20Awani%202%2C%20Sentul.%20Price%3A%20RM2200.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="m-centura-1-1900">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaWRL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaWRL/pic1.jpg" alt="M Centura" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaWRL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaWRL/pic1.jpg" alt="M Centura" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">WRL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">WRL</span></div>
       <div><div class="card-name">M Centura</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 1,900<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">KTM Sentul | Aeon Mall AU2 Setiawangsa | No | Hospital Kuala Lumpur | No | DUKE</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20M%20Centura%2C%20Sentul.%20Price%3A%20RM1900.%20Ref%3A%20WRL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="sky-awani-1-3-1900">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/skyawani1ADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/skyawani1ADL/pic1.jpg" alt="Sky Awani 1" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/skyawani1ADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/skyawani1ADL/pic1.jpg" alt="Sky Awani 1" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Sky Awani 1</div><div class="card-zone">Jalan Sentul Pasar</div></div>
       <div class="card-price">RM 1,900<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">800 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">800 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Jalan Ipoh MRT Station | Sentul Boulevard | Mydin Batu Muda | Columbia Asia Hospital Setapak | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sky%20Awani%201%2C%20Sentul.%20Price%3A%20RM1900.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="the-tamarind-sentul-east-2-2700">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/thetamarindsentuleastADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/thetamarindsentuleastADL/pic1.jpg" alt="The Tamarind @ Sentul East" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/thetamarindsentuleastADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/thetamarindsentuleastADL/pic1.jpg" alt="The Tamarind @ Sentul East" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">The Tamarind @ Sentul East</div><div class="card-zone">Sentul East</div></div>
       <div class="card-price">RM 2,700<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,400 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,400 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Sentul Depot | Sunway Putra Mall | KPJ Sentul Specialist Hospital | Sentul Point &amp; Bandar Baru Sentul Commercial Area | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20The%20Tamarind%20%40%20Sentul%20East%2C%20Sentul%20East.%20Price%3A%20RM2700.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="sky-awani-residensi-1-3-1990">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/skyawaniresidensi1EX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/skyawaniresidensi1EX/pic1.jpg" alt="Sky Awani Residensi 1" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/skyawaniresidensi1EX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/skyawaniresidensi1EX/pic1.jpg" alt="Sky Awani Residensi 1" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">Sky Awani Residensi 1</div><div class="card-zone">Jalan Sentul Pasar</div></div>
       <div class="card-price">RM 1,990<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">800 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">800 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">MRT Jalan Ipoh | Sentul Boulevard | Tesco Sentul | DUKE Expressway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sky%20Awani%20Residensi%201%2C%20Jalan%20Sentul%20Pasar.%20Price%3A%20RM1990.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="m-arisa-2-2300">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/marisaADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/marisaADL/pic1.jpg" alt="M Arisa" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/marisaADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/marisaADL/pic1.jpg" alt="M Arisa" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">M Arisa</div><div class="card-zone">Sentul Pasar</div></div>
       <div class="card-price">RM 2,300<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">708 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">708 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">LRT Sentul Timur | KTM Sentul | Sunway Putra Mall | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20M%20Arisa%2C%20Sentul%20Pasar.%20Price%3A%20RM2300.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="sky-awani-5-residence-3-2350">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/skyawani5residenceADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/skyawani5residenceADL/pic1.jpg" alt="Sky Awani 5 Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/skyawani5residenceADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/skyawani5residenceADL/pic1.jpg" alt="Sky Awani 5 Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Sky Awani 5 Residence</div><div class="card-zone">Taman Dato Senu</div></div>
       <div class="card-price">RM 2,350<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">810 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Oct-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">810 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Oct-26</span></div>
       <div class="card-anchors">Sentul LRT Station | Sentul Timur LRT Station | Sentul KTM Station | Sentul Point | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sky%20Awani%205%20Residence%2C%20Taman%20Dato%20Senu.%20Price%3A%20RM2350.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="m-centura-2-1700">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaADL/pic1.jpg" alt="M Centura" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaADL/pic1.jpg" alt="M Centura" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">M Centura</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 1,700<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">620 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">620 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">LRT Jalan Ipoh | Sunway Putra Mall | Hospital Kuala Lumpur | DUKE Highway | MRR2</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20M%20Centura%2C%20Sentul.%20Price%3A%20RM1700.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1-1359">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,359<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">151 sqft</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -518,9 +531,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Jalan%20Pelangi%202.%20Price%3A%20RM1359.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1959">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,959<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -528,9 +541,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Jalan%20Pelangi%202.%20Price%3A%20RM1959.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1359">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,359<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -538,9 +551,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Jalan%20Pelangi%202.%20Price%3A%20RM1359.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1-1359">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,359<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">151 sqft</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -548,9 +561,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Jalan%20Pelangi%202.%20Price%3A%20RM1359.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1959">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,959<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -558,9 +571,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Jalan%20Pelangi%202.%20Price%3A%20RM1959.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1-1359">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,359<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">151 sqft</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -568,9 +581,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Jalan%20Pelangi%202.%20Price%3A%20RM1359.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1-1359">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,359<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">151 sqft</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -578,9 +591,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Jalan%20Pelangi%202.%20Price%3A%20RM1359.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-3-1959">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,959<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,049 sqft</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -588,9 +601,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Jalan%20Pelangi%202.%20Price%3A%20RM1959.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="vista-harmoni-residences-1-1359">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/vistaharmoniresidencesDPM2/pic1.jpg" alt="Vista Harmoni Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Vista Harmoni Residences</div><div class="card-zone">Jalan Pelangi 2</div></div>
       <div class="card-price">RM 1,359<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">151 sqft</span><span class="pill">-</span><span class="pill">Studio</span></div>
@@ -598,32 +611,32 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Harmoni%20Residences%2C%20Jalan%20Pelangi%202.%20Price%3A%20RM1359.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="m-centura-2-1700">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaEX/pic1.jpg" alt="M Centura" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaEX/pic1.jpg" alt="M Centura" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">M Centura</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 1,700<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">646 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Aug-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">646 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Aug-26</span></div>
       <div class="card-anchors">LRT Jalan Ipoh | Sunway Putra Mall | Hospital Kuala Lumpur | DUKE Highway | MRR2</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20M%20Centura%2C%20Sentul.%20Price%3A%20RM1700.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="m-centura-3-1900">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaEX2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaEX2/pic1.jpg" alt="M Centura" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaEX2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaEX2/pic1.jpg" alt="M Centura" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">M Centura</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 1,900<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">LRT Jalan Ipoh | Sunway Putra Mall | Hospital Kuala Lumpur | DUKE Highway | MRR2</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20M%20Centura%2C%20Sentul.%20Price%3A%20RM1900.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="bayu-andaman-3-1900">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bayuandamanADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bayuandamanADL/pic1.jpg" alt="Bayu Andaman" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bayuandamanADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bayuandamanADL/pic1.jpg" alt="Bayu Andaman" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Bayu Andaman</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 1,900<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Oct-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Oct-26</span></div>
       <div class="card-anchors">KTM Sentul | LRT Sentul Timur | Hospital Kuala Lumpur | DUKE Highway | UTC Sentul</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Bayu%20Andaman%2C%20Sentul.%20Price%3A%20RM1900.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -633,67 +646,67 @@
   <div id="tab-jual" style="display:none;overflow:hidden">
     <img src="/images/banner-subsale.png" alt="Subsales" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="casa-idaman-3-380000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/casaidamanEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/casaidamanEXP/pic1.jpg" alt="Casa Idaman" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/casaidamanEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/casaidamanEXP/pic1.jpg" alt="Casa Idaman" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Casa Idaman</div><div class="card-zone">Kampung Batu Muda</div></div>
       <div class="card-price">RM 380,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,733</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,733</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,007 sqft</span><span class="pill">Leasehold</span><span class="pill">Condominium</span></div>
       <div class="card-anchors">KTM/MRT Kampung Batu (~600m) | Masjid Saidina Hamzah (~0.8km) | SK Kampung Batu (~1km) | SMK Batu Muda (~1.3km) | KPJ Tawakkal Hospital (~2km)</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Casa%20Idaman%2C%20Kampung%20Batu%20Muda.%20Price%3A%20RM380000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="sentul-village-condominium-3-450000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulvillagecondominiumEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulvillagecondominiumEXP/pic1.jpg" alt="Sentul Village Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulvillagecondominiumEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulvillagecondominiumEXP/pic1.jpg" alt="Sentul Village Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Sentul Village Condominium</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 450,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,052</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,052</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">948 sqft</span><span class="pill">Freehold</span><span class="pill">Condominium</span></div>
       <div class="card-anchors">Sentul (near Sentul KTM, DUKE, MRR2)</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Sentul%20Village%20Condominium%2C%20Sentul.%20Price%3A%20RM450000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="m-centura-residence-4-509000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaresidenceEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaresidenceEXP/pic1.jpg" alt="M Centura Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/mcenturaresidenceEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/mcenturaresidenceEXP/pic1.jpg" alt="M Centura Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">M Centura Residence</div><div class="card-zone">Sentul</div></div>
       <div class="card-price">RM 509,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,321</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,321</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,001 sqft</span><span class="pill">Freehold</span><span class="pill">Condominium</span></div>
       <div class="card-anchors">Freehold Sentul 7km ke KLCC akses DUKE MRR2 Jalan Ipoh</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20M%20Centura%20Residence%2C%20Sentul.%20Price%3A%20RM509000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="flat-sri-pangkor-2-160000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/flatsripangkorEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/flatsripangkorEXP/pic1.jpg" alt="Flat Sri Pangkor" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/flatsripangkorEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/flatsripangkorEXP/pic1.jpg" alt="Flat Sri Pangkor" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Flat Sri Pangkor</div><div class="card-zone">Blok 166</div></div>
       <div class="card-price">RM 160,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 681</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 681</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">560 sqft</span><span class="pill">Leasehold</span><span class="pill">Flat</span></div>
       <div class="card-anchors">LRT Sentul Timur | KTM Sentul | KPJ Tawakkal Specialist Hospital | SK Sentul | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Flat%20Sri%20Pangkor%2C%20Blok%20166.%20Price%3A%20RM160000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="sentul-point-suite-apartment-2-375000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulpointsuiteapartmentEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulpointsuiteapartmentEXP/pic1.jpg" alt="Sentul Point Suite Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulpointsuiteapartmentEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulpointsuiteapartmentEXP/pic1.jpg" alt="Sentul Point Suite Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Sentul Point Suite Apartment</div><div class="card-zone">Jalan Sentul Perdana</div></div>
       <div class="card-price">RM 375,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,597</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,597</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">743 sqft</span><span class="pill">Freehold</span><span class="pill">Service Residence</span></div>
       <div class="card-anchors">KTM Sentul &amp; LRT/MRT Stations | Sentul Village | KPJ Tawakkal KL Specialist Hospital | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Sentul%20Point%20Suite%20Apartment%2C%20Jalan%20Sentul%20Perdana.%20Price%3A%20RM375000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="sentul-village-condominium-3-495000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulvillagecondominiumEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulvillagecondominiumEXP/pic1.jpg" alt="Sentul Village Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/sentulvillagecondominiumEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/sentulvillagecondominiumEXP/pic1.jpg" alt="Sentul Village Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Sentul Village Condominium</div><div class="card-zone">Jalan Sentul Pasar</div></div>
       <div class="card-price">RM 495,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,108</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,108</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">948 sqft</span><span class="pill">Freehold</span><span class="pill">Condominium</span></div>
       <div class="card-anchors">LRT Sentul Timur | Ong Tai Kim Sentul Pasar | Hospital Kuala Lumpur | Sekolah Kebangsaan Sentul | DUKE Expressway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Sentul%20Village%20Condominium%2C%20Jalan%20Sentul%20Pasar.%20Price%3A%20RM495000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -946,7 +959,7 @@ function unitCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}<span> / month</span></div>
       <div class="card-pills">${pills}</div>
@@ -967,10 +980,10 @@ function subsaleCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}</div>
-      ${r.installment ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
+      ${r.installment ? `<div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
       <div class="card-pills">${pills}</div>
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -1050,7 +1063,7 @@ function toSlug(...parts) {
     <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
   </svg>
 </a>
-<script src="/lightbox.js?v=20260821"></script>
+<script src="/lightbox.js?v=20260829b"></script>
 <script src="/search.js"></script>
 </body>
 </html>

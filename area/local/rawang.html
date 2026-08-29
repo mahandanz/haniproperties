@@ -24,7 +24,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css?v=20260821">
+  <link rel="stylesheet" href="/lightbox.css?v=20260829b">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -89,6 +89,10 @@
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
     .card-cta{display:block;text-align:center;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
     .card-cta:hover{background:#1e4a2c}
+    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-installment{display:none}
+    .card-body .card-pills .pill{display:none}
+    .card-body .card-pills .pill-furnishing{display:inline-block}
+    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -121,7 +125,16 @@
       .filter-bar{gap:8px;padding:12px}
       .filter-group{min-width:calc(50% - 4px)}
       .main{padding:28px 16px 48px}
-      .listing-grid{grid-template-columns:1fr}
+      .listing-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+      .card{border-radius:10px}
+      .card-image-wrap{height:88px}
+      .card-body{padding:8px 8px 10px;gap:4px}
+      .card-name{font-size:10.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+      .card-zone{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .card-price{font-size:11.5px}
+      .card-price span{font-size:8px}
+      .card-pills{gap:0}
+      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
       .tabs{width:100%}
       .tab-btn{flex:1;text-align:center}
     }
@@ -248,12 +261,12 @@
   <div id="tab-sewa" style="overflow:hidden">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="selindung-daun-4-1300">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/selindungdaunNLH/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/selindungdaunNLH/pic1.jpg" alt="Selindung Daun" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/selindungdaunNLH/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/selindungdaunNLH/pic1.jpg" alt="Selindung Daun" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NLH</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NLH</span></div>
       <div><div class="card-name">Selindung Daun</div><div class="card-zone">Batang Kali</div></div>
       <div class="card-price">RM 1,300<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,271 sqft</span><span class="pill">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: 1/9/2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,271 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: 1/9/2026</span></div>
       <div class="card-anchors">KTM Batang Kali | Pekan Batang Kali | Sek Men Sains Hulu Selangor | Sek Keb Antara Gapi | PLUS Highway Sungai Buaya Exit</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Selindung%20Daun%2C%20Batang%20Kali.%20Price%3A%20RM1300.%20Ref%3A%20NLH" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -263,89 +276,89 @@
   <div id="tab-jual" style="display:none;overflow:hidden">
     <img src="/images/banner-subsale.png" alt="Subsales" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="2-storey-terrace-bandar-tasik-puteri-blok-3-4-290000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracebandartasikputeriblok3MMN/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracebandartasikputeriblok3MMN/pic1.jpg" alt="2 Storey Terrace Bandar Tasik Puteri Blok 3" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracebandartasikputeriblok3MMN/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracebandartasikputeriblok3MMN/pic1.jpg" alt="2 Storey Terrace Bandar Tasik Puteri Blok 3" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">2 Storey Terrace Bandar Tasik Puteri Blok 3</div><div class="card-zone">Bandar Tasik Puteri</div></div>
       <div class="card-price">RM 290,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,322</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,322</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,450 sqft</span><span class="pill">Leasehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">SK Bandar Tasik Puteri 1 &amp; 2 (~0.5km) | SMK Bandar Tasik Puteri (~0.7km) | Masjid Bandar Tasik Puteri (~0.6km) | Puteri Central Park (~0.4km) | 99 Speedmart BTP (~0.5km)</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20Bandar%20Tasik%20Puteri%20Blok%203%2C%20Bandar%20Tasik%20Puteri.%20Price%3A%20RM290000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="bungalow-taman-bandar-puteri-3-850000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bungalowtamanbandarputeriEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bungalowtamanbandarputeriEXP/pic1.jpg" alt="Bungalow Taman Bandar Puteri" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bungalowtamanbandarputeriEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bungalowtamanbandarputeriEXP/pic1.jpg" alt="Bungalow Taman Bandar Puteri" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Bungalow Taman Bandar Puteri</div><div class="card-zone">Bandar Tasik Puteri</div></div>
       <div class="card-price">RM 850,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 3,876</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 3,876</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 3 bath</span><span class="pill">4,000 sqft</span><span class="pill">Freehold</span><span class="pill">Bungalow</span></div>
       <div class="card-anchors">SMK Bandar Tasik Puteri | SK Tasik Puteri / SK Tasik Puteri 2 | Tasik Puteri Golf &amp; Country Club</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Bungalow%20Taman%20Bandar%20Puteri%2C%20Bandar%20Tasik%20Puteri.%20Price%3A%20RM850000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="residential-land-kota-emerald-east-650000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/residentiallandkotaemeraldeastEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/residentiallandkotaemeraldeastEXP/pic1.jpg" alt="Residential Land Kota Emerald East" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/residentiallandkotaemeraldeastEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/residentiallandkotaemeraldeastEXP/pic1.jpg" alt="Residential Land Kota Emerald East" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Residential Land Kota Emerald East</div><div class="card-zone">Peridot Precinct, Kota Emerald East</div></div>
       <div class="card-price">RM 650,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,964</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,964</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">5,998 sqft</span><span class="pill">Freehold</span><span class="pill">Residential Land</span></div>
       <div class="card-anchors">AEON Rawang (~10 min) | KTM Rawang Station (~5 min drive) | SK/SMK Taman Desa (confirmed nearby) | Straits International School Rawang</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residential%20Land%20Kota%20Emerald%20East%2C%20Peridot%20Precinct%2C%20Kota%20Emerald%20East.%20Price%3A%20RM650000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="blok-dahlia-3-145000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/blokdahliaLNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/blokdahliaLNS/pic1.jpg" alt="Blok Dahlia" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/blokdahliaLNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/blokdahliaLNS/pic1.jpg" alt="Blok Dahlia" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">LNS</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">LNS</span></div>
       <div><div class="card-name">Blok Dahlia</div><div class="card-zone">Taman Tun Teja</div></div>
       <div class="card-price">RM 145,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 661</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 661</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 1 bath</span><span class="pill">650 sqft</span><span class="pill">Leasehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Sekolah Kebangsaan Taman Tun Teja | Sekolah Menengah Kebangsaan Taman Tun Teja | Masjid Al-Falah Taman Tun Teja | Pasar Segar / Pasaraya Tun Teja</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Blok%20Dahlia%2C%20Taman%20Tun%20Teja.%20Price%3A%20RM145000.%20Ref%3A%20LNS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="apartment-teratai-3-130000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentterataiLNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentterataiLNS/pic1.jpg" alt="Apartment Teratai" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentterataiLNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentterataiLNS/pic1.jpg" alt="Apartment Teratai" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">LNS</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">LNS</span></div>
       <div><div class="card-name">Apartment Teratai</div><div class="card-zone">Taman Bunga Raya / Bukit Beruntung</div></div>
       <div class="card-price">RM 130,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 593</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 593</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 1 bath</span><span class="pill">650 sqft</span><span class="pill">Leasehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Sekolah Kebangsaan Taman Bunga Raya (2) | Sekolah Menengah Kebangsaan Taman Bunga Raya 1 | Surau Taman Bunga Raya</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Apartment%20Teratai%2C%20Taman%20Bunga%20Raya%20/%20Bukit%20Beruntung.%20Price%3A%20RM130000.%20Ref%3A%20LNS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="apartment-seri-melati-3-190000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentserimelatiEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentserimelatiEXP/pic1.jpg" alt="Apartment Seri Melati" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentserimelatiEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentserimelatiEXP/pic1.jpg" alt="Apartment Seri Melati" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Apartment Seri Melati</div><div class="card-zone">Bandar Sri Putra</div></div>
       <div class="card-price">RM 190,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 866</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 866</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">789 sqft</span><span class="pill">Freehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Strong accessibility to PLUS, Nilai, Bangi and Putrajaya</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Apartment%20Seri%20Melati%2C%20Bandar%20Sri%20Putra.%20Price%3A%20RM190000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="tasik-kundang-450000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tasikkundangEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tasikkundangEXP/pic1.jpg" alt="Tasik Kundang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tasikkundangEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tasikkundangEXP/pic1.jpg" alt="Tasik Kundang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Tasik Kundang</div><div class="card-zone">Kuang</div></div>
       <div class="card-price">RM 450,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,917</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,917</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">7,911 sqft</span><span class="pill">Freehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Kuang KTM Station | AEON Mall Rawang | Selgate Rawang Hospital | SJK(C) Kundang | LATAR Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Tasik%20Kundang%2C%20Kuang.%20Price%3A%20RM450000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="merpati-apartment-3-190000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/merpatiapartmentEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/merpatiapartmentEXP/pic1.jpg" alt="Merpati Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/merpatiapartmentEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/merpatiapartmentEXP/pic1.jpg" alt="Merpati Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Merpati Apartment</div><div class="card-zone">-</div></div>
       <div class="card-price">RM 190,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 809</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 809</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">817 sqft</span><span class="pill">Leasehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">NSK Trade City Rawang Jaya | AEON Rawang | PLUS Expressway (Rawang Toll)</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Merpati%20Apartment%2C%20-.%20Price%3A%20RM190000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -598,7 +611,7 @@ function unitCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}<span> / month</span></div>
       <div class="card-pills">${pills}</div>
@@ -619,10 +632,10 @@ function subsaleCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}</div>
-      ${r.installment ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
+      ${r.installment ? `<div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
       <div class="card-pills">${pills}</div>
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -702,7 +715,7 @@ function toSlug(...parts) {
     <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
   </svg>
 </a>
-<script src="/lightbox.js?v=20260821"></script>
+<script src="/lightbox.js?v=20260829b"></script>
 <script src="/search.js"></script>
 </body>
 </html>

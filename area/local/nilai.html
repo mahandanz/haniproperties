@@ -24,7 +24,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css?v=20260821">
+  <link rel="stylesheet" href="/lightbox.css?v=20260829b">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -89,6 +89,10 @@
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
     .card-cta{display:block;text-align:center;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
     .card-cta:hover{background:#1e4a2c}
+    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-installment{display:none}
+    .card-body .card-pills .pill{display:none}
+    .card-body .card-pills .pill-furnishing{display:inline-block}
+    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -121,7 +125,16 @@
       .filter-bar{gap:8px;padding:12px}
       .filter-group{min-width:calc(50% - 4px)}
       .main{padding:28px 16px 48px}
-      .listing-grid{grid-template-columns:1fr}
+      .listing-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+      .card{border-radius:10px}
+      .card-image-wrap{height:88px}
+      .card-body{padding:8px 8px 10px;gap:4px}
+      .card-name{font-size:10.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+      .card-zone{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .card-price{font-size:11.5px}
+      .card-price span{font-size:8px}
+      .card-pills{gap:0}
+      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
       .tabs{width:100%}
       .tab-btn{flex:1;text-align:center}
     }
@@ -248,12 +261,12 @@
   <div id="tab-sewa" style="overflow:hidden">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="sky-bungalow-green-beverly-hills-3-1600">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/skybungalowgreenbeverlyhillsDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/skybungalowgreenbeverlyhillsDPM/pic1.jpg" alt="Sky Bungalow @ Green Beverly Hills" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/skybungalowgreenbeverlyhillsDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/skybungalowgreenbeverlyhillsDPM/pic1.jpg" alt="Sky Bungalow @ Green Beverly Hills" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Sky Bungalow @ Green Beverly Hills</div><div class="card-zone">Level 19, Block B</div></div>
       <div class="card-price">RM 1,600<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">AEON Nilai | USIM | INTI Nilai University | PLUS Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sky%20Bungalow%20%40%20Green%20Beverly%20Hills%2C%20Level%2019%2C%20Block%20B.%20Price%3A%20RM1600.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -263,122 +276,122 @@
   <div id="tab-jual" style="display:none;overflow:hidden">
     <img src="/images/banner-subsale.png" alt="Subsales" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="pr1ma-seremban-sentral-seremban-3-275000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/pr1maserembansentralserembanEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/pr1maserembansentralserembanEXP/pic1.jpg" alt="Pr1ma Seremban Sentral @ Seremban" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/pr1maserembansentralserembanEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/pr1maserembansentralserembanEXP/pic1.jpg" alt="Pr1ma Seremban Sentral @ Seremban" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Pr1ma Seremban Sentral @ Seremban</div><div class="card-zone">Bukit Rasah</div></div>
       <div class="card-price">RM 275,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,254</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,254</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,033 sqft</span><span class="pill">Freehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">KTM Seremban | Hospital Tuanku Jaafar | Seremban Prima Shopping Mall</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Pr1ma%20Seremban%20Sentral%20%40%20Seremban%2C%20Bukit%20Rasah.%20Price%3A%20RM275000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="dahlia-apartment-seremban-2-3-160000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/dahliaapartmentseremban2EXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/dahliaapartmentseremban2EXP/pic1.jpg" alt="Dahlia Apartment @ Seremban 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/dahliaapartmentseremban2EXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/dahliaapartmentseremban2EXP/pic1.jpg" alt="Dahlia Apartment @ Seremban 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Dahlia Apartment @ Seremban 2</div><div class="card-zone">Seremban 2</div></div>
       <div class="card-price">RM 160,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 730</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 730</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">642 sqft</span><span class="pill">Freehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Garden Avenue Seremban 2 | Minimart | Playground</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Dahlia%20Apartment%20%40%20Seremban%202%2C%20Seremban%202.%20Price%3A%20RM160000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="2-storey-terrace-taman-pinggiran-senawang-4-350000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracetamanpinggiransenawangEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracetamanpinggiransenawangEXP/pic1.jpg" alt="2 Storey Terrace Taman Pinggiran Senawang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracetamanpinggiransenawangEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracetamanpinggiransenawangEXP/pic1.jpg" alt="2 Storey Terrace Taman Pinggiran Senawang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">2 Storey Terrace Taman Pinggiran Senawang</div><div class="card-zone">Senawang</div></div>
       <div class="card-price">RM 350,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,596</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,596</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,400 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">Mydin Senawang | Senawang Commercial Centre | Various Restaurants Senawang</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20Taman%20Pinggiran%20Senawang%2C%20Senawang.%20Price%3A%20RM350000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="1-storey-terrace-iringan-bayu-semaya-3-360000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/1storeyterraceiringanbayusemayaEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/1storeyterraceiringanbayusemayaEXP/pic1.jpg" alt="1 Storey Terrace Iringan Bayu Semaya" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/1storeyterraceiringanbayusemayaEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/1storeyterraceiringanbayusemayaEXP/pic1.jpg" alt="1 Storey Terrace Iringan Bayu Semaya" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">1 Storey Terrace Iringan Bayu Semaya</div><div class="card-zone">Taman Iringan Bayu</div></div>
       <div class="card-price">RM 360,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,642</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,642</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,400 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">AEON Seremban 2 | Palm Mall | Klinik Kesihatan Seremban 2</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%201%20Storey%20Terrace%20Iringan%20Bayu%20Semaya%2C%20Taman%20Iringan%20Bayu.%20Price%3A%20RM360000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="tanah-pertanian-kg-ulu-rokan-135000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tanahpertaniankgulurokanEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tanahpertaniankgulurokanEXP/pic1.jpg" alt="Tanah Pertanian Kg Ulu Rokan" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tanahpertaniankgulurokanEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tanahpertaniankgulurokanEXP/pic1.jpg" alt="Tanah Pertanian Kg Ulu Rokan" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Tanah Pertanian Kg Ulu Rokan</div><div class="card-zone">Kg Ulu Rokan Gemencheh</div></div>
       <div class="card-price">RM 135,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 616</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 616</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">Leasehold</span><span class="pill">Agricultural Land</span></div>
       <div class="card-anchors">Rural land near Tampin</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Tanah%20Pertanian%20Kg%20Ulu%20Rokan%2C%20Kg%20Ulu%20Rokan%20Gemencheh.%20Price%3A%20RM135000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="taman-paroi-jaya-corner-terrace-7-1350000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanparoijayacornerterraceEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanparoijayacornerterraceEXP/pic1.jpg" alt="Taman Paroi Jaya Corner Terrace" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanparoijayacornerterraceEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanparoijayacornerterraceEXP/pic1.jpg" alt="Taman Paroi Jaya Corner Terrace" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Taman Paroi Jaya Corner Terrace</div><div class="card-zone">Taman Paroi Jaya</div></div>
       <div class="card-price">RM 1,350,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 6,156</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 6,156</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 7 bed</span><span class="pill">🚿 4 bath</span><span class="pill">3,200 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">Near Seremban 2 malls and PLUS highway access</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Paroi%20Jaya%20Corner%20Terrace%2C%20Taman%20Paroi%20Jaya.%20Price%3A%20RM1350000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="residensi-klia-3-370000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/residensikliaRSS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/residensikliaRSS/pic1.jpg" alt="Residensi KLIA" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/residensikliaRSS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/residensikliaRSS/pic1.jpg" alt="Residensi KLIA" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">RSS</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">RSS</span></div>
       <div><div class="card-name">Residensi KLIA</div><div class="card-zone">Residensi KLIA</div></div>
       <div class="card-price">RM 370,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,687</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,687</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">962 sqft</span><span class="pill">Freehold</span><span class="pill">Serviced Residence</span></div>
       <div class="card-anchors">Near KLIA &amp; Nilai township</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residensi%20KLIA%2C%20Residensi%20KLIA.%20Price%3A%20RM370000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="queensbury-mahkota-hills-4-490000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/queensburymahkotahillsEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/queensburymahkotahillsEXP/pic1.jpg" alt="Queensbury Mahkota Hills" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/queensburymahkotahillsEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/queensburymahkotahillsEXP/pic1.jpg" alt="Queensbury Mahkota Hills" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Queensbury Mahkota Hills</div><div class="card-zone">Mahkota Hills</div></div>
       <div class="card-price">RM 490,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,326</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,326</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,684 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">Near Nottingham &amp; Xiamen Univ</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Queensbury%20Mahkota%20Hills%2C%20Mahkota%20Hills.%20Price%3A%20RM510000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="nusari-aman-2-4-600000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/nusariaman2ZYP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/nusariaman2ZYP/pic1.jpg" alt="Nusari Aman 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/nusariaman2ZYP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/nusariaman2ZYP/pic1.jpg" alt="Nusari Aman 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">ZYP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">ZYP</span></div>
       <div><div class="card-name">Nusari Aman 2</div><div class="card-zone">Bandar Sri Sendayan</div></div>
       <div class="card-price">RM 600,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,736</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,736</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">2,316 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">Established Sendayan township + near schools/shops + highways</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Nusari%20Aman%202%2C%20Bandar%20Sri%20Sendayan.%20Price%3A%20RM600000.%20Ref%3A%20ZYP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="flat-dahlia-3-150000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/flatdahliaMMN/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/flatdahliaMMN/pic1.jpg" alt="Flat Dahlia" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/flatdahliaMMN/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/flatdahliaMMN/pic1.jpg" alt="Flat Dahlia" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Flat Dahlia</div><div class="card-zone">Garden Avenue Seremban 2</div></div>
       <div class="card-price">RM 150,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 684</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 684</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">860 sqft</span><span class="pill">Freehold</span><span class="pill">Flat</span></div>
       <div class="card-anchors">AEON Mall Seremban 2 | Mydin Mall Seremban 2 | KPJ Seremban Specialist Hospital</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Flat%20Dahlia%2C%20Garden%20Avenue%20Seremban%202.%20Price%3A%20RM150000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="double-storey-davina-nilai-impian-4-545000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/doublestoreydavinanilaiimpianRSS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/doublestoreydavinanilaiimpianRSS/pic1.jpg" alt="Double Storey Davina Nilai Impian" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/doublestoreydavinanilaiimpianRSS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/doublestoreydavinanilaiimpianRSS/pic1.jpg" alt="Double Storey Davina Nilai Impian" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">RSS</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">RSS</span></div>
       <div><div class="card-name">Double Storey Davina Nilai Impian</div><div class="card-zone">Nilai Impian</div></div>
       <div class="card-price">RM 545,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,485</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,485</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,650 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">NILAI–KLIA growth corridor near township amenities</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Double%20Storey%20Davina%20Nilai%20Impian%2C%20Nilai%20Impian.%20Price%3A%20RM545000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -631,7 +644,7 @@ function unitCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}<span> / month</span></div>
       <div class="card-pills">${pills}</div>
@@ -652,10 +665,10 @@ function subsaleCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}</div>
-      ${r.installment ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
+      ${r.installment ? `<div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
       <div class="card-pills">${pills}</div>
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -735,7 +748,7 @@ function toSlug(...parts) {
     <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
   </svg>
 </a>
-<script src="/lightbox.js?v=20260821"></script>
+<script src="/lightbox.js?v=20260829b"></script>
 <script src="/search.js"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css?v=20260821">
+  <link rel="stylesheet" href="/lightbox.css?v=20260829b">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -89,6 +89,10 @@
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
     .card-cta{display:block;text-align:center;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
     .card-cta:hover{background:#1e4a2c}
+    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-installment{display:none}
+    .card-body .card-pills .pill{display:none}
+    .card-body .card-pills .pill-furnishing{display:inline-block}
+    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -121,7 +125,16 @@
       .filter-bar{gap:8px;padding:12px}
       .filter-group{min-width:calc(50% - 4px)}
       .main{padding:28px 16px 48px}
-      .listing-grid{grid-template-columns:1fr}
+      .listing-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+      .card{border-radius:10px}
+      .card-image-wrap{height:88px}
+      .card-body{padding:8px 8px 10px;gap:4px}
+      .card-name{font-size:10.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+      .card-zone{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .card-price{font-size:11.5px}
+      .card-price span{font-size:8px}
+      .card-pills{gap:0}
+      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
       .tabs{width:100%}
       .tab-btn{flex:1;text-align:center}
     }
@@ -248,129 +261,129 @@
   <div id="tab-sewa" style="overflow:hidden">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="lakepark-residence-kl-north-3-2200">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/lakeparkresidenceklnorthADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/lakeparkresidenceklnorthADL/pic1.jpg" alt="LakePark Residence @ KL North" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/lakeparkresidenceklnorthADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/lakeparkresidenceklnorthADL/pic1.jpg" alt="LakePark Residence @ KL North" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">LakePark Residence @ KL North</div><div class="card-zone">Pusat Bandar Utara Selayang</div></div>
       <div class="card-price">RM 2,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">950 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Aug-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">950 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Aug-26</span></div>
       <div class="card-anchors">Taman Wahyu KTM Station | Selayang Mall | Pasar Borong Selayang | Hospital Selayang | MRR2 Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20LakePark%20Residence%20%40%20KL%20North%2C%20Pusat%20Bandar%20Utara%20Selayang.%20Price%3A%20RM2200.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="selayang-point-3-1800">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/selayangpointADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/selayangpointADL/pic1.jpg" alt="Selayang Point" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/selayangpointADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/selayangpointADL/pic1.jpg" alt="Selayang Point" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Selayang Point</div><div class="card-zone">Taman Selayang Jaya</div></div>
       <div class="card-price">RM 1,800<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,118 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Aug-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,118 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Aug-26</span></div>
       <div class="card-anchors">Selayang Mall | Hospital Selayang | MRR2 | Jalan Kuching | LATAR Expressway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Selayang%20Point%2C%20Taman%20Selayang%20Jaya.%20Price%3A%20RM1800.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="taman-amansiara-3-1200">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanamansiaraADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanamansiaraADL/pic1.jpg" alt="Taman Amansiara" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanamansiaraADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanamansiaraADL/pic1.jpg" alt="Taman Amansiara" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Taman Amansiara</div><div class="card-zone">Batu Caves</div></div>
       <div class="card-price">RM 1,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,245 sqft</span><span class="pill">Unfurnished</span><span class="pill">Townhouse</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,245 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Townhouse</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Selayang Mall | NSK Trade City Selayang | Selayang Hospital | MRR2 Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Amansiara%2C%20Batu%20Caves.%20Price%3A%20RM1200.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="168-park-residensi-selayang-2-1700">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/168parkresidensiselayangADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/168parkresidensiselayangADL/pic1.jpg" alt="168 Park Residensi Selayang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/168parkresidensiselayangADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/168parkresidensiselayangADL/pic1.jpg" alt="168 Park Residensi Selayang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">168 Park Residensi Selayang</div><div class="card-zone">Bandar Selayang</div></div>
       <div class="card-price">RM 1,700<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">538 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: 1/8/2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">538 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: 1/8/2026</span></div>
       <div class="card-anchors">Selayang Mall | Selayang Hospital | NSK Trade City Selayang | Lotus's Selayang | MRR2</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20168%20Park%20Residensi%20Selayang%2C%20Bandar%20Selayang.%20Price%3A%20RM1700.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="bayu-residensi-2-1500">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bayuresidensiADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bayuresidensiADL/pic1.jpg" alt="Bayu Residensi" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bayuresidensiADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bayuresidensiADL/pic1.jpg" alt="Bayu Residensi" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Bayu Residensi</div><div class="card-zone">Sri Gombak</div></div>
       <div class="card-price">RM 1,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">700 sqft</span><span class="pill">Unfurnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">700 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">24-Hour Security | Swimming Pool | Gymnasium | Multipurpose Hall | Playground | Surau | BBQ Area | Landscaped Garden</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Bayu%20Residensi%2C%20Sri%20Gombak.%20Price%3A%20RM1500.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="penaga-3-1800">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/penagaADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/penagaADL/pic1.jpg" alt="Penaga" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/penagaADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/penagaADL/pic1.jpg" alt="Penaga" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Penaga</div><div class="card-zone">Batu Caves Taman Raintree</div></div>
       <div class="card-price">RM 1,800<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,098 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,098 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Giant Batu Caves | Selayang Mall | Schools &amp; Kindergartens | Clinics &amp; Pharmacies | Restaurants &amp; Convenience Stores</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Penaga%2C%20Batu%20Caves%20Taman%20Raintree.%20Price%3A%20RM1800.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="168-park-selayang-2-1600">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/168parkselayangEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/168parkselayangEX/pic1.jpg" alt="168 Park Selayang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/168parkselayangEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/168parkselayangEX/pic1.jpg" alt="168 Park Selayang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">168 Park Selayang</div><div class="card-zone">Selayang</div></div>
       <div class="card-price">RM 1,600<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">624 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">624 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Bersebelahan 168 Mall Selayang | Berhampiran Hospital Selayang | Akses mudah ke MRR2 | Berdekatan sekolah, restoran dan kemudahan harian</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20168%20Park%20Selayang%2C%20Selayang.%20Price%3A%20RM1600.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="168-park-selayang-2-1500">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/168parkselayangADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/168parkselayangADL/pic1.jpg" alt="168 Park Selayang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/168parkselayangADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/168parkselayangADL/pic1.jpg" alt="168 Park Selayang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">168 Park Selayang</div><div class="card-zone">Selayang</div></div>
       <div class="card-price">RM 1,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">560 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">560 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">KTM Batu Caves | Selayang Mall | SMK Selayang Baru | Hospital Selayang | Lotus's Selayang | MRR2</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20168%20Park%20Selayang%2C%20Selayang.%20Price%3A%20RM1500.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="bayu-residensi-sri-gombak-2-1500">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bayuresidensisrigombakADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bayuresidensisrigombakADL/pic1.jpg" alt="Bayu Residensi @ Sri Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bayuresidensisrigombakADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bayuresidensisrigombakADL/pic1.jpg" alt="Bayu Residensi @ Sri Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Bayu Residensi @ Sri Gombak</div><div class="card-zone">Sri Gombak</div></div>
       <div class="card-price">RM 1,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">700 sqft</span><span class="pill">Unfurnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">700 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Sri Gombak LRT Station | Gombak Integrated Transport Terminal (GITT) | Selayang Hospital | UIAM Gombak | MRR2 Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Bayu%20Residensi%20%40%20Sri%20Gombak%2C%20Sri%20Gombak.%20Price%3A%20RM1500.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="taman-jasa-shoplot-ground-floor-2-4100">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanjasashoplotgroundfloorDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanjasashoplotgroundfloorDPM/pic1.jpg" alt="Taman Jasa Shoplot (Ground Floor)" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanjasashoplotgroundfloorDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanjasashoplotgroundfloorDPM/pic1.jpg" alt="Taman Jasa Shoplot (Ground Floor)" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Taman Jasa Shoplot (Ground Floor)</div><div class="card-zone">Taman Jasa</div></div>
       <div class="card-price">RM 4,100<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,600 sqft</span><span class="pill">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,600 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Hab Taman Jasa Utama Bus Hub | Selayang Mall | Hospital Selayang | DUKE Highway | MRR2 Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Jasa%20Shoplot%20%28Ground%20Floor%29%2C%20Taman%20Jasa.%20Price%3A%20RM4100.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="taman-jasa-shoplot-2nd-floor-2-1600">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanjasashoplot2ndfloorDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanjasashoplot2ndfloorDPM/pic1.jpg" alt="Taman Jasa Shoplot (2nd Floor)" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanjasashoplot2ndfloorDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanjasashoplot2ndfloorDPM/pic1.jpg" alt="Taman Jasa Shoplot (2nd Floor)" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Taman Jasa Shoplot (2nd Floor)</div><div class="card-zone">Taman Jasa</div></div>
       <div class="card-price">RM 1,600<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,600 sqft</span><span class="pill">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,600 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Hab Taman Jasa Utama Bus Hub | Selayang Mall | Hospital Selayang | DUKE Highway | MRR2 Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Jasa%20Shoplot%20%282nd%20Floor%29%2C%20Taman%20Jasa.%20Price%3A%20RM1600.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="taman-jasa-shoplot-1st-floor-2-1800">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanjasashoplot1stfloorDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanjasashoplot1stfloorDPM/pic1.jpg" alt="Taman Jasa Shoplot (1st Floor)" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanjasashoplot1stfloorDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanjasashoplot1stfloorDPM/pic1.jpg" alt="Taman Jasa Shoplot (1st Floor)" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Taman Jasa Shoplot (1st Floor)</div><div class="card-zone">Taman Jasa</div></div>
       <div class="card-price">RM 1,800<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,600 sqft</span><span class="pill">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,600 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Hab Taman Jasa Utama Bus Hub | Selayang Mall | Hospital Selayang | DUKE Highway | MRR2 Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Jasa%20Shoplot%20%281st%20Floor%29%2C%20Taman%20Jasa.%20Price%3A%20RM1800.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="pangsapuri-beringin-3-1100">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/pangsapuriberinginDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/pangsapuriberinginDPM/pic1.jpg" alt="Pangsapuri Beringin" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/pangsapuriberinginDPM/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/pangsapuriberinginDPM/pic1.jpg" alt="Pangsapuri Beringin" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Pangsapuri Beringin</div><div class="card-zone">Taman Gombak Permai</div></div>
       <div class="card-price">RM 1,100<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">820 sqft</span><span class="pill">-</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
@@ -378,39 +391,39 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Beringin%2C%20Taman%20Gombak%20Permai.%20Price%3A%20RM1100.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="jemerlang-apartment-3-1400">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/jemerlangapartmentEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/jemerlangapartmentEX/pic1.jpg" alt="Jemerlang Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/jemerlangapartmentEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/jemerlangapartmentEX/pic1.jpg" alt="Jemerlang Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">Jemerlang Apartment</div><div class="card-zone">Selayang Heights</div></div>
       <div class="card-price">RM 1,400<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Apartment</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Selayang Wholesale Market | Hospital Selayang | Rawang Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Jemerlang%20Apartment%2C%20Selayang%20Heights.%20Price%3A%20RM1400.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="jemerlang-apartment-3-1400">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/jemerlangapartmentNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/jemerlangapartmentNS/pic1.jpg" alt="Jemerlang Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/jemerlangapartmentNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/jemerlangapartmentNS/pic1.jpg" alt="Jemerlang Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
       <div><div class="card-name">Jemerlang Apartment</div><div class="card-zone">Selayang Heights</div></div>
       <div class="card-price">RM 1,400<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Apartment</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">General Hospital Selayang | Selayang Mall | Kolej Komuniti Selayang | MRR2</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Jemerlang%20Apartment%2C%20Selayang%20Heights.%20Price%3A%20RM1400.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="amara-residences-3-1200">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/amararesidencesADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/amararesidencesADL/pic1.jpg" alt="Amara Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/amararesidencesADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/amararesidencesADL/pic1.jpg" alt="Amara Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Amara Residences</div><div class="card-zone">Batu Caves</div></div>
       <div class="card-price">RM 1,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">829 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">829 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Batu Caves KTM Station | Selayang Mall | Lotus's Selayang | Hospital Selayang | MRR2</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Amara%20Residences%2C%20Batu%20Caves.%20Price%3A%20RM1200.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="apartment-sri-murni-fasa-2-3-1200">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentsrimurnifasa2ADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentsrimurnifasa2ADL/pic1.jpg" alt="Apartment Sri Murni Fasa 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentsrimurnifasa2ADL/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentsrimurnifasa2ADL/pic1.jpg" alt="Apartment Sri Murni Fasa 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Apartment Sri Murni Fasa 2</div><div class="card-zone">Batu Caves</div></div>
       <div class="card-price">RM 1,200<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">827 sqft</span><span class="pill">-</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Sep-26</span></div>
@@ -418,32 +431,32 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Apartment%20Sri%20Murni%20Fasa%202%2C%20Batu%20Caves.%20Price%3A%20RM1200.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="taman-batu-shoplot-6000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanbatushoplot-/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanbatushoplot-/pic1.jpg" alt="Taman Batu Shoplot" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanbatushoplot-/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanbatushoplot-/pic1.jpg" alt="Taman Batu Shoplot" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">-</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">-</span></div>
       <div><div class="card-name">Taman Batu Shoplot</div><div class="card-zone">Taman Batu</div></div>
       <div class="card-price">RM 6,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,650 sqft</span><span class="pill">Unfurnished</span><span class="pill">Commercial</span></div>
+      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,650 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Commercial</span></div>
       <div class="card-anchors">Jalan Batu Caves | Batu Caves KTM Station | Selayang Mall | MRR2 Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Batu%20Shoplot%2C%20Taman%20Batu.%20Price%3A%20RM6000.%20Ref%3A%20-" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="lakepark-residence-kl-north-3-1800">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/lakeparkresidenceklnorthNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/lakeparkresidenceklnorthNS/pic1.jpg" alt="LakePark Residence @ KL North" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/lakeparkresidenceklnorthNS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/lakeparkresidenceklnorthNS/pic1.jpg" alt="LakePark Residence @ KL North" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
       <div><div class="card-name">LakePark Residence @ KL North</div><div class="card-zone">Pusat Bandar Utara Selayang</div></div>
       <div class="card-price">RM 1,800<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">975 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">975 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Taman Wahyu KTM Station | Selayang Mall | Pasar Borong Selayang | Hospital Selayang | MRR2 Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20LakePark%20Residence%20%40%20KL%20North%2C%20Pusat%20Bandar%20Utara%20Selayang.%20Price%3A%20RM1800.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="taman-seri-gombak-4-2500">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanserigombakEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanserigombakEX/pic1.jpg" alt="Taman Seri Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanserigombakEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanserigombakEX/pic1.jpg" alt="Taman Seri Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">Taman Seri Gombak</div><div class="card-zone">Fasa 7</div></div>
       <div class="card-price">RM 2,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,200 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Terrace</span></div>
+      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,200 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">KTM Batu Caves | Hospital Selayang | SMK Hillcrest | MRR2 Highway | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Seri%20Gombak%2C%20Fasa%207.%20Price%3A%20RM2500.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -453,221 +466,221 @@
   <div id="tab-jual" style="display:none;overflow:hidden">
     <img src="/images/banner-subsale.png" alt="Subsales" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="taman-desa-gemilang-5-1290000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamandesagemilangEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamandesagemilangEXP/pic1.jpg" alt="Taman Desa Gemilang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamandesagemilangEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamandesagemilangEXP/pic1.jpg" alt="Taman Desa Gemilang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Taman Desa Gemilang</div><div class="card-zone">Kampung Sungai Pusu</div></div>
       <div class="card-price">RM 1,290,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 5,495</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 5,495</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 5 bed</span><span class="pill">🚿 5 bath</span><span class="pill">3,500 sqft</span><span class="pill">Leasehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">Terminal Bersepadu Gombak (TBG) | KL East Mall | UIAM | KUIS | Karak Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Desa%20Gemilang%2C%20Kampung%20Sungai%20Pusu.%20Price%3A%20RM1290000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="3-storey-bungalow-anjung-melati-4-2300000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/3storeybungalowanjungmelatiEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/3storeybungalowanjungmelatiEXP/pic1.jpg" alt="3 Storey Bungalow Anjung Melati" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/3storeybungalowanjungmelatiEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/3storeybungalowanjungmelatiEXP/pic1.jpg" alt="3 Storey Bungalow Anjung Melati" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">3 Storey Bungalow Anjung Melati</div><div class="card-zone">Taman Melati</div></div>
       <div class="card-price">RM 2,300,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 10,488</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 10,488</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 9 bath</span><span class="pill">4,500 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">SMK Sungai Pusu (~8–12 min jalan kaki) | Columbia Asia Hospital (short drive) | Masjid Salahuddin Al-Ayubi (in-township) | KL East Mall (~5 min drive) | LRT Taman Melati (~2–3km, short drive)</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%203%20Storey%20Bungalow%20Anjung%20Melati%2C%20Taman%20Melati.%20Price%3A%20RM2300000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="2-storey-terrace-taman-sri-gombak-3-520000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracetamansrigombakEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracetamansrigombakEXP/pic1.jpg" alt="2 Storey Terrace Taman Sri Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracetamansrigombakEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracetamansrigombakEXP/pic1.jpg" alt="2 Storey Terrace Taman Sri Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">2 Storey Terrace Taman Sri Gombak</div><div class="card-zone">Taman Sri Gombak</div></div>
       <div class="card-price">RM 520,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,371</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,371</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">770 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">SK Taman Sri Gombak (~400m, walkable) | SMK Hillcrest (~1km) | Pasar Sri Gombak (walkable) | LRT Gombak (~5 min drive) | KTM Batu Caves (~5 min drive)</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20Taman%20Sri%20Gombak%2C%20Taman%20Sri%20Gombak.%20Price%3A%20RM520000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="2-storey-terrace-taman-koperasi-polis-fasa-ii-5-880000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracetamankoperasipolisfasaiiEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracetamankoperasipolisfasaiiEXP/pic1.jpg" alt="2 Storey Terrace Taman Koperasi Polis Fasa II" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracetamankoperasipolisfasaiiEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracetamankoperasipolisfasaiiEXP/pic1.jpg" alt="2 Storey Terrace Taman Koperasi Polis Fasa II" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">2 Storey Terrace Taman Koperasi Polis Fasa II</div><div class="card-zone">Taman Koperasi Polis Fasa II</div></div>
       <div class="card-price">RM 880,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 4,013</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 4,013</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 5 bed</span><span class="pill">🚿 2 bath</span><span class="pill">2,400 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">SK Taman Koperasi Polis (~500m) | PICOMS International University College (~500m) | Masjid Bilal Ibn Rabah (~1km) | Giant Batu Caves (~1.5km)</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20Taman%20Koperasi%20Polis%20Fasa%20II%2C%20Taman%20Koperasi%20Polis%20Fasa%20II.%20Price%3A%20RM880000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="semi-detached-taman-perdana-residence-5-2000000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/semidetachedtamanperdanaresidenceEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/semidetachedtamanperdanaresidenceEXP/pic1.jpg" alt="Semi Detached Taman Perdana Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/semidetachedtamanperdanaresidenceEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/semidetachedtamanperdanaresidenceEXP/pic1.jpg" alt="Semi Detached Taman Perdana Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Semi Detached Taman Perdana Residence</div><div class="card-zone">Bandar Baru Selayang</div></div>
       <div class="card-price">RM 2,000,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 9,120</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 9,120</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 5 bed</span><span class="pill">🚿 5 bath</span><span class="pill">4,000 sqft</span><span class="pill">Freehold</span><span class="pill">Semi D</span></div>
       <div class="card-anchors">Hospital Selayang | Selayang Mall | SK Bandar Baru Selayang | Selayang Pasar Borong | KTM Batu Caves (~4-5km) | Templer Park International School</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Semi%20Detached%20Taman%20Perdana%20Residence%2C%20Bandar%20Baru%20Selayang.%20Price%3A%20RM2000000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="apartment-pinggiran-batu-caves-2-150000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentpinggiranbatucavesEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentpinggiranbatucavesEXP/pic1.jpg" alt="Apartment Pinggiran Batu Caves" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentpinggiranbatucavesEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentpinggiranbatucavesEXP/pic1.jpg" alt="Apartment Pinggiran Batu Caves" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Apartment Pinggiran Batu Caves</div><div class="card-zone">Taman Pinggiran Batu Caves, Batu Caves</div></div>
       <div class="card-price">RM 150,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 684</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 684</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">650 sqft</span><span class="pill">Leasehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">LRT/KTM Batu Caves | Sekolah Rendah/Menengah Taman Pinggiran | MRR2 / DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Apartment%20Pinggiran%20Batu%20Caves%2C%20Taman%20Pinggiran%20Batu%20Caves%2C%20Batu%20Caves.%20Price%3A%20RM150000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="one-sierra-apartment-3-230000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/onesierraapartmentEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/onesierraapartmentEXP/pic1.jpg" alt="One Sierra Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/onesierraapartmentEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/onesierraapartmentEXP/pic1.jpg" alt="One Sierra Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">One Sierra Apartment</div><div class="card-zone">Selayang</div></div>
       <div class="card-price">RM 230,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,049</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,049</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">767 sqft</span><span class="pill">Leasehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Near NSK, Mall, UiTM, Hospital Selayang</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20One%20Sierra%20Apartment%2C%20Selayang.%20Price%3A%20RM230000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="magna-ville-condominium-2-289000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/magnavillecondominiumEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/magnavillecondominiumEXP/pic1.jpg" alt="Magna Ville Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/magnavillecondominiumEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/magnavillecondominiumEXP/pic1.jpg" alt="Magna Ville Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Magna Ville Condominium</div><div class="card-zone">Selayang</div></div>
       <div class="card-price">RM 289,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,318</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,318</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,001 sqft</span><span class="pill">Leasehold</span><span class="pill">Condominium</span></div>
       <div class="card-anchors">Walkable schools and strong medical hub proximity</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Magna%20Ville%20Condominium%2C%20Selayang.%20Price%3A%20RM289000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="dusun-durian-musang-king-700000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/dusundurianmusangkingRSS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/dusundurianmusangkingRSS/pic1.jpg" alt="Dusun Durian Musang King" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/dusundurianmusangkingRSS/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/dusundurianmusangkingRSS/pic1.jpg" alt="Dusun Durian Musang King" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">RSS</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">RSS</span></div>
       <div><div class="card-name">Dusun Durian Musang King</div><div class="card-zone">Taman Bukit Permata Seri</div></div>
       <div class="card-price">RM 700,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 3,192</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 3,192</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">Leasehold</span><span class="pill">Agricultural Land</span></div>
       <div class="card-anchors">Eco-tourism Gombak</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Dusun%20Durian%20Musang%20King%2C%20Taman%20Bukit%20Permata%20Seri.%20Price%3A%20RM700000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="dataran-templer-5-1250000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/datarantemplerEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/datarantemplerEXP/pic1.jpg" alt="Dataran Templer" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/datarantemplerEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/datarantemplerEXP/pic1.jpg" alt="Dataran Templer" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Dataran Templer</div><div class="card-zone">Bandar Baru Selayang Dataran Templer</div></div>
       <div class="card-price">RM 1,250,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 5,700</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 5,700</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 5 bed</span><span class="pill">🚿 6 bath</span><span class="pill">2,800 sqft</span><span class="pill">Leasehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">Strong Selayang demand near Pasar Borong, hospitals, schools</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Dataran%20Templer%2C%20Bandar%20Baru%20Selayang%20Dataran%20Templer.%20Price%3A%20RM1250000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="apartment-sri-selayang-3-290000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentsriselayangEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentsriselayangEXP/pic1.jpg" alt="Apartment Sri Selayang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/apartmentsriselayangEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/apartmentsriselayangEXP/pic1.jpg" alt="Apartment Sri Selayang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Apartment Sri Selayang</div><div class="card-zone">Sri Selayang</div></div>
       <div class="card-price">RM 290,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,322</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,322</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">900 sqft</span><span class="pill">Leasehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Near UITM Selayang | 168 Mall</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Apartment%20Sri%20Selayang%2C%20Sri%20Selayang.%20Price%3A%20RM290000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="amara-residences-3-337000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/amararesidencesEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/amararesidencesEXP/pic1.jpg" alt="Amara Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/amararesidencesEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/amararesidencesEXP/pic1.jpg" alt="Amara Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Amara Residences</div><div class="card-zone">Batu Caves</div></div>
       <div class="card-price">RM 337,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,537</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,537</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,100 sqft</span><span class="pill">Freehold</span><span class="pill">Service Residence</span></div>
       <div class="card-anchors">Freehold non-bumi 400m to KTM Batu Caves</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Amara%20Residences%2C%20Batu%20Caves.%20Price%3A%20RM337000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="amansiara-townhouse-3-450000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/amansiaratownhouseEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/amansiaratownhouseEXP/pic1.jpg" alt="Amansiara Townhouse" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/amansiaratownhouseEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/amansiaratownhouseEXP/pic1.jpg" alt="Amansiara Townhouse" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Amansiara Townhouse</div><div class="card-zone">Selayang</div></div>
       <div class="card-price">RM 450,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,052</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,052</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,245 sqft</span><span class="pill">Leasehold</span><span class="pill">Townhouse</span></div>
       <div class="card-anchors">Near Hospital Selayang, MPS, Tesco/NSK and major highways</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Amansiara%20Townhouse%2C%20Selayang.%20Price%3A%20RM450000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="2-5-storey-landed-house-bukit-permata-5-990000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/25storeylandedhousebukitpermataEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/25storeylandedhousebukitpermataEXP/pic1.jpg" alt="2.5-Storey Landed House Bukit Permata" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/25storeylandedhousebukitpermataEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/25storeylandedhousebukitpermataEXP/pic1.jpg" alt="2.5-Storey Landed House Bukit Permata" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">2.5-Storey Landed House Bukit Permata</div><div class="card-zone">Bukit Permata</div></div>
       <div class="card-price">RM 990,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 4,515</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 4,515</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 5 bed</span><span class="pill">🚿 4 bath</span><span class="pill">2,800 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">Landed matured township near Lotus's, AEON, MRT/KTM</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202.5-Storey%20Landed%20House%20Bukit%20Permata%2C%20Bukit%20Permata.%20Price%3A%20RM990000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="ayuman-suite-3-335000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/ayumansuiteEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/ayumansuiteEXP/pic1.jpg" alt="Ayuman Suite" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/ayumansuiteEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/ayumansuiteEXP/pic1.jpg" alt="Ayuman Suite" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Ayuman Suite</div><div class="card-zone">Gombak</div></div>
       <div class="card-price">RM 335,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,427</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,427</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">557 sqft</span><span class="pill">Freehold</span><span class="pill">Service Residence</span></div>
       <div class="card-anchors">LRT Gombak | Terminal Bersepadu Gombak | KL East Mall | Melawati Mall | SPE Expressway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Ayuman%20Suite%2C%20Gombak.%20Price%3A%20RM335000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="taman-wilayah-selayang-flat-2-120000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanwilayahselayangflatEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanwilayahselayangflatEXP/pic1.jpg" alt="Taman Wilayah Selayang Flat" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/tamanwilayahselayangflatEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/tamanwilayahselayangflatEXP/pic1.jpg" alt="Taman Wilayah Selayang Flat" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Taman Wilayah Selayang Flat</div><div class="card-zone">Taman Wilayah</div></div>
       <div class="card-price">RM 120,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 511</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 511</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">560 sqft</span><span class="pill">Leasehold</span><span class="pill">Flat</span></div>
       <div class="card-anchors">Selayang Mall | Hospital Selayang | MRR2 | LATAR Expressway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Wilayah%20Selayang%20Flat%2C%20Taman%20Wilayah.%20Price%3A%20RM120000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="desa-temenggung-4-250000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/desatemenggungEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/desatemenggungEXP/pic1.jpg" alt="Desa Temenggung" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/desatemenggungEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/desatemenggungEXP/pic1.jpg" alt="Desa Temenggung" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Desa Temenggung</div><div class="card-zone">Taman Pinggiran</div></div>
       <div class="card-price">RM 250,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,065</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,065</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">930 sqft</span><span class="pill">Leasehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Gombak LRT Station | Giant Hypermarket Batu Caves | Hospital Selayang | SMK Hillcrest | MRR2</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Desa%20Temenggung%2C%20Taman%20Pinggiran.%20Price%3A%20RM250000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="2-storey-terrace-taman-koperasi-polis-fasa-ii-3-499000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracetamankoperasipolisfasaiiEXP2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracetamankoperasipolisfasaiiEXP2/pic1.jpg" alt="2 Storey Terrace Taman Koperasi Polis Fasa II" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/2storeyterracetamankoperasipolisfasaiiEXP2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/2storeyterracetamankoperasipolisfasaiiEXP2/pic1.jpg" alt="2 Storey Terrace Taman Koperasi Polis Fasa II" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">2 Storey Terrace Taman Koperasi Polis Fasa II</div><div class="card-zone">Taman Koperasi Polis Fasa II</div></div>
       <div class="card-price">RM 499,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,125</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,125</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,800 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">LRT Gombak | Terminal Bersepadu Gombak (TBG) | Kolej Antarabangsa PICOMS | UNIKOP</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20Taman%20Koperasi%20Polis%20Fasa%20II%2C%20Taman%20Koperasi%20Polis%20Fasa%20II.%20Price%3A%20RM499000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="halamanda-gombak-5-1100000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/halamandagombakEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/halamandagombakEXP/pic1.jpg" alt="Halamanda @ Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/halamandagombakEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/halamandagombakEXP/pic1.jpg" alt="Halamanda @ Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Halamanda @ Gombak</div><div class="card-zone">Mutiara Gombak</div></div>
       <div class="card-price">RM 1,100,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 4,685</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 4,685</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 5 bed</span><span class="pill">🚿 5 bath</span><span class="pill">2,287 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">Gombak LRT Station | Melawati Mall | Wangsa Walk Mall | IIUM (UIA) | MRR2 Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Halamanda%20%40%20Gombak%2C%20Mutiara%20Gombak.%20Price%3A%20RM1100000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="pangsapuri-saujana-gombak-3-270000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/pangsapurisaujanagombakEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/pangsapurisaujanagombakEXP/pic1.jpg" alt="Pangsapuri Saujana Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/pangsapurisaujanagombakEXP/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/pangsapurisaujanagombakEXP/pic1.jpg" alt="Pangsapuri Saujana Gombak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">EXP</span></div>
       <div><div class="card-name">Pangsapuri Saujana Gombak</div><div class="card-zone">Gombak</div></div>
       <div class="card-price">RM 270,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,150</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,150</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">915 sqft</span><span class="pill">Leasehold</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">LRT Gombak Station | Giant | MRR2 | DUKE Expressway | Lebuh Utama Sri Gombak</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Pangsapuri%20Saujana%20Gombak%2C%20Gombak.%20Price%3A%20RM270000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -920,7 +933,7 @@ function unitCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}<span> / month</span></div>
       <div class="card-pills">${pills}</div>
@@ -941,10 +954,10 @@ function subsaleCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}</div>
-      ${r.installment ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
+      ${r.installment ? `<div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
       <div class="card-pills">${pills}</div>
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -1024,7 +1037,7 @@ function toSlug(...parts) {
     <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
   </svg>
 </a>
-<script src="/lightbox.js?v=20260821"></script>
+<script src="/lightbox.js?v=20260829b"></script>
 <script src="/search.js"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css?v=20260821">
+  <link rel="stylesheet" href="/lightbox.css?v=20260829b">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -89,6 +89,10 @@
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
     .card-cta{display:block;text-align:center;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
     .card-cta:hover{background:#1e4a2c}
+    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-installment{display:none}
+    .card-body .card-pills .pill{display:none}
+    .card-body .card-pills .pill-furnishing{display:inline-block}
+    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -121,7 +125,16 @@
       .filter-bar{gap:8px;padding:12px}
       .filter-group{min-width:calc(50% - 4px)}
       .main{padding:28px 16px 48px}
-      .listing-grid{grid-template-columns:1fr}
+      .listing-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+      .card{border-radius:10px}
+      .card-image-wrap{height:88px}
+      .card-body{padding:8px 8px 10px;gap:4px}
+      .card-name{font-size:10.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+      .card-zone{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+      .card-price{font-size:11.5px}
+      .card-price span{font-size:8px}
+      .card-pills{gap:0}
+      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
       .tabs{width:100%}
       .tab-btn{flex:1;text-align:center}
     }
@@ -248,9 +261,9 @@
   <div id="tab-sewa" style="overflow:hidden">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="iris-garden-4-1200">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/irisgardenMMN2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/irisgardenMMN2/pic1.jpg" alt="Iris Garden" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/irisgardenMMN2/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/irisgardenMMN2/pic1.jpg" alt="Iris Garden" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Iris Garden</div><div class="card-zone">Saujana Putra</div></div>
       <div class="card-price">RM 1,200<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">-</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Jan-27</span></div>
@@ -258,9 +271,9 @@
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Iris%20Garden%2C%20Saujana%20Putra.%20Price%3A%20RM1200.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="bandar-saujana-putra-4-1700">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bandarsaujanaputraEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bandarsaujanaputraEX/pic1.jpg" alt="Bandar Saujana Putra" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/bandarsaujanaputraEX/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/bandarsaujanaputraEX/pic1.jpg" alt="Bandar Saujana Putra" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">Bandar Saujana Putra</div><div class="card-zone">Jalan SP 3/16</div></div>
       <div class="card-price">RM 1,700<span> / month</span></div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,840 sqft</span><span class="pill">-</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
@@ -273,23 +286,23 @@
   <div id="tab-jual" style="display:none;overflow:hidden">
     <img src="/images/banner-subsale.png" alt="Subsales" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
     <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="iris-garden-4-380000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/irisgardenMMN/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/irisgardenMMN/pic1.jpg" alt="Iris Garden" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/irisgardenMMN/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/irisgardenMMN/pic1.jpg" alt="Iris Garden" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Iris Garden</div><div class="card-zone">Saujana Putra</div></div>
       <div class="card-price">RM 380,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,733</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 1,733</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Leasehold</span><span class="pill">Terrace</span></div>
       <div class="card-anchors">SK Bandar Saujana Putra | SMK Bandar Saujana Putra | MAHSA University | MAHSA Hospital</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Iris%20Garden%2C%20Saujana%20Putra.%20Price%3A%20RM380000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="cluster-link-semi-d-2-storey-saujana-putra-4-580000">
-    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/clusterlinksemid2storeysaujanaputraMMN/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/clusterlinksemid2storeysaujanaputraMMN/pic1.jpg" alt="Cluster-link Semi-D 2-storey Saujana Putra" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
+    <div class="card-image-wrap" data-images="https://www.haniproperties.com/images/unitpic/clusterlinksemid2storeysaujanaputraMMN/pic1.jpg" data-index="0"><img src="https://www.haniproperties.com/images/unitpic/clusterlinksemid2storeysaujanaputraMMN/pic1.jpg" alt="Cluster-link Semi-D 2-storey Saujana Putra" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"><div class="card-tap-hint">🔍 Full details</div></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Cluster-link Semi-D 2-storey Saujana Putra</div><div class="card-zone">Jenjarom</div></div>
       <div class="card-price">RM 580,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,645</strong>/mo instalment</div>
+      <div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM 2,645</strong>/mo instalment</div>
       <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 4 bath</span><span class="pill">Leasehold</span><span class="pill">Semi D</span></div>
       <div class="card-anchors">MAHSA University Malaysia | Lotus's Bandar Saujana Putra | Masjid Bandar Saujana Putra</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Cluster-link%20Semi-D%202-storey%20Saujana%20Putra%2C%20Jenjarom.%20Price%3A%20RM580000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -542,7 +555,7 @@ function unitCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}<span> / month</span></div>
       <div class="card-pills">${pills}</div>
@@ -563,10 +576,10 @@ function subsaleCard(r) {
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
     ${cardImage(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
+      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
       <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
       <div class="card-price">${fmt(r.price)}</div>
-      ${r.installment ? `<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
+      ${r.installment ? `<div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#2a5c3a;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
       <div class="card-pills">${pills}</div>
       ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
       <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
@@ -646,7 +659,7 @@ function toSlug(...parts) {
     <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
   </svg>
 </a>
-<script src="/lightbox.js?v=20260821"></script>
+<script src="/lightbox.js?v=20260829b"></script>
 <script src="/search.js"></script>
 </body>
 </html>
