@@ -24,7 +24,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css?v=20260829">
+  <link rel="stylesheet" href="/lightbox.css?v=20260829b">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -89,7 +89,10 @@
     .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
     .card-cta{display:block;text-align:center;background:#2a5c3a;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
     .card-cta:hover{background:#1e4a2c}
-    .card-body .card-badges,.card-body .card-pills,.card-body .card-anchors,.card-body .card-cta,.card-body .card-installment{display:none}
+    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-installment{display:none}
+    .card-body .card-pills .pill{display:none}
+    .card-body .card-pills .pill-furnishing{display:inline-block}
+    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -130,6 +133,8 @@
       .card-zone{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
       .card-price{font-size:11.5px}
       .card-price span{font-size:8px}
+      .card-pills{gap:0}
+      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
       .tabs{width:100%}
       .tab-btn{flex:1;text-align:center}
     }
@@ -261,7 +266,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Vista Alam Serviced Apartment</div><div class="card-zone">Seksyen 14</div></div>
       <div class="card-price">RM 1,600<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">759 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Nov-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">759 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Nov-26</span></div>
       <div class="card-anchors">KTM Shah Alam | Plaza Alam Sentral | SACC Mall | Anggerik Mall | UiTM Shah Alam</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Alam%20Serviced%20Apartment%2C%20Seksyen%2014.%20Price%3A%20RM1600.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -271,7 +276,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
       <div><div class="card-name">Menara U</div><div class="card-zone">Seksyen 13</div></div>
       <div class="card-price">RM 1,650<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">622 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">622 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span></div>
       <div class="card-anchors">KTM Batu Tiga | AEON Mall Shah Alam | MSU Medical Centre | Management &amp; Science University (MSU) | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Menara%20U%2C%20Seksyen%2013.%20Price%3A%20RM1650.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -281,7 +286,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">Trefoil</div><div class="card-zone">Setia City</div></div>
       <div class="card-price">RM 1,400<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 1 bath</span><span class="pill">486 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Sep-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 1 bath</span><span class="pill">486 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Sep-26</span></div>
       <div class="card-anchors">Setia City Mall | Lotus's Setia Alam | Institut Kesihatan Negara | Tenby Schools Setia Eco Park | NKVE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Trefoil%2C%20Setia%20City.%20Price%3A%20RM1400.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -291,7 +296,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Pangsapuri Rimau Perdana</div><div class="card-zone">Seksyen 32, Bukit Rimau</div></div>
       <div class="card-price">RM 1,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">AEON Big Bukit Rimau | Gamuda Walk | Columbia Asia Hospital Bukit Rimau | KESAS Expressway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Rimau%20Perdana%2C%20Seksyen%2032%2C%20Bukit%20Rimau.%20Price%3A%20RM1200.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -301,7 +306,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Pangsapuri Sri Kemuning</div><div class="card-zone">Section 31, Kota Kemuning</div></div>
       <div class="card-price">RM 1,350<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">750 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: 1/9/2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">750 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: 1/9/2026</span></div>
       <div class="card-anchors">Gamuda Walk Mall | Columbia Asia Hospital Bukit Rimau | Shah Alam Expressway (KESAS) | Kemuning-Shah Alam Highway (LKSA)</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Sri%20Kemuning%2C%20Section%2031%2C%20Kota%20Kemuning.%20Price%3A%20RM1350.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -311,7 +316,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">Setia Permai 2</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 1,850<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,300 sqft</span><span class="pill">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Jul-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,300 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Jul-26</span></div>
       <div class="card-anchors">Setia City Mall | Lotus's Setia Alam | Institut Kesihatan Negara | Tenby Schools Setia Eco Park | NKVE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Setia%20Permai%202%2C%20Setia%20Alam.%20Price%3A%20RM1850.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -321,7 +326,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">HF</span></div>
       <div><div class="card-name">Seksyen 13 Corner Lot</div><div class="card-zone">Seksyen 13</div></div>
       <div class="card-price">RM 3,800<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 5 bed</span><span class="pill">🚿 4 bath</span><span class="pill">3,500 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 5 bed</span><span class="pill">🚿 4 bath</span><span class="pill">3,500 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">AEON Shah Alam | Lotus's Shah Alam | Hospital UMRA | Stadium Shah Alam | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Seksyen%2013%20Corner%20Lot%2C%20Seksyen%2013.%20Price%3A%20RM3800.%20Ref%3A%20HF" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -331,7 +336,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Pangsapuri Sri Nervillia</div><div class="card-zone">Kota Kemuning</div></div>
       <div class="card-price">RM 850<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">650 sqft</span><span class="pill">Unfurnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">650 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">AEON Big Bukit Rimau | Columbia Asia Hospital Bukit Rimau | Econsave Bukit Kemuning | KESAS Highway | ELITE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Sri%20Nervillia%2C%20Kota%20Kemuning.%20Price%3A%20RM850.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -341,7 +346,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Huni @ Eco Ardence</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 2,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: 1/7/2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: 1/7/2026</span></div>
       <div class="card-anchors">Setia City Mall | Tenby International School Setia Eco Park | Lotus's Setia Alam | DASH Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Huni%20%40%20Eco%20Ardence%2C%20Setia%20Alam.%20Price%3A%20RM2200.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -351,7 +356,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Elaeis 2</div><div class="card-zone">Bukit Jelutong</div></div>
       <div class="card-price">RM 1,980<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">987 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">987 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">MSU Shah Alam | Batu Tiga KTM Station | DEMC Specialist Hospital Shah Alam | NKVE | Guthrie Corridor Expressway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Elaeis%202%2C%20Bukit%20Jelutong.%20Price%3A%20RM1980.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -361,7 +366,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Parisien Tower</div><div class="card-zone">i-City</div></div>
       <div class="card-price">RM 1,600<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">614 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">614 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Swimming Pool | Gymnasium | Children's Playground | Multipurpose Hall | Covered Parking | 24-Hour Security</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Parisien%20Tower%2C%20i-City.%20Price%3A%20RM1600.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -371,7 +376,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">De Kiara</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 1,300<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">818 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: 1/8/2001</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">818 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: 1/8/2001</span></div>
       <div class="card-anchors">Setia City Mall | Hospital Shah Alam | UiTM Shah Alam | DASH</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20De%20Kiara%2C%20Setia%20Alam.%20Price%3A%20RM1200.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -381,7 +386,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">Huni Residence</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 2,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: 1/7/2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: 1/7/2026</span></div>
       <div class="card-anchors">KTM Padang Jawa | Setia City Mall | Tenby Schools Setia Eco Park | Columbia Asia Hospital Shah Alam | Lotus's Setia Alam | GCE</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Huni%20Residence%2C%20Setia%20Alam.%20Price%3A%20RM2200.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -391,7 +396,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Seri Hijauan</div><div class="card-zone">Seksyen 26</div></div>
       <div class="card-price">RM 2,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,300 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,300 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Setia City Mall | SK HICOM | Hospital Shah Alam | KESAS</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Seri%20Hijauan%2C%20Seksyen%2026.%20Price%3A%20RM2000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -401,7 +406,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Viola Alam Impian Alam Impian 2-Storey Terrace</div><div class="card-zone">Alam Impian</div></div>
       <div class="card-price">RM 2,900<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 4 bath</span><span class="pill">2,200 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 4 bath</span><span class="pill">2,200 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">KESAS Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Viola%20Alam%20Impian%20Alam%20Impian%202-Storey%20Terrace%2C%20Alam%20Impian.%20Price%3A%20RM2900.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -411,7 +416,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">2 Storey Terrace House</div><div class="card-zone">Subang Bestari</div></div>
       <div class="card-price">RM 2,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">2,000 sqft</span><span class="pill">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">2,000 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">1 Utama Shopping Centre | HELP University | Subang Airport | Guthrie Corridor Highway | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%202%20Storey%20Terrace%20House%2C%20Subang%20Bestari.%20Price%3A%20RM2000.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -421,7 +426,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">HF</span></div>
       <div><div class="card-name">Subang Bestari Terrace</div><div class="card-zone">Subang Bestari</div></div>
       <div class="card-price">RM 2,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">2,000 sqft</span><span class="pill">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">2,000 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Sungai Buloh MRT Station | Star Avenue Mall | HELP University Subang 2 | SK Subang Bestari</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Subang%20Bestari%20Terrace%2C%20Subang%20Bestari.%20Price%3A%20RM2200.%20Ref%3A%20HF" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -431,7 +436,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Single Storey Terrace House Seksyen 24</div><div class="card-zone">Seksyen 24</div></div>
       <div class="card-price">RM 2,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 1 bath</span><span class="pill">2,000 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Sep-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 1 bath</span><span class="pill">2,000 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Sep-26</span></div>
       <div class="card-anchors">Ole-Ole Seksyen 18 | Plaza Alam Sentral | KPJ Selangor Specialist Hospital | Federal Highway | KESAS Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Jalan%20Bayam%20Pasir%2C%20Seksyen%2024%2C%20Seksyen%2024.%20Price%3A%20RM2000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -441,7 +446,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
       <div><div class="card-name">Tulip Residensi</div><div class="card-zone">Denai Alam</div></div>
       <div class="card-price">RM 1,400<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 1 bath</span><span class="pill">450 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Studio</span><span class="pill">🗓 Move-in: Sep-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 1 bath</span><span class="pill">450 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Studio</span><span class="pill">🗓 Move-in: Sep-26</span></div>
       <div class="card-anchors">Elmina Lakeside Mall | Pasaraya Matahari | SK Denai Alam | Guthrie Corridor Expressway | DASH Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Tulip%20Residensi%2C%20Denai%20Alam.%20Price%3A%20RM1400.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -451,7 +456,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">Taman Wira Permai @ Seksyen 30</div><div class="card-zone">Seksyen 30</div></div>
       <div class="card-price">RM 1,700<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,400 sqft</span><span class="pill">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Oct-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,400 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Oct-26</span></div>
       <div class="card-anchors">Gamuda Walk Mall | Quayside Mall | Columbia Asia Hospital Bukit Rimau | SMK Jalan Kebun | KESAS Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Wira%20Permai%20%40%20Seksyen%2030%2C%20Seksyen%2030.%20Price%3A%20RM1700.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -461,7 +466,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Kristal Heights</div><div class="card-zone">Seksyen 7</div></div>
       <div class="card-price">RM 2,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,003 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Sep-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,003 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Sep-26</span></div>
       <div class="card-anchors">Seksyen 7 Shah Alam LRT Station | Central i-City Mall | Hospital Shah Alam | UiTM Shah Alam | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kristal%20Heights%2C%20Seksyen%207.%20Price%3A%20RM2000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -471,7 +476,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Apartment Komuter Raya</div><div class="card-zone">Seksyen 19</div></div>
       <div class="card-price">RM 1,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Nov-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Nov-26</span></div>
       <div class="card-anchors">KTM Shah Alam Komuter Station | CIAST | SACC Mall | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Apartment%20Komuter%20Raya%2C%20Seksyen%2019.%20Price%3A%20RM1500.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -481,7 +486,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Taman Cahaya Alam</div><div class="card-zone">U12</div></div>
       <div class="card-price">RM 2,300<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,650 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: 1/10/2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,650 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: 1/10/2026</span></div>
       <div class="card-anchors">LRT UiTM Shah Alam | Central i-City | UiTM Shah Alam | Hospital Shah Alam | NKVE</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Cahaya%20Alam%2C%20U12.%20Price%3A%20RM2300.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -491,7 +496,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
       <div><div class="card-name">Pangsapuri Subang Suria</div><div class="card-zone">Seksyen U5</div></div>
       <div class="card-price">RM 1,100<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Apartment</span></div>
       <div class="card-anchors">Elmina Lakeside Mall | Star Avenue Elmina | Guthrie Corridor Expressway (GCE)</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Subang%20Suria%2C%20Seksyen%20U5.%20Price%3A%20RM1100.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -501,7 +506,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">HF</span></div>
       <div><div class="card-name">Suri Puteri Serviced Apartment</div><div class="card-zone">Seksyen 20</div></div>
       <div class="card-price">RM 1,800<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,130 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Aug-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,130 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Aug-26</span></div>
       <div class="card-anchors">Lotus's Shah Alam | AEON Mall Shah Alam | Shah Alam Hospital | Stadium Shah Alam</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Suri%20Puteri%20Serviced%20Apartment%2C%20Seksyen%2020.%20Price%3A%20RM1800.%20Ref%3A%20HF" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -511,7 +516,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">I-Soho @ i-City</div><div class="card-zone">i-City</div></div>
       <div class="card-price">RM 1,900<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">750 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Studio</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">750 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Studio</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Central i-City | Sogo Central i-City | Lotus's Shah Alam | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20I-Soho%20%40%20i-City%2C%20i-City.%20Price%3A%20RM1900.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -521,7 +526,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">HF</span></div>
       <div><div class="card-name">Apartment Seri Kasturi</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 1,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">950 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">950 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Setia City Mall | Setia Taipan | Tenby Schools | NKVE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Apartment%20Seri%20Kasturi%2C%20Setia%20Alam.%20Price%3A%20RM1500.%20Ref%3A%20HF" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -531,7 +536,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">Tadisma Business Park</div><div class="card-zone">Seksyen 13</div></div>
       <div class="card-price">RM 8,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 0 bed</span><span class="pill">🚿 0 bath</span><span class="pill">1,540 sqft</span><span class="pill">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 0 bed</span><span class="pill">🚿 0 bath</span><span class="pill">1,540 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Shah Alam KTM | AEON Mall Shah Alam | Management &amp; Science University (MSU) | MSU Medical Centre | Giant Seksyen 13 | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Tadisma%20Business%20Park%2C%20Seksyen%2013.%20Price%3A%20RM8000.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -541,7 +546,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">BeCentral</div><div class="card-zone">i-City</div></div>
       <div class="card-price">RM 3,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">595 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">595 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">i-Central Shopping Centre | AEON Bukit Raja | Hospital Shah Alam | UiTM | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20BeCentral%2C%20i-City.%20Price%3A%20RM3000.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -551,7 +556,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">BeCentral</div><div class="card-zone">i-City</div></div>
       <div class="card-price">RM 2,850<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">632 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">632 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">i-Central Shopping Centre | AEON Bukit Raja | Hospital Shah Alam | UiTM | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20BeCentral%2C%20i-City.%20Price%3A%20RM2850.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -561,7 +566,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Residensi Dian 2</div><div class="card-zone">Seksyen U1</div></div>
       <div class="card-price">RM 2,300<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">834 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">834 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">AEON Mall Shah Alam | KPJ Selangor Specialist Hospital | UiTM Shah Alam | Federal Highway | NKVE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20Dian%202%2C%20Seksyen%20U1.%20Price%3A%20RM2300.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -571,7 +576,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">PKNS Flat Seksyen 7</div><div class="card-zone">Seksyen 7</div></div>
       <div class="card-price">RM 1,700<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">650 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Flat</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">650 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Flat</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Seksyen 7 Shah Alam LRT Station | Giant Seksyen 7 | UiTM Shah Alam | Central i-City Shopping Centre | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20PKNS%20Flat%20Seksyen%207%2C%20Seksyen%207.%20Price%3A%20RM1700.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -581,7 +586,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Nilam Sari Flat</div><div class="card-zone">Seksyen 7</div></div>
       <div class="card-price">RM 1,100<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">650 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Flat</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">650 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Flat</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Seksyen 7 Shah Alam LRT Station | i-City Shah Alam | Hospital Shah Alam | Federal Highway | KESAS Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Nilam%20Sari%20Flat%2C%20Seksyen%207.%20Price%3A%20RM1100.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -591,7 +596,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Pangsapuri Danaumas</div><div class="card-zone">Seksyen 7</div></div>
       <div class="card-price">RM 1,650<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">815 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">815 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">KTM Padang Jawa Station | Central i-City Mall | Hospital Shah Alam | UiTM Shah Alam | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Danaumas%2C%20Seksyen%207.%20Price%3A%20RM1650.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -601,7 +606,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">Trefoil @ Setia City</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 1,950<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">791 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">791 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span></div>
       <div class="card-anchors">Setia City Mall | Lotus's Setia Alam | Institut Kesihatan Negara | Tenby Schools Setia Eco Park | NKVE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Trefoil%20%40%20Setia%20City%2C%20Setia%20Alam.%20Price%3A%20RM1950.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -611,7 +616,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">V-Residensi 2</div><div class="card-zone">Seksyen 22</div></div>
       <div class="card-price">RM 2,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,162 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Sep-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,162 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Sep-26</span></div>
       <div class="card-anchors">Batu Tiga KTM Station | Tesco Extra Shah Alam | Selangor Medical Centre | Sultan Salahuddin Abdul Aziz Shah Polytechnic | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20V-Residensi%202%2C%20Seksyen%2022.%20Price%3A%20RM2000.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -621,7 +626,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">Setia City Residences</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 2,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">600 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span></div>
+      <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">600 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span></div>
       <div class="card-anchors">Setia City Mall | Lotus's Setia Alam | Institut Kesihatan Negara | Tenby Schools Setia Eco Park | NKVE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Setia%20City%20Residences%2C%20Setia%20Alam.%20Price%3A%20RM2000.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -631,7 +636,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">HF</span></div>
       <div><div class="card-name">Vista Alam</div><div class="card-zone">Seksyen 14</div></div>
       <div class="card-price">RM 2,100<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,100 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,100 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Swimming Pool | Gymnasium | Playground | Jogging Track | 24-Hour Security | Minimart</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Vista%20Alam%2C%20Seksyen%2014.%20Price%3A%20RM2100.%20Ref%3A%20HF" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -641,7 +646,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
       <div><div class="card-name">HANA Residence @ Eco Ardence</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 2,450<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">900 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">900 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">KTM Padang Jawa | Setia City Mall | SMK Setia Alam | Columbia Asia Hospital Shah Alam | Giant Setia Alam | NKVE</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20HANA%20Residence%20%40%20Eco%20Ardence%2C%20Setia%20Alam.%20Price%3A%20RM2450.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -651,7 +656,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Persanda 3 Apartment</div><div class="card-zone">Seksyen 13</div></div>
       <div class="card-price">RM 1,750<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">950 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">950 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Stadium Shah Alam LRT | AEON Mall Shah Alam | MSU | KTM Batu Tiga | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Persanda%203%20Apartment%2C%20Seksyen%2013.%20Price%3A%20RM1750.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -661,7 +666,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">Suria Residence</div><div class="card-zone">Bukit Jelutong</div></div>
       <div class="card-price">RM 2,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">600 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Mid August 2026</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">600 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Mid August 2026</span></div>
       <div class="card-anchors">AEON Mall Seksyen 13 | Jaya Grocer Bukit Jelutong | MSU Medical Centre | Giant Seksyen 13 | NKVE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Suria%20Residence%2C%20Bukit%20Jelutong.%20Price%3A%20RM2000.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -671,7 +676,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">BeCentral</div><div class="card-zone">i-City</div></div>
       <div class="card-price">RM 2,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 1 bath</span><span class="pill">466 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Studio</span><span class="pill">🗓 Move-in: Sep-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 1 bath</span><span class="pill">466 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Studio</span><span class="pill">🗓 Move-in: Sep-26</span></div>
       <div class="card-anchors">i-Central Shopping Centre | AEON Bukit Raja | Hospital Shah Alam | UiTM | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20BeCentral%2C%20i-City.%20Price%3A%20RM2000.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -681,7 +686,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">i-Residence @ i-City</div><div class="card-zone">i-City</div></div>
       <div class="card-price">RM 2,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">632 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">632 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Seksyen 7 Shah Alam LRT Station (LRT3) | Central i-City Mall | Hospital Shah Alam | i-City Theme Park | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20i-Residence%20%40%20i-City%2C%20i-City.%20Price%3A%20RM2500.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -691,7 +696,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Renai Jelutong Residences</div><div class="card-zone">Bukit Jelutong</div></div>
       <div class="card-price">RM 2,600<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">1,100 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">1,100 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Malawati LRT Station | AEON Mall Shah Alam | KPJ Shah Alam Specialist Hospital | SMK Bukit Jelutong | NKVE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Renai%20Jelutong%20Residences%2C%20Bukit%20Jelutong.%20Price%3A%20RM2600.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -701,7 +706,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">3-Storey Terrace Taman Pelangi Subang</div><div class="card-zone">Subang Bestari</div></div>
       <div class="card-price">RM 2,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 4 bath</span><span class="pill">3,780 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 4 bath</span><span class="pill">3,780 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Subang Bestari Commercial Centre | Lotus's Subang | Econsave | Guthrie Corridor Expressway | NKVE</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%203-Storey%20Terrace%20Taman%20Pelangi%20Subang%2C%20Subang%20Bestari.%20Price%3A%20RM2500.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -711,7 +716,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Dian 11 Commercial Hub</div><div class="card-zone">Seksyen U1</div></div>
       <div class="card-price">RM 3,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,024 sqft</span><span class="pill">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,024 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Glenmarie LRT Station | Utropolis Marketplace | Management &amp; Science University (MSU) | HICOM-Glenmarie Industrial Park</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Dian%2011%20Commercial%20Hub%2C%20Seksyen%20U1.%20Price%3A%20RM3500.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -721,7 +726,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Suria Ixora</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 1,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">700 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">700 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Setia City Mall | Sunsuria Forum | AEON Bukit Raja | AEON Mall Shah Alam | Klang Sentral Bus Terminal</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Suria%20Ixora%2C%20Setia%20Alam.%20Price%3A%20RM1500.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -731,7 +736,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
       <div><div class="card-name">Seri Jati Apartment</div><div class="card-zone">Setia Alam</div></div>
       <div class="card-price">RM 1,350<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">817 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">817 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Setia City Mall | AEON Mall Shah Alam | Lotus's Shah Alam | Federal Highway | NKVE</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Seri%20Jati%20Apartment%2C%20Setia%20Alam.%20Price%3A%20RM1350.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -741,7 +746,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">DPM</span></div>
       <div><div class="card-name">Dian 11 Commercial Hub</div><div class="card-zone">Seksyen U1</div></div>
       <div class="card-price">RM 3,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,024 sqft</span><span class="pill">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">1,024 sqft</span><span class="pill pill-furnishing">Unfurnished</span><span class="pill">Commercial</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Glenmarie LRT Station | Utropolis Marketplace | Management &amp; Science University (MSU) | HICOM-Glenmarie Industrial Park</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Dian%2011%20Commercial%20Hub%2C%20Seksyen%20U1.%20Price%3A%20RM3500.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -751,7 +756,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">FPR</span></div>
       <div><div class="card-name">Liberty Tower @ i-City</div><div class="card-zone">i-City</div></div>
       <div class="card-price">RM 2,200<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">752 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Oct-26</span></div>
+      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 2 bath</span><span class="pill">752 sqft</span><span class="pill pill-furnishing">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Oct-26</span></div>
       <div class="card-anchors">Seksyen 7 Shah Alam LRT Station | i-Central Shopping Centre | AEON Bukit Raja | Hospital Shah Alam | NKVE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Liberty%20Tower%20%40%20i-City%2C%20i-City.%20Price%3A%20RM2200.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -761,7 +766,7 @@
       <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">MMN</span></div>
       <div><div class="card-name">Residensi Dian II</div><div class="card-zone">Seksyen 13</div></div>
       <div class="card-price">RM 2,100<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">834 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
+      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">834 sqft</span><span class="pill pill-furnishing">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">Stadium Shah Alam LRT Station | AEON Mall Shah Alam | Management &amp; Science University (MSU) | Federal Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20Dian%20II%2C%20Seksyen%2013.%20Price%3A%20RM2100.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
@@ -1564,7 +1569,7 @@ function toSlug(...parts) {
     <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
   </svg>
 </a>
-<script src="/lightbox.js?v=20260829"></script>
+<script src="/lightbox.js?v=20260829b"></script>
 <script src="/search.js"></script>
 </body>
 </html>
