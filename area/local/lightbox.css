@@ -38,3 +38,11 @@
 .card-img-dots{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:4px}
 .card-img-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.55)}
 .card-img-dot.active{background:#fff}
+
+/* "Tap for full details" hint shown on every card thumbnail — the card itself
+   only shows name/price/location; everything else (badges, pills, anchors,
+   WhatsApp button) lives in the lightbox popup that opens on click. */
+.card-tap-hint{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.55);color:#fff;font-size:10px;font-weight:700;letter-spacing:.01em;padding:4px 9px;border-radius:20px;pointer-events:none;text-shadow:0 1px 1px rgba(0,0,0,.3)}
+@media(max-width:600px){
+  .card-tap-hint{font-size:8px;padding:3px 6px;top:5px;left:5px;border-radius:14px}
+}

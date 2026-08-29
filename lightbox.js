@@ -43,7 +43,8 @@ function cardImage(r) {
   if (imgs.length === 0) imgs = ['/images/update.png'];
   const nav = imgs.length > 1 ? cardNavHTML(imgs, 0) : '';
   return `<div class="card-image-wrap" data-images="${imgs.join('|')}" data-index="0"${canScan ? ' data-auto-scan="1"' : ''}>
-    <img src="${imgs[0]}" alt="${r.project_name}" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)">${nav}
+    <img src="${imgs[0]}" alt="${r.project_name}" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)">
+    <div class="card-tap-hint">🔍 Full details</div>${nav}
   </div>`;
 }
 
