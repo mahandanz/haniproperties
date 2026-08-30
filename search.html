@@ -114,6 +114,14 @@
     .card-view-area{display:block;text-align:center;background:#f0ede8;color:#1c1c18;font-size:12px;font-weight:600;padding:8px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:6px}
     .card-view-area:hover{background:#e3ddd0}
 
+    /* Compact card by default at every width — full details (badges, anchors,
+       CTA, "View in Area Page") only show inside the lightbox popup after the
+       photo is clicked. Matches the pattern used on the area pages. */
+    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-area-link,.card-body .card-view-area{display:none}
+    .card-body .card-pills .pill{display:none}
+    .card-body .card-pills .pill-furnishing{display:inline-block}
+    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
+
     .empty{text-align:center;padding:64px 24px;color:#7a7268;font-size:15px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .empty strong{display:block;font-size:1.1rem;color:#1c1c18;margin-bottom:8px}
     .loading{text-align:center;padding:64px 24px;color:#7a7268;font-size:14px;grid-column:1/-1}
@@ -146,10 +154,7 @@
       .card-price{font-size:11.5px}
       .card-price span{font-size:8px}
       .card-pills{gap:0}
-      .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-area-link,.card-view-area{display:none}
-      .card-body .card-pills .pill{display:none}
-      .card-body .card-pills .pill-furnishing{display:inline-block;font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
-      .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
+      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
     }
   <style>
     .breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
