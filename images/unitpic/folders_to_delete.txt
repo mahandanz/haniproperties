@@ -1,7 +1,9 @@
+10stonorLSY
 125richresidenceADL
 162residencyADL
 168parkselayangADL
 1razakmansionADL
+1razakmansioncondominiumEXP
 228kondominiumEX
 228selayangcondominiumADL
 28boulevardADL
@@ -23,6 +25,7 @@ angkasacondominiumEXP
 angkasacondominiumsNS
 antahtowerEX
 antaraapartmentEX
+antaraapartmentEXP
 apartmentarenashamelinADL
 apartmentblok21ADL
 apartmentdesatanjungADL
@@ -64,10 +67,12 @@ bukitougcondominiumEX
 canopyhillsEX
 cantararesidenceFPR
 casasuriacondominiumNLH
+casatiaraADL
 cengalcondominiumEX
 ceriaresidenceMMN
 cerradoSJH
 cerradosouthvillecityNS
+cerradosouthvillecityNS2
 conezionresidencesFPR
 continewcondominiumNS
 dalamandaADL
@@ -112,6 +117,7 @@ gaiaresidencesADL
 gayaapartmentFPR
 gayabangsarEX
 gayaresorthomesMMN
+gemsresidencesFPR
 greenparkresidenceADL
 greenparkresidenceMMN
 greenwoodserayaNS
@@ -123,6 +129,7 @@ hattasquareapartmentADL
 hennaresidencethequartzFPR
 hennaresidencethequartzMAP
 heritagecondominiumMAP
+hillpark22storeyterraceADL
 hillparkjalanhillparkniagashoplotNS
 icityiresidenceMMN
 idamanbukitjelutongMMN
@@ -151,7 +158,6 @@ kondorakyatEX
 kr7residencesMMN
 kristalheightsHF
 kristalviewMMN
-kristalviewMMN2
 lagoonperdanaapartmentADL
 lakefronthomesDPM
 lakefronthomesHF
@@ -161,6 +167,7 @@ lakeparkresidenceADL
 lakeparkresidenceklnorthADL
 lakevilleresidenceNS
 lbsskylakeresidenceADL
+leabythehillsADL2
 lejardincondominiumEXP
 lestariperdana7NS
 libertyarcADL
@@ -173,6 +180,7 @@ maskiparkdamansaraADL
 maximcitylightsADL
 maximcitylightsEX
 maximresidencesADL
+mcenturaADL
 mcenturaADL2
 mcenturaADL3
 melurapartmentADL
@@ -193,6 +201,7 @@ montebayuADL
 moriresidenceADL
 moscarADL
 mossazempirecityADL
+mossazempirecityNS
 mutiaracondominiumEXP
 nadayu801ADL
 ndira16sierraMMN
@@ -200,6 +209,7 @@ neodamansaraADL
 neusuitesADL
 neusuitesEX
 neusuitesSHU
+neusuitesresidenceADL
 nexuskajangstationNS
 o2residenceADL
 onedamansaracondoADL
@@ -240,7 +250,9 @@ pendulinecornerendlotMMN
 permaidamansaradamaiHF
 permaivillaADL
 permaivillaNS
+persanda3apartmentMMN2
 petalingindahcondominiumADL
+pixelcitysentralADL
 pixelcitysentralMMN
 platinumcasadanauADL
 platinumlakepv20ADL
@@ -279,6 +291,7 @@ residensiadelia4ADL2
 residensiadelia4LMZ
 residensiadelia4MMN
 residensiadelia4NS
+residensiamanjalilADL
 residensiamanjalilNS
 residensiamansuriAW
 residensiberliansetapak2ADL
@@ -294,6 +307,7 @@ residensipandanmas2EX
 residensiplatinumterataiADL
 residensiputrasuriaEXP
 residensirazakmasADL
+residensirimbuncanopyhillsADL
 residensisasarsateriaADL
 residensisuriapantaiADL
 residensitasikmasADL
@@ -301,6 +315,7 @@ residensivierraADL
 residensiwangsamasADL
 residensizamrudEX
 residensizamrudNS
+rhythmavenueusj19MMN
 ritmaperdanapuncakalamcornerlotHF
 ritzeperdana1ADL
 sarakaapartmentNS
@@ -337,12 +352,14 @@ srialamcondoDPM
 sriintan1ADL
 sriixoraapartmentNS
 srijelatekADL
+srikotaEX
 sripelangiEXP
 sriputramas1EX
 sriputramasADL
 sririaapartmentEX
 srisentosaac4blockeMMN
 suasanalumayanADL
+sunwayavilaresidenceEX
 sunwaybatucavesEX
 suriacourtADL
 suriadamansaraHF
@@ -351,6 +368,7 @@ suriaindustrialparkDPM
 suriajayaesofoMMN
 suriajayaesofoMMN2
 suriamewahresidensiEXP
+suriaresidenceFPR
 suteraniaga8DPM
 suterapinesNS
 symphonyheightsADL
@@ -364,9 +382,11 @@ tamangreenwood1storeyterraceADL
 tamangreenwoodgombak1tingkatterraceEX
 tamanmajusatu2storeyterraceADL
 tamanmaznahMMN
+tamanmudaterracehouseEX
 tamanpantaisepangputrajalanrajaudang42storeyterraceNS
 tamanperindustrianairhitamjalanpermata2ks915storeysemidfactoryNS
 tamanperindustrianpuchongutamajalanutama1115storeyfactoryNS
+tamanpuncaksaujanaseksyen32storeyterraceNLH
 tamanputraEX
 tamanputraperdanatownhouseMMN
 tamansamuderaADL
@@ -405,9 +425,11 @@ vistamillenniumcondominiumADL
 vistaprimaMMN
 vistasentulresidenceADL
 vistatasikcondominiumEX
+vistawirajayaADL
 wismaakarEX
 wismaakarupperfloorEX
 youcity3ADL
 youcityiiiADL
 zentroresidencesMMN
 zevaequinesouthADL
+zevaresidenceBLA
