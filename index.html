@@ -193,9 +193,16 @@ nav{
 }
 @media(max-width:700px){
   .info-strip{flex-direction:column;padding:16px}
-  .info-strip-left,.info-strip-right{font-size:12px}
+  .info-strip-left,.info-strip-right,.info-strip-rating{font-size:12px}
   .info-strip-left{position:static;left:auto;transform:none}
 }
+.info-strip-rating{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:15px;font-weight:700;color:#2a5c3a;
+  text-decoration:none;white-space:nowrap;
+}
+.info-strip-rating svg{width:16px;height:16px;flex-shrink:0}
+.info-strip-rating:hover{text-decoration:underline}
 .info-strip-left{
   position:absolute;left:50%;transform:translateX(-50%);
   font-size:15px;font-weight:700;
@@ -227,7 +234,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 
 @media(max-width:600px){
   .info-strip{padding:12px 16px;flex-direction:column;gap:10px;text-align:center}
-  .info-strip-left,.info-strip-right{font-size:13px}
+  .info-strip-left,.info-strip-right,.info-strip-rating{font-size:13px}
   .info-strip-left{position:static;left:auto;transform:none}
 }
 
@@ -394,6 +401,10 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <!-- INFO STRIP -->
 <div class="info-strip">
   <div class="info-strip-left">HANI &nbsp;|&nbsp; REN 84031 &nbsp;|&nbsp; 012-545 9182</div>
+  <a class="info-strip-rating" href="https://www.google.com/search?q=Hani+Properties" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+    5.0 on Google
+  </a>
   <div class="info-strip-right">since 2025</div>
 </div>
 
@@ -610,7 +621,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <footer>
   © 2025–2026 Hani Properties &nbsp;·&nbsp; Property in Selangor, KL &amp; Negeri Sembilan<br>
   <a href="https://wa.me/60125459182" target="_blank" rel="noopener noreferrer">+60 12-545 9182</a> &nbsp;·&nbsp;
-  <a href="https://www.google.com/maps?cid=2033931976642921436" target="_blank" rel="noopener noreferrer">⭐ 5.0 on Google (6 reviews)</a>
+  <a href="https://www.google.com/maps?cid=2033931976642921436" target="_blank" rel="noopener noreferrer">⭐ 5.0 on Google</a>
 </footer>
 
 <!-- HIGHLIGHT LIGHTBOX -->
