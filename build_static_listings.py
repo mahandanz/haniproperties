@@ -289,7 +289,19 @@ def process_area_file(path: Path, all_rows):
         return
     area = m.group(1)
 
-    filtered = [r for r in all_rows if r.get("area") == area and (r.get("status") in ("-", "", None))]
+    # Optional ZONE constant lets a page target a specific sub-area/township
+    # within a broader CSV "area" value (e.g. Setia Alam is a "zone" inside
+    # the "Shah Alam" area, not its own top-level area). When present, only
+    # rows matching both area and zone are pulled into this page.
+    zm = re.search(r"const ZONE\s*=\s*'([^']*)'", text)
+    zone = zm.group(1) if zm else None
+
+    filtered = [
+        r for r in all_rows
+        if r.get("area") == area
+        and (zone is None or r.get("zone") == zone)
+        and (r.get("status") in ("-", "", None))
+    ]
     units = [r for r in filtered if r.get("listing_type") == "rental"]
     rooms = [r for r in filtered if r.get("listing_type") == "room"]
     subsales = [r for r in filtered if r.get("listing_type") == "subsale"]
