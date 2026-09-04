@@ -313,12 +313,50 @@ SITEMAP_PATH = ROOT / "sitemap.xml"
 SITE_BASE = "https://haniproperties.com"
 
 # Core (non-area) pages that always belong in the sitemap.
+# path relative to site root, changefreq, priority
 CORE_PAGES = [
     ("/", "weekly", "1.0"),
-    ("/offerings.html", "monthly", "0.8"),
     ("/kawasan.html", "weekly", "0.9"),
+    ("/investor-corner.html", "weekly", "0.9"),
+    ("/offerings.html", "monthly", "0.8"),
     ("/simple.html", "monthly", "0.8"),
+    ("/calculator.html", "monthly", "0.8"),
+    ("/projects/projects.html", "weekly", "0.8"),
+    ("/buying/guide_freehold_vs_leasehold_malaysia.html", "monthly", "0.7"),
+    ("/buying/guide_subsale_property_malaysia.html", "monthly", "0.7"),
+    ("/rental/guide_rental_deposit_malaysia.html", "monthly", "0.7"),
+    ("/lelong/guide_lelong_property_malaysia.html", "monthly", "0.7"),
+    ("/lelong/guide_lelong_reserve_vs_market_value.html", "monthly", "0.7"),
+    ("/search.html", "monthly", "0.6"),
+    ("/request.html", "monthly", "0.5"),
 ]
+
+
+def _lastmod(rel_path: str) -> str:
+    """YYYY-MM-DD the file was last committed (falls back to mtime, then today)."""
+    import datetime
+    import subprocess
+
+    fs_path = ROOT / rel_path.lstrip("/")
+    if rel_path == "/":
+        fs_path = ROOT / "index.html"
+
+    try:
+        out = subprocess.run(
+            ["git", "log", "-1", "--format=%ad", "--date=short", "--", str(fs_path)],
+            cwd=ROOT, capture_output=True, text=True, timeout=5,
+        )
+        date = out.stdout.strip()
+        if date:
+            return date
+    except Exception:
+        pass
+
+    try:
+        ts = fs_path.stat().st_mtime
+        return datetime.date.fromtimestamp(ts).isoformat()
+    except OSError:
+        return datetime.date.today().isoformat()
 
 
 def regenerate_sitemap(area_files) -> None:
@@ -327,6 +365,8 @@ def regenerate_sitemap(area_files) -> None:
     This runs every time the script runs, so any area page added or removed
     from area/local/ is automatically reflected -- no more manual sitemap
     edits, no more drift between the folder and what crawlers are told about.
+    Each <url> gets a <lastmod> from the file's on-disk modified date so
+    crawlers get a real freshness signal instead of none at all.
     """
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -338,6 +378,7 @@ def regenerate_sitemap(area_files) -> None:
         lines += [
             "  <url>",
             f"    <loc>{SITE_BASE}{path}</loc>",
+            f"    <lastmod>{_lastmod(path)}</lastmod>",
             f"    <changefreq>{changefreq}</changefreq>",
             f"    <priority>{priority}</priority>",
             "  </url>",
@@ -345,9 +386,11 @@ def regenerate_sitemap(area_files) -> None:
 
     lines += ["", "  <!-- Area pages (auto-generated from area/local/) -->"]
     for f in sorted(area_files, key=lambda p: p.name):
+        rel = f"/area/local/{f.name}"
         lines += [
             "  <url>",
-            f"    <loc>{SITE_BASE}/area/local/{f.name}</loc>",
+            f"    <loc>{SITE_BASE}{rel}</loc>",
+            f"    <lastmod>{_lastmod(rel)}</lastmod>",
             "    <changefreq>weekly</changefreq>",
             "    <priority>0.7</priority>",
             "  </url>",
