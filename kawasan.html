@@ -48,6 +48,7 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
@@ -231,7 +232,7 @@ const AREAS = [
 
 function cardHtml(a) {
   return `<a class="area-card${a.popular ? ' popular' : ''}" href="area/local/${a.slug}.html">
-    <img class="area-card-img" src="/images/areas/${a.slug}.png" alt="${a.name}" loading="lazy" width="112" height="112" onerror="this.style.display='none'">
+    <img class="area-card-img" src="/images/areas/${a.slug}.webp" alt="${a.name}" loading="lazy" width="112" height="112" onerror="this.style.display='none'">
     <div class="area-card-body">
       <div class="area-card-name">${a.name}${a.popular ? '<span class="badge-popular">Popular</span>' : ''}</div>
       <div class="area-card-tag">${a.tag}</div>
