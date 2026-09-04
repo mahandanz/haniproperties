@@ -321,19 +321,6 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   .highlights-card,.highlights-viewall{width:140px}
 }
 
-/* HIGHLIGHT LIGHTBOX */
-.hl-lightbox{position:fixed;inset:0;background:rgba(20,15,10,.88);z-index:500;display:none;align-items:center;justify-content:center;padding:24px}
-.hl-lightbox.open{display:flex}
-.hl-lightbox-wrap{position:relative;width:min(92vw,600px);max-height:80vh;display:flex;flex-direction:column;align-items:center}
-.hl-lightbox-wrap img{width:100%;height:auto;max-height:70vh;object-fit:contain;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
-.hl-lightbox-close{position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer}
-.hl-lightbox-wa{
-  margin-top:16px;display:inline-block;background:#25D366;color:#fff;
-  font-size:14px;font-weight:700;padding:12px 28px;border-radius:30px;
-  text-decoration:none;transition:background .15s;
-}
-.hl-lightbox-wa:hover{background:#1EBE57}
-
 /* AREA EXPLORE GRID */
 .area-section{background:#fff;border-top:1px solid #e3ddd0;padding:56px 24px 64px}
 .area-inner{max-width:960px;margin:0 auto}
@@ -523,28 +510,27 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   </div>
 </section>
 
-<!-- FEATURED UNITS FOR RENT -->
+<!-- FEATURED PROJECTS -->
 <section class="highlights-section highlights-rental">
   <div class="highlights-inner">
     <div class="highlights-head">
-      <h2>Featured Units For Rent</h2>
+      <h2>Featured New Launch Projects</h2>
     </div>
-    <p class="highlights-sub">Move-in ready rentals, rooms and whole units.</p>
-    <div class="highlights-track" id="rental-track">
-      <p class="highlights-empty">Loading units…</p>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURED UNITS FOR SALE -->
-<section class="highlights-section highlights-subsale">
-  <div class="highlights-inner">
-    <div class="highlights-head">
-      <h2>Positive Cashflow Units For Investors</h2>
-    </div>
-    <p class="highlights-sub">Handpicked subsale units across Klang Valley with positive rental cashflow potential.</p>
-    <div class="highlights-track" id="subsale-track">
-      <p class="highlights-empty">Loading units…</p>
+    <p class="highlights-sub">Handpicked new developments across Selangor and the Klang Valley.</p>
+    <div class="highlights-track" id="projects-track">
+      <a class="highlights-card" href="/projects/projects.html" aria-label="KSL Blossom Square — Setia Alam">
+        <img src="/projects/ksl-blossom.jpg" alt="KSL Blossom Square, Setia Alam" loading="lazy" onerror="this.onerror=null;this.src='/images/unithighlights/sold-rented.png';">
+      </a>
+      <a class="highlights-card" href="/projects/projects.html" aria-label="Allegro at Symphony Hills — Cyberjaya">
+        <img src="/projects/allegro-symphony.jpg" alt="Allegro @ Symphony Hills, Cyberjaya" loading="lazy" onerror="this.onerror=null;this.src='/images/unithighlights/sold-rented.png';">
+      </a>
+      <a class="highlights-card" href="/projects/projects.html" aria-label="J3 Residence — Dengkil">
+        <img src="/projects/j3-residence.jpg" alt="J3 Residence, Dengkil" loading="lazy" onerror="this.onerror=null;this.src='/images/unithighlights/sold-rented.png';">
+      </a>
+      <a class="highlights-viewall" href="/projects/projects.html">
+        <span class="highlights-viewall-arrow">→</span>
+        <span class="highlights-viewall-label">View All Projects</span>
+      </a>
     </div>
   </div>
 </section>
@@ -625,15 +611,6 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   <a href="https://www.google.com/maps?cid=2033931976642921436" target="_blank" rel="noopener noreferrer">⭐ 5.0 on Google</a>
 </footer>
 
-<!-- HIGHLIGHT LIGHTBOX -->
-<div class="hl-lightbox" id="hl-lightbox" onclick="closeHighlightLightbox()">
-  <div class="hl-lightbox-wrap" onclick="event.stopPropagation()">
-    <button type="button" class="hl-lightbox-close" onclick="closeHighlightLightbox()" aria-label="Close">&times;</button>
-    <img id="hl-lightbox-img" src="" alt="Featured unit">
-    <a id="hl-lightbox-wa" class="hl-lightbox-wa" href="#" target="_blank" rel="noopener noreferrer">💬 Chat on WhatsApp</a>
-  </div>
-</div>
-
 <!-- FLOATING WHATSAPP BUTTON -->
 <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20can%20you%20help%20me%3F" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
@@ -643,62 +620,6 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 </a>
 
 <script>
-const HIGHLIGHT_FALLBACK_IMG = '/images/unithighlights/sold-rented.png';
-
-function renderHighlights(trackId, items, viewAllHref, viewAllLabel) {
-  const track = document.getElementById(trackId);
-  const active = (items || []).filter(u => u.active !== false).slice(0, 4);
-  if (!active.length) {
-    track.innerHTML = '<p class="highlights-empty">No units to show right now.</p>';
-    return;
-  }
-  const cards = active.map(u => `
-    <button type="button" class="highlights-card" aria-label="Enlarge unit ${u.id}" onclick="openHighlightLightbox(this.querySelector('img').src,'${u.id}')">
-      <img src="${u.image}" alt="Featured unit ${u.id}" loading="lazy" onerror="this.onerror=null;this.src='${HIGHLIGHT_FALLBACK_IMG}';">
-    </button>
-  `).join('');
-  const viewAll = viewAllHref ? `
-    <a class="highlights-viewall" href="${viewAllHref}">
-      <span class="highlights-viewall-arrow">→</span>
-      <span class="highlights-viewall-label">${viewAllLabel || 'View All Listings'}</span>
-    </a>
-  ` : '';
-  track.innerHTML = cards + viewAll;
-}
-
-function openHighlightLightbox(imgSrc, unitId) {
-  document.getElementById('hl-lightbox-img').src = imgSrc;
-  const waText = encodeURIComponent(`Hi Hani, I'm interested in the unit shown here (${unitId}). Can you share more details?`);
-  document.getElementById('hl-lightbox-wa').href = `https://wa.me/60125459182?text=${waText}`;
-  document.getElementById('hl-lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeHighlightLightbox() {
-  document.getElementById('hl-lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeHighlightLightbox();
-});
-
-fetch('/data/subsalehighlights.json')
-  .then(r => r.json())
-  .then(data => renderHighlights('subsale-track', data, '/search.html?tab=jual', 'View All Cashflow Units'))
-  .catch(e => {
-    console.error('Subsale highlights fetch error:', e);
-    document.getElementById('subsale-track').innerHTML = '<p class="highlights-empty">Unable to load units.</p>';
-  });
-
-fetch('/data/rentalhighlights.json')
-  .then(r => r.json())
-  .then(data => renderHighlights('rental-track', data, '/search.html?tab=sewa', 'View All Rentals'))
-  .catch(e => {
-    console.error('Rental highlights fetch error:', e);
-    document.getElementById('rental-track').innerHTML = '<p class="highlights-empty">Unable to load units.</p>';
-  });
-
 let homeSearchType = 'rental';
 let saleTypeOptions = []; // property types pulled from listings.csv, for the "For Sale" dropdown
 
