@@ -297,6 +297,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 .highlights-track::-webkit-scrollbar{height:6px}
 .highlights-track::-webkit-scrollbar-thumb{background:#cdbfa5;border-radius:10px}
 .highlights-card{
+  position:relative;
   flex:0 0 auto;scroll-snap-align:start;
   width:170px;aspect-ratio:3/5;border-radius:14px;overflow:hidden;
   box-shadow:0 4px 18px rgba(0,0,0,.12);text-decoration:none;border:none;padding:0;
@@ -304,6 +305,14 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 }
 .highlights-card:hover{transform:translateY(-3px)}
 .highlights-card img{width:100%;height:100%;object-fit:cover;display:block}
+.highlights-card-caption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:22px 12px 12px;
+  background:linear-gradient(to top, rgba(12,10,6,.88) 0%, rgba(12,10,6,.55) 45%, rgba(12,10,6,0) 100%);
+  text-align:left;pointer-events:none;
+}
+.highlights-card-name{font-size:.82rem;font-weight:700;line-height:1.3;color:#fff;margin-bottom:2px}
+.highlights-card-loc{font-size:.7rem;font-weight:600;letter-spacing:.02em;color:rgba(255,255,255,.8)}
 .highlights-empty{font-size:.85rem;color:#a89f94;padding:8px 0}
 .highlights-viewall{
   flex:0 0 auto;scroll-snap-align:start;
@@ -520,12 +529,24 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <div class="highlights-track" id="projects-track">
       <a class="highlights-card" href="/projects/projects.html" aria-label="KSL Blossom Square — Setia Alam">
         <img src="/projects/ksl-blossom.jpg" alt="KSL Blossom Square, Setia Alam" loading="lazy" onerror="this.onerror=null;this.src='/images/unithighlights/sold-rented.png';">
+        <div class="highlights-card-caption">
+          <div class="highlights-card-name">KSL Blossom Square</div>
+          <div class="highlights-card-loc">Setia Alam</div>
+        </div>
       </a>
       <a class="highlights-card" href="/projects/projects.html" aria-label="Allegro at Symphony Hills — Cyberjaya">
         <img src="/projects/allegro-symphony.jpg" alt="Allegro @ Symphony Hills, Cyberjaya" loading="lazy" onerror="this.onerror=null;this.src='/images/unithighlights/sold-rented.png';">
+        <div class="highlights-card-caption">
+          <div class="highlights-card-name">Allegro @ Symphony Hills</div>
+          <div class="highlights-card-loc">Cyberjaya</div>
+        </div>
       </a>
       <a class="highlights-card" href="/projects/projects.html" aria-label="J3 Residence — Dengkil">
         <img src="/projects/j3-residence.jpg" alt="J3 Residence, Dengkil" loading="lazy" onerror="this.onerror=null;this.src='/images/unithighlights/sold-rented.png';">
+        <div class="highlights-card-caption">
+          <div class="highlights-card-name">J3 Residence</div>
+          <div class="highlights-card-loc">Dengkil, Sepang</div>
+        </div>
       </a>
       <a class="highlights-viewall" href="/projects/projects.html">
         <span class="highlights-viewall-arrow">→</span>
