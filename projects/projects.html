@@ -138,9 +138,9 @@
   <p class="page-sub">Click a project below to view details.</p>
 
   <div class="tabs" id="tabs">
-    <button class="tab-btn active" onclick="showTab('ksl', this)">KSL Blossom Square · Setia Alam</button>
-    <button class="tab-btn" onclick="showTab('allegro', this)">Allegro @ Symphony Hills · Cyberjaya</button>
-    <button class="tab-btn" onclick="showTab('j3', this)">J3 Residence · Dengkil</button>
+    <button class="tab-btn active" id="tab-ksl" onclick="showTab('ksl', this)">KSL Blossom Square · Setia Alam</button>
+    <button class="tab-btn" id="tab-allegro" onclick="showTab('allegro', this)">Allegro @ Symphony Hills · Cyberjaya</button>
+    <button class="tab-btn" id="tab-j3" onclick="showTab('j3', this)">J3 Residence · Dengkil</button>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -296,6 +296,16 @@ function showTab(id, btn) {
   document.getElementById('panel-' + id).classList.add('active');
   btn.classList.add('active');
 }
+
+/* Deep-link support: /projects/projects.html#ksl (or #allegro, #j3)
+   opens straight to that project's tab instead of the default (KSL). */
+function openTabFromHash() {
+  const id = (location.hash || '').replace('#', '').trim();
+  const btn = id && document.getElementById('tab-' + id);
+  if (btn) showTab(id, btn);
+}
+window.addEventListener('DOMContentLoaded', openTabFromHash);
+window.addEventListener('hashchange', openTabFromHash);
 
 function loadImg(input, imgId, phId) {
   if (!input.files || !input.files[0]) return;
