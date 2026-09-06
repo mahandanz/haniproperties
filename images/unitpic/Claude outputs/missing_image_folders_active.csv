@@ -1,0 +1,650 @@
+row,listing_type,project_name,area,code,folder
+389,rental,Swiss Garden Residence,Kuala Lumpur,-,swissgardenresidence-
+395,subsale,M Centura,Kuala Lumpur,EXP,mcenturaEXP
+396,subsale,Central Residence,Kuala Lumpur,EXP,centralresidenceEXP
+398,subsale,Rampai Court,Kuala Lumpur,EXP,rampaicourtEXP
+400,subsale,Savvy @ Riana Dutamas,Kuala Lumpur,EXP,savvyrianadutamasEXP
+401,subsale,Menara Duta 2,Kuala Lumpur,EXP,menaraduta2EXP
+409,rental,Seri Wahyu Residence,Kuala Lumpur,ADL,seriwahyuresidenceADL
+410,rental,The Nest Residences,Kuala Lumpur,ADL,thenestresidencesADL
+411,rental,Neu Suites Residence,Kuala Lumpur,EX,neusuitesresidenceEX
+413,subsale,2 Storey Terrace Taman Wangsa Melawati,Kuala Lumpur,EXP,2storeyterracetamanwangsamelawatiEXP
+414,rental,Savvy @ Riana Dutamas,Kuala Lumpur,FPR,savvyrianadutamasFPR
+415,rental,Savvy @ Riana Dutamas,Kuala Lumpur,FPR,savvyrianadutamasFPR
+416,subsale,Cubic Botanical,Kuala Lumpur,EXP,cubicbotanicalEXP
+418,subsale,Taman Sri Sinar,Kuala Lumpur,EXP,tamansrisinarEXP
+420,rental,The Scott Garden SOHO,Kuala Lumpur,NLH,thescottgardensohoNLH
+425,room,AraTre Residences,Petaling Jaya / Damansara,DPM,aratreresidencesDPM
+426,room,AraTre Residences,Petaling Jaya / Damansara,DPM,aratreresidencesDPM
+427,room,Emporis Residence,Petaling Jaya / Damansara,DPM,emporisresidenceDPM
+431,room,Novo Ampang,Ampang,-,novoampang-
+432,room,Novo Ampang,Ampang,-,novoampang-
+437,subsale,Ketumbar Heights,Cheras,EXP,ketumbarheightsEXP
+438,subsale,Seasons Garden Residences,Kuala Lumpur,EXP,seasonsgardenresidencesEXP
+439,subsale,Sri Lata Condominium,Kuala Lumpur,EXP,srilatacondominiumEXP
+442,rental,Alam Puri,Kuala Lumpur,ADL,alampuriADL
+444,rental,Razak City Residences,Kuala Lumpur,EX,razakcityresidencesEX
+446,rental,Hedgeford 10 Residence,Kuala Lumpur,ADL,hedgeford10residenceADL
+447,subsale,Sri Putramas 1,Kuala Lumpur,EXP,sriputramas1EXP
+449,subsale,Residensi Pandanmas 2,Kuala Lumpur,EXP,residensipandanmas2EXP
+451,subsale,2 Storey Terrace Bandar Kinrara BK4,Puchong,EXP,2storeyterracebandarkinrarabk4EXP
+452,rental,Datum Jelatek LINQ Sky Residence,Kuala Lumpur,EX,datumjelateklinqskyresidenceEX
+453,subsale,2 Storey Terrace Bandar Mahkota Cheras,Cheras,EXP,2storeyterracebandarmahkotacherasEXP
+455,rental,Cubic Botanical,Kuala Lumpur,ADL,cubicbotanicalADL
+456,rental,Arte @ Mont Kiara,Kuala Lumpur,FPR,artemontkiaraFPR
+458,rental,Bukit Gembira Condominium,Kuala Lumpur,ADL,bukitgembiracondominiumADL
+459,subsale,Seri Maya Condo,Kuala Lumpur,EXP,serimayacondoEXP
+460,subsale,Saville @ Taman Melawati,Kuala Lumpur,EXP,savilletamanmelawatiEXP
+461,subsale,Nilam Puri Condominium,Puchong,DPM,nilampuricondominiumDPM
+462,subsale,2 Storey Terrace Taman Segambut SPPK,Kuala Lumpur,REG,2storeyterracetamansegambutsppkREG
+464,subsale,Endah Ria Condominium,Kuala Lumpur,EXP,endahriacondominiumEXP
+466,subsale,Villa Wangsamas,Kuala Lumpur,RSS,villawangsamasRSS
+467,rental,The Zizz,Petaling Jaya / Damansara,ADL,thezizzADL
+468,rental,Razak City Residences,Kuala Lumpur,ADL,razakcityresidencesADL
+469,rental,Residensi Sateria,Kuala Lumpur,EX,residensisateriaEX
+470,rental,Datum Jelatek Residence,Kuala Lumpur,DPM,datumjelatekresidenceDPM
+471,rental,Datum Jelatek Residence,Kuala Lumpur,DPM,datumjelatekresidenceDPM
+472,subsale,SOHO Suites @ KLCC,Kuala Lumpur,EXP,sohosuitesklccEXP
+473,rental,Plaza @ Kelana Jaya,Petaling Jaya / Damansara,ADL,plazakelanajayaADL
+480,room,AraTre Residences,Petaling Jaya / Damansara,DPM,aratreresidencesDPM
+483,subsale,Taman Bukit Setiawangsa,Kuala Lumpur,EXP,tamanbukitsetiawangsaEXP
+484,subsale,Seasons Garden Residence,Kuala Lumpur,CE,seasonsgardenresidenceCE
+503,rental,Novo Ampang,Ampang,-,novoampang-
+509,rental,Residensi Amansuri,Cheras,ADL,residensiamansuriADL
+510,rental,9INE Residensi Sembilan,Cheras,EX,9ineresidensisembilanEX
+512,rental,Impiana Sky Residensi,Bukit Jalil,ADL,impianaskyresidensiADL
+513,rental,The Zizz @ Damansara Damai,Petaling Jaya / Damansara,ADL,thezizzdamansaradamaiADL
+514,rental,DEX Suites 2.0 (Tower B) @ Kiara East,Kuala Lumpur,ADL,dexsuites20towerbkiaraeastADL
+515,rental,Q SOVO (Queenville),Cheras,EX,qsovoqueenvilleEX
+518,rental,The Birch,Kuala Lumpur,ADL,thebirchADL
+520,rental,PPAM Residensi Amansuri,Kuala Lumpur,ADL,ppamresidensiamansuriADL
+522,rental,Residensi Rampai II,Setapak,EX,residensirampaiiiEX
+525,rental,Avenue D'Vogue,Petaling Jaya / Damansara,EX,avenuedvogueEX
+526,rental,Anya @ Shorea Park,Puchong,ADL,anyashoreaparkADL
+527,rental,Altris Residence @ The Quartz WM,Kuala Lumpur,ADL,altrisresidencethequartzwmADL
+528,subsale,Segambut Freehold Development Land,Kuala Lumpur,EXP,segambutfreeholddevelopmentlandEXP
+529,rental,"Chambers Residence (CHM-29-10-S2, KLCC View)",Kuala Lumpur,DPM,chambersresidencechm2910s2klccviewDPM
+530,rental,"Chambers Residence (CHM-28-3A-S2, KLCC View)",Kuala Lumpur,DPM,chambersresidencechm283as2klccviewDPM
+531,subsale,Taman Minang,Cheras,EXP,tamanminangEXP
+534,rental,"Chambers Residence (CHM-23A-03-S2, KLCC View)",Kuala Lumpur,DPM,chambersresidencechm23a03s2klccviewDPM
+535,rental,Carlton @ Plaza Damas 3,Kuala Lumpur,ADL,carltonplazadamas3ADL
+536,rental,La Thea Residences,Puchong,NS,lathearesidencesNS
+537,subsale,2 Storey Terrace Bandar Mahkota Cheras,Cheras,EXP,2storeyterracebandarmahkotacherasEXP
+538,rental,Kota Damansara 2-Storey Terrace,Petaling Jaya / Damansara,FPR,kotadamansara2storeyterraceFPR
+539,subsale,2 Storey Terrace Taman Bukit Permai,Kuala Lumpur,EXP,2storeyterracetamanbukitpermaiEXP
+540,subsale,2 Storey Terrace Putra Heights,Subang Jaya,EXP,2storeyterraceputraheightsEXP
+541,subsale,2 Storey Terrace Pandan Indah,Kuala Lumpur,EXP,2storeyterracepandanindahEXP
+542,subsale,Residential Land Kg Padang Balang,Kuala Lumpur,EXP,residentiallandkgpadangbalangEXP
+543,subsale,Pandan Heights Condominium,Kuala Lumpur,EXP,pandanheightscondominiumEXP
+544,rental,PPA1M Mercu Jalil,Bukit Jalil,ADL,ppa1mmercujalilADL
+545,rental,Lea by the Hills,Kuala Lumpur,ADL,leabythehillsADL
+546,subsale,The Grand @ Kelana Damansara Suite,Petaling Jaya / Damansara,EXP,thegrandkelanadamansarasuiteEXP
+548,subsale,The Ridge @ KL East,Kuala Lumpur,EXP,theridgekleastEXP
+549,subsale,Bungalow Sungai Penchala,Petaling Jaya / Damansara,EXP,bungalowsungaipenchalaEXP
+550,subsale,2 Storey Terrace Cassia Garden Residence,Cyberjaya / Putrajaya,EXP,2storeyterracecassiagardenresidenceEXP
+553,subsale,3 Storey Semi-Detached Tijani 2,Kuala Lumpur,REG,3storeysemidetachedtijani2REG
+555,subsale,Aman Dua Apartment,Kuala Lumpur,EXP,amanduaapartmentEXP
+556,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+557,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+558,subsale,Mutiara Bukit Jalil,Bukit Jalil,EXP,mutiarabukitjalilEXP
+559,subsale,Residential Land Kg Chubadak Jaya,Kuala Lumpur,EXP,residentiallandkgchubadakjayaEXP
+561,subsale,SS19/A1 End Lot Terrace,Subang Jaya,EXP,ss19a1endlotterraceEXP
+564,subsale,Changkat View Condominium,Kuala Lumpur,EXP,changkatviewcondominiumEXP
+566,rental,Villa Puteri Condominium,Kuala Lumpur,EX,villaputericondominiumEX
+567,rental,The Elements @ Ampang,Kuala Lumpur,EX,theelementsampangEX
+568,rental,Residensi Alamanda,Kuala Lumpur,ADL,residensialamandaADL
+569,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+570,rental,Angkasa Impian 2,Kuala Lumpur,ADL,angkasaimpian2ADL
+571,rental,Datum Jelatek LINQ Sky Residences,Kuala Lumpur,EX,datumjelateklinqskyresidencesEX
+572,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+573,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+574,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+577,subsale,Taman Putra Perdana,Puchong,EXP,tamanputraperdanaEXP
+578,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+579,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+580,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+581,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+582,rental,The Luxe by Infinitum (Colony View),Kuala Lumpur,DPM,theluxebyinfinitumcolonyviewDPM
+583,rental,The Luxe by Infinitum (Colony View),Kuala Lumpur,DPM,theluxebyinfinitumcolonyviewDPM
+584,rental,The Luxe by Infinitum (Colony View),Kuala Lumpur,DPM,theluxebyinfinitumcolonyviewDPM
+585,rental,The Luxe by Infinitum (Colony View),Kuala Lumpur,DPM,theluxebyinfinitumcolonyviewDPM
+586,rental,Datum Jelatek Residence,Kuala Lumpur,DPM,datumjelatekresidenceDPM
+587,rental,Datum Jelatek Residence,Kuala Lumpur,DPM,datumjelatekresidenceDPM
+588,rental,Datum Jelatek Residence,Kuala Lumpur,DPM,datumjelatekresidenceDPM
+589,rental,Datum Jelatek Residence,Kuala Lumpur,DPM,datumjelatekresidenceDPM
+590,rental,Seksyen 10 Jalan Gasing,Petaling Jaya / Damansara,EX,seksyen10jalangasingEX
+591,subsale,Pinggiran TTDI,Kuala Lumpur,EXP,pinggirantddiEXP
+592,subsale,SS3,Petaling Jaya / Damansara,EXP,ss3EXP
+594,subsale,Melawati Corporate Centre (MCC),Kuala Lumpur,EXP,melawaticorporatecentremccEXP
+595,rental,Platinum OUG Residence,Kuala Lumpur,ADL,platinumougresidenceADL
+598,rental,Koi Prima,Puchong,ADL,koiprimaADL
+600,rental,Vista Harmoni Residence,Kuala Lumpur,EX,vistaharmoniresidenceEX
+603,room,D'Sands Residence,Kuala Lumpur,DPM,dsandsresidenceDPM
+604,room,D'Sands Residence,Kuala Lumpur,DPM,dsandsresidenceDPM
+606,room,Emporis Residence,Petaling Jaya / Damansara,DPM,emporisresidenceDPM
+618,room,Bayu Tasik Condominium,Cheras,DPM,bayutasikcondominiumDPM
+620,rental,"Chambers Residence (CHM-31-10-S1, KLCC View)",Kuala Lumpur,DPM,chambersresidencechm3110s1klccviewDPM
+636,subsale,Bandar Kinrara 9 (BK9),Puchong,EXP,bandarkinrara9bk9EXP
+638,rental,Kenwingston Platz,Setapak,ADL,kenwingstonplatzADL
+641,rental,Anya @ Shorea Park,Puchong,ADL,anyashoreaparkADL
+642,subsale,Aston Kiara 3,Kuala Lumpur,EXP,astonkiara3EXP
+646,subsale,Taman Indah Jaya,Petaling Jaya / Damansara,EXP,tamanindahjayaEXP
+647,rental,Vivo Residential Suites,Kuala Lumpur,EX,vivoresidentialsuitesEX
+648,rental,Sentul Point Suites,Sentul,EX,sentulpointsuitesEX
+649,rental,Majestic Maxim (Malaysian Only),Cheras,ADL,majesticmaximmalaysianonlyADL
+651,rental,Tiara Imperio,Bangi,NS,tiaraimperioNS
+652,subsale,Taman Setapak,Setapak,EXP,tamansetapakEXP
+653,rental,Chambers Residence,Kuala Lumpur,ADL,chambersresidenceADL
+654,subsale,Dorsett Residences,Kuala Lumpur,EXP,dorsettresidencesEXP
+655,rental,Vista Harmoni,Sentul,ADL,vistaharmoniADL
+656,rental,Bam Villa,Cheras,ADL,bamvillaADL
+658,subsale,Antara Apartment,Ampang,EXP,antaraapartmentEXP
+659,rental,Enggang Apartment,Puchong,EX,enggangapartmentEX
+661,rental,"The Colony by Infinitum (COL-A-13A-05-S3, Luxe View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola13a05s3luxeviewDPM
+662,rental,"The Colony by Infinitum (COL-A-13A-05-S2, Luxe View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola13a05s2luxeviewDPM
+663,rental,"The Colony by Infinitum (COL-A-12-06-S3, Luxe View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1206s3luxeviewDPM
+664,rental,"The Colony by Infinitum (COL-A-12-05-S3, Luxe View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1205s3luxeviewDPM
+665,rental,"The Colony by Infinitum (COL-A-12-05-S2, Luxe View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1205s2luxeviewDPM
+666,rental,"The Colony by Infinitum (COL-A-10-07-S3, City View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1007s3cityviewDPM
+667,rental,"The Colony by Infinitum (COL-A-10-07-S2, City View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1007s2cityviewDPM
+668,rental,"The Colony by Infinitum (COL-A-10-06-S3, Luxe View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1006s3luxeviewDPM
+670,rental,"The Colony by Infinitum (COL-A-08-03-S3, City View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola0803s3cityviewDPM
+672,rental,Maxim Citylights,Sentul,ADL,maximcitylightsADL
+675,rental,Apartment Putra 1,Bangi,NS,apartmentputra1NS
+676,subsale,Vila Tropika Apartment Pudu Impian 2,Cheras,EXP,vilatropikaapartmentpuduimpian2EXP
+677,subsale,Mutiara Ville Residence,Cyberjaya / Putrajaya,EXP,mutiaravilleresidenceEXP
+679,subsale,Fern Lodge,Kuala Lumpur,EXP,fernlodgeEXP
+680,rental,Aera Residence,Petaling Jaya / Damansara,ADL,aeraresidenceADL
+681,subsale,2 Storey Terrace Taman Sri Gombak,Selayang,EXP,2storeyterracetamansrigombakEXP
+682,subsale,Prima Duta,Kuala Lumpur,EXP,primadutaEXP
+683,subsale,Pantai Panorama,Kuala Lumpur,EXP,pantaipanoramaEXP
+687,rental,Minest Residence,Kuala Lumpur,EX,minestresidenceEX
+688,rental,Residensi Rimbun @ Canopy Hills,Kajang,ADL,residensirimbuncanopyhillsADL
+689,rental,M Centura,Sentul,WRL,mcenturaWRL
+690,subsale,Kiara East DEX Suites,Kuala Lumpur,EXP,kiaraeastdexsuitesEXP
+693,rental,"The Colony by Infinitum (COL-A-08-03-S2, City View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola0803s2cityviewDPM
+697,subsale,The iResidence,Cheras,DPM,theiresidenceDPM
+701,subsale,Taman Hillview,Ampang,EXP,tamanhillviewEXP
+703,subsale,Alam Sutera Bukit Jalil,Bukit Jalil,EXP,alamsuterabukitjalilEXP
+704,subsale,Widuri Impian Condominium,Kuala Lumpur,EXP,widuriimpiancondominiumEXP
+710,subsale,Double Storey Bungalow Taman Perwira,Ampang,EXP,doublestoreybungalowtamanperwiraEXP
+713,subsale,Arte Cheras,Kuala Lumpur,EXP,artecherasEXP
+715,rental,Sky Awani 1,Sentul,ADL,skyawani1ADL
+716,rental,The Boulevard,Subang Jaya,ADL,theboulevardADL
+719,rental,PPA1M Metropolitan Kepong,Kepong,EX,ppa1mmetropolitankepongEX
+721,rental,Impian Selatan Condominium (Southern Height),Ampang,EX,impianselatancondominiumsouthernheightEX
+723,rental,The Luxe by Infinitum (KLCC View),Kuala Lumpur,DPM,theluxebyinfinitumklccviewDPM
+724,subsale,MyHabitat Serviced Residence,Kuala Lumpur,EXP,myhabitatservicedresidenceEXP
+725,subsale,The Hamilton,Kuala Lumpur,EXP,thehamiltonEXP
+727,rental,Pavilion Suites,Kuala Lumpur,FPR,pavilionsuitesFPR
+728,subsale,Agile Residence,Kuala Lumpur,EXP,agileresidenceEXP
+729,rental,Melawati Corporate Centre (MCC),Kuala Lumpur,EX,melawaticorporatecentremccEX
+731,subsale,Sentul Point Suite Apartment,Sentul,EXP,sentulpointsuiteapartmentEXP
+732,subsale,Bukit Pandan 2 Condominium,Cheras,EXP,bukitpandan2condominiumEXP
+736,subsale,Sentul Village Condominium,Sentul,EXP,sentulvillagecondominiumEXP
+740,room,Endah Regal,Bukit Jalil,NS,endahregalNS
+742,subsale,RiverView Kemensah,Ampang,EXP,riverviewkemensahEXP
+744,room,SkyVille @ Benteng 8,Kuala Lumpur,DPM,skyvillebenteng8DPM
+745,room,SkyVille @ Benteng 8,Kuala Lumpur,DPM,skyvillebenteng8DPM
+747,subsale,Taman Telok Panglima Garang,Klang,CE,tamantelokpanglimagarangCE
+750,subsale,Mas Kipark Damansara,Kepong,EXP,maskiparkdamansaraEXP
+756,subsale,Sky Suites @ KLCC,Kuala Lumpur,EXP,skysuitesklccEXP
+760,room,Cova Suites,Petaling Jaya / Damansara,DPM,covasuitesDPM
+764,subsale,Pangsapuri Indah Mas,Cheras,EXP,pangsapuriindahmasEXP
+772,rental,Sutera Pines,Kajang,MMN,suterapinesMMN
+773,subsale,Midfields 2,Kuala Lumpur,EXP,midfields2EXP
+776,subsale,Taman Taynton View,Cheras,EXP,tamantayntonviewEXP
+778,subsale,Parkland Residence,Kajang,EXP,parklandresidenceEXP
+780,rental,Vista Harmoni Residences,Sentul,DPM,vistaharmoniresidencesDPM
+781,rental,Vista Harmoni Residences,Sentul,DPM,vistaharmoniresidencesDPM
+782,rental,Vista Harmoni Residences,Sentul,DPM,vistaharmoniresidencesDPM
+783,rental,Vista Harmoni Residences,Sentul,DPM,vistaharmoniresidencesDPM
+785,rental,Vista Harmoni Residences,Sentul,DPM,vistaharmoniresidencesDPM
+787,rental,Continew Condominium,Kuala Lumpur,ADL,continewcondominiumADL
+788,rental,3 Elements,Seri Kembangan,NS,3elementsNS
+789,rental,Garden Park Condominium,Kajang,NS,gardenparkcondominiumNS
+790,subsale,Bandar Seri Putra,Kajang,EXP,bandarseriputraEXP
+791,rental,Arte Plus,Ampang,ADL,arteplusADL
+792,rental,Edgewood Residence,Setapak,ADL,edgewoodresidenceADL
+793,rental,Cerrado Suites,Bangi,FPR,cerradosuitesFPR
+794,rental,Kiara Residence 1,Bukit Jalil,EX,kiararesidence1EX
+795,rental,Trinity Wellnessa,Ampang,EX,trinitywellnessaEX
+796,rental,Green Villa Apartment (Blok B),Bangi,NS,greenvillaapartmentblokbNS
+797,subsale,Taman Dahlia,Sepang,EXP,tamandahliaEXP
+799,rental,Residensi Mutiara Kajang,Kajang,ADL,residensimutiarakajangADL
+801,rental,Danau Kota Suites,Setapak,EX,danaukotasuitesEX
+802,rental,Edumetro EDU-E-19-01-U,Subang Jaya,DPM,edumetroedue1901uDPM
+803,rental,Residensi Mutiara,Kajang,NS,residensimutiaraNS
+804,rental,Puncak Hijauan,Kajang,NS,puncakhijauanNS
+807,rental,Sang Suria Condominium,Sentul,ADL,sangsuriacondominiumADL
+808,rental,Residensi Mutiara,Kajang,ADL,residensimutiaraADL
+809,subsale,Pandan Perdana,Cheras,EXP,pandanperdanaEXP
+811,subsale,The Era Residence @ Duta North,Kuala Lumpur,EXP,theeraresidencedutanorthEXP
+815,rental,One Cochrane Residences,Kuala Lumpur,DPM,onecochraneresidencesDPM
+818,rental,Citizen @ Old Klang Road,Kuala Lumpur,ADL,citizenoldklangroadADL
+819,rental,Sri Kenanga Apartment,Puchong,NS,srikenangaapartmentNS
+824,rental,Corinthian Condominium,Kuala Lumpur,LSY,corinthiancondominiumLSY
+825,rental,The Potpourri,Petaling Jaya / Damansara,FPR,thepotpourriFPR
+826,subsale,2 Storey Terrace Denai Alam,Shah Alam,EXP,2storeyterracedenaialamEXP
+827,subsale,2 Storey Terrace Elmina West,Shah Alam,RSS,2storeyterraceelminawestRSS
+829,subsale,2.5 Storey Terrace Kim Crest,Puchong,EXP,25storeyterracekimcrestEXP
+830,subsale,Ken Rimba,Shah Alam,REG,kenrimbaREG
+831,subsale,2 Storey Terrace Bukit Indah,Ampang,EXP,2storeyterracebukitindahEXP
+832,rental,Liberty Arc,Ampang,ADL,libertyarcADL
+833,rental,Vivo Residential Suites,Kuala Lumpur,FPR,vivoresidentialsuitesFPR
+834,rental,Tasik Permai Shop Lot,Ampang,FPR,tasikpermaishoplotFPR
+835,rental,Regalia Residences,Kuala Lumpur,FPR,regaliaresidencesFPR
+836,rental,Quill Residence,Kuala Lumpur,FPR,quillresidenceFPR
+837,rental,Majestic Residence,Kuala Lumpur,FPR,majesticresidenceFPR
+838,rental,Liberty Arc,Ampang,FPR,libertyarcFPR
+839,rental,Legasi Kampong Bharu KL Residensi,Kuala Lumpur,FPR,legasikampongbharuklresidensiFPR
+841,rental,Dorsett Residences,Kuala Lumpur,FPR,dorsettresidencesFPR
+842,rental,Centrio Pantai Hill Park,Kuala Lumpur,FPR,centriopantaihillparkFPR
+843,rental,Armani Residence Kuala Lumpur,Kuala Lumpur,FPR,armaniresidencekualalumpurFPR
+844,rental,Agile Bukit Bintang,Kuala Lumpur,FPR,agilebukitbintangFPR
+845,rental,Agile Bukit Bintang,Kuala Lumpur,FPR,agilebukitbintangFPR
+846,rental,The Corinthian,Kuala Lumpur,EX,thecorinthianEX
+847,rental,6 Ceylon Condominium,Kuala Lumpur,EX,6ceyloncondominiumEX
+849,rental,Emerald 9,Cheras,ADL,emerald9ADL
+851,rental,Alam Damai,Cheras,ADL,alamdamaiADL
+853,rental,The Paxtonz,Petaling Jaya / Damansara,ADL,thepaxtonzADL
+855,rental,Residensi Dutamas Dahlia,Kuala Lumpur,ADL,residensidutamasdahliaADL
+856,rental,Residensi Sateria SASaR,Kuala Lumpur,EX,residensisateriasasarEX
+857,rental,Residensi Sateria SASaR,Kuala Lumpur,EX,residensisateriasasarEX
+860,subsale,Trinity Aquata,Kuala Lumpur,EXP,trinityaquataEXP
+861,subsale,2 Storey Terrace Taman Banting Baru,Sepang,EXP,2storeyterracetamanbantingbaruEXP
+865,subsale,Parisien Tower D,Shah Alam,MMN,parisientowerdMMN
+866,subsale,2 Storey Terrace Taman Tenaga,Kajang,RSS,2storeyterracetamantenagaRSS
+867,subsale,2 Storey Terrace Taman Tiara East,Kajang,RSS,2storeyterracetamantiaraeastRSS
+868,subsale,2 Storey Terrace Kajang Hillpark,Kajang,RSS,2storeyterracekajanghillparkRSS
+869,subsale,The Havre Bukit Jalil,Bukit Jalil,EXP,thehavrebukitjalilEXP
+872,subsale,2 Storey Terrace Taman Bukit Setiawangsa,Kuala Lumpur,EXP,2storeyterracetamanbukitsetiawangsaEXP
+876,subsale,Residensi AVA,Kuala Lumpur,EXP,residensiavaEXP
+880,subsale,2 Storey Terrace Isle of Botanica,Cyberjaya / Putrajaya,EXP,2storeyterraceisleofbotanicaEXP
+881,subsale,Vista Komanwel C Condo,Bukit Jalil,EXP,vistakomanwelccondoEXP
+883,subsale,Villa Bestari,Kuala Lumpur,EXP,villabestariEXP
+884,subsale,Taman Maju,Kajang,EXP,tamanmajuEXP
+887,subsale,Sentul Village Condominium,Sentul,EXP,sentulvillagecondominiumEXP
+892,subsale,Parkview KLCC Residence,Kuala Lumpur,EXP,parkviewklccresidenceEXP
+893,subsale,Parkhill Residence,Bukit Jalil,EXP,parkhillresidenceEXP
+895,subsale,One Damansara Condominium,Petaling Jaya / Damansara,EXP,onedamansaracondominiumEXP
+897,subsale,Gardenview Residence,Cyberjaya / Putrajaya,EXP,gardenviewresidenceEXP
+898,subsale,Core Residence @ TRX,Kuala Lumpur,EXP,coreresidencetrxEXP
+899,subsale,Bandar Mahkota Cheras,Cheras,EXP,bandarmahkotacherasEXP
+901,rental,SOHO Trio Permai,Seri Kembangan,ADL,sohotriopermaiADL
+902,rental,Parkland Residence @ Kajang 2,Kajang,ADL,parklandresidencekajang2ADL
+903,rental,Trion 2 @ KL,Kuala Lumpur,EX,trion2klEX
+904,rental,Denai Sutera,Bukit Jalil,ADL,denaisuteraADL
+905,rental,Sentral Suites SEN-2-39-12-U (118/TRX/Pool View),Kuala Lumpur,DPM,sentralsuitessen23912u118trxpoolviewDPM
+906,rental,Sentral Suites SEN-2-23A-08-U (South East View),Kuala Lumpur,DPM,sentralsuitessen223a08usoutheastviewDPM
+907,rental,Sentral Suites SEN-2-21-03-U (118/TRX/Pool View),Kuala Lumpur,DPM,sentralsuitessen22103u118trxpoolviewDPM
+909,rental,Sentral Suites SEN-2-20-08-U (118/TRX/Pool View),Kuala Lumpur,DPM,sentralsuitessen22008u118trxpoolviewDPM
+910,rental,Sentral Suites SEN-2-16-15-U (City/South West View),Kuala Lumpur,DPM,sentralsuitessen21615ucitysouthwestviewDPM
+911,rental,Sentral Suites SEN-1-43-11-U (118/TRX/Pool View),Kuala Lumpur,DPM,sentralsuitessen14311u118trxpoolviewDPM
+912,rental,"The Luxe by Infinitum (Colony View, Premium)",Kuala Lumpur,DPM,theluxebyinfinitumcolonyviewpremiumDPM
+913,rental,Pangsapuri Beringin,Selayang,DPM,pangsapuriberinginDPM
+914,rental,M Astra Setapak,Setapak,EX,mastrasetapakEX
+915,rental,SOHO Flexis @ One South,Seri Kembangan,ADL,sohoflexisonesouthADL
+916,subsale,Taman Villa Heights,Kajang,EXP,tamanvillaheightsEXP
+918,rental,M Luna,Kepong,ADL,mlunaADL
+925,subsale,Kg Sungai Pelong Bungalow,Sungai Buloh,EXP,kgsungaipelongbungalowEXP
+927,subsale,Taman Sutera,Kajang,EXP,tamansuteraEXP
+932,room,AraTre Residences,Petaling Jaya / Damansara,DPM,aratreresidencesDPM
+933,room,Emporis Residence,Petaling Jaya / Damansara,DPM,emporisresidenceDPM
+934,room,Emporis Residence,Petaling Jaya / Damansara,DPM,emporisresidenceDPM
+935,rental,One Cochrane Residence,Kuala Lumpur,DPM,onecochraneresidenceDPM
+936,rental,Sentral Suites Residence,Kuala Lumpur,DPM,sentralsuitesresidenceDPM
+970,rental,Residensi Enesta,Kepong,ADL,residensienestaADL
+971,subsale,Dataran Palma,Ampang,EXP,dataranpalmaEXP
+973,rental,Residensi Brickfields,Kuala Lumpur,ADL,residensibrickfieldsADL
+974,rental,Horizon Suites,Dengkil,NS,horizonsuitesNS
+976,subsale,Taman Connaught,Cheras,EXP,tamanconnaughtEXP
+977,subsale,Bandar Kinrara,Puchong,EXP,bandarkinraraEXP
+978,subsale,Vivo Residential Suites,Kuala Lumpur,EXP,vivoresidentialsuitesEXP
+980,rental,Tiara Imperio,Bangi,EXP,tiaraimperioEXP
+981,rental,Residensi Bukit Tiara,Kajang,EX,residensibukittiaraEX
+982,rental,Residensi Anggerik Wira,Kajang,ADL,residensianggerikwiraADL
+985,rental,Residensi Emas Kajang 2,Kajang,NS,residensiemaskajang2NS
+986,rental,Residensi Brickfields,Kuala Lumpur,ADL,residensibrickfieldsADL
+987,rental,Residensi Adelia 2,Kajang,NS,residensiadelia2NS
+989,rental,LBS Skylake Residence,Puchong,ADL,lbsskylakeresidenceADL
+990,rental,Residensi Rimbun – The Canopy Hills,Kajang,ADL,residensirimbunthecanopyhillsADL
+991,rental,Dorsett Residence,Kuala Lumpur,ADL,dorsettresidenceADL
+993,rental,"The Colony by Infinitum (COL-A-18-06-S1 (P), City View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1806s1pcityviewDPM
+994,rental,"The Colony by Infinitum (COL-A-13A-05-S1 (P), Luxe View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola13a05s1pluxeviewDPM
+995,rental,"The Colony by Infinitum (COL-A-12-06-S1 (P), Luxe View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1206s1pluxeviewDPM
+996,rental,"The Colony by Infinitum (COL-A-12-05-S1 (P), Luxe View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1205s1pluxeviewDPM
+997,rental,"The Colony by Infinitum (COL-A-10-07-S1 (P), City View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola1007s1pcityviewDPM
+998,rental,VIM 3 Desa Park North,Kepong,EX,vim3desaparknorthEX
+999,rental,Mount Karunmas,Seri Kembangan,NS,mountkarunmasNS
+1000,rental,Mount Karunmas,Seri Kembangan,ADL,mountkarunmasADL
+1001,rental,Apartment Rajawali,Bangi,NS,apartmentrajawaliNS
+1002,rental,High Park Suites,Petaling Jaya / Damansara,ADL,highparksuitesADL
+1003,rental,The Robertson,Kuala Lumpur,ADL,therobertsonADL
+1004,rental,The Robertson,Kuala Lumpur,EX,therobertsonEX
+1005,rental,Sentral Suites,Kuala Lumpur,ADL,sentralsuitesADL
+1006,rental,Pangsapuri Puncak Saujana,Kajang,NS,pangsapuripuncaksaujanaNS
+1007,subsale,MH Platinum Residency,Setapak,EXP,mhplatinumresidencyEXP
+1008,rental,M-City,Ampang,EX,mcityEX
+1009,subsale,Casa Idaman,Sentul,EXP,casaidamanEXP
+1010,rental,Liberty Arc @ Ampang Ukay,Ampang,EX,libertyarcampangukayEX
+1012,subsale,Townhouse Diamond Residence,Kajang,EXP,townhousediamondresidenceEXP
+1013,subsale,The Hamilton,Kuala Lumpur,EXP,thehamiltonEXP
+1014,subsale,Arte Cheras,Cheras,EXP,artecherasEXP
+1015,subsale,3 Storey Terrace Alstonea,Subang Jaya,EXP,3storeyterracealstoneaEXP
+1016,rental,Oasis 2,Kajang,ADL,oasis2ADL
+1018,rental,M City @ Jalan Ampang,Ampang,FPR,mcityjalanampangFPR
+1019,rental,Astoria Ampang,Ampang,FPR,astoriaampangFPR
+1020,subsale,2 Storey Terrace Taman Koperasi Polis Fasa II,Selayang,EXP,2storeyterracetamankoperasipolisfasaiiEXP
+1021,subsale,2 Storey Terrace Hampton Residence,Sungai Buloh,EXP,2storeyterracehamptonresidenceEXP
+1022,rental,Residensi Zamrud Kajang 2,Kajang,NS,residensizamrudkajang2NS
+1024,subsale,2 Storey Terrace Taman Putra Prima,Puchong,EXP,2storeyterracetamanputraprimaEXP
+1026,rental,Edelweiss @ Tropicana Gardens,Petaling Jaya / Damansara,EX,edelweisstropicanagardensEX
+1027,rental,Vista Bayu,Klang,NS,vistabayuNS
+1028,rental,168 Park Selayang,Selayang,ADL,168parkselayangADL
+1029,subsale,Ampang Prima Condominium,Ampang,EXP,ampangprimacondominiumEXP
+1031,subsale,Empire City Colonial Loft,Petaling Jaya / Damansara,EXP,empirecitycolonialloftEXP
+1032,subsale,2 Storey Terrace Taman Pinggiran Senawang,Nilai,EXP,2storeyterracetamanpinggiransenawangEXP
+1034,subsale,Semi Detached Taman Perdana Residence,Selayang,EXP,semidetachedtamanperdanaresidenceEXP
+1035,rental,"The Colony by Infinitum (COL-A-08-03-S1 (P), City View)",Kuala Lumpur,DPM,thecolonybyinfinitumcola0803s1pcityviewDPM
+1037,subsale,Palmyra Residence,Kajang,EXP,palmyraresidenceEXP
+1038,subsale,3 Storey Courtyard Villa 16 Quartz,Kuala Lumpur,EXP,3storeycourtyardvilla16quartzEXP
+1039,subsale,2 Storey Terrace Taman Mega Jaya,Ampang,EXP,2storeyterracetamanmegajayaEXP
+1041,subsale,Ryan & Miho Residence,Petaling Jaya / Damansara,DPM,ryanmihoresidenceDPM
+1043,subsale,2.5 Storey Terrace Bukit Antarabangsa,Ampang,EXP,25storeyterracebukitantarabangsaEXP
+1045,subsale,M Vertica,Cheras,EXP,mverticaEXP
+1046,subsale,2 Storey Terrace Taman Sierra Ukay,Ampang,REG,2storeyterracetamansierraukayREG
+1048,subsale,The Wharf Puchong Lake View,Puchong,RSS,thewharfpuchonglakeviewRSS
+1049,subsale,The Edge Residence,Subang Jaya,EXP,theedgeresidenceEXP
+1050,subsale,Taman Putra Ampang,Ampang,EXP,tamanputraampangEXP
+1052,subsale,Taman Harmoni,Kajang,EXP,tamanharmoniEXP
+1055,subsale,Residensi Anggerik Wira,Kajang,EXP,residensianggerikwiraEXP
+1056,subsale,PRIMA Lakefront Homes,Cyberjaya / Putrajaya,RSS,primalakefronthomesRSS
+1057,subsale,Platinum Splendor Residensi Semarak,Kuala Lumpur,EXP,platinumsplendorresidensisemarakEXP
+1059,subsale,Perdana Lakeview East Bungalow,Cyberjaya / Putrajaya,EXP,perdanalakevieweastbungalowEXP
+1063,subsale,M Centura Residence,Sentul,EXP,mcenturaresidenceEXP
+1064,rental,I-Soho @ i-City,Shah Alam,ADL,isohoicityADL
+1066,subsale,Desa Baiduri Murni,Sepang,RSS,desabaidurimurniRSS
+1067,subsale,Cengal Condominium,Cheras,EXP,cengalcondominiumEXP
+1068,subsale,Berjaya Times Square Service Suites,Kuala Lumpur,EXP,berjayatimessquareservicesuitesEXP
+1069,subsale,2 Storey Terrace PJS 10,Petaling Jaya / Damansara,EXP,2storeyterracepjs10EXP
+1072,rental,Bayu Residensi @ Sri Gombak,Selayang,ADL,bayuresidensisrigombakADL
+1073,subsale,2 Storey Terrace Sunway Kayangan,Shah Alam,EXP,2storeyterracesunwaykayanganEXP
+1075,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+1076,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+1077,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+1078,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+1079,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+1080,rental,The Colony by Infinitum,Kuala Lumpur,DPM,thecolonybyinfinitumDPM
+1081,rental,Sentral Suites,Kuala Lumpur,DPM,sentralsuitesDPM
+1083,subsale,1 Storey Bungalow Kampung Bukit Naga,Shah Alam,NZR,1storeybungalowkampungbukitnagaNZR
+1084,subsale,Sierramas West,Sungai Buloh,DPM,sierramaswestDPM
+1085,rental,The Elements,Ampang,EX,theelementsEX
+1086,subsale,Taman Meru Makmur 3,Klang,EXP,tamanmerumakmur3EXP
+1088,rental,Inspirasi Mont Kiara,Kuala Lumpur,FPR,inspirasimontkiaraFPR
+1093,rental,2-Storey Terrace @ Bandar Puchong Jaya,Puchong,ADL,2storeyterracebandarpuchongjayaADL
+1094,subsale,Residensi Pandanmas 2,Kuala Lumpur,EXP,residensipandanmas2EXP
+1097,subsale,Ayuman Suite,Selayang,EXP,ayumansuiteEXP
+1099,rental,Residensi Amansuri,Cheras,ADL,residensiamansuriADL
+1104,subsale,Tasik Kundang,Rawang,EXP,tasikkundangEXP
+1108,rental,Amansuri Residence,Cheras,ADL,amansuriresidenceADL
+1116,subsale,Residensi Adelia 4,Kajang,EXP,residensiadelia4EXP
+1117,subsale,Seksyen 4 Wangsa Maju Flat Block C,Kuala Lumpur,EXP,seksyen4wangsamajuflatblockcEXP
+1118,subsale,Bukit Pandan 2 Condominium,Cheras,EXP,bukitpandan2condominiumEXP
+1119,rental,Presint 14,Cyberjaya / Putrajaya,EX,presint14EX
+1125,room,Desaminium Flora,Seri Kembangan,DPM,desaminiumfloraDPM
+1139,room,Cova Suites,Petaling Jaya / Damansara,DPM,covasuitesDPM
+1146,rental,Prima Bayu,Klang,MMN,primabayuMMN
+1149,rental,Vista Harmoni Residences,Sentul,DPM,vistaharmoniresidencesDPM
+1150,rental,Vista Harmoni Residences,Sentul,DPM,vistaharmoniresidencesDPM
+1151,rental,Trinity Wellnessa,Ampang,EX,trinitywellnessaEX
+1152,rental,Selayang Point,Selayang,ADL,selayangpointADL
+1153,rental,Vista Harmoni Residences,Sentul,DPM,vistaharmoniresidencesDPM
+1155,rental,Residensi Adelia 3,Kajang,NS,residensiadelia3NS
+1158,rental,Residensi Bandar Bukit Mahkota,Bangi,FPR,residensibandarbukitmahkotaFPR
+1159,rental,Diamond Residence,Kajang,FPR,diamondresidenceFPR
+1160,rental,Cerrado Suites,Bangi,FPR,cerradosuitesFPR
+1161,rental,Bandar Seri Putra Terrace House,Bangi,FPR,bandarseriputraterracehouseFPR
+1162,rental,Bandar Seri Putra Shoplot,Bangi,FPR,bandarseriputrashoplotFPR
+1163,rental,Sentul Point Suites,Sentul,EX,sentulpointsuitesEX
+1164,rental,Rica Residence,Sentul,ADL,ricaresidenceADL
+1166,rental,Residensi MAX,Sentul,ADL,residensimaxADL
+1168,rental,Kiambang Apartment,Puchong,EX,kiambangapartmentEX
+1169,subsale,The Pulse Residence,Puchong,DPM,thepulseresidenceDPM
+1170,rental,Parkland Residence,Kajang,NS,parklandresidenceNS
+1172,rental,SOHO Trio Permai,Seri Kembangan,ADL,sohotriopermaiADL
+1173,rental,Rafflesia Sentul Condominium,Sentul,ADL,rafflesiasentulcondominiumADL
+1174,rental,M Luna,Kepong,ADL,mlunaADL
+1175,rental,UBN Apartment,Kuala Lumpur,LRH,ubnapartmentLRH
+1176,rental,Sensory Tower B,Bangi,NS,sensorytowerbNS
+1177,rental,Mutiara Magna,Kepong,EX,mutiaramagnaEX
+1179,subsale,The Zizz,Petaling Jaya / Damansara,EXP,thezizzEXP
+1180,rental,M Suites,Ampang,EX,msuitesEX
+1182,rental,Almyra Residences,Bangi,NS,almyraresidencesNS
+1184,subsale,Unio Residence,Kepong,EXP,unioresidenceEXP
+1185,subsale,Semi-D Nusaputra,Puchong,EXP,semidnusaputraEXP
+1186,subsale,3 Storey Terrace Nassim Heights,Ampang,EXP,3storeyterracenassimheightsEXP
+1187,subsale,3 Storey Bungalow Anjung Melati,Selayang,EXP,3storeybungalowanjungmelatiEXP
+1188,rental,Penaga,Selayang,ADL,penagaADL
+1189,rental,Nexus Taman Pertama,Ampang,FPR,nexustamanpertamaFPR
+1190,rental,Residensi Emas @ Kajang 2,Kajang,NS,residensiemaskajang2NS
+1191,rental,Kajang 2-Storey Terrace,Kajang,NS,kajang2storeyterraceNS
+1192,subsale,2.5 Storey Terrace Taman Desa Gemilang,Kuala Lumpur,EXP,25storeyterracetamandesagemilangEXP
+1194,subsale,Ampang Putra Residency,Ampang,EXP,ampangputraresidencyEXP
+1195,subsale,2 Storey Terrace Taman Perepat Indah,Klang,EXP,2storeyterracetamanperepatindahEXP
+1196,rental,Mas Court,Kepong,EX,mascourtEX
+1197,rental,M City,Ampang,EX,mcityEX
+1198,rental,Minest Residence,Sentul,ADL,minestresidenceADL
+1199,rental,Residensi Sky Awani 2,Sentul,ADL,residensiskyawani2ADL
+1201,subsale,2 Storey Terrace Verna Serene Heights,Kajang,EXP,2storeyterracevernasereneheightsEXP
+1202,subsale,Arte Plus,Ampang,EXP,arteplusEXP
+1203,subsale,Ashino @ Gravit8,Klang,EXP,ashinogravit8EXP
+1206,subsale,Conezion Residence,Cyberjaya / Putrajaya,EXP,conezionresidenceEXP
+1208,subsale,Taman Bukit Teratai,Cheras,EXP,tamanbukitterataiEXP
+1209,subsale,Residential Land Kota Emerald East,Rawang,EXP,residentiallandkotaemeraldeastEXP
+1211,subsale,Tiara Duta Condominium,Ampang,EXP,tiaradutacondominiumEXP
+1212,subsale,Tiara Duta Condominium,Ampang,EXP,tiaradutacondominiumEXP
+1213,subsale,Tanah Sungai Lui,Kajang,EXP,tanahsungailuiEXP
+1214,subsale,Tanah Durian Kuang,Sungai Buloh,RSS,tanahduriankuangRSS
+1215,subsale,Tanah Banglo Bandar Tasik Kesuma,Kajang,RSS,tanahbanglobandartasikkesumaRSS
+1216,subsale,Taman Ikhlas,Sepang,EXP,tamanikhlasEXP
+1217,subsale,Sungai Lui,Kajang,EXP,sungailuiEXP
+1218,subsale,Suasana Lumayan Condominium Penthouse,Cheras,EXP,suasanalumayancondominiumpenthouseEXP
+1221,subsale,Seasons Garden Residences,Setapak,EXP,seasonsgardenresidencesEXP
+1223,subsale,Putra Suria Residence,Kuala Lumpur,EXP,putrasuriaresidenceEXP
+1224,subsale,Puteri Court Condominium,Ampang,EXP,putericourtcondominiumEXP
+1225,subsale,Plaza Grand Regency,Cheras,EXP,plazagrandregencyEXP
+1226,subsale,Platinum Lake PV 10 Condominium,Setapak,EXP,platinumlakepv10condominiumEXP
+1227,subsale,Park Avenue Damansara Damai,Petaling Jaya / Damansara,EXP,parkavenuedamansaradamaiEXP
+1229,subsale,Neu Suites @ Ampang,Kuala Lumpur,EXP,neusuitesampangEXP
+1230,subsale,Laman Tasik Condominium,Cheras,EXP,lamantasikcondominiumEXP
+1231,subsale,Kaleidoscope Setiawangsa Residensi,Kuala Lumpur,EXP,kaleidoscopesetiawangsaresidensiEXP
+1233,subsale,Flora Damansara,Petaling Jaya / Damansara,ZYP,floradamansaraZYP
+1236,subsale,Emerald Diamond Townhouse,Kajang,EXP,emeralddiamondtownhouseEXP
+1237,subsale,D'Puncak Suasana Apartment,Cheras,EXP,dpuncaksuasanaapartmentEXP
+1238,subsale,Double Storey Terrace Taman Bukit Belimbing,Seri Kembangan,EXP,doublestoreyterracetamanbukitbelimbingEXP
+1239,subsale,Double Storey Terrace,Cheras,EXP,doublestoreyterraceEXP
+1240,subsale,Double Storey Corner Lot Seksyen 6,Kajang,EXP,doublestoreycornerlotseksyen6EXP
+1241,subsale,DeCentrum SOHO Duplex,Kajang,EXP,decentrumsohoduplexEXP
+1242,subsale,Crystal Tower Condominium,Ampang,EXP,crystaltowercondominiumEXP
+1243,subsale,City Garden Orchid Court Condominium,Ampang,EXP,citygardenorchidcourtcondominiumEXP
+1245,subsale,Bintang Mas Condominium,Cheras,EXP,bintangmascondominiumEXP
+1246,subsale,Bayu Puteri Apartment,Petaling Jaya / Damansara,EXP,bayuputeriapartmentEXP
+1247,rental,Bandar Baru Bangi 2-Storey Semi-Detached,Kajang,EX,bandarbarubangi2storeysemidetachedEX
+1248,subsale,Baiduri Apartment,Kuala Lumpur,EXP,baiduriapartmentEXP
+1249,subsale,Aseana Puteri Condominium,Puchong,EXP,aseanaputericondominiumEXP
+1251,subsale,Amara Residences,Selayang,EXP,amararesidencesEXP
+1252,subsale,2-Storey Superlink Bandar Nusaputra,Puchong,EXP,2storeysuperlinkbandarnusaputraEXP
+1253,subsale,2.5-Storey Semi-D,Klang,EXP,25storeysemidEXP
+1254,subsale,2.5-Storey Landed House Bukit Permata,Selayang,EXP,25storeylandedhousebukitpermataEXP
+1255,rental,Jalan Bukit Kuda Shoplot,Klang,DPM,jalanbukitkudashoplotDPM
+1256,subsale,Bandar Puteri,Klang,EXP,bandarputeriEXP
+1257,rental,The Tamarind @ Sentul East,Sentul,ADL,thetamarindsentuleastADL
+1262,rental,M Arisa,Sentul,ADL,marisaADL
+1263,subsale,Prima Saujana,Kajang,EXP,primasaujanaEXP
+1265,rental,Residensi Amansuri,Cheras,EX,residensiamansuriEX
+1266,rental,Parc 3 Residences,Cheras,ADL,parc3residencesADL
+1270,subsale,Grandeur Tower,Ampang,EXP,grandeurtowerEXP
+1278,subsale,2 Storey Terrace Taman Subang Murni,Shah Alam,RSS,2storeyterracetamansubangmurniRSS
+1282,subsale,Sri Alam Condominium,Shah Alam,DPM,srialamcondominiumDPM
+1292,subsale,Suria Residence @ Bukit Jelutong,Shah Alam,HRK,suriaresidencebukitjelutongHRK
+1293,subsale,Elmina Green 3,Shah Alam,EXP,elminagreen3EXP
+1295,subsale,Divina,Shah Alam,EXP,divinaEXP
+1314,subsale,Taman Desiran Bayu Semi D,Puchong,EXP,tamandesiranbayusemidEXP
+1321,rental,LakePark Residence @ KL North,Selayang,ADL,lakeparkresidenceklnorthADL
+1324,rental,Residensi Adelia 3,Kajang,NS,residensiadelia3NS
+1325,rental,Giverny Walk,Sepang,FPR,givernywalkFPR
+1326,rental,168 Park Residensi Selayang,Selayang,ADL,168parkresidensiselayangADL
+1327,rental,Mirai Residences,Kajang,EX,mirairesidencesEX
+1328,rental,Brezza Hill,Ampang,ADL,brezzahillADL
+1331,subsale,Q Avenue @ Queensville,Cheras,DPM,qavenuequeensvilleDPM
+1332,rental,Astetica Residence,Seri Kembangan,ADL,asteticaresidenceADL
+1333,rental,The Jalil,Seri Kembangan,ADL,thejalilADL
+1334,rental,Villa Park,Seri Kembangan,ADL,villaparkADL
+1335,rental,Palmyra Residences,Bangi,NS,palmyraresidencesNS
+1336,rental,Residensi Emas @ Kajang 2,Kajang,NS,residensiemaskajang2NS
+1338,rental,Jardin Residence 2-Storey Terrace,Sungai Buloh,ADL,jardinresidence2storeyterraceADL
+1339,rental,Residensi Mutiara Kajang 2,Kajang,NS,residensimutiarakajang2NS
+1340,rental,M Suites,Ampang,ADL,msuitesADL
+1343,subsale,Astana Lumayan,Cheras,EXP,astanalumayanEXP
+1344,rental,3 Elements,Seri Kembangan,ADL,3elementsADL
+1345,subsale,Hon Residensi CGCC,Ampang,EXP,honresidensicgccEXP
+1346,rental,168 Park Selayang,Selayang,EX,168parkselayangEX
+1347,rental,Residensi Sutera 7,Kajang,NS,residensisutera7NS
+1348,rental,Palmyra Residence,Kajang,NS,palmyraresidenceNS
+1349,rental,Bukit Tiara Residensi,Kajang,NS,bukittiararesidensiNS
+1350,rental,Rentak Perdana 2-Storey Terrace,Puncak Alam,HF,rentakperdana2storeyterraceHF
+1351,rental,Residensi Emas @ Kajang 2,Kajang,NS,residensiemaskajang2NS
+1353,subsale,UNA Residensi Peel,Cheras,EXP,unaresidensipeelEXP
+1354,subsale,3 Storey Terrace Taman Ukay Perdana,Ampang,EXP,3storeyterracetamanukayperdanaEXP
+1355,subsale,Bungalow Taman Bandar Puteri,Rawang,EXP,bungalowtamanbandarputeriEXP
+1356,subsale,Almyra Residence,Kajang,EXP,almyraresidenceEXP
+1357,subsale,2 Storey Terrace Taman Lestari Putra,Seri Kembangan,EXP,2storeyterracetamanlestariputraEXP
+1358,subsale,3 Storey Terrace Dumalis 16 Sierra,Puchong,EXP,3storeyterracedumalis16sierraEXP
+1359,subsale,Cube @ One South,Seri Kembangan,FRH,cubeonesouthFRH
+1360,subsale,Laman Oakleaf Bukit Antarabangsa,Ampang,EXP,lamanoakleafbukitantarabangsaEXP
+1362,subsale,2 Storey Terrace Taman Seri Mewah,Klang,EXP,2storeyterracetamanserimewahEXP
+1363,subsale,Verondo Residence,Petaling Jaya / Damansara,EXP,verondoresidenceEXP
+1364,subsale,Verdale @ Alam Sari,Bangi,EXP,verdalealamsariEXP
+1365,subsale,V Residence 3,Cheras,EXP,vresidence3EXP
+1366,subsale,Ukay Bistari,Ampang,EXP,ukaybistariEXP
+1368,subsale,Traders Garden,Cheras,EXP,tradersgardenEXP
+1369,subsale,Taman Pelangi Semenyih 2,Kajang,EXP,tamanpelangisemenyih2EXP
+1370,subsale,Taman Jasmin Kajang,Kajang,EXP,tamanjasminkajangEXP
+1371,subsale,Sungai Kapar Indah,Klang,RSS,sungaikaparindahRSS
+1373,subsale,Single Storey Terrace Felicia,Klang,EXP,singlestoreyterracefeliciaEXP
+1374,subsale,Shop Apartment Bandar Baru Ampang,Ampang,EXP,shopapartmentbandarbaruampangEXP
+1375,subsale,Residensi PR1MA Alam Damai,Cheras,EXP,residensipr1maalamdamaiEXP
+1376,subsale,Residensi Idaman Abadi,Kajang,EXP,residensiidamanabadiEXP
+1377,subsale,Queensbury Mahkota Hills,Nilai,EXP,queensburymahkotahillsEXP
+1378,subsale,Puchong Selangor,Puchong,RSS,puchongselangorRSS
+1381,subsale,Menara U2,Shah Alam,HRK,menarau2HRK
+1382,subsale,Jalan Rodat Bandar Bukit Raja,Klang,HRK,jalanrodatbandarbukitrajaHRK
+1383,subsale,Jalan Komoditi 23/9B Seksyen 23,Shah Alam,EXP,jalankomoditi239bseksyen23EXP
+1384,subsale,Gaia Taman Sering Ukay,Ampang,EXP,gaiatamanseringukayEXP
+1388,subsale,Cerrado @ Southville City,Bangi,EXP,cerradosouthvillecityEXP
+1389,subsale,Casa Bluebell Townhouse,Cyberjaya / Putrajaya,ZYP,casabluebelltownhouseZYP
+1391,subsale,Bukit Mahkota Double Storey Endlot,Bangi,RSS,bukitmahkotadoublestoreyendlotRSS
+1392,subsale,Astoria Ampang,Ampang,EXP,astoriaampangEXP
+1394,subsale,Ampang Saujana Semi D Cluster,Ampang,EXP,ampangsaujanasemidclusterEXP
+1398,rental,Residensi Mutiara Kajang 2,Kajang,ADL,residensimutiarakajang2ADL
+1403,rental,Tropical Villa,Seri Kembangan,FPR,tropicalvillaFPR
+1406,rental,Residensi Dian 2,Shah Alam,ADL,residensidian2ADL
+1411,subsale,Bukit Cherakah,Shah Alam,CE,bukitcherakahCE
+1416,rental,D'Alamanda,Cheras,ADL,dalamandaADL
+1418,rental,One Cochrane Residences,Cheras,DPM,onecochraneresidencesDPM
+1419,rental,One Cochrane Residences,Cheras,DPM,onecochraneresidencesDPM
+1423,rental,Serenia Amani,Sepang,FPR,sereniaamaniFPR
+1424,rental,Sensory Residence,Bangi,FPR,sensoryresidenceFPR
+1425,rental,Sensory Residence,Bangi,FPR,sensoryresidenceFPR
+1426,rental,Monet Springtime,Sepang,FPR,monetspringtimeFPR
+1428,rental,Sky Bungalow @ Green Beverly Hills,Nilai,DPM,skybungalowgreenbeverlyhillsDPM
+1430,rental,The Elements,Ampang,EX,theelementsEX
+1431,rental,Meta Residences,Seri Kembangan,DPM,metaresidencesDPM
+1435,rental,Desa Impiana,Puchong,NS,desaimpianaNS
+1436,rental,Desa Impiana,Puchong,EX,desaimpianaEX
+1437,rental,Kaseh Heights 3-Storey Terrace,Kajang,ADL,kasehheights3storeyterraceADL
+1439,rental,BSP Idaman Apartment,Puchong,ADL,bspidamanapartmentADL
+1440,rental,Pearl Avenue,Kajang,NS,pearlavenueNS
+1441,subsale,Vista Indah Putra,Klang,EXP,vistaindahputraEXP
+1443,subsale,2 Storey Terrace M3 Residence,Kajang,RSS,2storeyterracem3residenceRSS
+1444,subsale,Vista Bayu Apartment,Klang,RSS,vistabayuapartmentRSS
+1445,subsale,Univ 360 Place,Seri Kembangan,EXP,univ360placeEXP
+1446,subsale,Tanah Pertanian Sepang,Sepang,RSS,tanahpertaniansepangRSS
+1447,subsale,Tanah Pertanian Kg Salak Tinggi,Sepang,RSS,tanahpertaniankgsalaktinggiRSS
+1449,subsale,Taman Setia Impian 2 Storey Terrace,Klang,EXP,tamansetiaimpian2storeyterraceEXP
+1450,subsale,Taman Permai Jaya,Ampang,EXP,tamanpermaijayaEXP
+1451,subsale,Taman Paroi Jaya Corner Terrace,Nilai,EXP,tamanparoijayacornerterraceEXP
+1452,subsale,Taman Indah Puteri,Sepang,EXP,tamanindahputeriEXP
+1453,subsale,Taman Desa Permai,Shah Alam,EXP,tamandesapermaiEXP
+1454,subsale,Sungai Lui,Kajang,EXP,sungailuiEXP
+1456,subsale,Sri Pinang Villa Apartment,Ampang,EXP,sripinangvillaapartmentEXP
+1457,subsale,Simfoni 2 Residences,Kajang,EXP,simfoni2residencesEXP
+1458,subsale,Serissa Terrace Denai Alam,Shah Alam,EXP,serissaterracedenaialamEXP
+1459,subsale,Seri Riana Residence,Setapak,EXP,seririanaresidenceEXP
+1461,subsale,Residensi KLIA,Nilai,RSS,residensikliaRSS
+1463,subsale,Juta Mines Condominium,Seri Kembangan,EXP,jutaminescondominiumEXP
+1464,subsale,Jenderam Hulu,Sepang,EXP,jenderamhuluEXP
+1465,subsale,Hyde Tower,Shah Alam,EXP,hydetowerEXP
+1466,subsale,Grandeur Tower Apartment,Ampang,EXP,grandeurtowerapartmentEXP
+1467,subsale,Double Storey Taman Bukit Ria,Kajang,EXP,doublestoreytamanbukitriaEXP
+1470,subsale,Brezza Hill Condominium,Ampang,EXP,brezzahillcondominiumEXP
+1473,subsale,Amber Residence Gamuda,Klang,EXP,amberresidencegamudaEXP
+1474,subsale,3-Storey Semi-D Broadleaf Residences,Shah Alam,EXP,3storeysemidbroadleafresidencesEXP
+1475,rental,Kaseh Heights,Semenyih,ADL,kasehheightsADL
+1478,subsale,Bandar Hillpark,Puncak Alam,EXP,bandarhillparkEXP
+1481,subsale,2 Storey Terrace M3 Residence,Kajang,EXP,2storeyterracem3residenceEXP
+1483,rental,Townsquare @ Gamuda Cove,Dengkil,DPM,townsquaregamudacoveDPM
+1485,subsale,Tropicana Aman Bayan,Klang,EXP,tropicanaamanbayanEXP
+1486,subsale,Taman Desa Gemilang,Selayang,EXP,tamandesagemilangEXP
+1489,rental,Bayu Residensi,Selayang,ADL,bayuresidensiADL
+1490,subsale,2 Storey Terrace Irama Perdana,Puncak Alam,EXP,2storeyterraceiramaperdanaEXP
+1492,subsale,2 Storey Terrace Taman Alam Indah,Shah Alam,EXP,2storeyterracetamanalamindahEXP
+1493,subsale,Residential Land Dengkil,Sepang,RSS,residentiallanddengkilRSS
+1497,subsale,2 Storey Terrace Cahaya SPK,Shah Alam,EXP,2storeyterracecahayaspkEXP
+1498,subsale,Homestay + Motel Complex Kuah Langkawi,Langkawi,RSS,homestaymotelcomplexkuahlangkawiRSS
+1499,subsale,Tiara Imperio,Bangi,RSS,tiaraimperioRSS
+1500,subsale,Tanah Tepi Highway PLUS,Selangor,EXP,tanahtepihighwayplusEXP
+1501,subsale,Taman Mawar 2,Sepang,EXP,tamanmawar2EXP
+1502,subsale,Taman Indah KLIA,Sepang,EXP,tamanindahkliaEXP
+1503,subsale,Skylake Residence,Puchong,EXP,skylakeresidenceEXP
+1504,subsale,Serenia Aqila,Sepang,EXP,sereniaaqilaEXP
+1505,subsale,Pangsapuri Cengal Cheras,Cheras,RSS,pangsapuricengalcherasRSS
+1507,subsale,Nusari Aman 2,Nilai,ZYP,nusariaman2ZYP
+1508,subsale,Magna Ville Condominium,Selayang,EXP,magnavillecondominiumEXP
+1509,subsale,Kita Impian Apartment @ Cybersouth,Sepang,EXP,kitaimpianapartmentcybersouthEXP
+1510,subsale,Jalan Kapar–Teluk Intan,Perak,RSS,jalankapartelukintanRSS
+1511,subsale,Dusun Durian Musang King,Selayang,RSS,dusundurianmusangkingRSS
+1512,subsale,Double Storey Davina Nilai Impian,Nilai,RSS,doublestoreydavinanilaiimpianRSS
+1514,subsale,Bukit Rahman Putra,Sungai Buloh,EXP,bukitrahmanputraEXP
+1517,subsale,Bandar Serenia,Sepang,EXP,bandarsereniaEXP
+1520,subsale,Apartment Duta Perintis,Puncak Alam,CND,apartmentdutaperintisCND
+1521,subsale,Ampang Putra Residensi,Ampang,EXP,ampangputraresidensiEXP
+1522,subsale,Amansiara Townhouse,Selayang,EXP,amansiaratownhouseEXP
+1524,subsale,Taman Bernam Jaya,-,EXP,tamanbernamjayaEXP
+1525,rental,Idaman Melur,Dengkil,NS,idamanmelurNS
+1526,subsale,2 Storey Terrace Taman Langat Utama,Sepang,EXP,2storeyterracetamanlangatutamaEXP
+1527,subsale,The Starling Bandar Rimbayu,Klang,EXP,thestarlingbandarrimbayuEXP
+1529,subsale,Taman Cahaya Alam U12,Shah Alam,EXP,tamancahayaalamu12EXP
+1530,subsale,Green Acre Park Condominium,Kajang,EXP,greenacreparkcondominiumEXP
+1531,subsale,Aquila Taman Alam Sutera,Puncak Alam,HRK,aquilatamanalamsuteraHRK
+1533,subsale,Kota Warisan Saujana KLIA,Sepang,RSS,kotawarisansaujanakliaRSS
+1534,subsale,Dataran Templer,Selayang,EXP,datarantemplerEXP
+1535,rental,Harmoni Elmina 1,Shah Alam,LNS,harmonielmina1LNS
+1537,subsale,Monet Springtime,Sepang,EXP,monetspringtimeEXP
+1538,subsale,Monet Springtime,Sepang,EXP,monetspringtimeEXP2
+1539,rental,Lexa Residence @ The Quartz,Kuala Lumpur,ADL,lexaresidencethequartzADL
+1541,rental,The Holmes,Cheras,ADL,theholmesADL2
+1542,rental,The Paxtonz,Petaling Jaya / Damansara,ADL,thepaxtonzADL2
+1543,rental,Residensi Zamrud,Kajang,ADL,residensizamrudADL2
+1544,rental,Minest Residence,Sentul,ADL,minestresidenceADL2
+1545,rental,Razak City Residences,Kuala Lumpur,ADL,razakcityresidencesADL2
+1546,rental,Residensi Sateria,Kuala Lumpur,NS,residensisateriaNS2
+1547,rental,3 Towers,Ampang,EX,3towersEX
+1548,rental,LBS Skylake Residence,Puchong,HF,lbsskylakeresidenceHF
+1551,subsale,Penduline (End Lot),Klang,MMN,pendulineendlotMMN
+1562,rental,Pangsapuri Serai Wangi,Shah Alam,-,pangsapuriseraiwangi-
+1563,rental,Apartment Puchong Permata 1,Puchong,ADL,apartmentpuchongpermata1ADL2
+1564,rental,Sri Penara Apartment,Cheras,EX,sripenaraapartmentEX
+1565,subsale,Riverdale @ USJ One Park,Subang Jaya,EXP,riverdaleusjoneparkEXP
+1566,subsale,Sri Pelangi,Setapak,LSY,sripelangiLSY
