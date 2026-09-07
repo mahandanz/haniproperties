@@ -601,6 +601,19 @@ function wa(text) {
   return `https://wa.me/60125459182?text=${encodeURIComponent(text)}`;
 }
 
+/* ── Parse "d/m/yyyy" (as used in the date_added column) into a
+   sortable timestamp. Missing/blank/"-" values sort last. ── */
+function parseDateAdded(d) {
+  if (!d || d === '-') return -Infinity;
+  const parts = d.split('/');
+  if (parts.length !== 3) return -Infinity;
+  const day = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10);
+  const year = parseInt(parts[2], 10);
+  if (!day || !month || !year) return -Infinity;
+  return new Date(year, month - 1, day).getTime();
+}
+
 function moveInText(val) {
   const v = (val || '').trim();
   if (!v || v === '-') return '';
@@ -668,6 +681,10 @@ function renderResults() {
   const grid = document.getElementById('results-grid');
   const title = document.getElementById('results-title');
   const count = document.getElementById('filter-count');
+
+  // Latest listings first, based on the date_added column.
+  filteredListings.sort((a, b) => parseDateAdded(b.date_added) - parseDateAdded(a.date_added));
+
   const n = filteredListings.length;
 
   if (n === 0) {
