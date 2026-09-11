@@ -217,7 +217,7 @@
 
   <div class="hero-search-label">🔎 Search by area or project name</div>
   <div class="hero-search-wrap">
-    <input type="search" class="hero-search-input" id="hero-search" placeholder="Try 'Shah Alam 3 bed' or 'Cyberjaya fully furnished'…" autocomplete="off" />
+    <input type="search" class="hero-search-input" id="hero-search" placeholder="Try 'Shah Alam 3 bed', 'Cyberjaya fully furnished', or 'code:MMN'…" autocomplete="off" />
   </div>
 
   <div class="hero-filter-bar" id="hero-filter-bar">
@@ -428,10 +428,43 @@ function populateAreaFilter() {
 /* ── Search ─────────────────────────────────────────────── */
 function searchListings(query) {
   if (!query || query.length < 1) return allListings;
-  const tokens = query.toLowerCase().split(/\s+/);
+  let q = query.trim();
+
+  // Explicit "code:XXX" pattern forces an exact COA-code match, and can be
+  // combined with other search words anywhere in the query, e.g.
+  // "code:fpr shah alam" or "shah alam code:fpr".
+  let codeFilter = null;
+  const codePattern = q.match(/code:\s*([a-z0-9]+)/i);
+  if (codePattern) {
+    codeFilter = codePattern[1].toLowerCase();
+    q = (q.slice(0, codePattern.index) + q.slice(codePattern.index + codePattern[0].length)).trim();
+  }
+
+  const tokens = q.length ? q.toLowerCase().split(/\s+/) : [];
+
+  if (codeFilter !== null) {
+    return allListings.filter(r => {
+      if ((r.code || '').toLowerCase() !== codeFilter) return false;
+      if (tokens.length === 0) return true;
+      const haystack = [r.listing_type, r.area, r.zone, r.project_name,
+        r.type, r.furnishing, getPrice(r), r.bed, r.size, r.anchors].join(' ').toLowerCase();
+      return tokens.every(t => haystack.includes(t));
+    });
+  }
+
+  // A single bare word that exactly matches a COA code (e.g. "FPR", "MMN")
+  // still works as a shortcut, without needing the code: prefix. Short 2-3
+  // letter codes (e.g. "CE", "EX") are common English letter-pairs that would
+  // otherwise match hundreds of unrelated listings via fuzzy substring search
+  // just because the letters appear inside words like "Residence".
+  if (tokens.length === 1) {
+    const codeMatches = allListings.filter(r => (r.code || '').toLowerCase() === tokens[0]);
+    if (codeMatches.length > 0) return codeMatches;
+  }
+
   return allListings.filter(r => {
     const haystack = [r.listing_type, r.area, r.zone, r.project_name,
-      r.type, r.furnishing, getPrice(r), r.bed, r.size, r.anchors].join(' ').toLowerCase();
+      r.type, r.furnishing, getPrice(r), r.bed, r.size, r.anchors, r.code].join(' ').toLowerCase();
     return tokens.every(t => haystack.includes(t));
   });
 }
