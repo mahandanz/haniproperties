@@ -101,12 +101,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haniproperties.com/area/local/bangi.html</loc>
-    <lastmod>2026-09-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://haniproperties.com/area/local/bukit-jalil.html</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -125,7 +119,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haniproperties.com/area/local/kajang.html</loc>
+    <loc>https://haniproperties.com/area/local/kajang-bangi.html</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
