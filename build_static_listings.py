@@ -6,14 +6,26 @@ Reads listings.csv and injects pre-rendered ("SSR") listing cards into each
 area/local/*.html page, so the raw HTML contains real listing content
 (project name, price, zone, etc.) instead of just "Loading listings...".
 
+Also injects a pre-rendered ("SSR") copy of the area directory into
+kawasan.html, so the 25 area cards (and their links to area/local/*.html)
+are present in the raw HTML instead of only existing inside a client-side
+<script> that built them at runtime.
+
 This is progressive enhancement, not a replacement:
-- Your existing client-side JS (fetch + applyFilters) still runs exactly as
-  before and takes over once loaded, giving live filtering/search.
+- Your existing client-side JS (fetch + applyFilters, and kawasan.html's
+  renderAreas()) still runs exactly as before and takes over once loaded,
+  giving live filtering/search.
 - Search engines and AI crawlers that don't execute JS now see real content
   on first load instead of an empty placeholder.
 
 Safe to re-run any time listings.csv changes — it replaces only the content
 between the SSR markers, it does not duplicate on repeat runs.
+
+The AREAS list below is the single source of truth for the area directory:
+each run re-renders both the static SSR cards AND the inline `const AREAS`
+JS array inside kawasan.html from this one list, so the two can never drift
+out of sync. To add/remove/edit an area, edit AREAS here and re-run — do not
+hand-edit the AREAS array inside kawasan.html anymore.
 
 Usage:
     python3 build_static_listings.py
@@ -29,6 +41,8 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 LISTINGS_CSV = ROOT / "listings.csv"
 AREA_DIR = ROOT / "area" / "local"
+KAWASAN_PATH = ROOT / "kawasan.html"
+HOMEPAGE_PATH = ROOT / "index.html"
 WA_BASE = "https://wa.me/60125459182?text="
 
 SSR_START = "<!--SSR_START-->"
@@ -95,9 +109,9 @@ def card_image(r: dict) -> str:
         )
         nav = (
             '<button type="button" class="card-img-nav prev" '
-            'onclick="cardImgNav(event,this,-1)" aria-label="Previous photo">\u2039</button>'
+            'onclick="cardImgNav(event,this,-1)" aria-label="Previous photo">‹</button>'
             '<button type="button" class="card-img-nav next" '
-            'onclick="cardImgNav(event,this,1)" aria-label="Next photo">\u203a</button>'
+            'onclick="cardImgNav(event,this,1)" aria-label="Next photo">›</button>'
             f'<div class="card-img-dots">{dots}</div>'
         )
 
@@ -269,7 +283,7 @@ def inject_grid(html_text: str, grid_id: str, cards_markup: str) -> str:
         re.DOTALL,
     )
     loading_pattern = re.compile(
-        rf'(<div class="listing-grid" id="{grid_id}"><div class="loading">Loading listings\u2026</div>)(</div>)'
+        rf'(<div class="listing-grid" id="{grid_id}"><div class="loading">Loading listings…</div>)(</div>)'
     )
     replacement = rf'\g<1>{SSR_START}{cards_markup}{SSR_END}\g<2>'
 
@@ -319,6 +333,176 @@ def process_area_file(path: Path, all_rows):
 
     path.write_text(text, encoding="utf-8")
     print(f"  {path.name}: {area} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale, {len(lelongs)} lelong")
+
+
+# ---------------------------------------------------------------------------
+# Area directory (kawasan.html)
+#
+# AREAS is the single source of truth for the "Areas We Cover" directory.
+# Each run re-renders both:
+#   1. the static SSR cards inside <div id="area-results"> in kawasan.html
+#   2. the inline `const AREAS = [...]` JS array inside the same file
+# from this one list, so the crawlable static HTML and the client-side
+# renderAreas() script can never drift apart. Edit AREAS here, not in the
+# HTML file.
+# ---------------------------------------------------------------------------
+
+AREAS = [
+    {"slug": "shah-alam", "name": "Shah Alam", "region": "Selangor", "popular": True, "tag": "UiTM, Blue Mosque, PKNS"},
+    {"slug": "setia-alam", "name": "Setia Alam", "region": "Selangor", "tag": "Setia City Mall, Setia Eco Park, NKVE"},
+    {"slug": "petaling-jaya", "name": "Petaling Jaya / Damansara", "region": "Selangor", "popular": True, "tag": "1 Utama, IKEA Damansara, The Curve"},
+    {"slug": "puchong", "name": "Puchong", "region": "Selangor", "popular": True, "tag": "IOI Mall, Setiawalk, PFCC"},
+    {"slug": "subang-jaya", "name": "Subang Jaya", "region": "Selangor", "popular": True, "tag": "Sunway Pyramid, Empire, SS15"},
+    {"slug": "klang", "name": "Klang", "region": "Selangor", "popular": True, "tag": "Bandar Botanic, AEON Bukit Tinggi"},
+    {"slug": "kajang-bangi", "name": "Kajang & Bangi", "region": "Selangor", "tag": "MRT Kajang, UKM, IOI Mall Bangi"},
+    {"slug": "semenyih", "name": "Semenyih", "region": "Selangor", "tag": "UNITEN, EcoHill Mall"},
+    {"slug": "seri-kembangan", "name": "Seri Kembangan", "region": "Selangor", "tag": "The Mines, MRT Serdang Jaya"},
+    {"slug": "cyberjaya-putrajaya", "name": "Cyberjaya / Putrajaya", "region": "Selangor", "tag": "MMU, IOI City Mall, KLIA Transit"},
+    {"slug": "sepang", "name": "Sepang / Banting / Dengkil", "region": "Selangor", "tag": "KLIA, klia2, Sepang Circuit"},
+    {"slug": "bandar-saujana-putra", "name": "Bandar Saujana Putra", "region": "Selangor", "tag": "Cyberjaya, Putra Heights, ELITE Hwy"},
+    {"slug": "rimbayu-tpg", "name": "Rimbayu / TPG", "region": "Selangor", "tag": "Central Park, Kota Kemuning"},
+    {"slug": "puncak-alam", "name": "Puncak Alam", "region": "Selangor", "tag": "UiTM Puncak Alam, AEON Bukit Raja"},
+    {"slug": "rawang", "name": "Rawang", "region": "Selangor", "tag": "KTM Rawang, Templer Park"},
+    {"slug": "sungai-buloh", "name": "Sungai Buloh", "region": "Selangor", "tag": "MRT/KTM Interchange, Sierramas"},
+    {"slug": "kuala-lumpur", "name": "Kuala Lumpur", "region": "Kuala Lumpur", "popular": True, "tag": "KLCC, Bukit Bintang, Mid Valley"},
+    {"slug": "bukit-jalil", "name": "Bukit Jalil", "region": "Kuala Lumpur", "popular": True, "tag": "Pavilion, National Stadium, LRT"},
+    {"slug": "cheras", "name": "Cheras", "region": "Kuala Lumpur", "popular": True, "tag": "Sunway Velocity, IKEA, Taman Connaught"},
+    {"slug": "ampang", "name": "Ampang", "region": "Kuala Lumpur", "popular": True, "tag": "Jalan Ampang, AKLEH, KL Golden Triangle"},
+    {"slug": "kepong", "name": "Kepong", "region": "Kuala Lumpur", "popular": True, "tag": "Desa ParkCity, KTM Kepong"},
+    {"slug": "setapak", "name": "Setapak", "region": "Kuala Lumpur", "tag": "UTAR, Wangsa Walk Mall"},
+    {"slug": "sentul", "name": "Sentul", "region": "Kuala Lumpur", "tag": "Sentul Timur LRT, KL Sentral"},
+    {"slug": "selayang", "name": "Selayang", "region": "Kuala Lumpur", "tag": "Batu Caves, Selayang Hospital"},
+    {"slug": "nilai", "name": "Nilai", "region": "Negeri Sembilan", "tag": "USIM, INTI University, AEON Nilai"},
+]
+
+REGION_ORDER = ["Selangor", "Kuala Lumpur", "Negeri Sembilan"]
+
+
+def area_card_html(a: dict) -> str:
+    """Mirrors kawasan.html's client-side cardHtml() function exactly, so the
+    SSR markup and the JS-rendered markup are visually identical."""
+    popular = bool(a.get("popular"))
+    popular_class = " popular" if popular else ""
+    badge = '<span class="badge-popular">Popular</span>' if popular else ""
+    name = html.escape(a["name"], quote=True)
+    tag = html.escape(a["tag"], quote=False)
+    slug = a["slug"]
+    return (
+        f'<a class="area-card{popular_class}" href="area/local/{slug}.html">'
+        f'<img class="area-card-img" src="/images/areas/{slug}.webp" alt="{name}" '
+        f'loading="lazy" width="112" height="112" onerror="this.style.display=\'none\'">'
+        f'<div class="area-card-body">'
+        f'<div class="area-card-name">{name}{badge}</div>'
+        f'<div class="area-card-tag">{tag}</div>'
+        f'</div></a>'
+    )
+
+
+def render_area_directory_html() -> str:
+    """Mirrors kawasan.html's client-side renderAreas() function: groups
+    AREAS by region (in REGION_ORDER) and renders each region's label + grid."""
+    blocks = []
+    for region in REGION_ORDER:
+        items = [a for a in AREAS if a["region"] == region]
+        if not items:
+            continue
+        count_label = f'{len(items)} area{"s" if len(items) != 1 else ""}'
+        cards = "".join(area_card_html(a) for a in items)
+        blocks.append(
+            f'<div class="region-label"><span>{html.escape(region)}</span>'
+            f'<span class="region-count">{count_label}</span></div>'
+            f'<div class="area-grid">{cards}</div>'
+        )
+    return "".join(blocks)
+
+
+def inject_area_directory(html_text: str, cards_markup: str) -> str:
+    """Same technique as inject_grid(): replace whatever is inside
+    <div id="area-results">...</div> with SSR-marked static area cards.
+    Works whether the div is still empty (first run) or already has SSR
+    markers from a previous run."""
+    marker_pattern = re.compile(
+        rf'(<div id="area-results">){SSR_START}.*?{SSR_END}(</div>)',
+        re.DOTALL,
+    )
+    empty_pattern = re.compile(r'(<div id="area-results">)(</div>)')
+    replacement_html = f'{SSR_START}{cards_markup}{SSR_END}'
+
+    if marker_pattern.search(html_text):
+        return marker_pattern.sub(lambda m: f'<div id="area-results">{replacement_html}</div>', html_text)
+    if empty_pattern.search(html_text):
+        return empty_pattern.sub(lambda m: f'<div id="area-results">{replacement_html}</div>', html_text)
+    print("    (warning: #area-results div not found in expected form, skipped)")
+    return html_text
+
+
+def _js_str(s: str) -> str:
+    """Escape a string for embedding inside a single-quoted JS string literal."""
+    return s.replace("\\", "\\\\").replace("'", "\\'")
+
+
+def js_areas_literal() -> str:
+    """Re-serialize AREAS as the `const AREAS = [...]` JS array literal, in
+    the same shape kawasan.html's renderAreas()/cardHtml() already expect,
+    so the inline <script> stays byte-for-byte in sync with the AREAS list
+    above -- one source of truth, no hand-editing the JS array anymore."""
+    lines = ["const AREAS = ["]
+    for a in AREAS:
+        parts = [
+            f"slug: '{_js_str(a['slug'])}'",
+            f"name: '{_js_str(a['name'])}'",
+            f"region: '{_js_str(a['region'])}'",
+        ]
+        if a.get("popular"):
+            parts.append("popular: true")
+        parts.append(f"tag: '{_js_str(a['tag'])}'")
+        lines.append("  { " + ", ".join(parts) + " },")
+    lines.append("];")
+    return "\n".join(lines)
+
+
+def process_kawasan_page():
+    if not KAWASAN_PATH.exists():
+        print(f"  skip {KAWASAN_PATH.name}: not found")
+        return
+
+    text = KAWASAN_PATH.read_text(encoding="utf-8")
+
+    directory_html = render_area_directory_html()
+    text = inject_area_directory(text, directory_html)
+
+    js_pattern = re.compile(r"const AREAS\s*=\s*\[.*?\];", re.DOTALL)
+    text, n = js_pattern.subn(lambda m: js_areas_literal(), text, count=1)
+    if n == 0:
+        print("    (warning: const AREAS array not found in kawasan.html, JS copy not synced)")
+
+    KAWASAN_PATH.write_text(text, encoding="utf-8")
+    print(f"  {KAWASAN_PATH.name}: {len(AREAS)} areas injected as static HTML across {len([r for r in REGION_ORDER if any(a['region'] == r for a in AREAS)])} regions")
+
+
+def sync_homepage_area_count():
+    """Keeps index.html's 'View all N areas we cover' link text in sync with
+    len(AREAS). This is the line that drifted stale before (it said 26 while
+    AREAS only had 25 entries) -- deriving it from AREAS here means it can't
+    go stale again, whatever the count changes to."""
+    if not HOMEPAGE_PATH.exists():
+        print(f"  skip {HOMEPAGE_PATH.name}: not found")
+        return
+
+    text = HOMEPAGE_PATH.read_text(encoding="utf-8")
+    pattern = re.compile(r"View all \d+ areas? we cover")
+    label = f"View all {len(AREAS)} area{'s' if len(AREAS) != 1 else ''} we cover"
+    new_text, n = pattern.subn(label, text)
+
+    if n == 0:
+        print("    (warning: 'View all N areas we cover' text not found in index.html, skipped)")
+        return
+    if new_text == text:
+        print(f"  {HOMEPAGE_PATH.name}: area count link already correct ({len(AREAS)})")
+        return
+
+    HOMEPAGE_PATH.write_text(new_text, encoding="utf-8")
+    print(f"  {HOMEPAGE_PATH.name}: area count link updated to {len(AREAS)}")
 
 
 SITEMAP_PATH = ROOT / "sitemap.xml"
@@ -426,6 +610,10 @@ def main():
         process_area_file(f, rows)
 
     regenerate_sitemap(area_files)
+
+    print("\nProcessing kawasan.html area directory...")
+    process_kawasan_page()
+    sync_homepage_area_count()
 
     print("\nDone. Static SSR cards injected -- JS filtering/fetch still works as before.")
 
