@@ -118,8 +118,8 @@
        photo is clicked. Matches the pattern used on the area pages. */
     .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-area-link,.card-body .card-view-area{display:none}
     .card-body .card-pills .pill{display:none}
-    .card-body .card-pills .pill-furnishing,.card-body .card-pills .pill-type{display:inline-block}
-    .card-body .card-pills:not(:has(.pill-furnishing)):not(:has(.pill-type)){display:none}
+    .card-body .card-pills .pill-furnishing,.card-body .card-pills .pill-type,.card-body .card-pills .pill-tenure{display:inline-block}
+    .card-body .card-pills:not(:has(.pill-furnishing)):not(:has(.pill-type)):not(:has(.pill-tenure)){display:none}
 
     .empty{text-align:center;padding:64px 24px;color:#7a7268;font-size:15px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .empty strong{display:block;font-size:1.1rem;color:#1c1c18;margin-bottom:8px}
@@ -153,7 +153,7 @@
       .card-price{font-size:11.5px}
       .card-price span{font-size:8px}
       .card-pills{gap:0}
-      .card-body .card-pills .pill-furnishing,.card-body .card-pills .pill-type{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
+      .card-body .card-pills .pill-furnishing,.card-body .card-pills .pill-type,.card-body .card-pills .pill-tenure{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
     }
   <style>
     .breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
@@ -553,8 +553,8 @@ function renderCard(r) {
     : fmt(getPrice(r));
 
   // Each item is its own <span> (rather than mapped uniformly at the end) so the
-  // furnishing and type pills can carry pill-furnishing/pill-type classes — the
-  // CSS above uses those to surface just these two pills on the compact card.
+  // furnishing, type and tenure pills can carry pill-furnishing/pill-type/pill-tenure
+  // classes — the CSS above uses those to surface just these on the compact card.
   const pillItems = r.listing_type === 'room'
     ? [
         r.room_type ? `<span class="pill pill-type">${r.room_type}</span>` : '',
@@ -568,6 +568,7 @@ function renderCard(r) {
         r.size ? `<span class="pill">${Number(r.size).toLocaleString()} sqft</span>` : '',
         r.furnishing ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
         r.type ? `<span class="pill pill-type">${r.type}</span>` : '',
+        (r.listing_type === 'subsale' && r.tenure) ? `<span class="pill pill-tenure">${r.tenure}</span>` : '',
         (r.listing_type === 'rental' && moveInText(r.move_in_date)) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
       ];
 
