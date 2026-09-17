@@ -50,8 +50,6 @@
     .hero-search-btn:hover{background:#A82C3D;color:#fff}
 
     /* HERO TABS (I'm looking to:) */
-    .hero-tabs-label{display:block;font-size:13px;font-weight:700;letter-spacing:.02em;color:rgba(255,255,255,.85);margin-bottom:8px}
-    .step-required-badge{display:inline-block;background:#E2818F;color:#5C1420;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-left:8px;vertical-align:middle}
     .hero-tabs{display:inline-flex;gap:4px;margin-bottom:16px;background:rgba(255,255,255,.1);padding:4px;border-radius:12px;flex-wrap:wrap;justify-content:center}
     .hero-tab-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:8px 16px;border-radius:9px;border:none;background:transparent;color:rgba(255,255,255,.8);cursor:pointer;transition:all .18s;white-space:nowrap}
     .hero-tab-btn svg{width:13px;height:13px;flex-shrink:0;opacity:.85}
@@ -69,7 +67,7 @@
     .hero-filter-select:focus{outline:none;border-color:#E2818F}
     @media(max-width:600px){
       .hero-filter-bar{gap:8px;padding:10px}
-      .hero-filter-group{min-width:calc(50% - 4px)}
+      .hero-filter-group{min-width:100%}
     }
 
     /* MAIN */
@@ -120,8 +118,8 @@
        photo is clicked. Matches the pattern used on the area pages. */
     .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-area-link,.card-body .card-view-area{display:none}
     .card-body .card-pills .pill{display:none}
-    .card-body .card-pills .pill-furnishing{display:inline-block}
-    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
+    .card-body .card-pills .pill-furnishing,.card-body .card-pills .pill-type{display:inline-block}
+    .card-body .card-pills:not(:has(.pill-furnishing)):not(:has(.pill-type)){display:none}
 
     .empty{text-align:center;padding:64px 24px;color:#7a7268;font-size:15px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .empty strong{display:block;font-size:1.1rem;color:#1c1c18;margin-bottom:8px}
@@ -155,7 +153,7 @@
       .card-price{font-size:11.5px}
       .card-price span{font-size:8px}
       .card-pills{gap:0}
-      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
+      .card-body .card-pills .pill-furnishing,.card-body .card-pills .pill-type{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
     }
   <style>
     .breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
@@ -208,7 +206,6 @@
   <div class="hero-eyebrow">🔍 Search Listings</div>
   <h1>Find Your Perfect Property</h1>
 
-  <div class="hero-tabs-label">Step 1 · What are you looking for?<span class="step-required-badge">Choose 1</span></div>
   <div class="hero-tabs" id="hero-tabs">
     <button type="button" class="hero-tab-btn active" data-type="rental" onclick="selectCategory('rental', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>For Rent</button>
     <button type="button" class="hero-tab-btn" data-type="subsale" onclick="selectCategory('subsale', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 14.9 8.6 22 9.3l-5.3 4.8 1.6 7.1L12 17.8 5.7 21.2l1.6-7.1L2 9.3l7.1-.7z"/></svg>For Sale</button>
@@ -227,15 +224,6 @@
         <option value="">All Areas</option>
       </select>
     </div>
-    <div class="hero-filter-group" id="fg-category">
-      <div class="hero-filter-label">Step 2 · Choose Type (optional)</div>
-      <select class="hero-filter-select" id="f-category" onchange="handleCategoryChange()">
-        <option value="">All (Unit + Room)</option>
-        <option value="rental">Whole Unit</option>
-        <option value="room">Room</option>
-        <option value="land">Land / Commercial</option>
-      </select>
-    </div>
     <div class="hero-filter-group" id="fg-furnishing">
       <div class="hero-filter-label">Furnishing</div>
       <select class="hero-filter-select" id="f-furnishing" onchange="applyFilters()">
@@ -245,49 +233,18 @@
         <option value="Unfurnished">Unfurnished</option>
       </select>
     </div>
-    <div class="hero-filter-group">
-      <div class="hero-filter-label">Type</div>
-      <select class="hero-filter-select" id="f-ptype" onchange="applyFilters()">
+    <div class="hero-filter-group" id="fg-tenure">
+      <div class="hero-filter-label">Tenure</div>
+      <select class="hero-filter-select" id="f-tenure" onchange="applyFilters()">
         <option value="">All</option>
-      </select>
-    </div>
-    <div class="hero-filter-group" id="fg-bed">
-      <div class="hero-filter-label">Bedrooms</div>
-      <select class="hero-filter-select" id="f-bed" onchange="applyFilters()">
-        <option value="">All</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4+</option>
+        <option value="Freehold">Freehold</option>
+        <option value="Leasehold">Leasehold</option>
       </select>
     </div>
     <div class="hero-filter-group">
       <div class="hero-filter-label">Max Price</div>
       <select class="hero-filter-select" id="f-price" onchange="applyFilters()">
         <option value="">Any</option>
-      </select>
-    </div>
-    <div class="hero-filter-group" id="fg-instalment" style="display:none">
-      <div class="hero-filter-label">Max Instalment</div>
-      <select class="hero-filter-select" id="f-instalment" onchange="applyFilters()">
-        <option value="">Any</option>
-        <option value="500">RM 500/mo</option>
-        <option value="800">RM 800/mo</option>
-        <option value="1000">RM 1,000/mo</option>
-        <option value="1500">RM 1,500/mo</option>
-        <option value="2000">RM 2,000/mo</option>
-        <option value="2500">RM 2,500/mo</option>
-        <option value="3000">RM 3,000/mo</option>
-        <option value="4000">RM 4,000/mo</option>
-        <option value="5000">RM 5,000/mo</option>
-      </select>
-    </div>
-    <div class="hero-filter-group" id="fg-tenure" style="display:none">
-      <div class="hero-filter-label">Tenure</div>
-      <select class="hero-filter-select" id="f-tenure" onchange="applyFilters()">
-        <option value="">All</option>
-        <option value="Freehold">Freehold</option>
-        <option value="Leasehold">Leasehold</option>
       </select>
     </div>
   </div>
@@ -370,18 +327,6 @@ let allListings = [];
 let currentQuery = '';
 let filteredListings = [];
 
-// Property types treated as Land/Commercial rather than a residential
-// whole unit — used to split out the "Land / Commercial" rental option.
-const LAND_COMMERCIAL_TYPES = new Set([
-  'Agricultural Land', 'Agricultural Land with Bungalow', 'Commercial',
-  'Commercial STR Complex', 'Land', 'Office Space', 'Residential Land',
-  'Shop', 'Shop Apartment', 'Shop Lot', 'Shop Unit'
-]);
-
-// Data subsets mirroring index.html's heroUnits/heroSubsales,
-// used to build the Property Type dropdown per selected category.
-let dataUnits = [], dataSubsales = [], dataRooms = [];
-
 /* ── CSV loader ─────────────────────────────────────────── */
 async function loadCSV() {
   const res = await fetch('/listings.csv');
@@ -405,12 +350,7 @@ async function loadCSV() {
     return obj;
   }).filter(r => r.listing_type && r.area && r.listing_type !== 'lelong' && (!r.status || r.status === '-' || r.status === ''));
 
-  dataUnits    = allListings.filter(r => r.listing_type === 'rental');
-  dataSubsales = allListings.filter(r => r.listing_type === 'subsale');
-  dataRooms    = allListings.filter(r => r.listing_type === 'room');
-
   populateAreaFilter();
-  buildPTypeOptions('rental'); // property-type dropdown for the default "For Rent" category
   buildPriceOptions('rental');  // price dropdown for the default "For Rent" category
 }
 
@@ -471,53 +411,25 @@ function searchListings(query) {
 
 /* ── Filters ────────────────────────────────────────────── */
 function applyFilters() {
-  const type  = document.getElementById('f-type').value;   // rental / subsale
-  const ptype = document.getElementById('f-ptype').value;  // property type, e.g. "Condominium"
-  const area  = document.getElementById('f-area').value;
-  const bed   = document.getElementById('f-bed').value;
-  const price = document.getElementById('f-price').value;
-  const furn  = document.getElementById('f-furnishing').value;
+  const type   = document.getElementById('f-type').value;   // rental / subsale
+  const area   = document.getElementById('f-area').value;
+  const price  = document.getElementById('f-price').value;
+  const furn   = document.getElementById('f-furnishing').value;
   const tenure = document.getElementById('f-tenure').value;
 
   filteredListings = currentQuery.length >= 2
     ? searchListings(currentQuery)
     : [...allListings];
 
-  const category = document.getElementById('f-category').value; // '' / rental / room / land — rental tab only
-
   if (type === 'rental') {
-    if (category === 'room') {
-      filteredListings = filteredListings.filter(r => r.listing_type === 'room');
-    } else if (category === 'land') {
-      filteredListings = filteredListings.filter(r => r.listing_type === 'rental' && LAND_COMMERCIAL_TYPES.has(r.type));
-    } else if (category === 'rental') {
-      filteredListings = filteredListings.filter(r => r.listing_type === 'rental' && !LAND_COMMERCIAL_TYPES.has(r.type));
-    } else {
-      filteredListings = filteredListings.filter(r => r.listing_type === 'rental' || r.listing_type === 'room');
-    }
+    filteredListings = filteredListings.filter(r => r.listing_type === 'rental' || r.listing_type === 'room');
   } else if (type) {
     filteredListings = filteredListings.filter(r => r.listing_type === type);
   }
-  // Property Type only applies to whole-unit listings — rooms don't carry a
-  // comparable "type" value, so skip this filter while viewing rooms.
-  if (ptype && category !== 'room') filteredListings = filteredListings.filter(r => r.type === ptype);
   if (area) filteredListings = filteredListings.filter(r => r.area === area);
-  // Bed/Furnishing only meaningful for rentals; Tenure only for sale —
-  // matching index.html, which only ever sends these params for the matching tabs.
-  if (type === 'rental') {
-    if (bed) {
-      // Rooms and land/commercial units have no comparable bed count.
-      filteredListings = filteredListings.filter(r => {
-        if (r.listing_type === 'room' || LAND_COMMERCIAL_TYPES.has(r.type)) return false;
-        const b = parseInt(r.bed);
-        return bed === '4' ? b >= 4 : b === parseInt(bed);
-      });
-    }
-    if (furn) filteredListings = filteredListings.filter(r => r.furnishing === furn);
-  }
-  if (type === 'subsale') {
-    if (tenure) filteredListings = filteredListings.filter(r => r.tenure === tenure);
-  }
+  // Furnishing only meaningful for rentals; Tenure only for sale.
+  if (type === 'rental' && furn) filteredListings = filteredListings.filter(r => r.furnishing === furn);
+  if (type === 'subsale' && tenure) filteredListings = filteredListings.filter(r => r.tenure === tenure);
   if (price) filteredListings = filteredListings.filter(r => parseFloat(getPrice(r)) <= parseFloat(price));
 
   syncUrl();
@@ -525,31 +437,20 @@ function applyFilters() {
 }
 
 function resetFilters() {
-  ['f-ptype','f-area','f-bed','f-price','f-furnishing','f-tenure','f-instalment','f-category'].forEach(id => {
+  ['f-area','f-price','f-furnishing','f-tenure'].forEach(id => {
     document.getElementById(id).value = '';
   });
   document.getElementById('f-type').value = 'rental';
   setActiveTabButton('rental');
-  buildPTypeOptions('rental');
   buildPriceOptions('rental');
   toggleFilterVisibility('rental');
   applyFilters();
 }
 
-/* ── Property Type options adapt to selected category, same as index.html's buildTypeOptions ── */
-function buildPTypeOptions(type) {
-  const sel = document.getElementById('f-ptype');
-  const prevVal = sel.value;
-  const rows = [...dataUnits, ...dataSubsales];
-  const types = [...new Set(rows.map(r => r.type).filter(Boolean))].sort();
-
-  sel.innerHTML = '<option value="">All</option>';
-  types.forEach(t => {
-    const opt = document.createElement('option');
-    opt.value = t; opt.textContent = t;
-    sel.appendChild(opt);
-  });
-  sel.value = [...sel.options].some(o => o.value === prevVal) ? prevVal : '';
+/* ── Show the right one of Furnishing (rentals) / Tenure (sale) ── */
+function toggleFilterVisibility(type) {
+  document.getElementById('fg-furnishing').style.display = type === 'rental' ? '' : 'none';
+  document.getElementById('fg-tenure').style.display = type === 'subsale' ? '' : 'none';
 }
 
 /* ── Price options adapt to selected category, same steps as index.html's buildPriceOptions ── */
@@ -578,27 +479,9 @@ function buildPriceOptions(type) {
   sel.value = [...sel.options].some(o => o.value === prevVal) ? prevVal : '';
 }
 
-/* ── Show/hide filter groups per category, same rules as index.html's switchHeroTab ── */
-function toggleFilterVisibility(type) {
-  const category = document.getElementById('f-category').value;
-  document.getElementById('fg-category').style.display = type === 'rental' ? '' : 'none';
-  document.getElementById('fg-furnishing').style.display = type === 'rental' ? '' : 'none';
-  document.getElementById('fg-bed').style.display = (type === 'rental' && category !== 'room' && category !== 'land') ? '' : 'none';
-  document.getElementById('fg-tenure').style.display = type === 'subsale' ? '' : 'none';
-  document.getElementById('fg-instalment').style.display = type === 'subsale' ? '' : 'none';
-}
-
-/* ── Rental Type (Whole Unit / Room) dropdown changed ──────── */
-function handleCategoryChange() {
-  toggleFilterVisibility(document.getElementById('f-type').value);
-  applyFilters();
-}
-
 function handleTypeChange() {
   const type = document.getElementById('f-type').value;
-  document.getElementById('f-category').value = '';
   toggleFilterVisibility(type);
-  buildPTypeOptions(type);
   buildPriceOptions(type);
   applyFilters();
 }
@@ -670,11 +553,11 @@ function renderCard(r) {
     : fmt(getPrice(r));
 
   // Each item is its own <span> (rather than mapped uniformly at the end) so the
-  // furnishing pill can carry an extra pill-furnishing class — lightbox.css uses
-  // that to surface just this one pill on the compact mobile card.
+  // furnishing and type pills can carry pill-furnishing/pill-type classes — the
+  // CSS above uses those to surface just these two pills on the compact card.
   const pillItems = r.listing_type === 'room'
     ? [
-        r.room_type ? `<span class="pill">${r.room_type}</span>` : '',
+        r.room_type ? `<span class="pill pill-type">${r.room_type}</span>` : '',
         r.bath_type ? `<span class="pill">${r.bath_type}</span>` : '',
         r.furnishing ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
         moveInText(r.move_in_date) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
@@ -684,7 +567,7 @@ function renderCard(r) {
         r.bath ? `<span class="pill">🚿 ${r.bath} bath</span>` : '',
         r.size ? `<span class="pill">${Number(r.size).toLocaleString()} sqft</span>` : '',
         r.furnishing ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
-        (r.listing_type === 'subsale' ? r.tenure : r.type) ? `<span class="pill">${r.listing_type === 'subsale' ? r.tenure : r.type}</span>` : '',
+        r.type ? `<span class="pill pill-type">${r.type}</span>` : '',
         (r.listing_type === 'rental' && moveInText(r.move_in_date)) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
       ];
 
@@ -749,14 +632,10 @@ function syncUrl() {
   const params = {
     q: currentQuery,
     tab: document.getElementById('f-type').value,     // category: rental/subsale
-    category: document.getElementById('f-category').value, // rental/room — only meaningful when tab=rental
-    type: document.getElementById('f-ptype').value,    // property type, e.g. "Condominium" — matches index.html's ?type=
     area: document.getElementById('f-area').value,
-    bed: document.getElementById('f-bed').value,
     price: document.getElementById('f-price').value,
     furnishing: document.getElementById('f-furnishing').value,
     tenure: document.getElementById('f-tenure').value,
-    instalment: document.getElementById('f-instalment').value,
   };
   Object.entries(params).forEach(([key, val]) => {
     if (val) url.searchParams.set(key, val);
@@ -798,16 +677,8 @@ async function init() {
   setActiveTabButton(category);
   toggleFilterVisibility(category);
 
-  // Rebuild Property Type + Max Price options for the resolved category, THEN apply their
-  // URL values. ?type= is the property type (e.g. "Condominium") — matches index.html exactly.
-  buildPTypeOptions(category);
+  // Rebuild Max Price options for the resolved category, THEN apply its URL value.
   buildPriceOptions(category);
-
-  const ptypeEl = document.getElementById('f-ptype');
-  const typeParam = params.get('type');
-  if (typeParam && [...ptypeEl.options].some(o => o.value === typeParam)) {
-    ptypeEl.value = typeParam;
-  }
 
   const priceEl = document.getElementById('f-price');
   const priceParam = params.get('price');
@@ -815,14 +686,7 @@ async function init() {
     priceEl.value = priceParam;
   }
 
-  const categoryEl = document.getElementById('f-category');
-  const categoryParam = params.get('category');
-  if (categoryParam && [...categoryEl.options].some(o => o.value === categoryParam)) {
-    categoryEl.value = categoryParam;
-    toggleFilterVisibility(category);
-  }
-
-  ['f-area','f-bed','f-furnishing','f-tenure','f-instalment'].forEach(id => {
+  ['f-area','f-furnishing','f-tenure'].forEach(id => {
     const key = id.replace('f-', '');
     const val = params.get(key);
     const el = document.getElementById(id);
