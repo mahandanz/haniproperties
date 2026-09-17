@@ -536,6 +536,13 @@ function moveInText(val) {
   return `🗓 Move-in: ${v}`;
 }
 
+// The CSV uses "-" as a placeholder for "not set" in several columns — treat
+// it the same as blank so it never renders as a literal "-" pill on a card.
+function hasVal(v) {
+  const s = (v || '').toString().trim();
+  return !!s && s !== '-';
+}
+
 function renderCard(r) {
   const areaKey = (r.area || '').toLowerCase();
   const areaHref = AREA_MAP[areaKey] || '/kawasan.html';
@@ -557,18 +564,18 @@ function renderCard(r) {
   // classes — the CSS above uses those to surface just these on the compact card.
   const pillItems = r.listing_type === 'room'
     ? [
-        r.room_type ? `<span class="pill pill-type">${r.room_type}</span>` : '',
-        r.bath_type ? `<span class="pill">${r.bath_type}</span>` : '',
-        r.furnishing ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
+        hasVal(r.room_type) ? `<span class="pill pill-type">${r.room_type}</span>` : '',
+        hasVal(r.bath_type) ? `<span class="pill">${r.bath_type}</span>` : '',
+        hasVal(r.furnishing) ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
         moveInText(r.move_in_date) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
       ]
     : [
-        r.bed ? `<span class="pill">🛏 ${r.bed} bed</span>` : '',
-        r.bath ? `<span class="pill">🚿 ${r.bath} bath</span>` : '',
-        r.size ? `<span class="pill">${Number(r.size).toLocaleString()} sqft</span>` : '',
-        r.furnishing ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
-        r.type ? `<span class="pill pill-type">${r.type}</span>` : '',
-        (r.listing_type === 'subsale' && r.tenure) ? `<span class="pill pill-tenure">${r.tenure}</span>` : '',
+        hasVal(r.bed) ? `<span class="pill">🛏 ${r.bed} bed</span>` : '',
+        hasVal(r.bath) ? `<span class="pill">🚿 ${r.bath} bath</span>` : '',
+        hasVal(r.size) ? `<span class="pill">${Number(r.size).toLocaleString()} sqft</span>` : '',
+        (r.listing_type === 'rental' && hasVal(r.furnishing)) ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
+        hasVal(r.type) ? `<span class="pill pill-type">${r.type}</span>` : '',
+        (r.listing_type === 'subsale' && hasVal(r.tenure)) ? `<span class="pill pill-tenure">${r.tenure}</span>` : '',
         (r.listing_type === 'rental' && moveInText(r.move_in_date)) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
       ];
 
