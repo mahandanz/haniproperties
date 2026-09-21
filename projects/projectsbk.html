@@ -73,16 +73,6 @@
   .highlights { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
   .highlight-pill { background: #eef5ee; color: #1a3a1a; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
 
-  .elig-box { background: #f7f7f5; border-radius: 10px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
-  .elig-title { font-size: 13px; font-weight: 700; color: #0d1f0d; margin-bottom: 2px; }
-  .elig-sub { font-size: 11px; color: #888; margin-bottom: 0.85rem; }
-  .elig-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.85rem 1.25rem; }
-  .elig-label { font-size: 11px; color: #888; margin-bottom: 3px; }
-  .elig-value { font-size: 12px; color: #444; line-height: 1.6; }
-  .elig-value strong { color: #1a1a1a; }
-  .elig-income { font-size: 15px; font-weight: 700; color: #0d1f0d; }
-  .elig-note { font-size: 11px; color: #888; margin-top: 0.85rem; font-style: italic; }
-
   .summary-text { font-size: 13px; color: #555; line-height: 1.75; }
   .cta-row { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #f0f0f0; display: flex; gap: 10px; flex-wrap: wrap; }
   .cta-btn { padding: 9px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
@@ -151,7 +141,6 @@
     <button class="tab-btn active" id="tab-ksl" onclick="showTab('ksl', this)">KSL Blossom Square · Setia Alam</button>
     <button class="tab-btn" id="tab-allegro" onclick="showTab('allegro', this)">Allegro @ Symphony Hills · Cyberjaya</button>
     <button class="tab-btn" id="tab-j3" onclick="showTab('j3', this)">J3 Residence · Dengkil</button>
-    <button class="tab-btn" id="tab-aman" onclick="showTab('aman', this)">Aman Residensi · Bandar Bukit Raja</button>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -298,91 +287,6 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       PROJECT 4: AMAN RESIDENSI
-  ══════════════════════════════════════ -->
-  <div class="project-panel" id="panel-aman">
-    <div class="banner" style="background:#0f1e33;">
-      <div class="banner-thumb" style="background:#1a2f4d; overflow:hidden; position:relative;"><img id="img-aman" src="aman-residensi.jpg" alt="Aman Residensi Bandar Bukit Raja" style="width:100%;height:100%;object-fit:cover;"><div id="ph-aman" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById('file-aman').click()"><div style="font-size:22px;">📷</div><div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:3px;">Add photo</div></div><input type="file" id="file-aman" accept="image/*" style="display:none" onchange="loadImg(this,'img-aman','ph-aman')"></div>
-      <div class="banner-body">
-        <div class="banner-tag" style="color:#c9a84c;">New Launch · Bandar Bukit Raja, Klang</div>
-        <div class="banner-name" style="color:#fff;">Aman Residensi</div>
-      </div>
-      <div class="banner-right">
-        <div class="banner-from" style="color:#c9a84c;">From</div>
-        <div class="banner-price" style="color:#fff;">RM280,000</div>
-        <div class="banner-type" style="color:#fff;">Rumah Selangorku Apartment</div>
-      </div>
-    </div>
-    <div class="detail-card">
-      <div class="meta-row">
-        <div><div class="meta-label">Developer</div><div class="meta-value">C.T. World Development Sdn Bhd</div></div>
-        <div><div class="meta-label">Location</div><div class="meta-value">Bandar Bukit Raja, Klang</div></div>
-        <div><div class="meta-label">Tenure</div><div class="meta-value">Freehold · 7.09 Acres</div></div>
-        <div><div class="meta-label">Target Launch</div><div class="meta-value">Q2 2026</div></div>
-        <div><div class="meta-label">Total Units</div><div class="meta-value">1,120 Units</div></div>
-        <div><div class="meta-label">Blocks</div><div class="meta-value">2 Blocks · 31 &amp; 26 Floors</div></div>
-      </div>
-      <div class="product-single">
-        <div class="product-type">🏢 Type E — 3 Bedrooms · 2 Bathrooms (RSKU)</div>
-        <div class="product-detail">900 sf built-up &nbsp;|&nbsp; 2 covered carparks &nbsp;|&nbsp; 1,008 units (90% of project)<br>Free 1 aircond (living room)</div>
-        <div class="product-price">RM280,000</div>
-      </div>
-      <div class="highlights">
-        <span class="highlight-pill">Freehold</span>
-        <span class="highlight-pill">Rumah Selangorku (RSKU)</span>
-        <span class="highlight-pill">2 Covered Carparks</span>
-        <span class="highlight-pill">Free Aircond (Living Room)</span>
-        <span class="highlight-pill">Mature Township</span>
-        <span class="highlight-pill">2-Tier Security + CCTV</span>
-        <span class="highlight-pill">Adult &amp; Kids' Swimming Pool</span>
-        <span class="highlight-pill">Gym &amp; Co-working Space</span>
-        <span class="highlight-pill">500m to Bukit Raja Interchange</span>
-      </div>
-      <div class="elig-box">
-        <div class="elig-title">RSKU Eligibility · Type E</div>
-        <div class="elig-sub">Rumah Selangorku (RSKU) buyer requirements</div>
-        <div class="elig-grid">
-          <div>
-            <div class="elig-label">Citizenship &amp; Age</div>
-            <div class="elig-value"><strong>Malaysian citizen</strong>, aged 18 and above.</div>
-          </div>
-          <div>
-            <div class="elig-label">Property Ownership</div>
-            <div class="elig-value">Applicant <strong>and spouse</strong> must never have owned any residential property in <strong>Selangor</strong>.</div>
-          </div>
-          <div>
-            <div class="elig-label">Marital Status</div>
-            <div class="elig-value">Married or single applicants may apply.</div>
-          </div>
-          <div>
-            <div class="elig-label">Max Household Income (Type E)</div>
-            <div class="elig-income">RM14,500 – RM15,500 / month</div>
-            <div class="elig-value">Combined applicant &amp; spouse income.</div>
-          </div>
-          <div>
-            <div class="elig-label">5-Year Moratorium</div>
-            <div class="elig-value">Cannot be sold or transferred (S&amp;P) in the first 5 years without <strong>LPHS approval</strong>.</div>
-          </div>
-          <div>
-            <div class="elig-label">Owner-Occupation Only</div>
-            <div class="elig-value">For own residence — <strong>not</strong> for rental.</div>
-          </div>
-          <div>
-            <div class="elig-label">How to Apply</div>
-            <div class="elig-value">Applications must be submitted through the official <strong>eHartanah LPHS</strong> portal.</div>
-          </div>
-        </div>
-        <div class="elig-note">*Subject to LPHS confirmation. Information accurate as of print date.</div>
-      </div>
-      <p class="summary-text">Affordable Rumah Selangorku (RSKU) apartment in the mature township of Bandar Bukit Raja, Klang, close to the Sime Darby township development. Two blocks (31 and 26 floors) with 20 units per floor and 4 lifts per block; the 900 sf Type E layout offers 3 bedrooms, 2 bathrooms and 2 covered carparks. A 7-level carpark podium is linked to the towers via a bridge on the 3rd floor. Facilities include adult and kids' pools, gymnasium and outdoor gym, co-working space, BBQ zone, playground, bicycle track, reflexology path, kindergarten, surau and multipurpose hall. Just 500m from Bukit Raja Interchange with easy access to NKVE, LATAR and WCE. 2.6 km to Bandar Bukit Raja Town Park, 6.7 km to Aeon Big Klang, 6.8 km to Setia City Mall and 7.0 km to Columbia Asia Hospital Klang.</p>
-      <div class="cta-row">
-        <a class="cta-btn cta-primary" href="https://wa.me/60125459182?text=Hi%2C%20I%27m%20interested%20in%20Aman%20Residensi%20Bandar%20Bukit%20Raja" target="_blank">Enquire via WhatsApp</a>
-        <a class="cta-btn cta-secondary" href="residensi-aman-brochure.pdf" target="_blank">Download Brochure</a>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <script>
@@ -393,7 +297,7 @@ function showTab(id, btn) {
   btn.classList.add('active');
 }
 
-/* Deep-link support: /projects/projects.html#ksl (or #allegro, #j3, #aman)
+/* Deep-link support: /projects/projects.html#ksl (or #allegro, #j3)
    opens straight to that project's tab instead of the default (KSL). */
 function openTabFromHash() {
   const id = (location.hash || '').replace('#', '').trim();
