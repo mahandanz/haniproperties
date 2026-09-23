@@ -416,6 +416,11 @@ function switchTab(tab, btn) {
     buildPriceOptions(allUnits, true);
   }
   resetFilters();
+  // Keep URL in sync so the tab is shareable (same idea as search.html's syncUrl)
+  const url = new URL(window.location);
+  if (tab === 'jual') url.searchParams.set('tab', 'jual');
+  else url.searchParams.delete('tab');
+  window.history.replaceState({}, '', url);
 }
 
 function applyFilters() {
@@ -665,6 +670,13 @@ fetch('../../listings.csv')
     // Initial render
     applyFilters();
 
+    // Open the tab from ?tab= (accepts jual/subsale, same as search.html)
+    const tabParam = new URLSearchParams(window.location.search).get('tab');
+    if (tabParam === 'jual' || tabParam === 'subsale') {
+      const btn = document.querySelector(`.tab-btn[onclick*="'jual'"]`);
+      if (btn) switchTab('jual', btn);
+    }
+
     const totalListings = allUnits.length + allSubsales.length;
     const summaryEl = document.getElementById('hero-summary-stat');
     if (summaryEl && totalListings) {
@@ -682,11 +694,6 @@ fetch('../../listings.csv')
 function scrollToHash() {
   const hash = window.location.hash.slice(1);
   if (!hash) return;
-  const tabParam = new URLSearchParams(window.location.search).get('tab');
-  if (tabParam) {
-    const tabBtn = document.querySelector(`.tab-btn[onclick*="'${tabParam}'"]`);
-    if (tabBtn) switchTab(tabParam, tabBtn);
-  }
   let attempts = 0;
   const poll = setInterval(() => {
     const el = document.getElementById(hash);
