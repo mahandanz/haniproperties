@@ -90,7 +90,7 @@
   <!-- Area pages (auto-generated from area/local/) -->
   <url>
     <loc>https://haniproperties.com/area/local/ampang.html</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -175,6 +175,12 @@
   <url>
     <loc>https://haniproperties.com/area/local/rimbayu-tpg.html</loc>
     <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://haniproperties.com/area/local/search.html</loc>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

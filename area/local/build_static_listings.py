@@ -107,12 +107,15 @@ def card_image(r: dict) -> str:
             f'<span class="card-img-dot{" active" if i == 0 else ""}"></span>'
             for i in range(len(imgs))
         )
+        # Arrows + dots sit in a bar BELOW the photo (matches lightbox.js cardNavHTML)
         nav = (
+            '<div class="card-img-bar">'
             '<button type="button" class="card-img-nav prev" '
             'onclick="cardImgNav(event,this,-1)" aria-label="Previous photo">‹</button>'
+            f'<div class="card-img-dots">{dots}</div>'
             '<button type="button" class="card-img-nav next" '
             'onclick="cardImgNav(event,this,1)" aria-label="Next photo">›</button>'
-            f'<div class="card-img-dots">{dots}</div>'
+            '</div>'
         )
 
     imgs_attr = esc("|".join(imgs))
