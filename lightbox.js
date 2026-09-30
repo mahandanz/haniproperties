@@ -49,10 +49,13 @@ function cardImage(r) {
 }
 
 function cardNavHTML(imgs, activeIdx) {
+  // Arrows + dots sit in a bar BELOW the photo (not overlaid on it)
   return `
-    <button type="button" class="card-img-nav prev" onclick="cardImgNav(event,this,-1)" aria-label="Previous photo">‹</button>
-    <button type="button" class="card-img-nav next" onclick="cardImgNav(event,this,1)" aria-label="Next photo">›</button>
-    <div class="card-img-dots">${imgs.map((_, i) => `<span class="card-img-dot${i === activeIdx ? ' active' : ''}"></span>`).join('')}</div>`;
+    <div class="card-img-bar">
+      <button type="button" class="card-img-nav prev" onclick="cardImgNav(event,this,-1)" aria-label="Previous photo">‹</button>
+      <div class="card-img-dots">${imgs.map((_, i) => `<span class="card-img-dot${i === activeIdx ? ' active' : ''}"></span>`).join('')}</div>
+      <button type="button" class="card-img-nav next" onclick="cardImgNav(event,this,1)" aria-label="Next photo">›</button>
+    </div>`;
 }
 
 // ── Auto-discover extra photos already sitting in the listing's folder ──
@@ -189,10 +192,13 @@ function renderLightbox() {
   const lbImgEl = document.getElementById('lightboxImg');
   lbImgEl.onerror = function() { this.onerror = null; this.src = '/images/update.png'; };
   lbImgEl.src = lbImgs[lbIdx];
+  // Arrows + dots sit in a bar BELOW the enlarged photo (not overlaid on it)
   const nav = lbImgs.length > 1 ? `
-    <button type="button" class="lightbox-nav prev" onclick="event.stopPropagation();lbNav(-1)" aria-label="Previous photo">‹</button>
-    <button type="button" class="lightbox-nav next" onclick="event.stopPropagation();lbNav(1)" aria-label="Next photo">›</button>
-    <div class="lightbox-dots">${lbImgs.map((_, i) => `<span class="lightbox-dot${i === lbIdx ? ' active' : ''}" onclick="event.stopPropagation();lbIdx=${i};renderLightbox()"></span>`).join('')}</div>` : '';
+    <div class="lightbox-bar">
+      <button type="button" class="lightbox-nav prev" onclick="event.stopPropagation();lbNav(-1)" aria-label="Previous photo">‹</button>
+      <div class="lightbox-dots">${lbImgs.map((_, i) => `<span class="lightbox-dot${i === lbIdx ? ' active' : ''}" onclick="event.stopPropagation();lbIdx=${i};renderLightbox()"></span>`).join('')}</div>
+      <button type="button" class="lightbox-nav next" onclick="event.stopPropagation();lbNav(1)" aria-label="Next photo">›</button>
+    </div>` : '';
   document.getElementById('lightboxNavWrap').innerHTML = nav;
 }
 
