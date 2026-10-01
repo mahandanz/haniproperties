@@ -28,7 +28,13 @@ out of sync. To add/remove/edit an area, edit AREAS here and re-run — do not
 hand-edit the AREAS array inside kawasan.html anymore.
 
 Usage:
-    python3 build_static_listings.py
+    python3 build_static_listings.py              # normal run
+    python3 build_static_listings.py --restamp    # also force every area page's
+                                                  # "Last updated" date to today
+
+Each area page's "Last updated" stamp (and its schema dateModified) is set to
+today automatically whenever that page's listings change; a rebuild with the
+same CSV leaves the date untouched.
 """
 
 import csv
@@ -298,8 +304,25 @@ def inject_grid(html_text: str, grid_id: str, cards_markup: str) -> str:
     return html_text
 
 
+def _strip_date_stamps(text: str) -> str:
+    """Page text with the 'Last updated' / dateModified stamps blanked out,
+    so a rebuild can tell whether the listings themselves actually changed."""
+    text = re.sub(r"Last updated: [^<]*", "Last updated: ", text)
+    return re.sub(r'"dateModified": "[^"]*"', '"dateModified": ""', text)
+
+
+def stamp_dates(text: str, today) -> str:
+    """Set the visible hero 'Last updated' stamp and the schema dateModified
+    to today's date (e.g. 'Last updated: 1 Oct 2026' / "2026-10-01")."""
+    text = re.sub(r"Last updated: [^<]*",
+                  f"Last updated: {today.day} {today.strftime('%b %Y')}", text)
+    return re.sub(r'"dateModified": "[^"]*"',
+                  f'"dateModified": "{today.isoformat()}"', text)
+
+
 def process_area_file(path: Path, all_rows):
     text = path.read_text(encoding="utf-8")
+    original = text
     # A page may define a single AREA, a multi-value AREAS list, or both
     # (kajang-bangi.html only has AREAS, so it must not be skipped).
     m = re.search(r"const AREA\s*=\s*'([^']*)'", text)
@@ -348,8 +371,17 @@ def process_area_file(path: Path, all_rows):
     text = inject_grid(text, "grid-subsale", subsale_html)
     text = inject_grid(text, "grid-lelong", lelong_html)
 
+    # Only move the 'Last updated' date when the listings on this page really
+    # changed -- re-running the build with the same CSV leaves the date alone,
+    # so the stamp stays an honest freshness signal for visitors and Google.
+    if _strip_date_stamps(text) == _strip_date_stamps(original) and "--restamp" not in sys.argv:
+        print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale, {len(lelongs)} lelong (no change)")
+        return
+
+    import datetime
+    text = stamp_dates(text, datetime.date.today())
     path.write_text(text, encoding="utf-8")
-    print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale, {len(lelongs)} lelong")
+    print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale, {len(lelongs)} lelong (updated, stamped {datetime.date.today().isoformat()})")
 
 
 # ---------------------------------------------------------------------------
