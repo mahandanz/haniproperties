@@ -300,11 +300,13 @@ def inject_grid(html_text: str, grid_id: str, cards_markup: str) -> str:
 
 def process_area_file(path: Path, all_rows):
     text = path.read_text(encoding="utf-8")
+    # A page may define a single AREA, a multi-value AREAS list, or both
+    # (kajang-bangi.html only has AREAS, so it must not be skipped).
     m = re.search(r"const AREA\s*=\s*'([^']*)'", text)
-    if not m:
-        print(f"  skip {path.name}: no AREA constant found")
+    area = m.group(1) if m else None
+    if not m and not re.search(r"const AREAS\s*=\s*\[", text):
+        print(f"  skip {path.name}: no AREA or AREAS constant found")
         return
-    area = m.group(1)
 
     # Optional ZONE constant lets a page target a specific sub-area/township
     # within a broader CSV "area" value (e.g. Setia Alam is a "zone" inside
@@ -320,6 +322,9 @@ def process_area_file(path: Path, all_rows):
     am = re.search(r"const AREAS\s*=\s*\[([^\]]*)\]", text)
     areas = re.findall(r"'([^']*)'", am.group(1)) if am else []
     if not areas:
+        if not area:
+            print(f"  skip {path.name}: AREAS constant is empty")
+            return
         areas = [area]
 
     filtered = [
