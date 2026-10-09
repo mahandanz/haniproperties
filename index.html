@@ -143,6 +143,14 @@ nav{
 }
 .hero-btn-wrap{display:none}
 
+/* HOME SEARCH (index only) */
+.hsearch{background:#faf9f6;padding:22px 16px}
+.hsearch form{max-width:720px;margin:0 auto;display:flex;gap:8px;align-items:center}
+.hsearch-q{flex:1 1 auto;min-width:0;font:inherit;font-size:15px;padding:12px 14px;border:1.5px solid #d8cfc2;border-radius:10px;background:#fff;color:#1c1c18}
+.hsearch-q:focus{outline:none;border-color:#5C1420}
+.hsearch-btn{font:inherit;font-size:14px;font-weight:700;padding:12px 22px;border:none;border-radius:10px;background:#5C1420;color:#fff;cursor:pointer}
+.hsearch-btn:hover{background:#A82C3D}
+
 
 .info-strip-rating{
   display:inline-flex;align-items:center;gap:6px;
@@ -315,6 +323,14 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <section class="hero">
   <img class="hero-img" src="banner.webp" alt="Hani Properties — Find Your Next Home With Confidence" width="1584" height="550" fetchpriority="high">
   <div class="hero-btn-wrap"></div>
+</section>
+
+<!-- HOME SEARCH (index only) -->
+<section class="hsearch" aria-label="Search listings">
+  <form action="search.html" method="get" role="search">
+    <input class="hsearch-q" type="search" name="q" placeholder="Area, taman or project…" aria-label="Search area, taman or project name">
+    <button class="hsearch-btn" type="submit">Search</button>
+  </form>
 </section>
 
 <!-- EXPLORE BY AREA -->
