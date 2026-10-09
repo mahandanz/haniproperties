@@ -397,34 +397,39 @@ def process_area_file(path: Path, all_rows):
 # ---------------------------------------------------------------------------
 
 AREAS = [
-    {"slug": "shah-alam", "name": "Shah Alam", "region": "Selangor", "popular": True, "tag": "UiTM, Blue Mosque, PKNS"},
-    {"slug": "setia-alam", "name": "Setia Alam", "region": "Selangor", "tag": "Setia City Mall, Setia Eco Park, NKVE"},
-    {"slug": "petaling-jaya", "name": "Petaling Jaya / Damansara", "region": "Selangor", "popular": True, "tag": "1 Utama, IKEA Damansara, The Curve"},
-    {"slug": "puchong", "name": "Puchong", "region": "Selangor", "popular": True, "tag": "IOI Mall, Setiawalk, PFCC"},
-    {"slug": "subang-jaya", "name": "Subang Jaya", "region": "Selangor", "popular": True, "tag": "Sunway Pyramid, Empire, SS15"},
+    {"slug": "shah-alam", "name": "Shah Alam", "region": "Selangor", "popular": True, "tag": "UiTM, Blue Mosque"},
+    {"slug": "setia-alam", "name": "Setia Alam", "region": "Selangor", "tag": "Setia City Mall, Setia Eco Park"},
+    {"slug": "petaling-jaya", "name": "Petaling Jaya / Damansara", "region": "Selangor", "popular": True, "tag": "1 Utama, IKEA Damansara"},
+    {"slug": "puchong", "name": "Puchong", "region": "Selangor", "popular": True, "tag": "IOI Mall, Setiawalk"},
+    {"slug": "subang-jaya", "name": "Subang Jaya", "region": "Selangor", "popular": True, "tag": "Sunway Pyramid, Empire"},
     {"slug": "klang", "name": "Klang", "region": "Selangor", "popular": True, "tag": "Bandar Botanic, AEON Bukit Tinggi"},
-    {"slug": "kajang-bangi", "name": "Kajang & Bangi", "region": "Selangor", "tag": "MRT Kajang, UKM, IOI Mall Bangi"},
+    {"slug": "kajang-bangi", "name": "Kajang & Bangi", "region": "Selangor", "tag": "MRT Kajang, UKM"},
     {"slug": "semenyih", "name": "Semenyih", "region": "Selangor", "tag": "UNITEN, EcoHill Mall"},
     {"slug": "seri-kembangan", "name": "Seri Kembangan", "region": "Selangor", "tag": "The Mines, MRT Serdang Jaya"},
-    {"slug": "cyberjaya-putrajaya", "name": "Cyberjaya / Putrajaya", "region": "Selangor", "tag": "MMU, IOI City Mall, KLIA Transit"},
-    {"slug": "sepang", "page": "sepang_dengkil_banting", "name": "Sepang / Dengkil / Banting", "region": "Selangor", "tag": "KLIA, klia2, Sepang Circuit"},
-    {"slug": "bandar-saujana-putra", "name": "Bandar Saujana Putra", "region": "Selangor", "tag": "Cyberjaya, Putra Heights, ELITE Hwy"},
+    {"slug": "cyberjaya-putrajaya", "name": "Cyberjaya / Putrajaya", "region": "Selangor", "tag": "MMU, IOI City Mall"},
+    {"slug": "sepang", "page": "sepang_dengkil_banting", "name": "Sepang / Dengkil / Banting", "region": "Selangor", "tag": "KLIA, klia2"},
+    {"slug": "bandar-saujana-putra", "name": "Bandar Saujana Putra", "region": "Selangor", "tag": "Cyberjaya, Putra Heights"},
     {"slug": "rimbayu-tpg", "name": "Rimbayu / TPG", "region": "Selangor", "tag": "Central Park, Kota Kemuning"},
     {"slug": "puncak-alam", "name": "Puncak Alam", "region": "Selangor", "tag": "UiTM Puncak Alam, AEON Bukit Raja"},
     {"slug": "rawang", "name": "Rawang", "region": "Selangor", "tag": "KTM Rawang, Templer Park"},
     {"slug": "sungai-buloh", "name": "Sungai Buloh", "region": "Selangor", "tag": "MRT/KTM Interchange, Sierramas"},
-    {"slug": "kuala-lumpur", "name": "Kuala Lumpur", "region": "Kuala Lumpur", "popular": True, "tag": "KLCC, Bukit Bintang, Mid Valley"},
-    {"slug": "bukit-jalil", "name": "Bukit Jalil", "region": "Kuala Lumpur", "popular": True, "tag": "Pavilion, National Stadium, LRT"},
-    {"slug": "cheras", "name": "Cheras", "region": "Kuala Lumpur", "popular": True, "tag": "Sunway Velocity, IKEA, Taman Connaught"},
-    {"slug": "ampang", "name": "Ampang", "region": "Kuala Lumpur", "popular": True, "tag": "Jalan Ampang, AKLEH, KL Golden Triangle"},
+    {"slug": "kuala-lumpur", "name": "Kuala Lumpur", "region": "Kuala Lumpur", "popular": True, "tag": "KLCC, Bukit Bintang"},
+    {"slug": "bukit-jalil", "name": "Bukit Jalil", "region": "Kuala Lumpur", "popular": True, "tag": "Pavilion, National Stadium"},
+    {"slug": "cheras", "name": "Cheras", "region": "Kuala Lumpur", "popular": True, "tag": "Sunway Velocity, IKEA"},
+    {"slug": "ampang", "name": "Ampang", "region": "Kuala Lumpur", "popular": True, "tag": "Jalan Ampang, AKLEH"},
     {"slug": "kepong", "name": "Kepong", "region": "Kuala Lumpur", "popular": True, "tag": "Desa ParkCity, KTM Kepong"},
     {"slug": "setapak", "name": "Setapak", "region": "Kuala Lumpur", "tag": "UTAR, Wangsa Walk Mall"},
     {"slug": "sentul", "name": "Sentul", "region": "Kuala Lumpur", "tag": "Sentul Timur LRT, KL Sentral"},
     {"slug": "selayang", "name": "Selayang", "region": "Kuala Lumpur", "tag": "Batu Caves, Selayang Hospital"},
-    {"slug": "nilai", "name": "Nilai", "region": "Negeri Sembilan", "tag": "USIM, INTI University, AEON Nilai"},
+    {"slug": "nilai", "name": "Nilai", "region": "Negeri Sembilan", "tag": "USIM, INTI University"},
 ]
 
 REGION_ORDER = ["Selangor", "Kuala Lumpur", "Negeri Sembilan"]
+
+# The 8 areas shown in index.html's "Popular Areas We Cover" section, in order.
+# Cards use the same AREAS data and the same card design as kawasan.html.
+# Edit this list (slugs from AREAS above) to change what the homepage shows.
+HOME_AREAS = ["shah-alam", "petaling-jaya", "puchong", "subang-jaya", "bukit-jalil", "cheras", "ampang", "klang"]
 
 
 def area_card_html(a: dict) -> str:
@@ -530,6 +535,27 @@ def process_kawasan_page():
 
     KAWASAN_PATH.write_text(text, encoding="utf-8")
     print(f"  {KAWASAN_PATH.name}: {len(AREAS)} areas injected as static HTML across {len([r for r in REGION_ORDER if any(a['region'] == r for a in AREAS)])} regions")
+
+
+def sync_homepage_areas():
+    """Renders the HOME_AREAS cards into index.html's #home-areas grid, using
+    the same area_card_html() as kawasan.html so the two pages always match."""
+    if not HOMEPAGE_PATH.exists():
+        return
+    by_slug = {a["slug"]: a for a in AREAS}
+    missing = [s for s in HOME_AREAS if s not in by_slug]
+    if missing:
+        print(f"    (warning: HOME_AREAS slugs not in AREAS: {', '.join(missing)})")
+    cards = "".join(area_card_html(by_slug[s]) for s in HOME_AREAS if s in by_slug)
+    text = HOMEPAGE_PATH.read_text(encoding="utf-8")
+    pattern = re.compile(rf'<div class="area-grid" id="home-areas">{SSR_START}.*?{SSR_END}</div>', re.DOTALL)
+    if not pattern.search(text):
+        print("    (warning: #home-areas grid not found in index.html, skipped)")
+        return
+    new_text = pattern.sub(lambda m: f'<div class="area-grid" id="home-areas">{SSR_START}{cards}{SSR_END}</div>', text)
+    if new_text != text:
+        HOMEPAGE_PATH.write_text(new_text, encoding="utf-8")
+    print(f"  {HOMEPAGE_PATH.name}: {len(HOME_AREAS)} homepage area cards rendered")
 
 
 def sync_homepage_area_count():
@@ -665,6 +691,7 @@ def main():
 
     print("\nProcessing kawasan.html area directory...")
     process_kawasan_page()
+    sync_homepage_areas()
     sync_homepage_area_count()
 
     print("\nDone. Static SSR cards injected -- JS filtering/fetch still works as before.")
