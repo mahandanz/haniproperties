@@ -381,9 +381,12 @@ function matchesQuery(r, query) {
 }
 
 /* Owner shortcut: typing exactly "bufferI" shows every active unit
-   with B in the Buffer column (CSV column AB). Case-sensitive. */
+   marked (B) in the Buffer column (CSV column AB). Case-sensitive.
+   Accepts "(B)" or plain "B". */
 function isBufferUnit(r) {
-  return (r.buffer || '').toUpperCase().split(/[,\s]+/).includes('B');
+  return (r.buffer || '').toUpperCase().split(/[,\s]+/)
+    .map(s => s.replace(/[()]/g, ''))
+    .includes('B');
 }
 
 /* ── Filters ────────────────────────────────────────────── */
