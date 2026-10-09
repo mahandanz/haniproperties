@@ -380,6 +380,12 @@ function matchesQuery(r, query) {
   return [r.area, r.zone, r.project_name, r.code].some(f => re.test(normalise(f)));
 }
 
+/* Owner shortcut: typing exactly "bufferI" shows every active unit
+   with B in the Buffer column (CSV column AB). Case-sensitive. */
+function isBufferUnit(r) {
+  return (r.buffer || '').toUpperCase().split(/[,\s]+/).includes('B');
+}
+
 /* ── Filters ────────────────────────────────────────────── */
 function applyFilters() {
   const type   = document.getElementById('f-type').value;   // rental / subsale
@@ -388,9 +394,14 @@ function applyFilters() {
   const furn   = document.getElementById('f-furnishing').value;
   const tenure = document.getElementById('f-tenure').value;
 
-  filteredListings = allListings.filter(r => matchesQuery(r, currentQuery));
+  const isBuffer = currentQuery === 'bufferI';
+  filteredListings = isBuffer
+    ? allListings.filter(isBufferUnit)
+    : allListings.filter(r => matchesQuery(r, currentQuery));
 
-  if (type === 'rental') {
+  if (isBuffer) {
+    // bufferI ignores the Rent/Sale tab so buffer units always show
+  } else if (type === 'rental') {
     filteredListings = filteredListings.filter(r => r.listing_type === 'rental' || r.listing_type === 'room');
   } else if (type) {
     filteredListings = filteredListings.filter(r => r.listing_type === type);
