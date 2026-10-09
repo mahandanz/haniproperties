@@ -1,111 +1,82 @@
 /* ============================================================
    Hani Properties — Universal Search
-   search.js  |  v2.0 — redirects to /search.html instead of
-   showing an inline dropdown (avoids mobile clipping issues)
+   search.js  |  v3.0 — free-text box removed. The nav now shows a
+   "Search listings" button that opens /search.html, where
+   visitors use the filters.
    ============================================================ */
 
 (function () {
   const RESULTS_PAGE = '/search.html';
 
-  function goToResults(query) {
-    const q = (query || '').trim();
-    if (!q) return;
-    window.location.href = `${RESULTS_PAGE}?q=${encodeURIComponent(q)}`;
-  }
-
   /* ── Inject CSS ─────────────────────────────────────────── */
   function injectCSS() {
     const style = document.createElement('style');
     style.textContent = `
-      .hp-search-wrap {
-        position: relative;
-        display: flex;
+      .hp-search-btn {
+        display: inline-flex;
         align-items: center;
-      }
-      .hp-search-input {
-        width: 220px;
-        padding: 7px 14px 7px 34px;
+        gap: 8px;
+        padding: 7px 16px 7px 12px;
         border: 1.5px solid #d4cfc6;
         border-radius: 20px;
         font-family: 'DM Sans', sans-serif;
         font-size: 13px;
         color: #1c1c18;
-        background: #f9f6f0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237a7268' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") no-repeat 10px center;
-        outline: none;
-        transition: border-color .18s, width .2s;
+        background: #f9f6f0;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: border-color .18s, background-color .18s;
       }
-      .hp-search-input:focus {
+      .hp-search-btn:hover,
+      .hp-search-btn:focus-visible {
         border-color: #2a5c3a;
-        width: 260px;
         background-color: #fff;
+        outline: none;
       }
-      .hp-search-input::placeholder { color: #a89f94; }
+      .hp-search-btn svg { flex-shrink: 0; }
 
-      .hp-search-go {
-        position: absolute;
-        left: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 20px;
-        height: 20px;
-        border: none;
-        background: transparent;
-        cursor: pointer;
-        padding: 0;
-      }
-
-      /* Mobile search — full width below nav.
+      /* Mobile search row — full width below nav.
          Hidden by default; only shown at mobile widths, so it
-         doesn't render alongside the desktop nav-links search box. */
+         doesn't render alongside the desktop nav-links button. */
       .nav-search-mobile { display: none; }
       @media (max-width: 600px) {
-        .hp-search-wrap { width: 100%; }
-        .hp-search-input { width: 100% !important; border-radius: 10px; }
         .nav-search-mobile {
           display: block;
           padding: 8px 16px;
           background: rgba(253,250,245,.97);
           border-bottom: 1px solid #e3ddd0;
         }
+        .nav-search-mobile .hp-search-btn {
+          display: flex;
+          width: 100%;
+          box-sizing: border-box;
+          justify-content: center;
+          border-radius: 10px;
+        }
       }
     `;
     document.head.appendChild(style);
   }
 
-  /* ── Build one search box (icon button + input) ─────────── */
-  function buildSearchBox() {
-    const wrap = document.createElement('div');
-    wrap.className = 'hp-search-wrap';
-
-    const searchBox = document.createElement('input');
-    searchBox.type = 'search';
-    searchBox.className = 'hp-search-input';
-    searchBox.placeholder = 'Search listings…';
-    searchBox.autocomplete = 'off';
-
-    // Clickable search icon button (sits on top of the input's bg icon)
-    const goBtn = document.createElement('button');
-    goBtn.type = 'button';
-    goBtn.className = 'hp-search-go';
-    goBtn.setAttribute('aria-label', 'Search');
-
-    wrap.appendChild(searchBox);
-    wrap.appendChild(goBtn);
-
-    searchBox.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') goToResults(searchBox.value);
-    });
-    goBtn.addEventListener('click', () => goToResults(searchBox.value));
-
-    return wrap;
+  /* ── Build one search button (links to the filters page) ── */
+  function buildSearchButton() {
+    const link = document.createElement('a');
+    link.className = 'hp-search-btn';
+    link.href = RESULTS_PAGE;
+    link.setAttribute('aria-label', 'Search listings');
+    link.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7a7268" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>' +
+      '<span>Search listings</span>';
+    return link;
   }
 
-  /* ── Inject search bar into nav ─────────────────────────── */
+  /* ── Inject search button into nav ──────────────────────── */
   function injectSearch() {
-    // Skip entirely on pages that already have their own dedicated
-    // search UI (e.g. search.html's hero search box) — avoids a
-    // duplicate search bar on that page.
-    if (document.querySelector('.hero-search-input')) return;
+    // Skip on the search page itself — visitors are already on
+    // the filters, so a button pointing back to it is redundant.
+    const path = window.location.pathname.replace(/\/+$/, '');
+    if (path === '/search.html' || path === '/search') return;
 
     // Desktop — append into nav-links (falls back gracefully if
     // a .cta-nav element isn't present, since WhatsApp is now a
@@ -113,8 +84,7 @@
     const navLinks = document.querySelector('.nav-links');
     if (navLinks) {
       const cta = navLinks.querySelector('.cta-nav');
-      const wrap = buildSearchBox();
-      navLinks.insertBefore(wrap, cta);
+      navLinks.insertBefore(buildSearchButton(), cta);
     }
 
     // Mobile — inject a search row below nav-mobile
@@ -122,8 +92,7 @@
     if (navMobile) {
       const mobileRow = document.createElement('div');
       mobileRow.className = 'nav-search-mobile';
-      const mobileWrap = buildSearchBox();
-      mobileRow.appendChild(mobileWrap);
+      mobileRow.appendChild(buildSearchButton());
       navMobile.parentNode.insertBefore(mobileRow, navMobile.nextSibling);
     }
   }
