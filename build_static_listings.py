@@ -407,7 +407,7 @@ AREAS = [
     {"slug": "semenyih", "name": "Semenyih", "region": "Selangor", "tag": "UNITEN, EcoHill Mall"},
     {"slug": "seri-kembangan", "name": "Seri Kembangan", "region": "Selangor", "tag": "The Mines, MRT Serdang Jaya"},
     {"slug": "cyberjaya-putrajaya", "name": "Cyberjaya / Putrajaya", "region": "Selangor", "tag": "MMU, IOI City Mall, KLIA Transit"},
-    {"slug": "sepang", "name": "Sepang / Dengkil / Banting", "region": "Selangor", "tag": "KLIA, klia2, Sepang Circuit"},
+    {"slug": "sepang", "page": "sepang_dengkil_banting", "name": "Sepang / Dengkil / Banting", "region": "Selangor", "tag": "KLIA, klia2, Sepang Circuit"},
     {"slug": "bandar-saujana-putra", "name": "Bandar Saujana Putra", "region": "Selangor", "tag": "Cyberjaya, Putra Heights, ELITE Hwy"},
     {"slug": "rimbayu-tpg", "name": "Rimbayu / TPG", "region": "Selangor", "tag": "Central Park, Kota Kemuning"},
     {"slug": "puncak-alam", "name": "Puncak Alam", "region": "Selangor", "tag": "UiTM Puncak Alam, AEON Bukit Raja"},
@@ -436,8 +436,9 @@ def area_card_html(a: dict) -> str:
     name = html.escape(a["name"], quote=True)
     tag = html.escape(a["tag"], quote=False)
     slug = a["slug"]
+    page = a.get("page") or slug  # page file name, if it differs from the image slug
     return (
-        f'<a class="area-card{popular_class}" href="area/local/{slug}.html">'
+        f'<a class="area-card{popular_class}" href="area/local/{page}.html">'
         f'<img class="area-card-img" src="/images/areas/{slug}.webp" alt="{name}" '
         f'loading="lazy" width="112" height="112" onerror="this.style.display=\'none\'">'
         f'<div class="area-card-body">'
@@ -497,8 +498,10 @@ def js_areas_literal() -> str:
     above -- one source of truth, no hand-editing the JS array anymore."""
     lines = ["const AREAS = ["]
     for a in AREAS:
-        parts = [
-            f"slug: '{_js_str(a['slug'])}'",
+        parts = [f"slug: '{_js_str(a['slug'])}'"]
+        if a.get("page"):
+            parts.append(f"page: '{_js_str(a['page'])}'")
+        parts += [
             f"name: '{_js_str(a['name'])}'",
             f"region: '{_js_str(a['region'])}'",
         ]
