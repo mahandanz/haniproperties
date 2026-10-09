@@ -147,6 +147,16 @@ nav{
 .hsearch{background:#faf9f6;padding:22px 16px}
 .hsearch form{max-width:720px;margin:0 auto;display:flex;gap:8px;align-items:center}
 .hsearch-q{flex:1 1 auto;min-width:0;font:inherit;font-size:15px;padding:12px 14px;border:1.5px solid #d8cfc2;border-radius:10px;background:#fff;color:#1c1c18}
+.hsearch-tabs{display:flex;flex:0 0 auto;align-self:stretch;background:#fff;border:1.5px solid #d8cfc2;border-radius:10px;padding:3px;gap:3px}
+.hsearch-tabs input{position:absolute;opacity:0;pointer-events:none}
+.hsearch-tabs label{display:flex;align-items:center;font-size:13px;font-weight:700;color:#7a7268;padding:0 14px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s}
+.hsearch-tabs input:checked + label{background:#5C1420;color:#fff}
+.hsearch-tabs input:focus-visible + label{outline:2px solid #A82C3D;outline-offset:1px}
+@media(max-width:600px){
+  .hsearch form{flex-wrap:wrap}
+  .hsearch-tabs{flex:1 0 100%}
+  .hsearch-tabs label{flex:1;justify-content:center;padding:10px 0}
+}
 .hsearch-q:focus{outline:none;border-color:#5C1420}
 .hsearch-btn{font:inherit;font-size:14px;font-weight:700;padding:12px 22px;border:none;border-radius:10px;background:#5C1420;color:#fff;cursor:pointer}
 .hsearch-btn:hover{background:#A82C3D}
@@ -328,6 +338,10 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
 <!-- HOME SEARCH (index only) -->
 <section class="hsearch" aria-label="Search listings">
   <form action="search.html" method="get" role="search">
+    <div class="hsearch-tabs" role="radiogroup" aria-label="Rent or buy">
+      <input type="radio" name="tab" value="rental" id="hs-rent" checked><label for="hs-rent">For Rent</label>
+      <input type="radio" name="tab" value="subsale" id="hs-sale"><label for="hs-sale">For Sale</label>
+    </div>
     <input class="hsearch-q" type="search" name="q" placeholder="Area, taman or project…" aria-label="Search area, taman or project name">
     <button class="hsearch-btn" type="submit">Search</button>
   </form>

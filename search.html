@@ -69,6 +69,8 @@
     .filter-reset{font-size:12px;font-weight:600;color:#7a7268;background:none;border:1px solid #e3ddd0;border-radius:8px;padding:7px 14px;cursor:pointer;transition:all .15s;white-space:nowrap}
     .filter-reset:hover{color:#1c1c18;border-color:#1c1c18}
     .filter-count{font-size:12px;color:#7a7268;white-space:nowrap}
+    .query-chip{display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#5C1420;background:#f7e6e9;border:none;border-radius:20px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+    .query-chip:hover{background:#efd3d8}
 
 
     /* RESULTS */
@@ -263,6 +265,7 @@
   <div class="results-header" id="results-header">
     <div class="results-title" id="results-title">Results</div>
     <div style="display:flex;align-items:center;gap:12px">
+      <button type="button" class="query-chip" id="query-chip" onclick="clearQuery()" aria-label="Clear search text"></button>
       <div class="filter-count" id="filter-count"></div>
       <button class="filter-reset" onclick="resetFilters()">Reset</button>
     </div>
@@ -320,6 +323,7 @@ function toSlug(...parts) {
 
 let allListings = [];
 let filteredListings = [];
+let currentQuery = '';   // text sent from the home page search box (?q=)
 
 /* ── CSV loader ─────────────────────────────────────────── */
 async function loadCSV() {
@@ -359,6 +363,23 @@ function populateAreaFilter() {
   });
 }
 
+/* ── Phrase search ──────────────────────────────────────────
+   The whole phrase typed on the home page must appear, as whole
+   words, in the listing's area, zone, project name or code.
+   "seksyen 7" matches "Seksyen 7" but NOT "Seksyen 17",
+   "Seksyen 70" or a price like 1750. Case and extra spaces
+   are ignored. */
+function normalise(str) {
+  return (str || '').toString().toLowerCase().replace(/\s+/g, ' ').trim();
+}
+function matchesQuery(r, query) {
+  const q = normalise(query);
+  if (!q) return true;
+  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp('(^|[^a-z0-9])' + escaped + '($|[^a-z0-9])');
+  return [r.area, r.zone, r.project_name, r.code].some(f => re.test(normalise(f)));
+}
+
 /* ── Filters ────────────────────────────────────────────── */
 function applyFilters() {
   const type   = document.getElementById('f-type').value;   // rental / subsale
@@ -367,7 +388,7 @@ function applyFilters() {
   const furn   = document.getElementById('f-furnishing').value;
   const tenure = document.getElementById('f-tenure').value;
 
-  filteredListings = [...allListings];
+  filteredListings = allListings.filter(r => matchesQuery(r, currentQuery));
 
   if (type === 'rental') {
     filteredListings = filteredListings.filter(r => r.listing_type === 'rental' || r.listing_type === 'room');
@@ -384,7 +405,13 @@ function applyFilters() {
   renderResults();
 }
 
+function clearQuery() {
+  currentQuery = '';
+  applyFilters();
+}
+
 function resetFilters() {
+  currentQuery = '';
   ['f-area','f-price','f-furnishing','f-tenure'].forEach(id => {
     document.getElementById(id).value = '';
   });
@@ -559,8 +586,20 @@ function renderResults() {
 
   const n = filteredListings.length;
 
+  const chip = document.getElementById('query-chip');
+  if (currentQuery) {
+    chip.textContent = `"${currentQuery}" ✕`;
+    chip.style.display = 'inline-flex';
+  } else {
+    chip.style.display = 'none';
+  }
+
   if (n === 0) {
-    grid.innerHTML = `<div class="empty"><strong>No listings found</strong>Try a different area, or loosen the price or furnishing filters.</div>`;
+    const otherTab = document.getElementById('f-type').value === 'subsale' ? 'For Rent' : 'For Sale';
+    const hint = currentQuery
+      ? `Nothing matches "${currentQuery}" here. Try the ${otherTab} tab, clear the search text, or loosen the filters.`
+      : 'Try a different area, or loosen the price or furnishing filters.';
+    grid.innerHTML = `<div class="empty"><strong>No listings found</strong>${hint.replace(/</g,'&lt;')}</div>`;
     title.textContent = 'No results';
     count.textContent = '';
     return;
@@ -569,7 +608,9 @@ function renderResults() {
   const area = document.getElementById('f-area').value;
   const type = document.getElementById('f-type').value;
   const typeLabel = type === 'subsale' ? 'For Sale' : 'For Rent';
-  title.textContent = area ? `${typeLabel} in ${area}` : `${typeLabel} — All Areas`;
+  title.textContent = currentQuery
+    ? `${typeLabel} — "${currentQuery}"`
+    : (area ? `${typeLabel} in ${area}` : `${typeLabel} — All Areas`);
   count.textContent = `${n} listing${n !== 1 ? 's' : ''}`;
   grid.innerHTML = filteredListings.map(renderCard).join('');
 }
@@ -581,11 +622,11 @@ function scrollToResults() {
   document.getElementById('results-header').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-/* ── Keep URL in sync with all filters ─────────────────── */
+/* ── Keep URL in sync with search text + all filters ───── */
 function syncUrl() {
   const url = new URL(window.location);
-  url.searchParams.delete('q'); // old free-text links — drop the leftover param
   const params = {
+    q: currentQuery,
     tab: document.getElementById('f-type').value,     // category: rental/subsale
     area: document.getElementById('f-area').value,
     price: document.getElementById('f-price').value,
@@ -603,6 +644,7 @@ function syncUrl() {
 async function init() {
   await loadCSV();
   const params = new URLSearchParams(window.location.search);
+  currentQuery = (params.get('q') || '').replace(/\s+/g, ' ').trim();
 
   // Category always travels under ?tab= — index.html sends its tab names (sewa/jual);
   // this page's own shared links send the category value directly (rental/subsale).
