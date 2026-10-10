@@ -284,6 +284,75 @@ def load_listings():
         return list(reader)
 
 
+# ---------------------------------------------------------------------------
+# Instalment estimates
+#
+# Every subsale/lelong instalment is recomputed from its price with ONE formula,
+# so cards never show figures worked out on different assumptions. These three
+# numbers must match the disclaimer shown on the area pages ("Est. instalment
+# based on 90% loan, 35-year tenure, 4.5% interest rate") -- change both
+# together.
+# ---------------------------------------------------------------------------
+LOAN_MARGIN = 0.90      # 90% loan
+LOAN_YEARS = 35         # 35-year tenure
+LOAN_RATE = 4.5         # 4.5% p.a.
+INSTALMENT_TYPES = ("subsale", "lelong")
+
+
+def calc_instalment(price):
+    """Monthly repayment (RM, rounded) on a standard reducing-balance loan."""
+    try:
+        p = float(str(price).replace(",", "").strip())
+    except (ValueError, TypeError):
+        return None  # price ranges like "300000-350000", "TBC", blanks
+    if p <= 0:
+        return None
+    loan = p * LOAN_MARGIN
+    r = LOAN_RATE / 100 / 12
+    n = LOAN_YEARS * 12
+    return round(loan * r / (1 - (1 + r) ** -n))
+
+
+def normalise_instalments(rows) -> int:
+    """Overwrite the installment column of every subsale/lelong row with the
+    formula value. listings.csv is what the area pages' JavaScript and
+    instalment filter read, so the CSV itself must hold the correct number --
+    fixing only the static cards would be undone as soon as the JS loads.
+    Returns how many rows changed."""
+    changed = 0
+    for r in rows:
+        if r.get("listing_type") not in INSTALMENT_TYPES or "installment" not in r:
+            continue
+        val = calc_instalment(r.get("price"))
+        if val is None:
+            continue
+        old = str(r.get("installment") or "").replace(",", "").strip()
+        try:
+            same = old and int(float(old)) == val
+        except ValueError:
+            same = False
+        if not same:
+            print(f"    instalment: {r.get('project_name')} (RM {r.get('price')}) "
+                  f"{old or 'blank'} -> {val}")
+            r["installment"] = str(val)
+            changed += 1
+    return changed
+
+
+def save_listings(rows):
+    """Write rows back to listings.csv, keeping its column order, BOM and
+    line endings so the file stays as close to your original as possible."""
+    raw = LISTINGS_CSV.read_bytes()
+    has_bom = raw.startswith(b"\xef\xbb\xbf")
+    newline = "\r\n" if b"\r\n" in raw else "\n"
+    with open(LISTINGS_CSV, encoding="utf-8-sig") as f:
+        fieldnames = next(csv.reader(f))
+    with open(LISTINGS_CSV, "w", encoding="utf-8-sig" if has_bom else "utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames, lineterminator=newline, extrasaction="ignore")
+        w.writeheader()
+        w.writerows(rows)
+
+
 def inject_grid(html_text: str, grid_id: str, cards_markup: str) -> str:
     """Replace content inside <div class="listing-grid" id="{grid_id}">...</div>
     with SSR-marked static cards. Works whether or not SSR markers already exist."""
@@ -735,6 +804,14 @@ def main():
         sys.exit(1)
     rows = load_listings()
     print(f"Loaded {len(rows)} rows from listings.csv\n")
+
+    print(f"Checking instalments ({int(LOAN_MARGIN*100)}% loan, {LOAN_YEARS} yrs, {LOAN_RATE}%)...")
+    fixed = normalise_instalments(rows)
+    if fixed:
+        save_listings(rows)
+        print(f"  {fixed} instalment(s) corrected in listings.csv\n")
+    else:
+        print("  all instalments already correct\n")
 
     area_files = sorted(AREA_DIR.glob("*.html"))
     print(f"Processing {len(area_files)} area pages...")
