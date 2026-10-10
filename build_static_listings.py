@@ -320,16 +320,59 @@ def stamp_dates(text: str, today) -> str:
                   f'"dateModified": "{today.isoformat()}"', text)
 
 
+# Area pages that were renamed or merged. Any link to an old file name inside
+# an area page (e.g. a "Nearby Areas" link) is rewritten to the new page on
+# every build. Add a line here whenever an area page is renamed or merged.
+RENAMED_AREA_PAGES = {
+    "sepang.html": "sepang-dengkil-banting.html",
+    "sepang_dengkil_banting.html": "sepang-dengkil-banting.html",
+    "kajang.html": "kajang-bangi.html",
+    "bangi.html": "kajang-bangi.html",
+}
+
+
+def is_area_page(text: str) -> bool:
+    """True if the page defines an AREA or AREAS constant (i.e. it's a real
+    area listing page, not a stray file like area/local/search.html)."""
+    return bool(re.search(r"const AREA\s*=\s*'", text) or re.search(r"const AREAS\s*=\s*\[", text))
+
+
+def fix_area_urls(text: str, path: Path) -> str:
+    """Keep each area page's own URLs correct and its links to other area
+    pages pointing at the current file names:
+      1. canonical and og:url always match this file's real name
+      2. links to renamed/merged pages (RENAMED_AREA_PAGES) point to the new page
+    """
+    self_url = f"{SITE_BASE}/area/local/{path.name}"
+    text = re.sub(r'<link rel="canonical" href="[^"]*">',
+                  f'<link rel="canonical" href="{self_url}">', text)
+    text = re.sub(r'<meta property="og:url" content="[^"]*">',
+                  f'<meta property="og:url" content="{self_url}">', text)
+    for old, new in RENAMED_AREA_PAGES.items():
+        # matches href="sepang.html", href="/area/local/sepang.html",
+        # href="https://haniproperties.com/area/local/sepang.html", and the
+        # same URLs inside JSON-LD ("item": "...sepang.html")
+        text = re.sub(rf'((?:href=|"item":\s*|"url":\s*|"@id":\s*)"(?:[^"]*/)?){re.escape(old)}"',
+                      rf'\g<1>{new}"', text)
+    return text
+
+
 def process_area_file(path: Path, all_rows):
     text = path.read_text(encoding="utf-8")
-    original = text
     # A page may define a single AREA, a multi-value AREAS list, or both
     # (kajang-bangi.html only has AREAS, so it must not be skipped).
     m = re.search(r"const AREA\s*=\s*'([^']*)'", text)
     area = m.group(1) if m else None
-    if not m and not re.search(r"const AREAS\s*=\s*\[", text):
+    if not is_area_page(text):
         print(f"  skip {path.name}: no AREA or AREAS constant found")
         return
+
+    # URL fixes are housekeeping, not a listings change, so they're applied
+    # before the "did the listings change?" comparison below -- fixing a
+    # canonical never moves the page's 'Last updated' date.
+    text = fix_area_urls(text, path)
+    url_fixed = text != path.read_text(encoding="utf-8")
+    original = text
 
     # Optional ZONE constant lets a page target a specific sub-area/township
     # within a broader CSV "area" value (e.g. Setia Alam is a "zone" inside
@@ -375,7 +418,10 @@ def process_area_file(path: Path, all_rows):
     # changed -- re-running the build with the same CSV leaves the date alone,
     # so the stamp stays an honest freshness signal for visitors and Google.
     if _strip_date_stamps(text) == _strip_date_stamps(original) and "--restamp" not in sys.argv:
-        print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale, {len(lelongs)} lelong (no change)")
+        if url_fixed:
+            path.write_text(text, encoding="utf-8")
+        note = "URLs fixed, date kept" if url_fixed else "no change"
+        print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale, {len(lelongs)} lelong ({note})")
         return
 
     import datetime
@@ -407,7 +453,7 @@ AREAS = [
     {"slug": "semenyih", "name": "Semenyih", "region": "Selangor", "tag": "UNITEN, EcoHill Mall"},
     {"slug": "seri-kembangan", "name": "Seri Kembangan", "region": "Selangor", "tag": "The Mines, MRT Serdang Jaya"},
     {"slug": "cyberjaya-putrajaya", "name": "Cyberjaya / Putrajaya", "region": "Selangor", "popular": True, "tag": "MMU, IOI City Mall, KLIA Transit"},
-    {"slug": "sepang", "page": "sepang_dengkil_banting", "name": "Sepang / Dengkil / Banting", "region": "Selangor", "tag": "KLIA, klia2, Sepang Circuit"},
+    {"slug": "sepang", "page": "sepang-dengkil-banting", "name": "Sepang / Dengkil / Banting", "region": "Selangor", "tag": "KLIA, klia2, Sepang Circuit"},
     {"slug": "bandar-saujana-putra", "name": "Bandar Saujana Putra", "region": "Selangor", "tag": "Cyberjaya, Putra Heights, ELITE Hwy"},
     {"slug": "rimbayu-tpg", "name": "Rimbayu / TPG", "region": "Selangor", "tag": "Central Park, Kota Kemuning"},
     {"slug": "puncak-alam", "name": "Puncak Alam", "region": "Selangor", "tag": "UiTM Puncak Alam, AEON Bukit Raja"},
@@ -594,8 +640,6 @@ SITE_BASE = "https://haniproperties.com"
 CORE_PAGES = [
     ("/", "weekly", "1.0"),
     ("/kawasan.html", "weekly", "0.9"),
-    ("/investor-corner.html", "weekly", "0.9"),
-    ("/offerings.html", "monthly", "0.8"),
     ("/simple.html", "monthly", "0.8"),
     ("/calculator.html", "monthly", "0.8"),
     ("/projects/projects.html", "weekly", "0.8"),
@@ -690,7 +734,9 @@ def main():
     for f in area_files:
         process_area_file(f, rows)
 
-    regenerate_sitemap(area_files)
+    # Only real area pages go in the sitemap -- stray files in area/local/
+    # (e.g. search.html) are left out.
+    regenerate_sitemap([f for f in area_files if is_area_page(f.read_text(encoding="utf-8"))])
 
     print("\nProcessing kawasan.html area directory...")
     process_kawasan_page()
