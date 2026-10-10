@@ -344,16 +344,22 @@ def fix_area_urls(text: str, path: Path) -> str:
       2. links to renamed/merged pages (RENAMED_AREA_PAGES) point to the new page
     """
     self_url = f"{SITE_BASE}/area/local/{path.name}"
-    text = re.sub(r'<link rel="canonical" href="[^"]*">',
-                  f'<link rel="canonical" href="{self_url}">', text)
-    text = re.sub(r'<meta property="og:url" content="[^"]*">',
-                  f'<meta property="og:url" content="{self_url}">', text)
+    # Tolerant of attribute order, extra spaces and self-closing "/>".
+    text = re.sub(r'(<link\b[^>]*\brel="canonical"[^>]*\bhref=")[^"]*(")',
+                  rf'\g<1>{self_url}\g<2>', text)
+    text = re.sub(r'(<link\b[^>]*\bhref=")[^"]*("[^>]*\brel="canonical")',
+                  rf'\g<1>{self_url}\g<2>', text)
+    text = re.sub(r'(<meta\b[^>]*\bproperty="og:url"[^>]*\bcontent=")[^"]*(")',
+                  rf'\g<1>{self_url}\g<2>', text)
+    text = re.sub(r'(<meta\b[^>]*\bcontent=")[^"]*("[^>]*\bproperty="og:url")',
+                  rf'\g<1>{self_url}\g<2>', text)
     for old, new in RENAMED_AREA_PAGES.items():
         # matches href="sepang.html", href="/area/local/sepang.html",
-        # href="https://haniproperties.com/area/local/sepang.html", and the
-        # same URLs inside JSON-LD ("item": "...sepang.html")
-        text = re.sub(rf'((?:href=|"item":\s*|"url":\s*|"@id":\s*)"(?:[^"]*/)?){re.escape(old)}"',
-                      rf'\g<1>{new}"', text)
+        # href="https://haniproperties.com/area/local/sepang.html", meta
+        # content="..." URLs, and the same URLs inside JSON-LD
+        # ("item": "...sepang.html", "url": ..., "@id": ...)
+        text = re.sub(rf'((?:href=|content=|"item":\s*|"url":\s*|"@id":\s*)"(?:[^"]*/)?){re.escape(old)}([#"])',
+                      rf'\g<1>{new}\g<2>', text)
     return text
 
 
