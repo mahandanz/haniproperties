@@ -298,6 +298,15 @@ LOAN_YEARS = 35         # 35-year tenure
 LOAN_RATE = 4.5         # 4.5% p.a.
 INSTALMENT_TYPES = ("subsale", "lelong")
 
+# Land is financed differently from homes (lower margins, shorter tenures), so
+# land listings show no instalment. Matches "Agricultural Land", "Land",
+# "Tanah Pertanian" etc. in the type column -- but not "Landed" or "Landed Terrace".
+LAND_TYPE = re.compile(r"\bland\b|\btanah\b", re.I)
+
+
+def is_land(r) -> bool:
+    return bool(LAND_TYPE.search(r.get("type") or ""))
+
 
 def calc_instalment(price):
     """Monthly repayment (RM, rounded) on a standard reducing-balance loan."""
@@ -322,6 +331,13 @@ def normalise_instalments(rows) -> int:
     changed = 0
     for r in rows:
         if r.get("listing_type") not in INSTALMENT_TYPES or "installment" not in r:
+            continue
+        if is_land(r):
+            if (r.get("installment") or "").strip():
+                print(f"    instalment: {r.get('project_name')} ({r.get('type')}) "
+                      f"{r['installment']} -> removed (land)")
+                r["installment"] = ""
+                changed += 1
             continue
         val = calc_instalment(r.get("price"))
         if val is None:
@@ -808,8 +824,15 @@ def main():
     print(f"Checking instalments ({int(LOAN_MARGIN*100)}% loan, {LOAN_YEARS} yrs, {LOAN_RATE}%)...")
     fixed = normalise_instalments(rows)
     if fixed:
-        save_listings(rows)
-        print(f"  {fixed} instalment(s) corrected in listings.csv\n")
+        try:
+            save_listings(rows)
+            print(f"  {fixed} instalment(s) corrected in listings.csv\n")
+        except PermissionError:
+            print("\n  !! Could not save listings.csv -- it is open in another program "
+                  "(usually Excel) or OneDrive is syncing it.")
+            print("  !! Close it and run this script again. Nothing was changed in the CSV;")
+            print("  !! the rest of this build continues with the corrected figures, but the")
+            print("  !! live pages will show the old figures until the CSV itself is saved.\n")
     else:
         print("  all instalments already correct\n")
 
