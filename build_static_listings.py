@@ -864,7 +864,7 @@ def main():
     if fixed:
         try:
             save_listings(rows)
-            print(f"  {fixed} instalment(s) corrected in listings.csv\n")
+            print(f"  {fixed} fix(es) saved to listings.csv\n")
         except PermissionError:
             print("\n  !! Could not save listings.csv -- it is open in another program "
                   "(usually Excel) or OneDrive is syncing it.")
@@ -872,7 +872,7 @@ def main():
             print("  !! the rest of this build continues with the corrected figures, but the")
             print("  !! live pages will show the old figures until the CSV itself is saved.\n")
     else:
-        print("  all instalments already correct\n")
+        print("  listings.csv already correct, not changed\n")
 
     area_files = sorted(AREA_DIR.glob("*.html"))
     print(f"Processing {len(area_files)} area pages...")
