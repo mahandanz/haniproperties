@@ -328,6 +328,7 @@ RENAMED_AREA_PAGES = {
     "sepang_dengkil_banting.html": "sepang-dengkil-banting.html",
     "kajang.html": "kajang-bangi.html",
     "bangi.html": "kajang-bangi.html",
+    "nilai.html": "nilai-seremban.html",
 }
 
 
@@ -473,7 +474,7 @@ AREAS = [
     {"slug": "setapak", "name": "Setapak", "region": "Kuala Lumpur", "tag": "UTAR, Wangsa Walk Mall"},
     {"slug": "sentul", "name": "Sentul", "region": "Kuala Lumpur", "tag": "Sentul Timur LRT, KL Sentral"},
     {"slug": "selayang", "name": "Selayang", "region": "Kuala Lumpur", "tag": "Batu Caves, Selayang Hospital"},
-    {"slug": "nilai", "name": "Nilai", "region": "Negeri Sembilan", "tag": "USIM, INTI University, AEON Nilai"},
+    {"slug": "nilai", "page": "nilai-seremban", "name": "Nilai & Seremban", "region": "Negeri Sembilan", "tag": "USIM, AEON Nilai, Seremban 2, Senawang"},
 ]
 
 REGION_ORDER = ["Selangor", "Kuala Lumpur", "Negeri Sembilan"]
