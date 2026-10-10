@@ -355,6 +355,39 @@ def normalise_instalments(rows) -> int:
     return changed
 
 
+WA_PRICE = re.compile(r"(Price:\s*RM\s*)([\d,]+(?:\.\d+)?)", re.I)
+
+
+def normalise_wa_prices(rows) -> int:
+    """Keep the price inside each WhatsApp enquiry message (wa_text column,
+    e.g. "... Price: RM310000. Ref: MMN") equal to the listing's price
+    column, so the message a buyer sends always quotes the price on the card.
+    Only rows with a plain numeric price are touched; ranges/TBC are skipped.
+    Returns how many rows changed."""
+    changed = 0
+    for r in rows:
+        text = r.get("wa_text") or ""
+        if not text:
+            continue
+        price_raw = str(r.get("price") or "").replace(",", "").strip()
+        try:
+            price = int(float(price_raw))
+        except ValueError:
+            continue
+        m = WA_PRICE.search(text)
+        if not m:
+            continue
+        try:
+            current = int(float(m.group(2).replace(",", "")))
+        except ValueError:
+            continue
+        if current != price:
+            r["wa_text"] = WA_PRICE.sub(lambda mm: f"{mm.group(1)}{price}", text, count=1)
+            print(f"    whatsapp: {r.get('project_name')} Price: RM{current} -> RM{price}")
+            changed += 1
+    return changed
+
+
 def save_listings(rows):
     """Write rows back to listings.csv, keeping its column order, BOM and
     line endings so the file stays as close to your original as possible."""
@@ -823,6 +856,11 @@ def main():
 
     print(f"Checking instalments ({int(LOAN_MARGIN*100)}% loan, {LOAN_YEARS} yrs, {LOAN_RATE}%)...")
     fixed = normalise_instalments(rows)
+    print("Checking WhatsApp message prices match the price column...")
+    wa_fixed = normalise_wa_prices(rows)
+    if not wa_fixed:
+        print("  all WhatsApp prices already match")
+    fixed += wa_fixed
     if fixed:
         try:
             save_listings(rows)
