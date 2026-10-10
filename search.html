@@ -284,35 +284,51 @@
 </footer>
 
 <script>
+// CSV "area" value -> area page. Keys are matched case-insensitively and
+// ignore spacing around "/", so "Nilai/Seremban", "nilai / seremban" and
+// "NILAI/SEREMBAN" all hit the same entry. Any area not listed here links
+// to /kawasan.html instead of a page that might not exist.
 const AREA_MAP = {
   'ampang': '/area/local/ampang.html',
   'bandar saujana putra': '/area/local/bandar-saujana-putra.html',
-  'bangi': '/area/local/bangi.html',
   'bukit jalil': '/area/local/bukit-jalil.html',
   'cheras': '/area/local/cheras.html',
-  'cyberjaya / putrajaya': '/area/local/cyberjaya-putrajaya.html',
-  'kajang': '/area/local/kajang.html',
+  'cyberjaya/putrajaya': '/area/local/cyberjaya-putrajaya.html',
+  'kajang': '/area/local/kajang-bangi.html',
+  'bangi': '/area/local/kajang-bangi.html',
+  'bangi/kajang': '/area/local/kajang-bangi.html',
+  'kajang/bangi': '/area/local/kajang-bangi.html',
+  'kajang & bangi': '/area/local/kajang-bangi.html',
   'kepong': '/area/local/kepong.html',
   'klang': '/area/local/klang.html',
   'kuala lumpur': '/area/local/kuala-lumpur.html',
-  'kuala selangor': '/area/local/kuala-selangor.html',
-  'langkawi': '/area/local/langkawi.html',
-  'nilai': '/area/local/nilai.html',
-  'petaling jaya / damansara': '/area/local/petaling-jaya.html',
+  'nilai': '/area/local/nilai-seremban.html',
+  'seremban': '/area/local/nilai-seremban.html',
+  'nilai/seremban': '/area/local/nilai-seremban.html',
+  'petaling jaya/damansara': '/area/local/petaling-jaya.html',
   'puchong': '/area/local/puchong.html',
   'puncak alam': '/area/local/puncak-alam.html',
   'rawang': '/area/local/rawang.html',
+  'rimbayu/tpg': '/area/local/rimbayu-tpg.html',
   'selayang': '/area/local/selayang.html',
   'semenyih': '/area/local/semenyih.html',
   'sentul': '/area/local/sentul.html',
-  'sepang': '/area/local/sepang.html',
+  'sepang': '/area/local/sepang-dengkil-banting.html',
+  'dengkil': '/area/local/sepang-dengkil-banting.html',
+  'banting': '/area/local/sepang-dengkil-banting.html',
+  'sepang/dengkil/banting': '/area/local/sepang-dengkil-banting.html',
   'seri kembangan': '/area/local/seri-kembangan.html',
   'setapak': '/area/local/setapak.html',
+  'setia alam': '/area/local/setia-alam.html',
   'shah alam': '/area/local/shah-alam.html',
   'subang jaya': '/area/local/subang-jaya.html',
   'sungai buloh': '/area/local/sungai-buloh.html',
   'selangor': '/kawasan.html',
 };
+
+function areaKey(a) {
+  return (a || '').toLowerCase().replace(/\s*\/\s*/g, '/').replace(/\s+/g, ' ').trim();
+}
 
 function toSlug(...parts) {
   return parts.filter(Boolean).join('-')
@@ -533,8 +549,7 @@ function hasVal(v) {
 }
 
 function renderCard(r) {
-  const areaKey = (r.area || '').toLowerCase();
-  const areaHref = AREA_MAP[areaKey] || '/kawasan.html';
+  const areaHref = AREA_MAP[areaKey(r.area)] || '/kawasan.html';
   const slugPart2 = r.listing_type === 'room' ? r.room_type : r.bed;
   const slug = toSlug(r.project_name, slugPart2, getPrice(r));
   const unitHref = `${areaHref}#${slug}`;
