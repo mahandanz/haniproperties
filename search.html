@@ -221,6 +221,12 @@
         <option value="">All Areas</option>
       </select>
     </div>
+    <div class="hero-filter-group" id="fg-ptype">
+      <div class="hero-filter-label">Type</div>
+      <select class="hero-filter-select" id="f-ptype" onchange="applyFilters()">
+        <option value="">All Types</option>
+      </select>
+    </div>
     <div class="hero-filter-group" id="fg-furnishing">
       <div class="hero-filter-label">Furnishing</div>
       <select class="hero-filter-select" id="f-furnishing" onchange="applyFilters()">
@@ -366,6 +372,31 @@ async function loadCSV() {
 
   populateAreaFilter();
   buildPriceOptions('rental');  // price dropdown for the default "For Rent" category
+  buildTypeOptions('rental');   // property-type dropdown for the default category
+}
+
+/* ── Property Type options (Condo, Terrace, etc.) — built from the CSV
+   "type" column, limited to listings in the current Rent/Sale tab so
+   the list only shows types that actually exist there. ── */
+function listingsForCategory(type) {
+  if (type === 'rental') return allListings.filter(r => r.listing_type === 'rental' || r.listing_type === 'room');
+  if (type) return allListings.filter(r => r.listing_type === type);
+  return allListings;
+}
+
+function buildTypeOptions(type) {
+  const sel = document.getElementById('f-ptype');
+  const prevVal = sel.value;
+  const types = [...new Set(listingsForCategory(type).map(r => r.type).filter(hasVal))].sort();
+  sel.innerHTML = '<option value="">All Types</option>';
+  types.forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t;
+    opt.textContent = t;
+    sel.appendChild(opt);
+  });
+  // Keep the previous selection only if it still exists in the rebuilt list
+  sel.value = [...sel.options].some(o => o.value === prevVal) ? prevVal : '';
 }
 
 function populateAreaFilter() {
@@ -420,6 +451,7 @@ function applyFilters() {
   const price  = document.getElementById('f-price').value;
   const furn   = document.getElementById('f-furnishing').value;
   const tenure = document.getElementById('f-tenure').value;
+  const ptype  = document.getElementById('f-ptype').value;  // property type (Condo, Terrace…)
 
   const isBuffer = currentQuery === 'bufferI';
   filteredListings = isBuffer
@@ -434,6 +466,7 @@ function applyFilters() {
     filteredListings = filteredListings.filter(r => r.listing_type === type);
   }
   if (area) filteredListings = filteredListings.filter(r => r.area === area);
+  if (ptype) filteredListings = filteredListings.filter(r => r.type === ptype);
   // Furnishing only meaningful for rentals; Tenure only for sale.
   if (type === 'rental' && furn) filteredListings = filteredListings.filter(r => r.furnishing === furn);
   if (type === 'subsale' && tenure) filteredListings = filteredListings.filter(r => r.tenure === tenure);
@@ -450,12 +483,13 @@ function clearQuery() {
 
 function resetFilters() {
   currentQuery = '';
-  ['f-area','f-price','f-furnishing','f-tenure'].forEach(id => {
+  ['f-area','f-price','f-furnishing','f-tenure','f-ptype'].forEach(id => {
     document.getElementById(id).value = '';
   });
   document.getElementById('f-type').value = 'rental';
   setActiveTabButton('rental');
   buildPriceOptions('rental');
+  buildTypeOptions('rental');
   toggleFilterVisibility('rental');
   applyFilters();
 }
@@ -496,6 +530,7 @@ function handleTypeChange() {
   const type = document.getElementById('f-type').value;
   toggleFilterVisibility(type);
   buildPriceOptions(type);
+  buildTypeOptions(type);
   applyFilters();
 }
 
@@ -635,7 +670,7 @@ function renderResults() {
     const otherTab = document.getElementById('f-type').value === 'subsale' ? 'For Rent' : 'For Sale';
     const hint = currentQuery
       ? `Nothing matches "${currentQuery}" here. Try the ${otherTab} tab, clear the search text, or loosen the filters.`
-      : 'Try a different area, or loosen the price or furnishing filters.';
+      : 'Try a different area, or loosen the type, price or furnishing filters.';
     grid.innerHTML = `<div class="empty"><strong>No listings found</strong>${hint.replace(/</g,'&lt;')}</div>`;
     title.textContent = 'No results';
     count.textContent = '';
@@ -669,6 +704,7 @@ function syncUrl() {
     price: document.getElementById('f-price').value,
     furnishing: document.getElementById('f-furnishing').value,
     tenure: document.getElementById('f-tenure').value,
+    ptype: document.getElementById('f-ptype').value,
   };
   Object.entries(params).forEach(([key, val]) => {
     if (val) url.searchParams.set(key, val);
@@ -698,6 +734,7 @@ async function init() {
 
   // Rebuild Max Price options for the resolved category, THEN apply its URL value.
   buildPriceOptions(category);
+  buildTypeOptions(category);
 
   const priceEl = document.getElementById('f-price');
   const priceParam = params.get('price');
@@ -705,7 +742,7 @@ async function init() {
     priceEl.value = priceParam;
   }
 
-  ['f-area','f-furnishing','f-tenure'].forEach(id => {
+  ['f-area','f-furnishing','f-tenure','f-ptype'].forEach(id => {
     const key = id.replace('f-', '');
     const val = params.get(key);
     const el = document.getElementById(id);

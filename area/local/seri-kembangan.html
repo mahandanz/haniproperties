@@ -641,7 +641,7 @@ function switchTab(tab, btn) {
   document.getElementById('fg-price').style.display = '';
   document.getElementById('fg-instalment').style.display = tab === 'jual' ? '' : 'none';
   document.getElementById('instalment-disclaimer').style.display = tab === 'jual' ? '' : 'none';
-  buildTypeOptions([...allUnits, ...allSubsales]);
+  buildTypeOptions(tab === 'jual' ? allSubsales : allUnits);  // only types in the active tab
   // Rebuild price options for the active tab
   if (tab === 'jual') {
     buildPriceOptions(allSubsales, false);
@@ -750,7 +750,7 @@ function buildInstalmentOptions(rows) {
 }
 
 function buildTypeOptions(rows) {
-  const types = [...new Set(rows.map(r => r.type).filter(Boolean))].sort();
+  const types = [...new Set(rows.map(r => (r.type || '').trim()).filter(v => v && v !== '-'))].sort();
   const sel = document.getElementById('f-type');
   sel.innerHTML = '<option value="">All</option>';
   types.forEach(t => {
@@ -897,7 +897,7 @@ fetch('../../listings.csv')
     allSubsales = sortByNewest(filtered.filter(r => r.listing_type === 'subsale'));
 
     // Build dynamic filter options
-    buildTypeOptions([...allUnits, ...allSubsales]);
+    buildTypeOptions(allUnits);        // default: rental tab active
     buildPriceOptions(allUnits, true); // default: rental tab active
     buildInstalmentOptions(allSubsales);
 
