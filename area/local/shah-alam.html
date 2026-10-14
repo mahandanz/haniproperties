@@ -158,6 +158,23 @@
       .wa-float{right:14px;width:50px;height:50px}
       .wa-float svg{width:26px;height:26px}
     }
+    /* PROPERTY CLASS CHOICE (Residential / Commercial / Land) */
+    .prop-choice{margin:-12px 0 24px}
+    .prop-choice-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a7268;margin-bottom:8px}
+    .prop-tabs{display:flex;gap:8px;flex-wrap:wrap}
+    .prop-btn{display:inline-flex;align-items:center;gap:7px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;padding:9px 16px;border-radius:10px;border:1.5px solid #e3ddd0;background:#fff;color:#1c1c18;cursor:pointer;transition:all .18s;white-space:nowrap}
+    .prop-btn svg{width:16px;height:16px;flex-shrink:0;color:#2a5c3a}
+    .prop-btn .prop-count{font-size:11px;font-weight:600;color:#7a7268}
+    .prop-btn:hover:not(.active):not(:disabled){border-color:#2a5c3a}
+    .prop-btn.active{background:#1B4D35;border-color:#1B4D35;color:#fff}
+    .prop-btn.active svg{color:#52B788}
+    .prop-btn.active .prop-count{color:rgba(255,255,255,.7)}
+    .prop-btn:disabled{opacity:.4;cursor:not-allowed}
+    @media(max-width:600px){
+      .prop-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+      .prop-btn{flex-direction:column;gap:3px;padding:9px 4px;font-size:11.5px}
+      .prop-btn .prop-count{font-size:10px}
+    }
   </style>
 </head>
 <body>
@@ -194,6 +211,17 @@
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('sewa',this)">For Rent</button>
     <button class="tab-btn" onclick="switchTab('jual',this)">For Sale</button>
+  </div>
+
+  <!-- PROPERTY CLASS -->
+  <div class="prop-choice">
+    <div class="prop-choice-label">Property type</div>
+    <div class="prop-tabs" id="prop-tabs">
+      <button type="button" class="prop-btn active" data-prop="" onclick="selectProp('')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>All</span><span class="prop-count"></span></button>
+      <button type="button" class="prop-btn" data-prop="residential" onclick="selectProp('residential')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>Residential</span><span class="prop-count"></span></button>
+      <button type="button" class="prop-btn" data-prop="commercial" onclick="selectProp('commercial')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M16 9h3a1 1 0 0 1 1 1v11"/><path d="M2 21h20"/><path d="M8 7h4M8 11h4M8 15h4"/></svg><span>Commercial</span><span class="prop-count"></span></button>
+      <button type="button" class="prop-btn" data-prop="land" onclick="selectProp('land')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20 9 10l4 6 3-4 6 8z"/><circle cx="17" cy="6" r="2"/></svg><span>Land</span><span class="prop-count"></span></button>
+    </div>
   </div>
 
   <!-- FILTERS -->
@@ -1190,6 +1218,65 @@ const AREA = 'Shah Alam';
 const WA_BASE = 'https://wa.me/60125459182?text=';
 let allUnits = [], allSubsales = [];
 let currentTab = 'sewa';
+let currentProp = '';   // '' = all, or residential / commercial / land
+
+/* ── Property class: Residential / Commercial / Land ──────
+   Worked out from the CSV "type" column:
+     • any type containing "Land" (Land, Residential Land,
+       Agricultural Land…)                       → land
+     • Commercial, Shop Lot, Shop Unit, Office,
+       Factory, Warehouse…                       → commercial
+     • everything else (Condo, Terrace, Shop
+       Apartment, SOHO…)                         → residential
+   If listings.csv ever gets a "category" column holding
+   residential / commercial / land, that value wins. */
+const PROP_LABELS = { residential: 'Residential', commercial: 'Commercial', land: 'Land' };
+const COMMERCIAL_RE = /\b(commercial|shop ?lot|shop ?unit|shop ?office|shophouse|office|retail|factory|warehouse|industrial|kedai|gudang)\b/;
+
+function propClass(r) {
+  const c = (r.category || '').trim().toLowerCase();
+  if (PROP_LABELS[c]) return c;
+  const t = (r.type || '').toLowerCase();
+  if (/\b(land|tanah)\b/.test(t)) return 'land';
+  if (COMMERCIAL_RE.test(t)) return 'commercial';
+  return 'residential';
+}
+function matchProp(r) { return !currentProp || propClass(r) === currentProp; }
+function byProp(rows) { return rows.filter(matchProp); }
+
+function updatePropTabs() {
+  const rows = currentTab === 'jual' ? allSubsales : allUnits;
+  const counts = { '': rows.length, residential: 0, commercial: 0, land: 0 };
+  rows.forEach(r => counts[propClass(r)]++);
+  document.querySelectorAll('#prop-tabs .prop-btn').forEach(b => {
+    const n = counts[b.dataset.prop] || 0;
+    b.classList.toggle('active', b.dataset.prop === currentProp);
+    b.querySelector('.prop-count').textContent = n;
+    // Empty classes can't be picked — unless already selected, so it can be switched off
+    b.disabled = n === 0 && b.dataset.prop !== currentProp;
+  });
+}
+
+// No bedrooms filter for commercial or land; no furnishing filter for land.
+function applyPropVisibility() {
+  if (currentProp === 'commercial' || currentProp === 'land') document.getElementById('fg-bed').style.display = 'none';
+  if (currentProp === 'land') document.getElementById('fg-furnishing').style.display = 'none';
+}
+
+function selectProp(prop) {
+  currentProp = prop;
+  buildTypeOptions(byProp(currentTab === 'jual' ? allSubsales : allUnits));
+  // Re-run the tab's own filter visibility first, then hide what this class doesn't need
+  document.getElementById('fg-furnishing').style.display = currentTab === 'sewa' ? '' : 'none';
+  document.getElementById('fg-bed').style.display = currentTab === 'sewa' ? '' : 'none';
+  applyPropVisibility();
+  updatePropTabs();
+  resetFilters();
+  const url = new URL(window.location);
+  if (prop) url.searchParams.set('prop', prop);
+  else url.searchParams.delete('prop');
+  window.history.replaceState({}, '', url);
+}
 
 function switchTab(tab, btn) {
   currentTab = tab;
@@ -1205,7 +1292,9 @@ function switchTab(tab, btn) {
   document.getElementById('fg-price').style.display = '';
   document.getElementById('fg-instalment').style.display = tab === 'jual' ? '' : 'none';
   document.getElementById('instalment-disclaimer').style.display = tab === 'jual' ? '' : 'none';
-  buildTypeOptions(tab === 'jual' ? allSubsales : allUnits);  // only types in the active tab
+  buildTypeOptions(byProp(tab === 'jual' ? allSubsales : allUnits));  // only types in the active tab + property class
+  applyPropVisibility();
+  updatePropTabs();
   // Rebuild price options for the active tab
   if (tab === 'jual') {
     buildPriceOptions(allSubsales, false);
@@ -1248,6 +1337,7 @@ function applyFilters() {
 
   if (currentTab === 'sewa') {
     const fu = allUnits.filter(r =>
+      matchProp(r) &&
       (!furnishing || r.furnishing === furnishing) &&
       (!type || r.type === type) &&
       matchBed(r, bed) &&
@@ -1259,6 +1349,7 @@ function applyFilters() {
   } else {
     const instalment = document.getElementById('f-instalment') ? document.getElementById('f-instalment').value : '';
     const fs = allSubsales.filter(r =>
+      matchProp(r) &&
       (!type || r.type === type) &&
       matchBed(r, bed) &&
       matchPrice(r, price) &&
@@ -1462,7 +1553,12 @@ fetch('../../listings.csv')
     allSubsales = sortByNewest(filtered.filter(r => r.listing_type === 'subsale'));
 
     // Build dynamic filter options
-    buildTypeOptions(allUnits);        // default: rental tab active
+    // Property class from ?prop=residential|commercial|land
+    const propParam = (new URLSearchParams(window.location.search).get('prop') || '').toLowerCase();
+    if (PROP_LABELS[propParam]) currentProp = propParam;
+    applyPropVisibility();
+    updatePropTabs();
+    buildTypeOptions(byProp(allUnits)); // default: rental tab active
     buildPriceOptions(allUnits, true); // default: rental tab active
     buildInstalmentOptions(allSubsales);
 

@@ -17,7 +17,7 @@
   <meta name="twitter:description" content="Rental, room rental and subsale properties in Kuala Lumpur, near KLCC, Bukit Bintang and Mid Valley City. WhatsApp Hani directly.">
   <meta name="twitter:image" content="https://haniproperties.com/og-cover.jpg">
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://haniproperties.com/area/local/kuala-lumpur.html#page", "name": "Properties in Kuala Lumpur", "url": "https://haniproperties.com/area/local/kuala-lumpur.html", "dateModified": "2026-10-13"}, {"@type": ["RealEstateAgent", "LocalBusiness"], "@id": "https://haniproperties.com/area/local/kuala-lumpur.html#business", "name": "Hani Properties", "url": "https://haniproperties.com/area/local/kuala-lumpur.html", "telephone": "+60125459182", "description": "Rental, room rental and subsale property agent in Kuala Lumpur, City Centre. KLCC • Bukit Bintang • KL Sentral.", "address": {"@type": "PostalAddress", "addressLocality": "Kuala Lumpur", "addressRegion": "Selangor", "addressCountry": "MY"}, "geo": {"@type": "GeoCoordinates", "latitude": 3.139, "longitude": 101.6869}, "areaServed": {"@type": "Place", "name": "Kuala Lumpur, City Centre"}, "contactPoint": {"@type": "ContactPoint", "telephone": "+60125459182", "contactType": "customer service", "availableLanguage": ["English", "Malay"]}, "parentOrganization": {"@type": "Organization", "name": "ERA Real Estate", "identifier": "E(1)1773/3"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hani Properties", "item": "https://haniproperties.com/"}, {"@type": "ListItem", "position": 2, "name": "Areas", "item": "https://haniproperties.com/kawasan.html"}, {"@type": "ListItem", "position": 3, "name": "Kuala Lumpur", "item": "https://haniproperties.com/area/local/kuala-lumpur.html"}]}]}
+  {"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://haniproperties.com/area/local/kuala-lumpur.html#page", "name": "Properties in Kuala Lumpur", "url": "https://haniproperties.com/area/local/kuala-lumpur.html", "dateModified": "2026-10-14"}, {"@type": ["RealEstateAgent", "LocalBusiness"], "@id": "https://haniproperties.com/area/local/kuala-lumpur.html#business", "name": "Hani Properties", "url": "https://haniproperties.com/area/local/kuala-lumpur.html", "telephone": "+60125459182", "description": "Rental, room rental and subsale property agent in Kuala Lumpur, City Centre. KLCC • Bukit Bintang • KL Sentral.", "address": {"@type": "PostalAddress", "addressLocality": "Kuala Lumpur", "addressRegion": "Selangor", "addressCountry": "MY"}, "geo": {"@type": "GeoCoordinates", "latitude": 3.139, "longitude": 101.6869}, "areaServed": {"@type": "Place", "name": "Kuala Lumpur, City Centre"}, "contactPoint": {"@type": "ContactPoint", "telephone": "+60125459182", "contactType": "customer service", "availableLanguage": ["English", "Malay"]}, "parentOrganization": {"@type": "Organization", "name": "ERA Real Estate", "identifier": "E(1)1773/3"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Hani Properties", "item": "https://haniproperties.com/"}, {"@type": "ListItem", "position": 2, "name": "Areas", "item": "https://haniproperties.com/kawasan.html"}, {"@type": "ListItem", "position": 3, "name": "Kuala Lumpur", "item": "https://haniproperties.com/area/local/kuala-lumpur.html"}]}]}
   </script>
     <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What types of properties are available in Kuala Lumpur?", "acceptedAnswer": {"@type": "Answer", "text": "Hani Properties lists for-rent and for-sale (subsale) properties in Kuala Lumpur, including apartments, condominiums, and landed homes, updated regularly."}}, {"@type": "Question", "name": "Is Kuala Lumpur a good area for renting or buying property?", "acceptedAnswer": {"@type": "Answer", "text": "The heart of Malaysia — KLCC, Bukit Bintang, Bangsar, and the full spectrum of city living from studios to luxury condos."}}, {"@type": "Question", "name": "How can I enquire about a property in Kuala Lumpur?", "acceptedAnswer": {"@type": "Answer", "text": "WhatsApp Hani directly at 012-545 9182. Hani Properties is licensed under ERA Real Estate (E(1)1773/3, REN 84031) and typically replies within an hour."}}, {"@type": "Question", "name": "Can Hani Properties help find a specific unit in Kuala Lumpur that isn't listed yet?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. WhatsApp Hani or use the request form on the Kuala Lumpur page, and Hani will search directly for matching units in Kuala Lumpur."}}]}
@@ -158,6 +158,23 @@
       .wa-float{right:14px;width:50px;height:50px}
       .wa-float svg{width:26px;height:26px}
     }
+    /* PROPERTY CLASS CHOICE (Residential / Commercial / Land) */
+    .prop-choice{margin:-12px 0 24px}
+    .prop-choice-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7a7268;margin-bottom:8px}
+    .prop-tabs{display:flex;gap:8px;flex-wrap:wrap}
+    .prop-btn{display:inline-flex;align-items:center;gap:7px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;padding:9px 16px;border-radius:10px;border:1.5px solid #e3ddd0;background:#fff;color:#1c1c18;cursor:pointer;transition:all .18s;white-space:nowrap}
+    .prop-btn svg{width:16px;height:16px;flex-shrink:0;color:#2a5c3a}
+    .prop-btn .prop-count{font-size:11px;font-weight:600;color:#7a7268}
+    .prop-btn:hover:not(.active):not(:disabled){border-color:#2a5c3a}
+    .prop-btn.active{background:#1B4D35;border-color:#1B4D35;color:#fff}
+    .prop-btn.active svg{color:#52B788}
+    .prop-btn.active .prop-count{color:rgba(255,255,255,.7)}
+    .prop-btn:disabled{opacity:.4;cursor:not-allowed}
+    @media(max-width:600px){
+      .prop-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+      .prop-btn{flex-direction:column;gap:3px;padding:9px 4px;font-size:11.5px}
+      .prop-btn .prop-count{font-size:10px}
+    }
   </style>
 </head>
 <body>
@@ -176,7 +193,7 @@
   <h1>Properties in Kuala Lumpur</h1>
   <p class="hero-desc">The heart of Malaysia — KLCC, Bukit Bintang, Bangsar, and the full spectrum of city living from studios to luxury condos.</p>
   <p class="hero-desc" id="hero-summary-stat"></p>
-  <div class="hero-stamp">📅 Updated weekly · Last updated: 13 Oct 2026</div>
+  <div class="hero-stamp">📅 Updated weekly · Last updated: 14 Oct 2026</div>
   <a href="../../request.html" class="btn-wa" style="margin-top:18px;">Can't Find It? Let Us Help</a>
 </section>
 
@@ -194,6 +211,17 @@
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('sewa',this)">For Rent</button>
     <button class="tab-btn" onclick="switchTab('jual',this)">For Sale</button>
+  </div>
+
+  <!-- PROPERTY CLASS -->
+  <div class="prop-choice">
+    <div class="prop-choice-label">Property type</div>
+    <div class="prop-tabs" id="prop-tabs">
+      <button type="button" class="prop-btn active" data-prop="" onclick="selectProp('')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>All</span><span class="prop-count"></span></button>
+      <button type="button" class="prop-btn" data-prop="residential" onclick="selectProp('residential')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>Residential</span><span class="prop-count"></span></button>
+      <button type="button" class="prop-btn" data-prop="commercial" onclick="selectProp('commercial')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M16 9h3a1 1 0 0 1 1 1v11"/><path d="M2 21h20"/><path d="M8 7h4M8 11h4M8 15h4"/></svg><span>Commercial</span><span class="prop-count"></span></button>
+      <button type="button" class="prop-btn" data-prop="land" onclick="selectProp('land')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20 9 10l4 6 3-4 6 8z"/><circle cx="17" cy="6" r="2"/></svg><span>Land</span><span class="prop-count"></span></button>
+    </div>
   </div>
 
   <!-- FILTERS -->
@@ -391,16 +419,6 @@
       <div class="card-anchors">LRT PWTC | Monorail Chow Kit | Sunway Putra Mall | Quill City Mall</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Chambers%20Residence%20%28CHM-31-10-S1%2C%20KLCC%20View%29%2C%20Jalan%20Ipoh%20Kecil%2C%20Chow%20Kit.%20Price%3A%20RM1754.%20Ref%3A%20DPM" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
-  </div><div class="card" id="residensi-sateria-4-1300">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/residensisateriaNS/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/residensisateriaNS/pic1.jpg" alt="Residensi Sateria" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
-      <div><div class="card-name">Residensi Sateria</div><div class="card-zone">Bandar Tasik Selatan</div></div>
-      <div class="card-price">RM 1,300<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Unfurnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
-      
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20Sateria%2C%20Bandar%20Tasik%20Selatan.%20Price%3A%20RM1300.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
   </div><div class="card" id="changkat-view-condominium-1-1300">
     <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/changkatviewcondominiumADL/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/changkatviewcondominiumADL/pic1.jpg" alt="Changkat View Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
@@ -490,16 +508,6 @@
       <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">688 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
       <div class="card-anchors">LRT Wangsa Maju | LRT Sri Rampai | Wangsa Walk Mall | AEON Mall Wangsa Maju</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Lexa%20Residence%20%40%20The%20Quartz%2C%20Wangsa%20Maju.%20Price%3A%20RM2500.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="residensi-sateria-4-1500">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/residensisateriaNS2/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/residensisateriaNS2/pic1.jpg" alt="Residensi Sateria" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">NS</span></div>
-      <div><div class="card-name">Residensi Sateria</div><div class="card-zone">Bandar Tasik Selatan</div></div>
-      <div class="card-price">RM 1,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,100 sqft</span><span class="pill">Unfurnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Immediate</span></div>
-      <div class="card-anchors">Bandar Tasik Selatan LRT/KTM/KLIA Transit Station | Terminal Bersepadu Selatan (TBS) | Mid Valley Megamall | Hospital Kuala Lumpur | BESRAYA Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20Sateria%2C%20Bandar%20Tasik%20Selatan.%20Price%3A%20RM1500.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><div class="card" id="menara-pelangi-3-2300">
     <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/menarapelangiADL/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/menarapelangiADL/pic1.jpg" alt="Menara Pelangi" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
@@ -871,16 +879,6 @@
       <div class="card-anchors">KTM Taman Wahyu | Selayang Mall | AEON Metro Prima | Hospital Selayang | DUKE Highway</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Eco%20Sky%20Residence%2C%20Taman%20Wahyu.%20Price%3A%20RM3000.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
-  </div><div class="card" id="residensi-sateria-4-1400">
-    <div class="card-image-wrap" data-images="/images/unitpic/residensisateriaEX/pic1.jpg" data-index="0"><img src="/images/unitpic/residensisateriaEX/pic1.jpg" alt="Residensi Sateria" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">EX</span></div>
-      <div><div class="card-name">Residensi Sateria</div><div class="card-zone">Bandar Tasik Selatan</div></div>
-      <div class="card-price">RM 1,400<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,100 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span></div>
-      <div class="card-anchors">Bandar Tasik Selatan LRT/KTM/KLIA Transit Station | Terminal Bersepadu Selatan (TBS) | Mid Valley Megamall | Hospital Kuala Lumpur | BESRAYA Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20Sateria%2C%20Bandar%20Tasik%20Selatan.%20Price%3A%20RM1400.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
   </div><div class="card" id="widuri-impian-condominium-3-1650">
     <div class="card-image-wrap" data-images="/images/unitpic/widuriimpiancondominiumNS/pic1.jpg" data-index="0"><img src="/images/unitpic/widuriimpiancondominiumNS/pic1.jpg" alt="Widuri Impian Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
@@ -900,16 +898,6 @@
       <div class="card-pills"><span class="pill">🛏 0 bed</span><span class="pill">🚿 1 bath</span><span class="pill">250 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Studio</span><span class="pill">🗓 Move-in: Mid November 2026</span></div>
       <div class="card-anchors">KL Sentral | NU Sentral | Mid Valley Megamall | Pantai Hospital Kuala Lumpur | Universiti Malaya</div>
       <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Riveria%20City%2C%20Brickfields.%20Price%3A%20RM1700.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="residensi-sateria-4-1400">
-    <div class="card-image-wrap" data-images="/images/unitpic/residensisateriaEX/pic1.jpg" data-index="0"><img src="/images/unitpic/residensisateriaEX/pic1.jpg" alt="Residensi Sateria" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa">ADL</span></div>
-      <div><div class="card-name">Residensi Sateria</div><div class="card-zone">Bandar Tasik Selatan</div></div>
-      <div class="card-price">RM 1,400<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,100 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
-      <div class="card-anchors">Bandar Tasik Selatan LRT/KTM/KLIA Transit Station | Terminal Bersepadu Selatan (TBS) | Mid Valley Megamall | Hospital Kuala Lumpur | BESRAYA Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20Sateria%2C%20Bandar%20Tasik%20Selatan.%20Price%3A%20RM1400.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div><!--SSR_END--></div>
   </div>
@@ -1981,6 +1969,65 @@ const AREA = 'Kuala Lumpur';
 const WA_BASE = 'https://wa.me/60125459182?text=';
 let allUnits = [], allSubsales = [];
 let currentTab = 'sewa';
+let currentProp = '';   // '' = all, or residential / commercial / land
+
+/* ── Property class: Residential / Commercial / Land ──────
+   Worked out from the CSV "type" column:
+     • any type containing "Land" (Land, Residential Land,
+       Agricultural Land…)                       → land
+     • Commercial, Shop Lot, Shop Unit, Office,
+       Factory, Warehouse…                       → commercial
+     • everything else (Condo, Terrace, Shop
+       Apartment, SOHO…)                         → residential
+   If listings.csv ever gets a "category" column holding
+   residential / commercial / land, that value wins. */
+const PROP_LABELS = { residential: 'Residential', commercial: 'Commercial', land: 'Land' };
+const COMMERCIAL_RE = /\b(commercial|shop ?lot|shop ?unit|shop ?office|shophouse|office|retail|factory|warehouse|industrial|kedai|gudang)\b/;
+
+function propClass(r) {
+  const c = (r.category || '').trim().toLowerCase();
+  if (PROP_LABELS[c]) return c;
+  const t = (r.type || '').toLowerCase();
+  if (/\b(land|tanah)\b/.test(t)) return 'land';
+  if (COMMERCIAL_RE.test(t)) return 'commercial';
+  return 'residential';
+}
+function matchProp(r) { return !currentProp || propClass(r) === currentProp; }
+function byProp(rows) { return rows.filter(matchProp); }
+
+function updatePropTabs() {
+  const rows = currentTab === 'jual' ? allSubsales : allUnits;
+  const counts = { '': rows.length, residential: 0, commercial: 0, land: 0 };
+  rows.forEach(r => counts[propClass(r)]++);
+  document.querySelectorAll('#prop-tabs .prop-btn').forEach(b => {
+    const n = counts[b.dataset.prop] || 0;
+    b.classList.toggle('active', b.dataset.prop === currentProp);
+    b.querySelector('.prop-count').textContent = n;
+    // Empty classes can't be picked — unless already selected, so it can be switched off
+    b.disabled = n === 0 && b.dataset.prop !== currentProp;
+  });
+}
+
+// No bedrooms filter for commercial or land; no furnishing filter for land.
+function applyPropVisibility() {
+  if (currentProp === 'commercial' || currentProp === 'land') document.getElementById('fg-bed').style.display = 'none';
+  if (currentProp === 'land') document.getElementById('fg-furnishing').style.display = 'none';
+}
+
+function selectProp(prop) {
+  currentProp = prop;
+  buildTypeOptions(byProp(currentTab === 'jual' ? allSubsales : allUnits));
+  // Re-run the tab's own filter visibility first, then hide what this class doesn't need
+  document.getElementById('fg-furnishing').style.display = currentTab === 'sewa' ? '' : 'none';
+  document.getElementById('fg-bed').style.display = currentTab === 'sewa' ? '' : 'none';
+  applyPropVisibility();
+  updatePropTabs();
+  resetFilters();
+  const url = new URL(window.location);
+  if (prop) url.searchParams.set('prop', prop);
+  else url.searchParams.delete('prop');
+  window.history.replaceState({}, '', url);
+}
 
 function switchTab(tab, btn) {
   currentTab = tab;
@@ -1996,7 +2043,9 @@ function switchTab(tab, btn) {
   document.getElementById('fg-price').style.display = '';
   document.getElementById('fg-instalment').style.display = tab === 'jual' ? '' : 'none';
   document.getElementById('instalment-disclaimer').style.display = tab === 'jual' ? '' : 'none';
-  buildTypeOptions(tab === 'jual' ? allSubsales : allUnits);  // only types in the active tab
+  buildTypeOptions(byProp(tab === 'jual' ? allSubsales : allUnits));  // only types in the active tab + property class
+  applyPropVisibility();
+  updatePropTabs();
   // Rebuild price options for the active tab
   if (tab === 'jual') {
     buildPriceOptions(allSubsales, false);
@@ -2039,6 +2088,7 @@ function applyFilters() {
 
   if (currentTab === 'sewa') {
     const fu = allUnits.filter(r =>
+      matchProp(r) &&
       (!furnishing || r.furnishing === furnishing) &&
       (!type || r.type === type) &&
       matchBed(r, bed) &&
@@ -2050,6 +2100,7 @@ function applyFilters() {
   } else {
     const instalment = document.getElementById('f-instalment') ? document.getElementById('f-instalment').value : '';
     const fs = allSubsales.filter(r =>
+      matchProp(r) &&
       (!type || r.type === type) &&
       matchBed(r, bed) &&
       matchPrice(r, price) &&
@@ -2252,7 +2303,12 @@ fetch('../../listings.csv')
     allSubsales = sortByNewest(filtered.filter(r => r.listing_type === 'subsale'));
 
     // Build dynamic filter options
-    buildTypeOptions(allUnits);        // default: rental tab active
+    // Property class from ?prop=residential|commercial|land
+    const propParam = (new URLSearchParams(window.location.search).get('prop') || '').toLowerCase();
+    if (PROP_LABELS[propParam]) currentProp = propParam;
+    applyPropVisibility();
+    updatePropTabs();
+    buildTypeOptions(byProp(allUnits)); // default: rental tab active
     buildPriceOptions(allUnits, true); // default: rental tab active
     buildInstalmentOptions(allSubsales);
 
