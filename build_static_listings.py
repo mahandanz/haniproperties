@@ -842,9 +842,24 @@ def regenerate_sitemap(area_files) -> None:
             "  </url>",
         ]
 
+    # Area guides (guides/*.html) -- picked up automatically like area pages
+    guide_files = sorted((ROOT / "guides").glob("*.html"))
+    if guide_files:
+        lines += ["", "  <!-- Area guides (auto-generated from guides/) -->"]
+    for f in guide_files:
+        rel = f"/guides/{f.name}"
+        lines += [
+            "  <url>",
+            f"    <loc>{SITE_BASE}{rel}</loc>",
+            f"    <lastmod>{_lastmod(rel)}</lastmod>",
+            "    <changefreq>monthly</changefreq>",
+            "    <priority>0.7</priority>",
+            "  </url>",
+        ]
+
     lines += ["", "</urlset>", ""]
     SITEMAP_PATH.write_text("\n".join(lines), encoding="utf-8")
-    print(f"\nsitemap.xml regenerated: {len(CORE_PAGES)} core pages + {len(area_files)} area pages")
+    print(f"\nsitemap.xml regenerated: {len(CORE_PAGES)} core pages + {len(area_files)} area pages + {len(guide_files)} area guides")
 
 
 def main():
