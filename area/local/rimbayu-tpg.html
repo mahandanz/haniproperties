@@ -635,8 +635,16 @@ function parseDateAdded(val) {
   return new Date(year, month - 1, day).getTime();
 }
 
-function sortByNewest(rows) {
-  return rows.slice().sort((a, b) => parseDateAdded(b.date_added) - parseDateAdded(a.date_added));
+function demandScore(r) {
+  const n = parseFloat(String(r['Demand %'] || '').replace('%', ''));
+  return isNaN(n) ? -1 : n; // blank demand sorts to the end
+}
+
+// Highest demand first; ties fall back to newest date_added
+function sortByDemand(rows) {
+  return rows.slice().sort((a, b) =>
+    (demandScore(b) - demandScore(a)) ||
+    (parseDateAdded(b.date_added) - parseDateAdded(a.date_added)));
 }
 
 function moveInText(val) {
@@ -716,8 +724,8 @@ fetch('../../listings.csv')
   .then(text => {
     const rows = parseCSV(text);
     const filtered = rows.filter(r => r.area === AREA && r.listing_type !== 'lelong' && (r.status === '-' || r.status === ''));
-    allUnits    = sortByNewest(filtered.filter(r => r.listing_type === 'rental'));
-    allSubsales = sortByNewest(filtered.filter(r => r.listing_type === 'subsale'));
+    allUnits    = sortByDemand(filtered.filter(r => r.listing_type === 'rental'));
+    allSubsales = sortByDemand(filtered.filter(r => r.listing_type === 'subsale'));
 
     // Build dynamic filter options
     // Property class from ?prop=residential|commercial|land

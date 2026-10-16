@@ -234,44 +234,27 @@ def subsale_card(r: dict) -> str:
   </div>'''
 
 
-def lelong_card(r: dict) -> str:
-    pills = pills_html([
-        f"\U0001F6CF {esc(r['bed'])} bed" if r.get("bed") else "",
-        f"\U0001F6BF {esc(r['bath'])} bath" if r.get("bath") else "",
-        size_pill(r),
-        esc(r.get("tenure")),
-        esc(r.get("type")),
-    ])
-    name = esc(r.get("project_name"))
-    zone = esc(r.get("zone"))
-    lelong_date = (r.get("Lelong date") or "").strip()
-    auction_pill = (
-        f'<div class="card-pills"><span class="pill">\U0001F528 Auction: {esc(lelong_date)}</span></div>'
-        if lelong_date and lelong_date != "-" else ""
-    )
-    wa_text = r.get("wa_text") or f"Hi Hani, I'm interested in the lelong/auction unit at {r.get('project_name')}, {r.get('zone')}."
-    anchors = f'<div class="card-anchors">{esc(r.get("anchors"))}</div>' if r.get("anchors") else ""
-    inst = ""
-    if r.get("installment"):
-        try:
-            inst_val = f"{int(float(str(r['installment']).replace(',', ''))):,}"
-            inst = (f'<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. '
-                    f'<strong style="color:#2a5c3a;">RM {inst_val}</strong>/mo instalment</div>')
-        except ValueError:
-            pass
-    return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('bed'), r.get('price'))}">
-    {card_image(r)}
-    <div class="card-body">
-      <div><span class="card-badge badge-lelong">Lelong</span>{coa_badge(r.get('code'))}</div>
-      <div><div class="card-name">{name}</div><div class="card-zone">{zone}</div></div>
-      <div class="card-price">{fmt_price(r.get('price'))}</div>
-      {inst}
-      <div class="card-pills">{pills}</div>
-      {auction_pill}
-      {anchors}
-      <a href="{wa(wa_text)}" class="card-cta" target="_blank" rel="noopener noreferrer">\U0001F4AC Enquire on WhatsApp</a>
-    </div>
-  </div>'''
+def _demand(r) -> float:
+    """Demand % column as a number; blank/invalid sorts to the end."""
+    try:
+        return float(str(r.get("Demand %") or "").replace("%", "").strip())
+    except ValueError:
+        return -1.0
+
+
+def _date_added(r) -> int:
+    """date_added (D/M/YYYY) as YYYYMMDD; blank/invalid sorts to the end."""
+    m = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", (r.get("date_added") or "").strip())
+    if not m:
+        return 0
+    return int(m.group(3)) * 10000 + int(m.group(2)) * 100 + int(m.group(1))
+
+
+def sort_by_demand(rows):
+    """Highest Demand % first; ties go to newest date_added. Matches the
+    sortByDemand() function in the area pages' JS, so the static cards and
+    the live cards appear in the same order."""
+    return sorted(rows, key=lambda r: (_demand(r), _date_added(r)), reverse=True)
 
 
 def empty_html(msg: str) -> str:
@@ -287,7 +270,7 @@ def load_listings():
 # ---------------------------------------------------------------------------
 # Instalment estimates
 #
-# Every subsale/lelong instalment is recomputed from its price with ONE formula,
+# Every subsale instalment is recomputed from its price with ONE formula,
 # so cards never show figures worked out on different assumptions. These three
 # numbers must match the disclaimer shown on the area pages ("Est. instalment
 # based on 90% loan, 35-year tenure, 4.5% interest rate") -- change both
@@ -296,7 +279,7 @@ def load_listings():
 LOAN_MARGIN = 0.90      # 90% loan
 LOAN_YEARS = 35         # 35-year tenure
 LOAN_RATE = 4.5         # 4.5% p.a.
-INSTALMENT_TYPES = ("subsale", "lelong")
+INSTALMENT_TYPES = ("subsale",)
 
 # Land is financed differently from homes (lower margins, shorter tenures), so
 # land listings show no instalment. Matches "Agricultural Land", "Land",
@@ -323,7 +306,7 @@ def calc_instalment(price):
 
 
 def normalise_instalments(rows) -> int:
-    """Overwrite the installment column of every subsale/lelong row with the
+    """Overwrite the installment column of every subsale row with the
     formula value. listings.csv is what the area pages' JavaScript and
     instalment filter read, so the CSV itself must hold the correct number --
     fixing only the static cards would be undone as soon as the JS loads.
@@ -524,20 +507,17 @@ def process_area_file(path: Path, all_rows):
         and (zone is None or r.get("zone") == zone)
         and (r.get("status") in ("-", "", None))
     ]
-    units = [r for r in filtered if r.get("listing_type") == "rental"]
-    rooms = [r for r in filtered if r.get("listing_type") == "room"]
-    subsales = [r for r in filtered if r.get("listing_type") == "subsale"]
-    lelongs = [r for r in filtered if r.get("listing_type") == "lelong"]
+    units = sort_by_demand([r for r in filtered if r.get("listing_type") == "rental"])
+    rooms = sort_by_demand([r for r in filtered if r.get("listing_type") == "room"])
+    subsales = sort_by_demand([r for r in filtered if r.get("listing_type") == "subsale"])
 
     unit_html = "".join(unit_card(r) for r in units) if units else empty_html("No unit rentals available right now.")
     room_html = "".join(room_card(r) for r in rooms) if rooms else empty_html("No room rentals available right now.")
     subsale_html = "".join(subsale_card(r) for r in subsales) if subsales else empty_html("No subsale listings available right now.")
-    lelong_html = "".join(lelong_card(r) for r in lelongs) if lelongs else empty_html("No lelong/auction listings available right now.")
 
     text = inject_grid(text, "grid-unit", unit_html)
     text = inject_grid(text, "grid-room-tab", room_html)
     text = inject_grid(text, "grid-subsale", subsale_html)
-    text = inject_grid(text, "grid-lelong", lelong_html)
 
     # Only move the 'Last updated' date when the listings on this page really
     # changed -- re-running the build with the same CSV leaves the date alone,
@@ -546,13 +526,13 @@ def process_area_file(path: Path, all_rows):
         if url_fixed:
             path.write_text(text, encoding="utf-8")
         note = "URLs fixed, date kept" if url_fixed else "no change"
-        print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale, {len(lelongs)} lelong ({note})")
+        print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale ({note})")
         return
 
     import datetime
     text = stamp_dates(text, datetime.date.today())
     path.write_text(text, encoding="utf-8")
-    print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale, {len(lelongs)} lelong (updated, stamped {datetime.date.today().isoformat()})")
+    print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale (updated, stamped {datetime.date.today().isoformat()})")
 
 
 # ---------------------------------------------------------------------------
