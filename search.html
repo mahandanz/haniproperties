@@ -75,6 +75,10 @@
     .hero-filter-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
     .hero-filter-select{font-size:12px;font-weight:600;color:#1c1c18;background:#fff;border:1px solid transparent;border-radius:8px;padding:8px 10px;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a7268'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
     .hero-filter-select:focus{outline:none;border-color:#E2818F}
+    /* Keyword search box — full width, first row of the filter bar */
+    .hero-filter-search{flex-basis:100%}
+    .hero-filter-search input{background-image:none;cursor:text}
+    @media(max-width:600px){.hero-filter-search input{font-size:16px}} /* 16px stops iPhone zooming in on tap */
     @media(max-width:600px){
       .hero-filter-bar{gap:8px;padding:10px}
       .hero-filter-group{min-width:100%}
@@ -244,6 +248,10 @@
   <input type="hidden" id="f-prop" value="">
 
   <div class="hero-filter-bar" id="hero-filter-bar">
+    <div class="hero-filter-group hero-filter-search">
+      <div class="hero-filter-label">Search</div>
+      <input type="search" class="hero-filter-select" id="f-q" placeholder="Project, seksyen, LRT, UiTM…" autocomplete="off" enterkeyhint="search" aria-label="Search listings" oninput="onQueryInput()" onkeydown="if(event.key==='Enter'){this.blur();scrollToResults();}">
+    </div>
     <div class="hero-filter-group">
       <div class="hero-filter-label">Area</div>
       <select class="hero-filter-select" id="f-area" onchange="applyFilters()">
@@ -318,6 +326,7 @@
   <a href="https://wa.me/60125459182" target="_blank" rel="noopener noreferrer">+60 12-545 9182</a>
 </footer>
 
+<script src="/listing-match.js"></script>
 <script>
 // CSV "area" value -> area page. Keys are matched case-insensitively and
 // ignore spacing around "/", so "Nilai/Seremban", "nilai / seremban" and
@@ -374,7 +383,7 @@ function toSlug(...parts) {
 
 let allListings = [];
 let filteredListings = [];
-let currentQuery = '';   // text sent from the home page search box (?q=)
+let currentQuery = '';   // search text — from the home page (?q=) or the box on this page
 
 /* ── CSV loader ─────────────────────────────────────────── */
 async function loadCSV() {
@@ -467,29 +476,8 @@ function populateAreaFilter() {
 }
 
 /* ── Phrase search ──────────────────────────────────────────
-   The whole phrase typed on the home page must appear, as whole
-   words, in the listing's area, zone, project name, code or
-   anchors (nearby LRT/MRT, malls, etc). "seksyen 7" matches
-   "Seksyen 7" but NOT "Seksyen 17", "Seksyen 70" or a price
-   like 1750. Case and extra spaces are ignored.
-
-   Transit exception: searching a rail line name on its own
-   (lrt, mrt, ktm, brt, erl, monorail) also matches numbered
-   lines, so "lrt" finds "LRT3" and "LRT 3", and "mrt" finds
-   "MRT2". Other words still need an exact whole-word match. */
-const TRANSIT_WORDS = ['lrt', 'mrt', 'ktm', 'brt', 'erl', 'monorail'];
-
-function normalise(str) {
-  return (str || '').toString().toLowerCase().replace(/\s+/g, ' ').trim();
-}
-function matchesQuery(r, query) {
-  const q = normalise(query);
-  if (!q) return true;
-  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const lineNumber = TRANSIT_WORDS.includes(q) ? '(\\s?\\d+)?' : '';
-  const re = new RegExp('(^|[^a-z0-9])' + escaped + lineNumber + '($|[^a-z0-9])');
-  return [r.area, r.zone, r.project_name, r.code, r.anchors].some(f => re.test(normalise(f)));
-}
+   Matching rules live in /listing-match.js (shared with the area
+   pages) — see that file for how "seksyen 7" and "lrt" behave. */
 
 /* Owner shortcut: typing exactly "bufferI" shows every active unit
    marked (B) in the Buffer column (CSV column AB). Case-sensitive.
@@ -512,7 +500,7 @@ function applyFilters() {
   const isBuffer = currentQuery === 'bufferI';
   filteredListings = isBuffer
     ? allListings.filter(isBufferUnit)
-    : allListings.filter(r => matchesQuery(r, currentQuery));
+    : allListings.filter(r => HPMatch.matchesQuery(r, currentQuery));
 
   if (isBuffer) {
     // bufferI ignores the Rent/Sale tab so buffer units always show
@@ -536,13 +524,25 @@ function applyFilters() {
   renderResults();
 }
 
+/* ── Search box on this page — filters as you type ── */
+let queryTimer;
+function onQueryInput() {
+  clearTimeout(queryTimer);
+  queryTimer = setTimeout(() => {
+    currentQuery = document.getElementById('f-q').value.replace(/\s+/g, ' ').trim();
+    applyFilters();
+  }, 200);
+}
+
 function clearQuery() {
   currentQuery = '';
+  document.getElementById('f-q').value = '';
   applyFilters();
 }
 
 function resetFilters() {
   currentQuery = '';
+  document.getElementById('f-q').value = '';
   ['f-area','f-price','f-furnishing','f-tenure','f-ptype'].forEach(id => {
     document.getElementById(id).value = '';
   });
@@ -815,6 +815,7 @@ async function init() {
   await loadCSV();
   const params = new URLSearchParams(window.location.search);
   currentQuery = (params.get('q') || '').replace(/\s+/g, ' ').trim();
+  document.getElementById('f-q').value = currentQuery;
 
   // Category always travels under ?tab= — index.html sends its tab names (sewa/jual);
   // this page's own shared links send the category value directly (rental/subsale).

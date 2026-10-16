@@ -120,6 +120,10 @@
     .filter-select:focus{outline:none;border-color:#2a5c3a}
     .filter-reset{font-size:12px;font-weight:600;color:#7a7268;background:none;border:1px solid #e3ddd0;border-radius:8px;padding:7px 14px;cursor:pointer;align-self:flex-end;transition:all .15s;white-space:nowrap}
     .filter-reset:hover{color:#1c1c18;border-color:#1c1c18}
+    .filter-search{flex-basis:100%}
+    .filter-search input{background-image:none;cursor:text}
+    .filter-search input::-webkit-search-cancel-button{cursor:pointer}
+    @media(max-width:600px){.filter-search input{font-size:16px}} /* 16px stops iPhone zooming in on tap */
     .filter-count{font-size:12px;color:#7a7268;align-self:flex-end;padding-bottom:8px;white-space:nowrap}
     @media(max-width:600px){
       nav{padding:0 16px}
@@ -226,6 +230,10 @@
 
   <!-- FILTERS -->
   <div class="filter-bar" id="filter-bar">
+    <div class="filter-group filter-search">
+      <div class="filter-label">Search</div>
+      <input type="search" class="filter-select" id="f-q" placeholder="Project, seksyen, LRT, UiTM…" autocomplete="off" enterkeyhint="search" aria-label="Search listings in this area" oninput="onSearchInput()" onkeydown="if(event.key==='Enter'){this.blur();}">
+    </div>
     <div class="filter-group" id="fg-furnishing">
       <div class="filter-label">Furnishing</div>
       <select class="filter-select" id="f-furnishing" onchange="applyFilters()">
@@ -281,7 +289,7 @@
       </select>
     </div>
     <div class="filter-count" id="filter-count"></div>
-    <button class="filter-reset" onclick="resetFilters()">Reset</button>
+    <button class="filter-reset" onclick="clearSearchBox();resetFilters()">Reset</button>
   </div>
   <div id="instalment-disclaimer" style="display:none;font-size:11px;color:#7a7268;background:#f6f1e7;border:1px solid #e3ddd0;border-radius:8px;padding:8px 14px;margin-bottom:16px;">
     ⚠️ Est. instalment based on 90% loan, 35-year tenure, 4.5% interest rate. Actual amount may vary depending on bank and eligibility.
@@ -520,6 +528,7 @@
   <div style="margin-top:4px;color:rgba(255,255,255,.25)">Property made personal.</div>
 </footer>
 
+<script src="/listing-match.js"></script>
 <script>
 const AREA = 'Cyberjaya / Putrajaya';
 const WA_BASE = 'https://wa.me/60125459182?text=';
@@ -618,6 +627,7 @@ function switchTab(tab, btn) {
 }
 
 function applyFilters() {
+  const q = getSearchText();
   const furnishing = document.getElementById('f-furnishing').value;
   const type = document.getElementById('f-type').value;
   const bed = document.getElementById('f-bed').value;
@@ -645,18 +655,20 @@ function applyFilters() {
   if (currentTab === 'sewa') {
     const fu = allUnits.filter(r =>
       matchProp(r) &&
+      matchSearch(r, q) &&
       (!furnishing || r.furnishing === furnishing) &&
       (!type || r.type === type) &&
       matchBed(r, bed) &&
       matchPrice(r, price)
     );
     document.getElementById('grid-unit').innerHTML =
-      fu.length ? fu.map(unitCard).join('') : empty('No unit rentals match your filters.');
+      fu.length ? fu.map(unitCard).join('') : emptyWithSearch('No unit rentals match your filters.');
     document.getElementById('filter-count').textContent = `${fu.length} listing${fu.length !== 1 ? 's' : ''}`;
   } else {
     const instalment = document.getElementById('f-instalment') ? document.getElementById('f-instalment').value : '';
     const fs = allSubsales.filter(r =>
       matchProp(r) &&
+      matchSearch(r, q) &&
       (!type || r.type === type) &&
       matchBed(r, bed) &&
       matchPrice(r, price) &&
@@ -664,7 +676,7 @@ function applyFilters() {
       (!tenure || r.tenure === tenure)
     );
     document.getElementById('grid-subsale').innerHTML =
-      fs.length ? fs.map(subsaleCard).join('') : empty('No subsale listings match your filters.');
+      fs.length ? fs.map(subsaleCard).join('') : emptyWithSearch('No subsale listings match your filters.');
     document.getElementById('filter-count').textContent = `${fs.length} listing${fs.length !== 1 ? 's' : ''}`;
   }
 }
@@ -841,6 +853,21 @@ function subsaleCard(r) {
       <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
     </div>
   </div>`;
+}
+
+/* ── Keyword search (same rules as search.html, via /listing-match.js) ── */
+let searchTimer;
+function onSearchInput() { clearTimeout(searchTimer); searchTimer = setTimeout(applyFilters, 200); }
+function getSearchText() { const el = document.getElementById('f-q'); return el ? el.value.replace(/\s+/g, ' ').trim() : ''; }
+function clearSearchBox() { const el = document.getElementById('f-q'); if (el) el.value = ''; }
+function matchSearch(r, q) { return !q || !window.HPMatch || HPMatch.matchesQuery(r, q); }
+function escHtml(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+function emptyWithSearch(msg) {
+  const q = getSearchText();
+  if (!q) return empty(msg);
+  const tab = currentTab === 'jual' ? 'subsale' : 'rental';
+  const href = `/search.html?q=${encodeURIComponent(q)}&tab=${tab}`;
+  return `<div class="empty">Nothing for "${escHtml(q)}" in ${typeof AREA === 'string' ? AREA : 'this area'}.<div style="margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><a href="${href}" style="display:inline-block;background:#2a5c3a;color:#fff;font-size:12.5px;font-weight:700;padding:9px 18px;border-radius:20px;text-decoration:none;">Search all areas →</a><a href="../../request.html" style="display:inline-block;background:#fff;color:#2a5c3a;border:1px solid #2a5c3a;font-size:12.5px;font-weight:700;padding:8px 17px;border-radius:20px;text-decoration:none;">Tell us what you need</a></div></div>`;
 }
 
 function empty(msg, showCta = true) {
