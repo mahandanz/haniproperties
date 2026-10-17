@@ -217,7 +217,7 @@ def subsale_card(r: dict) -> str:
         try:
             inst_val = f"{int(float(str(r['installment']).replace(',', ''))):,}"
             inst = (f'<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. '
-                    f'<strong style="color:#2a5c3a;">RM {inst_val}</strong>/mo instalment</div>')
+                    f'<strong style="color:#1B4D35;">RM {inst_val}</strong>/mo instalment</div>')
         except ValueError:
             pass
     return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('bed'), r.get('price'))}">
