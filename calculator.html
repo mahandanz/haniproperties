@@ -312,16 +312,12 @@
   <div class="nav-inner">
     <a href="https://haniproperties.com/" class="brand">Hani <span>Properties</span></a>
     <div class="nav-links">
-      <a href="/investor-corner.html" class="cta-nav">Cashflow Units</a>
       <a href="/projects/projects.html">Projects</a>
-      <a href="/simple.html">Knowledge Hub</a>
       <a href="/calculator.html">Calculator</a>
     </div>
   </div>
   <div class="nav-mobile">
-    <a href="/investor-corner.html" class="cta-nav">Cashflow Units</a>
     <a href="/projects/projects.html">Projects</a>
-    <a href="/simple.html">Knowledge Hub</a>
     <a href="/calculator.html">Calculator</a>
   </div>
 </nav>
@@ -463,7 +459,7 @@
       </table>
 
       <div class="cash-box">
-        <div class="label">Total cash to prepare</div>
+        <div class="label">Estimated upfront amount</div>
         <div class="amt" id="cashOut">RM 88,600</div>
         <div class="sub">Down payment + stamp duty + legal fees + other costs</div>
       </div>
@@ -606,7 +602,7 @@
       <h2>Move-in cost</h2>
 
       <div class="hero-num">
-        <div class="label">Total cash to prepare</div>
+        <div class="label">Estimated upfront amount</div>
         <div class="amt" id="depTotalOut">RM 7,000</div>
         <div class="sub" id="depSub">Advance rental + deposits + TA stamp duty + TA (Agency) fee</div>
       </div>
@@ -990,7 +986,7 @@ function calcDeposit(){
   if(other > 0){
     rows += `<tr><td>Other move-in costs</td><td style="text-align:right;">${fmt(other)}</td></tr>`;
   }
-  rows += `<tr class="total"><td>Total cash to prepare</td><td style="text-align:right;">${fmt(total)}</td></tr>`;
+  rows += `<tr class="total"><td>Estimated upfront amount</td><td style="text-align:right;">${fmt(total)}</td></tr>`;
   $('depBreakdownBody').innerHTML = rows;
 
   $('depTotalOut').textContent = fmt(total);

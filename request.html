@@ -125,24 +125,39 @@
       .wa-float svg{width:26px;height:26px}
     }
   </style>
+<style>
+  /* Shared-nav layout (works with partials/nav.html) */
+  nav{display:block;height:auto;padding:0}
+  .nav-inner{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+  .nav-mobile{display:none}
+  @media(max-width:600px){
+    nav{height:auto;padding:0}
+    .nav-inner{height:46px;padding:0 16px}
+    .nav-links{display:none}
+    .nav-mobile{display:flex;position:static;border-top:1px solid #e3ddd0;background:rgba(253,250,245,.97)}
+    .nav-mobile a{flex:1;text-align:center;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:#7a7268;padding:10px 4px;transition:color .18s,background .18s;white-space:nowrap}
+    .nav-mobile a:not(:last-child){border-right:1px solid #e3ddd0}
+    .nav-mobile a:hover{color:#1c1c18;background:#f6f1e7}
+  }
+</style>
 </head>
 <body>
 
+<!-- NAV:START (auto-generated from partials/nav.html — run build-nav.js after editing, do not hand-edit) -->
 <nav>
-  <a href="index.html" class="brand">Hani <span>Properties</span></a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="simple.html">Guides</a>
-    <a href="calculator.html">Calculator</a>
-    <a href="investor-corner.html" class="cta-nav">Investor Corner</a>
+  <div class="nav-inner">
+    <a href="https://haniproperties.com/" class="brand">Hani <span>Properties</span></a>
+    <div class="nav-links">
+      <a href="/projects/projects.html">Projects</a>
+      <a href="/calculator.html">Calculator</a>
+    </div>
+  </div>
+  <div class="nav-mobile">
+    <a href="/projects/projects.html">Projects</a>
+    <a href="/calculator.html">Calculator</a>
   </div>
 </nav>
-<div class="nav-mobile">
-  <a href="index.html">Home</a>
-  <a href="simple.html">Guides</a>
-  <a href="calculator.html">Calculator</a>
-  <a href="investor-corner.html" class="cta-nav">Investor Corner</a>
-</div>
+<!-- NAV:END -->
 
 <section class="hero">
   <div class="lang-toggle">
