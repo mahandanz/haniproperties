@@ -669,6 +669,13 @@ function parseDateAdded(d) {
   return new Date(year, month - 1, day).getTime();
 }
 
+/* ── Demand % from the CSV (header lowercased to "demand %").
+   Blank or non-numeric values sort last. ── */
+function demandOf(r) {
+  const n = parseFloat((r['demand %'] || '').toString().replace(/[^0-9.]/g, ''));
+  return isNaN(n) ? -Infinity : n;
+}
+
 function moveInText(val) {
   const v = (val || '').trim();
   if (!v || v === '-') return '';
@@ -744,8 +751,11 @@ function renderResults() {
   const title = document.getElementById('results-title');
   const count = document.getElementById('filter-count');
 
-  // Latest listings first, based on the date_added column.
-  filteredListings.sort((a, b) => parseDateAdded(b.date_added) - parseDateAdded(a.date_added));
+  // Highest Demand % first; newest date_added breaks ties.
+  filteredListings.sort((a, b) =>
+    (demandOf(b) - demandOf(a)) ||
+    (parseDateAdded(b.date_added) - parseDateAdded(a.date_added))
+  );
 
   const n = filteredListings.length;
 
