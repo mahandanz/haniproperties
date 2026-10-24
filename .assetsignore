@@ -1,0 +1,27 @@
+# Files kept OFF the public site (still kept in the repo)
+.git
+.github
+wrangler.jsonc
+.assetsignore
+vercel.json
+
+# Build scripts and nav source (used on your computer only)
+*.py
+*.ps1
+*.patch
+build-nav.js
+partials/
+
+# Backups, notes and working files
+*bk.html
+*bk.png
+listings_bk.csv
+index.txt
+folders_to_delete.txt
+guide-content-tracker.txt
+Claude outputs/
+files.zip
+ChatGPT Image*.png
+
+# Too big for Cloudflare (25 MiB limit) and not used by any page
+images/areas.zip
