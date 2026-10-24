@@ -1,0 +1,11 @@
+// Cloudflare Workers config for haniproperties.com (static site, no server code)
+{
+  "name": "haniproperties",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": ".",
+    // Keep URLs exactly as they are (e.g. /kawasan.html), matching the sitemap and canonical tags
+    "html_handling": "none",
+    "not_found_handling": "none"
+  }
+}

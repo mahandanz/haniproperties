@@ -1,0 +1,61 @@
+# Cloudflare redirects (converted from vercel.json)
+# Format: from  to  status
+
+# Homepage (needed because html_handling is 'none')
+/  /index.html  200
+
+# Old /subsale and /rental area URLs -> new area pages
+/subsale/:state/ampang.html  /area/local/ampang.html  301
+/rental/:state/ampang.html  /area/local/ampang.html  301
+/subsale/:state/bandar-saujana-putra.html  /area/local/bandar-saujana-putra.html  301
+/rental/:state/bandar-saujana-putra.html  /area/local/bandar-saujana-putra.html  301
+/subsale/:state/bangi.html  /area/local/kajang-bangi.html  301
+/rental/:state/bangi.html  /area/local/kajang-bangi.html  301
+/subsale/:state/bukit-jalil.html  /area/local/bukit-jalil.html  301
+/rental/:state/bukit-jalil.html  /area/local/bukit-jalil.html  301
+/subsale/:state/cheras.html  /area/local/cheras.html  301
+/rental/:state/cheras.html  /area/local/cheras.html  301
+/subsale/:state/cyberjaya-putrajaya.html  /area/local/cyberjaya-putrajaya.html  301
+/rental/:state/cyberjaya-putrajaya.html  /area/local/cyberjaya-putrajaya.html  301
+/subsale/:state/kajang.html  /area/local/kajang-bangi.html  301
+/rental/:state/kajang.html  /area/local/kajang-bangi.html  301
+/subsale/:state/kepong.html  /area/local/kepong.html  301
+/rental/:state/kepong.html  /area/local/kepong.html  301
+/subsale/:state/klang.html  /area/local/klang.html  301
+/rental/:state/klang.html  /area/local/klang.html  301
+/subsale/:state/kuala-lumpur.html  /area/local/kuala-lumpur.html  301
+/rental/:state/kuala-lumpur.html  /area/local/kuala-lumpur.html  301
+/subsale/:state/nilai.html  /area/local/nilai-seremban.html  301
+/rental/:state/nilai.html  /area/local/nilai-seremban.html  301
+/subsale/:state/petaling-jaya.html  /area/local/petaling-jaya.html  301
+/rental/:state/petaling-jaya.html  /area/local/petaling-jaya.html  301
+/subsale/:state/puchong.html  /area/local/puchong.html  301
+/rental/:state/puchong.html  /area/local/puchong.html  301
+/subsale/:state/puncak-alam.html  /area/local/puncak-alam.html  301
+/rental/:state/puncak-alam.html  /area/local/puncak-alam.html  301
+/subsale/:state/rawang.html  /area/local/rawang.html  301
+/rental/:state/rawang.html  /area/local/rawang.html  301
+/subsale/:state/rimbayu-tpg.html  /area/local/rimbayu-tpg.html  301
+/rental/:state/rimbayu-tpg.html  /area/local/rimbayu-tpg.html  301
+/subsale/:state/selayang.html  /area/local/selayang.html  301
+/rental/:state/selayang.html  /area/local/selayang.html  301
+/subsale/:state/semenyih.html  /area/local/semenyih.html  301
+/rental/:state/semenyih.html  /area/local/semenyih.html  301
+/subsale/:state/sentul.html  /area/local/sentul.html  301
+/rental/:state/sentul.html  /area/local/sentul.html  301
+/subsale/:state/sepang.html  /area/local/sepang-dengkil-banting.html  301
+/rental/:state/sepang.html  /area/local/sepang-dengkil-banting.html  301
+/subsale/:state/seri-kembangan.html  /area/local/seri-kembangan.html  301
+/rental/:state/seri-kembangan.html  /area/local/seri-kembangan.html  301
+/subsale/:state/setapak.html  /area/local/setapak.html  301
+/rental/:state/setapak.html  /area/local/setapak.html  301
+/subsale/:state/shah-alam.html  /area/local/shah-alam.html  301
+/rental/:state/shah-alam.html  /area/local/shah-alam.html  301
+/subsale/:state/subang-jaya.html  /area/local/subang-jaya.html  301
+/rental/:state/subang-jaya.html  /area/local/subang-jaya.html  301
+/subsale/:state/sungai-buloh.html  /area/local/sungai-buloh.html  301
+/rental/:state/sungai-buloh.html  /area/local/sungai-buloh.html  301
+
+# Any other old area URL -> area directory
+/subsale/:state/*  /kawasan.html  301
+/rental/:state/*  /kawasan.html  301
