@@ -44,6 +44,8 @@
     .hero-eyebrow{display:inline-block;background:rgba(255,255,255,.12);color:#00BE63;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px}
     .hero h1{font-family:'Lora',serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px}
     .hero-desc{color:rgba(255,255,255,.7);font-size:.95rem;max-width:520px;margin:0 auto;line-height:1.7}
+    #hero-summary-stat{margin-top:10px;font-size:.82rem;line-height:1.6;color:rgba(255,255,255,.6)}
+    @media(max-width:600px){#hero-summary-stat{font-size:.76rem;line-height:1.5}}
     .hero-stamp{color:rgba(255,255,255,.7);font-size:.78rem;margin-top:10px}
     .hero-guide-link{display:block;width:fit-content;margin:12px auto 0;font-size:.82rem;font-weight:600;color:#00BE63;text-decoration:none;border-bottom:1px solid rgba(0,190,99,.4);padding-bottom:1px;transition:color .15s,border-color .15s}
     .hero-guide-link:hover{color:#4ddb93;border-color:#4ddb93}
@@ -197,7 +199,7 @@
   <div class="hero-eyebrow">Sentul &nbsp;·&nbsp; Kuala Lumpur</div>
   <h1>Properties in Sentul</h1>
   <p class="hero-desc">A rapidly regenerating inner-city area close to KL Sentral and the LRT — attracting young professionals with modern high-rises.</p>
-  <p class="hero-desc" id="hero-summary-stat"></p>
+  <p class="hero-desc" id="hero-summary-stat">24 active listings in Sentul. 18 for rent from RM 1,359 to RM 2,500 a month, mostly 3-bedroom serviced residences and condos. 6 for sale from RM 160,000 to RM 509,000, mostly condos and serviced residences. Listed buildings include Sentul Point Suite Apartment, Mutiara Sentul, Minest Residence and Bayu Andaman.</p>
   <div class="hero-stamp">📅 Updated weekly · Last updated: 31 Oct 2026</div>
   <a href="/guides/sentul.html" class="hero-guide-link">📍 Sentul area overview →</a>
   <a href="../../request.html" class="btn-wa" style="margin-top:18px;">Can't Find It? Let Us Help</a>
@@ -962,7 +964,7 @@ fetch('../../listings.csv')
 
     const totalListings = allUnits.length + allSubsales.length;
     const summaryEl = document.getElementById('hero-summary-stat');
-    if (summaryEl && totalListings) {
+    if (summaryEl && totalListings && !summaryEl.textContent.trim()) {
       summaryEl.textContent = `${totalListings} current listing${totalListings !== 1 ? 's' : ''} in Sentul — for rent and for sale.`;
     }
   })

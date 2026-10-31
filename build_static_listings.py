@@ -261,6 +261,169 @@ def empty_html(msg: str) -> str:
     return f'<div class="empty">{msg}</div>'
 
 
+# ---------------------------------------------------------------------------
+# Area summary
+#
+# Each area page's hero has a <p id="hero-summary-stat"> line. It used to be
+# filled only by JavaScript, so the raw HTML Google first reads had it empty.
+# The build now writes a factual, page-specific summary into it from
+# listings.csv (counts, price ranges, main property types, a few building
+# names). It updates itself on every rebuild, so it never goes stale.
+# ---------------------------------------------------------------------------
+
+# CSV "type" value (lowercase) -> plural wording used in the summary.
+# Types not listed here fall back to "<type> units".
+TYPE_PLURALS = {
+    "condominium": "condos", "condo": "condos",
+    "apartment": "apartments", "apartment (low cost)": "low-cost apartments",
+    "service residence": "serviced residences", "serviced residence": "serviced residences",
+    "service apartment": "serviced residences", "serviced apartment": "serviced residences",
+    "terrace": "terrace homes", "townhouse": "townhouses", "cluster": "cluster homes",
+    "semi d": "semi-Ds", "semi-d": "semi-Ds", "bungalow": "bungalows",
+    "flat": "flats", "studio": "studios", "penthouse": "penthouses", "duplex": "duplexes",
+    "soho": "SOHO units", "sofo": "SOFO units", "sovo": "SOVO units",
+    "commercial": "commercial units", "shop lot": "shop lots", "shoplot": "shop lots",
+    "office": "offices", "land": "land lots",
+}
+
+
+def _num_price(r):
+    try:
+        n = float(str(r.get("price") or "").replace(",", "").strip())
+        return n if n > 0 else None
+    except ValueError:
+        return None  # ranges, TBC, blanks
+
+
+def _join(items):
+    items = list(items)
+    if len(items) <= 1:
+        return "".join(items)
+    return ", ".join(items[:-1]) + " and " + items[-1]
+
+
+def _price_range(rows, suffix=""):
+    prices = sorted(p for p in (_num_price(r) for r in rows) if p)
+    if not prices:
+        return ""
+    lo, hi = prices[0], prices[-1]
+    if lo == hi:
+        return f"at RM {int(lo):,}{suffix}"
+    return f"from RM {int(lo):,} to RM {int(hi):,}{suffix}"
+
+
+def _type_phrase(rows, with_beds=False):
+    """'mostly 3-bedroom condos and apartments' / 'a mix of ...' / ''."""
+    counts = {}
+    for r in rows:
+        t = (r.get("type") or "").strip()
+        if not t or t == "-":
+            continue
+        plural = TYPE_PLURALS.get(t.lower(), f"{t} units")
+        counts[plural] = counts.get(plural, 0) + 1
+    typed = sum(counts.values())
+    top = sorted(counts, key=lambda k: -counts[k])
+
+    bed = ""
+    if with_beds:
+        beds = {}
+        for r in rows:
+            b = (r.get("bed") or "").strip()
+            if b.isdigit() and int(b) > 0:
+                beds[b] = beds.get(b, 0) + 1
+        if beds:
+            b, n = max(beds.items(), key=lambda kv: kv[1])
+            if n / len(rows) >= 0.6:
+                bed = f"{b}-bedroom"
+
+    if not top:
+        return f"mostly {bed} units" if bed else ""
+    if len(top) == 1 or sum(counts[k] for k in top[:2]) / typed >= 0.6:
+        lead = f"mostly {bed} " if bed else "mostly "
+        return lead + _join(top[:2])
+    phrase = "a mix of " + _join(top[:3])
+    return phrase + (f", mostly {bed}" if bed else "")
+
+
+# Commercial and land listings would skew a home price range (one shop lot at
+# RM 6,500 a month next to RM 1,500 condos), so when a page mixes them in,
+# the price range and type wording describe the homes only. Same wording as
+# COMMERCIAL_RE in the area pages' JS.
+NON_HOME_TYPE = re.compile(
+    r"\b(commercial|shop ?lot|shop ?unit|shop ?office|shophouse|office|retail|factory"
+    r"|warehouse|industrial|kedai|gudang|land|tanah)\b", re.I)
+
+
+def _is_home(r) -> bool:
+    return not NON_HOME_TYPE.search(r.get("type") or "")
+
+
+def _segment(rows, verb, unit_word, suffix, with_beds):
+    """e.g. '9 for rent from RM 1,300 to RM 2,500 a month, mostly ...'"""
+    if not rows:
+        return ""
+    n = len(rows)
+    head = f"{n} {unit_word if n == 1 else unit_word + 's'} {verb}" if unit_word else f"{n} {verb}"
+    homes = [r for r in rows if _is_home(r)]
+    if homes and len(homes) < n:
+        # mixed page: describe the homes, so the range isn't skewed
+        price = _price_range(homes, suffix)
+        types = _type_phrase(homes, with_beds)
+        out = head + (f", with homes {price}" if price else "")
+        return out + (f", {types}" if types else "") + "."
+    price = _price_range(rows, suffix)
+    types = _type_phrase(rows, with_beds)
+    out = head + (f" {price}" if price else "")
+    return out + (f", {types}" if types else "") + "."
+
+
+def area_summary(place: str, units, rooms, subsales) -> str:
+    total = len(units) + len(rooms) + len(subsales)
+    if not total:
+        return (f"No listings in {place} at the moment. WhatsApp Hani to search "
+                f"for units that aren't listed yet.")
+    parts = [f"{total} active listing{'s' if total != 1 else ''} in {place}."]
+    parts.append(_segment(units, "for rent", "", " a month", True))
+    parts.append(_segment(rooms, "for rent", "room", " a month", False))
+    parts.append(_segment(subsales, "for sale", "", "", False))
+
+    # A few building names (highest demand first), the words people search for
+    # ("Penduline (End Lot)" counts as Penduline; a name that's just the
+    # area name, e.g. "Bandar Saujana Putra", is skipped)
+    names, seen = [], {place.lower()}
+    for r in units + rooms + subsales:
+        nm = re.sub(r"\s*\([^)]*\)\s*$", "", " ".join((r.get("project_name") or "").split()))
+        if nm and nm.lower() not in seen:
+            seen.add(nm.lower())
+            names.append(nm)
+    if len(names) >= 2:
+        parts.append(f"Listed buildings include {_join(names[:4])}.")
+    return " ".join(p for p in parts if p)
+
+
+SUMMARY_P = re.compile(r'(<p class="hero-desc" id="hero-summary-stat">).*?(</p>)', re.DOTALL)
+
+
+def inject_summary(text: str, summary: str) -> str:
+    if not SUMMARY_P.search(text):
+        print("    (warning: #hero-summary-stat not found, summary skipped)")
+        return text
+    return SUMMARY_P.sub(lambda m: m.group(1) + esc(summary) + m.group(2), text, count=1)
+
+
+# The page's own JS used to overwrite the summary line with a shorter
+# "N current listings..." text once listings.csv loaded. This makes it only
+# fill the line when the build hasn't already written one.
+JS_SUMMARY_OLD = "if (summaryEl && totalListings) {"
+JS_SUMMARY_NEW = "if (summaryEl && totalListings && !summaryEl.textContent.trim()) {"
+
+
+def page_place_name(text: str, fallback: str) -> str:
+    """Area name as shown in the page's <h1> ('Properties in X')."""
+    m = re.search(r"<h1>Properties in ([^<]+)</h1>", text)
+    return html.unescape(m.group(1)).strip() if m else fallback
+
+
 def load_listings():
     with open(LISTINGS_CSV, encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
@@ -479,6 +642,9 @@ def process_area_file(path: Path, all_rows):
     # before the "did the listings change?" comparison below -- fixing a
     # canonical never moves the page's 'Last updated' date.
     text = fix_area_urls(text, path)
+    # Template housekeeping (not a listings change): stop the page's JS from
+    # overwriting the build-written summary line.
+    text = text.replace(JS_SUMMARY_OLD, JS_SUMMARY_NEW)
     url_fixed = text != path.read_text(encoding="utf-8")
     original = text
 
@@ -518,6 +684,9 @@ def process_area_file(path: Path, all_rows):
     text = inject_grid(text, "grid-unit", unit_html)
     text = inject_grid(text, "grid-room-tab", room_html)
     text = inject_grid(text, "grid-subsale", subsale_html)
+
+    place = page_place_name(text, " / ".join(areas))
+    text = inject_summary(text, area_summary(place, units, rooms, subsales))
 
     # Only move the 'Last updated' date when the listings on this page really
     # changed -- re-running the build with the same CSV leaves the date alone,
