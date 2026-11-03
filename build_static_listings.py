@@ -764,8 +764,9 @@ def area_card_html(a: dict) -> str:
     tag = html.escape(a["tag"], quote=False)
     slug = a["slug"]
     page = a.get("page") or slug  # page file name, if it differs from the image slug
+    href = a.get("href") or f"area/local/{page}.html"  # BM directory passes its own link
     return (
-        f'<a class="area-card{popular_class}" href="area/local/{page}.html">'
+        f'<a class="area-card{popular_class}" href="{href}">'
         f'<img class="area-card-img" src="/images/areas/{slug}.webp" alt="{name}" '
         f'loading="lazy" width="112" height="112" onerror="this.style.display=\'none\'">'
         f'<div class="area-card-body">'
@@ -775,15 +776,17 @@ def area_card_html(a: dict) -> str:
     )
 
 
-def render_area_directory_html() -> str:
+def render_area_directory_html(areas=None, bm=False) -> str:
     """Mirrors kawasan.html's client-side renderAreas() function: groups
     AREAS by region (in REGION_ORDER) and renders each region's label + grid."""
+    areas = AREAS if areas is None else areas
     blocks = []
     for region in REGION_ORDER:
-        items = [a for a in AREAS if a["region"] == region]
+        items = [a for a in areas if a["region"] == region]
         if not items:
             continue
-        count_label = f'{len(items)} area{"s" if len(items) != 1 else ""}'
+        count_label = (f'{len(items)} kawasan' if bm
+                       else f'{len(items)} area{"s" if len(items) != 1 else ""}')
         cards = "".join(area_card_html(a) for a in items)
         blocks.append(
             f'<div class="region-label"><span>{html.escape(region)}</span>'
@@ -818,16 +821,18 @@ def _js_str(s: str) -> str:
     return s.replace("\\", "\\\\").replace("'", "\\'")
 
 
-def js_areas_literal() -> str:
+def js_areas_literal(areas=None) -> str:
     """Re-serialize AREAS as the `const AREAS = [...]` JS array literal, in
     the same shape kawasan.html's renderAreas()/cardHtml() already expect,
     so the inline <script> stays byte-for-byte in sync with the AREAS list
     above -- one source of truth, no hand-editing the JS array anymore."""
     lines = ["const AREAS = ["]
-    for a in AREAS:
+    for a in (AREAS if areas is None else areas):
         parts = [f"slug: '{_js_str(a['slug'])}'"]
         if a.get("page"):
             parts.append(f"page: '{_js_str(a['page'])}'")
+        if a.get("href"):
+            parts.append(f"href: '{_js_str(a['href'])}'")
         parts += [
             f"name: '{_js_str(a['name'])}'",
             f"region: '{_js_str(a['region'])}'",
@@ -855,8 +860,10 @@ def process_kawasan_page():
     if n == 0:
         print("    (warning: const AREAS array not found in kawasan.html, JS copy not synced)")
 
+    text = kawasan_lang_links(text, is_bm=False)
     KAWASAN_PATH.write_text(text, encoding="utf-8")
     print(f"  {KAWASAN_PATH.name}: {len(AREAS)} areas injected as static HTML across {len([r for r in REGION_ORDER if any(a['region'] == r for a in AREAS)])} regions")
+    build_bm_kawasan(text)
 
 
 def sync_homepage_areas():
@@ -923,8 +930,6 @@ CORE_PAGES = [
     ("/buying/guide_freehold_vs_leasehold_malaysia.html", "monthly", "0.7"),
     ("/buying/guide_subsale_property_malaysia.html", "monthly", "0.7"),
     ("/rental/guide_rental_deposit_malaysia.html", "monthly", "0.7"),
-    ("/lelong/guide_lelong_property_malaysia.html", "monthly", "0.7"),
-    ("/lelong/guide_lelong_reserve_vs_market_value.html", "monthly", "0.7"),
     ("/search.html", "monthly", "0.6"),
     ("/request.html", "monthly", "0.5"),
 ]
@@ -997,6 +1002,15 @@ def regenerate_sitemap(area_files, bm_files=()) -> None:
     # BM area pages (ms/area/*.html) -- built from bm_content.json
     if bm_files:
         lines += ["", "  <!-- BM area pages (auto-generated from bm_content.json) -->"]
+    if bm_files and load_bm_kawasan():
+        lines += [
+            "  <url>",
+            f"    <loc>{BM_KAWASAN_URL}</loc>",
+            f"    <lastmod>{_lastmod('/ms/kawasan.html')}</lastmod>",
+            "    <changefreq>weekly</changefreq>",
+            "    <priority>0.8</priority>",
+            "  </url>",
+        ]
     for f in sorted(bm_files, key=lambda p: p.name):
         rel = f"/ms/area/{f.name}"
         lines += [
@@ -1025,7 +1039,7 @@ def regenerate_sitemap(area_files, bm_files=()) -> None:
 
     lines += ["", "</urlset>", ""]
     SITEMAP_PATH.write_text("\n".join(lines), encoding="utf-8")
-    print(f"\nsitemap.xml regenerated: {len(CORE_PAGES)} core pages + {len(area_files)} area pages + {len(bm_files)} BM area pages + {len(guide_files)} area guides")
+    print(f"\nsitemap.xml regenerated: {len(CORE_PAGES)} core pages + {len(area_files)} area pages + {len(bm_files)} BM area pages{' + BM kawasan' if bm_files and load_bm_kawasan() else ''} + {len(guide_files)} area guides")
 
 
 # ---------------------------------------------------------------------------
@@ -1339,8 +1353,10 @@ def bm_page_text(en_text: str, slug: str, c: dict, summary: str) -> str:
                     node["description"] = c["schema_description"]
                 elif ty == "BreadcrumbList":
                     for it in node.get("itemListElement", []):
-                        if it.get("name") == "Areas":
+                        if it.get("name") in ("Areas", "Kawasan"):
                             it["name"] = "Kawasan"
+                            if load_bm_kawasan():
+                                it["item"] = BM_KAWASAN_URL
                         if it.get("item") == en_url(slug):
                             it["item"] = bm_url(slug)
         else:
@@ -1364,6 +1380,8 @@ def bm_page_text(en_text: str, slug: str, c: dict, summary: str) -> str:
 
     # breadcrumb label
     t = t.replace('kawasan.html">Areas</a>', 'kawasan.html">Kawasan</a>')
+    if load_bm_kawasan():
+        t = t.replace('href="../../kawasan.html">Kawasan</a>', 'href="../kawasan.html">Kawasan</a>')
 
     # CTA band
     t = re.sub(r"<p>Listings move fast\. WhatsApp Hani directly for the latest available units in .*?\.</p>",
@@ -1439,6 +1457,144 @@ def build_bm_pages(area_results) -> list:
             f.unlink()
             print(f"  removed ms/area/{f.name} (not in bm_content.json)")
     return written
+
+
+# ---------------------------------------------------------------------------
+# Bahasa Malaysia area directory (ms/kawasan.html)
+#
+# Built from the finished English kawasan.html, with the wording from the
+# "_kawasan" entry in bm_content.json. Each card links to the area's BM page
+# (or the English one if that area has no BM page yet). Both directories get
+# hreflang tags and an EN | BM switch, like the area pages.
+# ---------------------------------------------------------------------------
+
+BM_KAWASAN_PATH = ROOT / "ms" / "kawasan.html"
+BM_KAWASAN_URL = f"{SITE_BASE}/ms/kawasan.html"
+EN_KAWASAN_URL = f"{SITE_BASE}/kawasan.html"
+
+
+def load_bm_kawasan() -> dict:
+    """The "_kawasan" entry of bm_content.json (empty if missing)."""
+    if not BM_CONTENT_PATH.exists():
+        return {}
+    import json
+    return json.loads(BM_CONTENT_PATH.read_text(encoding="utf-8")).get("_kawasan") or {}
+
+
+def kawasan_lang_links(text: str, is_bm: bool) -> str:
+    text = HREFLANG_RE.sub("", text)
+    text = LANGSW_RE.sub("", text)
+    if not load_bm_kawasan():
+        return text
+    tags = (f'\n<!--HREFLANG_START--><link rel="alternate" hreflang="en" href="{EN_KAWASAN_URL}" />'
+            f'<link rel="alternate" hreflang="ms" href="{BM_KAWASAN_URL}" />'
+            f'<link rel="alternate" hreflang="x-default" href="{EN_KAWASAN_URL}" /><!--HREFLANG_END-->')
+    text = re.sub(r'(<link\b[^>]*\brel="canonical"[^>]*>)', lambda m: m.group(1) + tags, text, count=1)
+    if is_bm:
+        sw = (f'<a href="/kawasan.html" hreflang="en" lang="en" style="{_SW_LINK}">EN</a>'
+              f' &nbsp;|&nbsp; <span style="{_SW_ON}" aria-current="page">BM</span>')
+    else:
+        sw = (f'<span style="{_SW_ON}" aria-current="page">EN</span> &nbsp;|&nbsp; '
+              f'<a href="/ms/kawasan.html" hreflang="ms" lang="ms" style="{_SW_LINK}">BM</a>')
+    block = f'\n    <!--LANG_START--><div class="lang-switch" style="{_SW_STYLE}">{sw}</div><!--LANG_END-->'
+    return text.replace('<section class="area-hero">', '<section class="area-hero">' + block, 1)
+
+
+def bm_kawasan_text(en_text: str, k: dict) -> str:
+    import json
+    E = esc
+    t = en_text
+    misses = []
+
+    def sub(pattern, repl, flags=0):
+        nonlocal t
+        t, n = re.subn(pattern, repl, t, count=1, flags=flags)
+        if not n:
+            misses.append(pattern[:50])
+
+    def swap(old, new):
+        nonlocal t
+        if old not in t:
+            misses.append(old[:50])
+        t = t.replace(old, new)
+
+    # language, URLs, meta
+    swap('<html lang="en">', '<html lang="ms">')
+    swap('content="en_MY"', 'content="ms_MY"')
+    sub(r'(<link\b[^>]*\brel="canonical"[^>]*\bhref=")[^"]*(")', rf'\g<1>{BM_KAWASAN_URL}\g<2>')
+    sub(r'(<meta\b[^>]*\bproperty="og:url"[^>]*\bcontent=")[^"]*(")', rf'\g<1>{BM_KAWASAN_URL}\g<2>')
+    sub(r"<title>.*?</title>", lambda m: f"<title>{E(k['title'])}</title>", re.S)
+    sub(r'(<meta name="description" content=")[^"]*(")', lambda m: m.group(1) + E(k["description"]) + m.group(2))
+    sub(r'(<meta property="og:title" content=")[^"]*(")', lambda m: m.group(1) + E(k["title"]) + m.group(2))
+    sub(r'(<meta property="og:description" content=")[^"]*(")',
+        lambda m: m.group(1) + E(k.get("og_description") or k["description"]) + m.group(2))
+
+    # structured data
+    for m in reversed(_json_ld_blocks(t)):
+        try:
+            d = json.loads(m.group(2))
+        except ValueError:
+            continue
+        for node in d.get("@graph", []):
+            if node.get("@type") == "CollectionPage":
+                node["@id"] = BM_KAWASAN_URL + "#webpage"
+                node["url"] = BM_KAWASAN_URL
+                node["name"] = k["title"].split(" | ")[0]
+                node["inLanguage"] = "ms"
+            elif node.get("@type") == "BreadcrumbList":
+                for it in node.get("itemListElement", []):
+                    if it.get("item") == EN_KAWASAN_URL:
+                        it["name"] = "Kawasan"
+                        it["item"] = BM_KAWASAN_URL
+        t = t[:m.start(2)] + json.dumps(d, ensure_ascii=False, indent=2) + t[m.end(2):]
+
+    # nav (relative links in a page one folder down)
+    swap('>Projects</a>', '>Projek</a>')
+    swap('>Calculator</a>', '>Kalkulator</a>')
+
+    # hero, breadcrumb, CTA
+    sub(r'<div class="area-hero-eyebrow">.*?</div>', lambda m: f'<div class="area-hero-eyebrow">{E(k["eyebrow"])}</div>', re.S)
+    sub(r'(<section class="area-hero">.*?)<h1>.*?</h1>', lambda m: m.group(1) + f'<h1>{E(k["h1"])}</h1>', re.S)
+    sub(r'<p class="area-hero-desc">.*?</p>', lambda m: f'<p class="area-hero-desc">{E(k["intro"])}</p>', re.S)
+    sub(r'(<span>›</span>\s*)Areas(\s*</div>)', r'\g<1>Kawasan\g<2>')
+    sub(r"(<div class=\"cta-band\">\s*<h2>).*?(</h2>\s*<p>).*?(</p>\s*<a href=\")request\.html(\">).*?(</a>)",
+        lambda m: (m.group(1) + E(k["cta_title"]) + m.group(2) + E(k["cta_text"]) + m.group(3)
+                   + "/request.html" + m.group(4) + E(k["cta_button"]) + m.group(5)), re.S)
+
+    # footer + floating WhatsApp button
+    swap('Property in Selangor, KL &amp; Negeri Sembilan', 'Hartanah di Selangor, KL &amp; Negeri Sembilan')
+    swap('aria-label="Chat on WhatsApp"', 'aria-label="Sembang di WhatsApp"')
+    swap('?text=Hi%20Hani%2C%20can%20you%20help%20me%3F"', '?text=Hai%20Hani%2C%20boleh%20bantu%20saya%3F"')
+
+    # area cards: BM landmarks + links to BM pages (static HTML and the JS copy)
+    bm_slugs = set(load_bm_content())
+    tags = k.get("tags", {})
+    areas = []
+    for a in AREAS:
+        page = a.get("page") or a["slug"]
+        href = f"/ms/area/{page}.html" if page in bm_slugs else f"/area/local/{page}.html"
+        areas.append({**a, "tag": tags.get(a["slug"], a["tag"]), "href": href})
+    t = inject_area_directory(t, render_area_directory_html(areas, bm=True))
+    sub(r"const AREAS\s*=\s*\[.*?\];", lambda m: js_areas_literal(areas), re.S)
+    swap('href="area/local/${a.page || a.slug}.html"', 'href="${a.href}"')
+    swap("area${items.length > 1 ? 's' : ''}", "kawasan")
+
+    if misses:
+        print("    (warning: ms/kawasan.html -- not found in kawasan.html, left in English: "
+              + "; ".join(misses) + ")")
+    return kawasan_lang_links(t, is_bm=True)
+
+
+def build_bm_kawasan(en_text: str):
+    k = load_bm_kawasan()
+    if not k:
+        return
+    text = bm_kawasan_text(en_text, k)
+    BM_KAWASAN_PATH.parent.mkdir(parents=True, exist_ok=True)
+    old = BM_KAWASAN_PATH.read_text(encoding="utf-8") if BM_KAWASAN_PATH.exists() else None
+    if text != old:
+        BM_KAWASAN_PATH.write_text(text, encoding="utf-8")
+    print(f"  ms/kawasan.html: {'updated' if text != old else 'no change'}")
 
 
 def main():

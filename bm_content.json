@@ -1,5 +1,5 @@
 {
-  "_readme": "BM text for the Bahasa Malaysia area pages (ms/area/*.html). One entry per area page, keyed by the English file name without .html. build_static_listings.py builds a BM page ONLY for areas listed here. {place} in _common is replaced with the area's BM place name.",
+  "_readme": "BM text for the Bahasa Malaysia area pages (ms/area/*.html). One entry per area page, keyed by the English file name without .html. build_static_listings.py builds a BM page ONLY for areas listed here. {place} in _common is replaced with the area's BM place name. _kawasan holds the BM text for the area directory (ms/kawasan.html); its tags list only the landmark lines that differ from English.",
   "_common": {
     "faq": [
       [
@@ -469,5 +469,24 @@
         "Sungai Buloh ialah hab pengangkutan di sempadan Selangor–KL, dengan stesen MRT dan KTM. Kejiranan mantap seperti Bukit Rahman Putra dan Sierramas menawarkan rumah landed yang lebih berpatutan berbanding Damansara."
       ]
     ]
+  },
+  "_kawasan": {
+    "title": "Kawasan Kami — Lembah Klang, KL & Negeri Sembilan | Hani Properties",
+    "description": "Cari rumah sewa dan rumah untuk dijual mengikut kawasan — Shah Alam, Puchong, Subang Jaya, Kuala Lumpur dan banyak lagi di Selangor, KL dan Negeri Sembilan.",
+    "og_description": "Cari hartanah mengikut kawasan di Selangor, Kuala Lumpur dan Negeri Sembilan. WhatsApp Hani terus.",
+    "eyebrow": "📍 Kawasan Kami",
+    "h1": "Cari Hartanah Mengikut Kawasan",
+    "intro": "Rumah sewa, rumah untuk dijual dan projek baharu di sekitar Lembah Klang, Kuala Lumpur dan Negeri Sembilan. Pilih kawasan untuk lihat unit yang ada.",
+    "cta_title": "Kawasan anda belum ada?",
+    "cta_text": "Kami sentiasa menambah iklan baharu di sekitar Lembah Klang. Beritahu kami apa yang anda cari dan kami akan carikan.",
+    "cta_button": "Beritahu Kami Apa Yang Anda Cari",
+    "tags": {
+      "shah-alam": "UiTM, Masjid Biru, PKNS",
+      "bandar-saujana-putra": "Cyberjaya, Putra Heights, Lebuhraya ELITE",
+      "sungai-buloh": "Stesen pertukaran MRT/KTM, Sierramas",
+      "bukit-jalil": "Pavilion, Stadium Nasional, LRT",
+      "ampang": "Jalan Ampang, AKLEH, Segi Tiga Emas KL",
+      "selayang": "Batu Caves, Hospital Selayang"
+    }
   }
 }

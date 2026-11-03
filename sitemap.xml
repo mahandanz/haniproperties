@@ -51,18 +51,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://haniproperties.com/lelong/guide_lelong_property_malaysia.html</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://haniproperties.com/lelong/guide_lelong_reserve_vs_market_value.html</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://haniproperties.com/search.html</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -228,6 +216,12 @@
   </url>
 
   <!-- BM area pages (auto-generated from bm_content.json) -->
+  <url>
+    <loc>https://haniproperties.com/ms/kawasan.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://haniproperties.com/ms/area/ampang.html</loc>
     <lastmod>2026-11-03</lastmod>
