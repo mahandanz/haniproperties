@@ -60,14 +60,15 @@
 
   /* ── Build one search button (links to the filters page) ── */
   function buildSearchButton() {
+    var label = document.documentElement.lang === 'ms' ? 'Cari iklan' : 'Search listings';
     const link = document.createElement('a');
     link.className = 'hp-search-btn';
     link.href = RESULTS_PAGE;
-    link.setAttribute('aria-label', 'Search listings');
+    link.setAttribute('aria-label', label);
     link.innerHTML =
       '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7a7268" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
       '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>' +
-      '<span>Search listings</span>';
+      '<span>' + label + '</span>';
     return link;
   }
 

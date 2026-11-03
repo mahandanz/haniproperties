@@ -1,0 +1,473 @@
+{
+  "_readme": "BM text for the Bahasa Malaysia area pages (ms/area/*.html). One entry per area page, keyed by the English file name without .html. build_static_listings.py builds a BM page ONLY for areas listed here. {place} in _common is replaced with the area's BM place name.",
+  "_common": {
+    "faq": [
+      [
+        "Bagaimana nak bertanya tentang hartanah di {place}?",
+        "WhatsApp Hani terus di 012-545 9182. Hani Properties berdaftar di bawah ERA Real Estate (E(1)1773/3, REN 84031) dan biasanya membalas dalam masa sejam."
+      ],
+      [
+        "Boleh Hani Properties bantu cari unit di {place} yang belum disenaraikan?",
+        "Boleh. WhatsApp Hani atau isi borang permintaan, dan Hani akan cari terus unit yang sesuai di {place}."
+      ]
+    ]
+  },
+  "ampang": {
+    "place": "Ampang",
+    "title": "Rumah Sewa & Rumah Dijual Ampang | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Ampang — apartmen, kondominium dan rumah landed berdekatan Jalan Ampang, AKLEH dan Segi Tiga Emas KL.",
+    "h1": "Rumah Sewa & Jual di Ampang",
+    "intro": "Pintu masuk ke KLCC dan laluan LRT Ampang — gabungan kedutaan, pusat beli-belah dan kawasan perumahan yang mantap, dekat dengan pusat bandar.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Ampang, Kuala Lumpur. Zoo Negara • LRT Ampang Park • berdekatan KLCC.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Ampang?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Ampang, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Ampang kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Ampang terletak di pintu masuk ke KLCC dan laluan LRT Ampang — gabungan kedutaan, pusat beli-belah dan kawasan perumahan yang mantap. Sesuai untuk mereka yang bekerja di pusat bandar tetapi mahukan kejiranan yang lebih tenang."
+      ]
+    ]
+  },
+  "bandar-saujana-putra": {
+    "place": "Bandar Saujana Putra",
+    "title": "Rumah Sewa & Dijual Bandar Saujana Putra | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Bandar Saujana Putra, berdekatan Cyberjaya, Putra Heights dan Lebuhraya ELITE. Hubungi terus di WhatsApp.",
+    "h1": "Rumah Sewa & Jual di Bandar Saujana Putra",
+    "intro": "Bandar Saujana Putra ialah bandar yang mudah dihubungi, bersempadan dengan Cyberjaya dan Putra Heights, dengan akses mudah melalui Lebuhraya ELITE. Pilihan popular untuk keluarga muda dan penyewa yang bekerja di Cyberjaya dan kawasan selatan.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Bandar Saujana Putra, Selangor. Apartmen, kondominium dan rumah landed berdekatan Cyberjaya, Putra Heights dan Lebuhraya ELITE.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Bandar Saujana Putra?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Bandar Saujana Putra, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Bandar Saujana Putra kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Bandar Saujana Putra bersempadan dengan Cyberjaya dan Putra Heights, dengan akses mudah melalui Lebuhraya ELITE. Harga rumah yang berpatutan menjadikannya pilihan popular untuk keluarga muda dan penyewa yang bekerja di Cyberjaya dan kawasan selatan."
+      ]
+    ]
+  },
+  "bukit-jalil": {
+    "place": "Bukit Jalil",
+    "title": "Rumah Sewa & Rumah Dijual Bukit Jalil | Hani Properties",
+    "description": "Rumah sewa, bilik sewa dan rumah untuk dijual di Bukit Jalil, berdekatan Pavilion Bukit Jalil dan LRT. Dikemas kini setiap minggu oleh negotiator tempatan.",
+    "h1": "Rumah Sewa & Jual di Bukit Jalil",
+    "intro": "Lokasi Stadium Nasional, Pavilion Bukit Jalil dan stesen LRT Bukit Jalil — antara kawasan bandar yang paling pesat membangun di KL.",
+    "schema_description": "Ejen hartanah untuk rumah sewa, bilik sewa dan rumah subsale di Bukit Jalil, Kuala Lumpur. Pavilion Bukit Jalil • LRT Bukit Jalil • Kompleks Sukan Negara.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Bukit Jalil?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Bukit Jalil, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Bukit Jalil kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Bukit Jalil ialah lokasi Stadium Nasional, Pavilion Bukit Jalil dan stesen LRT — antara kawasan bandar yang paling pesat membangun di KL, dengan banyak kondominium baharu dan permintaan sewa yang kukuh."
+      ]
+    ]
+  },
+  "cheras": {
+    "place": "Cheras",
+    "title": "Rumah Sewa & Rumah Dijual Cheras | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Cheras — apartmen, kondominium dan rumah landed berdekatan Sunway Velocity Mall, IKEA Cheras dan Taman Connaught.",
+    "h1": "Rumah Sewa & Jual di Cheras",
+    "intro": "Kawasan padat dan mudah dihubungi yang merentasi KL dan Selangor — liputan MRT yang baik, pusat beli-belah yang mantap dan pelbagai jenis hartanah.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Cheras, Kuala Lumpur. MRT Taman Suntex • Cheras Leisure Mall • Lebuhraya SUKE.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Cheras?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Cheras, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Cheras kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Cheras merentasi KL dan Selangor, dengan liputan MRT yang baik, pusat beli-belah yang mantap dan pelbagai jenis hartanah — daripada flat dan apartmen hingga rumah teres — untuk pelbagai bajet."
+      ]
+    ]
+  },
+  "cyberjaya-putrajaya": {
+    "place": "Cyberjaya & Putrajaya",
+    "title": "Rumah Sewa & Dijual Cyberjaya & Putrajaya | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Cyberjaya dan Putrajaya — apartmen, kondominium dan rumah landed. Lihat senarai dan WhatsApp Hani terus.",
+    "h1": "Rumah Sewa & Jual di Cyberjaya & Putrajaya",
+    "intro": "Bandar teknologi dan pusat pentadbiran Malaysia — terancang, hijau dan dihubungkan oleh ERL. Permintaan sewa yang tinggi daripada pelajar MMU dan kakitangan kerajaan.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Cyberjaya dan Putrajaya. Multimedia University • IOI City Mall • ERL KLIA Transit.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Cyberjaya & Putrajaya?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Cyberjaya & Putrajaya, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Cyberjaya & Putrajaya kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Cyberjaya dan Putrajaya ialah bandar teknologi dan pusat pentadbiran Malaysia — terancang, hijau dan dihubungkan oleh ERL. Permintaan sewa yang tinggi daripada pelajar MMU, pekerja syarikat teknologi dan kakitangan kerajaan."
+      ]
+    ]
+  },
+  "kajang-bangi": {
+    "place": "Kajang & Bangi",
+    "title": "Rumah Sewa & Rumah Dijual Kajang & Bangi | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Kajang dan Bangi — berdekatan MRT/KTM Kajang, UKM, De Centrum Mall dan IOI Mall Bangi.",
+    "h1": "Rumah Sewa & Jual di Kajang & Bangi",
+    "intro": "Bandar Sate bertemu bandar universiti yang tenang — Kajang dan Bangi, berpusatkan UKM, stesen akhir MRT Kajang, De Centrum Mall dan IOI Mall Bangi, dengan akses mudah melalui SILK dan LEKAS.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Kajang dan Bangi, Selangor. Stesen MRT Kajang • UKM • IOI Mall Bangi • Lebuhraya SILK & LEKAS.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Kajang & Bangi?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Kajang & Bangi, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Kajang & Bangi kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Kajang dan Bangi bersama-sama membentuk kawasan yang besar dan mampu milik, berpusatkan UKM dan stesen akhir MRT Kajang, dengan akses mudah melalui SILK dan LEKAS. Sesuai untuk keluarga, pelajar dan mereka yang bekerja di Putrajaya atau KL."
+      ]
+    ]
+  },
+  "kepong": {
+    "place": "Kepong",
+    "title": "Rumah Sewa & Rumah Dijual Kepong | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Kepong — apartmen, kondominium dan rumah landed berdekatan Desa ParkCity, Metro Prima dan KTM Kepong.",
+    "h1": "Rumah Sewa & Jual di Kepong",
+    "intro": "Bandar yang matang di barat laut KL — harga berpatutan, mudah diakses dengan MRT, dan dekat dengan pusat beli-belah serta pendidikan utama.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Kepong, Kuala Lumpur. MRT Kepong Baru • Desa ParkCity • Sri Damansara.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Kepong?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Kepong, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Kepong kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Kepong ialah bandar yang matang di barat laut KL — harga rumah berpatutan, mudah diakses dengan MRT dan KTM, dan dekat dengan Desa ParkCity serta Sri Damansara."
+      ]
+    ]
+  },
+  "klang": {
+    "place": "Klang",
+    "title": "Rumah Sewa & Rumah Dijual Klang | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Klang, berdekatan Bandar Botanic & Bukit Tinggi. Tak perlu tunggu portal — mesej negotiator tempatan terus di WhatsApp.",
+    "h1": "Rumah Sewa & Jual di Klang",
+    "intro": "Bandar diraja Selangor — bandar pelabuhan utama dengan rumah pada harga mampu milik, warisan yang kaya, dan akses jalan raya yang sangat baik melalui KESAS dan NKVE.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Klang, Selangor. Bandar Diraja Klang • Pelabuhan Klang • Stesen KTM Klang.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Klang?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Klang, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Klang kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Klang ialah bandar diraja Selangor dan bandar pelabuhan utama — harga rumah lebih mampu milik berbanding kawasan sekitarnya, dengan akses jalan raya yang sangat baik melalui KESAS dan NKVE."
+      ]
+    ]
+  },
+  "kuala-lumpur": {
+    "place": "Kuala Lumpur",
+    "title": "Rumah Sewa & Rumah Dijual Kuala Lumpur | Hani Properties",
+    "description": "Rumah sewa, bilik sewa dan rumah untuk dijual di Kuala Lumpur — apartmen, kondominium dan rumah landed berdekatan KLCC, Bukit Bintang dan Mid Valley.",
+    "h1": "Rumah Sewa & Jual di Kuala Lumpur",
+    "intro": "Nadi Malaysia — KLCC, Bukit Bintang, Bangsar dan pelbagai pilihan kediaman bandar, daripada studio hingga kondominium mewah.",
+    "schema_description": "Ejen hartanah untuk rumah sewa, bilik sewa dan rumah subsale di Kuala Lumpur. KLCC • Bukit Bintang • KL Sentral.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Kuala Lumpur?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Kuala Lumpur, termasuk studio, apartmen, kondominium, bilik sewa dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Kuala Lumpur kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Kuala Lumpur ialah nadi Malaysia — KLCC, Bukit Bintang dan Bangsar, dengan pengangkutan awam terbaik di negara ini dan pelbagai pilihan kediaman, daripada bilik sewa dan studio hingga kondominium mewah."
+      ]
+    ]
+  },
+  "nilai-seremban": {
+    "place": "Nilai & Seremban",
+    "title": "Rumah Sewa & Rumah Dijual Nilai & Seremban | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Nilai dan Seremban — berdekatan USIM, AEON Mall Nilai, Seremban 2, Senawang dan Sendayan.",
+    "h1": "Rumah Sewa & Jual di Nilai & Seremban",
+    "intro": "Daripada bandar universiti dan koridor KLIA di Nilai hingga kejiranan mantap di Seremban — Seremban 2, Senawang, Sendayan dan Mahkota Hills. Kedua-duanya dihubungkan oleh Lebuhraya Utara–Selatan dan KTM Komuter, dengan harga rumah landed yang biasanya jauh lebih rendah berbanding Lembah Klang.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Nilai dan Seremban, Negeri Sembilan. Apartmen, kondominium dan rumah landed. WhatsApp Hani terus.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Nilai & Seremban?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Nilai & Seremban, termasuk apartmen, kondominium, rumah teres dan tanah. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Kawasan mana yang diliputi oleh halaman ini?",
+        "Nilai (termasuk Kota Seriemas, Nilai Impian dan koridor Nilai–KLIA) dan kawasan Seremban, termasuk Seremban 2, Senawang, Bandar Sri Sendayan, Mahkota Hills, Paroi dan Bukit Rasah."
+      ],
+      [
+        "Adakah Nilai & Seremban kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Nilai ialah bandar pendidikan dan perindustrian di sempadan Selangor–Negeri Sembilan, lokasi USIM, INTI International University dan AEON Mall Nilai, dengan akses pantas ke KLIA. Seremban ialah ibu negeri Negeri Sembilan, dengan kawasan matang seperti Seremban 2 dan Senawang, serta harga rumah landed yang lebih rendah berbanding Lembah Klang."
+      ]
+    ]
+  },
+  "petaling-jaya": {
+    "place": "Petaling Jaya & Damansara",
+    "title": "Rumah Sewa & Rumah Dijual PJ & Damansara | Hani Properties",
+    "description": "Rumah sewa, bilik sewa dan rumah untuk dijual di PJ dan Damansara, dikemas kini setiap minggu. Tak perlu tunggu portal — mesej negotiator tempatan terus di WhatsApp.",
+    "h1": "Rumah Sewa & Jual di Petaling Jaya & Damansara",
+    "intro": "PJ ialah bandar paling mantap di Selangor — dari SS2 hingga Damansara, dengan akses LRT, pusat beli-belah ternama dan sekolah terbaik.",
+    "schema_description": "Ejen hartanah untuk rumah sewa, bilik sewa dan rumah subsale di Petaling Jaya dan Damansara, Selangor. Damansara Uptown • LRT Laluan Kelana Jaya • 1 Utama.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Petaling Jaya & Damansara?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Petaling Jaya & Damansara, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Petaling Jaya & Damansara kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "PJ ialah bandar paling mantap di Selangor — dari SS2 hingga Damansara, dengan akses LRT dan MRT, pusat beli-belah ternama seperti 1 Utama dan The Curve, serta sekolah terbaik. Permintaan sewa yang stabil sepanjang tahun."
+      ]
+    ]
+  },
+  "puchong": {
+    "place": "Puchong",
+    "title": "Rumah Sewa & Rumah Dijual Puchong | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Puchong — apartmen, kondominium dan rumah landed berdekatan IOI Mall, SetiaWalk dan Bandar Puteri.",
+    "h1": "Rumah Sewa & Jual di Puchong",
+    "intro": "Bandar yang luas di selatan KL — kediaman bertingkat yang mampu milik, akses LRT yang baik dan pusat beli-belah hebat di IOI Mall.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Puchong, Selangor. IOI Mall Puchong • LRT Laluan Sri Petaling • Lebuhraya LDP.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Puchong?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Puchong, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Puchong kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Puchong ialah bandar yang luas di selatan KL — banyak pilihan kediaman bertingkat yang mampu milik, akses LRT dan LDP yang baik, serta IOI Mall dan Bandar Puteri berdekatan."
+      ]
+    ]
+  },
+  "puncak-alam": {
+    "place": "Puncak Alam",
+    "title": "Rumah Sewa & Rumah Dijual Puncak Alam | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Puncak Alam, berdekatan UiTM dan pusat bandar. Hubungi terus — tak perlu tunggu balasan portal. Dikemas kini setiap minggu.",
+    "h1": "Rumah Sewa & Jual di Puncak Alam",
+    "intro": "Bandar baharu yang sedang berkembang di utara Selangor — lokasi UiTM Puncak Alam dan pesat membangun dengan projek baharu di sepanjang Koridor Guthrie.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Puncak Alam, Selangor. UiTM Puncak Alam • Lebuhraya Koridor Guthrie.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Puncak Alam?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Puncak Alam, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Puncak Alam kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Puncak Alam ialah bandar baharu yang sedang berkembang di utara Selangor — lokasi UiTM Puncak Alam, dengan harga rumah landed yang lebih rendah berbanding Shah Alam dan permintaan sewa daripada pelajar serta kakitangan UiTM."
+      ]
+    ]
+  },
+  "rawang": {
+    "place": "Rawang",
+    "title": "Rumah Sewa & Rumah Dijual Rawang | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Rawang — apartmen, kondominium dan rumah landed berdekatan KTM Komuter, Lebuhraya Utara–Selatan dan Templer Park.",
+    "h1": "Rumah Sewa & Jual di Rawang",
+    "intro": "Rawang ialah bandar satelit yang pesat membangun di utara Selangor, dihubungkan oleh KTM Komuter, Lebuhraya Utara–Selatan dan Lebuhraya Koridor Guthrie. Kawasan mantap seperti Bandar Country Homes dan Rawang Perdana menawarkan rumah landed dan kediaman bertingkat yang mampu milik, dekat dengan Templer Park dan Jalan Pintas Rawang.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Rawang, Selangor. Apartmen, kondominium dan rumah landed. WhatsApp Hani terus.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Rawang?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Rawang, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Rawang kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Rawang ialah bandar satelit yang pesat membangun di utara Selangor, dihubungkan oleh KTM Komuter, Lebuhraya Utara–Selatan dan Lebuhraya Koridor Guthrie. Rumah landed di sini jauh lebih mampu milik berbanding kawasan yang lebih dekat dengan KL."
+      ]
+    ]
+  },
+  "rimbayu-tpg": {
+    "place": "Rimbayu & Telok Panglima Garang",
+    "title": "Rumah Sewa & Rumah Dijual Rimbayu & TPG | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Bandar Rimbayu dan Telok Panglima Garang — apartmen, kondominium dan rumah landed berdekatan Central Park dan Kota Kemuning.",
+    "h1": "Rumah Sewa & Jual di Rimbayu & Telok Panglima Garang",
+    "intro": "Bandar Rimbayu (Telok Panglima Garang) ialah bandar terancang yang besar bersebelahan Kota Kemuning, menawarkan kediaman landed dan bertingkat bergaya resort dengan taman, tasik di tengah bandar dan akses mudah ke Lebuhraya KESAS serta selatan Lembah Klang.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Bandar Rimbayu dan Telok Panglima Garang, Selangor. Apartmen, kondominium dan rumah landed. WhatsApp Hani terus.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Rimbayu & Telok Panglima Garang?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Rimbayu & Telok Panglima Garang, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Rimbayu & Telok Panglima Garang kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Bandar Rimbayu ialah bandar terancang yang besar bersebelahan Kota Kemuning, dengan taman, tasik di tengah bandar dan akses mudah ke Lebuhraya KESAS. Sesuai untuk keluarga yang mahukan rumah landed baharu pada harga yang lebih rendah berbanding Shah Alam."
+      ]
+    ]
+  },
+  "selayang": {
+    "place": "Selayang",
+    "title": "Rumah Sewa & Rumah Dijual Selayang | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Selayang — apartmen, kondominium dan rumah landed berdekatan Hospital Selayang, Pasar Borong Selayang dan Batu Caves.",
+    "h1": "Rumah Sewa & Jual di Selayang",
+    "intro": "Pintu masuk ke Batu Caves dan utara KL — kawasan bandar dan pinggir bandar dengan akses lebuh raya yang baik dan komuniti setempat yang kuat.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Selayang, Selangor. Batu Caves • Hospital Selayang • Lebuhraya MRR2.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Selayang?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Selayang, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Selayang kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Selayang terletak di pintu masuk ke Batu Caves dan utara KL — kawasan bandar dan pinggir bandar dengan akses lebuh raya yang baik ke pusat bandar dan harga rumah yang lebih berpatutan."
+      ]
+    ]
+  },
+  "semenyih": {
+    "place": "Semenyih",
+    "title": "Rumah Sewa & Rumah Dijual Semenyih | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Semenyih — apartmen, kondominium dan rumah landed berdekatan Semenyih Sentral, Setia Ecohill dan Kajang.",
+    "h1": "Rumah Sewa & Jual di Semenyih",
+    "intro": "Bandar yang tenang di tenggara KL — rumah landed yang mampu milik, berdekatan Kajang, dan semakin popular dalam kalangan keluarga yang mencari nilai di luar bandar.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Semenyih, Selangor. Setia EcoHill • EcoHill Walk Mall • Lebuhraya LEKAS.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Semenyih?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Semenyih, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Semenyih kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Semenyih ialah bandar yang tenang di tenggara KL, dengan rumah landed yang mampu milik di kawasan seperti Setia Ecohill. Semakin popular dalam kalangan keluarga yang mencari rumah lebih besar pada harga lebih rendah, dengan akses ke KL melalui LEKAS dan Kajang."
+      ]
+    ]
+  },
+  "sentul": {
+    "place": "Sentul",
+    "title": "Rumah Sewa & Rumah Dijual Sentul | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Sentul — apartmen, kondominium dan rumah landed berdekatan Sentul Park, Sentul West dan KTM Sentul.",
+    "h1": "Rumah Sewa & Jual di Sentul",
+    "intro": "Kawasan dalam bandar yang sedang pesat diperbaharui, dekat dengan pusat bandar KL dan LRT — menarik golongan profesional muda dengan kediaman bertingkat moden.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Sentul, Kuala Lumpur. LRT Sentul Timur • KTM Sentul • Lebuhraya DUKE.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Sentul?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Sentul, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Sentul kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Sentul ialah kawasan dalam bandar yang sedang pesat diperbaharui, dekat dengan pusat bandar KL, LRT dan KTM. Banyak kondominium moden yang menarik golongan profesional muda."
+      ]
+    ]
+  },
+  "sepang-dengkil-banting": {
+    "place": "Sepang, Dengkil & Banting",
+    "title": "Rumah Sewa & Dijual Sepang, Dengkil, Banting | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Sepang, Dengkil dan Banting — berdekatan KLIA, klia2, Cybersouth dan Litar Antarabangsa Sepang.",
+    "h1": "Rumah Sewa & Jual di Sepang, Dengkil & Banting",
+    "intro": "Lokasi KLIA, Litar Antarabangsa Sepang dan koridor Dengkil–Cybersouth — kawasan selatan Selangor yang pesat membangun, dengan sektor logistik yang kukuh dan rumah landed yang mampu milik.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Sepang, Dengkil dan Banting, Selangor. KLIA & klia2 • Litar Antarabangsa Sepang • Lebuhraya ELITE.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Sepang, Dengkil & Banting?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Sepang, Dengkil & Banting, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Sepang, Dengkil & Banting kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Sepang, Dengkil dan Banting ialah kawasan selatan Selangor yang pesat membangun — lokasi KLIA dan koridor Dengkil–Cybersouth, dengan sektor logistik yang kukuh dan rumah landed yang mampu milik."
+      ]
+    ]
+  },
+  "seri-kembangan": {
+    "place": "Seri Kembangan",
+    "title": "Rumah Sewa & Rumah Dijual Seri Kembangan | Hani Properties",
+    "description": "Rumah sewa, bilik sewa dan rumah untuk dijual di Seri Kembangan — apartmen, kondominium dan rumah landed berdekatan The Mines, South City Plaza dan UPM.",
+    "h1": "Rumah Sewa & Jual di Seri Kembangan",
+    "intro": "Bandar strategik berdekatan The Mines dan Equine Park — mudah ke KL melalui Lebuhraya Besraya dan semakin popular.",
+    "schema_description": "Ejen hartanah untuk rumah sewa, bilik sewa dan rumah subsale di Seri Kembangan, Selangor. The Mines • MRT Serdang Jaya • Lebuhraya Besraya.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Seri Kembangan?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Seri Kembangan, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Seri Kembangan kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Seri Kembangan terletak berdekatan The Mines, Equine Park dan UPM, dengan akses mudah ke KL melalui Lebuhraya Besraya dan MRT. Permintaan sewa yang kukuh daripada pelajar UPM dan mereka yang bekerja di KL."
+      ]
+    ]
+  },
+  "setapak": {
+    "place": "Setapak",
+    "title": "Rumah Sewa & Rumah Dijual Setapak | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Setapak, berdekatan Wangsa Maju dan Tasik Titiwangsa. Dikemas kini setiap minggu, hubungi terus di WhatsApp.",
+    "h1": "Rumah Sewa & Jual di Setapak",
+    "intro": "Kawasan kediaman yang sedang berkembang di timur laut pusat bandar KL — popular dalam kalangan pelajar dan keluarga kerana harganya yang berpatutan dan dekat dengan UTAR.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Setapak, Kuala Lumpur. UTAR Setapak • Wangsa Walk Mall • LRT Wangsa Maju.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Setapak?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Setapak, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Setapak kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Setapak ialah kawasan kediaman di timur laut pusat bandar KL — popular dalam kalangan pelajar dan keluarga kerana harganya yang berpatutan, dekat dengan UTAR dan LRT Wangsa Maju."
+      ]
+    ]
+  },
+  "setia-alam": {
+    "place": "Setia Alam",
+    "title": "Rumah Sewa & Rumah Dijual Setia Alam | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Setia Alam — Setia City, Setia Eco Park, Setia Indah & Alam Impian. Hubungi negotiator tempatan terus di WhatsApp.",
+    "h1": "Rumah Sewa & Jual di Setia Alam",
+    "intro": "Setia Alam ialah antara bandar terancang terbesar di Shah Alam — berpusatkan Setia City Mall dan Setia Eco Park, dengan akses mudah melalui NKVE dan Lebuhraya Elite. Kejiranan yang lengkap dan popular dalam kalangan keluarga serta penyewa.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Setia Alam, Shah Alam, Selangor. Apartmen, kondominium dan rumah landed berdekatan Setia City Mall, Setia Eco Park dan Alam Impian.",
+    "faq": [
+      [
+        "Adakah Setia Alam sebahagian daripada Shah Alam?",
+        "Ya. Setia Alam ialah bandar terancang yang besar di dalam Shah Alam, Selangor, dibina di sekitar Setia City Mall dan Setia Eco Park. Ramai yang mencari rumah di Setia Alam secara berasingan daripada pusat Shah Alam kerana suasananya yang lebih baharu dan banyak kawasan berpagar."
+      ],
+      [
+        "Apakah jenis hartanah yang ada di Setia Alam?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Setia Alam, termasuk apartmen, servis residensi dan rumah teres. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Setia Alam kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Setia Alam ialah antara bandar paling mantap di Shah Alam — berpusatkan Setia City Mall, dengan akses yang baik melalui NKVE dan Lebuhraya Elite. Popular dalam kalangan keluarga dan penyewa yang mahukan kejiranan yang lengkap dan tersusun."
+      ]
+    ]
+  },
+  "shah-alam": {
+    "place": "Shah Alam",
+    "title": "Rumah Sewa & Rumah Dijual Shah Alam | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Shah Alam — Seksyen 7, Bukit Jelutong, Denai Alam & i-City. Hubungi negotiator tempatan terus di WhatsApp.",
+    "h1": "Rumah Sewa & Jual di Shah Alam",
+    "intro": "Shah Alam ialah ibu negeri Selangor — kawasan yang tersusun, mudah dihubungi, dan dekat dengan UiTM, AEON serta lebuh raya utama seperti KESAS dan ELITE. Pasaran yang kukuh untuk penyewa dan pelabur.",
+    "schema_description": "Ejen hartanah untuk rumah sewa, bilik sewa dan rumah subsale di Shah Alam, Selangor. Apartmen, kondominium dan rumah landed berdekatan Masjid Biru, i-City dan AEON Shah Alam.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Shah Alam?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Shah Alam, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Shah Alam kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Shah Alam ialah ibu negeri Selangor — tersusun, mudah dihubungi, dan menempatkan UiTM, AEON serta lebuh raya utama seperti KESAS dan ELITE. Permintaan sewa yang stabil menjadikannya pilihan kukuh untuk penyewa dan pelabur."
+      ]
+    ]
+  },
+  "subang-jaya": {
+    "place": "Subang Jaya",
+    "title": "Rumah Sewa & Rumah Dijual Subang Jaya | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Subang Jaya, berdekatan Sunway Pyramid, INTI dan SS15. Dikemas kini setiap minggu oleh negotiator tempatan.",
+    "h1": "Rumah Sewa & Jual di Subang Jaya",
+    "intro": "Antara alamat paling dicari di Selangor — Sunway Pyramid, Taylor's dan Sunway University, serta akses LRT yang sangat baik.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Subang Jaya, Selangor. Sunway Pyramid • Taylor's University • LRT Subang Jaya.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Subang Jaya?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Subang Jaya, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Subang Jaya kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Subang Jaya ialah antara alamat paling dicari di Selangor — dekat dengan Sunway Pyramid, Taylor's dan Sunway University, dengan akses LRT dan KTM yang sangat baik. Permintaan sewa yang tinggi daripada pelajar dan keluarga."
+      ]
+    ]
+  },
+  "sungai-buloh": {
+    "place": "Sungai Buloh",
+    "title": "Rumah Sewa & Rumah Dijual Sungai Buloh | Hani Properties",
+    "description": "Rumah sewa dan rumah untuk dijual di Sungai Buloh, berdekatan stesen MRT/KTM dan Sierramas. Hubungi terus — tak perlu tunggu balasan portal.",
+    "h1": "Rumah Sewa & Jual di Sungai Buloh",
+    "intro": "Sungai Buloh ialah hab pengangkutan di sempadan Selangor–KL, dengan stesen MRT dan KTM Sungai Buloh. Lokasi kejiranan mantap seperti Bukit Rahman Putra dan Sierramas, dengan Hospital Sungai Buloh dan Lebuhraya Kuala Selangor berdekatan.",
+    "schema_description": "Ejen hartanah untuk rumah sewa dan rumah subsale di Sungai Buloh, Selangor. Apartmen, kondominium dan rumah landed. WhatsApp Hani terus.",
+    "faq": [
+      [
+        "Apakah jenis hartanah yang ada di Sungai Buloh?",
+        "Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Sungai Buloh, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu."
+      ],
+      [
+        "Adakah Sungai Buloh kawasan yang bagus untuk menyewa atau membeli rumah?",
+        "Sungai Buloh ialah hab pengangkutan di sempadan Selangor–KL, dengan stesen MRT dan KTM. Kejiranan mantap seperti Bukit Rahman Putra dan Sierramas menawarkan rumah landed yang lebih berpatutan berbanding Damansara."
+      ]
+    ]
+  }
+}

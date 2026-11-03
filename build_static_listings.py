@@ -642,6 +642,8 @@ def process_area_file(path: Path, all_rows):
     # before the "did the listings change?" comparison below -- fixing a
     # canonical never moves the page's 'Last updated' date.
     text = fix_area_urls(text, path)
+    # hreflang tags + EN | BM switch when a BM version exists (housekeeping)
+    text = set_lang_links(text, path.stem, is_bm=False)
     # Template housekeeping (not a listings change): stop the page's JS from
     # overwriting the build-written summary line.
     text = text.replace(JS_SUMMARY_OLD, JS_SUMMARY_NEW)
@@ -696,12 +698,13 @@ def process_area_file(path: Path, all_rows):
             path.write_text(text, encoding="utf-8")
         note = "URLs fixed, date kept" if url_fixed else "no change"
         print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale ({note})")
-        return
+        return units, rooms, subsales
 
     import datetime
     text = stamp_dates(text, datetime.date.today())
     path.write_text(text, encoding="utf-8")
     print(f"  {path.name}: {' / '.join(areas)} -> {len(units)} rental, {len(rooms)} room, {len(subsales)} subsale (updated, stamped {datetime.date.today().isoformat()})")
+    return units, rooms, subsales
 
 
 # ---------------------------------------------------------------------------
@@ -954,7 +957,7 @@ def _lastmod(rel_path: str) -> str:
         return datetime.date.today().isoformat()
 
 
-def regenerate_sitemap(area_files) -> None:
+def regenerate_sitemap(area_files, bm_files=()) -> None:
     """Rebuild sitemap.xml from CORE_PAGES + every file currently in area/local/.
 
     This runs every time the script runs, so any area page added or removed
@@ -991,6 +994,20 @@ def regenerate_sitemap(area_files) -> None:
             "  </url>",
         ]
 
+    # BM area pages (ms/area/*.html) -- built from bm_content.json
+    if bm_files:
+        lines += ["", "  <!-- BM area pages (auto-generated from bm_content.json) -->"]
+    for f in sorted(bm_files, key=lambda p: p.name):
+        rel = f"/ms/area/{f.name}"
+        lines += [
+            "  <url>",
+            f"    <loc>{SITE_BASE}{rel}</loc>",
+            f"    <lastmod>{_lastmod(rel)}</lastmod>",
+            "    <changefreq>weekly</changefreq>",
+            "    <priority>0.7</priority>",
+            "  </url>",
+        ]
+
     # Area guides (guides/*.html) -- picked up automatically like area pages
     guide_files = sorted((ROOT / "guides").glob("*.html"))
     if guide_files:
@@ -1008,7 +1025,420 @@ def regenerate_sitemap(area_files) -> None:
 
     lines += ["", "</urlset>", ""]
     SITEMAP_PATH.write_text("\n".join(lines), encoding="utf-8")
-    print(f"\nsitemap.xml regenerated: {len(CORE_PAGES)} core pages + {len(area_files)} area pages + {len(guide_files)} area guides")
+    print(f"\nsitemap.xml regenerated: {len(CORE_PAGES)} core pages + {len(area_files)} area pages + {len(bm_files)} BM area pages + {len(guide_files)} area guides")
+
+
+# ---------------------------------------------------------------------------
+# Bahasa Malaysia area pages (ms/area/*.html)
+#
+# Many people search in BM ("rumah sewa shah alam"), and Google prefers pages
+# written in the searcher's language. For every area listed in bm_content.json
+# the build writes a BM copy of the English area page to ms/area/<same name>,
+# with:
+#   - BM title, meta description, H1, intro, summary line and FAQ
+#   - BM tabs, filters, buttons and card labels (listings data is unchanged)
+#   - hreflang tags on BOTH pages, so Google treats them as language versions
+#     of each other (not duplicates) and shows each searcher the right one
+#   - an "EN | BM" switch at the top of both pages
+# ms/area/ sits at the same folder depth as area/local/, so every relative
+# link (../../index.html, ../../listings.csv, nearby areas) keeps working.
+#
+# To add an area: add its entry to bm_content.json and run the build.
+# ---------------------------------------------------------------------------
+
+BM_CONTENT_PATH = ROOT / "bm_content.json"
+BM_DIR = ROOT / "ms" / "area"
+BM_MONTHS = {"Jan": "Jan", "Feb": "Feb", "Mar": "Mac", "Apr": "Apr", "May": "Mei", "Jun": "Jun",
+             "Jul": "Jul", "Aug": "Ogo", "Sep": "Sep", "Oct": "Okt", "Nov": "Nov", "Dec": "Dis"}
+FURNISHING_BM = {"Fully Furnished": "Perabot Penuh", "Partially Furnished": "Separa Perabot",
+                 "Unfurnished": "Tanpa Perabot"}
+
+_BM_CACHE = None
+
+
+def load_bm_content() -> dict:
+    """{slug: entry} from bm_content.json (empty if the file is missing)."""
+    global _BM_CACHE
+    if _BM_CACHE is None:
+        _BM_CACHE = {}
+        if BM_CONTENT_PATH.exists():
+            import json
+            data = json.loads(BM_CONTENT_PATH.read_text(encoding="utf-8"))
+            common = data.get("_common", {})
+            for k, v in data.items():
+                if not k.startswith("_"):
+                    v = dict(v)
+                    v["faq"] = list(v.get("faq", [])) + [
+                        [q.replace("{place}", v["place"]), a.replace("{place}", v["place"])]
+                        for q, a in common.get("faq", [])]
+                    _BM_CACHE[k] = v
+    return _BM_CACHE
+
+
+def en_url(slug: str) -> str:
+    return f"{SITE_BASE}/area/local/{slug}.html"
+
+
+def bm_url(slug: str) -> str:
+    return f"{SITE_BASE}/ms/area/{slug}.html"
+
+
+HREFLANG_RE = re.compile(r"\s*<!--HREFLANG_START-->.*?<!--HREFLANG_END-->", re.S)
+LANGSW_RE = re.compile(r"\s*<!--LANG_START-->.*?<!--LANG_END-->", re.S)
+_SW_STYLE = ("margin:0 auto 12px;font-size:12px;font-weight:700;letter-spacing:.06em;"
+             "color:rgba(255,255,255,.45)")
+_SW_ON = "color:#fff"
+_SW_LINK = "color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:3px"
+
+
+def set_lang_links(text: str, slug: str, is_bm: bool) -> str:
+    """Add (or refresh) the hreflang tags and the EN | BM switch. On an English
+    page they're only added when a BM version exists; otherwise removed."""
+    text = HREFLANG_RE.sub("", text)
+    text = LANGSW_RE.sub("", text)
+    if slug not in load_bm_content():
+        return text
+    tags = (f'\n  <!--HREFLANG_START--><link rel="alternate" hreflang="en" href="{en_url(slug)}" />'
+            f'<link rel="alternate" hreflang="ms" href="{bm_url(slug)}" />'
+            f'<link rel="alternate" hreflang="x-default" href="{en_url(slug)}" /><!--HREFLANG_END-->')
+    text = re.sub(r'(<link\b[^>]*\brel="canonical"[^>]*>)', lambda m: m.group(1) + tags, text, count=1)
+    if is_bm:
+        sw = (f'<a href="/area/local/{slug}.html" hreflang="en" lang="en" style="{_SW_LINK}">EN</a>'
+              f' &nbsp;|&nbsp; <span style="{_SW_ON}" aria-current="page">BM</span>')
+    else:
+        sw = (f'<span style="{_SW_ON}" aria-current="page">EN</span> &nbsp;|&nbsp; '
+              f'<a href="/ms/area/{slug}.html" hreflang="ms" lang="ms" style="{_SW_LINK}">BM</a>')
+    block = f'\n  <!--LANG_START--><div class="lang-switch" style="{_SW_STYLE}">{sw}</div><!--LANG_END-->'
+    return text.replace('<section class="hero">', '<section class="hero">' + block, 1)
+
+
+# --- BM summary line (same facts as area_summary, in BM) --------------------
+
+TYPE_BM = {
+    "condominium": "kondominium", "condo": "kondominium",
+    "apartment": "apartmen", "apartment (low cost)": "apartmen kos rendah",
+    "service residence": "servis residensi", "serviced residence": "servis residensi",
+    "service apartment": "servis residensi", "serviced apartment": "servis residensi",
+    "terrace": "rumah teres", "townhouse": "townhouse", "cluster": "rumah kluster",
+    "semi d": "semi-D", "semi-d": "semi-D", "bungalow": "banglo",
+    "flat": "flat", "studio": "studio", "penthouse": "penthouse", "duplex": "dupleks",
+    "soho": "unit SOHO", "sofo": "unit SOFO", "sovo": "unit SOVO",
+    "commercial": "unit komersial", "shop lot": "lot kedai", "shoplot": "lot kedai",
+    "office": "pejabat", "land": "tanah",
+}
+
+
+def _join_bm(items):
+    items = list(items)
+    if len(items) <= 1:
+        return "".join(items)
+    return ", ".join(items[:-1]) + " dan " + items[-1]
+
+
+def _price_range_bm(rows, suffix=""):
+    prices = sorted(p for p in (_num_price(r) for r in rows) if p)
+    if not prices:
+        return ""
+    lo, hi = prices[0], prices[-1]
+    if lo == hi:
+        return f"pada RM {int(lo):,}{suffix}"
+    return f"dari RM {int(lo):,} hingga RM {int(hi):,}{suffix}"
+
+
+def _type_phrase_bm(rows, with_beds=False):
+    counts = {}
+    for r in rows:
+        t = (r.get("type") or "").strip()
+        if not t or t == "-":
+            continue
+        word = TYPE_BM.get(t.lower(), t)
+        counts[word] = counts.get(word, 0) + 1
+    typed = sum(counts.values())
+    top = sorted(counts, key=lambda k: -counts[k])
+    bed = ""
+    if with_beds:
+        beds = {}
+        for r in rows:
+            b = (r.get("bed") or "").strip()
+            if b.isdigit() and int(b) > 0:
+                beds[b] = beds.get(b, 0) + 1
+        if beds:
+            b, n = max(beds.items(), key=lambda kv: kv[1])
+            if n / len(rows) >= 0.6:
+                bed = f"{b} bilik"
+    if not top:
+        return f"kebanyakannya unit {bed}" if bed else ""
+    if len(top) == 1 or sum(counts[k] for k in top[:2]) / typed >= 0.6:
+        return "kebanyakannya " + _join_bm(top[:2]) + (f" {bed}" if bed else "")
+    return "gabungan " + _join_bm(top[:3]) + (f", kebanyakannya {bed}" if bed else "")
+
+
+def _segment_bm(rows, verb, unit_word, suffix, with_beds):
+    if not rows:
+        return ""
+    n = len(rows)
+    head = f"{n} {unit_word} {verb}" if unit_word else f"{n} {verb}"
+    homes = [r for r in rows if _is_home(r)]
+    if homes and len(homes) < n:
+        price = _price_range_bm(homes, suffix)
+        types = _type_phrase_bm(homes, with_beds)
+        out = head + (f", dengan rumah {price}" if price else "")
+        return out + (f", {types}" if types else "") + "."
+    price = _price_range_bm(rows, suffix)
+    types = _type_phrase_bm(rows, with_beds)
+    out = head + (f" {price}" if price else "")
+    return out + (f", {types}" if types else "") + "."
+
+
+def area_summary_bm(place, units, rooms, subsales) -> str:
+    total = len(units) + len(rooms) + len(subsales)
+    if not total:
+        return (f"Tiada iklan di {place} buat masa ini. WhatsApp Hani untuk cari "
+                f"unit yang belum disenaraikan.")
+    parts = [f"{total} iklan aktif di {place}."]
+    parts.append(_segment_bm(units, "untuk disewa", "", " sebulan", True))
+    parts.append(_segment_bm(rooms, "untuk disewa", "bilik", " sebulan", False))
+    parts.append(_segment_bm(subsales, "untuk dijual", "", "", False))
+    names, seen = [], {place.lower()}
+    for r in units + rooms + subsales:
+        nm = re.sub(r"\s*\([^)]*\)\s*$", "", " ".join((r.get("project_name") or "").split()))
+        if nm and nm.lower() not in seen:
+            seen.add(nm.lower())
+            names.append(nm)
+    if len(names) >= 2:
+        parts.append(f"Antara bangunan yang disenaraikan: {_join_bm(names[:4])}.")
+    return " ".join(p for p in parts if p)
+
+
+# --- Fixed UI wording: English -> BM ----------------------------------------
+# Exact text swaps on the page (visible labels, filter options, card labels
+# and the page's own JavaScript). Option values stay English so the filters
+# still match listings.csv.
+BM_UI = [
+    # nav, hero, tabs
+    ('>Home</a>', '>Utama</a>'),
+    ('>Calculator</a>', '>Kalkulator</a>'),
+    ("Can't Find It? Let Us Help", "Tak Jumpa? Kami Bantu Carikan"),
+    ('>For Rent</button>', '>Sewa</button>'),
+    ('>For Sale</button>', '>Jual</button>'),
+    ('>Rooms</button>', '>Bilik</button>'),
+    ('<div class="prop-choice-label">Property type</div>', '<div class="prop-choice-label">Jenis hartanah</div>'),
+    ('<span>All</span>', '<span>Semua</span>'),
+    ('<span>Residential</span>', '<span>Kediaman</span>'),
+    ('<span>Commercial</span>', '<span>Komersial</span>'),
+    ('<span>Land</span>', '<span>Tanah</span>'),
+    # filters
+    ('<div class="filter-label">Search</div>', '<div class="filter-label">Cari</div>'),
+    ('placeholder="Project, seksyen, LRT, UiTM…"', 'placeholder="Projek, seksyen, LRT, UiTM…"'),
+    ('aria-label="Search listings in this area"', 'aria-label="Cari iklan di kawasan ini"'),
+    ('<div class="filter-label">Furnishing</div>', '<div class="filter-label">Perabot</div>'),
+    ('<div class="filter-label">Type</div>', '<div class="filter-label">Jenis</div>'),
+    ('<div class="filter-label">Bedrooms</div>', '<div class="filter-label">Bilik Tidur</div>'),
+    ('<div class="filter-label">Room Type</div>', '<div class="filter-label">Jenis Bilik</div>'),
+    ('<div class="filter-label">Max Price</div>', '<div class="filter-label">Harga Maksimum</div>'),
+    ('<div class="filter-label">Max Instalment</div>', '<div class="filter-label">Ansuran Maksimum</div>'),
+    ('<div class="filter-label">Tenure</div>', '<div class="filter-label">Pegangan</div>'),
+    ('<option value="">All</option>', '<option value="">Semua</option>'),
+    ('<option value="">Any</option>', '<option value="">Tiada had</option>'),
+    ('<option>Fully Furnished</option>', '<option value="Fully Furnished">Perabot Penuh</option>'),
+    ('<option>Partially Furnished</option>', '<option value="Partially Furnished">Separa Perabot</option>'),
+    ('<option>Unfurnished</option>', '<option value="Unfurnished">Tanpa Perabot</option>'),
+    ('<option>Freehold</option>', '<option value="Freehold">Pegangan Bebas (Freehold)</option>'),
+    ('<option>Leasehold</option>', '<option value="Leasehold">Pajakan (Leasehold)</option>'),
+    ('/mo</option>', '/bulan</option>'),
+    ('/mo`', '/bulan`'),
+    ('>Reset</button>', '>Set Semula</button>'),
+    ('⚠️ Est. instalment based on 90% loan, 35-year tenure, 4.5% interest rate. Actual amount may vary depending on bank and eligibility.',
+     '⚠️ Anggaran ansuran berdasarkan pinjaman 90%, tempoh 35 tahun dan kadar faedah 4.5%. Jumlah sebenar bergantung pada bank dan kelayakan anda.'),
+    ('alt="Unit Rentals"', 'alt="Rumah sewa"'),
+    ('alt="Room Rentals"', 'alt="Bilik sewa"'),
+    ('alt="Subsales"', 'alt="Rumah dijual"'),
+    # cards (static HTML and the JS that redraws them)
+    ('>Unit Rental</span>', '>Sewa Unit</span>'),
+    ('>Room Rental</span>', '>Sewa Bilik</span>'),
+    ('<span> / month</span>', '<span> / bulan</span>'),
+    ('💬 Enquire on WhatsApp', '💬 Tanya di WhatsApp'),
+    ('\U0001F5D3 Move-in: ', '\U0001F5D3 Masuk: '),
+    ('${r.bed} bed', '${r.bed} bilik'),
+    ('${r.bath} bath', '${r.bath} bilik air'),
+    ('">Est. <strong', '">Anggaran <strong'),
+    ('</strong>/mo instalment</div>', '</strong>/bulan ansuran</div>'),
+    ('${r.furnishing}</span>', '${FURNISHING_BM[r.furnishing] || r.furnishing}</span>'),
+    ("Hi Hani, I'm interested in the subsale unit at ${r.project_name}",
+     "Hai Hani, saya berminat dengan unit dijual di ${r.project_name}"),
+    ("Hi Hani, I'm interested in a room at ${r.project_name}", "Hai Hani, saya berminat dengan bilik di ${r.project_name}"),
+    ("Hi Hani, I'm interested in ${r.project_name}", "Hai Hani, saya berminat dengan ${r.project_name}"),
+    # counts, empty states, errors
+    ("${fu.length} listing${fu.length !== 1 ? 's' : ''}", "${fu.length} iklan"),
+    ("${fs.length} listing${fs.length !== 1 ? 's' : ''}", "${fs.length} iklan"),
+    ("${fr.length} listing${fr.length !== 1 ? 's' : ''}", "${fr.length} iklan"),
+    ("'No unit rentals match your filters.'", "'Tiada rumah sewa yang sepadan dengan pilihan anda.'"),
+    ("'No room rentals match your filters.'", "'Tiada bilik sewa yang sepadan dengan pilihan anda.'"),
+    ("'No subsale listings match your filters.'", "'Tiada rumah dijual yang sepadan dengan pilihan anda.'"),
+    ("No unit rentals available right now.", "Tiada rumah sewa buat masa ini."),
+    ("No room rentals available right now.", "Tiada bilik sewa buat masa ini."),
+    ("No subsale listings available right now.", "Tiada rumah dijual buat masa ini."),
+    ('Nothing for "${escHtml(q)}" in ', 'Tiada hasil untuk "${escHtml(q)}" di '),
+    ("'this area'", "'kawasan ini'"),
+    ('Search all areas →', 'Cari semua kawasan →'),
+    ('Tell us what you need', 'Beritahu kami apa yang anda cari'),
+    ("'Unable to load listings. Please try again.'", "'Tidak dapat memuatkan iklan. Sila cuba lagi.'"),
+    # bottom of page
+    ("<h2>Don't see what you need?</h2>", "<h2>Tak jumpa yang anda cari?</h2>"),
+    ('>Nearby Areas</span>', '>Kawasan Berdekatan</span>'),
+    ('aria-label="Chat on WhatsApp"', 'aria-label="Sembang di WhatsApp"'),
+    ('?text=Hi%20Hani%2C%20can%20you%20help%20me%3F"', '?text=Hai%20Hani%2C%20boleh%20bantu%20saya%3F"'),
+]
+
+
+def _json_ld_blocks(text):
+    return list(re.finditer(r'(<script type="application/ld\+json">\s*)(.*?)(\s*</script>)', text, re.S))
+
+
+def bm_page_text(en_text: str, slug: str, c: dict, summary: str) -> str:
+    import json
+    from urllib.parse import quote
+    t = en_text
+    place = c["place"]
+    E = esc  # html-escape BM text going into the page
+
+    # language + URLs
+    t = t.replace('<html lang="en">', '<html lang="ms">', 1)
+    t = t.replace('content="en_MY"', 'content="ms_MY"')
+    t = re.sub(r'(<link\b[^>]*\brel="canonical"[^>]*\bhref=")[^"]*(")', rf'\g<1>{bm_url(slug)}\g<2>', t)
+    t = re.sub(r'(<meta\b[^>]*\bproperty="og:url"[^>]*\bcontent=")[^"]*(")', rf'\g<1>{bm_url(slug)}\g<2>', t)
+
+    # title + descriptions
+    t = re.sub(r"<title>.*?</title>", lambda m: f"<title>{E(c['title'])}</title>", t, count=1, flags=re.S)
+    for attr in ('name="description"', 'property="og:description"', 'name="twitter:description"'):
+        t = re.sub(rf'(<meta {attr} content=")[^"]*(")', lambda m: m.group(1) + E(c["description"]) + m.group(2), t)
+    for attr in ('property="og:title"', 'name="twitter:title"'):
+        t = re.sub(rf'(<meta {attr} content=")[^"]*(")', lambda m: m.group(1) + E(c["title"]) + m.group(2), t)
+
+    # structured data
+    for m in reversed(_json_ld_blocks(t)):
+        try:
+            d = json.loads(m.group(2))
+        except ValueError:
+            continue
+        if d.get("@type") == "FAQPage":
+            d["inLanguage"] = "ms"
+            d["mainEntity"] = [{"@type": "Question", "name": q,
+                                "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c["faq"]]
+        elif "@graph" in d:
+            for node in d["@graph"]:
+                ty = node.get("@type")
+                if ty == "CollectionPage":
+                    node["@id"] = bm_url(slug) + "#page"
+                    node["url"] = bm_url(slug)
+                    node["name"] = c["h1"]
+                    node["inLanguage"] = "ms"
+                elif isinstance(ty, list) and "RealEstateAgent" in ty:
+                    node["@id"] = bm_url(slug) + "#business"
+                    node["url"] = bm_url(slug)
+                    node["description"] = c["schema_description"]
+                elif ty == "BreadcrumbList":
+                    for it in node.get("itemListElement", []):
+                        if it.get("name") == "Areas":
+                            it["name"] = "Kawasan"
+                        if it.get("item") == en_url(slug):
+                            it["item"] = bm_url(slug)
+        else:
+            continue
+        new = json.dumps(d, ensure_ascii=False)
+        t = t[:m.start(2)] + new + t[m.end(2):]
+
+    # hero
+    t = re.sub(r"<h1>.*?</h1>", lambda m: f"<h1>{E(c['h1'])}</h1>", t, count=1, flags=re.S)
+    t = re.sub(r'<p class="hero-desc">.*?</p>', lambda m: f'<p class="hero-desc">{E(c["intro"])}</p>',
+               t, count=1, flags=re.S)
+    t = SUMMARY_P.sub(lambda m: m.group(1) + E(summary) + m.group(2), t, count=1)
+
+    def stamp(m):
+        d, mon, y = m.group(1), m.group(2), m.group(3)
+        return f"Dikemas kini setiap minggu · Kemas kini terakhir: {d} {BM_MONTHS.get(mon, mon)} {y}"
+    t = re.sub(r"Updated weekly · Last updated: (\d+) ([A-Za-z]{3}) (\d{4})", stamp, t)
+    t = re.sub(r"(📍 )(.*?) area overview →", r"\1Panduan kawasan \2 →", t)
+
+    t = t.replace("&nbsp;·&nbsp; City Centre</div>", "&nbsp;·&nbsp; Pusat Bandar</div>")
+
+    # breadcrumb label
+    t = t.replace('kawasan.html">Areas</a>', 'kawasan.html">Kawasan</a>')
+
+    # CTA band
+    t = re.sub(r"<p>Listings move fast\. WhatsApp Hani directly for the latest available units in .*?\.</p>",
+               lambda m: f"<p>Unit cepat bertukar tangan. WhatsApp Hani terus untuk unit terkini di {E(place)}.</p>", t)
+    msg = quote(f"Hai Hani, saya sedang mencari hartanah di {place}.")
+    t = re.sub(r'(<div class="cta-band">.*?<a href="https://wa\.me/60125459182\?text=)[^"]*(")',
+               lambda m: m.group(1) + msg + m.group(2), t, count=1, flags=re.S)
+
+    # the JS fallback summary line (only shown if the build summary is empty)
+    t = re.sub(r"`\$\{totalListings\} current listing\$\{totalListings !== 1 \? 's' : ''\} in (.*?) — for rent and for sale\.`",
+               lambda m: f"`${{totalListings}} iklan semasa di {place} — untuk disewa dan dijual.`", t)
+
+    # fixed UI wording
+    for old, new in BM_UI:
+        t = t.replace(old, new)
+    for en, bm in FURNISHING_BM.items():
+        t = t.replace(f'<span class="pill">{en}</span>', f'<span class="pill">{bm}</span>')
+    t = re.sub(r"(🛏 [^<]*?) bed<", r"\1 bilik<", t)
+    t = re.sub(r"(🚿 [^<]*?) bath<", r"\1 bilik air<", t)
+    t = t.replace("const WA_BASE =",
+                  "const FURNISHING_BM = " + json.dumps(FURNISHING_BM, ensure_ascii=False) + ";\nconst WA_BASE =", 1)
+
+    # lightbox.js / search.js show BM labels on BM pages; new version tags so
+    # browsers holding the older copy fetch the updated file
+    t = re.sub(r"/lightbox\.js\?v=\w+", "/lightbox.js?v=20261103", t)
+    t = t.replace('src="/search.js"', 'src="/search.js?v=20261103"')
+
+    # links to other area pages: BM page if it exists, else the English one
+    bm_slugs = set(load_bm_content())
+    t = re.sub(r'href="([a-z0-9-]+)\.html"',
+               lambda m: m.group(0) if m.group(1) in bm_slugs else f'href="../../area/local/{m.group(1)}.html"', t)
+
+    # visible FAQ (same Q&A as the schema), just above the WhatsApp band
+    items = "".join(
+        f'<details style="border-bottom:1px solid #e3ddd0;padding:12px 0">'
+        f'<summary style="cursor:pointer;font-weight:700;color:#1B4D35;font-size:15px">{E(q)}</summary>'
+        f'<p style="margin:8px 0 0;color:#4a4540;font-size:14px;line-height:1.6">{E(a)}</p></details>'
+        for q, a in c["faq"])
+    faq = (f'<!--BM_FAQ_START--><section class="bm-faq" style="margin:32px 0 8px">'
+           f'<h2 style="font-family:Lora,serif;color:#1B4D35;font-size:22px;margin:0 0 6px">'
+           f'Soalan Lazim: Hartanah di {E(place)}</h2>{items}</section><!--BM_FAQ_END-->\n  ')
+    t = t.replace('<div class="cta-band">', faq + '<div class="cta-band">', 1)
+
+    return set_lang_links(t, slug, is_bm=True)
+
+
+def build_bm_pages(area_results) -> list:
+    """Write ms/area/<slug>.html for every area in bm_content.json.
+    area_results: {slug: (units, rooms, subsales)} from the English build."""
+    content = load_bm_content()
+    if not content:
+        return []
+    BM_DIR.mkdir(parents=True, exist_ok=True)
+    written = []
+    print(f"\nBuilding {len(content)} BM area pages (ms/area/)...")
+    for slug, c in content.items():
+        en_path = AREA_DIR / f"{slug}.html"
+        if not en_path.exists() or slug not in area_results:
+            print(f"  skip {slug}: no English page area/local/{slug}.html")
+            continue
+        units, rooms, subsales = area_results[slug]
+        text = bm_page_text(en_path.read_text(encoding="utf-8"), slug, c,
+                            area_summary_bm(c["place"], units, rooms, subsales))
+        out = BM_DIR / f"{slug}.html"
+        old = out.read_text(encoding="utf-8") if out.exists() else None
+        if text != old:
+            out.write_text(text, encoding="utf-8")
+        print(f"  ms/area/{slug}.html: {'updated' if text != old else 'no change'}")
+        written.append(out)
+    # remove BM pages whose entry was taken out of bm_content.json
+    for f in BM_DIR.glob("*.html"):
+        if f.stem not in content:
+            f.unlink()
+            print(f"  removed ms/area/{f.name} (not in bm_content.json)")
+    return written
 
 
 def main():
@@ -1040,12 +1470,18 @@ def main():
 
     area_files = sorted(AREA_DIR.glob("*.html"))
     print(f"Processing {len(area_files)} area pages...")
+    area_results = {}
     for f in area_files:
-        process_area_file(f, rows)
+        res = process_area_file(f, rows)
+        if res:
+            area_results[f.stem] = res
+
+    # Bahasa Malaysia copies of the area pages listed in bm_content.json
+    bm_files = build_bm_pages(area_results)
 
     # Only real area pages go in the sitemap -- stray files in area/local/
     # (e.g. search.html) are left out.
-    regenerate_sitemap([f for f in area_files if is_area_page(f.read_text(encoding="utf-8"))])
+    regenerate_sitemap([f for f in area_files if is_area_page(f.read_text(encoding="utf-8"))], bm_files)
 
     print("\nProcessing kawasan.html area directory...")
     process_kawasan_page()
