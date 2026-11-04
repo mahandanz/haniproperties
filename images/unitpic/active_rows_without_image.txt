@@ -1,0 +1,6 @@
+ACTIVE rows with no usable image link. If any of these DO have a folder
+on disk, it will show up as an orphan in the dry run. Check before -Confirm.
+
+- KSL Blossom Square (Type B) | code:  | image: -
+- KSL Blossom Square (Type C1) | code:  | image: -
+- KSL Blossom Square (Type C) | code:  | image: -

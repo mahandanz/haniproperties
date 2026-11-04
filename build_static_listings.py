@@ -1233,6 +1233,8 @@ BM_UI = [
     ('>Home</a>', '>Utama</a>'),
     ('>Calculator</a>', '>Kalkulator</a>'),
     ("Can't Find It? Let Us Help", "Tak Jumpa? Kami Bantu Carikan"),
+    ('>Browse units ↓</a>', '>Lihat unit ↓</a>'),
+    ('✅ No registration needed — tap WhatsApp on any unit.', '✅ Tak perlu daftar — tekan WhatsApp pada mana-mana unit.'),
     ('>For Rent</button>', '>Sewa</button>'),
     ('>For Sale</button>', '>Jual</button>'),
     ('>Rooms</button>', '>Bilik</button>'),
@@ -1406,7 +1408,7 @@ def bm_page_text(en_text: str, slug: str, c: dict, summary: str) -> str:
 
     # lightbox.js / search.js show BM labels on BM pages; new version tags so
     # browsers holding the older copy fetch the updated file
-    t = re.sub(r"/lightbox\.js\?v=\w+", "/lightbox.js?v=20261103", t)
+    t = re.sub(r"/lightbox\.js\?v=\w+", "/lightbox.js?v=20261104", t)
     t = t.replace('src="/search.js"', 'src="/search.js?v=20261103"')
 
     # links to other area pages: BM page if it exists, else the English one

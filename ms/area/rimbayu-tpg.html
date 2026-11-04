@@ -41,15 +41,19 @@
     .nav-links a.cta-nav{background:#1B4D35;color:#fff;padding:7px 16px}
     .nav-links a.cta-nav:hover{background:#163f2b}
 
-    .hero{background:#1B4D35;padding:48px 24px 40px;text-align:center;margin-top:58px}
-    .hero-eyebrow{display:inline-block;background:rgba(255,255,255,.12);color:#00BE63;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px}
-    .hero h1{font-family:'Lora',serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px}
-    .hero-desc{color:rgba(255,255,255,.7);font-size:.95rem;max-width:520px;margin:0 auto;line-height:1.7}
-    #hero-summary-stat{margin-top:10px;font-size:.82rem;line-height:1.6;color:rgba(255,255,255,.6)}
+    .hero{background:#1B4D35;padding:28px max(20px,calc((100% - 1060px)/2)) 26px;text-align:left;margin-top:58px}
+    .hero-eyebrow{display:inline-block;background:rgba(255,255,255,.12);color:#00BE63;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:10px}
+    .hero h1{font-family:'Lora',serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:8px}
+    .hero-desc{color:rgba(255,255,255,.7);font-size:.95rem;max-width:none;margin:0;line-height:1.6}
+    #hero-summary-stat{margin-top:8px;font-size:.82rem;line-height:1.55;color:rgba(255,255,255,.6)}
     @media(max-width:600px){#hero-summary-stat{font-size:.76rem;line-height:1.5}}
-    .hero-stamp{color:rgba(255,255,255,.7);font-size:.78rem;margin-top:10px}
-    .hero-guide-link{display:block;width:fit-content;margin:12px auto 0;font-size:.82rem;font-weight:600;color:#00BE63;text-decoration:none;border-bottom:1px solid rgba(0,190,99,.4);padding-bottom:1px;transition:color .15s,border-color .15s}
+    .hero-stamp{display:inline-block;color:rgba(255,255,255,.7);font-size:.78rem;margin:10px 18px 0 0}
+    .hero-guide-link{display:inline-block;width:fit-content;margin:10px 18px 0 0;font-size:.82rem;font-weight:600;color:#00BE63;text-decoration:none;border-bottom:1px solid rgba(0,190,99,.4);padding-bottom:1px;transition:color .15s,border-color .15s}
     .hero-guide-link:hover{color:#4ddb93;border-color:#4ddb93}
+    .hero-noreg{color:#fff;font-size:.86rem;font-weight:600;margin-top:10px}
+    #listings{scroll-margin-top:72px}
+    .btn-outline-light{display:inline-block;margin:10px 0 0 8px;border:1.5px solid rgba(255,255,255,.55);color:#fff;padding:11px 24px;border-radius:8px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background .15s}
+    .btn-outline-light:hover{background:rgba(255,255,255,.1)}
 
     .breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
     .breadcrumb-inner{max-width:1060px;margin:0 auto;font-size:12px;color:#7a7268}
@@ -185,6 +189,7 @@
       .prop-btn .prop-count{font-size:10px}
     }
   </style>
+<script src="/lightbox.js?v=20261104"></script>
 </head>
 <body>
 
@@ -202,9 +207,10 @@
   <h1>Rumah Sewa &amp; Jual di Rimbayu &amp; Telok Panglima Garang</h1>
   <p class="hero-desc">Bandar Rimbayu (Telok Panglima Garang) ialah bandar terancang yang besar bersebelahan Kota Kemuning, menawarkan kediaman landed dan bertingkat bergaya resort dengan taman, tasik di tengah bandar dan akses mudah ke Lebuhraya KESAS serta selatan Lembah Klang.</p>
   <p class="hero-desc" id="hero-summary-stat">5 iklan aktif di Rimbayu &amp; Telok Panglima Garang. 2 untuk disewa, dengan rumah pada RM 2,500 sebulan, kebanyakannya rumah teres 4 bilik. 3 untuk dijual dari RM 800,000 hingga RM 850,000, kebanyakannya rumah teres. Antara bangunan yang disenaraikan: Penduline, Tropicana Umara, Starling Rimbayu dan Robin @ Rimbayu.</p>
+  <p class="hero-noreg">✅ Tak perlu daftar — tekan WhatsApp pada mana-mana unit.</p>
   <div class="hero-stamp">📅 Dikemas kini setiap minggu · Kemas kini terakhir: 31 Okt 2026</div>
   <a href="/guides/rimbayu-tpg.html" class="hero-guide-link">📍 Panduan kawasan Bandar Rimbayu &amp; TPG →</a>
-  <a href="../../request.html" class="btn-wa" style="margin-top:18px;">Tak Jumpa? Kami Bantu Carikan</a>
+  <a href="#listings" class="btn-wa" style="margin-top:14px;">Lihat unit ↓</a>
 </section>
 
 <div class="breadcrumb">
@@ -218,7 +224,7 @@
 </div>
 
 <div class="main">
-  <div class="tabs">
+  <div class="tabs" id="listings">
     <button class="tab-btn active" onclick="switchTab('sewa',this)">Sewa</button>
     <button class="tab-btn" onclick="switchTab('jual',this)">Jual</button>
   </div>
@@ -369,6 +375,7 @@
     <h2>Tak jumpa yang anda cari?</h2>
     <p>Unit cepat bertukar tangan. WhatsApp Hani terus untuk unit terkini di Rimbayu &amp; Telok Panglima Garang.</p>
     <a href="https://wa.me/60125459182?text=Hai%20Hani%2C%20saya%20sedang%20mencari%20hartanah%20di%20Rimbayu%20%26%20Telok%20Panglima%20Garang." class="btn-wa" target="_blank" rel="noopener noreferrer">💬 WhatsApp Hani</a>
+    <a href="../../request.html" class="btn-outline-light">Tak Jumpa? Kami Bantu Carikan</a>
       <div class="nearby-in-band">
         <span class="nearby-label">Kawasan Berdekatan</span>
         <div class="nearby-grid">
@@ -746,7 +753,7 @@ function empty(msg, showCta = true) {
 }
 
 fetch('../../listings.csv')
-  .then(r => r.text())
+  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
   .then(text => {
     const rows = parseCSV(text);
     const filtered = rows.filter(r => r.area === AREA && r.listing_type !== 'lelong' && (r.status === '-' || r.status === ''));
@@ -783,7 +790,7 @@ fetch('../../listings.csv')
     console.error('Fetch error:', e);
     ['grid-unit','grid-subsale'].forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.innerHTML = empty('Tidak dapat memuatkan iklan. Sila cuba lagi.', false);
+      if (el && !el.querySelector('.card')) el.innerHTML = empty('Tidak dapat memuatkan iklan. Sila cuba lagi.', false);
     });
   });
 
@@ -817,7 +824,6 @@ function toSlug(...parts) {
     <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 2.116.66 4.078 1.786 5.69L2.5 22l4.42-1.253A9.947 9.947 0 0 0 12.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.16a8.14 8.14 0 0 1-4.152-1.134l-.298-.177-3.09.877.888-3.01-.194-.31A8.147 8.147 0 1 1 12.004 20.16z"/>
   </svg>
 </a>
-<script src="/lightbox.js?v=20261103"></script>
 <script src="/search.js?v=20261103"></script>
 </body>
 </html>
