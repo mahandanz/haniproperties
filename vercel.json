@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/land-commercial.html", "destination": "/commercial.html", "permanent": true },
     { "source": "/subsale/:state/ampang.html", "destination": "https://haniproperties.com/area/local/ampang.html", "permanent": true },
     { "source": "/rental/:state/ampang.html", "destination": "https://haniproperties.com/area/local/ampang.html", "permanent": true },
     { "source": "/subsale/:state/bandar-saujana-putra.html", "destination": "https://haniproperties.com/area/local/bandar-saujana-putra.html", "permanent": true },

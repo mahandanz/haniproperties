@@ -930,7 +930,8 @@ CORE_PAGES = [
     ("/buying/guide_freehold_vs_leasehold_malaysia.html", "monthly", "0.7"),
     ("/buying/guide_subsale_property_malaysia.html", "monthly", "0.7"),
     ("/rental/guide_rental_deposit_malaysia.html", "monthly", "0.7"),
-    ("/land-commercial.html", "weekly", "0.8"),
+    ("/commercial.html", "weekly", "0.8"),
+    ("/land.html", "weekly", "0.8"),
     ("/search.html", "monthly", "0.6"),
     ("/request.html", "monthly", "0.5"),
 ]
@@ -1601,17 +1602,19 @@ def build_bm_kawasan(en_text: str):
 
 
 # ---------------------------------------------------------------------------
-# Land & Commercial page (land-commercial.html)
+# Commercial page (commercial.html) and Land page (land.html)
 #
-# One site-wide page for every commercial and land listing, so these units are
+# Site-wide pages for every commercial and land listing, so these units are
 # findable from the homepage (they are thin per area). Classified the same way
 # as the Residential / Commercial / Land tabs on area pages and search.html
 # (propClass() in their JS), so the counts always agree.
 # ---------------------------------------------------------------------------
-LC_PATH = ROOT / "land-commercial.html"
+COMMERCIAL_PATH = ROOT / "commercial.html"
+LAND_PATH = ROOT / "land.html"
 COMMERCIAL_TYPE = re.compile(
     r"\b(commercial|shop ?lot|shop ?unit|shop ?office|shophouse|office|retail|"
     r"factory|warehouse|industrial|kedai|gudang)\b", re.I)
+AGRI_TYPE = re.compile(r"agri|pertanian|kebun|orchard|farm", re.I)
 
 
 def prop_class(r) -> str:
@@ -1669,59 +1672,81 @@ def lc_card(r: dict) -> str:
   </div>'''
 
 
-def lc_summary(com_rent, com_sale, land) -> str:
-    def rng(rows, suffix=""):
-        r = _price_range(rows, suffix)
-        return " " + r if r else ""
-    parts = []
-    if com_rent:
-        parts.append(f"{len(com_rent)} commercial space{'s' if len(com_rent) != 1 else ''} for rent"
-                     f"{rng(com_rent, ' a month')}")
-    if com_sale:
-        parts.append(f"{len(com_sale)} commercial propert{'ies' if len(com_sale) != 1 else 'y'} for sale"
-                     f"{rng(com_sale)}")
-    if land:
-        parts.append(f"{len(land)} land listing{'s' if len(land) != 1 else ''} for sale{rng(land)}")
-    if not parts:
-        return "No commercial or land listings right now. WhatsApp Hani for off-market options."
-    total = len(com_rent) + len(com_sale) + len(land)
-    areas = len({r.get("area") for r in com_rent + com_sale + land})
-    return f"{total} active listings across {areas} areas: " + _join(parts) + "."
+def _rng(rows, suffix=""):
+    r = _price_range(rows, suffix)
+    return " " + r if r else ""
 
 
-def process_land_commercial_page(all_rows) -> None:
-    if not LC_PATH.exists():
-        print("  land-commercial.html not found, skipped")
+def _n(rows, one, many):
+    return f"{len(rows)} {one if len(rows) == 1 else many}"
+
+
+def _areas(rows):
+    n = len({r.get("area") for r in rows})
+    return f"{n} area{'s' if n != 1 else ''}"
+
+
+def _build_page(path: Path, grids, counts, summary, label) -> None:
+    """Inject cards, jump-button counts and the summary line into a page,
+    moving its 'Last updated' date only when the listings really changed."""
+    if not path.exists():
+        print(f"  {path.name} not found, skipped")
         return
-    text = LC_PATH.read_text(encoding="utf-8")
+    text = path.read_text(encoding="utf-8")
     original = text
-    active = [r for r in all_rows if r.get("status") in ("-", "", None)]
-    com = [r for r in active if prop_class(r) == "commercial"]
-    com_rent = sort_by_demand([r for r in com if r.get("listing_type") == "rental"])
-    com_sale = sort_by_demand([r for r in com if r.get("listing_type") == "subsale"])
-    land = sort_by_demand([r for r in active if prop_class(r) == "land"])
-
-    def cards(rows, msg):
-        return "".join(lc_card(r) for r in rows) if rows else empty_html(msg)
-
-    text = inject_grid(text, "grid-commercial-rent", cards(com_rent, "No commercial space for rent right now."))
-    text = inject_grid(text, "grid-commercial-sale", cards(com_sale, "No commercial property for sale right now."))
-    text = inject_grid(text, "grid-land", cards(land, "No land for sale right now."))
-    for gid, rows in (("commercial-rent", com_rent), ("commercial-sale", com_sale), ("land", land)):
-        text = re.sub(rf'(<span class="n" id="n-{gid}">)[^<]*(</span>)', rf"\g<1>{len(rows)}\g<2>", text)
+    for gid, (rows, empty_msg) in grids.items():
+        cards = "".join(lc_card(r) for r in rows) if rows else empty_html(empty_msg)
+        text = inject_grid(text, gid, cards)
+    for nid, n in counts.items():
+        text = re.sub(rf'(<span class="n" id="n-{nid}">)[^<]*(</span>)', rf"\g<1>{n}\g<2>", text)
     text = re.sub(r'(<p class="hero-desc" id="hero-summary-stat">).*?(</p>)',
-                  lambda m: m.group(1) + esc(lc_summary(com_rent, com_sale, land)) + m.group(2),
-                  text, flags=re.S)
-
+                  lambda m: m.group(1) + esc(summary) + m.group(2), text, flags=re.S)
     note = "no change"
     if _strip_date_stamps(text) != _strip_date_stamps(original) or "--restamp" in sys.argv:
         import datetime
         text = stamp_dates(text, datetime.date.today())
         note = "updated"
     if text != original:
-        LC_PATH.write_text(text, encoding="utf-8")
-    print(f"  land-commercial.html: {len(com_rent)} commercial rent, {len(com_sale)} commercial sale, "
-          f"{len(land)} land ({note})")
+        path.write_text(text, encoding="utf-8")
+    print(f"  {path.name}: {label} ({note})")
+
+
+def process_commercial_land_pages(all_rows) -> None:
+    active = [r for r in all_rows if r.get("status") in ("-", "", None)]
+
+    com = [r for r in active if prop_class(r) == "commercial"]
+    rent = sort_by_demand([r for r in com if r.get("listing_type") == "rental"])
+    sale = sort_by_demand([r for r in com if r.get("listing_type") == "subsale"])
+    parts = []
+    if rent:
+        parts.append(_n(rent, "space for rent", "spaces for rent") + _rng(rent, " a month"))
+    if sale:
+        parts.append(_n(sale, "property for sale", "properties for sale") + _rng(sale))
+    summary = (f"{len(rent) + len(sale)} commercial listings across {_areas(rent + sale)}: "
+               + _join(parts) + ".") if parts else \
+        "No commercial listings right now. WhatsApp Hani for off-market options."
+    _build_page(COMMERCIAL_PATH,
+                {"grid-commercial-rent": (rent, "No commercial space for rent right now."),
+                 "grid-commercial-sale": (sale, "No commercial property for sale right now.")},
+                {"commercial-rent": len(rent), "commercial-sale": len(sale)},
+                summary, f"{len(rent)} rent, {len(sale)} sale")
+
+    land = [r for r in active if prop_class(r) == "land"]
+    agri = sort_by_demand([r for r in land if AGRI_TYPE.search(r.get("type") or "")])
+    res = sort_by_demand([r for r in land if not AGRI_TYPE.search(r.get("type") or "")])
+    parts = []
+    if res:
+        parts.append(_n(res, "residential or development lot", "residential or development lots") + _rng(res))
+    if agri:
+        parts.append(_n(agri, "agricultural lot", "agricultural lots") + _rng(agri))
+    summary = (f"{len(land)} land listings for sale across {_areas(land)}: "
+               + _join(parts) + ".") if parts else \
+        "No land listings right now. WhatsApp Hani for off-market options."
+    _build_page(LAND_PATH,
+                {"grid-land-res": (res, "No residential land for sale right now."),
+                 "grid-land-agri": (agri, "No agricultural land for sale right now.")},
+                {"land-res": len(res), "land-agri": len(agri)},
+                summary, f"{len(res)} residential, {len(agri)} agricultural")
 
 
 def main():
@@ -1766,8 +1791,8 @@ def main():
     # (e.g. search.html) are left out.
     regenerate_sitemap([f for f in area_files if is_area_page(f.read_text(encoding="utf-8"))], bm_files)
 
-    print("\nProcessing land-commercial.html...")
-    process_land_commercial_page(rows)
+    print("\nProcessing commercial.html and land.html...")
+    process_commercial_land_pages(rows)
 
     print("\nProcessing kawasan.html area directory...")
     process_kawasan_page()
