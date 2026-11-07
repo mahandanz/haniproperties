@@ -151,6 +151,12 @@ nav{
 .hsearch-q:focus{outline:none;border-color:#1B4D35}
 .hsearch-btn{font:inherit;font-size:14px;font-weight:700;padding:12px 22px;border:none;border-radius:10px;background:#1B4D35;color:#fff;cursor:pointer}
 .hsearch-btn:hover{background:#163f2b}
+/* Browse-by-type chips (under the home search) */
+.hchips{max-width:720px;margin:14px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.hchip{display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 8px;border:1.5px solid #e3ddd0;border-radius:10px;background:#fff;color:#1c1c18;font-size:13px;font-weight:700;text-decoration:none;text-align:center;line-height:1.2;transition:border-color .18s,transform .15s}
+.hchip:hover{border-color:#1B4D35;transform:translateY(-1px)}
+.hchip svg{width:17px;height:17px;flex-shrink:0;color:#1B4D35}
+@media(max-width:600px){.hchips{grid-template-columns:repeat(2,1fr);gap:6px}.hchip{font-size:12.5px;padding:10px 6px}}
 
 
 .info-strip-rating{
@@ -307,11 +313,13 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
   <div class="nav-inner">
     <a href="https://haniproperties.com/" class="brand">Hani <span>Properties</span></a>
     <div class="nav-links">
+      <a href="/land-commercial.html">Land &amp; Commercial</a>
       <a href="/projects/projects.html">Projects</a>
       <a href="/calculator.html">Calculator</a>
     </div>
   </div>
   <div class="nav-mobile">
+    <a href="/land-commercial.html">Land &amp; Commercial</a>
     <a href="/projects/projects.html">Projects</a>
     <a href="/calculator.html">Calculator</a>
   </div>
@@ -331,6 +339,12 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none}
     <input class="hsearch-q" type="search" name="q" placeholder="Area, project, LRT or mall…" aria-label="Search area, taman, project name, LRT/MRT station or nearby mall">
     <button class="hsearch-btn" type="submit">Search</button>
   </form>
+  <div class="hchips" role="navigation" aria-label="Browse by property type">
+    <a class="hchip" href="/search.html?tab=rental&amp;prop=residential"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>Homes for Rent</span></a>
+    <a class="hchip" href="/search.html?tab=subsale&amp;prop=residential"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 3l9 6.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>Homes for Sale</span></a>
+    <a class="hchip" href="/land-commercial.html#commercial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17"/><path d="M16 9h3a1 1 0 0 1 1 1v11"/><path d="M2 21h20"/><path d="M8 7h4M8 11h4M8 15h4"/></svg><span>Commercial</span></a>
+    <a class="hchip" href="/land-commercial.html#land"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 20 9 10l4 6 3-4 6 8z"/><circle cx="17" cy="6" r="2"/></svg><span>Land</span></a>
+  </div>
 </section>
 
 <!-- EXPLORE BY AREA -->

@@ -930,6 +930,7 @@ CORE_PAGES = [
     ("/buying/guide_freehold_vs_leasehold_malaysia.html", "monthly", "0.7"),
     ("/buying/guide_subsale_property_malaysia.html", "monthly", "0.7"),
     ("/rental/guide_rental_deposit_malaysia.html", "monthly", "0.7"),
+    ("/land-commercial.html", "weekly", "0.8"),
     ("/search.html", "monthly", "0.6"),
     ("/request.html", "monthly", "0.5"),
 ]
@@ -1599,6 +1600,130 @@ def build_bm_kawasan(en_text: str):
     print(f"  ms/kawasan.html: {'updated' if text != old else 'no change'}")
 
 
+# ---------------------------------------------------------------------------
+# Land & Commercial page (land-commercial.html)
+#
+# One site-wide page for every commercial and land listing, so these units are
+# findable from the homepage (they are thin per area). Classified the same way
+# as the Residential / Commercial / Land tabs on area pages and search.html
+# (propClass() in their JS), so the counts always agree.
+# ---------------------------------------------------------------------------
+LC_PATH = ROOT / "land-commercial.html"
+COMMERCIAL_TYPE = re.compile(
+    r"\b(commercial|shop ?lot|shop ?unit|shop ?office|shophouse|office|retail|"
+    r"factory|warehouse|industrial|kedai|gudang)\b", re.I)
+
+
+def prop_class(r) -> str:
+    c = (r.get("category") or "").strip().lower()
+    if c in ("residential", "commercial", "land"):
+        return c
+    if is_land(r):
+        return "land"
+    if COMMERCIAL_TYPE.search(r.get("type") or ""):
+        return "commercial"
+    return "residential"
+
+
+def _has(v) -> bool:
+    s = str(v or "").strip()
+    return bool(s) and s != "-"
+
+
+def lc_card(r: dict) -> str:
+    """Card for the Land & Commercial page. Same markup/classes as the area
+    page cards (so lightbox.js popups work), minus bedroom pills and the
+    instalment line, which don't apply to shops or land."""
+    rent = r.get("listing_type") == "rental"
+    cls = prop_class(r)
+    if cls == "land":
+        badge = '<span class="card-badge badge-land">Land · Sale</span>'
+    elif rent:
+        badge = '<span class="card-badge badge-unit">Commercial · Rent</span>'
+    else:
+        badge = '<span class="card-badge badge-subsale">Commercial · Sale</span>'
+    size = size_pill(r)
+    pills = "".join([
+        f'<span class="pill pill-size">{size}</span>' if size else "",
+        f'<span class="pill">{esc(r.get("type"))}</span>' if _has(r.get("type")) else "",
+        f'<span class="pill">{esc(r.get("tenure"))}</span>' if (not rent and _has(r.get("tenure"))) else "",
+        f'<span class="pill">{esc(r.get("furnishing"))}</span>' if (rent and _has(r.get("furnishing"))) else "",
+        f'<span class="pill">{esc(r.get("parking/floor"))}</span>' if (rent and _has(r.get("parking/floor"))) else "",
+        f'<span class="pill">{move_in_text(r.get("move_in_date"))}</span>' if (rent and move_in_text(r.get("move_in_date"))) else "",
+    ])
+    name = esc(r.get("project_name"))
+    where = ", ".join(esc(x) for x in (r.get("zone"), r.get("area")) if _has(x))
+    wa_text = r.get("wa_text") or f"Hi Hani, I'm interested in {r.get('project_name')}, {r.get('zone')}."
+    anchors = f'<div class="card-anchors">{esc(r.get("anchors"))}</div>' if _has(r.get("anchors")) else ""
+    per = "<span> / month</span>" if rent else ""
+    return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('size'), r.get('price'))}">
+    {card_image(r)}
+    <div class="card-body">
+      <div class="card-badges">{badge}{coa_badge(r.get('code'))}</div>
+      <div><div class="card-name">{name}</div><div class="card-zone">{where}</div></div>
+      <div class="card-price">{fmt_price(r.get('price'))}{per}</div>
+      <div class="card-pills">{pills}</div>
+      {anchors}
+      <a href="{wa(wa_text)}" class="card-cta" target="_blank" rel="noopener noreferrer">\U0001F4AC Enquire on WhatsApp</a>
+    </div>
+  </div>'''
+
+
+def lc_summary(com_rent, com_sale, land) -> str:
+    def rng(rows, suffix=""):
+        r = _price_range(rows, suffix)
+        return " " + r if r else ""
+    parts = []
+    if com_rent:
+        parts.append(f"{len(com_rent)} commercial space{'s' if len(com_rent) != 1 else ''} for rent"
+                     f"{rng(com_rent, ' a month')}")
+    if com_sale:
+        parts.append(f"{len(com_sale)} commercial propert{'ies' if len(com_sale) != 1 else 'y'} for sale"
+                     f"{rng(com_sale)}")
+    if land:
+        parts.append(f"{len(land)} land listing{'s' if len(land) != 1 else ''} for sale{rng(land)}")
+    if not parts:
+        return "No commercial or land listings right now. WhatsApp Hani for off-market options."
+    total = len(com_rent) + len(com_sale) + len(land)
+    areas = len({r.get("area") for r in com_rent + com_sale + land})
+    return f"{total} active listings across {areas} areas: " + _join(parts) + "."
+
+
+def process_land_commercial_page(all_rows) -> None:
+    if not LC_PATH.exists():
+        print("  land-commercial.html not found, skipped")
+        return
+    text = LC_PATH.read_text(encoding="utf-8")
+    original = text
+    active = [r for r in all_rows if r.get("status") in ("-", "", None)]
+    com = [r for r in active if prop_class(r) == "commercial"]
+    com_rent = sort_by_demand([r for r in com if r.get("listing_type") == "rental"])
+    com_sale = sort_by_demand([r for r in com if r.get("listing_type") == "subsale"])
+    land = sort_by_demand([r for r in active if prop_class(r) == "land"])
+
+    def cards(rows, msg):
+        return "".join(lc_card(r) for r in rows) if rows else empty_html(msg)
+
+    text = inject_grid(text, "grid-commercial-rent", cards(com_rent, "No commercial space for rent right now."))
+    text = inject_grid(text, "grid-commercial-sale", cards(com_sale, "No commercial property for sale right now."))
+    text = inject_grid(text, "grid-land", cards(land, "No land for sale right now."))
+    for gid, rows in (("commercial-rent", com_rent), ("commercial-sale", com_sale), ("land", land)):
+        text = re.sub(rf'(<span class="n" id="n-{gid}">)[^<]*(</span>)', rf"\g<1>{len(rows)}\g<2>", text)
+    text = re.sub(r'(<p class="hero-desc" id="hero-summary-stat">).*?(</p>)',
+                  lambda m: m.group(1) + esc(lc_summary(com_rent, com_sale, land)) + m.group(2),
+                  text, flags=re.S)
+
+    note = "no change"
+    if _strip_date_stamps(text) != _strip_date_stamps(original) or "--restamp" in sys.argv:
+        import datetime
+        text = stamp_dates(text, datetime.date.today())
+        note = "updated"
+    if text != original:
+        LC_PATH.write_text(text, encoding="utf-8")
+    print(f"  land-commercial.html: {len(com_rent)} commercial rent, {len(com_sale)} commercial sale, "
+          f"{len(land)} land ({note})")
+
+
 def main():
     if not LISTINGS_CSV.exists():
         print(f"ERROR: {LISTINGS_CSV} not found", file=sys.stderr)
@@ -1640,6 +1765,9 @@ def main():
     # Only real area pages go in the sitemap -- stray files in area/local/
     # (e.g. search.html) are left out.
     regenerate_sitemap([f for f in area_files if is_area_page(f.read_text(encoding="utf-8"))], bm_files)
+
+    print("\nProcessing land-commercial.html...")
+    process_land_commercial_page(rows)
 
     print("\nProcessing kawasan.html area directory...")
     process_kawasan_page()
