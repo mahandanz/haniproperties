@@ -405,8 +405,8 @@ let filteredListings = [];
 let currentQuery = '';   // search text — from the home page (?q=) or the box on this page
 
 /* Pagination — only PAGE_SIZE cards (and their photos) are built at a time.
-   24 divides evenly into the 3-column mobile grid. */
-const PAGE_SIZE = 24;
+   12 = four full rows in the 3-column grid. */
+const PAGE_SIZE = 12;
 let currentPage = 1;
 
 /* ── CSV loader ─────────────────────────────────────────── */

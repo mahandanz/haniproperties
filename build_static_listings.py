@@ -417,6 +417,27 @@ def inject_summary(text: str, summary: str) -> str:
 JS_SUMMARY_OLD = "if (summaryEl && totalListings) {"
 JS_SUMMARY_NEW = "if (summaryEl && totalListings && !summaryEl.textContent.trim()) {"
 
+# Version tags for the shared scripts. Bump a value whenever that file
+# changes, so browsers holding the old copy fetch the new one.
+# (BM pages use the same lightbox version -- see bm_page_text.)
+LIGHTBOX_VER = "20261115"
+AREA_PAGER_VER = "20261115b"
+
+
+def add_area_pager(text: str) -> str:
+    """Template housekeeping (not a listings change): make sure the page loads
+    /area-pager.js (12 cards per page) and the current lightbox.js version."""
+    text = re.sub(r"/lightbox\.js\?v=\w+", f"/lightbox.js?v={LIGHTBOX_VER}", text)
+    if "/area-pager.js" in text:
+        text = re.sub(r"/area-pager\.js(\?v=\w+)?", f"/area-pager.js?v={AREA_PAGER_VER}", text)
+    else:
+        text = text.replace(
+            '<script src="/search.js"></script>',
+            f'<script src="/area-pager.js?v={AREA_PAGER_VER}"></script>\n<script src="/search.js"></script>',
+            1,
+        )
+    return text
+
 
 def page_place_name(text: str, fallback: str) -> str:
     """Area name as shown in the page's <h1> ('Properties in X')."""
@@ -647,6 +668,8 @@ def process_area_file(path: Path, all_rows):
     # Template housekeeping (not a listings change): stop the page's JS from
     # overwriting the build-written summary line.
     text = text.replace(JS_SUMMARY_OLD, JS_SUMMARY_NEW)
+    # Pagination script + current lightbox.js version (housekeeping)
+    text = add_area_pager(text)
     url_fixed = text != path.read_text(encoding="utf-8")
     original = text
 
@@ -1410,7 +1433,7 @@ def bm_page_text(en_text: str, slug: str, c: dict, summary: str) -> str:
 
     # lightbox.js / search.js show BM labels on BM pages; new version tags so
     # browsers holding the older copy fetch the updated file
-    t = re.sub(r"/lightbox\.js\?v=\w+", "/lightbox.js?v=20261104", t)
+    t = re.sub(r"/lightbox\.js\?v=\w+", f"/lightbox.js?v={LIGHTBOX_VER}", t)
     t = t.replace('src="/search.js"', 'src="/search.js?v=20261103"')
 
     # links to other area pages: BM page if it exists, else the English one
