@@ -142,6 +142,20 @@
     .empty strong{display:block;font-size:1.1rem;color:#1c1c18;margin-bottom:8px}
     .loading{text-align:center;padding:64px 24px;color:#7a7268;font-size:14px;grid-column:1/-1}
 
+    /* PAGINATION */
+    .results-header{scroll-margin-top:calc(var(--nav-offset,58px) + 12px)} /* keep header clear of the fixed nav when jumping pages */
+    .pager{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px;margin-top:28px}
+    .pager:empty{display:none}
+    .pager-btn{min-width:38px;height:38px;padding:0 12px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:#1c1c18;background:#fff;border:1px solid #e3ddd0;border-radius:9px;cursor:pointer;transition:all .15s}
+    .pager-btn:hover:not(:disabled):not(.active){border-color:#A82C3D;color:#A82C3D}
+    .pager-btn.active{background:#A82C3D;border-color:#A82C3D;color:#fff;cursor:default}
+    .pager-btn:disabled{opacity:.35;cursor:not-allowed}
+    .pager-gap{font-size:13px;color:#7a7268;padding:0 2px}
+    @media(max-width:600px){
+      .pager{gap:4px;margin-top:20px}
+      .pager-btn{min-width:34px;height:34px;padding:0 9px;font-size:12px}
+    }
+
     /* FOOTER */
     footer{background:#111;color:rgba(255,255,255,.4);text-align:center;padding:24px;font-size:11px;line-height:1.8;margin-top:64px}
     footer .footer-license-img{display:block;max-width:340px;width:100%;height:auto;margin:0 auto 14px auto}
@@ -320,6 +334,7 @@
   <div class="listing-grid" id="results-grid">
     <div class="loading">Loading listings…</div>
   </div>
+  <div class="pager" id="pager" role="navigation" aria-label="Results pages"></div>
 
 </div>
 
@@ -388,6 +403,11 @@ function toSlug(...parts) {
 let allListings = [];
 let filteredListings = [];
 let currentQuery = '';   // search text — from the home page (?q=) or the box on this page
+
+/* Pagination — only PAGE_SIZE cards (and their photos) are built at a time.
+   24 divides evenly into the 3-column mobile grid. */
+const PAGE_SIZE = 24;
+let currentPage = 1;
 
 /* ── CSV loader ─────────────────────────────────────────── */
 async function loadCSV() {
@@ -493,7 +513,9 @@ function isBufferUnit(r) {
 }
 
 /* ── Filters ────────────────────────────────────────────── */
-function applyFilters() {
+// keepPage = true only when restoring ?page= from the URL on load; any filter
+// change (all the onchange/oninput handlers call this with no argument) goes back to page 1.
+function applyFilters(keepPage) {
   const type   = document.getElementById('f-type').value;   // rental / subsale
   const area   = document.getElementById('f-area').value;
   const price  = document.getElementById('f-price').value;
@@ -524,8 +546,68 @@ function applyFilters() {
   if (type === 'subsale' && tenure) filteredListings = filteredListings.filter(r => r.tenure === tenure);
   if (price) filteredListings = filteredListings.filter(r => parseFloat(getPrice(r)) <= parseFloat(price));
 
+  // Sort once here (not on every page flip): highest Demand % first, newest date_added breaks ties.
+  filteredListings.sort((a, b) =>
+    (demandOf(b) - demandOf(a)) ||
+    (parseDateAdded(b.date_added) - parseDateAdded(a.date_added))
+  );
+
+  if (keepPage !== true) currentPage = 1;
+  clampPage();
+
   syncUrl();
   renderResults();
+}
+
+/* ── Pagination ─────────────────────────────────────────── */
+function totalPages() {
+  return Math.max(1, Math.ceil(filteredListings.length / PAGE_SIZE));
+}
+
+function clampPage() {
+  if (!Number.isFinite(currentPage) || currentPage < 1) currentPage = 1;
+  if (currentPage > totalPages()) currentPage = totalPages();
+}
+
+function goToPage(p) {
+  currentPage = p;
+  clampPage();
+  syncUrl();
+  renderResults();
+  scrollToResults();
+}
+
+// Page numbers shown: first, last, and current ±1, with "…" for gaps.
+// e.g. 1 … 4 5 6 … 12
+function pageList(cur, total) {
+  const keep = new Set([1, total, cur - 1, cur, cur + 1]);
+  const out = [];
+  for (let p = 1; p <= total; p++) {
+    if (!keep.has(p)) continue;
+    if (out.length && p - out[out.length - 1] > 1) out.push('…');
+    out.push(p);
+  }
+  return out;
+}
+
+function renderPager() {
+  const pager = document.getElementById('pager');
+  const total = totalPages();
+  if (filteredListings.length <= PAGE_SIZE) { pager.innerHTML = ''; return; }
+
+  const btn = (label, page, opts = {}) =>
+    `<button type="button" class="pager-btn${opts.active ? ' active' : ''}"` +
+    `${opts.disabled ? ' disabled' : ''}${opts.active ? ' aria-current="page"' : ''}` +
+    ` aria-label="${opts.aria || 'Page ' + page}" onclick="goToPage(${page})">${label}</button>`;
+
+  let html = btn('‹', currentPage - 1, { disabled: currentPage === 1, aria: 'Previous page' });
+  pageList(currentPage, total).forEach(p => {
+    html += p === '…'
+      ? '<span class="pager-gap">…</span>'
+      : btn(p, p, { active: p === currentPage, disabled: p === currentPage });
+  });
+  html += btn('›', currentPage + 1, { disabled: currentPage === total, aria: 'Next page' });
+  pager.innerHTML = html;
 }
 
 /* ── Search box on this page — filters as you type ── */
@@ -755,12 +837,7 @@ function renderResults() {
   const title = document.getElementById('results-title');
   const count = document.getElementById('filter-count');
 
-  // Highest Demand % first; newest date_added breaks ties.
-  filteredListings.sort((a, b) =>
-    (demandOf(b) - demandOf(a)) ||
-    (parseDateAdded(b.date_added) - parseDateAdded(a.date_added))
-  );
-
+  // (Sorting now happens once in applyFilters.)
   const n = filteredListings.length;
 
   const chip = document.getElementById('query-chip');
@@ -784,6 +861,7 @@ function renderResults() {
     grid.innerHTML = `<div class="empty"><strong>No listings found</strong>${hint.replace(/</g,'&lt;')}</div>`;
     title.textContent = 'No results';
     count.textContent = '';
+    renderPager();
     return;
   }
 
@@ -793,8 +871,13 @@ function renderResults() {
   title.textContent = currentQuery
     ? `${typeLabel} — "${currentQuery}"`
     : (area ? `${typeLabel} in ${area}` : `${typeLabel} — All Areas`);
-  count.textContent = `${n} listing${n !== 1 ? 's' : ''}`;
-  grid.innerHTML = filteredListings.map(renderCard).join('');
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageItems = filteredListings.slice(start, start + PAGE_SIZE);
+  count.textContent = n > PAGE_SIZE
+    ? `${start + 1}–${start + pageItems.length} of ${n} listings`
+    : `${n} listing${n !== 1 ? 's' : ''}`;
+  grid.innerHTML = pageItems.map(renderCard).join('');
+  renderPager();
 }
 
 /* ── Search button: filters already apply instantly on change,
@@ -816,6 +899,7 @@ function syncUrl() {
     furnishing: document.getElementById('f-furnishing').value,
     tenure: document.getElementById('f-tenure').value,
     ptype: document.getElementById('f-ptype').value,
+    page: currentPage > 1 ? String(currentPage) : '',  // page 1 stays out of the URL
   };
   Object.entries(params).forEach(([key, val]) => {
     if (val) url.searchParams.set(key, val);
@@ -870,12 +954,15 @@ async function init() {
     }
   });
 
-  applyFilters(); // applyFilters calls syncUrl() + renderResults()
+  // Restore ?page= from a shared link (clamped if the list has since shrunk)
+  currentPage = parseInt(params.get('page'), 10) || 1;
+
+  applyFilters(true); // applyFilters calls syncUrl() + renderResults()
 }
 
 init();
 </script>
-<script src="/lightbox.js?v=20260930"></script>
+<script src="/lightbox.js?v=20261115"></script>
 <script src="/search.js"></script>
 
 

@@ -95,6 +95,8 @@ async function autoDiscoverPhotos(wrap) {
   const startN = parseInt(pattern.num, 10) + 1;
   const found = current.slice();
   for (let n = startN; n < startN + PHOTO_SCAN_MAX; n++) {
+    // Card was removed (page flip / filter change) — stop downloading its photos
+    if (!wrap.isConnected) return;
     const ok = await probeImageExists(photoUrlForNum(pattern, n));
     if (!ok) break;
     found.push(photoUrlForNum(pattern, n));
@@ -110,11 +112,27 @@ async function autoDiscoverPhotos(wrap) {
   }
 }
 
+// Only probe a card's folder once the card is on (or near) the screen.
+// Each probe downloads a full photo, so probing every card straight away
+// meant dozens of downloads before the visitor had scrolled at all.
+const discoveryObserver = ('IntersectionObserver' in window)
+  ? new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        discoveryObserver.unobserve(entry.target);
+        autoDiscoverPhotos(entry.target);
+      });
+    }, { rootMargin: '300px 0px' }) // start a little before it scrolls into view
+  : null;
+
+function queueDiscovery(wrap) {
+  wrap.removeAttribute('data-auto-scan');
+  if (discoveryObserver) discoveryObserver.observe(wrap);
+  else autoDiscoverPhotos(wrap); // very old browsers: old behaviour
+}
+
 function scanForAutoDiscovery(root) {
-  (root || document).querySelectorAll('.card-image-wrap[data-auto-scan="1"]').forEach(wrap => {
-    wrap.removeAttribute('data-auto-scan');
-    autoDiscoverPhotos(wrap);
-  });
+  (root || document).querySelectorAll('.card-image-wrap[data-auto-scan="1"]').forEach(queueDiscovery);
 }
 
 (function () {
@@ -123,8 +141,7 @@ function scanForAutoDiscovery(root) {
       m.addedNodes.forEach(node => {
         if (node.nodeType !== 1) return;
         if (node.matches && node.matches('.card-image-wrap[data-auto-scan="1"]')) {
-          node.removeAttribute('data-auto-scan');
-          autoDiscoverPhotos(node);
+          queueDiscovery(node);
         } else if (node.querySelectorAll) {
           scanForAutoDiscovery(node);
         }
