@@ -189,7 +189,7 @@
       .prop-btn .prop-count{font-size:10px}
     }
   </style>
-<script src="/lightbox.js?v=20261115"></script>
+<script src="/lightbox.js?v=20261118"></script>
 </head>
 <body>
 
@@ -312,7 +312,7 @@
     <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="bsp-skypark-3-1600">
     <div class="card-image-wrap" data-images="/images/unitpic/bspskyparkADL/pic1.jpg" data-index="0"><img src="/images/unitpic/bspskyparkADL/pic1.jpg" alt="BSP SkyPark" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa">ADL</span></div>
+      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="ADL_14925">ADL</span></div>
       <div><div class="card-name">BSP SkyPark</div><div class="card-zone">Bandar Saujana Putra</div></div>
       <div class="card-price">RM 1,600<span> / bulan</span></div>
       <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,004 sqft</span><span class="pill">Perabot Penuh</span><span class="pill">Condominium</span><span class="pill">🗓 Masuk: Mid December 2026</span></div>
@@ -327,7 +327,7 @@
     <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="iris-garden-4-380000">
     <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/irisgardenMMN/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/irisgardenMMN/pic1.jpg" alt="Iris Garden" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
+      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="MMN_385">MMN</span></div>
       <div><div class="card-name">Iris Garden</div><div class="card-zone">Saujana Putra</div></div>
       <div class="card-price">RM 380,000</div>
       <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,619</strong>/bulan ansuran</div>
@@ -338,7 +338,7 @@
   </div><div class="card" id="bsp-21-1-265000">
     <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/bsp21RSS/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/bsp21RSS/pic1.jpg" alt="BSP 21" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">RSS</span></div>
+      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_269">RSS</span></div>
       <div><div class="card-name">BSP 21</div><div class="card-zone">Bandar Saujana Putra</div></div>
       <div class="card-price">RM 265,000</div>
       <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,129</strong>/bulan ansuran</div>
@@ -349,7 +349,7 @@
   </div><div class="card" id="cluster-link-semi-d-2-storey-saujana-putra-4-580000">
     <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/clusterlinksemid2storeysaujanaputraMMN/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/clusterlinksemid2storeysaujanaputraMMN/pic1.jpg" alt="Cluster-link Semi-D 2-storey Saujana Putra" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
+      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="MMN_240">MMN</span></div>
       <div><div class="card-name">Cluster-link Semi-D 2-storey Saujana Putra</div><div class="card-zone">Jenjarom</div></div>
       <div class="card-price">RM 580,000</div>
       <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 2,470</strong>/bulan ansuran</div>
@@ -647,7 +647,9 @@ function wa(text) {
 
 function coaBadge(r) {
   if (!r.code) return '';
-  return `<span class="card-badge badge-coa">${r.code}</span>`;
+  const m = String(r.source_link || '').trim().match(/\/(\d+)\/?$/);
+  const ref = m ? `${r.code}_${m[1]}` : r.code;
+  return `<span class="card-badge badge-coa" data-ref="${ref}">${r.code}</span>`;
 }
 
 function parseDateAdded(val) {

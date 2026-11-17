@@ -189,7 +189,7 @@
       .prop-btn .prop-count{font-size:10px}
     }
   </style>
-<script src="/lightbox.js?v=20261115"></script>
+<script src="/lightbox.js?v=20261118"></script>
 </head>
 <body>
 
@@ -312,7 +312,7 @@
     <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="penduline-4-2500">
     <div class="card-image-wrap" data-images="/images/unitpic/pendulineMMN/pic1.jpg" data-index="0"><img src="/images/unitpic/pendulineMMN/pic1.jpg" alt="Penduline" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa">MMN</span></div>
+      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="MMN_4298">MMN</span></div>
       <div><div class="card-name">Penduline</div><div class="card-zone">Bandar Rimbayu</div></div>
       <div class="card-price">RM 2,500<span> / bulan</span></div>
       <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">1,900 sqft</span><span class="pill">Not Furnished</span><span class="pill">Terrace</span><span class="pill">🗓 Masuk: Immediate</span></div>
@@ -327,7 +327,7 @@
     <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="penduline-end-lot-4-800000">
     <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/pendulineendlotMMN/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/pendulineendlotMMN/pic1.jpg" alt="Penduline (End Lot)" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
+      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="MMN_669">MMN</span></div>
       <div><div class="card-name">Penduline (End Lot)</div><div class="card-zone">Bandar Rimbayu</div></div>
       <div class="card-price">RM 800,000</div>
       <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 3,407</strong>/bulan ansuran</div>
@@ -338,7 +338,7 @@
   </div><div class="card" id="robin-rimbayu-4-850000">
     <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/robinrimbayuMMN/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/robinrimbayuMMN/pic1.jpg" alt="Robin @ Rimbayu" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
+      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="MMN_326">MMN</span></div>
       <div><div class="card-name">Robin @ Rimbayu</div><div class="card-zone">Bandar Rimbayu</div></div>
       <div class="card-price">RM 850,000</div>
       <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 3,620</strong>/bulan ansuran</div>
@@ -349,7 +349,7 @@
   </div><div class="card" id="starling-rimbayu-end-lot-3-850000">
     <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/starlingrimbayuendlotMMN/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/starlingrimbayuendlotMMN/pic1.jpg" alt="Starling Rimbayu (End Lot)" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa">MMN</span></div>
+      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="MMN_208">MMN</span></div>
       <div><div class="card-name">Starling Rimbayu (End Lot)</div><div class="card-zone">Bandar Rimbayu</div></div>
       <div class="card-price">RM 850,000</div>
       <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 3,620</strong>/bulan ansuran</div>
@@ -647,7 +647,9 @@ function wa(text) {
 
 function coaBadge(r) {
   if (!r.code) return '';
-  return `<span class="card-badge badge-coa">${r.code}</span>`;
+  const m = String(r.source_link || '').trim().match(/\/(\d+)\/?$/);
+  const ref = m ? `${r.code}_${m[1]}` : r.code;
+  return `<span class="card-badge badge-coa" data-ref="${ref}">${r.code}</span>`;
 }
 
 function parseDateAdded(val) {

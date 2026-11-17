@@ -80,10 +80,21 @@ def move_in_text(val: str) -> str:
     return f"\U0001F5D3 Move-in: {esc(v)}"
 
 
-def coa_badge(code: str) -> str:
+def post_ref(code: str, source_link: str) -> str:
+    """[COA code]_[post number], e.g. EXP_23494. The post number is the last
+    number in source_link (t.me/<channel>/<post>). No number -> just the code."""
+    code = (code or "").strip()
+    m = re.search(r"/(\d+)/?$", (source_link or "").strip())
+    return f"{code}_{m.group(1)}" if code and m else code
+
+
+def coa_badge(code: str, source_link: str = "") -> str:
+    """Small card shows only the COA code; data-ref holds code_postnumber,
+    which lightbox.js swaps in on the full card (photo popup) only."""
     if not code:
         return ""
-    return f'<span class="card-badge badge-coa">{esc(code)}</span>'
+    return (f'<span class="card-badge badge-coa" data-ref="{html.escape(post_ref(code, source_link))}">'
+            f'{esc(code)}</span>')
 
 
 def esc(s) -> str:
@@ -166,7 +177,7 @@ def unit_card(r: dict) -> str:
     return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('bed'), r.get('price'))}">
     {card_image(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span>{coa_badge(r.get('code'))}</div>
+      <div><span class="card-badge badge-unit">Unit Rental</span>{coa_badge(r.get('code'), r.get('source_link'))}</div>
       <div><div class="card-name">{name}</div><div class="card-zone">{zone}</div></div>
       <div class="card-price">{fmt_price(r.get('price'))}<span> / month</span></div>
       <div class="card-pills">{pills}</div>
@@ -190,7 +201,7 @@ def room_card(r: dict) -> str:
     return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('room_type'), r.get('price'))}">
     {card_image(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-room">Room Rental</span>{coa_badge(r.get('code'))}</div>
+      <div><span class="card-badge badge-room">Room Rental</span>{coa_badge(r.get('code'), r.get('source_link'))}</div>
       <div><div class="card-name">{name}</div><div class="card-zone">{zone}</div></div>
       <div class="card-price">{fmt_price(r.get('price'))}<span> / month</span></div>
       <div class="card-pills">{pills}</div>
@@ -223,7 +234,7 @@ def subsale_card(r: dict) -> str:
     return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('bed'), r.get('price'))}">
     {card_image(r)}
     <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span>{coa_badge(r.get('code'))}</div>
+      <div><span class="card-badge badge-subsale">Subsale</span>{coa_badge(r.get('code'), r.get('source_link'))}</div>
       <div><div class="card-name">{name}</div><div class="card-zone">{zone}</div></div>
       <div class="card-price">{fmt_price(r.get('price'))}</div>
       {inst}
@@ -420,14 +431,29 @@ JS_SUMMARY_NEW = "if (summaryEl && totalListings && !summaryEl.textContent.trim(
 # Version tags for the shared scripts. Bump a value whenever that file
 # changes, so browsers holding the old copy fetch the new one.
 # (BM pages use the same lightbox version -- see bm_page_text.)
-LIGHTBOX_VER = "20261115"
+LIGHTBOX_VER = "20261118"
 AREA_PAGER_VER = "20261115b"
+
+
+# Area pages' client-side coaBadge(): same data-ref as the static cards, so the
+# full card shows [COA]_[post number] whichever way the card was drawn.
+JS_COA_OLD = """function coaBadge(r) {
+  if (!r.code) return '';
+  return `<span class="card-badge badge-coa">${r.code}</span>`;
+}"""
+JS_COA_NEW = """function coaBadge(r) {
+  if (!r.code) return '';
+  const m = String(r.source_link || '').trim().match(/\\/(\\d+)\\/?$/);
+  const ref = m ? `${r.code}_${m[1]}` : r.code;
+  return `<span class="card-badge badge-coa" data-ref="${ref}">${r.code}</span>`;
+}"""
 
 
 def add_area_pager(text: str) -> str:
     """Template housekeeping (not a listings change): make sure the page loads
     /area-pager.js (12 cards per page) and the current lightbox.js version."""
     text = re.sub(r"/lightbox\.js\?v=\w+", f"/lightbox.js?v={LIGHTBOX_VER}", text)
+    text = text.replace(JS_COA_OLD, JS_COA_NEW)
     if "/area-pager.js" in text:
         text = re.sub(r"/area-pager\.js(\?v=\w+)?", f"/area-pager.js?v={AREA_PAGER_VER}", text)
     else:
@@ -593,6 +619,7 @@ def _strip_date_stamps(text: str) -> str:
     """Page text with the 'Last updated' / dateModified stamps blanked out,
     so a rebuild can tell whether the listings themselves actually changed."""
     text = re.sub(r"Last updated: [^<]*", "Last updated: ", text)
+    text = re.sub(r' data-ref="[^"]*"', "", text)  # full-card ref isn't a listings change
     return re.sub(r'"dateModified": "[^"]*"', '"dateModified": ""', text)
 
 
@@ -1685,7 +1712,7 @@ def lc_card(r: dict) -> str:
     return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('size'), r.get('price'))}">
     {card_image(r)}
     <div class="card-body">
-      <div class="card-badges">{badge}{coa_badge(r.get('code'))}</div>
+      <div class="card-badges">{badge}{coa_badge(r.get('code'), r.get('source_link'))}</div>
       <div><div class="card-name">{name}</div><div class="card-zone">{where}</div></div>
       <div class="card-price">{fmt_price(r.get('price'))}{per}</div>
       <div class="card-pills">{pills}</div>
@@ -1717,6 +1744,7 @@ def _build_page(path: Path, grids, counts, summary, label) -> None:
         return
     text = path.read_text(encoding="utf-8")
     original = text
+    text = re.sub(r"/lightbox\.js\?v=\w+", f"/lightbox.js?v={LIGHTBOX_VER}", text)
     for gid, (rows, empty_msg) in grids.items():
         cards = "".join(lc_card(r) for r in rows) if rows else empty_html(empty_msg)
         text = inject_grid(text, gid, cards)

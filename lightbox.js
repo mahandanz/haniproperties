@@ -190,6 +190,10 @@ function openLightbox(e, img) {
   const body = card ? card.querySelector('.card-body') : null;
   const detailsEl = document.getElementById('lightboxDetails');
   if (detailsEl) detailsEl.innerHTML = body ? body.innerHTML : '';
+  // Full card only: COA badge shows [COA code]_[post number] (e.g. EXP_23494)
+  if (detailsEl) detailsEl.querySelectorAll('.badge-coa[data-ref]').forEach(b => {
+    if (b.dataset.ref) b.textContent = b.dataset.ref;
+  });
 
   document.getElementById('lightboxOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
