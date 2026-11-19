@@ -34,7 +34,7 @@
     .nav-mobile a.cta-nav:hover{background:#B8112F}
   }
 
-  .page { max-width: 960px; margin: 0 auto; padding: 80px 1.25rem 4rem; }
+  .page { max-width: 960px; margin: 0 auto; padding: 28px 1.25rem 4rem; }
   h1 { font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
   .page-sub { font-size: 14px; color: #666; margin-bottom: 1.5rem; }
 
@@ -87,7 +87,7 @@
   .cta-row { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #f0f0f0; display: flex; gap: 10px; flex-wrap: wrap; }
   .cta-btn { padding: 9px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
   .cta-primary { background: #0d1f0d; color: #fff; }
-  .cta-secondary { background: #f0f0ec; color: #333; }.breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
+  .cta-secondary { background: #f0f0ec; color: #333; }.breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0;margin-top:58px}
 .breadcrumb-inner{max-width:860px;margin:0 auto;font-size:12px;color:#7a7268}
 .breadcrumb-inner a{color:#2a5c3a;text-decoration:none}
 .breadcrumb-inner a:hover{text-decoration:underline}
@@ -110,6 +110,42 @@
 @media(max-width:600px){
   .wa-float{right:14px;width:50px;height:50px}
   .wa-float svg{width:26px;height:26px}
+}
+
+/* ── Mobile layout ── */
+@media(max-width:600px){
+  .breadcrumb{margin-top:84px;padding:9px 16px}
+  .page{padding:20px 16px 5rem}
+  h1{font-size:20px}
+  .page-sub{font-size:13px;margin-bottom:1rem}
+
+  /* tabs: one swipeable row instead of 4 stacked pills */
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -16px 1.25rem;padding:2px 16px 4px;scroll-snap-type:x proximity;scroll-padding:0 16px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab-btn{flex-shrink:0;padding:9px 16px;scroll-snap-align:start}
+
+  /* banner: photo on top, name + price stacked below */
+  .banner{flex-wrap:wrap;align-items:stretch;min-height:0}
+  .banner-thumb{width:100%;height:190px}
+  .banner-body{flex:1 1 100%;padding:14px 16px 2px}
+  .banner-name{font-size:21px}
+  .banner-right{flex:1 1 100%;text-align:left;padding:4px 16px 16px;display:flex;align-items:baseline;flex-wrap:wrap;gap:0 8px}
+  .banner-from{margin:0}
+  .banner-type{margin:0;flex-basis:100%;opacity:.7}
+
+  .detail-card{padding:1rem}
+  .meta-row{grid-template-columns:1fr 1fr;gap:.85rem}
+  .meta-value{overflow-wrap:anywhere}
+  .elig-grid{grid-template-columns:1fr}
+  .summary-text{font-size:14px}
+
+  /* full-width, thumb-sized buttons */
+  .cta-row{flex-direction:column}
+  .cta-btn{width:100%;text-align:center;padding:13px 20px;font-size:14px}
+
+  /* WhatsApp bubble: bottom corner so it stops covering content */
+  .wa-float{top:auto;bottom:18px;transform:none}
+  .wa-float:hover{transform:scale(1.08)}
 }
 </style>
 </head>
@@ -159,7 +195,7 @@
   ══════════════════════════════════════ -->
   <div class="project-panel active" id="panel-ksl">
     <div class="banner" style="background:#0d1f0d;">
-      <div class="banner-thumb" style="background:#1a3a1a; overflow:hidden; position:relative;"><img id="img-ksl" src="ksl-blossom.jpg" alt="KSL Blossom Square" style="width:100%;height:100%;object-fit:cover;"><div id="ph-ksl" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById('file-ksl').click()"><div style="font-size:22px;">📷</div><div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:3px;">Add photo</div></div><input type="file" id="file-ksl" accept="image/*" style="display:none" onchange="loadImg(this,'img-ksl','ph-ksl')"></div>
+      <div class="banner-thumb" style="background:#1a3a1a; overflow:hidden; position:relative;"><img id="img-ksl" src="ksl-blossom.jpg" alt="KSL Blossom Square" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="banner-body">
         <div class="banner-tag" style="color:#c9a84c;">New Launch · Setia Alam</div>
         <div class="banner-name" style="color:#fff;">KSL Blossom Square</div>
@@ -202,7 +238,7 @@
   ══════════════════════════════════════ -->
   <div class="project-panel" id="panel-allegro">
     <div class="banner" style="background:#1a2a1e;">
-      <div class="banner-thumb" style="background:#243b2a; overflow:hidden; position:relative;"><img id="img-allegro" src="allegro-symphony.jpg" alt="Allegro Symphony Hills" style="width:100%;height:100%;object-fit:cover;"><div id="ph-allegro" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById('file-allegro').click()"><div style="font-size:22px;">📷</div><div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:3px;">Add photo</div></div><input type="file" id="file-allegro" accept="image/*" style="display:none" onchange="loadImg(this,'img-allegro','ph-allegro')"></div>
+      <div class="banner-thumb" style="background:#243b2a; overflow:hidden; position:relative;"><img id="img-allegro" src="allegro-symphony.jpg" alt="Allegro Symphony Hills" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="banner-body">
         <div class="banner-tag" style="color:#c9a84c;">New Launch · Cyberjaya</div>
         <div class="banner-name" style="color:#fff;">Allegro @ Symphony Hills</div>
@@ -249,7 +285,7 @@
   ══════════════════════════════════════ -->
   <div class="project-panel" id="panel-j3">
     <div class="banner" style="background:#1a1e2a;">
-      <div class="banner-thumb" style="background:#252b3a; overflow:hidden; position:relative;"><img id="img-j3" src="j3-residence.jpg" alt="J3 Residence" style="width:100%;height:100%;object-fit:cover;"><div id="ph-j3" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById('file-j3').click()"><div style="font-size:22px;">📷</div><div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:3px;">Add photo</div></div><input type="file" id="file-j3" accept="image/*" style="display:none" onchange="loadImg(this,'img-j3','ph-j3')"></div>
+      <div class="banner-thumb" style="background:#252b3a; overflow:hidden; position:relative;"><img id="img-j3" src="j3-residence.jpg" alt="J3 Residence" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="banner-body">
         <div class="banner-tag" style="color:#c9a84c;">New Launch · Dengkil, Sepang</div>
         <div class="banner-name" style="color:#fff;">J3 Residence</div>
@@ -303,7 +339,7 @@
   ══════════════════════════════════════ -->
   <div class="project-panel" id="panel-aman">
     <div class="banner" style="background:#0f1e33;">
-      <div class="banner-thumb" style="background:#1a2f4d; overflow:hidden; position:relative;"><img id="img-aman" src="aman-residensi.jpg" alt="Aman Residensi Bandar Bukit Raja" style="width:100%;height:100%;object-fit:cover;"><div id="ph-aman" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="document.getElementById('file-aman').click()"><div style="font-size:22px;">📷</div><div style="font-size:9px;color:rgba(255,255,255,0.5);margin-top:3px;">Add photo</div></div><input type="file" id="file-aman" accept="image/*" style="display:none" onchange="loadImg(this,'img-aman','ph-aman')"></div>
+      <div class="banner-thumb" style="background:#1a2f4d; overflow:hidden; position:relative;"><img id="img-aman" src="aman-residensi.jpg" alt="Aman Residensi Bandar Bukit Raja" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="banner-body">
         <div class="banner-tag" style="color:#c9a84c;">New Launch · Bandar Bukit Raja, Klang</div>
         <div class="banner-name" style="color:#fff;">Aman Residensi</div>
@@ -391,6 +427,7 @@ function showTab(id, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + id).classList.add('active');
   btn.classList.add('active');
+  if (btn.scrollIntoView) btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
 }
 
 /* Deep-link support: /projects/projects.html#ksl (or #allegro, #j3, #aman)
@@ -403,17 +440,6 @@ function openTabFromHash() {
 window.addEventListener('DOMContentLoaded', openTabFromHash);
 window.addEventListener('hashchange', openTabFromHash);
 
-function loadImg(input, imgId, phId) {
-  if (!input.files || !input.files[0]) return;
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var img = document.getElementById(imgId);
-    img.src = e.target.result;
-    img.style.display = 'block';
-    document.getElementById(phId).style.display = 'none';
-  };
-  reader.readAsDataURL(input.files[0]);
-}
 </script>
 <style>
   footer{background:#111;color:rgba(255,255,255,.4);text-align:center;padding:24px;font-size:11px;line-height:1.8}
