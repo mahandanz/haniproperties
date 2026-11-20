@@ -57,13 +57,12 @@
     .hero h1{font-family:'Lora',serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px}
     .hero-desc{color:rgba(255,255,255,.7);font-size:.95rem;max-width:520px;margin:0 auto;line-height:1.7}
 
-    .lang-toggle{position:absolute;top:16px;right:24px;display:flex;background:rgba(255,255,255,.12);border-radius:20px;padding:3px}
-    .lang-btn{font-size:11px;font-weight:700;letter-spacing:.04em;padding:5px 12px;border-radius:16px;border:none;background:transparent;color:rgba(255,255,255,.65);cursor:pointer;transition:all .15s}
-    .lang-btn.active{background:#fff;color:#1B4D35}
-    @media(max-width:600px){.lang-toggle{position:static;justify-content:center;width:fit-content;margin:0 auto 14px}}
+    .lang-toggle{margin-left:auto;display:flex;background:#f6f1e7;border:1px solid #e3ddd0;border-radius:20px;padding:3px}
+    .lang-btn{font-size:12px;font-weight:700;letter-spacing:.04em;padding:5px 14px;border-radius:16px;border:none;background:transparent;color:#7a7268;cursor:pointer;transition:all .15s}
+    .lang-btn.active{background:#2a5c3a;color:#fff}
 
     .breadcrumb{background:#fff;padding:10px 28px;border-bottom:1px solid #e3ddd0}
-    .breadcrumb-inner{max-width:1060px;margin:0 auto;font-size:12px;color:#7a7268}
+    .breadcrumb-inner{max-width:592px;margin:0 auto;font-size:12px;color:#7a7268;display:flex;align-items:center;flex-wrap:wrap}
     .breadcrumb-inner a{color:#2a5c3a;text-decoration:none}
     .breadcrumb-inner a:hover{text-decoration:underline}
     .breadcrumb-inner span{margin:0 6px}
@@ -96,11 +95,19 @@
     .conditional-block{background:#f6f1e7;border-radius:12px;padding:18px;margin-top:4px;display:none}
     .conditional-block.visible{display:block}
     .conditional-block .field-group:last-child{margin-bottom:0}
+    .conditional-block .two .field-group{margin-bottom:18px}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;align-items:end}
+    .block-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2a5c3a;margin:4px 0 12px}
+    .block-title:not(:first-child){margin-top:8px;padding-top:14px;border-top:1px solid #e3ddd0}
+    #requestForm > .block-title{font-size:12px;margin-bottom:14px}
+    .conditional-block + .conditional-block + .field-group{margin-top:22px}
+    .two > .field-group{min-width:0}
+    #requestForm > .block-title:not(:first-child){margin-top:4px;padding-top:20px}
 
     .reassure-note{background:#eef7f0;border:1px solid #cfe8d8;border-radius:9px;padding:10px 13px;font-size:12.5px;color:#1B4D35;line-height:1.6;margin-top:8px;display:none}
     .reassure-note.visible{display:block}
 
-    .submit-btn{width:100%;background:#2a5c3a;color:#fff;font-size:14px;font-weight:700;padding:14px;border:none;border-radius:9px;cursor:pointer;transition:background .18s;margin-top:8px}
+    .submit-btn{font-family:inherit;width:100%;background:#2a5c3a;color:#fff;font-size:14px;font-weight:700;padding:14px;border:none;border-radius:9px;cursor:pointer;transition:background .18s;margin-top:8px}
     .submit-btn:hover{background:#1e4a2c}
     .submit-btn:disabled{background:#c7c2b6;cursor:not-allowed}
 
@@ -121,7 +128,10 @@
       nav{padding:0 16px}
       .main{padding:28px 16px 48px}
       .form-card{padding:22px}
-      .wa-float{right:14px;width:50px;height:50px}
+      .wa-float{right:14px;top:auto;bottom:18px;transform:none;width:50px;height:50px}
+      .wa-float:hover{transform:scale(1.08)}
+      .field-input{font-size:16px} /* stops iPhone auto-zoom when tapping a field */
+      .main{padding-bottom:90px}
       .wa-float svg{width:26px;height:26px}
     }
   </style>
@@ -164,10 +174,6 @@
 <!-- NAV:END -->
 
 <section class="hero">
-  <div class="lang-toggle">
-    <button class="lang-btn active" id="langBM" onclick="setLang('bm')">BM</button>
-    <button class="lang-btn" id="langEN" onclick="setLang('en')">EN</button>
-  </div>
   <div class="hero-eyebrow" data-bm="Daftar Minat" data-en="Register Interest">Register Interest</div>
   <h1 data-bm="Tak Jumpa Yang Sesuai?" data-en="Can't Find the Right Fit?">Can't Find the Right Fit?</h1>
   <p class="hero-desc" data-bm="Bagitau kami apa yang anda cari — sewa atau beli — dan kami akan hubungi anda dalam 24 jam dengan pilihan yang sesuai." data-en="Tell us what you're looking for — rent or buy — and we'll get back to you within 24 hours with matching options.">Tell us what you're looking for — rent or buy — and we'll get back to you within 24 hours with matching options.</p>
@@ -178,6 +184,10 @@
     <a href="index.html">Hani Properties</a>
     <span>›</span>
     <span data-bm="Daftar Minat" data-en="Register Interest">Register Interest</span>
+    <div class="lang-toggle">
+      <button type="button" class="lang-btn active" id="langBM" onclick="setLang('bm')">BM</button>
+      <button type="button" class="lang-btn" id="langEN" onclick="setLang('en')">EN</button>
+    </div>
   </div>
 </div>
 
@@ -186,25 +196,29 @@
 
     <form id="requestForm">
 
+      <p class="block-title" data-bm="Hubungi" data-en="Contact">Contact</p>
+
       <!-- Name -->
       <div class="field-group">
-        <label class="field-label" data-bm="Nama" data-en="Name"><span data-bm="Nama" data-en="Name">Name</span><span class="req">*</span></label>
+        <label class="field-label"><span data-bm="Nama" data-en="Name">Name</span><span class="req">*</span></label>
         <input class="field-input" type="text" name="name" id="name" required
                data-ph-bm="Nama penuh anda" data-ph-en="Your full name" placeholder="Your full name">
       </div>
 
       <!-- Contact -->
       <div class="field-group">
-        <label class="field-label" data-bm="Nombor Telefon / Emel" data-en="Phone or Email">Phone or Email</label>
-        <input class="field-input" type="text" name="contact" id="contact"
-               data-ph-bm="Contoh: 012-345 6789 atau emel@contoh.com" data-ph-en="e.g. 012-345 6789 or you@email.com"
-               placeholder="e.g. 012-345 6789 or you@email.com">
-        <p class="field-hint" data-bm="Pilihan — tapi memudahkan kami hubungi anda." data-en="Optional — but helps us reach you faster.">Optional — but helps us reach you faster.</p>
+        <label class="field-label" data-bm="Nombor Telefon" data-en="Phone Number">Phone Number</label>
+        <input class="field-input" type="tel" inputmode="tel" name="contact" id="contact"
+               data-ph-bm="Contoh: 012-345 6789" data-ph-en="e.g. 012-345 6789"
+               placeholder="e.g. 012-345 6789">
+        <p class="field-hint" data-bm="Pilihan — nombor WhatsApp anda akan kami terima secara automatik." data-en="Optional — we'll get your WhatsApp number automatically.">Optional — we'll get your WhatsApp number automatically.</p>
       </div>
+
+      <p class="block-title" data-bm="Apa Yang Dicari" data-en="Looking For">Looking For</p>
 
       <!-- Looking to -->
       <div class="field-group">
-        <label class="field-label" data-bm="Mencari Untuk" data-en="Looking To"><span data-bm="Mencari Untuk" data-en="Looking To">Looking To</span><span class="req">*</span></label>
+        <label class="field-label"><span data-bm="Mencari Untuk" data-en="Looking To">Looking To</span><span class="req">*</span></label>
         <div class="pill-group">
           <div class="pill-option">
             <input type="radio" name="looking_to" id="opt-rent" value="Rent" checked>
@@ -234,15 +248,142 @@
 
       <!-- RENT-ONLY BLOCK -->
       <div class="conditional-block visible" id="rentBlock">
-        <div class="field-group">
-          <label class="field-label" data-bm="Tarikh Masuk" data-en="Move-in Date">Move-in Date</label>
-          <input class="field-input" type="date" name="move_in_date" id="moveInDate">
+        <p class="block-title" data-bm="Profil" data-en="Profile">Profile</p>
+        <div class="two">
+          <div class="field-group">
+            <label class="field-label" data-bm="Warganegara" data-en="Nationality">Nationality</label>
+            <select class="field-input" id="nationality">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="Malaysia" data-en="Malaysian">Malaysian</option>
+              <option data-bm="Bukan Malaysia" data-en="Non-Malaysian">Non-Malaysian</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Agama (pilihan)" data-en="Religion (optional)">Religion (optional)</label>
+            <select class="field-input" id="religion">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="Islam" data-en="Muslim">Muslim</option>
+              <option data-bm="Bukan Islam" data-en="Non-Muslim">Non-Muslim</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Status Kahwin" data-en="Marital Status">Marital Status</label>
+            <select class="field-input" id="marital">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="Bujang" data-en="Single">Single</option>
+              <option data-bm="Berkahwin" data-en="Married">Married</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Merokok?" data-en="Smoker?">Smoker?</label>
+            <select class="field-input" id="smoker">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="Tidak" data-en="No">No</option>
+              <option data-bm="Ya" data-en="Yes">Yes</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Bil. Dewasa" data-en="No. of Adults">No. of Adults</label>
+            <select class="field-input" id="adults">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Bil. Kanak-kanak" data-en="No. of Kids">No. of Kids</label>
+            <select class="field-input" id="kids">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option>0</option><option>1</option><option>2</option><option>3</option><option>4+</option>
+            </select>
+          </div>
         </div>
         <div class="field-group">
-          <label class="field-label" data-bm="Lokasi Kerja" data-en="Work Location">Work Location</label>
+          <label class="field-label" data-bm="Pekerjaan" data-en="Occupation">Occupation</label>
+          <input class="field-input" type="text" id="occupation" data-ph-bm="Contoh: Jurutera" data-ph-en="e.g. Engineer" placeholder="e.g. Engineer">
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-bm="Pekerjaan Pasangan (jika berkahwin)" data-en="Spouse's Occupation (if married)">Spouse's Occupation (if married)</label>
+          <input class="field-input" type="text" id="spouseOccupation">
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-bm="Tempat Kerja (syarikat & lokasi)" data-en="Workplace (company & location)">Workplace (company & location)</label>
           <input class="field-input" type="text" name="work_location" id="workLocation"
-                 data-ph-bm="Contoh: Bangsar South, KL" data-ph-en="e.g. Bangsar South, KL" placeholder="e.g. Bangsar South, KL">
+                 data-ph-bm="Contoh: Petronas, KLCC" data-ph-en="e.g. Petronas, KLCC" placeholder="e.g. Petronas, KLCC">
         </div>
+
+        <p class="block-title" data-bm="Spesifikasi Unit Pilihan" data-en="Preferred Unit Specs">Preferred Unit Specs</p>
+        <div class="two">
+          <div class="field-group">
+            <label class="field-label" data-bm="Jenis" data-en="Type">Type</label>
+            <select class="field-input" id="propType">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="Bertanah" data-en="Landed">Landed</option>
+              <option data-bm="Bertingkat" data-en="High-rise">High-rise</option>
+              <option data-bm="Mana-mana" data-en="Either">Either</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Perabot" data-en="Furnishing">Furnishing</label>
+            <select class="field-input" id="furnishing">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="Asas" data-en="Basic">Basic</option>
+              <option data-bm="Separa" data-en="Partly">Partly</option>
+              <option data-bm="Penuh" data-en="Fully">Fully</option>
+              <option data-bm="Mana-mana" data-en="Any">Any</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Bilik Tidur" data-en="Bedrooms">Bedrooms</label>
+            <select class="field-input" id="bedrooms">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="Studio" data-en="Studio">Studio</option>
+              <option>1</option><option>2</option><option>3</option><option>4+</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Parkir (kereta)" data-en="Parking (cars)">Parking (cars)</label>
+            <select class="field-input" id="parking">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option>0</option><option>1</option><option>2</option><option>3+</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="block-title" data-bm="Lain-lain" data-en="Others">Others</p>
+        <div class="two">
+          <div class="field-group">
+            <label class="field-label" data-bm="Tarikh Masuk" data-en="Move-in Date">Move-in Date</label>
+            <input class="field-input" type="month" name="move_in_date" id="moveInDate">
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Tempoh Sewa" data-en="Tenancy Period">Tenancy Period</label>
+            <select class="field-input" id="tenancy">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="1 tahun" data-en="1 year">1 year</option>
+              <option data-bm="2 tahun" data-en="2 years">2 years</option>
+              <option data-bm="Belum pasti" data-en="Not sure">Not sure</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Haiwan Peliharaan" data-en="Pets">Pets</label>
+            <select class="field-input" id="pets">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="Tiada" data-en="None">None</option>
+              <option data-bm="Kucing" data-en="Cat">Cat</option>
+              <option data-bm="Anjing" data-en="Dog">Dog</option>
+              <option data-bm="Lain-lain" data-en="Other">Other</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" data-bm="Deposit Sedia?" data-en="Deposit Ready?">Deposit Ready?</label>
+            <select class="field-input" id="deposit">
+              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
+              <option data-bm="Ya" data-en="Yes">Yes</option>
+              <option data-bm="Perlu masa" data-en="Need time">Need time</option>
+            </select>
+          </div>
+        </div>
+        <p class="field-hint" style="margin-top:-12px" data-bm="Biasanya 2 bulan deposit + 1 utiliti + sewa bulan pertama." data-en="Usually 2 months deposit + 1 utility + first month's rent.">Usually 2 months deposit + 1 utility + first month's rent.</p>
       </div>
 
       <!-- BUY-ONLY BLOCK -->
@@ -295,14 +436,14 @@
                   placeholder="Optional — e.g. number of rooms, special requirements, etc."></textarea>
       </div>
 
-      <button type="submit" class="submit-btn" id="submitBtn" data-bm="Hantar Permintaan" data-en="Submit Request">Submit Request</button>
-      <p class="field-hint" style="text-align:center;margin-top:12px" data-bm="Kami akan hubungi anda dalam masa 24 jam." data-en="We'll be in touch within 24 hours.">We'll be in touch within 24 hours.</p>
+      <button type="submit" class="submit-btn" id="submitBtn" data-bm="Hantar via WhatsApp" data-en="Send via WhatsApp">Send via WhatsApp</button>
+      <p class="field-hint" style="text-align:center;margin-top:12px" data-bm="WhatsApp akan dibuka dengan butiran anda — tekan Hantar sahaja." data-en="WhatsApp will open with your details filled in — just tap Send.">WhatsApp will open with your details filled in — just tap Send.</p>
     </form>
 
     <div class="success-panel" id="successPanel">
       <div class="icon">✅</div>
       <h3 data-bm="Terima Kasih!" data-en="Thank You!">Thank You!</h3>
-      <p data-bm="Permintaan anda telah diterima. Kami akan hubungi anda dalam masa 24 jam dengan pilihan yang sesuai." data-en="Your request has been received. We'll contact you within 24 hours with matching options.">Your request has been received. We'll contact you within 24 hours with matching options.</p>
+      <p data-bm="Pastikan anda tekan Hantar di WhatsApp. Kami akan balas dalam masa 24 jam dengan pilihan yang sesuai." data-en="Make sure you tap Send in WhatsApp. We'll reply within 24 hours with matching options.">Make sure you tap Send in WhatsApp. We'll reply within 24 hours with matching options.</p>
     </div>
 
   </div>
@@ -323,13 +464,12 @@
 
 <script>
 // ============================================================
-// CONFIG — submissions are emailed to hanimdnor08@gmail.com via
-// FormSubmit.co (no signup needed). On the FIRST submission,
-// FormSubmit sends a confirmation email to that inbox — click
-// the activation link there once, and all future submissions
-// will go through automatically.
+// CONFIG — on submit, the form opens WhatsApp with the prospect's
+// details pre-filled in a message to Hani. The prospect just taps
+// Send. (Replaces the old FormSubmit.co email flow.)
 // ============================================================
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/hanimdnor08@gmail.com';
+const WA_NUMBER = '60125459182';
+let currentLang = 'en';
 
 // ---- Budget bands (Rent = monthly, Buy = purchase price) ----
 const BUDGET_BANDS = {
@@ -341,10 +481,19 @@ const BUDGET_BANDS = {
 const budgetSelect = document.getElementById('budgetRange');
 function populateBudget(kind) {
   budgetSelect.innerHTML = '';
+  const blank = document.createElement('option');
+  blank.value = '';
+  blank.textContent = currentLang === 'bm' ? '— Pilih —' : '— Select —';
+  blank.setAttribute('data-bm', '— Pilih —');
+  blank.setAttribute('data-en', '— Select —');
+  budgetSelect.appendChild(blank);
   BUDGET_BANDS[kind].forEach(band => {
     const opt = document.createElement('option');
     opt.value = band;
     opt.textContent = band;
+    opt.setAttribute('data-en', band);
+    opt.setAttribute('data-bm', band.replace('Under', 'Bawah').replace('Above', 'Lebih'));
+    if (currentLang === 'bm') opt.textContent = opt.getAttribute('data-bm');
     budgetSelect.appendChild(opt);
   });
 }
@@ -375,6 +524,7 @@ document.querySelectorAll('input[name="loan_checked"]').forEach(radio => {
 
 // ---- Language toggle ----
 function setLang(lang) {
+  currentLang = lang;
   document.getElementById('langBM').classList.toggle('active', lang === 'bm');
   document.getElementById('langEN').classList.toggle('active', lang === 'en');
   document.querySelectorAll('[data-bm]').forEach(el => {
@@ -392,49 +542,89 @@ const form = document.getElementById('requestForm');
 const submitBtn = document.getElementById('submitBtn');
 const successPanel = document.getElementById('successPanel');
 
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
-  submitBtn.disabled = true;
-  submitBtn.textContent = '...';
 
-  const areas = document.getElementById('areasOfInterest').value;
-  const lookingTo = document.querySelector('input[name="looking_to"]:checked').value;
+  const val = id => (document.getElementById(id).value || '').trim();
+  const checked = name => document.querySelector(`input[name="${name}"]:checked`).value;
+  const bm = currentLang === 'bm';
+  const lookingTo = checked('looking_to');
+  const isRent = lookingTo === 'Rent';
 
-  const payload = {
-    _subject: `New ${lookingTo} Request — ${document.getElementById('name').value}`,
-    _template: 'table',
-    name: document.getElementById('name').value,
-    contact: document.getElementById('contact').value,
-    looking_to: lookingTo,
-    areas_of_interest: areas,
-    budget_range: budgetSelect.value,
-    move_in_date: lookingTo === 'Rent' ? document.getElementById('moveInDate').value : 'N/A',
-    work_location: lookingTo === 'Rent' ? document.getElementById('workLocation').value : 'N/A',
-    purchase_intent: lookingTo === 'Buy' ? document.querySelector('input[name="purchase_intent"]:checked').value : 'N/A',
-    loan_eligibility_checked: lookingTo === 'Buy' ? document.querySelector('input[name="loan_checked"]:checked').value : 'N/A',
-    amount_eligible: (lookingTo === 'Buy' && document.querySelector('input[name="loan_checked"]:checked').value === 'Yes')
-      ? document.getElementById('amountEligible').value : 'N/A',
-    additional_notes: document.getElementById('additionalNotes').value || 'N/A'
-  };
+  const L = bm
+    ? { hi: 'Hi Hani, saya nak daftar minat:', name: 'Nama', contact: 'Telefon', looking: 'Mencari', areas: 'Kawasan',
+        budget: 'Bajet', movein: 'Tarikh masuk', work: 'Tempat kerja', intent: 'Tujuan', loan: 'Pinjaman disemak',
+        amount: 'Jumlah layak', notes: 'Nota', rent: 'Sewa', buy: 'Beli' }
+    : { hi: 'Hi Hani, I\'d like to register my interest:', name: 'Name', contact: 'Phone', looking: 'Looking to', areas: 'Area(s)',
+        budget: 'Budget', movein: 'Move-in date', work: 'Workplace', intent: 'Purchase intent', loan: 'Loan checked',
+        amount: 'Amount eligible', notes: 'Notes', rent: 'Rent', buy: 'Buy' };
 
-  try {
-    const res = await fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      successPanel.classList.add('visible');
-    } else {
-      throw new Error('Submission failed');
+  const lines = [L.hi, ''];
+  const add = (label, value) => { if (value) lines.push(`${label}: ${value}`); };
+  // dropdown: send the visible (language-matched) text, skip "— Select —"
+  const sel = id => { const s = document.getElementById(id); return s.value ? s.options[s.selectedIndex].textContent.trim() : ''; };
+  const head = t => lines.push('', `*${t}*`);
+
+  if (isRent) {
+    const T = bm
+      ? { p: 'PROFIL', u: 'UNIT PILIHAN', o: 'LAIN-LAIN', nat: 'Warganegara', rel: 'Agama', mar: 'Status', occ: 'Penghuni', occAdults: 'dewasa', occKids: 'kanak-kanak',
+          job: 'Pekerjaan', spouse: 'Pekerjaan pasangan', type: 'Jenis', furn: 'Perabot', bed: 'Bilik tidur', park: 'Parkir', ten: 'Tempoh sewa',
+          pets: 'Haiwan', smoke: 'Merokok', dep: 'Deposit sedia' }
+      : { p: 'PROFILE', u: 'PREFERRED UNIT', o: 'OTHERS', nat: 'Nationality', rel: 'Religion', mar: 'Marital status', occ: 'Occupants', occAdults: 'adults', occKids: 'kids',
+          job: 'Occupation', spouse: 'Spouse\'s occupation', type: 'Type', furn: 'Furnishing', bed: 'Bedrooms', park: 'Parking', ten: 'Tenancy period',
+          pets: 'Pets', smoke: 'Smoker', dep: 'Deposit ready' };
+    lines.pop(); // drop blank line; head() adds its own
+    head(T.p);
+    add(L.name, val('name'));
+    add(L.contact, val('contact'));
+    add(T.nat, sel('nationality'));
+    add(T.rel, sel('religion'));
+    add(T.mar, sel('marital'));
+    const occ = [sel('adults') && `${sel('adults')} ${T.occAdults}`, sel('kids') && `${sel('kids')} ${T.occKids}`].filter(Boolean).join(', ');
+    add(T.occ, occ);
+    add(T.job, val('occupation'));
+    add(T.spouse, val('spouseOccupation'));
+    add(L.work, val('workLocation'));
+    head(T.u);
+    add(L.looking, L.rent);
+    add(L.areas, val('areasOfInterest'));
+    add(L.budget, budgetSelect.value);
+    add(T.type, sel('propType'));
+    add(T.furn, sel('furnishing'));
+    add(T.bed, sel('bedrooms'));
+    add(T.park, sel('parking'));
+    head(T.o);
+    const mi = val('moveInDate'); // yyyy-mm
+    add(L.movein, mi ? new Date(mi + '-01').toLocaleDateString(bm ? 'ms-MY' : 'en-GB', { month: 'short', year: 'numeric' }) : '');
+    add(T.ten, sel('tenancy'));
+    add(T.pets, sel('pets'));
+    add(T.smoke, sel('smoker'));
+    add(T.dep, sel('deposit'));
+    // tidy: remove headings that ended up with nothing under them
+    for (let i = lines.length - 1; i >= 0; i--) {
+      if (/^\*.*\*$/.test(lines[i]) && (i === lines.length - 1 || lines[i + 1] === '')) { lines.splice(i - 1, 2); }
     }
-  } catch (err) {
-    alert('Something went wrong. Please try again or WhatsApp us directly.');
-    submitBtn.disabled = false;
-    submitBtn.textContent = document.getElementById('langBM').classList.contains('active') ? 'Hantar Permintaan' : 'Submit Request';
+  } else {
+    add(L.name, val('name'));
+    add(L.contact, val('contact'));
+    add(L.looking, L.buy);
+    add(L.areas, val('areasOfInterest'));
+    add(L.budget, budgetSelect.value);
+    add(L.intent, checked('purchase_intent'));
+    const loan = checked('loan_checked');
+    add(L.loan, loan);
+    if (loan === 'Yes' && val('amountEligible')) add(L.amount, 'RM' + Number(val('amountEligible')).toLocaleString('en-MY'));
   }
+  add(L.notes, val('additionalNotes'));
+
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+  const win = window.open(url, '_blank');
+  if (!win) window.location.href = url; // fallback if pop-up blocked
+
+  form.style.display = 'none';
+  successPanel.classList.add('visible');
 });
+setLang('bm'); // default to BM; visitors can switch to EN
 </script>
 
 </body>
