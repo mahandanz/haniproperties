@@ -233,8 +233,8 @@
 
       <!-- Areas of interest -->
       <div class="field-group">
-        <label class="field-label" data-bm="Kawasan Diminati" data-en="Area(s) of Interest">Area(s) of Interest</label>
-        <input class="field-input" type="text" name="areas_of_interest" id="areasOfInterest"
+        <label class="field-label"><span data-bm="Kawasan Diminati" data-en="Area(s) of Interest">Area(s) of Interest</span><span class="req">*</span></label>
+        <input required class="field-input" type="text" name="areas_of_interest" id="areasOfInterest"
                data-ph-bm="Contoh: Shah Alam, Subang Jaya" data-ph-en="e.g. Shah Alam, Subang Jaya"
                placeholder="e.g. Shah Alam, Subang Jaya">
         <p class="field-hint" data-bm="Boleh senaraikan lebih dari satu kawasan." data-en="Feel free to list more than one area.">Feel free to list more than one area.</p>
@@ -242,8 +242,8 @@
 
       <!-- Budget range -->
       <div class="field-group">
-        <label class="field-label" data-bm="Julat Bajet" data-en="Budget Range">Budget Range</label>
-        <select class="field-input" name="budget_range" id="budgetRange"></select>
+        <label class="field-label"><span data-bm="Julat Bajet" data-en="Budget Range">Budget Range</span><span class="req">*</span></label>
+        <select required class="field-input" name="budget_range" id="budgetRange"></select>
       </div>
 
       <!-- RENT-ONLY BLOCK -->
@@ -251,8 +251,8 @@
         <p class="block-title" data-bm="Profil" data-en="Profile">Profile</p>
         <div class="two">
           <div class="field-group">
-            <label class="field-label" data-bm="Warganegara" data-en="Nationality">Nationality</label>
-            <select class="field-input" id="nationality">
+            <label class="field-label"><span data-bm="Warganegara" data-en="Nationality">Nationality</span><span class="req">*</span></label>
+            <select data-req-rent class="field-input" id="nationality">
               <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
               <option data-bm="Malaysia" data-en="Malaysian">Malaysian</option>
               <option data-bm="Bukan Malaysia" data-en="Non-Malaysian">Non-Malaysian</option>
@@ -266,25 +266,17 @@
               <option data-bm="Bukan Islam" data-en="Non-Muslim">Non-Muslim</option>
             </select>
           </div>
-          <div class="field-group">
-            <label class="field-label" data-bm="Status Kahwin" data-en="Marital Status">Marital Status</label>
-            <select class="field-input" id="marital">
+          <div class="field-group" style="grid-column:1/-1">
+            <label class="field-label"><span data-bm="Status Kahwin" data-en="Marital Status">Marital Status</span><span class="req">*</span></label>
+            <select data-req-rent class="field-input" id="marital">
               <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
               <option data-bm="Bujang" data-en="Single">Single</option>
               <option data-bm="Berkahwin" data-en="Married">Married</option>
             </select>
           </div>
           <div class="field-group">
-            <label class="field-label" data-bm="Merokok?" data-en="Smoker?">Smoker?</label>
-            <select class="field-input" id="smoker">
-              <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
-              <option data-bm="Tidak" data-en="No">No</option>
-              <option data-bm="Ya" data-en="Yes">Yes</option>
-            </select>
-          </div>
-          <div class="field-group">
-            <label class="field-label" data-bm="Bil. Dewasa" data-en="No. of Adults">No. of Adults</label>
-            <select class="field-input" id="adults">
+            <label class="field-label"><span data-bm="Bil. Dewasa" data-en="No. of Adults">No. of Adults</span><span class="req">*</span></label>
+            <select data-req-rent class="field-input" id="adults">
               <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
               <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
             </select>
@@ -298,24 +290,24 @@
           </div>
         </div>
         <div class="field-group">
-          <label class="field-label" data-bm="Pekerjaan" data-en="Occupation">Occupation</label>
-          <input class="field-input" type="text" id="occupation" data-ph-bm="Contoh: Jurutera" data-ph-en="e.g. Engineer" placeholder="e.g. Engineer">
+          <label class="field-label"><span data-bm="Pekerjaan" data-en="Occupation">Occupation</span><span class="req">*</span></label>
+          <input data-req-rent class="field-input" type="text" id="occupation" data-ph-bm="Contoh: Jurutera" data-ph-en="e.g. Engineer" placeholder="e.g. Engineer">
         </div>
         <div class="field-group">
           <label class="field-label" data-bm="Pekerjaan Pasangan (jika berkahwin)" data-en="Spouse's Occupation (if married)">Spouse's Occupation (if married)</label>
           <input class="field-input" type="text" id="spouseOccupation">
         </div>
         <div class="field-group">
-          <label class="field-label" data-bm="Tempat Kerja (syarikat & lokasi)" data-en="Workplace (company & location)">Workplace (company & location)</label>
-          <input class="field-input" type="text" name="work_location" id="workLocation"
+          <label class="field-label"><span data-bm="Tempat Kerja (syarikat & lokasi)" data-en="Workplace (company & location)">Workplace (company & location)</span><span class="req">*</span></label>
+          <input data-req-rent class="field-input" type="text" name="work_location" id="workLocation"
                  data-ph-bm="Contoh: Petronas, KLCC" data-ph-en="e.g. Petronas, KLCC" placeholder="e.g. Petronas, KLCC">
         </div>
 
         <p class="block-title" data-bm="Spesifikasi Unit Pilihan" data-en="Preferred Unit Specs">Preferred Unit Specs</p>
         <div class="two">
           <div class="field-group">
-            <label class="field-label" data-bm="Jenis" data-en="Type">Type</label>
-            <select class="field-input" id="propType">
+            <label class="field-label"><span data-bm="Jenis" data-en="Type">Type</span><span class="req">*</span></label>
+            <select data-req-rent class="field-input" id="propType">
               <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
               <option data-bm="Landed" data-en="Landed">Landed</option>
               <option data-bm="High-rise" data-en="High-rise">High-rise</option>
@@ -323,8 +315,8 @@
             </select>
           </div>
           <div class="field-group">
-            <label class="field-label" data-bm="Perabot" data-en="Furnishing">Furnishing</label>
-            <select class="field-input" id="furnishing">
+            <label class="field-label"><span data-bm="Perabot" data-en="Furnishing">Furnishing</span><span class="req">*</span></label>
+            <select data-req-rent class="field-input" id="furnishing">
               <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
               <option data-bm="Basic" data-en="Basic">Basic</option>
               <option data-bm="Partly" data-en="Partly">Partly</option>
@@ -352,8 +344,8 @@
         <p class="block-title" data-bm="Lain-lain" data-en="Others">Others</p>
         <div class="two">
           <div class="field-group">
-            <label class="field-label" data-bm="Tarikh Masuk" data-en="Move-in Date">Move-in Date</label>
-            <input class="field-input" type="month" name="move_in_date" id="moveInDate">
+            <label class="field-label"><span data-bm="Tarikh Masuk" data-en="Move-in Date">Move-in Date</span><span class="req">*</span></label>
+            <input data-req-rent class="field-input" type="month" name="move_in_date" id="moveInDate">
           </div>
           <div class="field-group">
             <label class="field-label" data-bm="Tempoh Sewa" data-en="Tenancy Period">Tenancy Period</label>
@@ -365,8 +357,8 @@
             </select>
           </div>
           <div class="field-group">
-            <label class="field-label" data-bm="Haiwan Peliharaan" data-en="Pets">Pets</label>
-            <select class="field-input" id="pets">
+            <label class="field-label"><span data-bm="Haiwan Peliharaan" data-en="Pets">Pets</span><span class="req">*</span></label>
+            <select data-req-rent class="field-input" id="pets">
               <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
               <option data-bm="Tiada" data-en="None">None</option>
               <option data-bm="Kucing" data-en="Cat">Cat</option>
@@ -375,8 +367,8 @@
             </select>
           </div>
           <div class="field-group">
-            <label class="field-label" data-bm="Deposit Sedia?" data-en="Deposit Ready?">Deposit Ready?</label>
-            <select class="field-input" id="deposit">
+            <label class="field-label"><span data-bm="Deposit Sedia?" data-en="Deposit Ready?">Deposit Ready?</span><span class="req">*</span></label>
+            <select data-req-rent class="field-input" id="deposit">
               <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
               <option data-bm="Ya" data-en="Yes">Yes</option>
               <option data-bm="Perlu masa" data-en="Need time">Need time</option>
@@ -499,6 +491,12 @@ function populateBudget(kind) {
 }
 populateBudget('Rent');
 
+// rent-only fields are compulsory only when Rent is picked (hidden fields can't block sending)
+function setRentRequired(on) {
+  document.querySelectorAll('[data-req-rent]').forEach(el => { el.required = on; });
+}
+setRentRequired(true);
+
 // ---- Rent/Buy toggle logic ----
 const rentBlock = document.getElementById('rentBlock');
 const buyBlock = document.getElementById('buyBlock');
@@ -508,6 +506,7 @@ document.querySelectorAll('input[name="looking_to"]').forEach(radio => {
     rentBlock.classList.toggle('visible', isRent);
     buyBlock.classList.toggle('visible', !isRent);
     populateBudget(isRent ? 'Rent' : 'Buy');
+    setRentRequired(isRent);
   });
 });
 
@@ -569,10 +568,10 @@ form.addEventListener('submit', (e) => {
     const T = bm
       ? { p: 'PROFIL', u: 'UNIT PILIHAN', o: 'LAIN-LAIN', nat: 'Warganegara', rel: 'Agama', mar: 'Status', occ: 'Penghuni', occAdults: 'dewasa', occKids: 'kanak-kanak',
           job: 'Pekerjaan', spouse: 'Pekerjaan pasangan', type: 'Jenis', furn: 'Perabot', bed: 'Bilik tidur', park: 'Parkir', ten: 'Tempoh sewa',
-          pets: 'Haiwan', smoke: 'Merokok', dep: 'Deposit sedia' }
+          pets: 'Haiwan', dep: 'Deposit sedia' }
       : { p: 'PROFILE', u: 'PREFERRED UNIT', o: 'OTHERS', nat: 'Nationality', rel: 'Religion', mar: 'Marital status', occ: 'Occupants', occAdults: 'adults', occKids: 'kids',
           job: 'Occupation', spouse: 'Spouse\'s occupation', type: 'Type', furn: 'Furnishing', bed: 'Bedrooms', park: 'Parking', ten: 'Tenancy period',
-          pets: 'Pets', smoke: 'Smoker', dep: 'Deposit ready' };
+          pets: 'Pets', dep: 'Deposit ready' };
     lines.pop(); // drop blank line; head() adds its own
     head(T.p);
     add(L.name, val('name'));
@@ -598,7 +597,6 @@ form.addEventListener('submit', (e) => {
     add(L.movein, mi ? new Date(mi + '-01').toLocaleDateString(bm ? 'ms-MY' : 'en-GB', { month: 'short', year: 'numeric' }) : '');
     add(T.ten, sel('tenancy'));
     add(T.pets, sel('pets'));
-    add(T.smoke, sel('smoker'));
     add(T.dep, sel('deposit'));
     // tidy: remove headings that ended up with nothing under them
     for (let i = lines.length - 1; i >= 0; i--) {
