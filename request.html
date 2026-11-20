@@ -243,7 +243,7 @@
 
       <!-- Budget range -->
       <div class="field-group">
-        <label class="field-label"><span data-bm="Julat Bajet" data-en="Budget Range">Budget Range</span><span class="req">*</span></label>
+        <label class="field-label"><span data-bm="Budget" data-en="Budget Range">Budget Range</span><span class="req">*</span></label>
         <select required class="field-input" name="budget_range" id="budgetRange"></select>
       </div>
 
@@ -552,8 +552,8 @@ form.addEventListener('submit', (e) => {
   const isRent = lookingTo === 'Rent';
 
   const L = bm
-    ? { hi: 'Hi Hani, saya nak daftar minat:', name: 'Nama', contact: 'Telefon', looking: 'Mencari', areas: 'Kawasan',
-        budget: 'Bajet', movein: 'Tarikh masuk', work: 'Tempat kerja', intent: 'Tujuan', loan: 'Pinjaman disemak',
+    ? { hi: 'Hi Hani, saya sedang mencari rumah. Ni profile saya', name: 'Nama', contact: 'Telefon', looking: 'Mencari', areas: 'Kawasan',
+        budget: 'Budget', movein: 'Tarikh masuk', work: 'Tempat kerja', intent: 'Tujuan', loan: 'Pinjaman disemak',
         amount: 'Jumlah layak', notes: 'Nota', rent: 'Sewa', buy: 'Beli' }
     : { hi: 'Hi Hani, I\'d like to register my interest:', name: 'Name', contact: 'Phone', looking: 'Looking to', areas: 'Area(s)',
         budget: 'Budget', movein: 'Move-in date', work: 'Workplace', intent: 'Purchase intent', loan: 'Loan checked',
