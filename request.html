@@ -317,19 +317,19 @@
             <label class="field-label" data-bm="Jenis" data-en="Type">Type</label>
             <select class="field-input" id="propType">
               <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
-              <option data-bm="Bertanah" data-en="Landed">Landed</option>
-              <option data-bm="Bertingkat" data-en="High-rise">High-rise</option>
-              <option data-bm="Mana-mana" data-en="Either">Either</option>
+              <option data-bm="Landed" data-en="Landed">Landed</option>
+              <option data-bm="High-rise" data-en="High-rise">High-rise</option>
+              <option data-bm="Either" data-en="Either">Either</option>
             </select>
           </div>
           <div class="field-group">
             <label class="field-label" data-bm="Perabot" data-en="Furnishing">Furnishing</label>
             <select class="field-input" id="furnishing">
               <option value="" data-bm="— Pilih —" data-en="— Select —">— Select —</option>
-              <option data-bm="Asas" data-en="Basic">Basic</option>
-              <option data-bm="Separa" data-en="Partly">Partly</option>
-              <option data-bm="Penuh" data-en="Fully">Fully</option>
-              <option data-bm="Mana-mana" data-en="Any">Any</option>
+              <option data-bm="Basic" data-en="Basic">Basic</option>
+              <option data-bm="Partly" data-en="Partly">Partly</option>
+              <option data-bm="Fully" data-en="Fully">Fully</option>
+              <option data-bm="Any" data-en="Any">Any</option>
             </select>
           </div>
           <div class="field-group">
@@ -560,7 +560,7 @@ form.addEventListener('submit', (e) => {
         amount: 'Amount eligible', notes: 'Notes', rent: 'Rent', buy: 'Buy' };
 
   const lines = [L.hi, ''];
-  const add = (label, value) => { if (value) lines.push(`${label}: ${value}`); };
+  const add = (label, value) => { if (value) lines.push(`*${label}:* ${value}`); }; // *…* = bold in WhatsApp
   // dropdown: send the visible (language-matched) text, skip "— Select —"
   const sel = id => { const s = document.getElementById(id); return s.value ? s.options[s.selectedIndex].textContent.trim() : ''; };
   const head = t => lines.push('', `*${t}*`);
