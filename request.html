@@ -206,15 +206,6 @@
                data-ph-bm="Nama penuh anda" data-ph-en="Your full name" placeholder="Your full name">
       </div>
 
-      <!-- Contact -->
-      <div class="field-group">
-        <label class="field-label" data-bm="Nombor Telefon" data-en="Phone Number">Phone Number</label>
-        <input class="field-input" type="tel" inputmode="tel" name="contact" id="contact"
-               data-ph-bm="Contoh: 012-345 6789" data-ph-en="e.g. 012-345 6789"
-               placeholder="e.g. 012-345 6789">
-        <p class="field-hint" data-bm="Pilihan — nombor WhatsApp anda akan kami terima secara automatik." data-en="Optional — we'll get your WhatsApp number automatically.">Optional — we'll get your WhatsApp number automatically.</p>
-      </div>
-
       <p class="block-title" data-bm="Apa Yang Dicari" data-en="Looking For">Looking For</p>
 
       <!-- Looking to -->
@@ -552,10 +543,10 @@ form.addEventListener('submit', (e) => {
   const isRent = lookingTo === 'Rent';
 
   const L = bm
-    ? { hi: 'Hi Hani, saya sedang mencari rumah. Ni profile saya', name: 'Nama', contact: 'Telefon', looking: 'Mencari', areas: 'Kawasan',
+    ? { hi: 'Hi Hani, saya sedang mencari rumah. Ni profile saya', name: 'Nama', looking: 'Mencari', areas: 'Kawasan',
         budget: 'Budget', movein: 'Tarikh masuk', work: 'Tempat kerja', intent: 'Tujuan', loan: 'Pinjaman disemak',
         amount: 'Jumlah layak', notes: 'Nota', rent: 'Sewa', buy: 'Beli' }
-    : { hi: 'Hi Hani, I\'d like to register my interest:', name: 'Name', contact: 'Phone', looking: 'Looking to', areas: 'Area(s)',
+    : { hi: 'Hi Hani, I\'d like to register my interest:', name: 'Name', looking: 'Looking to', areas: 'Area(s)',
         budget: 'Budget', movein: 'Move-in date', work: 'Workplace', intent: 'Purchase intent', loan: 'Loan checked',
         amount: 'Amount eligible', notes: 'Notes', rent: 'Rent', buy: 'Buy' };
 
@@ -576,7 +567,6 @@ form.addEventListener('submit', (e) => {
     lines.pop(); // drop blank line; head() adds its own
     head(T.p);
     add(L.name, val('name'));
-    add(L.contact, val('contact'));
     add(T.nat, sel('nationality'));
     add(T.rel, sel('religion'));
     add(T.mar, sel('marital'));
@@ -605,7 +595,6 @@ form.addEventListener('submit', (e) => {
     }
   } else {
     add(L.name, val('name'));
-    add(L.contact, val('contact'));
     add(L.looking, L.buy);
     add(L.areas, val('areasOfInterest'));
     add(L.budget, budgetSelect.value);
