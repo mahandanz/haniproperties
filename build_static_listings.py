@@ -540,6 +540,14 @@ ROWS_CSS = """/*ROWS_CSS_START*/
       .card-price{font-size:14.5px}
     }
     @media(max-width:360px){.card-cta{font-size:12.5px}}
+    /* Slim hero; the area intro, summary, last-updated and overview link sit in the bottom band (.area-about) */
+    .hero{padding-top:20px;padding-bottom:18px}
+    .hero h1{margin-bottom:4px}
+    .hero .hero-noreg{margin-top:6px}
+    .area-about{text-align:left;max-width:780px;margin:0 auto 26px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.15)}
+    .area-about .hero-desc{margin:0 0 8px}
+    .area-about-links{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin-top:10px}
+    .area-about-links .hero-stamp,.area-about-links .hero-guide-link{margin:0}
     /* Search & filter popup (area pages): the filter bar lives inside .filter-sheet */
     .filter-open-row{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin-bottom:18px}
     .filter-open{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;color:#1B4D35;background:#fff;border:1.5px solid #1B4D35;border-radius:10px;padding:11px 18px;cursor:pointer;transition:background .15s}
@@ -744,6 +752,40 @@ def apply_filter_sheet(text: str, name: str = "") -> str:
     return text
 
 
+_HERO = re.compile(r'(<section class="hero">)(.*?)(</section>)', re.S)
+_HERO_PARTS = [  # moved from the hero into the bottom band, in this order
+    re.compile(r'\n[ \t]*<p class="hero-desc">.*?</p>', re.S),                        # area intro
+    re.compile(r'\n[ \t]*<p class="hero-desc" id="hero-summary-stat">.*?</p>', re.S),  # listing summary
+    re.compile(r'\n[ \t]*<div class="hero-stamp">.*?</div>', re.S),                     # last updated
+    re.compile(r'\n[ \t]*<a href="[^"]*" class="hero-guide-link">.*?</a>', re.S),       # area overview link
+]
+_HERO_BROWSE = re.compile(r'\n[ \t]*<a href="#listings" class="btn-wa"[^>]*>.*?</a>', re.S)
+
+
+def apply_hero_to_band(text: str, name: str = "") -> str:
+    """Template housekeeping: slim hero (area name + 'No registration needed')
+    so units start near the top; the area intro, listing summary, last-updated
+    stamp and area overview link move into the bottom band. Safe to re-run."""
+    if '<div class="area-about">' in text:
+        return text
+    m = _HERO.search(text)
+    if not m or '<div class="cta-band">' not in text:
+        print(f"    (warning: {name} hero or bottom band not found, hero left as is)")
+        return text
+    hero = m.group(2)
+    moved = []
+    for rx in _HERO_PARTS:
+        pm = rx.search(hero)
+        if pm:
+            moved.append(pm.group(0).strip())
+            hero = hero[:pm.start()] + hero[pm.end():]
+    hero = _HERO_BROWSE.sub("", hero, count=1)   # units are right below now
+    text = text[:m.start()] + m.group(1) + hero + m.group(3) + text[m.end():]
+    about = ('<div class="area-about">\n      ' + "\n      ".join(moved[:2])
+             + '\n      <div class="area-about-links">' + "".join(moved[2:]) + '</div>\n    </div>\n    ')
+    return text.replace('<div class="cta-band">', '<div class="cta-band">\n    ' + about, 1)
+
+
 def apply_row_layout(text: str, name: str = "") -> str:
     """Template housekeeping: give an area page the text-only row layout.
     Safe to re-run -- the blocks between the ROWS_* markers are just refreshed."""
@@ -784,6 +826,9 @@ def apply_row_layout(text: str, name: str = "") -> str:
 
     # 5. filter bar -> "Search & filter units" popup
     text = apply_filter_sheet(text, name)
+
+    # 5b. slim hero; its details move into the bottom band
+    text = apply_hero_to_band(text, name)
 
     # 6. "tap a unit" hint above each list, and open a unit linked by #hash
     for gid in ("grid-unit", "grid-subsale"):
