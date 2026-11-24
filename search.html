@@ -102,7 +102,7 @@
     /* UNIT ROWS: one text row per unit (no photos); tap a row for details + WhatsApp.
        Same layout as the area pages (ROWS_CSS in build_static_listings.py), in this page's colours. */
     .list-hint{font-size:12.5px;color:#7a7268;margin:-6px 0 10px}
-    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));align-items:start;gap:10px}
+    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr));align-items:start;gap:10px}
     .card{background:#fff;border-radius:12px;border:1px solid #e3ddd0;overflow:hidden;transition:border-color .15s}
     .card.open{border-color:#A82C3D}
     .row-head{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 16px;background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
@@ -112,10 +112,11 @@
     .card-name{font-size:15px;font-weight:700;color:#1c1c18;line-height:1.3}
     .card-zone{font-size:12.5px;color:#7a7268;line-height:1.5}
     .card-zone span+span::before,.row-specs .bits span+span::before{content:" · "}
-    .row-side{display:flex;align-items:center;gap:6px;flex-shrink:0}
+    .row-title{display:block;line-height:1.35}
+    .row-sep{color:#d4cfc6;font-weight:400;margin:0 7px}
     .card-price{font-size:16px;font-weight:900;color:#A82C3D;white-space:nowrap}
     .card-price span{font-size:11px;font-weight:500;color:#7a7268}
-    .chev{width:18px;height:18px;fill:none;stroke:#7a7268;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
+    .chev{flex-shrink:0;margin-top:2px;width:18px;height:18px;fill:none;stroke:#7a7268;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
     .card.open .chev{transform:rotate(180deg)}
     .row-more{display:none;padding:0 16px 16px}
     .card.open .row-more{display:block}
@@ -813,10 +814,11 @@ function renderCard(r) {
 
   return `<div class="card">` +
     `<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">` +
-      `<span class="row-main"><span class="card-name">${escHtml(r.project_name)}</span>` +
+      `<span class="row-main"><span class="row-title"><span class="card-name">${escHtml(r.project_name)}</span>` +
+      `<span class="row-sep" aria-hidden="true">|</span>` +
+      `<span class="card-price">${fmt(getPrice(r))}${rent ? '<span>/mo</span>' : ''}</span></span>` +
       `<span class="card-zone">${spans(sub)}</span></span>` +
-      `<span class="row-side"><span class="card-price">${fmt(getPrice(r))}${rent ? '<span>/mo</span>' : ''}</span>` +
-      `<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>` +
+      `<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>` +
     `</button>` +
     `<div class="row-more">` +
       `<div class="row-specs"><span class="bits">${spans(more)}</span>${ref ? `<span class="badge-coa">${escHtml(ref)}</span>` : ''}</div>` +

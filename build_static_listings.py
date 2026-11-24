@@ -223,17 +223,18 @@ def unit_row(r: dict, rent: bool) -> str:
     return (
         f'<div class="card" id="{to_slug(r.get("project_name"), r.get("bed"), r.get("price"))}">'
         f'<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">'
-        f'<span class="row-main"><span class="card-name">{esc(r.get("project_name"))}</span>'
+        f'<span class="row-main"><span class="row-title"><span class="card-name">{esc(r.get("project_name"))}</span>'
+        f'<span class="row-sep" aria-hidden="true">|</span>'
+        f'<span class="card-price">{fmt_price(r.get("price"))}{per}</span></span>'
         f'<span class="card-zone">{_spans(sub)}</span></span>'
-        f'<span class="row-side"><span class="card-price">{fmt_price(r.get("price"))}{per}</span>'
-        f'<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>'
+        f'<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
         f'</button>'
         f'<div class="row-more">'
         f'<div class="row-specs"><span class="bits">{_spans(more)}</span>'
         + (f'<span class="badge-coa">{esc(ref)}</span>' if ref else "")
         + f'</div>{anchors}'
         f'<a href="{html.escape(wa_with_ref(r, fallback), quote=True)}" class="card-cta" target="_blank" '
-        f'rel="noopener noreferrer">\U0001F4AC WhatsApp about this unit</a>'
+        f'rel="noopener noreferrer">\U0001F4AC WhatsApp for pictures/more info</a>'
         f'</div></div>'
     )
 
@@ -505,7 +506,7 @@ ROWS_CSS = """/*ROWS_CSS_START*/
     /* Unit list: one text row per unit (no photos); tap a row for details + WhatsApp.
        Written by build_static_listings.py (ROWS_CSS) -- edit it there. */
     .list-hint{font-size:12.5px;color:#7a7268;margin:0 0 10px}
-    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));align-items:start;gap:10px;margin-bottom:8px}
+    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr));align-items:start;gap:10px;margin-bottom:8px}
     .card{background:#fff;border-radius:12px;border:1px solid #e3ddd0;overflow:hidden;transition:border-color .15s,box-shadow .15s}
     .card.open{border-color:#1B4D35}
     .card-highlight{box-shadow:0 0 0 3px rgba(0,190,99,.45)}
@@ -516,10 +517,11 @@ ROWS_CSS = """/*ROWS_CSS_START*/
     .card-name{font-size:15px;font-weight:700;color:#1c1c18;line-height:1.3}
     .card-zone{font-size:12.5px;color:#7a7268;line-height:1.5}
     .card-zone span+span::before,.row-specs .bits span+span::before{content:" · "}
-    .row-side{display:flex;align-items:center;gap:6px;flex-shrink:0}
+    .row-title{display:block;line-height:1.35}
+    .row-sep{color:#d4cfc6;font-weight:400;margin:0 7px}
     .card-price{font-size:16px;font-weight:900;color:#1B4D35;white-space:nowrap}
     .card-price span{font-size:11px;font-weight:500;color:#7a7268}
-    .chev{width:18px;height:18px;fill:none;stroke:#7a7268;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
+    .chev{flex-shrink:0;margin-top:2px;width:18px;height:18px;fill:none;stroke:#7a7268;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
     .card.open .chev{transform:rotate(180deg)}
     .row-more{display:none;padding:0 16px 16px}
     .card.open .row-more{display:block}
@@ -527,7 +529,7 @@ ROWS_CSS = """/*ROWS_CSS_START*/
     .badge-coa{background:#f0ede8;color:#7a7268;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:20px;white-space:nowrap}
     .card-anchors{font-size:12px;color:#7a7268;line-height:1.6;margin-top:8px}
     .card-anchors b{color:#444;font-weight:600}
-    .card-cta{display:block;text-align:center;background:#1B4D35;color:#fff;font-size:13.5px;font-weight:700;padding:12px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:12px}
+    .card-cta{display:block;text-align:center;background:#1B4D35;color:#fff;font-size:13.5px;font-weight:700;padding:12px 8px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .card-cta:hover{background:#163f2b}
     @media(max-width:600px){
       .listing-grid{grid-template-columns:minmax(0,1fr);gap:8px}
@@ -537,13 +539,41 @@ ROWS_CSS = """/*ROWS_CSS_START*/
       .card-zone{font-size:12px}
       .card-price{font-size:14.5px}
     }
+    @media(max-width:360px){.card-cta{font-size:12.5px}}
+    /* Search & filter popup (area pages): the filter bar lives inside .filter-sheet */
+    .filter-open-row{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin-bottom:18px}
+    .filter-open{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;color:#1B4D35;background:#fff;border:1.5px solid #1B4D35;border-radius:10px;padding:11px 18px;cursor:pointer;transition:background .15s}
+    .filter-open:hover{background:#f2f8f4}
+    .filter-open svg{width:17px;height:17px;flex-shrink:0}
+    .filter-badge{background:#1B4D35;color:#fff;font-size:11px;font-weight:700;border-radius:20px;padding:1px 7px;line-height:1.5}
+    .filter-badge[hidden]{display:none}
+    .filter-summary{font-size:12.5px;color:#7a7268}
+    .filter-sheet{position:fixed;inset:0;z-index:400;background:rgba(20,20,16,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+    .filter-sheet[hidden]{display:none}
+    .filter-sheet-box{background:#faf9f6;width:100%;max-width:560px;max-height:88vh;overflow:auto;border-radius:16px;padding:16px 18px 18px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+    .fs-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .fs-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:#1c1c18}
+    .fs-close{width:40px;height:40px;border:0;background:#f0ede8;border-radius:50%;font-size:16px;color:#444;cursor:pointer}
+    .filter-sheet .filter-bar{margin:0 0 14px;padding:0;border:0;background:transparent}
+    .filter-sheet .prop-choice{margin:0 0 12px}
+    .filter-sheet .prop-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+    .filter-sheet .prop-btn{flex-direction:column;gap:2px;padding:8px 4px;font-size:12px;border-radius:9px}
+    .filter-sheet .prop-btn svg{width:15px;height:15px}
+    .filter-sheet .prop-btn .prop-count{font-size:10.5px}
+    .fs-done{display:block;width:100%;background:#1B4D35;color:#fff;border:0;border-radius:10px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer}
+    .fs-done:hover{background:#163f2b}
+    @media(max-width:600px){
+      .filter-open{flex:1}
+      .filter-sheet{align-items:flex-end;padding:0}
+      .filter-sheet-box{border-radius:16px 16px 0 0;max-height:85vh;padding:14px 16px calc(16px + env(safe-area-inset-bottom))}
+    }
     /*ROWS_CSS_END*/"""
 
 ROWS_JS = r"""/*ROWS_JS_START*/
 /* Unit rows (text only, no photos). Tap a row to open details + WhatsApp.
    Written by build_static_listings.py (ROWS_JS); unit_row() there writes the
    same markup for the static copy -- edit both there. */
-const ROW_TXT = { bed: 'bed', bath: 'bath', moveIn: 'Move-in: ', est: 'Est. RM ', inst: '/mo instalment', near: 'Near:', mo: '/mo', wa: '💬 WhatsApp about this unit' };
+const ROW_TXT = { bed: 'bed', bath: 'bath', moveIn: 'Move-in: ', est: 'Est. RM ', inst: '/mo instalment', near: 'Near:', mo: '/mo', wa: '💬 WhatsApp for pictures/more info' };
 function clean(v) { v = String(v || '').trim(); return (v && v !== '-') ? v : ''; }
 function coaRef(r) {
   if (!r.code) return '';
@@ -572,10 +602,11 @@ function unitRow(r, rent) {
                         : `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`;
   return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">` +
     `<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">` +
-      `<span class="row-main"><span class="card-name">${escHtml(r.project_name)}</span>` +
+      `<span class="row-main"><span class="row-title"><span class="card-name">${escHtml(r.project_name)}</span>` +
+      `<span class="row-sep" aria-hidden="true">|</span>` +
+      `<span class="card-price">${fmt(r.price)}${rent ? `<span>${ROW_TXT.mo}</span>` : ''}</span></span>` +
       `<span class="card-zone">${spans(sub)}</span></span>` +
-      `<span class="row-side"><span class="card-price">${fmt(r.price)}${rent ? `<span>${ROW_TXT.mo}</span>` : ''}</span>` +
-      `<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>` +
+      `<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>` +
     `</button>` +
     `<div class="row-more">` +
       `<div class="row-specs"><span class="bits">${spans(more)}</span>${ref ? `<span class="badge-coa">${escHtml(ref)}</span>` : ''}</div>` +
@@ -591,6 +622,51 @@ function toggleRow(btn) {
   const open = card.classList.toggle('open');
   btn.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
+
+/* Search & filter popup: the page's own filter bar sits inside #filter-sheet,
+   so applyFilters() etc. work unchanged. */
+function filterSheet() { return document.getElementById('filter-sheet'); }
+function openFilters() {
+  const s = filterSheet(); if (!s) return;
+  s.hidden = false;
+  document.documentElement.style.overflow = 'hidden';
+}
+function closeFilters(scroll) {
+  const s = filterSheet(); if (!s || s.hidden) return;
+  s.hidden = true;
+  document.documentElement.style.overflow = '';
+  updateFilterBadge();
+  const top = document.getElementById('listings');
+  if (scroll !== false && top) top.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+// Number of filters in use (only the ones shown for this tab)
+function updateFilterBadge() {
+  const badge = document.getElementById('filter-badge'); if (!badge) return;
+  let n = (document.getElementById('f-q') || {}).value ? 1 : 0;
+  const pb = document.querySelector('#prop-tabs .prop-btn.active');
+  if (pb && pb.dataset.prop) n++;   // Residential / Commercial / Land picked
+  ['f-furnishing', 'f-type', 'f-bed', 'f-price', 'f-instalment', 'f-tenure'].forEach(id => {
+    const el = document.getElementById(id);
+    const g = el && el.closest('.filter-group');
+    if (el && el.value && !(g && g.style.display === 'none')) n++;
+  });
+  badge.textContent = n; badge.hidden = n === 0;
+}
+(function () {
+  const count = document.getElementById('filter-count'); if (!count) return;
+  // "Show 39 listings" button and the count beside the open button follow #filter-count
+  const sync = () => {
+    const txt = count.textContent.trim();
+    const done = document.getElementById('fs-count'); if (done) done.textContent = txt;
+    const sum = document.getElementById('filter-summary'); if (sum) sum.textContent = txt;
+    updateFilterBadge();
+  };
+  new MutationObserver(sync).observe(count, { childList: true, characterData: true, subtree: true });
+  const s = filterSheet();
+  if (s) { s.addEventListener('change', updateFilterBadge); s.addEventListener('input', updateFilterBadge); }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFilters(false); });
+  sync();
+})();
 /*ROWS_JS_END*/"""
 
 ROWS_HINT = '<p class="list-hint">Tap a unit for details and WhatsApp.</p>'
@@ -612,6 +688,62 @@ _ROWS_CSS_BLOCK = re.compile(r"/\*ROWS_CSS_START\*/.*?/\*ROWS_CSS_END\*/", re.S)
 _ROWS_JS_BLOCK = re.compile(r"/\*ROWS_JS_START\*/.*?/\*ROWS_JS_END\*/", re.S)
 
 
+FILTER_SHEET = """<!--FILTER_SHEET_START-->
+  <div class="filter-open-row">
+    <button type="button" class="filter-open" onclick="openFilters()" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search &amp; filter units</span><span class="filter-badge" id="filter-badge" hidden></span></button>
+    <span class="filter-summary" id="filter-summary"></span>
+  </div>
+  <div class="filter-sheet" id="filter-sheet" hidden onclick="if(event.target===this)closeFilters()">
+    <div class="filter-sheet-box" role="dialog" aria-modal="true" aria-labelledby="fs-title">
+      <div class="fs-head"><span class="fs-title" id="fs-title">Search &amp; filter units</span><button type="button" class="fs-close" onclick="closeFilters()" aria-label="Close">✕</button></div>
+      @@PROP@@<!--PROP_END-->
+      @@FILTER_BAR@@<!--FB_END-->
+      <button type="button" class="fs-done" onclick="closeFilters()"><span class="fs-done-label">Show</span> <span id="fs-count"></span></button>
+    </div>
+  </div>
+  <!--FILTER_SHEET_END-->"""
+_OLD_FILTER_BAR = re.compile(
+    r'  <!-- FILTERS -->\n  (<div class="filter-bar" id="filter-bar">.*?\n  </div>)\n(?=  <div id="instalment-disclaimer")', re.S)
+_FILTER_SHEET_BLOCK = re.compile(r"<!--FILTER_SHEET_START-->.*?<!--FILTER_SHEET_END-->", re.S)
+_FILTER_BAR_IN_SHEET = re.compile(r'<div class="filter-bar" id="filter-bar">.*?</div>(?=<!--FB_END-->)', re.S)
+
+
+_OLD_PROP = re.compile(
+    r'  <!-- PROPERTY CLASS -->\n  (<div class="prop-choice">.*?\n  </div>)\n\n?(?=  <!-- FILTERS)', re.S)
+_PROP_IN_SHEET = re.compile(r'<div class="prop-choice">.*?</div>(?=<!--PROP_END-->)', re.S)
+
+
+def _sheet(bar: str, prop: str) -> str:
+    return FILTER_SHEET.replace("@@PROP@@", prop).replace("@@FILTER_BAR@@", bar)
+
+
+def apply_filter_sheet(text: str, name: str = "") -> str:
+    """Template housekeeping: put the area page's Property type buttons and
+    filter bar inside a 'Search & filter units' popup. For Rent / For Sale
+    stays on the page. Safe to re-run (the wrapper is refreshed)."""
+    # Property type block still on the page (old template, or the first popup version)
+    prop = None
+    pm = _OLD_PROP.search(text)
+    if pm:
+        prop = pm.group(1)
+        text = text[:pm.start()] + text[pm.end():]
+
+    m = _FILTER_SHEET_BLOCK.search(text)
+    if m:
+        bar = _FILTER_BAR_IN_SHEET.search(m.group(0))
+        if prop is None:
+            pp = _PROP_IN_SHEET.search(m.group(0))
+            prop = pp.group(0) if pp else ""
+        if bar:
+            return text[:m.start()] + _sheet(bar.group(0), prop) + text[m.end():]
+    m = _OLD_FILTER_BAR.search(text)
+    if m:
+        new = "  <!-- FILTERS (popup) -->\n  " + _sheet(m.group(1), prop or "") + "\n"
+        return text[:m.start()] + new + text[m.end():]
+    print(f"    (warning: {name} filter bar not found, popup not added)")
+    return text
+
+
 def apply_row_layout(text: str, name: str = "") -> str:
     """Template housekeeping: give an area page the text-only row layout.
     Safe to re-run -- the blocks between the ROWS_* markers are just refreshed."""
@@ -619,7 +751,11 @@ def apply_row_layout(text: str, name: str = "") -> str:
     text = re.sub(r'[ \t]*<link rel="stylesheet" href="/lightbox\.css[^"]*">\n?', "", text)
     text = re.sub(r'<script src="/lightbox\.js[^"]*"></script>\n?', "", text)
 
-    # 2. CSS
+    # 2. CSS -- old mobile rules are cleared first, and only while the page has no
+    #    row block yet, so the row block's own mobile rules are never touched
+    if not _ROWS_CSS_BLOCK.search(text):
+        text = _OLD_CARD_CSS_MOBILE.sub("", text, count=1)
+        text = _V1_ROW_CSS_MOBILE.sub("", text, count=1)
     if _ROWS_CSS_BLOCK.search(text):
         text = _ROWS_CSS_BLOCK.sub(lambda m: ROWS_CSS, text, count=1)
     elif _OLD_CARD_CSS.search(text):
@@ -628,8 +764,6 @@ def apply_row_layout(text: str, name: str = "") -> str:
         text = _V1_ROW_CSS.sub(lambda m: ROWS_CSS, text, count=1)
     else:
         print(f"    (warning: {name} card CSS not found, row CSS not added)")
-    text = _OLD_CARD_CSS_MOBILE.sub("", text, count=1)
-    text = _V1_ROW_CSS_MOBILE.sub("", text, count=1)
 
     # 3. floating WhatsApp button: bottom corner on phones, off the unit prices
     text = text.replace(
@@ -648,7 +782,10 @@ def apply_row_layout(text: str, name: str = "") -> str:
     else:
         print(f"    (warning: {name} card JS not found, row JS not added)")
 
-    # 5. "tap a unit" hint above each list, and open a unit linked by #hash
+    # 5. filter bar -> "Search & filter units" popup
+    text = apply_filter_sheet(text, name)
+
+    # 6. "tap a unit" hint above each list, and open a unit linked by #hash
     for gid in ("grid-unit", "grid-subsale"):
         grid = f'<div class="listing-grid" id="{gid}">'
         if grid in text and ROWS_HINT + "\n    " + grid not in text:
@@ -1519,10 +1656,13 @@ BM_UI = [
     ('alt="Room Rentals"', 'alt="Bilik sewa"'),
     ('alt="Subsales"', 'alt="Rumah dijual"'),
     # unit rows (ROW_TXT is the JS wording; swap it before the plain-text swaps)
-    ("const ROW_TXT = { bed: 'bed', bath: 'bath', moveIn: 'Move-in: ', est: 'Est. RM ', inst: '/mo instalment', near: 'Near:', mo: '/mo', wa: '💬 WhatsApp about this unit' };",
-     "const ROW_TXT = { bed: 'bilik', bath: 'bilik air', moveIn: 'Masuk: ', est: 'Anggaran RM ', inst: '/bulan ansuran', near: 'Berhampiran:', mo: '/bulan', wa: '💬 WhatsApp tentang unit ini' };"),
+    ("const ROW_TXT = { bed: 'bed', bath: 'bath', moveIn: 'Move-in: ', est: 'Est. RM ', inst: '/mo instalment', near: 'Near:', mo: '/mo', wa: '💬 WhatsApp for pictures/more info' };",
+     "const ROW_TXT = { bed: 'bilik', bath: 'bilik air', moveIn: 'Masuk: ', est: 'Anggaran RM ', inst: '/bulan ansuran', near: 'Berhampiran:', mo: '/bulan', wa: '💬 WhatsApp untuk gambar & info' };"),
     ('Tap a unit for details and WhatsApp.', 'Tekan unit untuk maklumat dan WhatsApp.'),
-    ('💬 WhatsApp about this unit', '💬 WhatsApp tentang unit ini'),
+    ('💬 WhatsApp for pictures/more info', '💬 WhatsApp untuk gambar & info'),
+    ('Search &amp; filter units', 'Cari &amp; tapis unit'),
+    ('aria-label="Close">✕</button>', 'aria-label="Tutup">✕</button>'),
+    ('<span class="fs-done-label">Show</span>', '<span class="fs-done-label">Tunjuk</span>'),
     ('<b>Near:</b>', '<b>Berhampiran:</b>'),
     ('<span>/mo</span>', '<span>/bulan</span>'),
     # cards (static HTML and the JS that redraws them)
@@ -1915,17 +2055,18 @@ def lc_card(r: dict) -> str:
     return (
         f'<div class="card" id="{to_slug(r.get("project_name"), r.get("size"), r.get("price"))}">'
         f'<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">'
-        f'<span class="row-main"><span class="card-name">{esc(r.get("project_name"))}</span>'
+        f'<span class="row-main"><span class="row-title"><span class="card-name">{esc(r.get("project_name"))}</span>'
+        f'<span class="row-sep" aria-hidden="true">|</span>'
+        f'<span class="card-price">{fmt_price(r.get("price"))}{per}</span></span>'
         f'<span class="card-zone">{_spans(sub)}</span></span>'
-        f'<span class="row-side"><span class="card-price">{fmt_price(r.get("price"))}{per}</span>'
-        f'<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>'
+        f'<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
         f'</button>'
         f'<div class="row-more">'
         f'<div class="row-specs"><span class="bits">{_spans(more)}</span>'
         + (f'<span class="badge-coa">{esc(ref)}</span>' if ref else "")
         + f'</div>{anchors}'
         f'<a href="{html.escape(wa_with_ref(r, fallback), quote=True)}" class="card-cta" target="_blank" '
-        f'rel="noopener noreferrer">\U0001F4AC WhatsApp about this unit</a>'
+        f'rel="noopener noreferrer">\U0001F4AC WhatsApp for pictures/more info</a>'
         f'</div></div>'
     )
 
@@ -1968,13 +2109,14 @@ def apply_lc_row_layout(text: str, name: str, grid_ids) -> str:
     of photo cards. Safe to re-run."""
     text = re.sub(r'[ \t]*<link rel="stylesheet" href="/lightbox\.css[^"]*">\n?', "", text)
     text = re.sub(r'<script src="/lightbox\.js[^"]*"></script>\n?', "", text)
+    if not _ROWS_CSS_BLOCK.search(text):
+        text = _LC_OLD_CSS_MOBILE.sub("", text, count=1)
     if _ROWS_CSS_BLOCK.search(text):
         text = _ROWS_CSS_BLOCK.sub(lambda m: ROWS_CSS, text, count=1)
     elif _LC_OLD_CSS.search(text):
         text = _LC_OLD_CSS.sub(lambda m: ROWS_CSS, text, count=1)
     else:
         print(f"    (warning: {name} card CSS not found, row CSS not added)")
-    text = _LC_OLD_CSS_MOBILE.sub("", text, count=1)
     if _ROWS_TOGGLE_BLOCK.search(text):
         text = _ROWS_TOGGLE_BLOCK.sub(lambda m: ROWS_TOGGLE_JS, text, count=1)
     else:
