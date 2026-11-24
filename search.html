@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css?v=20260930">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -100,43 +99,35 @@
     .results-title{font-family:'Lora',serif;font-size:1.2rem;font-weight:700;color:#1c1c18}
     .results-count{font-size:13px;color:#7a7268}
 
-    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-
-    /* CARDS */
-    .card{background:#fff;border-radius:14px;border:1px solid #e3ddd0;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .18s,transform .15s}
-    .card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
-    /* Height lives on the photo, not the wrapper, so the arrow bar can sit below it */
-    .card-image-wrap{position:relative;width:100%;overflow:hidden;background:#f0ede8}
-    .card-image-wrap .card-image{width:100%;height:160px;object-fit:cover;display:block;cursor:pointer;transition:transform .35s ease}
-    .card-image-wrap:hover .card-image{transform:scale(1.06)}
-    .card-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;gap:10px}
-    .card-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
-    .badge-unit{background:#e8f4ed;color:#5C1420}
-    .badge-room{background:#fef3e2;color:#92500a}
-    .badge-subsale{background:#e8f0fe;color:#1a4fa0}
-    .badge-coa{background:#f0ede8;color:#7a7268;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:6px}
-    .card-name{font-size:14px;font-weight:700;color:#1c1c18;line-height:1.35}
-    .card-zone{font-size:12px;color:#7a7268;margin-top:1px}
-    .card-area-link{font-size:11px;color:#A82C3D;text-decoration:none;font-weight:600}
-    .card-area-link:hover{text-decoration:underline}
-    .card-price{font-size:20px;font-weight:900;color:#A82C3D}
-    .card-price span{font-size:12px;font-weight:500;color:#7a7268}
-    .card-price-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-    .card-pills{display:flex;flex-wrap:wrap;gap:6px}
-    .pill{font-size:11px;font-weight:600;color:#444;background:#f0ede8;padding:4px 10px;border-radius:20px;white-space:nowrap}
-    .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
-    .card-cta{display:block;text-align:center;background:#A82C3D;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
+    /* UNIT ROWS: one text row per unit (no photos); tap a row for details + WhatsApp.
+       Same layout as the area pages (ROWS_CSS in build_static_listings.py), in this page's colours. */
+    .list-hint{font-size:12.5px;color:#7a7268;margin:-6px 0 10px}
+    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));align-items:start;gap:10px}
+    .card{background:#fff;border-radius:12px;border:1px solid #e3ddd0;overflow:hidden;transition:border-color .15s}
+    .card.open{border-color:#A82C3D}
+    .row-head{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 16px;background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+    .row-head:hover{background:#faf9f6}
+    .row-head:focus-visible{outline:2px solid #E2818F;outline-offset:-2px}
+    .row-main{min-width:0;display:flex;flex-direction:column;gap:3px}
+    .card-name{font-size:15px;font-weight:700;color:#1c1c18;line-height:1.3}
+    .card-zone{font-size:12.5px;color:#7a7268;line-height:1.5}
+    .card-zone span+span::before,.row-specs .bits span+span::before{content:" · "}
+    .row-side{display:flex;align-items:center;gap:6px;flex-shrink:0}
+    .card-price{font-size:16px;font-weight:900;color:#A82C3D;white-space:nowrap}
+    .card-price span{font-size:11px;font-weight:500;color:#7a7268}
+    .chev{width:18px;height:18px;fill:none;stroke:#7a7268;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
+    .card.open .chev{transform:rotate(180deg)}
+    .row-more{display:none;padding:0 16px 16px}
+    .card.open .row-more{display:block}
+    .row-specs{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;font-size:12.5px;color:#444;border-top:1px solid #f0ede8;padding-top:12px}
+    .badge-coa{background:#f0ede8;color:#7a7268;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:20px;white-space:nowrap}
+    .card-anchors{font-size:12px;color:#7a7268;line-height:1.6;margin-top:8px}
+    .card-anchors b{color:#444;font-weight:600}
+    .row-actions{display:flex;gap:8px;margin-top:12px}
+    .card-cta{flex:1;display:block;text-align:center;background:#A82C3D;color:#fff;font-size:13.5px;font-weight:700;padding:12px;border-radius:8px;text-decoration:none;transition:background .18s}
     .card-cta:hover{background:#862233}
-    .card-view-area{display:block;text-align:center;background:#f0ede8;color:#1c1c18;font-size:12px;font-weight:600;padding:8px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:6px}
+    .card-view-area{display:flex;align-items:center;justify-content:center;text-align:center;background:#f0ede8;color:#1c1c18;font-size:12.5px;font-weight:600;padding:0 14px;border-radius:8px;text-decoration:none;transition:background .18s;white-space:nowrap}
     .card-view-area:hover{background:#e3ddd0}
-
-    /* Compact card by default at every width — full details (badges, anchors,
-       CTA, "View in Area Page") only show inside the lightbox popup after the
-       photo is clicked. Matches the pattern used on the area pages. */
-    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-area-link,.card-body .card-view-area{display:none}
-    .card-body .card-pills .pill{display:none}
-    .card-body .card-pills .pill-furnishing,.card-body .card-pills .pill-type,.card-body .card-pills .pill-tenure{display:inline-block}
-    .card-body .card-pills:not(:has(.pill-furnishing)):not(:has(.pill-type)):not(:has(.pill-tenure)){display:none}
 
     .empty{text-align:center;padding:64px 24px;color:#7a7268;font-size:15px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .empty strong{display:block;font-size:1.1rem;color:#1c1c18;margin-bottom:8px}
@@ -174,16 +165,14 @@
       .hero{padding:28px 16px 26px;border-radius:16px}
       .hero-tabs{flex-wrap:wrap;justify-content:center}
       .main{padding:24px 16px 48px}
-      .listing-grid{grid-template-columns:repeat(3,1fr);gap:8px}
-      .card{border-radius:10px}
-      .card-image-wrap .card-image{height:88px}
-      .card-body{padding:8px 8px 10px;gap:4px}
-      .card-name{font-size:10.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-      .card-zone{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-      .card-price{font-size:11.5px}
-      .card-price span{font-size:8px}
-      .card-pills{gap:0}
-      .card-body .card-pills .pill-furnishing,.card-body .card-pills .pill-type,.card-body .card-pills .pill-tenure{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
+      .listing-grid{grid-template-columns:minmax(0,1fr);gap:8px}
+      .row-head{padding:12px 14px}
+      .row-more{padding:0 14px 14px}
+      .card-name{font-size:14px}
+      .card-zone{font-size:12px}
+      .card-price{font-size:14.5px}
+      .row-actions{flex-direction:column}
+      .card-view-area{padding:10px}
     }
   </style>
   <style>
@@ -331,6 +320,7 @@
       <button class="filter-reset" onclick="resetFilters()">Reset</button>
     </div>
   </div>
+  <p class="list-hint">Tap a unit for details and WhatsApp.</p>
   <div class="listing-grid" id="results-grid">
     <div class="loading">Loading listings…</div>
   </div>
@@ -404,9 +394,9 @@ let allListings = [];
 let filteredListings = [];
 let currentQuery = '';   // search text — from the home page (?q=) or the box on this page
 
-/* Pagination — only PAGE_SIZE cards (and their photos) are built at a time.
-   12 = four full rows in the 3-column grid. */
-const PAGE_SIZE = 12;
+/* Pagination — only PAGE_SIZE rows are built at a time.
+   Rows are short, so 20 a page (10 per column on desktop). */
+const PAGE_SIZE = 20;
 let currentPage = 1;
 
 /* ── CSV loader ─────────────────────────────────────────── */
@@ -775,67 +765,73 @@ function hasVal(v) {
   return !!s && s !== '-';
 }
 
-// [COA code]_[post number] for the full card (lightbox.js), e.g. EXP_23494
+// [COA code]_[post number], e.g. EXP_23494 -- shown in the open row and sent in the WhatsApp message
 function postRef(r) {
   const m = String(r.source_link || '').trim().match(/\/(\d+)\/?$/);
   return m ? `${r.code}_${m[1]}` : r.code;
 }
 
+function escHtml(s) { return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+function clean(v) { return hasVal(v) ? String(v).trim() : ''; }
+function numText(v) { const n = Number(String(v).replace(/,/g, '')); return isNaN(n) ? '' : n.toLocaleString('en-MY'); }
+function spans(list) { return list.filter(Boolean).map(x => `<span>${escHtml(x)}</span>`).join(''); }
+function bedText(b) { b = clean(b); return !b ? '' : (b === '0' ? 'Studio' : `${b} bed`); }
+// WhatsApp text carries the full ref (code_post) so Hani knows the exact unit
+function waRef(r, fallback) {
+  let t = r.wa_text || fallback;
+  const ref = r.code ? postRef(r) : '';
+  if (ref) t = /Ref:/.test(t) ? t.replace(/Ref:\s*\S*/, 'Ref: ' + ref) : `${t} Ref: ${ref}`;
+  return wa(t);
+}
+
+/* Text row (no photos), same layout as the area pages. Tap the row to open
+   details, WhatsApp and a link to the unit on its area page. */
 function renderCard(r) {
   const areaHref = AREA_MAP[areaKey(r.area)] || '/kawasan.html';
-  const slugPart2 = r.listing_type === 'room' ? r.room_type : r.bed;
-  const slug = toSlug(r.project_name, slugPart2, getPrice(r));
+  const isRoom = r.listing_type === 'room';
+  const rent = r.listing_type === 'rental' || isRoom;
+  const slug = toSlug(r.project_name, isRoom ? r.room_type : r.bed, getPrice(r));
   const unitHref = `${areaHref}#${slug}`;
 
-  let badge, badgeClass;
-  if (r.listing_type === 'rental') { badge = 'Unit Rental'; badgeClass = 'badge-unit'; }
-  else if (r.listing_type === 'room') { badge = 'Room Rental'; badgeClass = 'badge-room'; }
-  else { badge = 'Subsale'; badgeClass = 'badge-subsale'; }
+  // where: "Seksyen 13, Shah Alam" (area left out when the zone already says it)
+  const zone = clean(r.zone), area = clean(r.area);
+  const where = zone && area && !zone.toLowerCase().includes(area.toLowerCase()) ? `${zone}, ${area}` : (zone || area);
+  const size = clean(r.size) ? `${numText(r.size)} sqft` : '';
+  const sub = isRoom
+    ? [where, clean(r.room_type), clean(r.furnishing)]
+    : [where, bedText(r.bed), size, r.listing_type === 'rental' ? clean(r.furnishing) : clean(r.tenure)];
+  const more = isRoom
+    ? ['Room', clean(r.bath_type)]
+    : [clean(r.type), clean(r.bath) ? `${r.bath} bath` : ''];
+  if (rent && clean(r.move_in_date)) more.push('Move-in: ' + r.move_in_date);
+  if (!rent && clean(r.installment)) more.push(`Est. RM ${numText(r.installment)}/mo instalment`);
 
-  const priceLabel = (r.listing_type === 'rental' || r.listing_type === 'room')
-    ? `${fmt(r.price)}<span> / month</span>`
-    : fmt(getPrice(r));
+  const ref = r.code ? postRef(r) : '';
+  const fallback = isRoom ? `Hi Hani, I'm interested in a room at ${r.project_name}, ${r.zone}.`
+    : rent ? `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`
+    : `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`;
 
-  // Each item is its own <span> (rather than mapped uniformly at the end) so the
-  // furnishing, type and tenure pills can carry pill-furnishing/pill-type/pill-tenure
-  // classes — the CSS above uses those to surface just these on the compact card.
-  const pillItems = r.listing_type === 'room'
-    ? [
-        hasVal(r.room_type) ? `<span class="pill pill-type">${r.room_type}</span>` : '',
-        hasVal(r.bath_type) ? `<span class="pill">${r.bath_type}</span>` : '',
-        hasVal(r.furnishing) ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
-        moveInText(r.move_in_date) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
-      ]
-    : [
-        hasVal(r.bed) ? `<span class="pill">🛏 ${r.bed} bed</span>` : '',
-        hasVal(r.bath) ? `<span class="pill">🚿 ${r.bath} bath</span>` : '',
-        hasVal(r.size) ? `<span class="pill">${Number(r.size).toLocaleString()} sqft</span>` : '',
-        (r.listing_type === 'rental' && hasVal(r.furnishing)) ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
-        hasVal(r.type) ? `<span class="pill pill-type">${r.type}</span>` : '',
-        (r.listing_type === 'subsale' && hasVal(r.tenure)) ? `<span class="pill pill-tenure">${r.tenure}</span>` : '',
-        (r.listing_type === 'rental' && moveInText(r.move_in_date)) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
-      ];
+  return `<div class="card">` +
+    `<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">` +
+      `<span class="row-main"><span class="card-name">${escHtml(r.project_name)}</span>` +
+      `<span class="card-zone">${spans(sub)}</span></span>` +
+      `<span class="row-side"><span class="card-price">${fmt(getPrice(r))}${rent ? '<span>/mo</span>' : ''}</span>` +
+      `<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>` +
+    `</button>` +
+    `<div class="row-more">` +
+      `<div class="row-specs"><span class="bits">${spans(more)}</span>${ref ? `<span class="badge-coa">${escHtml(ref)}</span>` : ''}</div>` +
+      (clean(r.anchors) ? `<div class="card-anchors"><b>Near:</b> ${escHtml(r.anchors)}</div>` : '') +
+      `<div class="row-actions">` +
+        `<a href="${escHtml(waRef(r, fallback))}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a>` +
+        `<a href="${escHtml(unitHref)}" class="card-view-area">See on ${escHtml(area || 'area')} page →</a>` +
+      `</div>` +
+    `</div></div>`;
+}
 
-  const pills = pillItems.filter(Boolean).join('');
-
-  const waText = r.wa_text || `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`;
-
-  return `<div class="card">
-    ${cardImage(r)}
-    <div class="card-body">
-      <div class="card-badges"><span class="card-badge ${badgeClass}">${badge}</span>${r.code ? `<span class="card-badge badge-coa" data-ref="${postRef(r)}">${r.code}</span>` : ''}</div>
-      <div>
-        <div class="card-name">${r.project_name}</div>
-        <div class="card-zone">${r.zone}</div>
-        <a href="${areaHref}" class="card-area-link">📍 ${r.area}</a>
-      </div>
-      <div class="card-price-row"><div class="card-price">${priceLabel}</div></div>
-      <div class="card-pills">${pills}</div>
-      ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
-      <a href="${wa(waText)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-      <a href="${unitHref}" class="card-view-area">View in Area Page →</a>
-    </div>
-  </div>`;
+function toggleRow(btn) {
+  const card = btn.closest('.card');
+  const open = card.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
 function renderResults() {
@@ -968,7 +964,6 @@ async function init() {
 
 init();
 </script>
-<script src="/lightbox.js?v=20261118"></script>
 <script src="/search.js"></script>
 
 

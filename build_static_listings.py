@@ -1895,42 +1895,39 @@ def _has(v) -> bool:
 
 
 def lc_card(r: dict) -> str:
-    """Card for the Land & Commercial page. Same markup/classes as the area
-    page cards (so lightbox.js popups work), minus bedroom pills and the
-    instalment line, which don't apply to shops or land."""
+    """Row for the Commercial and Land pages: the same text-row markup as the
+    area pages (unit_row), minus bedrooms and the instalment line, which don't
+    apply to shops or land. Shows the area too, since these pages mix areas."""
     rent = r.get("listing_type") == "rental"
-    cls = prop_class(r)
-    if cls == "land":
-        badge = '<span class="card-badge badge-land">Land · Sale</span>'
-    elif rent:
-        badge = '<span class="card-badge badge-unit">Commercial · Rent</span>'
-    else:
-        badge = '<span class="card-badge badge-subsale">Commercial · Sale</span>'
-    size = size_pill(r)
-    pills = "".join([
-        f'<span class="pill pill-size">{size}</span>' if size else "",
-        f'<span class="pill">{esc(r.get("type"))}</span>' if _has(r.get("type")) else "",
-        f'<span class="pill">{esc(r.get("tenure"))}</span>' if (not rent and _has(r.get("tenure"))) else "",
-        f'<span class="pill">{esc(r.get("furnishing"))}</span>' if (rent and _has(r.get("furnishing"))) else "",
-        f'<span class="pill">{esc(r.get("parking/floor"))}</span>' if (rent and _has(r.get("parking/floor"))) else "",
-        f'<span class="pill">{move_in_text(r.get("move_in_date"))}</span>' if (rent and move_in_text(r.get("move_in_date"))) else "",
-    ])
-    name = esc(r.get("project_name"))
-    where = ", ".join(esc(x) for x in (r.get("zone"), r.get("area")) if _has(x))
-    wa_text = r.get("wa_text") or f"Hi Hani, I'm interested in {r.get('project_name')}, {r.get('zone')}."
-    anchors = f'<div class="card-anchors">{esc(r.get("anchors"))}</div>' if _has(r.get("anchors")) else ""
-    per = "<span> / month</span>" if rent else ""
-    return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('size'), r.get('price'))}">
-    {card_image(r)}
-    <div class="card-body">
-      <div class="card-badges">{badge}{coa_badge(r.get('code'), r.get('source_link'))}</div>
-      <div><div class="card-name">{name}</div><div class="card-zone">{where}</div></div>
-      <div class="card-price">{fmt_price(r.get('price'))}{per}</div>
-      <div class="card-pills">{pills}</div>
-      {anchors}
-      <a href="{wa(wa_text)}" class="card-cta" target="_blank" rel="noopener noreferrer">\U0001F4AC Enquire on WhatsApp</a>
-    </div>
-  </div>'''
+    where = ", ".join(_clean(x) for x in (r.get("zone"), r.get("area")) if _clean(x))
+    size = _num_text(r.get("size")) if _clean(r.get("size")) else ""
+    sub = [where, f"{size} sqft" if size else "",
+           _clean(r.get("furnishing")) if rent else _clean(r.get("tenure"))]
+    more = [_clean(r.get("type"))]
+    if rent:
+        more += [_clean(r.get("parking/floor")),
+                 ("Move-in: " + _clean(r.get("move_in_date"))) if _clean(r.get("move_in_date")) else ""]
+    ref = post_ref(r.get("code"), r.get("source_link"))
+    fallback = f"Hi Hani, I'm interested in {r.get('project_name')}, {r.get('zone')}."
+    anchors = (f'<div class="card-anchors"><b>Near:</b> {esc(r.get("anchors"))}</div>'
+               if _clean(r.get("anchors")) else "")
+    per = "<span>/mo</span>" if rent else ""
+    return (
+        f'<div class="card" id="{to_slug(r.get("project_name"), r.get("size"), r.get("price"))}">'
+        f'<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">'
+        f'<span class="row-main"><span class="card-name">{esc(r.get("project_name"))}</span>'
+        f'<span class="card-zone">{_spans(sub)}</span></span>'
+        f'<span class="row-side"><span class="card-price">{fmt_price(r.get("price"))}{per}</span>'
+        f'<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>'
+        f'</button>'
+        f'<div class="row-more">'
+        f'<div class="row-specs"><span class="bits">{_spans(more)}</span>'
+        + (f'<span class="badge-coa">{esc(ref)}</span>' if ref else "")
+        + f'</div>{anchors}'
+        f'<a href="{html.escape(wa_with_ref(r, fallback), quote=True)}" class="card-cta" target="_blank" '
+        f'rel="noopener noreferrer">\U0001F4AC WhatsApp about this unit</a>'
+        f'</div></div>'
+    )
 
 
 def _rng(rows, suffix=""):
@@ -1947,6 +1944,51 @@ def _areas(rows):
     return f"{n} area{'s' if n != 1 else ''}"
 
 
+# Commercial / Land pages: same row CSS as the area pages, plus a tiny script
+# for opening rows (these pages have no other listing JS).
+ROWS_TOGGLE_JS = """<script>/*ROWS_TOGGLE_START*/
+/* Open/close a unit row. Written by build_static_listings.py -- edit it there. */
+function toggleRow(btn) {
+  const card = btn.closest('.card');
+  const open = card.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+/*ROWS_TOGGLE_END*/</script>"""
+_LC_OLD_CSS = re.compile(
+    r"\.listing-grid\{display:grid;grid-template-columns:repeat\(auto-fill,minmax\(280px,1fr\)\).*?"
+    r"\.card-body \.card-pills \.pill-size\{display:inline-block\}", re.S)
+_LC_OLD_CSS_MOBILE = re.compile(
+    r"      \.listing-grid\{grid-template-columns:repeat\(3,1fr\);gap:8px\}\n.*?"
+    r"\.card-body \.card-pills \.pill-size\{font-size:8px;padding:2px 6px\}\n", re.S)
+_ROWS_TOGGLE_BLOCK = re.compile(r"<script>/\*ROWS_TOGGLE_START\*/.*?/\*ROWS_TOGGLE_END\*/</script>", re.S)
+
+
+def apply_lc_row_layout(text: str, name: str, grid_ids) -> str:
+    """Template housekeeping for commercial.html / land.html: text rows instead
+    of photo cards. Safe to re-run."""
+    text = re.sub(r'[ \t]*<link rel="stylesheet" href="/lightbox\.css[^"]*">\n?', "", text)
+    text = re.sub(r'<script src="/lightbox\.js[^"]*"></script>\n?', "", text)
+    if _ROWS_CSS_BLOCK.search(text):
+        text = _ROWS_CSS_BLOCK.sub(lambda m: ROWS_CSS, text, count=1)
+    elif _LC_OLD_CSS.search(text):
+        text = _LC_OLD_CSS.sub(lambda m: ROWS_CSS, text, count=1)
+    else:
+        print(f"    (warning: {name} card CSS not found, row CSS not added)")
+    text = _LC_OLD_CSS_MOBILE.sub("", text, count=1)
+    if _ROWS_TOGGLE_BLOCK.search(text):
+        text = _ROWS_TOGGLE_BLOCK.sub(lambda m: ROWS_TOGGLE_JS, text, count=1)
+    else:
+        text = text.replace('<script src="/search.js"></script>',
+                            ROWS_TOGGLE_JS + '\n<script src="/search.js"></script>', 1)
+    text = text.replace("No registration needed — tap any photo, then WhatsApp.",
+                        "No registration needed — tap any unit, then WhatsApp.")
+    for gid in grid_ids:
+        grid = f'<div class="listing-grid" id="{gid}">'
+        if grid in text and ROWS_HINT + "\n    " + grid not in text:
+            text = text.replace(grid, ROWS_HINT + "\n    " + grid, 1)
+    return text
+
+
 def _build_page(path: Path, grids, counts, summary, label) -> None:
     """Inject cards, jump-button counts and the summary line into a page,
     moving its 'Last updated' date only when the listings really changed."""
@@ -1955,7 +1997,7 @@ def _build_page(path: Path, grids, counts, summary, label) -> None:
         return
     text = path.read_text(encoding="utf-8")
     original = text
-    text = re.sub(r"/lightbox\.js\?v=\w+", f"/lightbox.js?v={LIGHTBOX_VER}", text)
+    text = apply_lc_row_layout(text, path.name, list(grids))
     for gid, (rows, empty_msg) in grids.items():
         cards = "".join(lc_card(r) for r in rows) if rows else empty_html(empty_msg)
         text = inject_grid(text, gid, cards)
