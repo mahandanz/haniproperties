@@ -1297,6 +1297,69 @@ def process_kawasan_page():
     build_bm_kawasan(text)
 
 
+# ---------------------------------------------------------------------------
+# Homepage "New this week" list (index.html #home-new-units)
+#
+# The newest active units (by date_added), as short name | price rows. Each
+# row links to the unit on its area page (#slug opens its row there), or to
+# search.html when no area page carries it. The heading says "New this week"
+# only while the newest unit was added in the last 7 days, otherwise "Latest units".
+# ---------------------------------------------------------------------------
+HOME_NEW_COUNT = 6
+_HOME_NEW = re.compile(r'(<div class="nu-wrap" id="home-new-units">)' + SSR_START + r'.*?' + SSR_END + r'(</div>)', re.S)
+
+
+def _home_new_row(r: dict, page_map: dict) -> str:
+    rent = r.get("listing_type") == "rental"
+    zone, area = _clean(r.get("zone")), _clean(r.get("area"))
+    where = f"{zone}, {area}" if zone and area and area.lower() not in zone.lower() else (zone or area)
+    size = _num_text(r.get("size")) if _clean(r.get("size")) else ""
+    sub = [where, _bed_text(r.get("bed")), f"{size} sqft" if size else "",
+           _clean(r.get("furnishing")) if rent else _clean(r.get("tenure"))]
+    slug = to_slug(r.get("project_name"), r.get("bed"), r.get("price"))
+    stem = page_map.get(id(r))
+    href = (f"area/local/{stem}.html#{slug}" if stem
+            else "search.html?q=" + urllib.parse.quote(r.get("project_name") or ""))
+    per = "<span>/mo</span>" if rent else ""
+    tag = "Rent" if rent else "Sale"
+    return (f'<a class="nu-row" href="{html.escape(href, quote=True)}">'
+            f'<span class="nu-main"><span class="nu-title"><span class="nu-name">{esc(r.get("project_name"))}</span>'
+            f'<span class="nu-sep" aria-hidden="true">|</span><span class="nu-price">{fmt_price(r.get("price"))}{per}</span></span>'
+            f'<span class="nu-sub"><span class="nu-tag nu-{tag.lower()}">{tag}</span>{_spans(sub)}</span></span>'
+            f'<span class="nu-go" aria-hidden="true">›</span></a>')
+
+
+def sync_homepage_new_units(all_rows, area_results):
+    """Write the newest units into index.html's #home-new-units block."""
+    if not HOMEPAGE_PATH.exists():
+        return
+    import datetime
+    # row -> area page; a row on two pages (e.g. Shah Alam + its Setia Alam zone page)
+    # goes to the page with fewer listings, i.e. the more specific one
+    page_map, page_size = {}, {}
+    for stem, groups in area_results.items():
+        n = sum(len(g) for g in groups)
+        for g in groups:
+            for r in g:
+                if id(r) not in page_map or n < page_size[id(r)]:
+                    page_map[id(r)], page_size[id(r)] = stem, n
+    active = [r for r in all_rows
+              if r.get("status") in ("-", "", None) and r.get("listing_type") in ("rental", "subsale")]
+    newest = sorted(active, key=lambda r: (_date_added(r), _demand(r)), reverse=True)[:HOME_NEW_COUNT]
+    week_ago = int((datetime.date.today() - datetime.timedelta(days=7)).strftime("%Y%m%d"))
+    title = "New this week" if newest and _date_added(newest[0]) >= week_ago else "Latest units"
+    rows_html = "".join(_home_new_row(r, page_map) for r in newest) or '<p class="nu-empty">New units coming soon.</p>'
+    block = f'<h2 class="nu-h">{title}</h2><div class="nu-list">{rows_html}</div>'
+    text = HOMEPAGE_PATH.read_text(encoding="utf-8")
+    if not _HOME_NEW.search(text):
+        print("    (warning: #home-new-units not found in index.html, skipped)")
+        return
+    new_text = _HOME_NEW.sub(lambda m: m.group(1) + SSR_START + block + SSR_END + m.group(2), text, count=1)
+    if new_text != text:
+        HOMEPAGE_PATH.write_text(new_text, encoding="utf-8")
+    print(f"  {HOMEPAGE_PATH.name}: {len(newest)} units in '{title}'")
+
+
 def sync_homepage_areas():
     """Renders the HOME_AREAS cards into index.html's #home-areas grid, using
     the same area_card_html() as kawasan.html so the two pages always match."""
@@ -2291,6 +2354,7 @@ def main():
     process_kawasan_page()
     sync_homepage_areas()
     sync_homepage_area_count()
+    # sync_homepage_new_units(rows, area_results)  # homepage "New this week" list -- off; homepage kept as is
 
     print("\nDone. Static SSR cards injected -- JS filtering/fetch still works as before.")
 
