@@ -161,30 +161,85 @@ def size_pill(r: dict) -> str:
         return ""
 
 
+# ---------------------------------------------------------------------------
+# Area page unit rows (text only, no photos)
+#
+# Each unit is one row: name, zone/beds/size/furnishing (or tenure) and price.
+# Tapping the row opens type, baths, move-in or instalment, the COA ref,
+# what's nearby and the WhatsApp button. unit_row() here and unitRow() in the
+# page's JS (ROWS_JS below) write the same markup -- change both together.
+# Each detail sits in its own <span> (CSS adds the " · " between them) so the
+# BM build can translate "3 bed", "Fully Furnished" etc. one by one.
+# ---------------------------------------------------------------------------
+
+def _clean(v) -> str:
+    s = str(v or "").strip()
+    return "" if s in ("", "-") else s
+
+
+def _num_text(v) -> str:
+    try:
+        return f"{int(float(str(v).replace(',', ''))):,}"
+    except ValueError:
+        return ""
+
+
+def _bed_text(b) -> str:
+    b = _clean(b)
+    return "" if not b else ("Studio" if b == "0" else f"{b} bed")
+
+
+def _spans(items) -> str:
+    return "".join(f"<span>{esc(x)}</span>" for x in items if x)
+
+
+def wa_with_ref(r: dict, fallback: str) -> str:
+    """WhatsApp link whose message carries the full ref (code_postnumber),
+    so Hani knows the exact unit. Replaces a 'Ref: XXX' already in wa_text."""
+    text = r.get("wa_text") or fallback
+    ref = post_ref(r.get("code"), r.get("source_link"))
+    if ref:
+        text = (re.sub(r"Ref:\s*\S*", lambda m: "Ref: " + ref, text) if "Ref:" in text
+                else f"{text} Ref: {ref}")
+    return wa(text)
+
+
+def unit_row(r: dict, rent: bool) -> str:
+    size = _num_text(r.get("size")) if _clean(r.get("size")) else ""
+    sub = [_clean(r.get("zone")), _bed_text(r.get("bed")), f"{size} sqft" if size else "",
+           _clean(r.get("furnishing")) if rent else _clean(r.get("tenure"))]
+    more = [_clean(r.get("type")), f"{_clean(r.get('bath'))} bath" if _clean(r.get("bath")) else ""]
+    if rent and _clean(r.get("move_in_date")):
+        more.append("Move-in: " + _clean(r.get("move_in_date")))
+    inst = _num_text(r.get("installment")) if (not rent and _clean(r.get("installment"))) else ""
+    if inst:
+        more.append(f"Est. RM {inst}/mo instalment")
+    ref = post_ref(r.get("code"), r.get("source_link"))
+    fallback = (f"Hi Hani, I'm interested in {r.get('project_name')}, {r.get('zone')}." if rent else
+                f"Hi Hani, I'm interested in the subsale unit at {r.get('project_name')}, {r.get('zone')}.")
+    anchors = (f'<div class="card-anchors"><b>Near:</b> {esc(r.get("anchors"))}</div>'
+               if _clean(r.get("anchors")) else "")
+    per = "<span>/mo</span>" if rent else ""
+    return (
+        f'<div class="card" id="{to_slug(r.get("project_name"), r.get("bed"), r.get("price"))}">'
+        f'<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">'
+        f'<span class="row-main"><span class="card-name">{esc(r.get("project_name"))}</span>'
+        f'<span class="card-zone">{_spans(sub)}</span></span>'
+        f'<span class="row-side"><span class="card-price">{fmt_price(r.get("price"))}{per}</span>'
+        f'<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>'
+        f'</button>'
+        f'<div class="row-more">'
+        f'<div class="row-specs"><span class="bits">{_spans(more)}</span>'
+        + (f'<span class="badge-coa">{esc(ref)}</span>' if ref else "")
+        + f'</div>{anchors}'
+        f'<a href="{html.escape(wa_with_ref(r, fallback), quote=True)}" class="card-cta" target="_blank" '
+        f'rel="noopener noreferrer">\U0001F4AC WhatsApp about this unit</a>'
+        f'</div></div>'
+    )
+
+
 def unit_card(r: dict) -> str:
-    pills = pills_html([
-        f"\U0001F6CF {esc(r['bed'])} bed" if r.get("bed") else "",
-        f"\U0001F6BF {esc(r['bath'])} bath" if r.get("bath") else "",
-        size_pill(r),
-        esc(r.get("furnishing")),
-        esc(r.get("type")),
-        move_in_text(r.get("move_in_date")),
-    ])
-    name = esc(r.get("project_name"))
-    zone = esc(r.get("zone"))
-    wa_text = r.get("wa_text") or f"Hi Hani, I'm interested in {r.get('project_name')}, {r.get('zone')}."
-    anchors = f'<div class="card-anchors">{esc(r.get("anchors"))}</div>' if r.get("anchors") else ""
-    return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('bed'), r.get('price'))}">
-    {card_image(r)}
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span>{coa_badge(r.get('code'), r.get('source_link'))}</div>
-      <div><div class="card-name">{name}</div><div class="card-zone">{zone}</div></div>
-      <div class="card-price">{fmt_price(r.get('price'))}<span> / month</span></div>
-      <div class="card-pills">{pills}</div>
-      {anchors}
-      <a href="{wa(wa_text)}" class="card-cta" target="_blank" rel="noopener noreferrer">\U0001F4AC Enquire on WhatsApp</a>
-    </div>
-  </div>'''
+    return unit_row(r, rent=True)
 
 
 def room_card(r: dict) -> str:
@@ -212,37 +267,7 @@ def room_card(r: dict) -> str:
 
 
 def subsale_card(r: dict) -> str:
-    pills = pills_html([
-        f"\U0001F6CF {esc(r['bed'])} bed" if r.get("bed") else "",
-        f"\U0001F6BF {esc(r['bath'])} bath" if r.get("bath") else "",
-        size_pill(r),
-        esc(r.get("tenure")),
-        esc(r.get("type")),
-    ])
-    name = esc(r.get("project_name"))
-    zone = esc(r.get("zone"))
-    wa_text = r.get("wa_text") or f"Hi Hani, I'm interested in the subsale unit at {r.get('project_name')}, {r.get('zone')}."
-    anchors = f'<div class="card-anchors">{esc(r.get("anchors"))}</div>' if r.get("anchors") else ""
-    inst = ""
-    if r.get("installment"):
-        try:
-            inst_val = f"{int(float(str(r['installment']).replace(',', ''))):,}"
-            inst = (f'<div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. '
-                    f'<strong style="color:#1B4D35;">RM {inst_val}</strong>/mo instalment</div>')
-        except ValueError:
-            pass
-    return f'''<div class="card" id="{to_slug(r.get('project_name'), r.get('bed'), r.get('price'))}">
-    {card_image(r)}
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span>{coa_badge(r.get('code'), r.get('source_link'))}</div>
-      <div><div class="card-name">{name}</div><div class="card-zone">{zone}</div></div>
-      <div class="card-price">{fmt_price(r.get('price'))}</div>
-      {inst}
-      <div class="card-pills">{pills}</div>
-      {anchors}
-      <a href="{wa(wa_text)}" class="card-cta" target="_blank" rel="noopener noreferrer">\U0001F4AC Enquire on WhatsApp</a>
-    </div>
-  </div>'''
+    return unit_row(r, rent=False)
 
 
 def _demand(r) -> float:
@@ -462,6 +487,176 @@ def add_area_pager(text: str) -> str:
             f'<script src="/area-pager.js?v={AREA_PAGER_VER}"></script>\n<script src="/search.js"></script>',
             1,
         )
+    return text
+
+
+# ---------------------------------------------------------------------------
+# Row layout template (CSS + JS) for area pages
+#
+# The build writes these two blocks into every area page between their
+# /*ROWS_CSS_START*/ ... /*ROWS_CSS_END*/ and /*ROWS_JS_START*/ ... /*ROWS_JS_END*/
+# markers, so this file is the one place to change how unit rows look or
+# behave -- edit here and re-run, don't hand-edit the pages. The first run
+# also converts the old photo-card template (and the first hand-made Shah
+# Alam row version) to this one.
+# ---------------------------------------------------------------------------
+
+ROWS_CSS = """/*ROWS_CSS_START*/
+    /* Unit list: one text row per unit (no photos); tap a row for details + WhatsApp.
+       Written by build_static_listings.py (ROWS_CSS) -- edit it there. */
+    .list-hint{font-size:12.5px;color:#7a7268;margin:0 0 10px}
+    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));align-items:start;gap:10px;margin-bottom:8px}
+    .card{background:#fff;border-radius:12px;border:1px solid #e3ddd0;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+    .card.open{border-color:#1B4D35}
+    .card-highlight{box-shadow:0 0 0 3px rgba(0,190,99,.45)}
+    .row-head{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 16px;background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+    .row-head:hover{background:#faf9f6}
+    .row-head:focus-visible{outline:2px solid #00BE63;outline-offset:-2px}
+    .row-main{min-width:0;display:flex;flex-direction:column;gap:3px}
+    .card-name{font-size:15px;font-weight:700;color:#1c1c18;line-height:1.3}
+    .card-zone{font-size:12.5px;color:#7a7268;line-height:1.5}
+    .card-zone span+span::before,.row-specs .bits span+span::before{content:" · "}
+    .row-side{display:flex;align-items:center;gap:6px;flex-shrink:0}
+    .card-price{font-size:16px;font-weight:900;color:#1B4D35;white-space:nowrap}
+    .card-price span{font-size:11px;font-weight:500;color:#7a7268}
+    .chev{width:18px;height:18px;fill:none;stroke:#7a7268;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
+    .card.open .chev{transform:rotate(180deg)}
+    .row-more{display:none;padding:0 16px 16px}
+    .card.open .row-more{display:block}
+    .row-specs{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;font-size:12.5px;color:#444;border-top:1px solid #f0ede8;padding-top:12px}
+    .badge-coa{background:#f0ede8;color:#7a7268;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:20px;white-space:nowrap}
+    .card-anchors{font-size:12px;color:#7a7268;line-height:1.6;margin-top:8px}
+    .card-anchors b{color:#444;font-weight:600}
+    .card-cta{display:block;text-align:center;background:#1B4D35;color:#fff;font-size:13.5px;font-weight:700;padding:12px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:12px}
+    .card-cta:hover{background:#163f2b}
+    @media(max-width:600px){
+      .listing-grid{grid-template-columns:minmax(0,1fr);gap:8px}
+      .row-head{padding:12px 14px}
+      .row-more{padding:0 14px 14px}
+      .card-name{font-size:14px}
+      .card-zone{font-size:12px}
+      .card-price{font-size:14.5px}
+    }
+    /*ROWS_CSS_END*/"""
+
+ROWS_JS = r"""/*ROWS_JS_START*/
+/* Unit rows (text only, no photos). Tap a row to open details + WhatsApp.
+   Written by build_static_listings.py (ROWS_JS); unit_row() there writes the
+   same markup for the static copy -- edit both there. */
+const ROW_TXT = { bed: 'bed', bath: 'bath', moveIn: 'Move-in: ', est: 'Est. RM ', inst: '/mo instalment', near: 'Near:', mo: '/mo', wa: '💬 WhatsApp about this unit' };
+function clean(v) { v = String(v || '').trim(); return (v && v !== '-') ? v : ''; }
+function coaRef(r) {
+  if (!r.code) return '';
+  const m = String(r.source_link || '').trim().match(/\/(\d+)\/?$/);
+  return m ? `${r.code}_${m[1]}` : r.code;
+}
+// WhatsApp text carries the full ref (code_post) so Hani knows the exact unit
+function waRef(r, fallback) {
+  let t = r.wa_text || fallback;
+  const ref = coaRef(r);
+  if (ref) t = /Ref:/.test(t) ? t.replace(/Ref:\s*\S*/, 'Ref: ' + ref) : `${t} Ref: ${ref}`;
+  return wa(t);
+}
+function furnText(f) { f = clean(f); return (typeof FURNISHING_BM !== 'undefined' && FURNISHING_BM[f]) || f; }
+function bedText(b) { b = clean(b); return !b ? '' : (b === '0' ? 'Studio' : `${b} ${ROW_TXT.bed}`); }
+function numText(v) { const n = Number(String(v).replace(/,/g, '')); return isNaN(n) ? '' : n.toLocaleString('en-MY'); }
+function spans(list) { return list.filter(Boolean).map(x => `<span>${escHtml(x)}</span>`).join(''); }
+
+function unitRow(r, rent) {
+  const sub = [clean(r.zone), bedText(r.bed), clean(r.size) ? `${numText(r.size)} sqft` : '', rent ? furnText(r.furnishing) : clean(r.tenure)];
+  const more = [clean(r.type), clean(r.bath) ? `${r.bath} ${ROW_TXT.bath}` : ''];
+  if (rent && clean(r.move_in_date)) more.push(ROW_TXT.moveIn + r.move_in_date);
+  if (!rent && clean(r.installment)) more.push(ROW_TXT.est + numText(r.installment) + ROW_TXT.inst);
+  const ref = coaRef(r);
+  const fallback = rent ? `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`
+                        : `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`;
+  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">` +
+    `<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">` +
+      `<span class="row-main"><span class="card-name">${escHtml(r.project_name)}</span>` +
+      `<span class="card-zone">${spans(sub)}</span></span>` +
+      `<span class="row-side"><span class="card-price">${fmt(r.price)}${rent ? `<span>${ROW_TXT.mo}</span>` : ''}</span>` +
+      `<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>` +
+    `</button>` +
+    `<div class="row-more">` +
+      `<div class="row-specs"><span class="bits">${spans(more)}</span>${ref ? `<span class="badge-coa">${escHtml(ref)}</span>` : ''}</div>` +
+      (clean(r.anchors) ? `<div class="card-anchors"><b>${ROW_TXT.near}</b> ${escHtml(r.anchors)}</div>` : '') +
+      `<a href="${escHtml(waRef(r, fallback))}" class="card-cta" target="_blank" rel="noopener noreferrer">${ROW_TXT.wa}</a>` +
+    `</div></div>`;
+}
+function unitCard(r) { return unitRow(r, true); }
+function subsaleCard(r) { return unitRow(r, false); }
+
+function toggleRow(btn) {
+  const card = btn.closest('.card');
+  const open = card.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+/*ROWS_JS_END*/"""
+
+ROWS_HINT = '<p class="list-hint">Tap a unit for details and WhatsApp.</p>'
+
+# Old template pieces the first run replaces
+_OLD_CARD_CSS = re.compile(
+    r"\.listing-grid\{display:grid;grid-template-columns:repeat\(auto-fill,minmax\(280px,1fr\)\).*?"
+    r"\.card-body \.card-pills:not\(:has\(\.pill-furnishing\)\)\{display:none\}", re.S)
+_OLD_CARD_CSS_MOBILE = re.compile(
+    r"      \.listing-grid\{grid-template-columns:repeat\(3,1fr\);gap:8px\}\n.*?max-width:100%\}\n", re.S)
+_OLD_CARD_JS = re.compile(r"function unitCard\(r\) \{.*?\nfunction subsaleCard\(r\) \{.*?\n\}", re.S)
+# first hand-made Shah Alam row version (24 Nov 2026)
+_V1_ROW_CSS = re.compile(r"/\* TEXT-ONLY UNIT LIST.*?\.card-cta:hover\{background:#163f2b\}", re.S)
+_V1_ROW_CSS_MOBILE = re.compile(
+    r"      \.listing-grid\{grid-template-columns:minmax\(0,1fr\);gap:8px\}\n.*?\.card-price\{font-size:14\.5px\}\n", re.S)
+_V1_ROW_JS = re.compile(
+    r"/\* ── Text-only unit rows.*?btn\.setAttribute\('aria-expanded', open \? 'true' : 'false'\);\n\}", re.S)
+_ROWS_CSS_BLOCK = re.compile(r"/\*ROWS_CSS_START\*/.*?/\*ROWS_CSS_END\*/", re.S)
+_ROWS_JS_BLOCK = re.compile(r"/\*ROWS_JS_START\*/.*?/\*ROWS_JS_END\*/", re.S)
+
+
+def apply_row_layout(text: str, name: str = "") -> str:
+    """Template housekeeping: give an area page the text-only row layout.
+    Safe to re-run -- the blocks between the ROWS_* markers are just refreshed."""
+    # 1. photo popup files are no longer used on area pages
+    text = re.sub(r'[ \t]*<link rel="stylesheet" href="/lightbox\.css[^"]*">\n?', "", text)
+    text = re.sub(r'<script src="/lightbox\.js[^"]*"></script>\n?', "", text)
+
+    # 2. CSS
+    if _ROWS_CSS_BLOCK.search(text):
+        text = _ROWS_CSS_BLOCK.sub(lambda m: ROWS_CSS, text, count=1)
+    elif _OLD_CARD_CSS.search(text):
+        text = _OLD_CARD_CSS.sub(lambda m: ROWS_CSS, text, count=1)
+    elif _V1_ROW_CSS.search(text):
+        text = _V1_ROW_CSS.sub(lambda m: ROWS_CSS, text, count=1)
+    else:
+        print(f"    (warning: {name} card CSS not found, row CSS not added)")
+    text = _OLD_CARD_CSS_MOBILE.sub("", text, count=1)
+    text = _V1_ROW_CSS_MOBILE.sub("", text, count=1)
+
+    # 3. floating WhatsApp button: bottom corner on phones, off the unit prices
+    text = text.replace(
+        "      .wa-float{right:14px;width:50px;height:50px}\n",
+        "      /* bottom corner on phones so it doesn't sit on top of unit prices */\n"
+        "      .wa-float{right:14px;top:auto;bottom:18px;transform:none;width:50px;height:50px}\n"
+        "      .wa-float:hover{transform:scale(1.08)}\n", 1)
+
+    # 4. JS
+    if _ROWS_JS_BLOCK.search(text):
+        text = _ROWS_JS_BLOCK.sub(lambda m: ROWS_JS, text, count=1)
+    elif _V1_ROW_JS.search(text):   # check before the old template: v1 also has a unitCard()
+        text = _V1_ROW_JS.sub(lambda m: ROWS_JS, text, count=1)
+    elif _OLD_CARD_JS.search(text):
+        text = _OLD_CARD_JS.sub(lambda m: ROWS_JS, text, count=1)
+    else:
+        print(f"    (warning: {name} card JS not found, row JS not added)")
+
+    # 5. "tap a unit" hint above each list, and open a unit linked by #hash
+    for gid in ("grid-unit", "grid-subsale"):
+        grid = f'<div class="listing-grid" id="{gid}">'
+        if grid in text and ROWS_HINT + "\n    " + grid not in text:
+            text = text.replace(grid, ROWS_HINT + "\n    " + grid, 1)
+    if "el.classList.add('open');" not in text:
+        text = text.replace("      el.scrollIntoView({ behavior: 'smooth', block: 'center' });",
+                            "      el.classList.add('open');\n"
+                            "      el.scrollIntoView({ behavior: 'smooth', block: 'center' });", 1)
     return text
 
 
@@ -697,6 +892,8 @@ def process_area_file(path: Path, all_rows):
     text = text.replace(JS_SUMMARY_OLD, JS_SUMMARY_NEW)
     # Pagination script + current lightbox.js version (housekeeping)
     text = add_area_pager(text)
+    # Text-only unit rows instead of photo cards (housekeeping)
+    text = apply_row_layout(text, path.name)
     url_fixed = text != path.read_text(encoding="utf-8")
     original = text
 
@@ -1321,6 +1518,13 @@ BM_UI = [
     ('alt="Unit Rentals"', 'alt="Rumah sewa"'),
     ('alt="Room Rentals"', 'alt="Bilik sewa"'),
     ('alt="Subsales"', 'alt="Rumah dijual"'),
+    # unit rows (ROW_TXT is the JS wording; swap it before the plain-text swaps)
+    ("const ROW_TXT = { bed: 'bed', bath: 'bath', moveIn: 'Move-in: ', est: 'Est. RM ', inst: '/mo instalment', near: 'Near:', mo: '/mo', wa: '💬 WhatsApp about this unit' };",
+     "const ROW_TXT = { bed: 'bilik', bath: 'bilik air', moveIn: 'Masuk: ', est: 'Anggaran RM ', inst: '/bulan ansuran', near: 'Berhampiran:', mo: '/bulan', wa: '💬 WhatsApp tentang unit ini' };"),
+    ('Tap a unit for details and WhatsApp.', 'Tekan unit untuk maklumat dan WhatsApp.'),
+    ('💬 WhatsApp about this unit', '💬 WhatsApp tentang unit ini'),
+    ('<b>Near:</b>', '<b>Berhampiran:</b>'),
+    ('<span>/mo</span>', '<span>/bulan</span>'),
     # cards (static HTML and the JS that redraws them)
     ('>Unit Rental</span>', '>Sewa Unit</span>'),
     ('>Room Rental</span>', '>Sewa Bilik</span>'),
@@ -1453,6 +1657,13 @@ def bm_page_text(en_text: str, slug: str, c: dict, summary: str) -> str:
         t = t.replace(old, new)
     for en, bm in FURNISHING_BM.items():
         t = t.replace(f'<span class="pill">{en}</span>', f'<span class="pill">{bm}</span>')
+    # unit rows (static copy): each detail is its own <span>
+    for en, bm in FURNISHING_BM.items():
+        t = t.replace(f'<span>{en}</span>', f'<span>{bm}</span>')
+    t = re.sub(r"<span>(\d+) bed</span>", r"<span>\1 bilik</span>", t)
+    t = re.sub(r"<span>(\d+) bath</span>", r"<span>\1 bilik air</span>", t)
+    t = t.replace("<span>Move-in: ", "<span>Masuk: ")
+    t = re.sub(r"<span>Est\. RM ([\d,]+)/mo instalment</span>", r"<span>Anggaran RM \1/bulan ansuran</span>", t)
     t = re.sub(r"(🛏 [^<]*?) bed<", r"\1 bilik<", t)
     t = re.sub(r"(🚿 [^<]*?) bath<", r"\1 bilik air<", t)
     t = t.replace("const WA_BASE =",

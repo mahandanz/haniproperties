@@ -26,7 +26,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css?v=20260930">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -70,40 +69,37 @@
     .section-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7a7268;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid #e3ddd0}
     .section-label:first-of-type{margin-top:0}
 
-    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:8px}
-
-    .card{background:#fff;border-radius:14px;border:1px solid #e3ddd0;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .18s,transform .15s}
-    .card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
-    /* Height lives on the photo, not the wrapper, so the arrow bar can sit below it */
-    .card-image-wrap{position:relative;width:100%;overflow:hidden;background:#f0ede8;touch-action:pan-y}
-    .card-image-wrap .card-image{width:100%;height:160px;object-fit:cover;display:block;cursor:pointer;transition:transform .35s ease}
-    .card-image-wrap:hover .card-image{transform:scale(1.06)}
-    .card-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;gap:10px}
-
-    .card-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
-    .badge-unit{background:#e8f4ed;color:#1B4D35}
-    .badge-subsale{background:#e8f0fe;color:#1a4fa0}
-    .badge-land{background:#f3ecf9;color:#5b3a94}
-    .badge-coa{background:#f0ede8;color:#7a7268;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:6px}
-    .badge-count{background:#eef7f0;color:#1B4D35;margin-left:6px}
-
-    .card-name{font-size:14px;font-weight:700;color:#1c1c18;line-height:1.35}
-    .card-zone{font-size:12px;color:#7a7268;margin-top:1px}
-    .card-price{font-size:20px;font-weight:900;color:#1B4D35}
-    .card-price span{font-size:12px;font-weight:500;color:#7a7268}
-
-    .card-pills{display:flex;flex-wrap:wrap;gap:6px}
-    .pill{font-size:11px;font-weight:600;color:#444;background:#f0ede8;padding:4px 10px;border-radius:20px;white-space:nowrap}
-    .card-price-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-    .pill-mv{background:#fdeaea;color:#a3271f}
-
-    .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
-    .card-cta{display:block;text-align:center;background:#1B4D35;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
+    /*ROWS_CSS_START*/
+    /* Unit list: one text row per unit (no photos); tap a row for details + WhatsApp.
+       Written by build_static_listings.py (ROWS_CSS) -- edit it there. */
+    .list-hint{font-size:12.5px;color:#7a7268;margin:0 0 10px}
+    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));align-items:start;gap:10px;margin-bottom:8px}
+    .card{background:#fff;border-radius:12px;border:1px solid #e3ddd0;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+    .card.open{border-color:#1B4D35}
+    .card-highlight{box-shadow:0 0 0 3px rgba(0,190,99,.45)}
+    .row-head{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 16px;background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+    .row-head:hover{background:#faf9f6}
+    .row-head:focus-visible{outline:2px solid #00BE63;outline-offset:-2px}
+    .row-main{min-width:0;display:flex;flex-direction:column;gap:3px}
+    .card-name{font-size:15px;font-weight:700;color:#1c1c18;line-height:1.3}
+    .card-zone{font-size:12.5px;color:#7a7268;line-height:1.5}
+    .card-zone span+span::before,.row-specs .bits span+span::before{content:" · "}
+    .row-side{display:flex;align-items:center;gap:6px;flex-shrink:0}
+    .card-price{font-size:16px;font-weight:900;color:#1B4D35;white-space:nowrap}
+    .card-price span{font-size:11px;font-weight:500;color:#7a7268}
+    .chev{width:18px;height:18px;fill:none;stroke:#7a7268;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
+    .card.open .chev{transform:rotate(180deg)}
+    .row-more{display:none;padding:0 16px 16px}
+    .card.open .row-more{display:block}
+    .row-specs{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;font-size:12.5px;color:#444;border-top:1px solid #f0ede8;padding-top:12px}
+    .badge-coa{background:#f0ede8;color:#7a7268;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:20px;white-space:nowrap}
+    .card-anchors{font-size:12px;color:#7a7268;line-height:1.6;margin-top:8px}
+    .card-anchors b{color:#444;font-weight:600}
+    .card-cta{display:block;text-align:center;background:#1B4D35;color:#fff;font-size:13.5px;font-weight:700;padding:12px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:12px}
     .card-cta:hover{background:#163f2b}
-    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-installment{display:none}
-    .card-body .card-pills .pill{display:none}
-    .card-body .card-pills .pill-furnishing{display:inline-block}
-    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
+    @media(max-width:600px){
+    }
+    /*ROWS_CSS_END*/
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -140,16 +136,6 @@
       .filter-bar{gap:8px;padding:12px}
       .filter-group{min-width:calc(50% - 4px)}
       .main{padding:28px 16px 48px}
-      .listing-grid{grid-template-columns:repeat(3,1fr);gap:8px}
-      .card{border-radius:10px}
-      .card-image-wrap .card-image{height:88px}
-      .card-body{padding:8px 8px 10px;gap:4px}
-      .card-name{font-size:10.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-      .card-zone{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-      .card-price{font-size:11.5px}
-      .card-price span{font-size:8px}
-      .card-pills{gap:0}
-      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
       .tabs{width:100%}
       .tab-btn{flex:1;text-align:center}
     }
@@ -168,7 +154,9 @@
     .wa-float:hover{transform:translateY(-50%) scale(1.08);box-shadow:0 6px 20px rgba(0,0,0,.3)}
     .wa-float svg{width:30px;height:30px}
     @media(max-width:600px){
-      .wa-float{right:14px;width:50px;height:50px}
+      /* bottom corner on phones so it doesn't sit on top of unit prices */
+      .wa-float{right:14px;top:auto;bottom:18px;transform:none;width:50px;height:50px}
+      .wa-float:hover{transform:scale(1.08)}
       .wa-float svg{width:26px;height:26px}
     }
     /* PROPERTY CLASS CHOICE (Residential / Commercial / Land) */
@@ -189,7 +177,6 @@
       .prop-btn .prop-count{font-size:10px}
     }
   </style>
-<script src="/lightbox.js?v=20261118"></script>
 </head>
 <body>
 
@@ -309,560 +296,14 @@
 
   <div id="tab-sewa" style="overflow:hidden">
     <img src="/images/banner-unit.png" alt="Rumah sewa" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
-    <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="kosmopleks-salak-tinggi-1700">
-    <div class="card-image-wrap" data-images="/images/unitpic/kosmoplekssalaktinggiFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/kosmoplekssalaktinggiFPR/pic1.jpg" alt="Kosmopleks Salak Tinggi" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="FPR_32168">FPR</span></div>
-      <div><div class="card-name">Kosmopleks Salak Tinggi</div><div class="card-zone">Bandar Baru Salak Tinggi</div></div>
-      <div class="card-price">RM 1,700<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 - bilik</span><span class="pill">🚿 - bilik air</span><span class="pill">2,604 sqft</span><span class="pill">Tanpa Perabot</span><span class="pill">Commercial</span><span class="pill">🗓 Masuk: Immediate</span></div>
-      <div class="card-anchors">ERL Salak Tinggi | Bandar Baru Salak Tinggi town centre | SMK Bandar Baru Salak Tinggi | ELITE Highway | Sepang International Circuit</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kosmopleks%20Salak%20Tinggi%2C%20Bandar%20Baru%20Salak%20Tinggi.%20Price%3A%20RM1700.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="pangsapuri-seri-warisan-3-1200">
-    <div class="card-image-wrap" data-images="/images/unitpic/pangsapuriseriwarisanEX/pic1.jpg" data-index="0"><img src="/images/unitpic/pangsapuriseriwarisanEX/pic1.jpg" alt="Pangsapuri Seri Warisan" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="EX_34370">EX</span></div>
-      <div><div class="card-name">Pangsapuri Seri Warisan</div><div class="card-zone">Kota Warisan</div></div>
-      <div class="card-price">RM 1,200<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">850 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Apartment</span><span class="pill">🗓 Masuk: Jan-27</span></div>
-      <div class="card-anchors">Salak Tinggi ERL Station | KIP Mall Kota Warisan | Mitsui Outlet Park KLIA | Xiamen University Malaysia | ELITE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Seri%20Warisan%2C%20Kota%20Warisan.%20Price%3A%20RM1200.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="kita-impian-3-1500">
-    <div class="card-image-wrap" data-images="/images/unitpic/kitaimpianNS/pic1.jpg" data-index="0"><img src="/images/unitpic/kitaimpianNS/pic1.jpg" alt="Kita Impian" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_14254">NS</span></div>
-      <div><div class="card-name">Kita Impian</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 1,500<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">901 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Service Residence</span></div>
-      <div class="card-anchors">D'Pulze Shopping Centre | Alamanda Shopping Centre | Hospital Putrajaya | UiTM Dengkil Campus | Putrajaya-Cyberjaya Expressway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kita%20Impian%2C%20Cybersouth.%20Price%3A%20RM1500.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="tangerine-suites-3-1600">
-    <div class="card-image-wrap" data-images="/images/unitpic/tangerinesuitesFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/tangerinesuitesFPR/pic1.jpg" alt="Tangerine Suites" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="FPR_32399">FPR</span></div>
-      <div><div class="card-name">Tangerine Suites</div><div class="card-zone">Sunsuria City</div></div>
-      <div class="card-price">RM 1,600<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">700 sqft</span><span class="pill">Perabot Penuh</span><span class="pill">Service Residence</span><span class="pill">🗓 Masuk: Mid November 2026</span></div>
-      <div class="card-anchors">ERL Salak Tinggi Station | KIP Mall Kota Warisan | Xiamen University Malaysia | Sunsuria City Mall | ELITE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Tangerine%20Suites%2C%20Sunsuria%20City.%20Price%3A%20RM1600.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="alanis-residence-3-1700">
-    <div class="card-image-wrap" data-images="/images/unitpic/alanisresidenceNS/pic1.jpg" data-index="0"><img src="/images/unitpic/alanisresidenceNS/pic1.jpg" alt="Alanis Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_14423">NS</span></div>
-      <div><div class="card-name">Alanis Residence</div><div class="card-zone">Kota Warisan</div></div>
-      <div class="card-price">RM 1,700<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">807 sqft</span><span class="pill">Perabot Penuh</span><span class="pill">Service Residence</span><span class="pill">🗓 Masuk: 10/12/2026</span></div>
-      <div class="card-anchors">Salak Tinggi ERL Station | KIP Mall Kota Warisan | Mitsui Outlet Park KLIA | Xiamen University Malaysia | ELITE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Alanis%20Residence%2C%20Kota%20Warisan.%20Price%3A%20RM1700.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="kita-bayu-3-1400">
-    <div class="card-image-wrap" data-images="/images/unitpic/kitabayuNS/pic1.jpg" data-index="0"><img src="/images/unitpic/kitabayuNS/pic1.jpg" alt="Kita Bayu" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_13735">NS</span></div>
-      <div><div class="card-name">Kita Bayu</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 1,400<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,104 sqft</span><span class="pill">Tanpa Perabot</span><span class="pill">Townhouse</span><span class="pill">🗓 Masuk: Nov-26</span></div>
-      <div class="card-anchors">D'Pulze Shopping Centre | Hospital Putrajaya | UiTM Dengkil | Heriot-Watt University Malaysia | ELITE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kita%20Bayu%2C%20Cybersouth.%20Price%3A%20RM1400.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="2-storey-terrace-bandar-mahkota-banting-4-1000">
-    <div class="card-image-wrap" data-images="/images/unitpic/2storeyterracebandarmahkotabantingNS/pic1.jpg" data-index="0"><img src="/images/unitpic/2storeyterracebandarmahkotabantingNS/pic1.jpg" alt="2 Storey Terrace Bandar Mahkota Banting" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_13582">NS</span></div>
-      <div><div class="card-name">2 Storey Terrace Bandar Mahkota Banting</div><div class="card-zone">Bandar Mahkota Banting</div></div>
-      <div class="card-price">RM 1,000<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">1,000 sqft</span><span class="pill">Tanpa Perabot</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Econsave Banting | Hospital Banting | West Coast Expressway (WCE) | SKVE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%202%20Storey%20Terrace%20Bandar%20Mahkota%20Banting%2C%20Bandar%20Mahkota%20Banting.%20Price%3A%20RM1000.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="core-soho-suites-0-1300">
-    <div class="card-image-wrap" data-images="/images/unitpic/coresohosuitesFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/coresohosuitesFPR/pic1.jpg" alt="Core SoHo Suites" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="FPR_32824">FPR</span></div>
-      <div><div class="card-name">Core SoHo Suites</div><div class="card-zone">Kota Warisan</div></div>
-      <div class="card-price">RM 1,300<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 0 bilik</span><span class="pill">🚿 1 bilik air</span><span class="pill">450 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Studio</span><span class="pill">🗓 Masuk: Immediate</span></div>
-      <div class="card-anchors">Mitsui Outlet Park KLIA | KLIA | KLIA2 | Sepang International Circuit | Xiamen University Malaysia</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Core%20SoHo%20Suites%2C%20Kota%20Warisan.%20Price%3A%20RM1300.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="1-storey-terrace-taman-jenderam-lestari-3-1500">
-    <div class="card-image-wrap" data-images="/images/unitpic/1storeyterracetamanjenderamlestariNS/pic1.jpg" data-index="0"><img src="/images/unitpic/1storeyterracetamanjenderamlestariNS/pic1.jpg" alt="1 Storey Terrace Taman Jenderam Lestari" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_14307">NS</span></div>
-      <div><div class="card-name">1 Storey Terrace Taman Jenderam Lestari</div><div class="card-zone">Jenderam Hilir</div></div>
-      <div class="card-price">RM 1,500<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,040 sqft</span><span class="pill">Tanpa Perabot</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">SK Jenderam Hilir | UiTM Dengkil | Hospital Putrajaya | IOI City Mall | KLIA</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%201%20Storey%20Terrace%20Taman%20Jenderam%20Lestari%2C%20Jenderam%20Hilir.%20Price%3A%20RM1500.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="1-storey-terrace-taman-jenderam-lestari-3-1500">
-    <div class="card-image-wrap" data-images="/images/unitpic/1storeyterracetamanjenderamlestariNS/pic1.jpg" data-index="0"><img src="/images/unitpic/1storeyterracetamanjenderamlestariNS/pic1.jpg" alt="1 Storey Terrace Taman Jenderam Lestari" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_14307">NS</span></div>
-      <div><div class="card-name">1 Storey Terrace Taman Jenderam Lestari</div><div class="card-zone">Jenderam Hilir</div></div>
-      <div class="card-price">RM 1,500<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,040 sqft</span><span class="pill">Tanpa Perabot</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">SK Jenderam Hilir | UiTM Dengkil | Hospital Putrajaya | IOI City Mall | KLIA</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%201%20Storey%20Terrace%20Taman%20Jenderam%20Lestari%2C%20Jenderam%20Hilir.%20Price%3A%20RM1500.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="casa-embun-cybersouth-3-1600">
-    <div class="card-image-wrap" data-images="/images/unitpic/casaembuncybersouthNS4/pic1.jpg" data-index="0"><img src="/images/unitpic/casaembuncybersouthNS4/pic1.jpg" alt="Casa Embun @ Cybersouth" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_14597">NS</span></div>
-      <div><div class="card-name">Casa Embun @ Cybersouth</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 1,600<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">900 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Service Residence</span><span class="pill">🗓 Masuk: Immediate</span></div>
-      <div class="card-anchors">D'Pulze Shopping Centre | Centrus Mall | UiTM Dengkil | ELITE Highway | KLIA</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Casa%20Embun%20%40%20Cybersouth%2C%20Cybersouth.%20Price%3A%20RM1600.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="pangsapuri-kita-ria-3-1400">
-    <div class="card-image-wrap" data-images="/images/unitpic/pangsapurikitariaNS/pic1.jpg" data-index="0"><img src="/images/unitpic/pangsapurikitariaNS/pic1.jpg" alt="Pangsapuri Kita Ria" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_14499">NS</span></div>
-      <div><div class="card-name">Pangsapuri Kita Ria</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 1,400<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">901 sqft</span><span class="pill">Perabot Penuh</span><span class="pill">Service Residence</span></div>
-      <div class="card-anchors">Mitsui Outlet Park KLIA | UiTM Dengkil | Xiamen University Malaysia | Multimedia University (MMU) | MEX Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Kita%20Ria%2C%20Cybersouth.%20Price%3A%20RM1400.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="pangsapuri-kita-ria-3-1300">
-    <div class="card-image-wrap" data-images="/images/unitpic/pangsapurikitariaFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/pangsapurikitariaFPR/pic1.jpg" alt="Pangsapuri Kita Ria" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="FPR_32898">FPR</span></div>
-      <div><div class="card-name">Pangsapuri Kita Ria</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 1,300<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">850 sqft</span><span class="pill">Perabot Penuh</span><span class="pill">Service Residence</span><span class="pill">🗓 Masuk: Immediate</span></div>
-      <div class="card-anchors">Mitsui Outlet Park KLIA | UiTM Dengkil | Xiamen University Malaysia | Multimedia University (MMU) | MEX Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Kita%20Ria%2C%20Cybersouth.%20Price%3A%20RM1300.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="double-storey-jalan-warisan-indah-4-1800">
-    <div class="card-image-wrap" data-images="/images/unitpic/jalanwarisanindahNS/pic1.jpg" data-index="0"><img src="/images/unitpic/jalanwarisanindahNS/pic1.jpg" alt="Double Storey Jalan Warisan Indah" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_13602">NS</span></div>
-      <div><div class="card-name">Double Storey Jalan Warisan Indah</div><div class="card-zone">Kota Warisan</div></div>
-      <div class="card-price">RM 1,800<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">2,000 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Terrace</span><span class="pill">🗓 Masuk: Jan-27</span></div>
-      <div class="card-anchors">Salak Tinggi ERL Station | KIP Mall Kota Warisan | Mitsui Outlet Park | Xiamen University | ELITE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Jalan%20Warisan%20Indah%2C%20Kota%20Warisan.%20Price%3A%20RM1800.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="2-storey-terrace-bandar-seri-ehsan-4-1300">
-    <div class="card-image-wrap" data-images="/images/unitpic/2storeyterracebandarseriehsanNS/pic1.jpg" data-index="0"><img src="/images/unitpic/2storeyterracebandarseriehsanNS/pic1.jpg" alt="2 Storey Terrace Bandar Seri Ehsan" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_13510">NS</span></div>
-      <div><div class="card-name">2 Storey Terrace Bandar Seri Ehsan</div><div class="card-zone">Bandar Seri Ehsan</div></div>
-      <div class="card-price">RM 1,300<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">2,000 sqft</span><span class="pill">Tanpa Perabot</span><span class="pill">Terrace</span><span class="pill">🗓 Masuk: Immediate</span></div>
-      <div class="card-anchors">Lotus's Banting | Hospital Banting | Banting Town Centre</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%202%20Storey%20Terrace%20Bandar%20Seri%20Ehsan%2C%20Bandar%20Seri%20Ehsan.%20Price%3A%20RM1300.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="casa-embun-cybersouth-3-2000">
-    <div class="card-image-wrap" data-images="/images/unitpic/casaembuncybersouthNS3/pic1.jpg" data-index="0"><img src="/images/unitpic/casaembuncybersouthNS3/pic1.jpg" alt="Casa Embun @ Cybersouth" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_14159">NS</span></div>
-      <div><div class="card-name">Casa Embun @ Cybersouth</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 2,000<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,000 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Service Residence</span><span class="pill">🗓 Masuk: November / December 2026</span></div>
-      <div class="card-anchors">D'Pulze Shopping Centre | Centrus Mall | UiTM Dengkil | ELITE Highway | KLIA</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Casa%20Embun%20%40%20Cybersouth%2C%20Cybersouth.%20Price%3A%20RM2000.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="kita-mesra-townhouse-3-1400">
-    <div class="card-image-wrap" data-images="/images/unitpic/kitamesratownhouseNS/pic1.jpg" data-index="0"><img src="/images/unitpic/kitamesratownhouseNS/pic1.jpg" alt="Kita Mesra Townhouse" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="NS_13491">NS</span></div>
-      <div><div class="card-name">Kita Mesra Townhouse</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 1,400<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,105 sqft</span><span class="pill">Perabot Penuh</span><span class="pill">Townhouse</span><span class="pill">🗓 Masuk: Mid November 2026</span></div>
-      <div class="card-anchors">D'Pulze Shopping Centre | UiTM Dengkil | MEX Highway | ELITE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kita%20Mesra%20Townhouse%2C%20Cybersouth.%20Price%3A%20RM1400.%20Ref%3A%20NS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="taman-scientex-jenjarom-4-1500">
-    <div class="card-image-wrap" data-images="/images/unitpic/tamanscientexjenjaromTH/pic1.jpg" data-index="0"><img src="/images/unitpic/tamanscientexjenjaromTH/pic1.jpg" alt="Taman Scientex Jenjarom" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="TH_1348">TH</span></div>
-      <div><div class="card-name">Taman Scientex Jenjarom</div><div class="card-zone">Jenjarom</div></div>
-      <div class="card-price">RM 1,500<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">1,625 sqft</span><span class="pill">Tanpa Perabot</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Lotus's Jenjarom | Econsave Jenjarom | SMK Jenjarom | Fo Guang Shan Dong Zen Temple | SKVE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Scientex%20Jenjarom%2C%20Jenjarom.%20Price%3A%20RM1500.%20Ref%3A%20TH" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="casa-embun-cybersouth-3-2200">
-    <div class="card-image-wrap" data-images="/images/unitpic/casaembuncybersouthFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/casaembuncybersouthFPR/pic1.jpg" alt="Casa Embun @ Cybersouth" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="FPR_29109">FPR</span></div>
-      <div><div class="card-name">Casa Embun @ Cybersouth</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 2,200<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,000 sqft</span><span class="pill">Perabot Penuh</span><span class="pill">Service Residence</span><span class="pill">🗓 Masuk: Sep-26</span></div>
-      <div class="card-anchors">D'Pulze Shopping Centre | Centrus Mall | UiTM Dengkil | ELITE Highway | KLIA</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Casa%20Embun%20%40%20Cybersouth%2C%20Cybersouth.%20Price%3A%20RM2200.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="giverny-walk-4800">
-    <div class="card-image-wrap" data-images="/images/unitpic/givernywalkFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/givernywalkFPR/pic1.jpg" alt="Giverny Walk" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="FPR_27824">FPR</span></div>
-      <div><div class="card-name">Giverny Walk</div><div class="card-zone">Sunsuria City</div></div>
-      <div class="card-price">RM 4,800<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 - bilik</span><span class="pill">🚿 - bilik air</span><span class="pill">1,800 sqft</span><span class="pill">Tanpa Perabot</span><span class="pill">Commercial</span><span class="pill">🗓 Masuk: Immediate</span></div>
-      <div class="card-anchors">Xiamen University Malaysia | Sunsuria City | KIP Mall Kota Warisan | ELITE Highway | Mitsui Outlet Park KLIA</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Giverny%20Walk%2C%20Sunsuria%20City.%20Price%3A%20RM4800.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="maya-bay-residences-gamuda-cove-2-1500">
-    <div class="card-image-wrap" data-images="/images/unitpic/mayabayresidencesgamudacoveMMN/pic1.jpg" data-index="0"><img src="/images/unitpic/mayabayresidencesgamudacoveMMN/pic1.jpg" alt="Maya Bay Residences @ Gamuda Cove" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="MMN_4406">MMN</span></div>
-      <div><div class="card-name">Maya Bay Residences @ Gamuda Cove</div><div class="card-zone">Bandar Gamuda Cove</div></div>
-      <div class="card-price">RM 1,500<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bilik</span><span class="pill">🚿 1 bilik air</span><span class="pill">688 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Service Residence</span><span class="pill">🗓 Masuk: Immediate</span></div>
-      <div class="card-anchors">Gamuda Cove Central Park | Paya Indah Discovery Wetlands | ELITE Highway | SKVE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Maya%20Bay%20Residences%20%40%20Gamuda%20Cove%2C%20Bandar%20Gamuda%20Cove.%20Price%3A%20RM1500.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="casa-green-kita-harmoni-3-2000">
-    <div class="card-image-wrap" data-images="/images/unitpic/casagreenkitaharmoniEX/pic1.jpg" data-index="0"><img src="/images/unitpic/casagreenkitaharmoniEX/pic1.jpg" alt="Casa Green @ Kita Harmoni" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="EX_33209">EX</span></div>
-      <div><div class="card-name">Casa Green @ Kita Harmoni</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 2,000<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">1,545 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Terrace</span><span class="pill">🗓 Masuk: Immediate</span></div>
-      <div class="card-anchors">D'Pulze Shopping Centre | UiTM Dengkil | Heriot-Watt University Malaysia | ELITE Highway | MEX Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Casa%20Green%20%40%20Kita%20Harmoni%2C%20Cybersouth.%20Price%3A%20RM2000.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="kita-sejati-3-2300">
-    <div class="card-image-wrap" data-images="/images/unitpic/kitasejatiFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/kitasejatiFPR/pic1.jpg" alt="Kita Sejati" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="FPR_29409">FPR</span></div>
-      <div><div class="card-name">Kita Sejati</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 2,300<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">948 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Condominium</span><span class="pill">🗓 Masuk: Immediate</span></div>
-      <div class="card-anchors">Xiamen University Malaysia | UiTM Dengkil | Multimedia University (MMU) | Mitsui Outlet Park KLIA | MEX Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kita%20Sejati%2C%20Cybersouth.%20Price%3A%20RM2300.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="2-storey-terrace-taman-semarang-indah-4-2500">
-    <div class="card-image-wrap" data-images="/images/unitpic/2storeyterracetamansemarangindahFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/2storeyterracetamansemarangindahFPR/pic1.jpg" alt="2 Storey Terrace Taman Semarang Indah" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Sewa Unit</span><span class="card-badge badge-coa" data-ref="FPR_31602">FPR</span></div>
-      <div><div class="card-name">2 Storey Terrace Taman Semarang Indah</div><div class="card-zone">Taman Semarang Indah</div></div>
-      <div class="card-price">RM 2,500<span> / bulan</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">2,000 sqft</span><span class="pill">Separa Perabot</span><span class="pill">Terrace</span><span class="pill">🗓 Masuk: Dec-26</span></div>
-      <div class="card-anchors">Mitsui Outlet Park | Klinik Kesihatan Dengkil | UiTM Dengkil | Xiamen University Malaysia | ELITE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%202%20Storey%20Terrace%20Taman%20Semarang%20Indah%2C%20Taman%20Semarang%20Indah.%20Price%3A%20RM2500.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><!--SSR_END--></div>
+    <p class="list-hint">Tekan unit untuk maklumat dan WhatsApp.</p>
+    <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="kosmopleks-salak-tinggi-1700"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Kosmopleks Salak Tinggi</span><span class="card-zone"><span>Bandar Baru Salak Tinggi</span><span>2,604 sqft</span><span>Tanpa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,700<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Komersial</span><span>Masuk: Immediate</span></span><span class="badge-coa">FPR_32168</span></div><div class="card-anchors"><b>Berhampiran:</b> ERL Salak Tinggi | Bandar Baru Salak Tinggi town centre | SMK Bandar Baru Salak Tinggi | ELITE Highway | Sepang International Circuit</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kosmopleks%20Salak%20Tinggi%2C%20Bandar%20Baru%20Salak%20Tinggi.%20Price%3A%20RM1700.%20Ref%3A%20FPR_32168" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="pangsapuri-seri-warisan-3-1200"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Pangsapuri Seri Warisan</span><span class="card-zone"><span>Kota Warisan</span><span>3 bilik</span><span>850 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,200<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Apartment</span><span>2 bilik air</span><span>Masuk: Jan-27</span></span><span class="badge-coa">EX_34370</span></div><div class="card-anchors"><b>Berhampiran:</b> Salak Tinggi ERL Station | KIP Mall Kota Warisan | Mitsui Outlet Park KLIA | Xiamen University Malaysia | ELITE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Seri%20Warisan%2C%20Kota%20Warisan.%20Price%3A%20RM1200.%20Ref%3A%20EX_34370" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="kita-impian-3-1500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Kita Impian</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>901 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,500<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span></span><span class="badge-coa">NS_14254</span></div><div class="card-anchors"><b>Berhampiran:</b> D'Pulze Shopping Centre | Alamanda Shopping Centre | Hospital Putrajaya | UiTM Dengkil Campus | Putrajaya-Cyberjaya Expressway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kita%20Impian%2C%20Cybersouth.%20Price%3A%20RM1500.%20Ref%3A%20NS_14254" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="tangerine-suites-3-1600"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tangerine Suites</span><span class="card-zone"><span>Sunsuria City</span><span>3 bilik</span><span>700 sqft</span><span>Perabot Penuh</span></span></span><span class="row-side"><span class="card-price">RM 1,600<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span><span>Masuk: Mid November 2026</span></span><span class="badge-coa">FPR_32399</span></div><div class="card-anchors"><b>Berhampiran:</b> ERL Salak Tinggi Station | KIP Mall Kota Warisan | Xiamen University Malaysia | Sunsuria City Mall | ELITE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Tangerine%20Suites%2C%20Sunsuria%20City.%20Price%3A%20RM1600.%20Ref%3A%20FPR_32399" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="alanis-residence-3-1700"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Alanis Residence</span><span class="card-zone"><span>Kota Warisan</span><span>3 bilik</span><span>807 sqft</span><span>Perabot Penuh</span></span></span><span class="row-side"><span class="card-price">RM 1,700<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span><span>Masuk: 10/12/2026</span></span><span class="badge-coa">NS_14423</span></div><div class="card-anchors"><b>Berhampiran:</b> Salak Tinggi ERL Station | KIP Mall Kota Warisan | Mitsui Outlet Park KLIA | Xiamen University Malaysia | ELITE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Alanis%20Residence%2C%20Kota%20Warisan.%20Price%3A%20RM1700.%20Ref%3A%20NS_14423" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="kita-bayu-3-1400"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Kita Bayu</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>1,104 sqft</span><span>Tanpa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,400<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Townhouse</span><span>2 bilik air</span><span>Masuk: Nov-26</span></span><span class="badge-coa">NS_13735</span></div><div class="card-anchors"><b>Berhampiran:</b> D'Pulze Shopping Centre | Hospital Putrajaya | UiTM Dengkil | Heriot-Watt University Malaysia | ELITE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kita%20Bayu%2C%20Cybersouth.%20Price%3A%20RM1400.%20Ref%3A%20NS_13735" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="2-storey-terrace-bandar-mahkota-banting-4-1000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">2 Storey Terrace Bandar Mahkota Banting</span><span class="card-zone"><span>Bandar Mahkota Banting</span><span>4 bilik</span><span>1,000 sqft</span><span>Tanpa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,000<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span></span><span class="badge-coa">NS_13582</span></div><div class="card-anchors"><b>Berhampiran:</b> Econsave Banting | Hospital Banting | West Coast Expressway (WCE) | SKVE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%202%20Storey%20Terrace%20Bandar%20Mahkota%20Banting%2C%20Bandar%20Mahkota%20Banting.%20Price%3A%20RM1000.%20Ref%3A%20NS_13582" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="core-soho-suites-0-1300"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Core SoHo Suites</span><span class="card-zone"><span>Kota Warisan</span><span>Studio</span><span>450 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,300<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Studio</span><span>1 bilik air</span><span>Masuk: Immediate</span></span><span class="badge-coa">FPR_32824</span></div><div class="card-anchors"><b>Berhampiran:</b> Mitsui Outlet Park KLIA | KLIA | KLIA2 | Sepang International Circuit | Xiamen University Malaysia</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Core%20SoHo%20Suites%2C%20Kota%20Warisan.%20Price%3A%20RM1300.%20Ref%3A%20FPR_32824" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="1-storey-terrace-taman-jenderam-lestari-3-1500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">1 Storey Terrace Taman Jenderam Lestari</span><span class="card-zone"><span>Jenderam Hilir</span><span>3 bilik</span><span>1,040 sqft</span><span>Tanpa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,500<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bilik air</span></span><span class="badge-coa">NS_14307</span></div><div class="card-anchors"><b>Berhampiran:</b> SK Jenderam Hilir | UiTM Dengkil | Hospital Putrajaya | IOI City Mall | KLIA</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%201%20Storey%20Terrace%20Taman%20Jenderam%20Lestari%2C%20Jenderam%20Hilir.%20Price%3A%20RM1500.%20Ref%3A%20NS_14307" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="1-storey-terrace-taman-jenderam-lestari-3-1500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">1 Storey Terrace Taman Jenderam Lestari</span><span class="card-zone"><span>Jenderam Hilir</span><span>3 bilik</span><span>1,040 sqft</span><span>Tanpa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,500<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bilik air</span></span><span class="badge-coa">NS_14307</span></div><div class="card-anchors"><b>Berhampiran:</b> SK Jenderam Hilir | UiTM Dengkil | Hospital Putrajaya | IOI City Mall | KLIA</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%201%20Storey%20Terrace%20Taman%20Jenderam%20Lestari%2C%20Jenderam%20Hilir.%20Price%3A%20RM1500.%20Ref%3A%20NS_14307" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="casa-embun-cybersouth-3-1600"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Casa Embun @ Cybersouth</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>900 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,600<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span><span>Masuk: Immediate</span></span><span class="badge-coa">NS_14597</span></div><div class="card-anchors"><b>Berhampiran:</b> D'Pulze Shopping Centre | Centrus Mall | UiTM Dengkil | ELITE Highway | KLIA</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Casa%20Embun%20%40%20Cybersouth%2C%20Cybersouth.%20Price%3A%20RM1600.%20Ref%3A%20NS_14597" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="pangsapuri-kita-ria-3-1400"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Pangsapuri Kita Ria</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>901 sqft</span><span>Perabot Penuh</span></span></span><span class="row-side"><span class="card-price">RM 1,400<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span></span><span class="badge-coa">NS_14499</span></div><div class="card-anchors"><b>Berhampiran:</b> Mitsui Outlet Park KLIA | UiTM Dengkil | Xiamen University Malaysia | Multimedia University (MMU) | MEX Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Kita%20Ria%2C%20Cybersouth.%20Price%3A%20RM1400.%20Ref%3A%20NS_14499" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="pangsapuri-kita-ria-3-1300"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Pangsapuri Kita Ria</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>850 sqft</span><span>Perabot Penuh</span></span></span><span class="row-side"><span class="card-price">RM 1,300<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span><span>Masuk: Immediate</span></span><span class="badge-coa">FPR_32898</span></div><div class="card-anchors"><b>Berhampiran:</b> Mitsui Outlet Park KLIA | UiTM Dengkil | Xiamen University Malaysia | Multimedia University (MMU) | MEX Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Pangsapuri%20Kita%20Ria%2C%20Cybersouth.%20Price%3A%20RM1300.%20Ref%3A%20FPR_32898" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="double-storey-jalan-warisan-indah-4-1800"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Double Storey Jalan Warisan Indah</span><span class="card-zone"><span>Kota Warisan</span><span>4 bilik</span><span>2,000 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,800<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span><span>Masuk: Jan-27</span></span><span class="badge-coa">NS_13602</span></div><div class="card-anchors"><b>Berhampiran:</b> Salak Tinggi ERL Station | KIP Mall Kota Warisan | Mitsui Outlet Park | Xiamen University | ELITE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Jalan%20Warisan%20Indah%2C%20Kota%20Warisan.%20Price%3A%20RM1800.%20Ref%3A%20NS_13602" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="2-storey-terrace-bandar-seri-ehsan-4-1300"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">2 Storey Terrace Bandar Seri Ehsan</span><span class="card-zone"><span>Bandar Seri Ehsan</span><span>4 bilik</span><span>2,000 sqft</span><span>Tanpa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,300<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span><span>Masuk: Immediate</span></span><span class="badge-coa">NS_13510</span></div><div class="card-anchors"><b>Berhampiran:</b> Lotus's Banting | Hospital Banting | Banting Town Centre</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%202%20Storey%20Terrace%20Bandar%20Seri%20Ehsan%2C%20Bandar%20Seri%20Ehsan.%20Price%3A%20RM1300.%20Ref%3A%20NS_13510" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="casa-embun-cybersouth-3-2000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Casa Embun @ Cybersouth</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>1,000 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 2,000<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span><span>Masuk: November / December 2026</span></span><span class="badge-coa">NS_14159</span></div><div class="card-anchors"><b>Berhampiran:</b> D'Pulze Shopping Centre | Centrus Mall | UiTM Dengkil | ELITE Highway | KLIA</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Casa%20Embun%20%40%20Cybersouth%2C%20Cybersouth.%20Price%3A%20RM2000.%20Ref%3A%20NS_14159" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="kita-mesra-townhouse-3-1400"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Kita Mesra Townhouse</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>1,105 sqft</span><span>Perabot Penuh</span></span></span><span class="row-side"><span class="card-price">RM 1,400<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Townhouse</span><span>2 bilik air</span><span>Masuk: Mid November 2026</span></span><span class="badge-coa">NS_13491</span></div><div class="card-anchors"><b>Berhampiran:</b> D'Pulze Shopping Centre | UiTM Dengkil | MEX Highway | ELITE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kita%20Mesra%20Townhouse%2C%20Cybersouth.%20Price%3A%20RM1400.%20Ref%3A%20NS_13491" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="taman-scientex-jenjarom-4-1500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Taman Scientex Jenjarom</span><span class="card-zone"><span>Jenjarom</span><span>4 bilik</span><span>1,625 sqft</span><span>Tanpa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,500<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span></span><span class="badge-coa">TH_1348</span></div><div class="card-anchors"><b>Berhampiran:</b> Lotus's Jenjarom | Econsave Jenjarom | SMK Jenjarom | Fo Guang Shan Dong Zen Temple | SKVE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Taman%20Scientex%20Jenjarom%2C%20Jenjarom.%20Price%3A%20RM1500.%20Ref%3A%20TH_1348" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="casa-embun-cybersouth-3-2200"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Casa Embun @ Cybersouth</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>1,000 sqft</span><span>Perabot Penuh</span></span></span><span class="row-side"><span class="card-price">RM 2,200<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span><span>Masuk: Sep-26</span></span><span class="badge-coa">FPR_29109</span></div><div class="card-anchors"><b>Berhampiran:</b> D'Pulze Shopping Centre | Centrus Mall | UiTM Dengkil | ELITE Highway | KLIA</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Casa%20Embun%20%40%20Cybersouth%2C%20Cybersouth.%20Price%3A%20RM2200.%20Ref%3A%20FPR_29109" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="giverny-walk-4800"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Giverny Walk</span><span class="card-zone"><span>Sunsuria City</span><span>1,800 sqft</span><span>Tanpa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 4,800<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Komersial</span><span>Masuk: Immediate</span></span><span class="badge-coa">FPR_27824</span></div><div class="card-anchors"><b>Berhampiran:</b> Xiamen University Malaysia | Sunsuria City | KIP Mall Kota Warisan | ELITE Highway | Mitsui Outlet Park KLIA</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Giverny%20Walk%2C%20Sunsuria%20City.%20Price%3A%20RM4800.%20Ref%3A%20FPR_27824" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="maya-bay-residences-gamuda-cove-2-1500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Maya Bay Residences @ Gamuda Cove</span><span class="card-zone"><span>Bandar Gamuda Cove</span><span>2 bilik</span><span>688 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 1,500<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>1 bilik air</span><span>Masuk: Immediate</span></span><span class="badge-coa">MMN_4406</span></div><div class="card-anchors"><b>Berhampiran:</b> Gamuda Cove Central Park | Paya Indah Discovery Wetlands | ELITE Highway | SKVE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Maya%20Bay%20Residences%20%40%20Gamuda%20Cove%2C%20Bandar%20Gamuda%20Cove.%20Price%3A%20RM1500.%20Ref%3A%20MMN_4406" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="casa-green-kita-harmoni-3-2000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Casa Green @ Kita Harmoni</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>1,545 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 2,000<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span><span>Masuk: Immediate</span></span><span class="badge-coa">EX_33209</span></div><div class="card-anchors"><b>Berhampiran:</b> D'Pulze Shopping Centre | UiTM Dengkil | Heriot-Watt University Malaysia | ELITE Highway | MEX Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Casa%20Green%20%40%20Kita%20Harmoni%2C%20Cybersouth.%20Price%3A%20RM2000.%20Ref%3A%20EX_33209" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="kita-sejati-3-2300"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Kita Sejati</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>948 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 2,300<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bilik air</span><span>Masuk: Immediate</span></span><span class="badge-coa">FPR_29409</span></div><div class="card-anchors"><b>Berhampiran:</b> Xiamen University Malaysia | UiTM Dengkil | Multimedia University (MMU) | Mitsui Outlet Park KLIA | MEX Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Kita%20Sejati%2C%20Cybersouth.%20Price%3A%20RM2300.%20Ref%3A%20FPR_29409" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="2-storey-terrace-taman-semarang-indah-4-2500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">2 Storey Terrace Taman Semarang Indah</span><span class="card-zone"><span>Taman Semarang Indah</span><span>4 bilik</span><span>2,000 sqft</span><span>Separa Perabot</span></span></span><span class="row-side"><span class="card-price">RM 2,500<span>/bulan</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span><span>Masuk: Dec-26</span></span><span class="badge-coa">FPR_31602</span></div><div class="card-anchors"><b>Berhampiran:</b> Mitsui Outlet Park | Klinik Kesihatan Dengkil | UiTM Dengkil | Xiamen University Malaysia | ELITE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%202%20Storey%20Terrace%20Taman%20Semarang%20Indah%2C%20Taman%20Semarang%20Indah.%20Price%3A%20RM2500.%20Ref%3A%20FPR_31602" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><!--SSR_END--></div>
   </div>
 
   <div id="tab-jual" style="display:none;overflow:hidden">
     <img src="/images/banner-subsale.png" alt="Rumah dijual" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
-    <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="dahlia-impiana-apartment-295000">
-    <div class="card-image-wrap" data-images="/images/unitpic/dahliaimpianaapartmentEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/dahliaimpianaapartmentEXP/pic1.jpg" alt="Dahlia Impiana Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_20766">EXP</span></div>
-      <div><div class="card-name">Dahlia Impiana Apartment</div><div class="card-zone">Salak Tinggi</div></div>
-      <div class="card-price">RM 295,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,256</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 - bilik</span><span class="pill">🚿 - bilik air</span><span class="pill">900 sqft</span><span class="pill">Freehold</span><span class="pill">Apartment</span></div>
-      <div class="card-anchors">Salak Tinggi ERL Station | AEON Mall Nilai | Nilai Medical Centre | SK Taman Seroja | ELITE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Dahlia%20Impiana%20Apartment%2C%20Salak%20Tinggi.%20Price%3A%20RM295000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="desa-baiduri-murni-3-390000">
-    <div class="card-image-wrap" data-images="/images/unitpic/desabaidurimurniRSS/pic1.jpg" data-index="0"><img src="/images/unitpic/desabaidurimurniRSS/pic1.jpg" alt="Desa Baiduri Murni" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_470">RSS</span></div>
-      <div><div class="card-name">Desa Baiduri Murni</div><div class="card-zone">Salak Tinggi</div></div>
-      <div class="card-price">RM 390,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,661</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,400 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Near KLIA, Mitsui Outlet Park, Xiamen University and ERL Salak Tinggi</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Desa%20Baiduri%20Murni%2C%20Salak%20Tinggi.%20Price%3A%20RM390000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="acacia-residences-i-3-300000">
-    <div class="card-image-wrap" data-images="/images/unitpic/acaciaresidencesBUFF/pic1.jpg" data-index="0"><img src="/images/unitpic/acaciaresidencesBUFF/pic1.jpg" alt="Acacia Residences [i]" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="BUFF_1380">BUFF</span></div>
-      <div><div class="card-name">Acacia Residences [i]</div><div class="card-zone">Salak Perdana</div></div>
-      <div class="card-price">RM 300,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,278</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">850 sqft</span><span class="pill">Freehold</span><span class="pill">Service Residence</span></div>
-      <div class="card-anchors">ERL Salak Tinggi Station | KIP Mall Kota Warisan | UniKL MIAT | Xiamen University Malaysia | ELITE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Acacia%20Residences%2C%20Salak%20Perdana.%20Price%3A%20RM300000.%20Ref%3A%20BUFF" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="2-storey-terrace-taman-banting-baru-3-330000">
-    <div class="card-image-wrap" data-images="/images/unitpic/2storeyterracetamanbantingbaruEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/2storeyterracetamanbantingbaruEXP/pic1.jpg" alt="2 Storey Terrace Taman Banting Baru" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_17703">EXP</span></div>
-      <div><div class="card-name">2 Storey Terrace Taman Banting Baru</div><div class="card-zone">Taman Banting Baru</div></div>
-      <div class="card-price">RM 330,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,406</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,550 sqft</span><span class="pill">Freehold (Bumi Lot)</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Kolej Matrikulasi Selangor | Hospital Banting | SM Sains Banting | Politeknik Banting</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20Taman%20Banting%20Baru%2C%20Taman%20Banting%20Baru.%20Price%3A%20RM330000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="monet-springtime-4-695000">
-    <div class="card-image-wrap" data-images="/images/unitpic/monetspringtimeEXP2/pic1.jpg" data-index="0"><img src="/images/unitpic/monetspringtimeEXP2/pic1.jpg" alt="Monet Springtime" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_21498">EXP</span></div>
-      <div><div class="card-name">Monet Springtime</div><div class="card-zone">Sunsuria City</div></div>
-      <div class="card-price">RM 695,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 2,960</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 4 bilik air</span><span class="pill">2,092 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Salak Tinggi ERL Station | KLIA | Xiamen University Malaysia | SJK(C) Sunsuria | Putrajaya / Cyberjaya</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Monet%20Springtime%2C%20Sunsuria%20City.%20Price%3A%20RM695000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="tanah-kg-labu-lanjut-estate-2500000">
-    <div class="card-image-wrap" data-images="/images/unitpic/kglabulanjutestateMMN/pic1.jpg" data-index="0"><img src="/images/unitpic/kglabulanjutestateMMN/pic1.jpg" alt="Tanah - Kg Labu Lanjut Estate" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="MMN_256">MMN</span></div>
-      <div><div class="card-name">Tanah - Kg Labu Lanjut Estate</div><div class="card-zone">Labu Lanjut</div></div>
-      <div class="card-price">RM 2,500,000</div>
-      
-      <div class="card-pills"><span class="pill">85,813 sqft</span><span class="pill">Leasehold</span><span class="pill">Agricultural Land with Bungalow</span></div>
-      <div class="card-anchors">Sekolah Kebangsaan Kampung Baharu Lanjut | Surau An-Nur RTB Labu Lanjut | Salak Tinggi ERL Station</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Kg%20Labu%20Lanjut%20Estate%2C%20Labu%20Lanjut.%20Price%3A%20RM2500000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="tanah-lot-banglo-kg-giching-260000">
-    <div class="card-image-wrap" data-images="/images/unitpic/tanahlotbanglokggichingRSS/pic1.jpg" data-index="0"><img src="/images/unitpic/tanahlotbanglokggichingRSS/pic1.jpg" alt="Tanah -  Lot Banglo Kg Giching" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_810">RSS</span></div>
-      <div><div class="card-name">Tanah -  Lot Banglo Kg Giching</div><div class="card-zone">Kg Giching / Labu Lanjut</div></div>
-      <div class="card-price">RM 260,000</div>
-      
-      <div class="card-pills"><span class="pill">Freehold</span><span class="pill">Residential Land</span></div>
-      <div class="card-anchors">KLIA Growth Pocket</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Tanah%20Lot%20Banglo%20Kg%20Giching%2C%20Kg%20Giching%20/%20Labu%20Lanjut.%20Price%3A%20RM260000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="tanah-bandar-mahkota-banting-150000">
-    <div class="card-image-wrap" data-images="/images/unitpic/bandarmahkotabantingMMN/pic1.jpg" data-index="0"><img src="/images/unitpic/bandarmahkotabantingMMN/pic1.jpg" alt="Tanah - Bandar Mahkota Banting" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="MMN_260">MMN</span></div>
-      <div><div class="card-name">Tanah - Bandar Mahkota Banting</div><div class="card-zone">Banting</div></div>
-      <div class="card-price">RM 150,000</div>
-      
-      <div class="card-pills"><span class="pill">4,004 sqft</span><span class="pill">Freehold</span><span class="pill">Residential Land</span></div>
-      <div class="card-anchors">Mahkota Industrial Park | Qualitas Health Poliklinik Astana Medic | HM Grocer Bandar Mahkota</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Bandar%20Mahkota%20Banting%2C%20Banting.%20Price%3A%20RM150000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="tanah-residential-land-dengkil-335000">
-    <div class="card-image-wrap" data-images="/images/unitpic/residentiallanddengkilRSS/pic1.jpg" data-index="0"><img src="/images/unitpic/residentiallanddengkilRSS/pic1.jpg" alt="Tanah - Residential Land Dengkil" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_1184">RSS</span></div>
-      <div><div class="card-name">Tanah - Residential Land Dengkil</div><div class="card-zone">Dengkil</div></div>
-      <div class="card-price">RM 335,000</div>
-      
-      <div class="card-pills"><span class="pill">8,563 sqft</span><span class="pill">Leasehold (exp. 2094)</span><span class="pill">Residential Land</span></div>
-      <div class="card-anchors">UiTM Cawangan Selangor Kampus Dengkil | PKNS Selangor Cyber Valley Science Park | Bandar Gamuda Cove</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residential%20Land%20Dengkil%2C%20Dengkil.%20Price%3A%20RM335000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="1-storey-townhouse-platinum-residence-dengkil-3-380000">
-    <div class="card-image-wrap" data-images="/images/unitpic/1storeytownhouseplatinumresidencedengkilRSS/pic1.jpg" data-index="0"><img src="/images/unitpic/1storeytownhouseplatinumresidencedengkilRSS/pic1.jpg" alt="1 Storey Townhouse Platinum Residence Dengkil" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_1015">RSS</span></div>
-      <div><div class="card-name">1 Storey Townhouse Platinum Residence Dengkil</div><div class="card-zone">Dengkil</div></div>
-      <div class="card-price">RM 380,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,619</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,421 sqft</span><span class="pill">Leasehold</span><span class="pill">Townhouse</span></div>
-      <div class="card-anchors">Dengkil Town Centre (daily retail + food) | SK Dengkil (family demand driver) | Masjid Dengkil (community anchor)</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%201%20Storey%20Townhouse%20Platinum%20Residence%20Dengkil%2C%20Dengkil.%20Price%3A%20RM380000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="2-storey-terrace-taman-langat-utama-4-540000">
-    <div class="card-image-wrap" data-images="/images/unitpic/2storeyterracetamanlangatutamaEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/2storeyterracetamanlangatutamaEXP/pic1.jpg" alt="2 Storey Terrace Taman Langat Utama" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_15976">EXP</span></div>
-      <div><div class="card-name">2 Storey Terrace Taman Langat Utama</div><div class="card-zone">Taman Langat Utama</div></div>
-      <div class="card-price">RM 540,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 2,300</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">2,000 sqft</span><span class="pill">Leasehold (Bumi Lot)</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">SK Banting / nearby primary school cluster | Masjid nearby (local surau / mosque within taman) | 99 Speedmart (neighbourhood retail) | Klinik Kesihatan Banting / nearby clinics</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20Taman%20Langat%20Utama%2C%20Taman%20Langat%20Utama.%20Price%3A%20RM540000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="taman-mawar-2-5-495000">
-    <div class="card-image-wrap" data-images="/images/unitpic/tamanmawar2EXP/pic1.jpg" data-index="0"><img src="/images/unitpic/tamanmawar2EXP/pic1.jpg" alt="Taman Mawar 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_10669">EXP</span></div>
-      <div><div class="card-name">Taman Mawar 2</div><div class="card-zone">Bandar Baru Salak Tinggi</div></div>
-      <div class="card-price">RM 495,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 2,108</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 5 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">1,650 sqft</span><span class="pill">Leasehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">KLIA, Mitsui Outlet Park, Hospital KLIA</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Mawar%202%2C%20Bandar%20Baru%20Salak%20Tinggi.%20Price%3A%20RM495000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="pangsapuri-kita-ria-3-298000">
-    <div class="card-image-wrap" data-images="/images/unitpic/pangsapurikitariaEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/pangsapurikitariaEXP/pic1.jpg" alt="Pangsapuri Kita Ria" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_19610">EXP</span></div>
-      <div><div class="card-name">Pangsapuri Kita Ria</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 298,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,269</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">901 sqft</span><span class="pill">Leasehold</span><span class="pill">Service Residence</span></div>
-      <div class="card-anchors">MEX Highway | ELITE Highway | UiTM Dengkil | SMK Dengkil</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Pangsapuri%20Kita%20Ria%2C%20Cybersouth.%20Price%3A%20RM298000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="taman-dahlia-4-395000">
-    <div class="card-image-wrap" data-images="/images/unitpic/tamandahliaEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/tamandahliaEXP/pic1.jpg" alt="Taman Dahlia" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_19524">EXP</span></div>
-      <div><div class="card-name">Taman Dahlia</div><div class="card-zone">Bandar Baru Salak Tinggi</div></div>
-      <div class="card-price">RM 395,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,682</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">ERL Salak Tinggi | Mitsui Outlet Park KLIA Sepang | NCI Hospital | Xiamen University Malaysia</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Dahlia%2C%20Bandar%20Baru%20Salak%20Tinggi.%20Price%3A%20RM395000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="2-storey-terrace-casaview-cybersouth-5-650000">
-    <div class="card-image-wrap" data-images="/images/unitpic/2storeyterracecasaviewcybersouthMMN/pic1.jpg" data-index="0"><img src="/images/unitpic/2storeyterracecasaviewcybersouthMMN/pic1.jpg" alt="2 Storey Terrace CasaView Cybersouth" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="MMN_604">MMN</span></div>
-      <div><div class="card-name">2 Storey Terrace CasaView Cybersouth</div><div class="card-zone">Cybersouth / Cyberjaya Corridor</div></div>
-      <div class="card-price">RM 650,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 2,769</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 5 bilik</span><span class="pill">🚿 4 bilik air</span><span class="pill">2,166 sqft</span><span class="pill">Leasehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">D'Pulze Shopping Centre (~3km) | MMU Cyberjaya (~3km) | SJK(C) Union Cyberjaya (~2km) | IOI City Mall (~8km)</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20CasaView%20Cybersouth%2C%20Cybersouth%20/%20Cyberjaya%20Corridor.%20Price%3A%20RM650000.%20Ref%3A%20MMN" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="taman-indah-klia-4-450000">
-    <div class="card-image-wrap" data-images="/images/unitpic/tamanindahkliaEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/tamanindahkliaEXP/pic1.jpg" alt="Taman Indah KLIA" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_11520">EXP</span></div>
-      <div><div class="card-name">Taman Indah KLIA</div><div class="card-zone">Taman Indah KLIA</div></div>
-      <div class="card-price">RM 450,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,917</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">2,060 sqft</span><span class="pill">Leasehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Leasehold bumi lot KLIA/Salak Tinggi/Nilai corridor</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Indah%20KLIA%2C%20Taman%20Indah%20KLIA.%20Price%3A%20RM450000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="monet-springtime-4-1000000">
-    <div class="card-image-wrap" data-images="/images/unitpic/monetspringtimeEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/monetspringtimeEXP/pic1.jpg" alt="Monet Springtime" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_21486">EXP</span></div>
-      <div><div class="card-name">Monet Springtime</div><div class="card-zone">Sunsuria City</div></div>
-      <div class="card-price">RM 1,000,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 4,259</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 4 bilik air</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Salak Tinggi ERL Station | KLIA | Xiamen University Malaysia | SJK(C) Sunsuria | Putrajaya / Cyberjaya</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Monet%20Springtime%2C%20Sunsuria%20City.%20Price%3A%20RM1000000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="1-storey-terrace-taman-jenderam-lestari-3-430000">
-    <div class="card-image-wrap" data-images="/images/unitpic/1storeyterracetamanjenderamlestariRSS/pic1.jpg" data-index="0"><img src="/images/unitpic/1storeyterracetamanjenderamlestariRSS/pic1.jpg" alt="1 Storey Terrace Taman Jenderam Lestari" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_1207">RSS</span></div>
-      <div><div class="card-name">1 Storey Terrace Taman Jenderam Lestari</div><div class="card-zone">Jenderam Hilir</div></div>
-      <div class="card-price">RM 430,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,832</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,040 sqft</span><span class="pill">Freehold (Malay Reserved)</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">SK Jenderam Hilir | Masjid As-Syakirin | Klinik Kesihatan Dengkil</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%201%20Storey%20Terrace%20Taman%20Jenderam%20Lestari%2C%20Jenderam%20Hilir.%20Price%3A%20RM430000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="casa-dahlia-apartment-3-300000">
-    <div class="card-image-wrap" data-images="/images/unitpic/casadahliaapartmentZYP/pic1.jpg" data-index="0"><img src="/images/unitpic/casadahliaapartmentZYP/pic1.jpg" alt="Casa Dahlia Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="ZYP_1051">ZYP</span></div>
-      <div><div class="card-name">Casa Dahlia Apartment</div><div class="card-zone">KLIA / Bandar Baru Salak Tinggi</div></div>
-      <div class="card-price">RM 300,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,278</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">853 sqft</span><span class="pill">Freehold</span><span class="pill">Apartment</span></div>
-      <div class="card-anchors">Salak Tinggi (near KLIA/KLIA2)</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Casa%20Dahlia%20Apartment%2C%20KLIA%20/%20Bandar%20Baru%20Salak%20Tinggi.%20Price%3A%20RM300000.%20Ref%3A%20ZYP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="kita-impian-apartment-cybersouth-3-310000">
-    <div class="card-image-wrap" data-images="/images/unitpic/kitaimpianapartmentcybersouthEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/kitaimpianapartmentcybersouthEXP/pic1.jpg" alt="Kita Impian Apartment @ Cybersouth" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_10530">EXP</span></div>
-      <div><div class="card-name">Kita Impian Apartment @ Cybersouth</div><div class="card-zone">Cybersouth</div></div>
-      <div class="card-price">RM 310,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,320</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 3 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">901 sqft</span><span class="pill">Leasehold</span><span class="pill">Apartment</span></div>
-      <div class="card-anchors">Near Putrajaya | Cyberjaya</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Kita%20Impian%20Apartment%20%40%20Cybersouth%2C%20Cybersouth.%20Price%3A%20RM310000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="serenia-aqila-6-1750000">
-    <div class="card-image-wrap" data-images="/images/unitpic/sereniaaqilaEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/sereniaaqilaEXP/pic1.jpg" alt="Serenia Aqila" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_11385">EXP</span></div>
-      <div><div class="card-name">Serenia Aqila</div><div class="card-zone">Serenia City</div></div>
-      <div class="card-price">RM 1,750,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 7,454</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 6 bilik</span><span class="pill">🚿 5 bilik air</span><span class="pill">3,030 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Freehold non-bumi Serenia City near Xiamen/Kipmall/KLIA</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Serenia%20Aqila%2C%20Serenia%20City.%20Price%3A%20RM1750000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="taman-indah-puteri-4-455000">
-    <div class="card-image-wrap" data-images="/images/unitpic/tamanindahputeriEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/tamanindahputeriEXP/pic1.jpg" alt="Taman Indah Puteri" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_9718">EXP</span></div>
-      <div><div class="card-name">Taman Indah Puteri</div><div class="card-zone">Taman Indah Puteri</div></div>
-      <div class="card-price">RM 455,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,938</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">1,260 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Freehold Non-Bumi lot dengan tanah 3,305 sqft lokasi Sepang matang</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Indah%20Puteri%2C%20Taman%20Indah%20Puteri.%20Price%3A%20RM455000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="tanah-jenderam-hulu-3500000">
-    <div class="card-image-wrap" data-images="/images/unitpic/jenderamhuluEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/jenderamhuluEXP/pic1.jpg" alt="Tanah - Jenderam Hulu" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_12879">EXP</span></div>
-      <div><div class="card-name">Tanah - Jenderam Hulu</div><div class="card-zone">Jenderam Hulu</div></div>
-      <div class="card-price">RM 3,500,000</div>
-      
-      <div class="card-pills"><span class="pill">187,852 sqft</span><span class="pill">Freehold</span><span class="pill">Residential Land</span></div>
-      <div class="card-anchors">Near UNIKL MIAT, KLIA, Putrajaya and Cyberjaya</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Jenderam%20Hulu%2C%20Jenderam%20Hulu.%20Price%3A%20RM3500000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="bandar-serenia-4-1150000">
-    <div class="card-image-wrap" data-images="/images/unitpic/bandarsereniaEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/bandarsereniaEXP/pic1.jpg" alt="Bandar Serenia" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_9496">EXP</span></div>
-      <div><div class="card-name">Bandar Serenia</div><div class="card-zone">Bandar Serenia</div></div>
-      <div class="card-price">RM 1,150,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 4,898</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 3 bilik air</span><span class="pill">2,087 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Freehold Bandar Serenia dengan akses ELITE KLIA Putrajaya</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Bandar%20Serenia%2C%20Bandar%20Serenia.%20Price%3A%20RM1150000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="kota-warisan-saujana-klia-4-850000">
-    <div class="card-image-wrap" data-images="/images/unitpic/kotawarisansaujanakliaRSS/pic1.jpg" data-index="0"><img src="/images/unitpic/kotawarisansaujanakliaRSS/pic1.jpg" alt="Kota Warisan Saujana KLIA" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_339">RSS</span></div>
-      <div><div class="card-name">Kota Warisan Saujana KLIA</div><div class="card-zone">Kota Warisan Saujana</div></div>
-      <div class="card-price">RM 850,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 3,620</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 4 bilik air</span><span class="pill">2,130 sqft</span><span class="pill">Leasehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Leasehold non-bumi near KLIA/Mitsui/KipMall</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Kota%20Warisan%20Saujana%20KLIA%2C%20Kota%20Warisan%20Saujana.%20Price%3A%20RM850000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="taman-ikhlas-4-435000">
-    <div class="card-image-wrap" data-images="/images/unitpic/tamanikhlasEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/tamanikhlasEXP/pic1.jpg" alt="Taman Ikhlas" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_7475">EXP</span></div>
-      <div><div class="card-name">Taman Ikhlas</div><div class="card-zone">Taman Ikhlas Jenjarom</div></div>
-      <div class="card-price">RM 435,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM 1,853</strong>/bulan ansuran</div>
-      <div class="card-pills"><span class="pill">🛏 4 bilik</span><span class="pill">🚿 2 bilik air</span><span class="pill">972 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">Freehold MR Jenjarom dekat Lotus Econsave Quayside Mall</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Ikhlas%2C%20Taman%20Ikhlas%20Jenjarom.%20Price%3A%20RM435000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="tanah-pertanian-sepang-3000000">
-    <div class="card-image-wrap" data-images="/images/unitpic/tanahpertaniansepangRSS/pic1.jpg" data-index="0"><img src="/images/unitpic/tanahpertaniansepangRSS/pic1.jpg" alt="Tanah -  Pertanian Sepang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_816">RSS</span></div>
-      <div><div class="card-name">Tanah -  Pertanian Sepang</div><div class="card-zone">Sepang</div></div>
-      <div class="card-price">RM 3,000,000</div>
-      
-      <div class="card-pills"><span class="pill">Freehold</span><span class="pill">Agricultural Land</span></div>
-      <div class="card-anchors">Developing Growth Zone</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Tanah%20Pertanian%20Sepang%2C%20Sepang.%20Price%3A%20RM3000000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><div class="card" id="tanah-pertanian-kg-salak-tinggi-750000">
-    <div class="card-image-wrap" data-images="/images/unitpic/tanahpertaniankgsalaktinggiRSS/pic1.jpg" data-index="0"><img src="/images/unitpic/tanahpertaniankgsalaktinggiRSS/pic1.jpg" alt="Tanah - Pertanian Kg Salak Tinggi" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_814">RSS</span></div>
-      <div><div class="card-name">Tanah - Pertanian Kg Salak Tinggi</div><div class="card-zone">Kg Salak Tinggi</div></div>
-      <div class="card-price">RM 750,000</div>
-      
-      <div class="card-pills"><span class="pill">Freehold</span><span class="pill">Agricultural Land</span></div>
-      <div class="card-anchors">Kampung Growth Pocket</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Tanah%20Pertanian%20Kg%20Salak%20Tinggi%2C%20Kg%20Salak%20Tinggi.%20Price%3A%20RM750000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div><!--SSR_END--></div>
+    <p class="list-hint">Tekan unit untuk maklumat dan WhatsApp.</p>
+    <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="dahlia-impiana-apartment-295000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Dahlia Impiana Apartment</span><span class="card-zone"><span>Salak Tinggi</span><span>900 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 295,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Apartment</span><span>Anggaran RM 1,256/bulan ansuran</span></span><span class="badge-coa">EXP_20766</span></div><div class="card-anchors"><b>Berhampiran:</b> Salak Tinggi ERL Station | AEON Mall Nilai | Nilai Medical Centre | SK Taman Seroja | ELITE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Dahlia%20Impiana%20Apartment%2C%20Salak%20Tinggi.%20Price%3A%20RM295000.%20Ref%3A%20EXP_20766" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="desa-baiduri-murni-3-390000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Desa Baiduri Murni</span><span class="card-zone"><span>Salak Tinggi</span><span>3 bilik</span><span>1,400 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 390,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bilik air</span><span>Anggaran RM 1,661/bulan ansuran</span></span><span class="badge-coa">RSS_470</span></div><div class="card-anchors"><b>Berhampiran:</b> Near KLIA, Mitsui Outlet Park, Xiamen University and ERL Salak Tinggi</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Desa%20Baiduri%20Murni%2C%20Salak%20Tinggi.%20Price%3A%20RM390000.%20Ref%3A%20RSS_470" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="acacia-residences-i-3-300000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Acacia Residences [i]</span><span class="card-zone"><span>Salak Perdana</span><span>3 bilik</span><span>850 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 300,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span><span>Anggaran RM 1,278/bulan ansuran</span></span><span class="badge-coa">BUFF_1380</span></div><div class="card-anchors"><b>Berhampiran:</b> ERL Salak Tinggi Station | KIP Mall Kota Warisan | UniKL MIAT | Xiamen University Malaysia | ELITE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Acacia%20Residences%2C%20Salak%20Perdana.%20Price%3A%20RM300000.%20Ref%3A%20BUFF_1380" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="2-storey-terrace-taman-banting-baru-3-330000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">2 Storey Terrace Taman Banting Baru</span><span class="card-zone"><span>Taman Banting Baru</span><span>3 bilik</span><span>1,550 sqft</span><span>Freehold (Bumi Lot)</span></span></span><span class="row-side"><span class="card-price">RM 330,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bilik air</span><span>Anggaran RM 1,406/bulan ansuran</span></span><span class="badge-coa">EXP_17703</span></div><div class="card-anchors"><b>Berhampiran:</b> Kolej Matrikulasi Selangor | Hospital Banting | SM Sains Banting | Politeknik Banting</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20Taman%20Banting%20Baru%2C%20Taman%20Banting%20Baru.%20Price%3A%20RM330000.%20Ref%3A%20EXP_17703" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="monet-springtime-4-695000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Monet Springtime</span><span class="card-zone"><span>Sunsuria City</span><span>4 bilik</span><span>2,092 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 695,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>4 bilik air</span><span>Anggaran RM 2,960/bulan ansuran</span></span><span class="badge-coa">EXP_21498</span></div><div class="card-anchors"><b>Berhampiran:</b> Salak Tinggi ERL Station | KLIA | Xiamen University Malaysia | SJK(C) Sunsuria | Putrajaya / Cyberjaya</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Monet%20Springtime%2C%20Sunsuria%20City.%20Price%3A%20RM695000.%20Ref%3A%20EXP_21498" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="tanah-kg-labu-lanjut-estate-2500000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tanah - Kg Labu Lanjut Estate</span><span class="card-zone"><span>Labu Lanjut</span><span>85,813 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 2,500,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Agricultural Land with Bungalow</span></span><span class="badge-coa">MMN_256</span></div><div class="card-anchors"><b>Berhampiran:</b> Sekolah Kebangsaan Kampung Baharu Lanjut | Surau An-Nur RTB Labu Lanjut | Salak Tinggi ERL Station</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Kg%20Labu%20Lanjut%20Estate%2C%20Labu%20Lanjut.%20Price%3A%20RM2500000.%20Ref%3A%20MMN_256" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="tanah-lot-banglo-kg-giching-260000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tanah -  Lot Banglo Kg Giching</span><span class="card-zone"><span>Kg Giching / Labu Lanjut</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 260,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Residential Land</span></span><span class="badge-coa">RSS_810</span></div><div class="card-anchors"><b>Berhampiran:</b> KLIA Growth Pocket</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Tanah%20Lot%20Banglo%20Kg%20Giching%2C%20Kg%20Giching%20/%20Labu%20Lanjut.%20Price%3A%20RM260000.%20Ref%3A%20RSS_810" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="tanah-bandar-mahkota-banting-150000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tanah - Bandar Mahkota Banting</span><span class="card-zone"><span>Banting</span><span>4,004 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 150,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Residential Land</span></span><span class="badge-coa">MMN_260</span></div><div class="card-anchors"><b>Berhampiran:</b> Mahkota Industrial Park | Qualitas Health Poliklinik Astana Medic | HM Grocer Bandar Mahkota</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Bandar%20Mahkota%20Banting%2C%20Banting.%20Price%3A%20RM150000.%20Ref%3A%20MMN_260" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="tanah-residential-land-dengkil-335000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tanah - Residential Land Dengkil</span><span class="card-zone"><span>Dengkil</span><span>8,563 sqft</span><span>Leasehold (exp. 2094)</span></span></span><span class="row-side"><span class="card-price">RM 335,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Residential Land</span></span><span class="badge-coa">RSS_1184</span></div><div class="card-anchors"><b>Berhampiran:</b> UiTM Cawangan Selangor Kampus Dengkil | PKNS Selangor Cyber Valley Science Park | Bandar Gamuda Cove</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residential%20Land%20Dengkil%2C%20Dengkil.%20Price%3A%20RM335000.%20Ref%3A%20RSS_1184" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="1-storey-townhouse-platinum-residence-dengkil-3-380000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">1 Storey Townhouse Platinum Residence Dengkil</span><span class="card-zone"><span>Dengkil</span><span>3 bilik</span><span>1,421 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 380,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Townhouse</span><span>2 bilik air</span><span>Anggaran RM 1,619/bulan ansuran</span></span><span class="badge-coa">RSS_1015</span></div><div class="card-anchors"><b>Berhampiran:</b> Dengkil Town Centre (daily retail + food) | SK Dengkil (family demand driver) | Masjid Dengkil (community anchor)</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%201%20Storey%20Townhouse%20Platinum%20Residence%20Dengkil%2C%20Dengkil.%20Price%3A%20RM380000.%20Ref%3A%20RSS_1015" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="2-storey-terrace-taman-langat-utama-4-540000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">2 Storey Terrace Taman Langat Utama</span><span class="card-zone"><span>Taman Langat Utama</span><span>4 bilik</span><span>2,000 sqft</span><span>Leasehold (Bumi Lot)</span></span></span><span class="row-side"><span class="card-price">RM 540,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span><span>Anggaran RM 2,300/bulan ansuran</span></span><span class="badge-coa">EXP_15976</span></div><div class="card-anchors"><b>Berhampiran:</b> SK Banting / nearby primary school cluster | Masjid nearby (local surau / mosque within taman) | 99 Speedmart (neighbourhood retail) | Klinik Kesihatan Banting / nearby clinics</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20Taman%20Langat%20Utama%2C%20Taman%20Langat%20Utama.%20Price%3A%20RM540000.%20Ref%3A%20EXP_15976" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="taman-mawar-2-5-495000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Taman Mawar 2</span><span class="card-zone"><span>Bandar Baru Salak Tinggi</span><span>5 bilik</span><span>1,650 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 495,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span><span>Anggaran RM 2,108/bulan ansuran</span></span><span class="badge-coa">EXP_10669</span></div><div class="card-anchors"><b>Berhampiran:</b> KLIA, Mitsui Outlet Park, Hospital KLIA</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Mawar%202%2C%20Bandar%20Baru%20Salak%20Tinggi.%20Price%3A%20RM495000.%20Ref%3A%20EXP_10669" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="pangsapuri-kita-ria-3-298000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Pangsapuri Kita Ria</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>901 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 298,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bilik air</span><span>Anggaran RM 1,269/bulan ansuran</span></span><span class="badge-coa">EXP_19610</span></div><div class="card-anchors"><b>Berhampiran:</b> MEX Highway | ELITE Highway | UiTM Dengkil | SMK Dengkil</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Pangsapuri%20Kita%20Ria%2C%20Cybersouth.%20Price%3A%20RM298000.%20Ref%3A%20EXP_19610" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="taman-dahlia-4-395000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Taman Dahlia</span><span class="card-zone"><span>Bandar Baru Salak Tinggi</span><span>4 bilik</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 395,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bilik air</span><span>Anggaran RM 1,682/bulan ansuran</span></span><span class="badge-coa">EXP_19524</span></div><div class="card-anchors"><b>Berhampiran:</b> ERL Salak Tinggi | Mitsui Outlet Park KLIA Sepang | NCI Hospital | Xiamen University Malaysia</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Dahlia%2C%20Bandar%20Baru%20Salak%20Tinggi.%20Price%3A%20RM395000.%20Ref%3A%20EXP_19524" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="2-storey-terrace-casaview-cybersouth-5-650000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">2 Storey Terrace CasaView Cybersouth</span><span class="card-zone"><span>Cybersouth / Cyberjaya Corridor</span><span>5 bilik</span><span>2,166 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 650,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>4 bilik air</span><span>Anggaran RM 2,769/bulan ansuran</span></span><span class="badge-coa">MMN_604</span></div><div class="card-anchors"><b>Berhampiran:</b> D'Pulze Shopping Centre (~3km) | MMU Cyberjaya (~3km) | SJK(C) Union Cyberjaya (~2km) | IOI City Mall (~8km)</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%202%20Storey%20Terrace%20CasaView%20Cybersouth%2C%20Cybersouth%20/%20Cyberjaya%20Corridor.%20Price%3A%20RM650000.%20Ref%3A%20MMN_604" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="taman-indah-klia-4-450000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Taman Indah KLIA</span><span class="card-zone"><span>Taman Indah KLIA</span><span>4 bilik</span><span>2,060 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 450,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span><span>Anggaran RM 1,917/bulan ansuran</span></span><span class="badge-coa">EXP_11520</span></div><div class="card-anchors"><b>Berhampiran:</b> Leasehold bumi lot KLIA/Salak Tinggi/Nilai corridor</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Indah%20KLIA%2C%20Taman%20Indah%20KLIA.%20Price%3A%20RM450000.%20Ref%3A%20EXP_11520" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="monet-springtime-4-1000000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Monet Springtime</span><span class="card-zone"><span>Sunsuria City</span><span>4 bilik</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 1,000,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>4 bilik air</span><span>Anggaran RM 4,259/bulan ansuran</span></span><span class="badge-coa">EXP_21486</span></div><div class="card-anchors"><b>Berhampiran:</b> Salak Tinggi ERL Station | KLIA | Xiamen University Malaysia | SJK(C) Sunsuria | Putrajaya / Cyberjaya</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Monet%20Springtime%2C%20Sunsuria%20City.%20Price%3A%20RM1000000.%20Ref%3A%20EXP_21486" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="1-storey-terrace-taman-jenderam-lestari-3-430000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">1 Storey Terrace Taman Jenderam Lestari</span><span class="card-zone"><span>Jenderam Hilir</span><span>3 bilik</span><span>1,040 sqft</span><span>Freehold (Malay Reserved)</span></span></span><span class="row-side"><span class="card-price">RM 430,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bilik air</span><span>Anggaran RM 1,832/bulan ansuran</span></span><span class="badge-coa">RSS_1207</span></div><div class="card-anchors"><b>Berhampiran:</b> SK Jenderam Hilir | Masjid As-Syakirin | Klinik Kesihatan Dengkil</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%201%20Storey%20Terrace%20Taman%20Jenderam%20Lestari%2C%20Jenderam%20Hilir.%20Price%3A%20RM430000.%20Ref%3A%20RSS_1207" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="casa-dahlia-apartment-3-300000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Casa Dahlia Apartment</span><span class="card-zone"><span>KLIA / Bandar Baru Salak Tinggi</span><span>3 bilik</span><span>853 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 300,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Apartment</span><span>2 bilik air</span><span>Anggaran RM 1,278/bulan ansuran</span></span><span class="badge-coa">ZYP_1051</span></div><div class="card-anchors"><b>Berhampiran:</b> Salak Tinggi (near KLIA/KLIA2)</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Casa%20Dahlia%20Apartment%2C%20KLIA%20/%20Bandar%20Baru%20Salak%20Tinggi.%20Price%3A%20RM300000.%20Ref%3A%20ZYP_1051" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="kita-impian-apartment-cybersouth-3-310000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Kita Impian Apartment @ Cybersouth</span><span class="card-zone"><span>Cybersouth</span><span>3 bilik</span><span>901 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 310,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Apartment</span><span>2 bilik air</span><span>Anggaran RM 1,320/bulan ansuran</span></span><span class="badge-coa">EXP_10530</span></div><div class="card-anchors"><b>Berhampiran:</b> Near Putrajaya | Cyberjaya</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Kita%20Impian%20Apartment%20%40%20Cybersouth%2C%20Cybersouth.%20Price%3A%20RM310000.%20Ref%3A%20EXP_10530" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="serenia-aqila-6-1750000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Serenia Aqila</span><span class="card-zone"><span>Serenia City</span><span>6 bilik</span><span>3,030 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 1,750,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>5 bilik air</span><span>Anggaran RM 7,454/bulan ansuran</span></span><span class="badge-coa">EXP_11385</span></div><div class="card-anchors"><b>Berhampiran:</b> Freehold non-bumi Serenia City near Xiamen/Kipmall/KLIA</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Serenia%20Aqila%2C%20Serenia%20City.%20Price%3A%20RM1750000.%20Ref%3A%20EXP_11385" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="taman-indah-puteri-4-455000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Taman Indah Puteri</span><span class="card-zone"><span>Taman Indah Puteri</span><span>4 bilik</span><span>1,260 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 455,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bilik air</span><span>Anggaran RM 1,938/bulan ansuran</span></span><span class="badge-coa">EXP_9718</span></div><div class="card-anchors"><b>Berhampiran:</b> Freehold Non-Bumi lot dengan tanah 3,305 sqft lokasi Sepang matang</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Indah%20Puteri%2C%20Taman%20Indah%20Puteri.%20Price%3A%20RM455000.%20Ref%3A%20EXP_9718" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="tanah-jenderam-hulu-3500000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tanah - Jenderam Hulu</span><span class="card-zone"><span>Jenderam Hulu</span><span>187,852 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 3,500,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Residential Land</span></span><span class="badge-coa">EXP_12879</span></div><div class="card-anchors"><b>Berhampiran:</b> Near UNIKL MIAT, KLIA, Putrajaya and Cyberjaya</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Jenderam%20Hulu%2C%20Jenderam%20Hulu.%20Price%3A%20RM3500000.%20Ref%3A%20EXP_12879" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="bandar-serenia-4-1150000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Bandar Serenia</span><span class="card-zone"><span>Bandar Serenia</span><span>4 bilik</span><span>2,087 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 1,150,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bilik air</span><span>Anggaran RM 4,898/bulan ansuran</span></span><span class="badge-coa">EXP_9496</span></div><div class="card-anchors"><b>Berhampiran:</b> Freehold Bandar Serenia dengan akses ELITE KLIA Putrajaya</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Bandar%20Serenia%2C%20Bandar%20Serenia.%20Price%3A%20RM1150000.%20Ref%3A%20EXP_9496" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="kota-warisan-saujana-klia-4-850000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Kota Warisan Saujana KLIA</span><span class="card-zone"><span>Kota Warisan Saujana</span><span>4 bilik</span><span>2,130 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 850,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>4 bilik air</span><span>Anggaran RM 3,620/bulan ansuran</span></span><span class="badge-coa">RSS_339</span></div><div class="card-anchors"><b>Berhampiran:</b> Leasehold non-bumi near KLIA/Mitsui/KipMall</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Kota%20Warisan%20Saujana%20KLIA%2C%20Kota%20Warisan%20Saujana.%20Price%3A%20RM850000.%20Ref%3A%20RSS_339" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="taman-ikhlas-4-435000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Taman Ikhlas</span><span class="card-zone"><span>Taman Ikhlas Jenjarom</span><span>4 bilik</span><span>972 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 435,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bilik air</span><span>Anggaran RM 1,853/bulan ansuran</span></span><span class="badge-coa">EXP_7475</span></div><div class="card-anchors"><b>Berhampiran:</b> Freehold MR Jenjarom dekat Lotus Econsave Quayside Mall</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Ikhlas%2C%20Taman%20Ikhlas%20Jenjarom.%20Price%3A%20RM435000.%20Ref%3A%20EXP_7475" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="tanah-pertanian-sepang-3000000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tanah -  Pertanian Sepang</span><span class="card-zone"><span>Sepang</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 3,000,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Agricultural Land</span></span><span class="badge-coa">RSS_816</span></div><div class="card-anchors"><b>Berhampiran:</b> Developing Growth Zone</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Tanah%20Pertanian%20Sepang%2C%20Sepang.%20Price%3A%20RM3000000.%20Ref%3A%20RSS_816" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><div class="card" id="tanah-pertanian-kg-salak-tinggi-750000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tanah - Pertanian Kg Salak Tinggi</span><span class="card-zone"><span>Kg Salak Tinggi</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 750,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Agricultural Land</span></span><span class="badge-coa">RSS_814</span></div><div class="card-anchors"><b>Berhampiran:</b> Kampung Growth Pocket</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Tanah%20Pertanian%20Kg%20Salak%20Tinggi%2C%20Kg%20Salak%20Tinggi.%20Price%3A%20RM750000.%20Ref%3A%20RSS_814" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp tentang unit ini</a></div></div><!--SSR_END--></div>
   </div>
 
   <!--BM_FAQ_START--><section class="bm-faq" style="margin:32px 0 8px"><h2 style="font-family:Lora,serif;color:#1B4D35;font-size:22px;margin:0 0 6px">Soalan Lazim: Hartanah di Sepang, Dengkil &amp; Banting</h2><details style="border-bottom:1px solid #e3ddd0;padding:12px 0"><summary style="cursor:pointer;font-weight:700;color:#1B4D35;font-size:15px">Apakah jenis hartanah yang ada di Sepang, Dengkil &amp; Banting?</summary><p style="margin:8px 0 0;color:#4a4540;font-size:14px;line-height:1.6">Hani Properties menyenaraikan rumah sewa dan rumah untuk dijual (subsale) di Sepang, Dengkil &amp; Banting, termasuk apartmen, kondominium dan rumah landed. Senarai dikemas kini setiap minggu.</p></details><details style="border-bottom:1px solid #e3ddd0;padding:12px 0"><summary style="cursor:pointer;font-weight:700;color:#1B4D35;font-size:15px">Adakah Sepang, Dengkil &amp; Banting kawasan yang bagus untuk menyewa atau membeli rumah?</summary><p style="margin:8px 0 0;color:#4a4540;font-size:14px;line-height:1.6">Sepang, Dengkil dan Banting ialah kawasan selatan Selangor yang pesat membangun — lokasi KLIA dan koridor Dengkil–Cybersouth, dengan sektor logistik yang kukuh dan rumah landed yang mampu milik.</p></details><details style="border-bottom:1px solid #e3ddd0;padding:12px 0"><summary style="cursor:pointer;font-weight:700;color:#1B4D35;font-size:15px">Bagaimana nak bertanya tentang hartanah di Sepang, Dengkil &amp; Banting?</summary><p style="margin:8px 0 0;color:#4a4540;font-size:14px;line-height:1.6">WhatsApp Hani terus di 012-545 9182. Hani Properties berdaftar di bawah ERA Real Estate (E(1)1773/3, REN 84031) dan biasanya membalas dalam masa sejam.</p></details><details style="border-bottom:1px solid #e3ddd0;padding:12px 0"><summary style="cursor:pointer;font-weight:700;color:#1B4D35;font-size:15px">Boleh Hani Properties bantu cari unit di Sepang, Dengkil &amp; Banting yang belum disenaraikan?</summary><p style="margin:8px 0 0;color:#4a4540;font-size:14px;line-height:1.6">Boleh. WhatsApp Hani atau isi borang permintaan, dan Hani akan cari terus unit yang sesuai di Sepang, Dengkil &amp; Banting.</p></details></section><!--BM_FAQ_END-->
@@ -1184,49 +625,59 @@ function moveInText(val) {
   return `🗓 Masuk: ${v}`;
 }
 
-function unitCard(r) {
-  const pills = [
-    r.bed ? `<span class="pill">🛏 ${r.bed} bilik</span>` : '',
-    r.bath ? `<span class="pill">🚿 ${r.bath} bilik air</span>` : '',
-    r.size ? `<span class="pill">${Number(r.size).toLocaleString()} sqft</span>` : '',
-    r.furnishing ? `<span class="pill pill-furnishing">${FURNISHING_BM[r.furnishing] || r.furnishing}</span>` : '',
-    r.type ? `<span class="pill">${r.type}</span>` : '',
-    moveInText(r.move_in_date) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
-  ].filter(Boolean).join('');
-  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
-    ${cardImage(r)}
-    <div class="card-body">
-      <div class="card-badges"><span class="card-badge badge-unit">Sewa Unit</span>${coaBadge(r)}</div>
-      <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
-      <div class="card-price">${fmt(r.price)}<span> / bulan</span></div>
-      <div class="card-pills">${pills}</div>
-      ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
-      <a href="${wa(r.wa_text || `Hai Hani, saya berminat dengan ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div>`;
+/*ROWS_JS_START*/
+/* Unit rows (text only, no photos). Tap a row to open details + WhatsApp.
+   Written by build_static_listings.py (ROWS_JS); unit_row() there writes the
+   same markup for the static copy -- edit both there. */
+const ROW_TXT = { bed: 'bilik', bath: 'bilik air', moveIn: 'Masuk: ', est: 'Anggaran RM ', inst: '/bulan ansuran', near: 'Berhampiran:', mo: '/bulan', wa: '💬 WhatsApp tentang unit ini' };
+function clean(v) { v = String(v || '').trim(); return (v && v !== '-') ? v : ''; }
+function coaRef(r) {
+  if (!r.code) return '';
+  const m = String(r.source_link || '').trim().match(/\/(\d+)\/?$/);
+  return m ? `${r.code}_${m[1]}` : r.code;
 }
+// WhatsApp text carries the full ref (code_post) so Hani knows the exact unit
+function waRef(r, fallback) {
+  let t = r.wa_text || fallback;
+  const ref = coaRef(r);
+  if (ref) t = /Ref:/.test(t) ? t.replace(/Ref:\s*\S*/, 'Ref: ' + ref) : `${t} Ref: ${ref}`;
+  return wa(t);
+}
+function furnText(f) { f = clean(f); return (typeof FURNISHING_BM !== 'undefined' && FURNISHING_BM[f]) || f; }
+function bedText(b) { b = clean(b); return !b ? '' : (b === '0' ? 'Studio' : `${b} ${ROW_TXT.bed}`); }
+function numText(v) { const n = Number(String(v).replace(/,/g, '')); return isNaN(n) ? '' : n.toLocaleString('en-MY'); }
+function spans(list) { return list.filter(Boolean).map(x => `<span>${escHtml(x)}</span>`).join(''); }
 
-function subsaleCard(r) {
-  const pills = [
-    r.bed ? `🛏 ${r.bed} bilik` : '',
-    r.bath ? `🚿 ${r.bath} bilik air` : '',
-    r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
-    r.tenure || '',
-    r.type || ''
-  ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
-    ${cardImage(r)}
-    <div class="card-body">
-      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
-      <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
-      <div class="card-price">${fmt(r.price)}</div>
-      ${r.installment ? `<div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Anggaran <strong style="color:#1B4D35;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/bulan ansuran</div>` : ''}
-      <div class="card-pills">${pills}</div>
-      ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
-      <a href="${wa(r.wa_text || `Hai Hani, saya berminat dengan unit dijual di ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Tanya di WhatsApp</a>
-    </div>
-  </div>`;
+function unitRow(r, rent) {
+  const sub = [clean(r.zone), bedText(r.bed), clean(r.size) ? `${numText(r.size)} sqft` : '', rent ? furnText(r.furnishing) : clean(r.tenure)];
+  const more = [clean(r.type), clean(r.bath) ? `${r.bath} ${ROW_TXT.bath}` : ''];
+  if (rent && clean(r.move_in_date)) more.push(ROW_TXT.moveIn + r.move_in_date);
+  if (!rent && clean(r.installment)) more.push(ROW_TXT.est + numText(r.installment) + ROW_TXT.inst);
+  const ref = coaRef(r);
+  const fallback = rent ? `Hai Hani, saya berminat dengan ${r.project_name}, ${r.zone}.`
+                        : `Hai Hani, saya berminat dengan unit dijual di ${r.project_name}, ${r.zone}.`;
+  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">` +
+    `<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">` +
+      `<span class="row-main"><span class="card-name">${escHtml(r.project_name)}</span>` +
+      `<span class="card-zone">${spans(sub)}</span></span>` +
+      `<span class="row-side"><span class="card-price">${fmt(r.price)}${rent ? `<span>${ROW_TXT.mo}</span>` : ''}</span>` +
+      `<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>` +
+    `</button>` +
+    `<div class="row-more">` +
+      `<div class="row-specs"><span class="bits">${spans(more)}</span>${ref ? `<span class="badge-coa">${escHtml(ref)}</span>` : ''}</div>` +
+      (clean(r.anchors) ? `<div class="card-anchors"><b>${ROW_TXT.near}</b> ${escHtml(r.anchors)}</div>` : '') +
+      `<a href="${escHtml(waRef(r, fallback))}" class="card-cta" target="_blank" rel="noopener noreferrer">${ROW_TXT.wa}</a>` +
+    `</div></div>`;
 }
+function unitCard(r) { return unitRow(r, true); }
+function subsaleCard(r) { return unitRow(r, false); }
+
+function toggleRow(btn) {
+  const card = btn.closest('.card');
+  const open = card.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+/*ROWS_JS_END*/
 
 /* ── Keyword search (same rules as search.html, via /listing-match.js) ── */
 let searchTimer;
@@ -1300,6 +751,7 @@ function scrollToHash() {
     const el = document.getElementById(hash);
     if (el) {
       clearInterval(poll);
+      el.classList.add('open');
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       el.classList.add('card-highlight');
       setTimeout(() => el.classList.remove('card-highlight'), 2800);

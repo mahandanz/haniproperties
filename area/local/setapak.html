@@ -26,7 +26,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Lora:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/lightbox.css?v=20260930">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
@@ -70,40 +69,37 @@
     .section-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#7a7268;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid #e3ddd0}
     .section-label:first-of-type{margin-top:0}
 
-    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:8px}
-
-    .card{background:#fff;border-radius:14px;border:1px solid #e3ddd0;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .18s,transform .15s}
-    .card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
-    /* Height lives on the photo, not the wrapper, so the arrow bar can sit below it */
-    .card-image-wrap{position:relative;width:100%;overflow:hidden;background:#f0ede8;touch-action:pan-y}
-    .card-image-wrap .card-image{width:100%;height:160px;object-fit:cover;display:block;cursor:pointer;transition:transform .35s ease}
-    .card-image-wrap:hover .card-image{transform:scale(1.06)}
-    .card-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;gap:10px}
-
-    .card-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
-    .badge-unit{background:#e8f4ed;color:#1B4D35}
-    .badge-subsale{background:#e8f0fe;color:#1a4fa0}
-    .badge-land{background:#f3ecf9;color:#5b3a94}
-    .badge-coa{background:#f0ede8;color:#7a7268;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:6px}
-    .badge-count{background:#eef7f0;color:#1B4D35;margin-left:6px}
-
-    .card-name{font-size:14px;font-weight:700;color:#1c1c18;line-height:1.35}
-    .card-zone{font-size:12px;color:#7a7268;margin-top:1px}
-    .card-price{font-size:20px;font-weight:900;color:#1B4D35}
-    .card-price span{font-size:12px;font-weight:500;color:#7a7268}
-
-    .card-pills{display:flex;flex-wrap:wrap;gap:6px}
-    .pill{font-size:11px;font-weight:600;color:#444;background:#f0ede8;padding:4px 10px;border-radius:20px;white-space:nowrap}
-    .card-price-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-    .pill-mv{background:#fdeaea;color:#a3271f}
-
-    .card-anchors{font-size:11px;color:#7a7268;line-height:1.6;border-top:1px solid #f0ede8;padding-top:10px}
-    .card-cta{display:block;text-align:center;background:#1B4D35;color:#fff;font-size:13px;font-weight:700;padding:11px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:auto}
+    /*ROWS_CSS_START*/
+    /* Unit list: one text row per unit (no photos); tap a row for details + WhatsApp.
+       Written by build_static_listings.py (ROWS_CSS) -- edit it there. */
+    .list-hint{font-size:12.5px;color:#7a7268;margin:0 0 10px}
+    .listing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));align-items:start;gap:10px;margin-bottom:8px}
+    .card{background:#fff;border-radius:12px;border:1px solid #e3ddd0;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+    .card.open{border-color:#1B4D35}
+    .card-highlight{box-shadow:0 0 0 3px rgba(0,190,99,.45)}
+    .row-head{width:100%;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 16px;background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+    .row-head:hover{background:#faf9f6}
+    .row-head:focus-visible{outline:2px solid #00BE63;outline-offset:-2px}
+    .row-main{min-width:0;display:flex;flex-direction:column;gap:3px}
+    .card-name{font-size:15px;font-weight:700;color:#1c1c18;line-height:1.3}
+    .card-zone{font-size:12.5px;color:#7a7268;line-height:1.5}
+    .card-zone span+span::before,.row-specs .bits span+span::before{content:" · "}
+    .row-side{display:flex;align-items:center;gap:6px;flex-shrink:0}
+    .card-price{font-size:16px;font-weight:900;color:#1B4D35;white-space:nowrap}
+    .card-price span{font-size:11px;font-weight:500;color:#7a7268}
+    .chev{width:18px;height:18px;fill:none;stroke:#7a7268;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}
+    .card.open .chev{transform:rotate(180deg)}
+    .row-more{display:none;padding:0 16px 16px}
+    .card.open .row-more{display:block}
+    .row-specs{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;font-size:12.5px;color:#444;border-top:1px solid #f0ede8;padding-top:12px}
+    .badge-coa{background:#f0ede8;color:#7a7268;font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:20px;white-space:nowrap}
+    .card-anchors{font-size:12px;color:#7a7268;line-height:1.6;margin-top:8px}
+    .card-anchors b{color:#444;font-weight:600}
+    .card-cta{display:block;text-align:center;background:#1B4D35;color:#fff;font-size:13.5px;font-weight:700;padding:12px;border-radius:8px;text-decoration:none;transition:background .18s;margin-top:12px}
     .card-cta:hover{background:#163f2b}
-    .card-body .card-badges,.card-body .card-anchors,.card-body .card-cta,.card-body .card-installment{display:none}
-    .card-body .card-pills .pill{display:none}
-    .card-body .card-pills .pill-furnishing{display:inline-block}
-    .card-body .card-pills:not(:has(.pill-furnishing)){display:none}
+    @media(max-width:600px){
+    }
+    /*ROWS_CSS_END*/
     .empty{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px;background:#fff;border-radius:14px;border:1px dashed #e3ddd0;grid-column:1/-1}
     .loading{text-align:center;padding:48px 24px;color:#7a7268;font-size:14px}
 
@@ -140,16 +136,6 @@
       .filter-bar{gap:8px;padding:12px}
       .filter-group{min-width:calc(50% - 4px)}
       .main{padding:28px 16px 48px}
-      .listing-grid{grid-template-columns:repeat(3,1fr);gap:8px}
-      .card{border-radius:10px}
-      .card-image-wrap .card-image{height:88px}
-      .card-body{padding:8px 8px 10px;gap:4px}
-      .card-name{font-size:10.5px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-      .card-zone{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-      .card-price{font-size:11.5px}
-      .card-price span{font-size:8px}
-      .card-pills{gap:0}
-      .card-body .card-pills .pill-furnishing{font-size:8px;padding:2px 6px;white-space:normal;line-height:1.25;max-width:100%}
       .tabs{width:100%}
       .tab-btn{flex:1;text-align:center}
     }
@@ -168,7 +154,9 @@
     .wa-float:hover{transform:translateY(-50%) scale(1.08);box-shadow:0 6px 20px rgba(0,0,0,.3)}
     .wa-float svg{width:30px;height:30px}
     @media(max-width:600px){
-      .wa-float{right:14px;width:50px;height:50px}
+      /* bottom corner on phones so it doesn't sit on top of unit prices */
+      .wa-float{right:14px;top:auto;bottom:18px;transform:none;width:50px;height:50px}
+      .wa-float:hover{transform:scale(1.08)}
       .wa-float svg{width:26px;height:26px}
     }
     /* PROPERTY CLASS CHOICE (Residential / Commercial / Land) */
@@ -189,7 +177,6 @@
       .prop-btn .prop-count{font-size:10px}
     }
   </style>
-<script src="/lightbox.js?v=20261118"></script>
 </head>
 <body>
 
@@ -309,447 +296,14 @@
 
   <div id="tab-sewa" style="overflow:hidden">
     <img src="/images/banner-unit.png" alt="Unit Rentals" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
-    <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="platinum-hill-pv5-4-1900">
-    <div class="card-image-wrap" data-images="/images/unitpic/platinumhillpv5EX/pic1.jpg" data-index="0"><img src="/images/unitpic/platinumhillpv5EX/pic1.jpg" alt="Platinum Hill PV5" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="EX_32821">EX</span></div>
-      <div><div class="card-name">Platinum Hill PV5</div><div class="card-zone">Taman Melati</div></div>
-      <div class="card-price">RM 1,900<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,275 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">LRT Taman Melati | M3 Mall | Columbia Asia Hospital Setapak | TAR UMT | MRR2</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Platinum%20Hill%20PV5%2C%20Taman%20Melati.%20Price%3A%20RM1900.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="seksyen-4-wangsa-maju-flat-1500">
-    <div class="card-image-wrap" data-images="/images/unitpic/seksyen4wangsamajuflatTH/pic1.jpg" data-index="0"><img src="/images/unitpic/seksyen4wangsamajuflatTH/pic1.jpg" alt="Seksyen 4 Wangsa Maju Flat" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="TH_1275">TH</span></div>
-      <div><div class="card-name">Seksyen 4 Wangsa Maju Flat</div><div class="card-zone">Seksyen 4, Wangsa Maju</div></div>
-      <div class="card-price">RM 1,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">-</span><span class="pill">Flat</span></div>
-      <div class="card-anchors">LRT Wangsa Maju (~5 min walk) | Wangsa Walk Mall | AEON Alpha Angle | Setapak Central | MRR2</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Seksyen%204%20Wangsa%20Maju%20Flat%2C%20Seksyen%204%2C%20Wangsa%20Maju.%20Price%3A%20RM1500.%20Ref%3A%20TH" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="jasmin-apartment-3-1600">
-    <div class="card-image-wrap" data-images="/images/unitpic/jasminapartmentADL/pic1.jpg" data-index="0"><img src="/images/unitpic/jasminapartmentADL/pic1.jpg" alt="Jasmin Apartment" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="ADL_15274">ADL</span></div>
-      <div><div class="card-name">Jasmin Apartment</div><div class="card-zone">Taman Sri Rampai</div></div>
-      <div class="card-price">RM 1,600<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Apartment</span><span class="pill">🗓 Move-in: Immediate</span></div>
-      <div class="card-anchors">LRT Sri Rampai | LRT Wangsa Maju | Wangsa Walk Mall | Ohana Specialist Hospital | MRR2</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Jasmin%20Apartment%2C%20Taman%20Sri%20Rampai.%20Price%3A%20RM1600.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="flat-wangsa-maju-seksyen-1-2-1350">
-    <div class="card-image-wrap" data-images="/images/unitpic/flatwangsamajuseksyen1EX/pic1.jpg" data-index="0"><img src="/images/unitpic/flatwangsamajuseksyen1EX/pic1.jpg" alt="Flat Wangsa Maju Seksyen 1" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="EX_31103">EX</span></div>
-      <div><div class="card-name">Flat Wangsa Maju Seksyen 1</div><div class="card-zone">Seksyen 1 Wangsa Maju</div></div>
-      <div class="card-price">RM 1,350<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">700 sqft</span><span class="pill">Unfurnished</span><span class="pill">Flat</span><span class="pill">🗓 Move-in: 1/12/2026</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | AEON Big Wangsa Maju | Columbia Asia Hospital Setapak | SK Wangsa Maju Seksyen 1 | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Flat%20Wangsa%20Maju%20Seksyen%201%2C%20Seksyen%201%20Wangsa%20Maju.%20Price%3A%20RM1350.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="seasons-garden-residences-3-1800">
-    <div class="card-image-wrap" data-images="/images/unitpic/seasonsgardenresidencesFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/seasonsgardenresidencesFPR/pic1.jpg" alt="Seasons Garden Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="FPR_32504">FPR</span></div>
-      <div><div class="card-name">Seasons Garden Residences</div><div class="card-zone">Seksyen 10, Wangsa Maju</div></div>
-      <div class="card-price">RM 1,800<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">780 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
-      <div class="card-anchors">LRT Sri Rampai | Wangsa Walk Mall | AEON Mall Alpha Angle | Columbia Asia Hospital Setapak | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Seasons%20Garden%20Residences%2C%20Seksyen%2010%2C%20Wangsa%20Maju.%20Price%3A%20RM1800.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="lexa-residence-the-quartz-3-2400">
-    <div class="card-image-wrap" data-images="/images/unitpic/lexaresidencethequartzADL2/pic1.jpg" data-index="0"><img src="/images/unitpic/lexaresidencethequartzADL2/pic1.jpg" alt="Lexa Residence @ The Quartz" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="ADL_15999">ADL</span></div>
-      <div><div class="card-name">Lexa Residence @ The Quartz</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 2,400<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">838 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Nov-26</span></div>
-      <div class="card-anchors">LRT Sri Rampai | LRT Wangsa Maju | Wangsa Walk Mall | Columbia Asia Hospital Setapak | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Lexa%20Residence%20%40%20The%20Quartz%2C%20Wangsa%20Maju.%20Price%3A%20RM2400.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="mh-platinum-2-3-1950">
-    <div class="card-image-wrap" data-images="/images/unitpic/mhplatinum2EX/pic1.jpg" data-index="0"><img src="/images/unitpic/mhplatinum2EX/pic1.jpg" alt="MH Platinum 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="EX_31244">EX</span></div>
-      <div><div class="card-name">MH Platinum 2</div><div class="card-zone">Setapak Jaya</div></div>
-      <div class="card-price">RM 1,950<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">692 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: 1/11/2026</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | Wangsa Walk Mall | Columbia Asia Medical Centre | TAR College | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20MH%20Platinum%202%2C%20Setapak%20Jaya.%20Price%3A%20RM1950.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="quinn-residence-3-2900">
-    <div class="card-image-wrap" data-images="/images/unitpic/quinnresidenceFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/quinnresidenceFPR/pic1.jpg" alt="Quinn Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="FPR_26409">FPR</span></div>
-      <div><div class="card-name">Quinn Residence</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 2,900<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">800 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
-      <div class="card-anchors">LRT Sri Rampai | Wangsa Walk Mall | AEON Wangsa Maju | Columbia Asia Hospital Setapak | MRR2</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Quinn%20Residence%2C%20Wangsa%20Maju.%20Price%3A%20RM2900.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="zen-suites-zetapark-1-2300">
-    <div class="card-image-wrap" data-images="/images/unitpic/zensuiteszetaparkFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/zensuiteszetaparkFPR/pic1.jpg" alt="Zen Suites @ ZetaPark" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="FPR_31746">FPR</span></div>
-      <div><div class="card-name">Zen Suites @ ZetaPark</div><div class="card-zone">Danau Kota</div></div>
-      <div class="card-price">RM 2,300<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">600 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | Setapak Central Mall | Columbia Asia Hospital Setapak | TAR UMT | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Zen%20Suites%20%40%20ZetaPark%2C%20Danau%20Kota.%20Price%3A%20RM2300.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="the-loft-zetapark-1-2550">
-    <div class="card-image-wrap" data-images="/images/unitpic/theloftzetaparkFPR/pic1.jpg" data-index="0"><img src="/images/unitpic/theloftzetaparkFPR/pic1.jpg" alt="The Loft @ ZetaPark" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="FPR_31724">FPR</span></div>
-      <div><div class="card-name">The Loft @ ZetaPark</div><div class="card-zone">Danau Kota</div></div>
-      <div class="card-price">RM 2,550<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 1 bed</span><span class="pill">🚿 1 bath</span><span class="pill">700 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span><span class="pill">🗓 Move-in: Immediate</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | Setapak Central Mall | Columbia Asia Hospital Setapak | TAR UMT | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20The%20Loft%20%40%20ZetaPark%2C%20Danau%20Kota.%20Price%3A%20RM2550.%20Ref%3A%20FPR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="residensi-platinum-teratai-3-2000">
-    <div class="card-image-wrap" data-images="/images/unitpic/residensiplatinumterataiADL/pic1.jpg" data-index="0"><img src="/images/unitpic/residensiplatinumterataiADL/pic1.jpg" alt="Residensi Platinum Teratai" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="ADL_17520">ADL</span></div>
-      <div><div class="card-name">Residensi Platinum Teratai</div><div class="card-zone">Jalan Langkawi</div></div>
-      <div class="card-price">RM 2,000<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: Dec-26</span></div>
-      <div class="card-anchors">LRT Taman Melati | Setapak Central Mall | AEON Big Danau Kota | Columbia Asia Hospital Setapak | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20Platinum%20Teratai%2C%20Jalan%20Langkawi.%20Price%3A%20RM2000.%20Ref%3A%20ADL" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="heritage-condominium-3-1750">
-    <div class="card-image-wrap" data-images="/images/unitpic/heritagecondominiumEX/pic1.jpg" data-index="0"><img src="/images/unitpic/heritagecondominiumEX/pic1.jpg" alt="Heritage Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="EX_31760">EX</span></div>
-      <div><div class="card-name">Heritage Condominium</div><div class="card-zone">Jalan Pahang</div></div>
-      <div class="card-price">RM 1,750<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,200 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">Kompleks Galeri | Hospital Kuala Lumpur | TAR UMT | DUKE Highway | MRR2</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Heritage%20Condominium%2C%20Jalan%20Pahang.%20Price%3A%20RM1750.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="1-5-storey-terrace-air-panas-4-2600">
-    <div class="card-image-wrap" data-images="/images/unitpic/15storeyterraceairpanasEX/pic1.jpg" data-index="0"><img src="/images/unitpic/15storeyterraceairpanasEX/pic1.jpg" alt="1.5 Storey Terrace Air Panas" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="EX_33138">EX</span></div>
-      <div><div class="card-name">1.5 Storey Terrace Air Panas</div><div class="card-zone">Air Panas</div></div>
-      <div class="card-price">RM 2,600<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,800 sqft</span><span class="pill">Partially Furnished</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | Setapak Central Mall | TAR UMT | Columbia Asia Hospital Setapak | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%201.5%20Storey%20Terrace%20Air%20Panas%2C%20Air%20Panas.%20Price%3A%20RM2600.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="platinum-lake-pv16-4-3500">
-    <div class="card-image-wrap" data-images="/images/unitpic/platinumlakepv16EX/pic1.jpg" data-index="0"><img src="/images/unitpic/platinumlakepv16EX/pic1.jpg" alt="Platinum Lake PV16" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="EX_32420">EX</span></div>
-      <div><div class="card-name">Platinum Lake PV16</div><div class="card-zone">Danau Kota</div></div>
-      <div class="card-price">RM 3,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,313 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span><span class="pill">🗓 Move-in: 24/10/2026</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | Setapak Central Mall | Columbia Asia Hospital Setapak | TAR UMT | MRR2</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Platinum%20Lake%20PV16%2C%20Danau%20Kota.%20Price%3A%20RM3500.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="sunway-artessa-4-4500">
-    <div class="card-image-wrap" data-images="/images/unitpic/sunwayartessaYR/pic1.jpg" data-index="0"><img src="/images/unitpic/sunwayartessaYR/pic1.jpg" alt="Sunway Artessa" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="YR_718">YR</span></div>
-      <div><div class="card-name">Sunway Artessa</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 4,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,109 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">LRT Sri Rampai (~5 min covered walkway) | Wangsa Walk Mall | AEON Wangsa Maju | Fairview International School | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sunway%20Artessa%2C%20Wangsa%20Maju.%20Price%3A%20RM4500.%20Ref%3A%20YR" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="sunway-avila-residences-4-3500">
-    <div class="card-image-wrap" data-images="/images/unitpic/sunwayavilaresidencesEX/pic1.jpg" data-index="0"><img src="/images/unitpic/sunwayavilaresidencesEX/pic1.jpg" alt="Sunway Avila Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-unit">Unit Rental</span><span class="card-badge badge-coa" data-ref="EX_32024">EX</span></div>
-      <div><div class="card-name">Sunway Avila Residences</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 3,500<span> / month</span></div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,033 sqft</span><span class="pill">Fully Furnished</span><span class="pill">Service Residence</span></div>
-      <div class="card-anchors">LRT Sri Rampai (walking distance) | Wangsa Walk Mall | Setapak Central Mall | TAR UMT | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sunway%20Avila%20Residences%2C%20Wangsa%20Maju.%20Price%3A%20RM3500.%20Ref%3A%20EX" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><!--SSR_END--></div>
+    <p class="list-hint">Tap a unit for details and WhatsApp.</p>
+    <div class="listing-grid" id="grid-unit"><!--SSR_START--><div class="card" id="platinum-hill-pv5-4-1900"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Platinum Hill PV5</span><span class="card-zone"><span>Taman Melati</span><span>4 bed</span><span>1,275 sqft</span><span>Partially Furnished</span></span></span><span class="row-side"><span class="card-price">RM 1,900<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span></span><span class="badge-coa">EX_32821</span></div><div class="card-anchors"><b>Near:</b> LRT Taman Melati | M3 Mall | Columbia Asia Hospital Setapak | TAR UMT | MRR2</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Platinum%20Hill%20PV5%2C%20Taman%20Melati.%20Price%3A%20RM1900.%20Ref%3A%20EX_32821" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="seksyen-4-wangsa-maju-flat-1500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Seksyen 4 Wangsa Maju Flat</span><span class="card-zone"><span>Seksyen 4, Wangsa Maju</span></span></span><span class="row-side"><span class="card-price">RM 1,500<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Flat</span></span><span class="badge-coa">TH_1275</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju (~5 min walk) | Wangsa Walk Mall | AEON Alpha Angle | Setapak Central | MRR2</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Seksyen%204%20Wangsa%20Maju%20Flat%2C%20Seksyen%204%2C%20Wangsa%20Maju.%20Price%3A%20RM1500.%20Ref%3A%20TH_1275" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="jasmin-apartment-3-1600"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Jasmin Apartment</span><span class="card-zone"><span>Taman Sri Rampai</span><span>3 bed</span><span>850 sqft</span><span>Partially Furnished</span></span></span><span class="row-side"><span class="card-price">RM 1,600<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Apartment</span><span>2 bath</span><span>Move-in: Immediate</span></span><span class="badge-coa">ADL_15274</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai | LRT Wangsa Maju | Wangsa Walk Mall | Ohana Specialist Hospital | MRR2</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Jasmin%20Apartment%2C%20Taman%20Sri%20Rampai.%20Price%3A%20RM1600.%20Ref%3A%20ADL_15274" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="flat-wangsa-maju-seksyen-1-2-1350"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Flat Wangsa Maju Seksyen 1</span><span class="card-zone"><span>Seksyen 1 Wangsa Maju</span><span>2 bed</span><span>700 sqft</span><span>Unfurnished</span></span></span><span class="row-side"><span class="card-price">RM 1,350<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Flat</span><span>1 bath</span><span>Move-in: 1/12/2026</span></span><span class="badge-coa">EX_31103</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | AEON Big Wangsa Maju | Columbia Asia Hospital Setapak | SK Wangsa Maju Seksyen 1 | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Flat%20Wangsa%20Maju%20Seksyen%201%2C%20Seksyen%201%20Wangsa%20Maju.%20Price%3A%20RM1350.%20Ref%3A%20EX_31103" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="seasons-garden-residences-3-1800"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Seasons Garden Residences</span><span class="card-zone"><span>Seksyen 10, Wangsa Maju</span><span>3 bed</span><span>780 sqft</span><span>Partially Furnished</span></span></span><span class="row-side"><span class="card-price">RM 1,800<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bath</span><span>Move-in: Immediate</span></span><span class="badge-coa">FPR_32504</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai | Wangsa Walk Mall | AEON Mall Alpha Angle | Columbia Asia Hospital Setapak | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Seasons%20Garden%20Residences%2C%20Seksyen%2010%2C%20Wangsa%20Maju.%20Price%3A%20RM1800.%20Ref%3A%20FPR_32504" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="lexa-residence-the-quartz-3-2400"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Lexa Residence @ The Quartz</span><span class="card-zone"><span>Wangsa Maju</span><span>3 bed</span><span>838 sqft</span><span>Fully Furnished</span></span></span><span class="row-side"><span class="card-price">RM 2,400<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bath</span><span>Move-in: Nov-26</span></span><span class="badge-coa">ADL_15999</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai | LRT Wangsa Maju | Wangsa Walk Mall | Columbia Asia Hospital Setapak | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Lexa%20Residence%20%40%20The%20Quartz%2C%20Wangsa%20Maju.%20Price%3A%20RM2400.%20Ref%3A%20ADL_15999" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="mh-platinum-2-3-1950"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">MH Platinum 2</span><span class="card-zone"><span>Setapak Jaya</span><span>3 bed</span><span>692 sqft</span><span>Fully Furnished</span></span></span><span class="row-side"><span class="card-price">RM 1,950<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bath</span><span>Move-in: 1/11/2026</span></span><span class="badge-coa">EX_31244</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | Wangsa Walk Mall | Columbia Asia Medical Centre | TAR College | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20MH%20Platinum%202%2C%20Setapak%20Jaya.%20Price%3A%20RM1950.%20Ref%3A%20EX_31244" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="quinn-residence-3-2900"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Quinn Residence</span><span class="card-zone"><span>Wangsa Maju</span><span>3 bed</span><span>800 sqft</span><span>Fully Furnished</span></span></span><span class="row-side"><span class="card-price">RM 2,900<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bath</span><span>Move-in: Immediate</span></span><span class="badge-coa">FPR_26409</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai | Wangsa Walk Mall | AEON Wangsa Maju | Columbia Asia Hospital Setapak | MRR2</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Quinn%20Residence%2C%20Wangsa%20Maju.%20Price%3A%20RM2900.%20Ref%3A%20FPR_26409" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="zen-suites-zetapark-1-2300"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Zen Suites @ ZetaPark</span><span class="card-zone"><span>Danau Kota</span><span>1 bed</span><span>600 sqft</span><span>Fully Furnished</span></span></span><span class="row-side"><span class="card-price">RM 2,300<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>1 bath</span><span>Move-in: Immediate</span></span><span class="badge-coa">FPR_31746</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | Setapak Central Mall | Columbia Asia Hospital Setapak | TAR UMT | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Zen%20Suites%20%40%20ZetaPark%2C%20Danau%20Kota.%20Price%3A%20RM2300.%20Ref%3A%20FPR_31746" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="the-loft-zetapark-1-2550"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">The Loft @ ZetaPark</span><span class="card-zone"><span>Danau Kota</span><span>1 bed</span><span>700 sqft</span><span>Fully Furnished</span></span></span><span class="row-side"><span class="card-price">RM 2,550<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>1 bath</span><span>Move-in: Immediate</span></span><span class="badge-coa">FPR_31724</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | Setapak Central Mall | Columbia Asia Hospital Setapak | TAR UMT | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20The%20Loft%20%40%20ZetaPark%2C%20Danau%20Kota.%20Price%3A%20RM2550.%20Ref%3A%20FPR_31724" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="residensi-platinum-teratai-3-2000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Residensi Platinum Teratai</span><span class="card-zone"><span>Jalan Langkawi</span><span>3 bed</span><span>1,000 sqft</span><span>Fully Furnished</span></span></span><span class="row-side"><span class="card-price">RM 2,000<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Move-in: Dec-26</span></span><span class="badge-coa">ADL_17520</span></div><div class="card-anchors"><b>Near:</b> LRT Taman Melati | Setapak Central Mall | AEON Big Danau Kota | Columbia Asia Hospital Setapak | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Residensi%20Platinum%20Teratai%2C%20Jalan%20Langkawi.%20Price%3A%20RM2000.%20Ref%3A%20ADL_17520" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="heritage-condominium-3-1750"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Heritage Condominium</span><span class="card-zone"><span>Jalan Pahang</span><span>3 bed</span><span>1,200 sqft</span><span>Partially Furnished</span></span></span><span class="row-side"><span class="card-price">RM 1,750<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span></span><span class="badge-coa">EX_31760</span></div><div class="card-anchors"><b>Near:</b> Kompleks Galeri | Hospital Kuala Lumpur | TAR UMT | DUKE Highway | MRR2</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Heritage%20Condominium%2C%20Jalan%20Pahang.%20Price%3A%20RM1750.%20Ref%3A%20EX_31760" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="1-5-storey-terrace-air-panas-4-2600"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">1.5 Storey Terrace Air Panas</span><span class="card-zone"><span>Air Panas</span><span>4 bed</span><span>1,800 sqft</span><span>Partially Furnished</span></span></span><span class="row-side"><span class="card-price">RM 2,600<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bath</span></span><span class="badge-coa">EX_33138</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | Setapak Central Mall | TAR UMT | Columbia Asia Hospital Setapak | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%201.5%20Storey%20Terrace%20Air%20Panas%2C%20Air%20Panas.%20Price%3A%20RM2600.%20Ref%3A%20EX_33138" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="platinum-lake-pv16-4-3500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Platinum Lake PV16</span><span class="card-zone"><span>Danau Kota</span><span>4 bed</span><span>1,313 sqft</span><span>Fully Furnished</span></span></span><span class="row-side"><span class="card-price">RM 3,500<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Move-in: 24/10/2026</span></span><span class="badge-coa">EX_32420</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | Setapak Central Mall | Columbia Asia Hospital Setapak | TAR UMT | MRR2</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Platinum%20Lake%20PV16%2C%20Danau%20Kota.%20Price%3A%20RM3500.%20Ref%3A%20EX_32420" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="sunway-artessa-4-4500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Sunway Artessa</span><span class="card-zone"><span>Wangsa Maju</span><span>4 bed</span><span>1,109 sqft</span><span>Fully Furnished</span></span></span><span class="row-side"><span class="card-price">RM 4,500<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span></span><span class="badge-coa">YR_718</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai (~5 min covered walkway) | Wangsa Walk Mall | AEON Wangsa Maju | Fairview International School | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sunway%20Artessa%2C%20Wangsa%20Maju.%20Price%3A%20RM4500.%20Ref%3A%20YR_718" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="sunway-avila-residences-4-3500"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Sunway Avila Residences</span><span class="card-zone"><span>Wangsa Maju</span><span>4 bed</span><span>1,033 sqft</span><span>Fully Furnished</span></span></span><span class="row-side"><span class="card-price">RM 3,500<span>/mo</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bath</span></span><span class="badge-coa">EX_32024</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai (walking distance) | Wangsa Walk Mall | Setapak Central Mall | TAR UMT | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20unit%20rental%20at%20Sunway%20Avila%20Residences%2C%20Wangsa%20Maju.%20Price%3A%20RM3500.%20Ref%3A%20EX_32024" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><!--SSR_END--></div>
   </div>
 
   <div id="tab-jual" style="display:none;overflow:hidden">
     <img src="/images/banner-subsale.png" alt="Subsales" style="width:100%;display:block;margin-bottom:16px;border-radius:12px;max-height:160px;object-fit:cover;">
-    <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="ppr-kampung-baru-air-panas-3-195000">
-    <div class="card-image-wrap" data-images="/images/unitpic/pprkampungbaruairpanasEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/pprkampungbaruairpanasEXP/pic1.jpg" alt="PPR Kampung Baru Air Panas" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_22516">EXP</span></div>
-      <div><div class="card-name">PPR Kampung Baru Air Panas</div><div class="card-zone">Air Panas</div></div>
-      <div class="card-price">RM 195,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 831</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 1 bath</span><span class="pill">650 sqft</span><span class="pill">Freehold</span><span class="pill">Flat</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | Setapak Central Mall | Wangsa Walk Mall | TAR UMT | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20PPR%20Kampung%20Baru%20Air%20Panas%2C%20Air%20Panas.%20Price%3A%20RM195000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="platinum-hill-pv5-4-450000">
-    <div class="card-image-wrap" data-images="/images/unitpic/platinumhillpv5EXP/pic1.jpg" data-index="0"><img src="/images/unitpic/platinumhillpv5EXP/pic1.jpg" alt="Platinum Hill PV5" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_23279">EXP</span></div>
-      <div><div class="card-name">Platinum Hill PV5</div><div class="card-zone">Taman Melati</div></div>
-      <div class="card-price">RM 450,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,917</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,272 sqft</span><span class="pill">Freehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">LRT Taman Melati (~1.2km) | KL East Mall (~1.5-2km) | TAR UMT (~1km) | LRT Gombak (~1.4km) | MRR2</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Platinum%20Hill%20PV5%2C%20Taman%20Melati.%20Price%3A%20RM450000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="villa-wangsamas-4-539000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/villawangsamasRSS/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/villawangsamasRSS/pic1.jpg" alt="Villa Wangsamas" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="RSS_508">RSS</span></div>
-      <div><div class="card-name">Villa Wangsamas</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 539,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 2,296</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,267 sqft</span><span class="pill">Freehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">Near LRT Sri Rampai, Wangsa Walk Mall, Alpha Angle and DUKE/MRR2</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Villa%20Wangsamas%2C%20Wangsa%20Maju.%20Price%3A%20RM539000.%20Ref%3A%20RSS" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="rampai-court-2-249000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/rampaicourtEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/rampaicourtEXP/pic1.jpg" alt="Rampai Court" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_20357">EXP</span></div>
-      <div><div class="card-name">Rampai Court</div><div class="card-zone">Sri Rampai</div></div>
-      <div class="card-price">RM 249,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,061</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">600 sqft</span><span class="pill">Freehold</span><span class="pill">Apartment</span></div>
-      <div class="card-anchors">LRT Sri Rampai Station | AEON Big | Giant Hypermarket | Columbia Asia Hospital | DUKE Expressway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Rampai%20Court%2C%20Sri%20Rampai.%20Price%3A%20RM249000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="flat-wangsa-maju-seksyen-1-2-230000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/flatwangsamajuseksyen1EXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/flatwangsamajuseksyen1EXP/pic1.jpg" alt="Flat Wangsa Maju Seksyen 1" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_18392">EXP</span></div>
-      <div><div class="card-name">Flat Wangsa Maju Seksyen 1</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 230,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 980</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">550 sqft</span><span class="pill">Leasehold (Bumi Lot)</span><span class="pill">Flat</span></div>
-      <div class="card-anchors">LRT Wangsa Maju (~200m walk) | SK Wangsa Maju Seksyen 1 (~500m) | AEON Wangsa Maju (~1km) | Masjid Usamah Bin Zaid (~500m)</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Flat%20Wangsa%20Maju%20Seksyen%201%2C%20Wangsa%20Maju.%20Price%3A%20RM230000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="teratai-mewah-3-250000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/terataimewahEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/terataimewahEXP/pic1.jpg" alt="Teratai Mewah" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_17634">EXP</span></div>
-      <div><div class="card-name">Teratai Mewah</div><div class="card-zone">Taman P. Ramlee, Setapak</div></div>
-      <div class="card-price">RM 250,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,065</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 1 bath</span><span class="pill">725 sqft</span><span class="pill">Freehold</span><span class="pill">Apartment</span></div>
-      <div class="card-anchors">LRT Taman Melati (~1.3km, bus 5min) | Columbia Asia Hospital Setapak | AEON Big Danau Kota | SMK Danau Kota / SK Setapak | Setapak Central Mall | TARC (TAR University College)</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Teratai%20Mewah%2C%20Taman%20P.%20Ramlee%2C%20Setapak.%20Price%3A%20RM250000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="seasons-garden-residences-4-410000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/seasonsgardenresidencesEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/seasonsgardenresidencesEXP/pic1.jpg" alt="Seasons Garden Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_19804">EXP</span></div>
-      <div><div class="card-name">Seasons Garden Residences</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 410,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,746</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill">Leasehold</span><span class="pill">Service Residence</span></div>
-      <div class="card-anchors">LRT Sri Rampai | Wangsa Walk Mall | AEON Alpha Angle | Columbia Asia Hospital Setapak | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seasons%20Garden%20Residences%2C%20Wangsa%20Maju.%20Price%3A%20RM410000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="tanah-residential-land-kg-padang-balang-2100000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/residentiallandkgpadangbalangEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/residentiallandkgpadangbalangEXP/pic1.jpg" alt="Tanah - Residential Land Kg Padang Balang" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_18205">EXP</span></div>
-      <div><div class="card-name">Tanah - Residential Land Kg Padang Balang</div><div class="card-zone">Sungai Gombak / Setapak</div></div>
-      <div class="card-price">RM 2,100,000</div>
-      
-      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">24,500 sqft</span><span class="pill">Freehold</span><span class="pill">Residential Land</span></div>
-      <div class="card-anchors">Setapak Central Mall | DUKE Highway Access | Sekolah &amp; Masjid Kg Padang Balang</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residential%20Land%20Kg%20Padang%20Balang%2C%20Sungai%20Gombak%20/%20Setapak.%20Price%3A%20RM2100000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="rampai-court-2-250000">
-    <div class="card-image-wrap" data-images="/images/unitpic/rampaicourtEXP2/pic1.jpg" data-index="0"><img src="/images/unitpic/rampaicourtEXP2/pic1.jpg" alt="Rampai Court" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_22747">EXP</span></div>
-      <div><div class="card-name">Rampai Court</div><div class="card-zone">Sri Rampai</div></div>
-      <div class="card-price">RM 250,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,065</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">592 sqft</span><span class="pill">Freehold</span><span class="pill">Apartment</span></div>
-      <div class="card-anchors">LRT Sri Rampai | Wangsa Walk Mall | AEON Alpha Angle | Columbia Asia Hospital Setapak | DUKE Expressway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Rampai%20Court%2C%20Sri%20Rampai.%20Price%3A%20RM250000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="residensi-rampai-the-parc-tower-3-345000">
-    <div class="card-image-wrap" data-images="/images/unitpic/residensirampaitheparctowerEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/residensirampaitheparctowerEXP/pic1.jpg" alt="Residensi Rampai (The Parc Tower)" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_22333">EXP</span></div>
-      <div><div class="card-name">Residensi Rampai (The Parc Tower)</div><div class="card-zone">Taman Sri Rampai</div></div>
-      <div class="card-price">RM 345,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,469</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">850 sqft</span><span class="pill">Leasehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | AEON Alpha Angle | Wangsa Walk Mall | TAR UMT | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residensi%20Rampai%20%28The%20Parc%20Tower%29%2C%20Taman%20Sri%20Rampai.%20Price%3A%20RM345000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="irama-wangsa-3-990000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/iramawangsaEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/iramawangsaEXP/pic1.jpg" alt="Irama Wangsa" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_21997">EXP</span></div>
-      <div><div class="card-name">Irama Wangsa</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 990,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 4,217</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,647 sqft</span><span class="pill">Freehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">LRT Sri Rampai Station | Wangsa Walk Mall | AEON Big Wangsa Maju | MRR2 Highway | DUKE Expressway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Irama%20Wangsa%2C%20Wangsa%20Maju.%20Price%3A%20RM990000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="sri-pelangi-3-340000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/sripelangiLSY/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/sripelangiLSY/pic1.jpg" alt="Sri Pelangi" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="LSY_2406">LSY</span></div>
-      <div><div class="card-name">Sri Pelangi</div><div class="card-zone">Jalan Genting Kelang</div></div>
-      <div class="card-price">RM 340,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,448</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">927 sqft</span><span class="pill">Freehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">Taman Melati LRT Station | Sentul Timur LRT Station | Setapak Central Mall | TAR UMT | SMK Danau Kota</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Sri%20Pelangi%2C%20Jalan%20Genting%20Kelang.%20Price%3A%20RM340000.%20Ref%3A%20LSY" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="the-hamilton-3-550000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/thehamiltonEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/thehamiltonEXP/pic1.jpg" alt="The Hamilton" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_19927">EXP</span></div>
-      <div><div class="card-name">The Hamilton</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 550,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 2,343</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Leasehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">Sri Rampai LRT Station | Wangsa Walk Mall | AEON Big Wangsa Maju | Fairview International School | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20The%20Hamilton%2C%20Wangsa%20Maju.%20Price%3A%20RM550000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="flat-sri-langkawi-2-245000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/flatsrilangkawiEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/flatsrilangkawiEXP/pic1.jpg" alt="Flat Sri Langkawi" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_19071">EXP</span></div>
-      <div><div class="card-name">Flat Sri Langkawi</div><div class="card-zone">Taman Melati</div></div>
-      <div class="card-price">RM 245,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,044</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 2 bed</span><span class="pill">🚿 1 bath</span><span class="pill">592 sqft</span><span class="pill">Leasehold</span><span class="pill">Flat</span></div>
-      <div class="card-anchors">LRT Taman Melati (~500m) | SK Gombak Setia (~300m) | M3 Mall (~300m) | Masjid Gombak Setia (~400m)</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Flat%20Sri%20Langkawi%2C%20Taman%20Melati.%20Price%3A%20RM245000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="the-hamilton-3-600000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/thehamiltonEXP2/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/thehamiltonEXP2/pic1.jpg" alt="The Hamilton" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_16156">EXP</span></div>
-      <div><div class="card-name">The Hamilton</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 600,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 2,556</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,000 sqft</span><span class="pill">Leasehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">LRT Sri Rampai Kelana Jaya Line (link bridge, walkable) | Wangsa Walk Mall (~2 min walk) | AEON Big Wangsa Maju (~7 min walk) | SK/SMK Wangsa Maju (~1km) | Rampai Puteri Medical Centre (~2km)</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20The%20Hamilton%2C%20Wangsa%20Maju.%20Price%3A%20RM600000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="1-storey-terrace-taman-bunga-raya-3-670000">
-    <div class="card-image-wrap" data-images="/images/unitpic/1storeyterracetamanbungarayaEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/1storeyterracetamanbungarayaEXP/pic1.jpg" alt="1 Storey Terrace Taman Bunga Raya" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_16925">EXP</span></div>
-      <div><div class="card-name">1 Storey Terrace Taman Bunga Raya</div><div class="card-zone">Taman Bunga Raya</div></div>
-      <div class="card-price">RM 670,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 2,854</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,400 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">LRT Wangsa Maju / Taman Melati (~10 min) | Setapak Central Mall | Wangsa Walk Mall | TAR UMT | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%201%20Storey%20Terrace%20Taman%20Bunga%20Raya%2C%20Taman%20Bunga%20Raya.%20Price%3A%20RM670000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="platinum-lake-pv-10-condominium-4-470000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/platinumlakepv10condominiumEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/platinumlakepv10condominiumEXP/pic1.jpg" alt="Platinum Lake PV 10 Condominium" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_10422">EXP</span></div>
-      <div><div class="card-name">Platinum Lake PV 10 Condominium</div><div class="card-zone">Danau Kota</div></div>
-      <div class="card-price">RM 470,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 2,002</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 4 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,272 sqft</span><span class="pill">Leasehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">Leasehold 2106 near AEON Big Setapak Central Columbia Asia</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Platinum%20Lake%20PV%2010%20Condominium%2C%20Danau%20Kota.%20Price%3A%20RM470000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="mh-platinum-2-3-360000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/mhplatinum2LSY/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/mhplatinum2LSY/pic1.jpg" alt="MH Platinum 2" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="LSY_2908">LSY</span></div>
-      <div><div class="card-name">MH Platinum 2</div><div class="card-zone">Setapak Jaya</div></div>
-      <div class="card-price">RM 360,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,533</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">692 sqft</span><span class="pill">Leasehold</span><span class="pill">Service Residence</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | Wangsa Walk Mall | Columbia Asia Medical Centre | TAR College | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20MH%20Platinum%202%2C%20Setapak%20Jaya.%20Price%3A%20RM360000.%20Ref%3A%20LSY" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="taman-setapak-3-1200000">
-    <div class="card-image-wrap" data-images="/images/unitpic/tamansetapakEXP/pic1.jpg" data-index="0"><img src="/images/unitpic/tamansetapakEXP/pic1.jpg" alt="Taman Setapak" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_19385">EXP</span></div>
-      <div><div class="card-name">Taman Setapak</div><div class="card-zone">Taman Setapak</div></div>
-      <div class="card-price">RM 1,200,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 5,111</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 3 bath</span><span class="pill">1,000 sqft</span><span class="pill">Freehold</span><span class="pill">Terrace</span></div>
-      <div class="card-anchors">LRT Wangsa Maju | Setapak Central Mall | Columbia Asia Hospital Setapak | TAR UMT | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Setapak%2C%20Taman%20Setapak.%20Price%3A%20RM1200000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="seri-riana-residence-3-855000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/seririanaresidenceEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/seririanaresidenceEXP/pic1.jpg" alt="Seri Riana Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_10997">EXP</span></div>
-      <div><div class="card-name">Seri Riana Residence</div><div class="card-zone">Wangsa Maju</div></div>
-      <div class="card-price">RM 855,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 3,642</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,535 sqft</span><span class="pill">Leasehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">Near LRT Sri Rampai</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seri%20Riana%20Residence%2C%20Wangsa%20Maju.%20Price%3A%20RM855000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="tanah-residential-land-taman-tiara-titiwangsa-1700000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/residentiallandtamantiaratitiwangsaEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/residentiallandtamantiaratitiwangsaEXP/pic1.jpg" alt="Tanah - Residential Land Taman Tiara Titiwangsa" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_22074">EXP</span></div>
-      <div><div class="card-name">Tanah - Residential Land Taman Tiara Titiwangsa</div><div class="card-zone">Taman Tiara Titiwangsa</div></div>
-      <div class="card-price">RM 1,700,000</div>
-      
-      <div class="card-pills"><span class="pill">🛏 - bed</span><span class="pill">🚿 - bath</span><span class="pill">7,900 sqft</span><span class="pill">Leasehold</span><span class="pill">Residential Land</span></div>
-      <div class="card-anchors">Titiwangsa MRT Station | Wangsa Maju LRT Station | Setapak Central Mall | TAR UMT | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residential%20Land%20Taman%20Tiara%20Titiwangsa%2C%20Taman%20Tiara%20Titiwangsa.%20Price%3A%20RM1700000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="seasons-garden-residence-3-490000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/seasonsgardenresidenceCE/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/seasonsgardenresidenceCE/pic1.jpg" alt="Seasons Garden Residence" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="CE_600">CE</span></div>
-      <div><div class="card-name">Seasons Garden Residence</div><div class="card-zone">Seksyen 10, Wangsa Maju</div></div>
-      <div class="card-price">RM 490,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 2,087</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">770 sqft</span><span class="pill">Leasehold</span><span class="pill">Service Residence</span></div>
-      <div class="card-anchors">Sri Rampai LRT Station | Wangsa Walk Mall | Columbia Asia Hospital Setapak | Sri Utama International School | DUKE Highway</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seasons%20Garden%20Residence%2C%20Seksyen%2010%2C%20Wangsa%20Maju.%20Price%3A%20RM490000.%20Ref%3A%20CE" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="seksyen-4-wangsa-maju-flat-block-c-3-310000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/seksyen4wangsamajuflatblockcEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/seksyen4wangsamajuflatblockcEXP/pic1.jpg" alt="Seksyen 4 Wangsa Maju Flat Block C" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_20707">EXP</span></div>
-      <div><div class="card-name">Seksyen 4 Wangsa Maju Flat Block C</div><div class="card-zone">Seksyen 4, Wangsa Maju</div></div>
-      <div class="card-price">RM 310,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,320</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">527 sqft</span><span class="pill">Leasehold</span><span class="pill">Flat</span></div>
-      <div class="card-anchors">LRT Sri Rampai | Wangsa Walk Mall | AEON Mall Wangsa Maju | Columbia Asia Hospital Setapak | SK Wangsa Jaya</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seksyen%204%20Wangsa%20Maju%20Flat%20Block%20C%2C%20Seksyen%204%2C%20Wangsa%20Maju.%20Price%3A%20RM310000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="mh-platinum-residency-3-540000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/mhplatinumresidencyEXP/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/mhplatinumresidencyEXP/pic1.jpg" alt="MH Platinum Residency" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_18747">EXP</span></div>
-      <div><div class="card-name">MH Platinum Residency</div><div class="card-zone">Taman Tai Onn</div></div>
-      <div class="card-price">RM 540,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 2,300</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">1,018 sqft</span><span class="pill">Freehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">SMJK Chong Hwa (~0.5km) | SMK(P) Air Panas (~1km) | Masjid Setapak (~0.8km) | Setapak Central Mall (~1.5km) | Columbia Asia Hospital (~2.7km)</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20MH%20Platinum%20Residency%2C%20Taman%20Tai%20Onn.%20Price%3A%20RM540000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><div class="card" id="seasons-garden-residences-3-430000">
-    <div class="card-image-wrap" data-images="https://haniproperties.com/images/unitpic/seasonsgardenresidencesEXP2/pic1.jpg" data-index="0"><img src="https://haniproperties.com/images/unitpic/seasonsgardenresidencesEXP2/pic1.jpg" alt="Seasons Garden Residences" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='/images/update.png';" onclick="openLightbox(event,this)"></div>
-    <div class="card-body">
-      <div><span class="card-badge badge-subsale">Subsale</span><span class="card-badge badge-coa" data-ref="EXP_14061">EXP</span></div>
-      <div><div class="card-name">Seasons Garden Residences</div><div class="card-zone">Seksyen 10 Wangsa Maju</div></div>
-      <div class="card-price">RM 430,000</div>
-      <div style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM 1,832</strong>/mo instalment</div>
-      <div class="card-pills"><span class="pill">🛏 3 bed</span><span class="pill">🚿 2 bath</span><span class="pill">900 sqft</span><span class="pill">Leasehold</span><span class="pill">Condominium</span></div>
-      <div class="card-anchors">Near LRT Sri Rampai + RapidKL bus at doorstep</div>
-      <a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seasons%20Garden%20Residences%2C%20Seksyen%2010%20Wangsa%20Maju.%20Price%3A%20RM430000.%20Ref%3A%20EXP" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div><!--SSR_END--></div>
+    <p class="list-hint">Tap a unit for details and WhatsApp.</p>
+    <div class="listing-grid" id="grid-subsale"><!--SSR_START--><div class="card" id="ppr-kampung-baru-air-panas-3-195000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">PPR Kampung Baru Air Panas</span><span class="card-zone"><span>Air Panas</span><span>3 bed</span><span>650 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 195,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Flat</span><span>1 bath</span><span>Est. RM 831/mo instalment</span></span><span class="badge-coa">EXP_22516</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | Setapak Central Mall | Wangsa Walk Mall | TAR UMT | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20PPR%20Kampung%20Baru%20Air%20Panas%2C%20Air%20Panas.%20Price%3A%20RM195000.%20Ref%3A%20EXP_22516" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="platinum-hill-pv5-4-450000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Platinum Hill PV5</span><span class="card-zone"><span>Taman Melati</span><span>4 bed</span><span>1,272 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 450,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Est. RM 1,917/mo instalment</span></span><span class="badge-coa">EXP_23279</span></div><div class="card-anchors"><b>Near:</b> LRT Taman Melati (~1.2km) | KL East Mall (~1.5-2km) | TAR UMT (~1km) | LRT Gombak (~1.4km) | MRR2</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Platinum%20Hill%20PV5%2C%20Taman%20Melati.%20Price%3A%20RM450000.%20Ref%3A%20EXP_23279" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="villa-wangsamas-4-539000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Villa Wangsamas</span><span class="card-zone"><span>Wangsa Maju</span><span>4 bed</span><span>1,267 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 539,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>3 bath</span><span>Est. RM 2,296/mo instalment</span></span><span class="badge-coa">RSS_508</span></div><div class="card-anchors"><b>Near:</b> Near LRT Sri Rampai, Wangsa Walk Mall, Alpha Angle and DUKE/MRR2</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Villa%20Wangsamas%2C%20Wangsa%20Maju.%20Price%3A%20RM539000.%20Ref%3A%20RSS_508" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="rampai-court-2-249000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Rampai Court</span><span class="card-zone"><span>Sri Rampai</span><span>2 bed</span><span>600 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 249,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Apartment</span><span>1 bath</span><span>Est. RM 1,061/mo instalment</span></span><span class="badge-coa">EXP_20357</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai Station | AEON Big | Giant Hypermarket | Columbia Asia Hospital | DUKE Expressway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Rampai%20Court%2C%20Sri%20Rampai.%20Price%3A%20RM249000.%20Ref%3A%20EXP_20357" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="flat-wangsa-maju-seksyen-1-2-230000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Flat Wangsa Maju Seksyen 1</span><span class="card-zone"><span>Wangsa Maju</span><span>2 bed</span><span>550 sqft</span><span>Leasehold (Bumi Lot)</span></span></span><span class="row-side"><span class="card-price">RM 230,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Flat</span><span>1 bath</span><span>Est. RM 980/mo instalment</span></span><span class="badge-coa">EXP_18392</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju (~200m walk) | SK Wangsa Maju Seksyen 1 (~500m) | AEON Wangsa Maju (~1km) | Masjid Usamah Bin Zaid (~500m)</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Flat%20Wangsa%20Maju%20Seksyen%201%2C%20Wangsa%20Maju.%20Price%3A%20RM230000.%20Ref%3A%20EXP_18392" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="teratai-mewah-3-250000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Teratai Mewah</span><span class="card-zone"><span>Taman P. Ramlee, Setapak</span><span>3 bed</span><span>725 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 250,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Apartment</span><span>1 bath</span><span>Est. RM 1,065/mo instalment</span></span><span class="badge-coa">EXP_17634</span></div><div class="card-anchors"><b>Near:</b> LRT Taman Melati (~1.3km, bus 5min) | Columbia Asia Hospital Setapak | AEON Big Danau Kota | SMK Danau Kota / SK Setapak | Setapak Central Mall | TARC (TAR University College)</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Teratai%20Mewah%2C%20Taman%20P.%20Ramlee%2C%20Setapak.%20Price%3A%20RM250000.%20Ref%3A%20EXP_17634" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="seasons-garden-residences-4-410000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Seasons Garden Residences</span><span class="card-zone"><span>Wangsa Maju</span><span>4 bed</span><span>850 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 410,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bath</span><span>Est. RM 1,746/mo instalment</span></span><span class="badge-coa">EXP_19804</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai | Wangsa Walk Mall | AEON Alpha Angle | Columbia Asia Hospital Setapak | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seasons%20Garden%20Residences%2C%20Wangsa%20Maju.%20Price%3A%20RM410000.%20Ref%3A%20EXP_19804" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="tanah-residential-land-kg-padang-balang-2100000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tanah - Residential Land Kg Padang Balang</span><span class="card-zone"><span>Sungai Gombak / Setapak</span><span>24,500 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 2,100,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Residential Land</span></span><span class="badge-coa">EXP_18205</span></div><div class="card-anchors"><b>Near:</b> Setapak Central Mall | DUKE Highway Access | Sekolah &amp; Masjid Kg Padang Balang</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residential%20Land%20Kg%20Padang%20Balang%2C%20Sungai%20Gombak%20/%20Setapak.%20Price%3A%20RM2100000.%20Ref%3A%20EXP_18205" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="rampai-court-2-250000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Rampai Court</span><span class="card-zone"><span>Sri Rampai</span><span>2 bed</span><span>592 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 250,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Apartment</span><span>1 bath</span><span>Est. RM 1,065/mo instalment</span></span><span class="badge-coa">EXP_22747</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai | Wangsa Walk Mall | AEON Alpha Angle | Columbia Asia Hospital Setapak | DUKE Expressway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Rampai%20Court%2C%20Sri%20Rampai.%20Price%3A%20RM250000.%20Ref%3A%20EXP_22747" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="residensi-rampai-the-parc-tower-3-345000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Residensi Rampai (The Parc Tower)</span><span class="card-zone"><span>Taman Sri Rampai</span><span>3 bed</span><span>850 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 345,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Est. RM 1,469/mo instalment</span></span><span class="badge-coa">EXP_22333</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | AEON Alpha Angle | Wangsa Walk Mall | TAR UMT | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residensi%20Rampai%20%28The%20Parc%20Tower%29%2C%20Taman%20Sri%20Rampai.%20Price%3A%20RM345000.%20Ref%3A%20EXP_22333" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="irama-wangsa-3-990000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Irama Wangsa</span><span class="card-zone"><span>Wangsa Maju</span><span>3 bed</span><span>1,647 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 990,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>3 bath</span><span>Est. RM 4,217/mo instalment</span></span><span class="badge-coa">EXP_21997</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai Station | Wangsa Walk Mall | AEON Big Wangsa Maju | MRR2 Highway | DUKE Expressway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Irama%20Wangsa%2C%20Wangsa%20Maju.%20Price%3A%20RM990000.%20Ref%3A%20EXP_21997" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="sri-pelangi-3-340000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Sri Pelangi</span><span class="card-zone"><span>Jalan Genting Kelang</span><span>3 bed</span><span>927 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 340,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Est. RM 1,448/mo instalment</span></span><span class="badge-coa">LSY_2406</span></div><div class="card-anchors"><b>Near:</b> Taman Melati LRT Station | Sentul Timur LRT Station | Setapak Central Mall | TAR UMT | SMK Danau Kota</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Sri%20Pelangi%2C%20Jalan%20Genting%20Kelang.%20Price%3A%20RM340000.%20Ref%3A%20LSY_2406" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="the-hamilton-3-550000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">The Hamilton</span><span class="card-zone"><span>Wangsa Maju</span><span>3 bed</span><span>1,000 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 550,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Est. RM 2,343/mo instalment</span></span><span class="badge-coa">EXP_19927</span></div><div class="card-anchors"><b>Near:</b> Sri Rampai LRT Station | Wangsa Walk Mall | AEON Big Wangsa Maju | Fairview International School | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20The%20Hamilton%2C%20Wangsa%20Maju.%20Price%3A%20RM550000.%20Ref%3A%20EXP_19927" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="flat-sri-langkawi-2-245000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Flat Sri Langkawi</span><span class="card-zone"><span>Taman Melati</span><span>2 bed</span><span>592 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 245,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Flat</span><span>1 bath</span><span>Est. RM 1,044/mo instalment</span></span><span class="badge-coa">EXP_19071</span></div><div class="card-anchors"><b>Near:</b> LRT Taman Melati (~500m) | SK Gombak Setia (~300m) | M3 Mall (~300m) | Masjid Gombak Setia (~400m)</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Flat%20Sri%20Langkawi%2C%20Taman%20Melati.%20Price%3A%20RM245000.%20Ref%3A%20EXP_19071" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="the-hamilton-3-600000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">The Hamilton</span><span class="card-zone"><span>Wangsa Maju</span><span>3 bed</span><span>1,000 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 600,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Est. RM 2,556/mo instalment</span></span><span class="badge-coa">EXP_16156</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai Kelana Jaya Line (link bridge, walkable) | Wangsa Walk Mall (~2 min walk) | AEON Big Wangsa Maju (~7 min walk) | SK/SMK Wangsa Maju (~1km) | Rampai Puteri Medical Centre (~2km)</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20The%20Hamilton%2C%20Wangsa%20Maju.%20Price%3A%20RM600000.%20Ref%3A%20EXP_16156" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="1-storey-terrace-taman-bunga-raya-3-670000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">1 Storey Terrace Taman Bunga Raya</span><span class="card-zone"><span>Taman Bunga Raya</span><span>3 bed</span><span>1,400 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 670,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>2 bath</span><span>Est. RM 2,854/mo instalment</span></span><span class="badge-coa">EXP_16925</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju / Taman Melati (~10 min) | Setapak Central Mall | Wangsa Walk Mall | TAR UMT | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%201%20Storey%20Terrace%20Taman%20Bunga%20Raya%2C%20Taman%20Bunga%20Raya.%20Price%3A%20RM670000.%20Ref%3A%20EXP_16925" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="platinum-lake-pv-10-condominium-4-470000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Platinum Lake PV 10 Condominium</span><span class="card-zone"><span>Danau Kota</span><span>4 bed</span><span>1,272 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 470,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Est. RM 2,002/mo instalment</span></span><span class="badge-coa">EXP_10422</span></div><div class="card-anchors"><b>Near:</b> Leasehold 2106 near AEON Big Setapak Central Columbia Asia</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Platinum%20Lake%20PV%2010%20Condominium%2C%20Danau%20Kota.%20Price%3A%20RM470000.%20Ref%3A%20EXP_10422" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="mh-platinum-2-3-360000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">MH Platinum 2</span><span class="card-zone"><span>Setapak Jaya</span><span>3 bed</span><span>692 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 360,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bath</span><span>Est. RM 1,533/mo instalment</span></span><span class="badge-coa">LSY_2908</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | Wangsa Walk Mall | Columbia Asia Medical Centre | TAR College | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20MH%20Platinum%202%2C%20Setapak%20Jaya.%20Price%3A%20RM360000.%20Ref%3A%20LSY_2908" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="taman-setapak-3-1200000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Taman Setapak</span><span class="card-zone"><span>Taman Setapak</span><span>3 bed</span><span>1,000 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 1,200,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Terrace</span><span>3 bath</span><span>Est. RM 5,111/mo instalment</span></span><span class="badge-coa">EXP_19385</span></div><div class="card-anchors"><b>Near:</b> LRT Wangsa Maju | Setapak Central Mall | Columbia Asia Hospital Setapak | TAR UMT | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Taman%20Setapak%2C%20Taman%20Setapak.%20Price%3A%20RM1200000.%20Ref%3A%20EXP_19385" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="seri-riana-residence-3-855000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Seri Riana Residence</span><span class="card-zone"><span>Wangsa Maju</span><span>3 bed</span><span>1,535 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 855,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Est. RM 3,642/mo instalment</span></span><span class="badge-coa">EXP_10997</span></div><div class="card-anchors"><b>Near:</b> Near LRT Sri Rampai</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seri%20Riana%20Residence%2C%20Wangsa%20Maju.%20Price%3A%20RM855000.%20Ref%3A%20EXP_10997" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="tanah-residential-land-taman-tiara-titiwangsa-1700000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Tanah - Residential Land Taman Tiara Titiwangsa</span><span class="card-zone"><span>Taman Tiara Titiwangsa</span><span>7,900 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 1,700,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Residential Land</span></span><span class="badge-coa">EXP_22074</span></div><div class="card-anchors"><b>Near:</b> Titiwangsa MRT Station | Wangsa Maju LRT Station | Setapak Central Mall | TAR UMT | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Residential%20Land%20Taman%20Tiara%20Titiwangsa%2C%20Taman%20Tiara%20Titiwangsa.%20Price%3A%20RM1700000.%20Ref%3A%20EXP_22074" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="seasons-garden-residence-3-490000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Seasons Garden Residence</span><span class="card-zone"><span>Seksyen 10, Wangsa Maju</span><span>3 bed</span><span>770 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 490,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Service Residence</span><span>2 bath</span><span>Est. RM 2,087/mo instalment</span></span><span class="badge-coa">CE_600</span></div><div class="card-anchors"><b>Near:</b> Sri Rampai LRT Station | Wangsa Walk Mall | Columbia Asia Hospital Setapak | Sri Utama International School | DUKE Highway</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seasons%20Garden%20Residence%2C%20Seksyen%2010%2C%20Wangsa%20Maju.%20Price%3A%20RM490000.%20Ref%3A%20CE_600" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="seksyen-4-wangsa-maju-flat-block-c-3-310000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Seksyen 4 Wangsa Maju Flat Block C</span><span class="card-zone"><span>Seksyen 4, Wangsa Maju</span><span>3 bed</span><span>527 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 310,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Flat</span><span>2 bath</span><span>Est. RM 1,320/mo instalment</span></span><span class="badge-coa">EXP_20707</span></div><div class="card-anchors"><b>Near:</b> LRT Sri Rampai | Wangsa Walk Mall | AEON Mall Wangsa Maju | Columbia Asia Hospital Setapak | SK Wangsa Jaya</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seksyen%204%20Wangsa%20Maju%20Flat%20Block%20C%2C%20Seksyen%204%2C%20Wangsa%20Maju.%20Price%3A%20RM310000.%20Ref%3A%20EXP_20707" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="mh-platinum-residency-3-540000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">MH Platinum Residency</span><span class="card-zone"><span>Taman Tai Onn</span><span>3 bed</span><span>1,018 sqft</span><span>Freehold</span></span></span><span class="row-side"><span class="card-price">RM 540,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Est. RM 2,300/mo instalment</span></span><span class="badge-coa">EXP_18747</span></div><div class="card-anchors"><b>Near:</b> SMJK Chong Hwa (~0.5km) | SMK(P) Air Panas (~1km) | Masjid Setapak (~0.8km) | Setapak Central Mall (~1.5km) | Columbia Asia Hospital (~2.7km)</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20MH%20Platinum%20Residency%2C%20Taman%20Tai%20Onn.%20Price%3A%20RM540000.%20Ref%3A%20EXP_18747" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><div class="card" id="seasons-garden-residences-3-430000"><button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)"><span class="row-main"><span class="card-name">Seasons Garden Residences</span><span class="card-zone"><span>Seksyen 10 Wangsa Maju</span><span>3 bed</span><span>900 sqft</span><span>Leasehold</span></span></span><span class="row-side"><span class="card-price">RM 430,000</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="row-more"><div class="row-specs"><span class="bits"><span>Condominium</span><span>2 bath</span><span>Est. RM 1,832/mo instalment</span></span><span class="badge-coa">EXP_14061</span></div><div class="card-anchors"><b>Near:</b> Near LRT Sri Rampai + RapidKL bus at doorstep</div><a href="https://wa.me/60125459182?text=Hi%20Hani%2C%20I%27m%20interested%20in%20the%20subsale%20unit%20at%20Seasons%20Garden%20Residences%2C%20Seksyen%2010%20Wangsa%20Maju.%20Price%3A%20RM430000.%20Ref%3A%20EXP_14061" class="card-cta" target="_blank" rel="noopener noreferrer">💬 WhatsApp about this unit</a></div></div><!--SSR_END--></div>
   </div>
 
   <div class="cta-band">
@@ -1069,49 +623,59 @@ function moveInText(val) {
   return `🗓 Move-in: ${v}`;
 }
 
-function unitCard(r) {
-  const pills = [
-    r.bed ? `<span class="pill">🛏 ${r.bed} bed</span>` : '',
-    r.bath ? `<span class="pill">🚿 ${r.bath} bath</span>` : '',
-    r.size ? `<span class="pill">${Number(r.size).toLocaleString()} sqft</span>` : '',
-    r.furnishing ? `<span class="pill pill-furnishing">${r.furnishing}</span>` : '',
-    r.type ? `<span class="pill">${r.type}</span>` : '',
-    moveInText(r.move_in_date) ? `<span class="pill">${moveInText(r.move_in_date)}</span>` : ''
-  ].filter(Boolean).join('');
-  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
-    ${cardImage(r)}
-    <div class="card-body">
-      <div class="card-badges"><span class="card-badge badge-unit">Unit Rental</span>${coaBadge(r)}</div>
-      <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
-      <div class="card-price">${fmt(r.price)}<span> / month</span></div>
-      <div class="card-pills">${pills}</div>
-      ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
-      <a href="${wa(r.wa_text || `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div>`;
+/*ROWS_JS_START*/
+/* Unit rows (text only, no photos). Tap a row to open details + WhatsApp.
+   Written by build_static_listings.py (ROWS_JS); unit_row() there writes the
+   same markup for the static copy -- edit both there. */
+const ROW_TXT = { bed: 'bed', bath: 'bath', moveIn: 'Move-in: ', est: 'Est. RM ', inst: '/mo instalment', near: 'Near:', mo: '/mo', wa: '💬 WhatsApp about this unit' };
+function clean(v) { v = String(v || '').trim(); return (v && v !== '-') ? v : ''; }
+function coaRef(r) {
+  if (!r.code) return '';
+  const m = String(r.source_link || '').trim().match(/\/(\d+)\/?$/);
+  return m ? `${r.code}_${m[1]}` : r.code;
 }
+// WhatsApp text carries the full ref (code_post) so Hani knows the exact unit
+function waRef(r, fallback) {
+  let t = r.wa_text || fallback;
+  const ref = coaRef(r);
+  if (ref) t = /Ref:/.test(t) ? t.replace(/Ref:\s*\S*/, 'Ref: ' + ref) : `${t} Ref: ${ref}`;
+  return wa(t);
+}
+function furnText(f) { f = clean(f); return (typeof FURNISHING_BM !== 'undefined' && FURNISHING_BM[f]) || f; }
+function bedText(b) { b = clean(b); return !b ? '' : (b === '0' ? 'Studio' : `${b} ${ROW_TXT.bed}`); }
+function numText(v) { const n = Number(String(v).replace(/,/g, '')); return isNaN(n) ? '' : n.toLocaleString('en-MY'); }
+function spans(list) { return list.filter(Boolean).map(x => `<span>${escHtml(x)}</span>`).join(''); }
 
-function subsaleCard(r) {
-  const pills = [
-    r.bed ? `🛏 ${r.bed} bed` : '',
-    r.bath ? `🚿 ${r.bath} bath` : '',
-    r.size ? `${Number(r.size).toLocaleString()} sqft` : '',
-    r.tenure || '',
-    r.type || ''
-  ].filter(Boolean).map(p => `<span class="pill">${p}</span>`).join('');
-  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">
-    ${cardImage(r)}
-    <div class="card-body">
-      <div class="card-badges"><span class="card-badge badge-subsale">Subsale</span>${coaBadge(r)}</div>
-      <div><div class="card-name">${r.project_name}</div><div class="card-zone">${r.zone}</div></div>
-      <div class="card-price">${fmt(r.price)}</div>
-      ${r.installment ? `<div class="card-installment" style="font-size:12px;color:#7a7268;margin-top:-6px;">Est. <strong style="color:#1B4D35;">RM ${Number(r.installment).toLocaleString('en-MY')}</strong>/mo instalment</div>` : ''}
-      <div class="card-pills">${pills}</div>
-      ${r.anchors ? `<div class="card-anchors">${r.anchors}</div>` : ''}
-      <a href="${wa(r.wa_text || `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`)}" class="card-cta" target="_blank" rel="noopener noreferrer">💬 Enquire on WhatsApp</a>
-    </div>
-  </div>`;
+function unitRow(r, rent) {
+  const sub = [clean(r.zone), bedText(r.bed), clean(r.size) ? `${numText(r.size)} sqft` : '', rent ? furnText(r.furnishing) : clean(r.tenure)];
+  const more = [clean(r.type), clean(r.bath) ? `${r.bath} ${ROW_TXT.bath}` : ''];
+  if (rent && clean(r.move_in_date)) more.push(ROW_TXT.moveIn + r.move_in_date);
+  if (!rent && clean(r.installment)) more.push(ROW_TXT.est + numText(r.installment) + ROW_TXT.inst);
+  const ref = coaRef(r);
+  const fallback = rent ? `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`
+                        : `Hi Hani, I'm interested in the subsale unit at ${r.project_name}, ${r.zone}.`;
+  return `<div class="card" id="${toSlug(r.project_name, r.bed, r.price)}">` +
+    `<button type="button" class="row-head" aria-expanded="false" onclick="toggleRow(this)">` +
+      `<span class="row-main"><span class="card-name">${escHtml(r.project_name)}</span>` +
+      `<span class="card-zone">${spans(sub)}</span></span>` +
+      `<span class="row-side"><span class="card-price">${fmt(r.price)}${rent ? `<span>${ROW_TXT.mo}</span>` : ''}</span>` +
+      `<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>` +
+    `</button>` +
+    `<div class="row-more">` +
+      `<div class="row-specs"><span class="bits">${spans(more)}</span>${ref ? `<span class="badge-coa">${escHtml(ref)}</span>` : ''}</div>` +
+      (clean(r.anchors) ? `<div class="card-anchors"><b>${ROW_TXT.near}</b> ${escHtml(r.anchors)}</div>` : '') +
+      `<a href="${escHtml(waRef(r, fallback))}" class="card-cta" target="_blank" rel="noopener noreferrer">${ROW_TXT.wa}</a>` +
+    `</div></div>`;
 }
+function unitCard(r) { return unitRow(r, true); }
+function subsaleCard(r) { return unitRow(r, false); }
+
+function toggleRow(btn) {
+  const card = btn.closest('.card');
+  const open = card.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+/*ROWS_JS_END*/
 
 /* ── Keyword search (same rules as search.html, via /listing-match.js) ── */
 let searchTimer;
@@ -1185,6 +749,7 @@ function scrollToHash() {
     const el = document.getElementById(hash);
     if (el) {
       clearInterval(poll);
+      el.classList.add('open');
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       el.classList.add('card-highlight');
       setTimeout(() => el.classList.remove('card-highlight'), 2800);
