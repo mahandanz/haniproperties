@@ -706,7 +706,7 @@ function spans(list) { return list.filter(Boolean).map(x => `<span>${escHtml(x)}
 function unitRow(r, rent) {
   const sub = [clean(r.zone), bedText(r.bed), clean(r.size) ? `${numText(r.size)} sqft` : '', rent ? furnText(r.furnishing) : clean(r.tenure)];
   const more = [clean(r.type), clean(r.bath) ? `${r.bath} ${ROW_TXT.bath}` : ''];
-  if (rent && clean(r.move_in_date)) more.push(ROW_TXT.moveIn + r.move_in_date);
+  if (rent) more.push(ROW_TXT.moveIn + (clean(r.move_in_date) || 'TBC'));
   if (!rent && clean(r.installment)) more.push(ROW_TXT.est + numText(r.installment) + ROW_TXT.inst);
   const ref = coaRef(r);
   const fallback = rent ? `Hai Hani, saya berminat dengan ${r.project_name}, ${r.zone}.`

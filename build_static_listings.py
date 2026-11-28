@@ -76,7 +76,7 @@ def to_slug(*parts) -> str:
 def move_in_text(val: str) -> str:
     v = (val or "").strip()
     if not v or v == "-":
-        return ""
+        v = "TBC"
     return f"\U0001F5D3 Move-in: {esc(v)}"
 
 
@@ -209,8 +209,8 @@ def unit_row(r: dict, rent: bool) -> str:
     sub = [_clean(r.get("zone")), _bed_text(r.get("bed")), f"{size} sqft" if size else "",
            _clean(r.get("furnishing")) if rent else _clean(r.get("tenure"))]
     more = [_clean(r.get("type")), f"{_clean(r.get('bath'))} bath" if _clean(r.get("bath")) else ""]
-    if rent and _clean(r.get("move_in_date")):
-        more.append("Move-in: " + _clean(r.get("move_in_date")))
+    if rent:
+        more.append("Move-in: " + (_clean(r.get("move_in_date")) or "TBC"))
     inst = _num_text(r.get("installment")) if (not rent and _clean(r.get("installment"))) else ""
     if inst:
         more.append(f"Est. RM {inst}/mo instalment")
@@ -605,7 +605,7 @@ function spans(list) { return list.filter(Boolean).map(x => `<span>${escHtml(x)}
 function unitRow(r, rent) {
   const sub = [clean(r.zone), bedText(r.bed), clean(r.size) ? `${numText(r.size)} sqft` : '', rent ? furnText(r.furnishing) : clean(r.tenure)];
   const more = [clean(r.type), clean(r.bath) ? `${r.bath} ${ROW_TXT.bath}` : ''];
-  if (rent && clean(r.move_in_date)) more.push(ROW_TXT.moveIn + r.move_in_date);
+  if (rent) more.push(ROW_TXT.moveIn + (clean(r.move_in_date) || 'TBC'));
   if (!rent && clean(r.installment)) more.push(ROW_TXT.est + numText(r.installment) + ROW_TXT.inst);
   const ref = coaRef(r);
   const fallback = rent ? `Hi Hani, I'm interested in ${r.project_name}, ${r.zone}.`
@@ -2156,7 +2156,7 @@ def lc_card(r: dict) -> str:
     more = [_clean(r.get("type"))]
     if rent:
         more += [_clean(r.get("parking/floor")),
-                 ("Move-in: " + _clean(r.get("move_in_date"))) if _clean(r.get("move_in_date")) else ""]
+                 "Move-in: " + (_clean(r.get("move_in_date")) or "TBC")]
     ref = post_ref(r.get("code"), r.get("source_link"))
     fallback = f"Hi Hani, I'm interested in {r.get('project_name')}, {r.get('zone')}."
     anchors = (f'<div class="card-anchors"><b>Near:</b> {esc(r.get("anchors"))}</div>'
